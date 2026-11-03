@@ -1,5 +1,5 @@
 {
   "status": "INTERRUPTED - incomplete, not a result",
-  "cause": "The final-validation batch was stopped by the Claude Code host (system critically low on memory, 2026-10-28 ~13:24Z); the remaining owned processes of this run were then stopped deliberately (backend stop API, then exact process trees). No owned container remained.",
+  "cause": "The final-validation batch was stopped by the development host (system critically low on memory, 2026-10-28 ~13:24Z); the remaining owned processes of this run were then stopped deliberately (backend stop API, then exact process trees). No owned container remained.",
   "result_json_present": false
 }

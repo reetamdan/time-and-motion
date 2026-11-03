@@ -1,6 +1,6 @@
 {
   "status": "INTERRUPTED - incomplete, not an acceptance result",
-  "cause": "Claude Code host stopped the background batch for low system memory at ~15:36:30Z (93 s into stageC-4feeds-r2). The host killed the whole process tree at once (wrapper, supervisor, benchmark): no in-process cleanup could run, so neither this INTERRUPTED.json nor summary.json/report.md was written by the tool; written afterwards by hand.",
+  "cause": "development host stopped the background batch for low system memory at ~15:36:30Z (93 s into stageC-4feeds-r2). The host killed the whole process tree at once (wrapper, supervisor, benchmark): no in-process cleanup could run, so neither this INTERRUPTED.json nor summary.json/report.md was written by the tool; written afterwards by hand.",
   "steps": {
     "stageA-4feeds-r1": "PASS",
     "stageA-4feeds-r2": "PASS",
@@ -18,5 +18,5 @@
   },
   "cleanup": "Verified after the kill: no container in WSL (the WSL VM had shut down once all wsl.exe clients were gone: dockerd uptime 12 s on inspection), no project backend/listener, no benchmark process.",
   "finding_during_diagnosis": "The A-C producer cadence was 30.97 fps vs the 29.97 fps source: the extractor's --pace source used the WSL guest CLOCK_MONOTONIC, measured 2.2 % fast (idle) to ~3.5 % (load) against the Windows host. Fixed afterwards (extractor sha 8a2340e2...). The completed A/B/C steps here ran the pre-fix extractor e846ce3e...: their PASS verdicts are valid for the keep-up criterion they gate, but their schedule-lag figures show the clock drift, not a 200 ms lead; the protocol must be re-run on the fixed extractor anyway (frozen identity changed).",
-  "next": "Only on explicit user request, after freeing memory (or with CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1 so only the project's own guard applies): rerun the GPU validators affected by the extractor change, then run_capacity --plan repeats, soak, ladder under scripts/run_supervised_batch.py (.tmp/batches/capacity.json)."
+  "next": "Only on explicit user request, after freeing memory (or with the host memory reaper disabled so only the project's own guard applies): rerun the GPU validators affected by the extractor change, then run_capacity --plan repeats, soak, ladder under scripts/run_supervised_batch.py (.tmp/batches/capacity.json)."
 }

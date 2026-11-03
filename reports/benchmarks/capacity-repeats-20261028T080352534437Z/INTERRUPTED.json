@@ -1,7 +1,7 @@
 {
   "status": "INTERRUPTED - incomplete, not an acceptance result",
   "stopped_at_utc": "between 2026-10-28T08:53:25Z (stageB-4feeds-r2 start) and 09:05Z",
-  "cause": "The orchestrating background process was stopped by the Claude Code host because the system was critically low on memory while the session was idle; not a failure of the benchmark itself. The ladder plan never started.",
+  "cause": "The orchestrating background process was stopped by the development host because the system was critically low on memory while the session was idle; not a failure of the benchmark itself. The ladder plan never started.",
   "completed_steps": ["stageA-4feeds-r1", "stageA-4feeds-r2", "stageA-4feeds-r3", "stageB-4feeds-r1"],
   "completed_step_results": "all four PASS the predeclared gates: 29.958 fps per feed, no frame gaps, schedule lag p95 about -200 ms (producer 200 ms ahead), cleanup confirmed (see each step's summary.json)",
   "partial_step": "stageB-4feeds-r2: no summary.json; its JSONL files are partial and must not be used",

@@ -7,7 +7,7 @@
     "pagefile": "C:\\pagefile.sys 21504 MiB allocated, ~0.8-1.6 GiB used",
     "wslconfig": "none (%USERPROFILE%\\.wslconfig absent) -> WSL default: guest MemTotal 7538 MiB, swap 2048 MiB, 32 vCPU",
     "gpu": "RTX 5070 Ti Laptop, 12227 MiB VRAM, ~0.9 GiB used idle",
-    "competing_workloads_idle": "Windows available ~3.5-5.5 GiB with WSL idle; largest other processes: opencode (~1-2 GiB private), Brave (~2.5 GiB across processes), dwm (~1 GiB), Defender, Claude Code, Wispr Flow. Not project-owned; not terminated."
+    "competing_workloads_idle": "Windows available ~3.5-5.5 GiB with WSL idle; largest other processes: opencode (~1-2 GiB private), Brave (~2.5 GiB across processes), dwm (~1 GiB), Defender, development session, Wispr Flow. Not project-owned; not terminated."
   },
   "measurements": {
     "probe1_before_fix": {
