@@ -222,6 +222,23 @@ async def versions(request: Request) -> dict[str, object]:
     return services(request).snapshots.versions()
 
 
+@router.get("/cameras/{camera_id}/detections")
+async def camera_detections(
+    request: Request, camera_id: str, after_frame: int | None = Query(default=None, ge=-1),
+    limit: int = Query(default=90, ge=0, le=150),
+) -> dict[str, object]:
+    """Recent tracked person boxes of the current epoch, for drawing over the source preview.
+
+    Display only: counts and history come from the camera-local analytics, never from these boxes.
+    Each frame carries its file-timeline position so the browser can align the boxes with the
+    preview video; boxes are in pipeline frame pixels (``frame_width`` x ``frame_height``).
+    """
+    service = services(request)
+    if camera_id not in service.config.camera_map:
+        raise APIError(404, "CAMERA_NOT_FOUND", "Camera does not exist", {"camera_id": camera_id})
+    return service.supervisor.detections(camera_id, after_frame, limit)
+
+
 @router.get("/cameras/{camera_id}/preview")
 async def preview(request: Request, camera_id: str):
     service = services(request)
@@ -282,15 +299,20 @@ async def create_evidence_marker(request: Request, camera_id: str, body: Evidenc
         raise APIError(409, "SOURCE_TIMELINE_DISCONTINUOUS",
                        "This epoch's source timeline has a discontinuity; mapping it onto the file is ambiguous",
                        {"segment": state.source_segment})
+    # A looping file restarts its own timeline on every pass: align on that pass's first file frame.
+    origin, refusal = service.supervisor.evidence_origin(camera_id, source_time)
+    if refusal:
+        raise APIError(409, "SOURCE_LOOP_UNMAPPED", refusal, {"requested": source_time})
     provenance = await asyncio.to_thread(service.repository.get_run_provenance, run_id)
     detector = (provenance or {}).get("provenance_json", {}).get("detector") or {}
     try:
         result = await asyncio.to_thread(
             service.evidence.capture_marker, run_id=run_id, camera_id=camera_id, camera_epoch=state.epoch,
-            source_time_s=source_time, note=body.note, pipeline_origin_s=state.source_origin_s,
+            source_time_s=source_time, note=body.note, pipeline_origin_s=origin,
             frame_number=state.source_frame_number if body.source_time_s is None else None,
             provenance={"detector_id": detector.get("id"), "detector_acceptance": detector.get("acceptance"),
-                        "replay_mode": state.replay_mode, "source_position_reached_s": reached})
+                        "replay_mode": state.replay_mode, "source_position_reached_s": reached,
+                        "replay_pass_when_marked": state.loop_index if state.loop else None})
     except EvidenceUnavailable as exc:
         raise APIError(503, "EVIDENCE_UNAVAILABLE", str(exc)) from exc
     snapshot, clip = result["snapshot"], result["clip"]

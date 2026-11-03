@@ -85,6 +85,7 @@ class MediaTools:
         self.ffmpeg = ffmpeg or shutil.which("ffmpeg")
         self.ffprobe = ffprobe or shutil.which("ffprobe")
         self._keyframes: dict[tuple[str, int, int], tuple[float, list[float], float]] = {}
+        self._frame_counts: dict[tuple[str, int, int], int | None] = {}
 
     def unavailable_reason(self) -> str | None:
         missing = [name for name, path in (("ffmpeg", self.ffmpeg), ("ffprobe", self.ffprobe)) if not path]
@@ -114,6 +115,27 @@ class MediaTools:
         first_pts = float(first.stdout.split()[0].rstrip(",")) if first.stdout.split() else start_time
         self._keyframes[key] = (start_time, keyframes, first_pts)
         return start_time, keyframes, first_pts
+
+    def frame_count(self, source: Path) -> int | None:
+        """Video frames in the file (header nb_frames, else counted packets); memoized per file version.
+
+        Looped replay uses it to map pipeline frame n onto file frame n mod frame_count.
+        """
+        if self.unavailable_reason():
+            return None
+        stat = source.stat()
+        key = (str(source), stat.st_size, stat.st_mtime_ns)
+        if key not in self._frame_counts:
+            count = None
+            for extra, entry in (([], "stream=nb_frames"), (["-count_packets"], "stream=nb_read_packets")):
+                result = self._run([str(self.ffprobe), "-v", "error", *extra, "-select_streams", "v:0", "-show_entries",
+                                    entry, "-of", "csv=p=0", str(source)], self.timeout)
+                value = result.stdout.strip().split(",")[0] if result.returncode == 0 else ""
+                if value.isdigit() and int(value) > 0:
+                    count = int(value)
+                    break
+            self._frame_counts[key] = count
+        return self._frame_counts[key]
 
     def snapshot(self, source: Path, pts_time: float, output: Path) -> float:
         """Decode the frame at/after pts_time; return the actual frame PTS (file timeline)."""

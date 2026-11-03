@@ -63,7 +63,7 @@ export default function CameraInspector({ camera, onClose, onOpenEvidence }: {
   return (
     <Drawer title={camera.name} eyebrow="Camera inspector" subtitle={`${camera.id} · ${titleCase(camera.floor_id)} · ${camera.source_label}`}
       onClose={onClose} width={560} testId="camera-inspector"
-      footer={<span><Activity size={12} aria-hidden="true" style={{ display: 'inline', marginRight: 6 }} />Telemetry and media come from the local API; the browser draws no detections.</span>}>
+      footer={<span><Activity size={12} aria-hidden="true" style={{ display: 'inline', marginRight: 6 }} />Telemetry, media and the tracked boxes come from the local API; the browser only draws them and counts nothing.</span>}>
       <div className="inspector-badges">
         <HealthBadge health={camera.health} />
         <CalibrationBadge status={camera.calibration_status} />
@@ -83,6 +83,9 @@ export default function CameraInspector({ camera, onClose, onOpenEvidence }: {
         <KeyValueList>
           <KeyValue label="Source position"><DataValue value={camera.source_position_s} formatter={(value) => `${formatNumber(Number(value), 2)} s · segment ${camera.source_segment ?? 0}`} reason="No current source time (no run, or no frame yet)." /></KeyValue>
           <KeyValue label="Replay mode"><DataValue value={camera.replay_mode ? titleCase(camera.replay_mode) : null} reason="No replay is active." /></KeyValue>
+          {camera.source_loop ? (
+            <KeyValue label="Clip loop"><span data-testid="clip-loop">Continuous{camera.source_loop_index !== null && camera.source_loop_index !== undefined ? ` · pass ${formatInteger(camera.source_loop_index + 1)}` : ''}</span></KeyValue>
+          ) : null}
           <KeyValue label="Camera epoch"><DataValue value={camera.epoch ? camera.epoch.slice(0, 8) : null} reason="No active epoch." /></KeyValue>
           <KeyValue label="Stream outcome"><span data-testid="stream-outcome">{streamOutcomeLabel(camera)}</span></KeyValue>
           <KeyValue label="Last good frame"><DataValue value={camera.last_good_age_ms} formatter={(value) => `${formatMilliseconds(Number(value))} ago`} reason={reason} /></KeyValue>

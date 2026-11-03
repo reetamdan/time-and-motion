@@ -83,23 +83,48 @@ class SQLiteRepository:
         self.database_path = Path(database_path)
         self.busy_timeout_ms = busy_timeout_ms
         self._lock = threading.RLock()
+        # One connection reused for the repository's lifetime (every use is serialized by _lock).
+        # Opening and closing a connection per call cost ~14-16 ms on Windows: closing the last WAL
+        # connection checkpoints/fsyncs and the closed, modified file is re-scanned. Measured on the
+        # A6000 workstation: 16 ms -> under 1 ms per transaction.
+        self._shared: sqlite3.Connection | None = None
+
+    def _open(self) -> sqlite3.Connection:
+        connection = sqlite3.connect(
+            self.database_path,
+            timeout=self.busy_timeout_ms / 1000,
+            isolation_level=None,
+            check_same_thread=False,
+        )
+        connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA foreign_keys = ON")
+        connection.execute(f"PRAGMA busy_timeout = {int(self.busy_timeout_ms)}")
+        # Per-connection setting (not stored in the file). WAL + NORMAL stays consistent after a crash;
+        # only the most recent commits can be lost on a power failure.
+        connection.execute("PRAGMA synchronous = NORMAL")
+        return connection
+
+    def close(self) -> None:
+        with self._lock:
+            if self._shared is not None:
+                self._shared.close()
+                self._shared = None
 
     @contextmanager
     def _connection(self) -> Iterator[sqlite3.Connection]:
         with self._lock:
-            connection = sqlite3.connect(
-                self.database_path,
-                timeout=self.busy_timeout_ms / 1000,
-                isolation_level=None,
-                check_same_thread=False,
-            )
-            connection.row_factory = sqlite3.Row
-            connection.execute("PRAGMA foreign_keys = ON")
-            connection.execute(f"PRAGMA busy_timeout = {int(self.busy_timeout_ms)}")
+            if self._shared is None:
+                self._shared = self._open()
+            connection = self._shared
             try:
                 yield connection
+            except sqlite3.DatabaseError:
+                # Never keep reusing a connection that hit a database-level error; reconnect next time.
+                self.close()
+                raise
             finally:
-                connection.close()
+                if self._shared is not None and connection.in_transaction:
+                    connection.rollback()  # a read that left a transaction open must not leak into the next call
 
     @contextmanager
     def transaction(self) -> Iterator[sqlite3.Connection]:

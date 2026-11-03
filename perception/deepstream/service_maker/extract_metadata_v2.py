@@ -18,6 +18,15 @@ the frozen historical baseline). Differences, and nothing else:
 * Live ``rtsp://``/``rtsps://`` sources: batch_capture runs with live_source=True, the summary
   records the URL without credentials/query and no file hash, error text is scrubbed of the URL,
   and ``--pace source`` is refused (a live source is already real time).
+* ``--loop`` (file sources only): DeepStream ``file_loop`` replays the file continuously, for
+  demo replay that never reaches end of stream. Measured on DeepStream 9.2: buffer PTS and
+  frame_number keep increasing across each wrap (one ~0.1 s PTS step at the join), so the backend
+  sees one continuous source segment; frame ``n`` is file frame ``n mod frames_in_file``. Without
+  ``--loop`` (default) the behaviour is unchanged.
+* ``--output-max-mib N`` (0 = unlimited, the default): once the JSONL file reaches N MiB it is
+  renamed to ``<output>.prev`` (replacing an older one) and a new file is started, so a long or
+  looping run keeps at most about 2 N MiB on disk. The live stdout transport is unaffected; the
+  summary records the rotations.
 
 Output is JSON Lines: exactly one object per decoded frame, including frames
 whose ``objects`` list is empty. There are no per-frame KITTI files and no
@@ -295,9 +304,13 @@ class SourcePacer:
 
 
 class JsonlMetadataWriter(BatchMetadataOperator):
-    def __init__(self, output_path: Path, camera_id: str, camera_epoch: str, pacer: SourcePacer):
+    def __init__(self, output_path: Path, camera_id: str, camera_epoch: str, pacer: SourcePacer,
+                 max_bytes: int = 0):
         super().__init__()
         self._output_path = output_path
+        self._max_bytes = max_bytes
+        self._written_bytes = 0
+        self.rotations = 0
         self._camera_id = camera_id
         self._camera_epoch = camera_epoch
         self._pacer = pacer
@@ -317,6 +330,14 @@ class JsonlMetadataWriter(BatchMetadataOperator):
             self._output.close()
             self._output = None
 
+    def _rotate(self) -> None:
+        """Keep the newest frames bounded on disk: current file -> <output>.prev, then start a new file."""
+        self.close()
+        self._output_path.replace(self._output_path.with_name(self._output_path.name + ".prev"))
+        self._output = self._output_path.open("w", encoding="utf-8", newline="\n")
+        self._written_bytes = 0
+        self.rotations += 1
+
     def handle_metadata(self, batch_meta: Any) -> None:
         if self._output is None:
             raise RuntimeError("JSONL output is not open")
@@ -325,7 +346,10 @@ class JsonlMetadataWriter(BatchMetadataOperator):
             self._pacer.wait(record.get("pts_ns"))
             record["emitted_unix_ns"] = time.time_ns()
             payload = json.dumps(record, allow_nan=False, separators=(",", ":"))
+            if self._max_bytes and self._written_bytes >= self._max_bytes:
+                self._rotate()
             self._output.write(payload + "\n")
+            self._written_bytes += len(payload) + 1
             # Preserve a usable prefix and exact coverage if a later stage fails.
             self._output.flush()
             # The same real frame is also the live transport; never synthesize past frames.
@@ -363,11 +387,19 @@ def parse_args() -> argparse.Namespace:
                         help="maximum producer lead over the source timeline when --pace source")
     parser.add_argument("--stage", choices=("decode", "detect", "track"), default="track",
                         help="benchmark workload stage (PRD 19.1 A/B/C); the application always uses track")
+    parser.add_argument("--output-max-mib", type=float, default=0.0,
+                        help="rotate the JSONL output to <output>.prev at this size (0 = unlimited)")
+    parser.add_argument("--loop", action="store_true",
+                        help="replay a file source continuously (DeepStream file_loop); never ends on its own")
     args = parser.parse_args()
     if args.pace_lead_ms < 0:
         parser.error("--pace-lead-ms must be >= 0")
+    if args.output_max_mib < 0:
+        parser.error("--output-max-mib must be >= 0")
     if is_live(args.source) and args.pace != "none":
         parser.error("--pace source applies to file replay only; a live source is already real time")
+    if is_live(args.source) and args.loop:
+        parser.error("--loop applies to file replay only")
     if not args.camera_id.strip() or not args.camera_epoch.strip():
         parser.error("camera-id and camera-epoch must be non-empty")
     if min(args.width, args.height, args.tracker_width, args.tracker_height) <= 0:
@@ -409,9 +441,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "pace": args.pace,
         "pace_lead_ms": args.pace_lead_ms if args.pace == "source" else None,
         "stage": args.stage,
+        "loop": bool(args.loop),
+        "output_max_mib": args.output_max_mib or None,
     }
     pacer = SourcePacer(args.pace, args.pace_lead_ms / 1000.0)
-    writer = JsonlMetadataWriter(output_path, args.camera_id, args.camera_epoch, pacer)
+    writer = JsonlMetadataWriter(output_path, args.camera_id, args.camera_epoch, pacer,
+                                 int(args.output_max_mib * 1024 * 1024))
     eos_messages: list[EOSMessage] = []
 
     def on_message(message: Any) -> None:
@@ -429,7 +464,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             batched_push_timeout=40000,
             buffer_pool_size=4,
             live_source=is_live(args.source),
-            file_loop=False,
+            file_loop=bool(args.loop),
             enable_padding=False,
             gpu_id=args.gpu_id,
         )
@@ -474,6 +509,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 "pace_clock_sync_steps": getattr(pacer.clock, "sync_steps", None) if args.pace == "source" else None,
                 "pace_clock_rate": pacer.clock.rate() if args.pace == "source" else None,
                 "pace_reanchors": pacer.reanchors,
+                "output_rotations": writer.rotations,
                 "pace_implausible_clock_reads": pacer.implausible_reads,
                 "clean_eos": len(eos_messages) > 0
                 and summary["pipeline_returned"]

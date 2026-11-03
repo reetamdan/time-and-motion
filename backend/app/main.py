@@ -56,7 +56,8 @@ def create_app(
     repository = SQLiteRepository(config.runtime.database_path)
     adapter = perception_adapter or DeepStreamAdapter(config)
     sequence = SequenceState()
-    supervisor = CameraRuntimeSupervisor(config, repository, adapter, sequence)
+    media_tools = media_tools or MediaTools(config.runtime.evidence.tool_timeout_seconds)
+    supervisor = CameraRuntimeSupervisor(config, repository, adapter, sequence, frame_counter=media_tools.frame_count)
     telemetry = TelemetryService(telemetry_collector or TelemetryCollector(config.runtime.telemetry))
     snapshots = SnapshotService(config, repository, supervisor, telemetry, sequence)
     environment = EnvironmentService(config, repository, adapter, telemetry)
@@ -95,7 +96,10 @@ def create_app(
             yield
         finally:
             await telemetry.stop()
-            await supervisor.shutdown()
+            try:
+                await supervisor.shutdown()
+            finally:
+                repository.close()
 
     application = FastAPI(
         title="Local Crowd Intelligence API",

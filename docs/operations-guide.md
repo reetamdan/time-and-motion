@@ -385,6 +385,7 @@ They check, in order:
 
   Measured: about 16 s cold, about 5 s warm (container launch, engine load, and first frame remain).
 - **Multiple cameras** start concurrently and fail independently. Each has its own epoch, bounded queue, owned container, and cleanup.
+- **Continuous file replay.** Set `loop: true` on a file camera in `cameras.yaml` to replay the clip without end (the RTX A6000 PC profile does this for `cam-01`). The counts, history and overlay stay live across every pass; the inspector shows *Clip loop · Continuous · pass N*. Evidence markers map onto the correct frame of the current pass. The per-epoch frame file is size-capped (`runtime.yaml` `replay.frame_log_max_mib`). Validators that need the clip's natural end (`CLEAN_EOF`, 710 frames) must use `loop: false`.
 - **Clean end of a file source.** When the clip ends cleanly (every accepted frame drained, extractor exit 0), the final history bucket is persisted at once and the camera reports `stream_outcome: CLEAN_EOF`. The run stays active and the values go stale (null, not zero) until an operator stop. A later stop does not duplicate the bucket. A non-zero exit, a reader error or a consumer failure is reported as `ABNORMAL_TERMINATION` or `CONSUMER_FAILED`, with an alert.
 - **Ownership and restart recovery.** Before any container is launched, the backend records its exact identity (`aegis-<camera>-<epoch>`, `docker@wsl:<distro>`) in the database. A start that fails after launch is cleaned up through the normal stop path. On startup the backend reconciles every unreleased container from a previous process. A run is marked `STOPPED` only after release is confirmed; otherwise it is restored as `STOP_FAILED` and new starts are refused (HTTP 409) until a stop retry succeeds. Only exact recorded names are touched, never an `aegis-*` prefix sweep.
 - Browser-level check (real socket + headless Chrome, plus a TEST-ONLY fault backend): `.\.install\browser-tests\venv\Scripts\python.exe scripts\validate_browser_workflow.py` (needs `pip install playwright==1.55.0` in that venv and an installed Google Chrome).
@@ -681,6 +682,19 @@ Evidence files record absolute paths from the original Windows machine.
 - **Container runtime changed but start still uses an old capability:** liveness and fingerprints normally catch this; force a re-probe with `POST /api/v1/system/capability/invalidate`.
 - **Evidence marker returns 503 `EVIDENCE_TOOL_UNAVAILABLE`:** install ffmpeg/ffprobe on the Windows PATH (e.g. `winget install Gyan.FFmpeg`). Evidence never falls back to placeholders.
 - **Geometry-invalid alert:** the frames no longer match the calibration/line's measured frame size (resolution, crop, or zoom changed). Recalibrate and record a new revision.
+
+### RTX A6000 workstation profile (this PC, Windows route)
+
+Implemented and validated on 2026-11-04 on the Dell Precision 5820 / RTX A6000 (48 GB). PC-local artifacts live in `.install/windows/` (not versioned) and leave the upstream configs untouched; `Start-Aegis.cmd` selects them automatically.
+
+| Item | Profile | Measured on this GPU (`.install/windows/a6000/optimization-receipt.json`) |
+| --- | --- | --- |
+| Detector | `rt-detr-person-candidate`, FP16 TensorRT engine (`selection_mode: candidate_evaluation`, still labelled unaccepted) | ~68 tracked people/frame on the demo clip vs ~17 for TrafficCamNet; FP16 2.4 ms vs FP32 5.1 ms per frame; FP16 reproduces the FP32 boxes (99.4 % matched at IoU >= 0.5, mean IoU 0.994) |
+| Replay | `cam-01` `loop: true` | 5-minute paced soak: 12 passes, 29-30 fps, 60-78 people, flat 225 ms backend queue, 601 contiguous history samples |
+| Throughput | unpaced, full application path (decode, detector, tracker, analytics, persistence) | ~220 fps for one feed |
+| Tracker | NvDCF perf config unchanged | `maxTargetsPerStream` 150 vs 300: identical tracks on this clip |
+
+Rebuild and re-pin from scratch: run `scripts/deepstream.sh bash /workspace/.install/windows/build-a6000-engines.sh` inside WSL (new engines only; existing ones are never overwritten), then `.venv-windows\Scripts\python.exe .install\windows\configure_a6000.py prepare` and `... finalize`. Validation: `.install\windows\validate-a6000.ps1` (all three profiles, clean end of clip, evidence, cleanup) and `.venv-windows\Scripts\python.exe .install\windows\browser-loop-overlay.py` (real paced run in the browser past the end of the clip: live values, boxes overlay, preview sync).
 
 ### RTX A6000 migration procedure
 

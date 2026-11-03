@@ -85,6 +85,11 @@ class Camera(BaseModel):
     source_segment: int | None = None
     source_time_basis: str | None = None
     source_discontinuities: int = 0
+    # Continuous file replay: the clip restarts at its end (loop_index = completed passes), and the
+    # latest frame's position on the file's own timeline (drives the dashboard's preview sync/overlay).
+    source_loop: bool = False
+    source_loop_index: int | None = None
+    source_file_position_s: float | None = None
     backend_queue_ms: float | None = None
     persisted_count_samples: int = 0
     camera_line_crossings: int = 0

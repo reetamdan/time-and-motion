@@ -271,11 +271,15 @@ class ServiceMakerSessions:
             "--tracker-width", str(profile.tracker_width), "--tracker-height", str(profile.tracker_height),
             "--output", workspace_path(output, root),
             "--run-summary", workspace_path(summary, root),
+            *(["--output-max-mib", f"{self.config.runtime.replay.frame_log_max_mib:g}"]
+              if self.config.runtime.replay.frame_log_max_mib else []),
             "--camera-id", camera.id,
             "--camera-epoch", epoch,
             # Source-side pacing (v2 extractor) only for paced FILE replay; live sources are already real time.
             *(["--pace", "source", "--pace-lead-ms", f"{pipeline.pace_lead_ms:g}"]
               if replay_mode == "paced" and pipeline.extractor_pacing == "source" and not live else []),
+            # Continuous file replay (DeepStream file_loop): PTS and frame numbers stay monotonic across wraps.
+            *(["--loop"] if camera.loop and not live else []),
         ]
 
     def container_name(self, camera_id: str, epoch: str) -> str:

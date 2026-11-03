@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ChevronRight, VideoOff } from 'lucide-react';
 import type { Camera } from '../types';
 import { formatInteger, formatMilliseconds, reasonOr, titleCase } from '../lib/format';
 import { Button } from '../design-system/components';
+import { useDetectionOverlay } from './DetectionOverlay';
 
 /** Live values older than this are shown as stale (matches analytics.health.stale_after_ms). */
 export const STALE_AFTER_MS = 1500;
@@ -20,6 +21,10 @@ export function cameraFreshness(camera: Camera): 'live' | 'stale' | 'idle' {
 export function CameraPreview({ camera, detail = false }: { camera: Camera; detail?: boolean }) {
   const [mode, setMode] = useState<'video' | 'image' | 'failed'>('video');
   useEffect(() => setMode('video'), [camera.id, camera.preview_url]);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const overlayActive = previewEligible(camera) && mode === 'video' && cameraFreshness(camera) === 'live';
+  useDetectionOverlay(camera, videoRef, canvasRef, overlayActive, detail);
   const reason = !camera.enabled
     ? 'Disabled in the local configuration.'
     : camera.health === 'OFFLINE'
@@ -36,8 +41,13 @@ export function CameraPreview({ camera, detail = false }: { camera: Camera; deta
   return (
     <div className="camera-media">
       {mode === 'video' ? (
-        <video src={camera.preview_url ?? undefined} muted autoPlay playsInline loop={false} controls={detail} preload="metadata"
-          aria-label={`${camera.name} local source preview`} onError={() => setMode('image')} />
+        <>
+          <video ref={videoRef} src={camera.preview_url ?? undefined} muted autoPlay playsInline loop={Boolean(camera.source_loop)}
+            controls={detail && !overlayActive} preload="auto"
+            aria-label={`${camera.name} local source preview`} onError={() => setMode('image')} />
+          <canvas ref={canvasRef} className="detection-overlay" data-active={overlayActive ? 'true' : 'false'}
+            aria-label={overlayActive ? 'Tracked person boxes from the local pipeline' : undefined} role={overlayActive ? 'img' : undefined} />
+        </>
       ) : (
         <img src={camera.preview_url ?? undefined} alt={`${camera.name} local source preview`} onError={() => setMode('failed')} />
       )}
@@ -91,7 +101,7 @@ export function streamOutcomeLabel(camera: Camera): string {
     case 'CLEAN_EOF': return 'Source ended · clean EOF (history complete)';
     case 'ABNORMAL_TERMINATION': return `Source ended abnormally · ${camera.stream_outcome_detail ?? 'no detail'}`;
     case 'CONSUMER_FAILED': return `Processing failed · ${camera.stream_outcome_detail ?? 'no detail'}`;
-    default: return camera.epoch ? 'Streaming (no end reported)' : 'No active source epoch';
+    default: return !camera.epoch ? 'No active source epoch' : camera.source_loop ? 'Streaming · clip loops continuously' : 'Streaming (no end reported)';
   }
 }
 

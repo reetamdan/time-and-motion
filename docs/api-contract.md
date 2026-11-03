@@ -79,6 +79,7 @@ The current real adapter writes camera-local observation/count state, not calibr
 - `source_time_basis`.
 - `source_discontinuities`: PTS discontinuities, each of which raises a WARNING alert and restarts time-based analytics.
 - `backend_queue_ms`: in-backend buffering of the latest frame.
+- `source_loop`, `source_loop_index` and `source_file_position_s`: whether the file source replays continuously (`loop: true` in `cameras.yaml`), the number of completed passes, and the latest frame's position on the file's own timeline (seconds from its first frame; null when stale or when a looping source's frame count is unknown).
 - `persisted_count_samples` and `camera_line_crossings`: counters for this epoch.
 
 `frame_age_ms` stays null for file replay, because there is no capture clock.
@@ -102,6 +103,7 @@ Live (RTSP) cameras additionally carry `reconnect_attempt` (attempts since the l
 - `GET /api/v1/system/environment` → `{ "host", "gpu", "runtime", "sources", "models", "configuration_revision", "blockers" }` from actual probes. Runtime capabilities are keyed by `deepstream`, `gstreamer`, `nvstreammux`, `nvinfer`, and `nvv4l2decoder`; each reports `available`, `scope`, `detail`, and `unavailable_reason`. Capability scope may be `pinned-deepstream-container`. The model report includes `selected_model`, `selection_mode`, `evaluated_baseline_selected`, artifact availability, and tracker availability.
 - `GET /api/v1/system/metrics` → `SystemMetrics`.
 - `GET /api/v1/cameras` → `Camera[]`.
+- `GET /api/v1/cameras/{id}/detections?after_frame=&limit=90` → `{ camera_id, camera_epoch, replay_mode, loop, loop_index, frame_width, frame_height, latest_age_ms, box_format, frames[] }`, where each frame is `{ frame_number, source_time_s, file_position_s, loop_index, boxes[] }` and each box is `[x, y, width, height, track_id]` in pipeline frame pixels (the tracker box when available). The last ~150 frames of the current epoch are kept; `after_frame` returns only newer frames. **Display only:** the dashboard draws these over the source preview (aligned by `file_position_s`); counts and history never come from them. Unknown IDs return 404; with no epoch, `frames` is empty.
 - `GET /api/v1/cameras/{id}/preview` → the configured local source file with single-range HTTP support; there is no current MJPEG-producing route. Unknown IDs return 404, disabled or non-file sources return 409, missing/empty files return 404, and invalid/unsatisfiable ranges return 416. Before perception starts, source-only responses include `X-Preview-Mode: source-only`, `X-Analytics-Available: false`, and source-preview label headers. No placeholder is presented as live.
 - `GET /api/v1/floors` → `Floor[]`.
 - `GET /api/v1/zones` → `Zone[]` flattened from the floors.
@@ -175,7 +177,9 @@ Handled API errors use HTTP JSON `{ "error": { "code", "message", "details": {} 
 
 ## File-source EOS and replay
 
-For file sources the Service Maker pipeline sets `live_source=False` and `file_loop=False` (`live_source=True` for `rtsp://`). Natural EOS ends metadata production but does not loop, synthesize frames, automatically stop the run, or start another epoch. Freshness is evaluated when snapshots are assembled: after the stale threshold, current count/FPS fields become null and camera health becomes `DEGRADED`. To consume the file again, stop the active run and then start a new one.
+**Continuous replay (`loop: true`).** A file camera with `loop: true` runs the extractor with `--loop` (DeepStream `file_loop`). Measured on DeepStream 9.2: buffer PTS and `frame_number` keep increasing across each wrap (one ~0.1 s PTS step at the join, below the 2 s discontinuity threshold), so the epoch stays one source segment, history and analytics continue, and the stream never reports `CLEAN_EOF`; an operator stop ends it. The backend counts the file's frames once (ffprobe) and maps pipeline frame *n* to file frame *n* mod *frames*; the source time of each pass's first frame aligns evidence on that pass (`SOURCE_LOOP_UNMAPPED`, 409, when the frame count is unknown or the pass is no longer tracked). The per-epoch frame file is rotated to `<epoch>.jsonl.prev` at `runtime.yaml` `replay.frame_log_max_mib` (default 256 MiB).
+
+Without `loop` (the default), the Service Maker pipeline sets `live_source=False` and `file_loop=False` (`live_source=True` for `rtsp://`). Natural EOS ends metadata production but does not loop, synthesize frames, automatically stop the run, or start another epoch. Freshness is evaluated when snapshots are assembled: after the stale threshold, current count/FPS fields become null and camera health becomes `DEGRADED`. To consume the file again, stop the active run and then start a new one.
 
 The earlier `reports/validation/live-application-cam01/result.json` remains an early-stop smoke. The newer `reports/validation/live-eos-replay-cam01/result.json` passes all 28 declared checks and now provides the live natural-EOS/restart evidence: a positive count before EOS, 710 frames in both the contiguous JSONL and drained backend consumer, stale API values/health/age with the run still active, a distinct replay epoch with a fresh positive count, operator stops, exact container/session cleanup, and completed TestClient shutdown. The second epoch is intentionally not a full-clip run.
 

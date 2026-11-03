@@ -19,6 +19,9 @@ replay:
   # paced = demo playback on the source timeline; unpaced = evaluation/benchmark throughput.
   mode: paced
   history_sample_seconds: 0.5
+  # Per-epoch frame-record file under backend/var/perception: rotated to <file>.prev at this size so long
+  # or looping (cameras.yaml loop: true) runs stay bounded on disk (about 2x). 0 = unlimited.
+  frame_log_max_mib: 256
 capability:
   # The expensive container capability probe is reused across starts (and backend restarts, via
   # cache_path) while its fingerprint matches and a cheap docker liveness check passes.

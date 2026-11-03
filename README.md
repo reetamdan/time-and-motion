@@ -4,7 +4,9 @@ Aegis Ops is a local-first operations console for crowd monitoring from CCTV vid
 
 Everything runs on one machine: no cloud services, API keys, model hosting or telemetry.
 
-![Operations overview: camera wall, tracked people, measurement status and alerts](reports/ui/screenshots-after-20261028T183345899702Z/1440-overview.png)
+![Operations overview on the RTX A6000: live camera with tracked-person boxes, 65 people in view, continuous replay](reports/ui/screenshots-a6000-20261103T202609Z/1440-overview.png)
+
+*Live on the RTX A6000 workstation: RT-DETR (FP16) + NvDCF tracking on the demo clip, replayed continuously, with the backend's tracked boxes drawn over the preview.*
 
 ## Contents
 
@@ -25,12 +27,13 @@ Everything runs on one machine: no cloud services, API keys, model hosting or te
 ## Highlights
 
 - **GPU video pipeline.** Hardware decode (NVDEC), TensorRT person detection and NVIDIA NvDCF tracking, in a digest-pinned DeepStream 9.2 container, one isolated container per camera.
-- **File and live sources.** Local video files, replayed either paced to real time or as fast as the GPU allows. Live RTSP cameras, with loss detection, capped-backoff reconnect and a stall watchdog. Credentials are taken from the environment and redacted everywhere.
+- **File and live sources.** Local video files, replayed either paced to real time or as fast as the GPU allows, once or continuously (`loop: true`). Live RTSP cameras, with loss detection, capped-backoff reconnect and a stall watchdog. Credentials are taken from the environment and redacted everywhere.
 - **Honest analytics.** Camera-visible counts and source-time history, line crossings, and, once cameras are calibrated, zone and floor occupancy, de-duplicated building figures, queues, congestion (with persistence and hysteresis), entries/exits and stair transitions. A value that can't be measured is shown as *unavailable* with its reason, never as zero.
 - **Evidence.** Operator markers save the exact pipeline frame plus a short stream-copied clip, linked to an alert, with retention limits.
 - **Operational safety.** Each camera starts and fails independently. Stale values go blank instead of freezing. Every container is tracked by exact name, so cleanup is confirmed even across backend crashes and restarts.
 - **Reproducibility.** Every model, engine, config, parser and pipeline script is pinned by SHA-256 and checked before perception starts. Each run records its provenance.
 - **Telemetry.** Real GPU, VRAM, NVDEC, temperature, power, CPU and RAM readings in the dashboard and in benchmark reports.
+- **Live detection overlay.** The backend's tracked person boxes are drawn over the camera preview, kept in sync with the pipeline position (display only: counts always come from the backend).
 - **Dashboard.** Camera wall, camera inspector, floors, analytics, alerts, evidence viewer and system/artifact panels. Dark and light themes, responsive from 390 to 1920 px, keyboard-operable.
 
 ## How it works
@@ -72,7 +75,7 @@ Exact pinned versions are in `backend/requirements*.txt`, `frontend/package-lock
 
 ## Project status
 
-Developed and validated on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2). The target deployment is an RTX A6000 workstation.
+Developed on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2) and now **running and validated on the target RTX A6000 workstation** (Windows 10 + WSL2, 2026-11-04). On the A6000 the default profile is RT-DETR with an FP16 TensorRT engine: about 68 tracked people per frame on the crowded demo clip (TrafficCamNet: about 17), 2.4 ms inference per frame, and about 220 fps for one feed through the full application. The clip replays continuously, so the dashboard stays live instead of going stale at the clip's end. Measurements and how to rebuild the profile: [operations guide, *RTX A6000 workstation profile*](docs/operations-guide.md#rtx-a6000-workstation-profile-this-pc-windows-route).
 
 **Validated with real GPU runs** (evidence under `reports/`, per-criterion status in [docs/acceptance-matrix.md](docs/acceptance-matrix.md)):
 
@@ -88,9 +91,9 @@ Developed and validated on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2). The ta
 - **Detector accuracy.** No human-reviewed labels exist yet; the annotation package is ready in `data/annotations/cam01-v1/`. TrafficCamNet is the default as a *provisional* detector, and the candidates are runnable but unaccepted.
 - **Calibrated facility metrics.** Occupancy, overlap de-duplication, stairs and queues need camera calibration and real multi-camera footage; only one clip exists.
 - **Steady-state capacity and the 30-minute soak.** The protocol is implemented. The final run passed its first two steps and was then paused.
-- **Validation on the RTX A6000.**
+- **Steady-state multi-camera capacity on the RTX A6000.** Single-feed throughput and a 5-minute looping soak are measured; the multi-feed capacity protocol has not been run there.
 
-Tests: 276 backend tests on Windows, 274 (+2 Windows-only skips) in WSL, 33 frontend tests, and a passing production build.
+Tests (2026-11-04, RTX A6000 PC): 282 backend tests and 38 frontend tests pass on Windows, and the production build passes. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release), and a browser run confirms live values, boxes and preview sync past the clip's end.
 
 ## Requirements
 
@@ -153,7 +156,7 @@ For frontend development with hot reload, run `npm run dev` from the project roo
 
 ## Using the dashboard
 
-1. Choose **Paced** (real-time replay of the source timeline) or **Unpaced** (as fast as the GPU allows), then click **Start demo**. The first start after a reboot probes the container runtime, about 15 s; later starts take about 5 s.
+1. Choose **Paced** (real-time replay of the source timeline) or **Unpaced** (as fast as the GPU allows), then click **Start demo**. Tracked boxes appear over the camera preview; a camera with `loop: true` keeps running until you stop it. The first start after a reboot probes the container runtime, about 15 s; later starts take about 5 s.
 2. Select a camera tile to open its inspector. It shows the live track count, source position, replay mode, rates, count history (latest window, or browse earlier and later ranges) and **Mark evidence**.
 3. **Stop** releases the camera containers. **Reset** clears run-scoped history; evidence files are kept and pruned by retention.
 4. If a container's removal can't be confirmed, a **Stop not confirmed** banner with **Retry cleanup** stays visible, and Start/Reset are refused until cleanup succeeds.
@@ -166,7 +169,7 @@ All facility and runtime settings live in typed YAML under `configs/`:
 
 | File | Purpose |
 | --- | --- |
-| `cameras.yaml` | Camera sources (file or RTSP), floors, calibration references. Four slots; `cam-01` is enabled |
+| `cameras.yaml` | Camera sources (file or RTSP), floors, calibration references, `loop` for continuous file replay. Four slots; `cam-01` is enabled |
 | `floors.yaml`, `zones.yaml`, `portals.yaml` | Floor plans, zones, entrances and stairs |
 | `analytics.yaml` | Thresholds, freshness, congestion, retention |
 | `models.yaml` | Detector profiles, tracker and pipeline identities with SHA-256 pins |

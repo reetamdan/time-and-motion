@@ -33,6 +33,11 @@ export interface Camera {
   source_segment?: number | null;
   source_time_basis?: string | null;
   source_discontinuities?: number;
+  /** Continuous file replay: the clip restarts at its end; loop index = completed passes. */
+  source_loop?: boolean;
+  source_loop_index?: number | null;
+  /** Latest frame's position on the source file's own timeline (preview sync). */
+  source_file_position_s?: number | null;
   backend_queue_ms?: number | null;
   persisted_count_samples?: number;
   camera_line_crossings?: number;
@@ -45,6 +50,30 @@ export interface Camera {
   next_reconnect_at?: string | null;
   evidence_available?: boolean;
   evidence_unavailable_reason?: string | null;
+}
+
+/** One pipeline frame's tracked person boxes: [x, y, width, height, track_id] in pipeline pixels. */
+export type DetectionBox = [number, number, number, number, string];
+
+export interface DetectionFrame {
+  frame_number: number;
+  source_time_s: number | null;
+  file_position_s: number | null;
+  loop_index: number | null;
+  boxes: DetectionBox[];
+}
+
+export interface CameraDetections {
+  camera_id: string;
+  camera_epoch: string | null;
+  replay_mode: 'paced' | 'unpaced' | null;
+  loop: boolean;
+  loop_index: number | null;
+  frame_width: number | null;
+  frame_height: number | null;
+  latest_age_ms: number | null;
+  box_format: string;
+  frames: DetectionFrame[];
 }
 
 export interface CountHistorySample {

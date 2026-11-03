@@ -39,7 +39,11 @@ pipeline:
   # ~4 % fast (capacity-repeats-20261028T174417346278Z). Pacing now uses GuestHostClock (wall time at sync steps +
   # monotonic rate measured between them) and waits out steps <= 3 s; summary adds pace_clock_sync_steps/pace_clock_rate.
   # Validated on WSL vs host: reports/validation/wsl-pacing-clock-probe-20261028T181725Z (600 s, rate 1.0004).
-  extractor_sha256: 4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4
+  # 4ef4f94a... -> ed54b60e... (2026-11-04, RTX A6000 PC): adds two opt-in flags. --loop (DeepStream file_loop) for
+  # cameras with loop: true; PTS and frame_number stay monotonic across each wrap (measured on DeepStream 9.2), so the
+  # backend sees one segment. --output-max-mib rotates the per-epoch JSONL to <output>.prev so long/looping runs stay
+  # bounded on disk (runtime.yaml replay.frame_log_max_mib). Pacing, schema, stages and stdout records are unchanged.
+  extractor_sha256: ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1
   extractor_schema_version: "1.1"
   extractor_pacing: source
   pace_lead_ms: 200

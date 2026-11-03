@@ -58,6 +58,8 @@ class CameraConfig(StrictModel):
     calibration_revision: str | None = None
     replay_group: str | None = None
     timestamp_offset_ms: int = 0
+    # File sources only: replay the clip continuously (demo playback) instead of ending at end of file.
+    loop: bool = False
     position: Point
     coverage_polygon: Polygon
     source_path: Path | None = Field(default=None, exclude=True)
@@ -73,6 +75,8 @@ class CameraConfig(StrictModel):
             parsed = urlsplit(self.source)
             if parsed.scheme != "rtsp" or not parsed.hostname:
                 raise ValueError("RTSP sources must be absolute rtsp:// URLs")
+            if self.loop:
+                raise ValueError("loop applies to file sources only; a live source has no end to loop")
         elif "://" in self.source:
             raise ValueError("File sources must be local filesystem paths")
         if self.calibration_status == "VALID" and not self.calibration_revision:
@@ -456,6 +460,9 @@ class ReplaySettings(StrictModel):
     mode: Literal["paced", "unpaced"] = "paced"
     # Source-time spacing of persisted visible-count history samples.
     history_sample_seconds: float = Field(default=0.5, gt=0, le=60)
+    # Per-epoch frame-record file (backend/var/perception/<camera>/<epoch>.jsonl): rotated to .prev at
+    # this size so long or looping runs stay bounded (about 2x on disk). 0 = unlimited.
+    frame_log_max_mib: float = Field(default=256, ge=0)
 
 
 class CapabilitySettings(StrictModel):

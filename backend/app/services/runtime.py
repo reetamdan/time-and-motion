@@ -8,8 +8,11 @@ import logging
 import threading
 import time
 import uuid
-from dataclasses import dataclass
+from collections import deque
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Callable
 
 from ..analytics.camera_local import COUNT_BASIS, CameraLocalAnalytics, CountSample, ImageLine
 from ..analytics.facility import FACILITY_EMIT_SECONDS, FacilityAnalytics, capability_matrix
@@ -25,6 +28,10 @@ from ..timeutils import iso_now, to_iso
 from .sequence import SequenceState
 
 LOGGER = logging.getLogger("cctv.runtime")
+# Recent per-frame tracked boxes kept per camera for the dashboard overlay (about 5 s at 30 fps).
+DETECTION_BUFFER_FRAMES = 150
+# Loop origins kept per looping camera (older passes can no longer be mapped for evidence).
+MAX_LOOP_ORIGINS = 64
 
 
 @dataclass(slots=True)
@@ -61,13 +68,27 @@ class CameraRuntimeState:
     # Live sources: reconnect attempts since the last frame, and when the next attempt is due (UTC ISO).
     reconnect_attempt: int = 0
     next_reconnect_at: str | None = None
+    # Continuous file replay: frames per pass of the file (frame n is file frame n mod loop_frames),
+    # the current pass, and the source time of each pass's first file frame (maps passes onto the file).
+    loop: bool = False
+    loop_frames: int | None = None
+    loop_index: int | None = None
+    loop_origins: dict[int, float] = field(default_factory=dict)
+    # Position of the latest frame on the source file's own timeline (seconds from its first frame).
+    file_position_s: float | None = None
+    # Recent tracked person boxes (pipeline pixels) for the dashboard overlay; never used for counts.
+    frame_size: tuple[int, int] | None = None
+    detections: deque = field(default_factory=lambda: deque(maxlen=DETECTION_BUFFER_FRAMES))
 
 
 class CameraRuntimeSupervisor:
     def __init__(
-        self, config: AppConfig, repository: Repository, adapter: PerceptionAdapter, sequence: SequenceState
+        self, config: AppConfig, repository: Repository, adapter: PerceptionAdapter, sequence: SequenceState,
+        frame_counter: Callable[[Path], int | None] | None = None,
     ) -> None:
         self.config = config
+        # Counts the video frames of a file source (ffprobe); needed only to map looped replay onto the file.
+        self._frame_counter = frame_counter
         self.repository = repository
         self.adapter = adapter
         self.sequence = sequence
@@ -432,6 +453,9 @@ class CameraRuntimeSupervisor:
             health="DEGRADED", epoch=epoch, source_available=True,
             unavailable_reason="Source available; perception runtime unavailable (source preview only)",
         )
+        if camera.loop and camera.source_type == "file":
+            state.loop = True
+            state.loop_frames = await asyncio.to_thread(self._count_frames, camera)
         self.repository.start_camera_session(run_id, camera.id, epoch, "SOURCE_AVAILABLE", adapter_name)
         if adapter_available:
             self._analytics[(camera.id, epoch)] = CameraLocalAnalytics(
@@ -488,6 +512,50 @@ class CameraRuntimeSupervisor:
             {"retry": "POST /api/v1/demo/stop"}, "runtime-v1",
         )
         error.args = (f"{error}; launched resource cleanup NOT confirmed (retry with stop)",)
+
+    def _count_frames(self, camera: CameraConfig) -> int | None:
+        if self._frame_counter is None or camera.source_path is None:
+            return None
+        try:
+            frames = self._frame_counter(camera.source_path)
+        except Exception as exc:  # the loop still runs; only file mapping of later passes is unavailable
+            LOGGER.warning("Could not count the frames of %s: %s", camera.source_label, exc)
+            return None
+        return frames if isinstance(frames, int) and frames > 0 else None
+
+    def evidence_origin(self, camera_id: str, source_time: float) -> tuple[float | None, str | None]:
+        """(pipeline origin of the file pass containing source_time, refusal reason).
+
+        Without looping this is the epoch's first frame. A looping file restarts its own timeline on
+        every pass, so the origin is the source time of that pass's first file frame.
+        """
+        with self._state_lock:
+            state = self._states[camera_id]
+            if not state.loop:
+                return state.source_origin_s, None
+            if not state.loop_frames:
+                return None, ("The looping source's frame count is unknown (ffprobe), so its replay passes cannot be "
+                              "mapped onto the file")
+            candidates = [origin for origin in state.loop_origins.values() if origin <= source_time + 1e-9]
+            if not candidates:
+                return None, "That source time belongs to a replay pass that is no longer mapped onto the file"
+            return max(candidates), None
+
+    def detections(self, camera_id: str, after_frame: int | None = None, limit: int = 90) -> dict[str, Any]:
+        """Recent tracked person boxes for the dashboard overlay (display only; counts come from analytics)."""
+        with self._state_lock:
+            state = self._states[camera_id]
+            frames = [frame for frame in state.detections if after_frame is None or frame["frame_number"] > after_frame]
+            age = (time.monotonic() - state.last_good_monotonic) * 1000 if state.last_good_monotonic is not None else None
+            return {
+                "camera_id": camera_id, "camera_epoch": state.epoch, "replay_mode": state.replay_mode,
+                "loop": state.loop, "loop_index": state.loop_index,
+                "frame_width": state.frame_size[0] if state.frame_size else None,
+                "frame_height": state.frame_size[1] if state.frame_size else None,
+                "latest_age_ms": age,
+                "box_format": "[x, y, width, height, track_id] in pipeline frame pixels (tracker box when available)",
+                "frames": frames[-limit:] if limit > 0 else [],
+            }
 
     async def stop(self) -> None:
         async with self._lifecycle_lock:
@@ -843,6 +911,7 @@ class CameraRuntimeSupervisor:
             state.detection_limit = limit if isinstance(limit, int) else state.detection_limit
             first_truncation = at_limit and state.frames_at_detection_limit == 0
             state.frames_at_detection_limit += at_limit
+            self._track_file_position(state, batch, fresh_observations)
             analytics = self._analytics.get((batch.camera_id, batch.camera_epoch))
         if run_id is not None:
             self._facility_frame(run_id, batch, camera, fresh_observations)
@@ -890,6 +959,40 @@ class CameraRuntimeSupervisor:
                     if batch.source_discontinuity:
                         state.source_discontinuities += 1
         self.sequence.bump()
+
+
+    @staticmethod
+    def _track_file_position(state: CameraRuntimeState, batch: ObservationBatch, observations) -> None:
+        """Map the frame onto the file timeline (looping aware) and keep its boxes for the overlay."""
+        source_time, frame_number = batch.source_time, batch.frame_number
+        origin = state.source_origin_s if (state.source_segment or 0) == 0 else None
+        if state.loop and state.loop_frames and isinstance(frame_number, int) and source_time is not None:
+            index, offset = divmod(frame_number, state.loop_frames)
+            state.loop_index = index
+            if offset == 0:
+                state.loop_origins[index] = source_time
+                for old in sorted(state.loop_origins)[:-MAX_LOOP_ORIGINS]:
+                    state.loop_origins.pop(old, None)
+            elif index == 0 and origin is not None:
+                state.loop_origins.setdefault(0, origin)
+            origin = state.loop_origins.get(index)
+        elif state.loop:
+            origin = None  # frame count unknown: wraps cannot be located, so no pass is mapped onto the file
+        state.file_position_s = source_time - origin if source_time is not None and origin is not None else None
+        width, height = batch.metadata.get("frame_width"), batch.metadata.get("frame_height")
+        if isinstance(width, int) and isinstance(height, int) and width > 0 and height > 0:
+            state.frame_size = (width, height)
+        boxes = []
+        for observation in observations:
+            box = observation.metadata.get("tracker_bbox_xywh_pixels") or observation.metadata.get("bbox_xywh_pixels")
+            if isinstance(box, dict):
+                boxes.append([round(float(box["x"]), 1), round(float(box["y"]), 1), round(float(box["width"]), 1),
+                              round(float(box["height"]), 1), observation.key.local_track_id])
+        state.detections.append({
+            "frame_number": frame_number, "source_time_s": source_time,
+            "file_position_s": None if state.file_position_s is None else round(state.file_position_s, 4),
+            "loop_index": state.loop_index, "boxes": boxes,
+        })
 
 
 class _ObservationSink:
