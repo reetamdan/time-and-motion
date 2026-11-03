@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-27T16:45:35.633521+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe' validate_browser_evidence.py",
+  "run_dir": "reports\\validation\\browser-evidence-cam01-20261027T164515560586Z",
+  "result": "PASS",
+  "checks": {
+    "backend_served_on_socket": "PASS",
+    "capability_matrix_rendered": "PASS",
+    "capability_reason_names_missing_calibration": "PASS",
+    "artifact_identity_table_all_match": "PASS",
+    "run_started": "PASS",
+    "source_time_reached": "PASS",
+    "marker_saved_in_drawer": "PASS",
+    "api_evidence_bound_to_live_epoch": "PASS",
+    "evidence_card_rendered": "PASS",
+    "card_camera_epoch_source_time_match_api": "PASS",
+    "snapshot_image_renders_full_resolution": "PASS",
+    "clip_metadata_loaded": "PASS",
+    "clip_plays": "PASS",
+    "only_this_runs_clip_present": "PASS",
+    "clip_file_removed": "PASS",
+    "missing_clip_shown_unavailable": "PASS",
+    "snapshot_still_renders": "PASS",
+    "api_reports_clip_unavailable": "PASS",
+    "operator_alert_links_evidence": "PASS",
+    "run_stopped": "PASS",
+    "owned_container_absent": "PASS"
+  },
+  "observed": {
+    "capability_reason_names_missing_calibration": {
+      "excerpt": "CAMERA\tCAMERA-LOCAL COUNTS\tIMAGE-LINE CROSSINGS\tFLOOR POSITIONS\tENTRIES / EXITS\n\ncam-01\nEnabled, not running\n\t\ncamera not running\t\nno image_pixels line configured\t\ncalibration MISSING\t\ncalibration MISSING\n\ncam-02\nDisabled\n\t\ncamera not running\t\nno image_pixels line configured\t\ncalibration MISSING\t\nno"
+    },
+    "artifact_identity_table_all_match": {
+      "excerpt": "ARTIFACT\tSTATUS\tEXPECTED (RECORDED)\tCURRENT (RECOMPUTED)\n\ndetector.checkpoint\n\t\nMATCH\n\td92f97bd840b6885\u2026\td92f97bd840b6885\u2026\n\ndetector.engine\n\t\nMATCH\n\te96668b546dc77b9\u2026\te96668b546dc77b9\u2026\n\ndetector.infer_config\n\t\nMATCH\n\t8165a340f72b5717\u2026\t8165a340f72b5717\u2026\n\ntracker.config\n\t\nMATCH\n\t13662e73754e8e65\u2026\t13662e73754e8e65\u2026\n\npipeline.wrapper\n\t\nMATCH\n\t49f8311c979fc831\u2026\t49f8311c979fc831\u2026\n\npipeline.extractor\n\t\nM"
+    },
+    "run_started": {
+      "status": "RUNNING :: Running"
+    },
+    "marker_saved_in_drawer": {
+      "text": "Saved at source 4.2 s \u00b7 clip 0.07\u20137.27 s (keyframe-aligned). See Evidence."
+    },
+    "api_evidence_bound_to_live_epoch": {
+      "evidence": "8cdef19b-7dff-4143-9008-cbd180d5d14d",
+      "camera": "8cdef19b-7dff-4143-9008-cbd180d5d14d"
+    },
+    "card_camera_epoch_source_time_match_api": {
+      "camera": "cam-01",
+      "epoch": "8cdef19b-7dff-4143-9008-cbd180d5d14d",
+      "marked": "4.2042",
+      "api_marked": 4.2042
+    },
+    "snapshot_image_renders_full_resolution": {
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    "clip_metadata_loaded": {
+      "duration": 7.2072,
+      "api_span": 7.2072
+    },
+    "clip_plays": {
+      "currentTime": 0.5926
+    },
+    "missing_clip_shown_unavailable": {
+      "text": "Evidence file is missing or empty Nothing is shown in its place."
+    },
+    "api_reports_clip_unavailable": {
+      "reason": "Evidence file is missing or empty"
+    },
+    "operator_alert_links_evidence": {
+      "href": "/api/v1/evidence/50ddd4bc-205c-4e93-bcb8-abb1df6f5629"
+    },
+    "run_stopped": {
+      "status": "STOPPED :: Stopped"
+    }
+  },
+  "errors": [],
+  "scope": "Real backend socket + headless Chrome + real paced cam01 GPU run. The evidence marker is a manual operator action. File removal targets only this run's own evidence root."
+}

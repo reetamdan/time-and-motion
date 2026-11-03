@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T13:55:41.253637+00:00",
+  "command": "AEGIS_PROFILE_RUN_DIR='C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\model-evaluation\\timed-runs\\profiles-cam01-20261028T135347201228Z' 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' run_detector_profiles.py",
+  "run_dir": "reports\\model-evaluation\\timed-runs\\profiles-cam01-20261028T135347201228Z",
+  "profiles": {
+    "trafficcamnet-smoke": {
+      "selection_mode": "provisional_smoke",
+      "runs": [
+        {
+          "run_id": "f1bba3d8-ac2f-4caf-962f-22b3c24bd30d",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 8.147,
+          "wall_to_end_s": 2.297,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 309.1,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 4.655079166999997,
+          "visible_mean_of_buckets": 17.12,
+          "visible_max": 25,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1002.0,
+          "gpu_util_p95": 24.0,
+          "detector": "trafficcamnet-smoke",
+          "acceptance": "provisional_smoke",
+          "person_class_id": 2,
+          "capability_source": "probe",
+          "owned": [
+            {
+              "name": "aegis-cam-01-0d714a96-571f-4e65-aa89-483bd120f224",
+              "state": "RELEASED"
+            }
+          ]
+        },
+        {
+          "run_id": "19ebd18e-7019-4dc6-a1a6-ebea19c4b689",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.003,
+          "wall_to_end_s": 2.234,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 317.8,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 4.797980339000048,
+          "visible_mean_of_buckets": 17.13,
+          "visible_max": 25,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1002.0,
+          "gpu_util_p95": 24.0,
+          "detector": "trafficcamnet-smoke",
+          "acceptance": "provisional_smoke",
+          "person_class_id": 2,
+          "capability_source": "memory",
+          "owned": [
+            {
+              "name": "aegis-cam-01-413d2be1-61df-4cc1-b3c4-1aae139dc688",
+              "state": "RELEASED"
+            }
+          ]
+        },
+        {
+          "run_id": "9f6c5fb2-61c3-4dc6-b43e-6ab6c7867422",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.055,
+          "wall_to_end_s": 2.297,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 309.1,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 4.739567511000018,
+          "visible_mean_of_buckets": 17.13,
+          "visible_max": 25,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1002.0,
+          "gpu_util_p95": 24.0,
+          "detector": "trafficcamnet-smoke",
+          "acceptance": "provisional_smoke",
+          "person_class_id": 2,
+          "capability_source": "memory",
+          "owned": [
+            {
+              "name": "aegis-cam-01-83142e34-5655-44e1-8db1-d28eb24a773a",
+              "state": "RELEASED"
+            }
+          ]
+        }
+      ],
+      "complete_runs": 3,
+      "start_seconds_median": 5.055,
+      "consumer_fps_median": 309.1,
+      "vram_peak_mib_max": 1002.0,
+      "visible_mean_range": [
+        17.12,
+        17.13
+      ],
+      "all_released": true
+    },
+    "rt-detr-person-candidate": {
+      "selection_mode": "candidate_evaluation",
+      "runs": [
+        {
+          "run_id": "3c8c193b-d415-4c38-90b6-2f7409b61b0f",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.903,
+          "wall_to_end_s": 5.469,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 129.8,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 8.417813911999986,
+          "visible_mean_of_buckets": 68.54,
+          "visible_max": 84,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1104.0,
+          "gpu_util_p95": 85.0,
+          "detector": "rt-detr-person-candidate",
+          "acceptance": "candidate_unaccepted",
+          "person_class_id": 0,
+          "capability_source": "disk",
+          "owned": [
+            {
+              "name": "aegis-cam-01-d2b912d8-8155-4ccb-a85e-fd53e7fce3f8",
+              "state": "RELEASED"
+            }
+          ]
+        },
+        {
+          "run_id": "ae66f3d9-19a2-4835-99d7-89024df4320a",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.649,
+          "wall_to_end_s": 5.531,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 128.4,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 8.735471246000031,
+          "visible_mean_of_buckets": 68.49,
+          "visible_max": 85,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1104.0,
+          "gpu_util_p95": 86.0,
+          "detector": "rt-detr-person-candidate",
+          "acceptance": "candidate_unaccepted",
+          "person_class_id": 0,
+          "capability_source": "memory",
+          "owned": [
+            {
+              "name": "aegis-cam-01-0428f7c5-2bc5-4825-9bcd-4283e11f5c8f",
+              "state": "RELEASED"
+            }
+          ]
+        },
+        {
+          "run_id": "a0a288f7-849d-4ad2-89a7-9d65bd16a91c",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.685,
+          "wall_to_end_s": 5.328,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 133.3,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 8.373065510999993,
+          "visible_mean_of_buckets": 68.28,
+          "visible_max": 84,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1104.0,
+          "gpu_util_p95": 88.0,
+          "detector": "rt-detr-person-candidate",
+          "acceptance": "candidate_unaccepted",
+          "person_class_id": 0,
+          "capability_source": "memory",
+          "owned": [
+            {
+              "name": "aegis-cam-01-863d2751-933c-44e7-8897-00553fecfa2d",
+              "state": "RELEASED"
+            }
+          ]
+        }
+      ],
+      "complete_runs": 3,
+      "start_seconds_median": 5.685,
+      "consumer_fps_median": 129.8,
+      "vram_peak_mib_max": 1104.0,
+      "visible_mean_range": [
+        68.28,
+        68.54
+      ],
+      "all_released": true
+    },
+    "rf-detr-person-candidate": {
+      "selection_mode": "candidate_evaluation",
+      "runs": [
+        {
+          "run_id": "dfa63920-ca5c-459a-8ec6-0a13a6551bd2",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.948,
+          "wall_to_end_s": 5.969,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 118.9,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 9.341205763999938,
+          "visible_mean_of_buckets": 39.48,
+          "visible_max": 47,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1220.0,
+          "gpu_util_p95": 89.0,
+          "detector": "rf-detr-person-candidate",
+          "acceptance": "candidate_unaccepted",
+          "person_class_id": 0,
+          "capability_source": "disk",
+          "owned": [
+            {
+              "name": "aegis-cam-01-48a21c3a-84ff-42a3-86d7-0a1ff9f51de9",
+              "state": "RELEASED"
+            }
+          ]
+        },
+        {
+          "run_id": "d6ac5b58-f69f-4976-ba70-64855705e5fd",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.682,
+          "wall_to_end_s": 6.218,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 114.2,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 9.174854480000022,
+          "visible_mean_of_buckets": 39.48,
+          "visible_max": 47,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1220.0,
+          "gpu_util_p95": 87.0,
+          "detector": "rf-detr-person-candidate",
+          "acceptance": "candidate_unaccepted",
+          "person_class_id": 0,
+          "capability_source": "memory",
+          "owned": [
+            {
+              "name": "aegis-cam-01-90db9792-0164-4fc3-825d-11551500714e",
+              "state": "RELEASED"
+            }
+          ]
+        },
+        {
+          "run_id": "4ffbc3e3-b4a2-46b7-bfd1-3a1bbe454f49",
+          "http_status": 200,
+          "run_status": "RUNNING",
+          "start_seconds": 5.737,
+          "wall_to_end_s": 5.921,
+          "stream_outcome": "CLEAN_EOF",
+          "frames_persisted": 710,
+          "consumer_fps": 119.9,
+          "extractor_frames": 710,
+          "extractor_elapsed_s": 9.079284399000016,
+          "visible_mean_of_buckets": 39.48,
+          "visible_max": 47,
+          "frames_at_detection_limit": 0,
+          "vram_peak_mib": 1220.0,
+          "gpu_util_p95": 88.0,
+          "detector": "rf-detr-person-candidate",
+          "acceptance": "candidate_unaccepted",
+          "person_class_id": 0,
+          "capability_source": "memory",
+          "owned": [
+            {
+              "name": "aegis-cam-01-1202ba65-6124-4625-844d-e10c2482165a",
+              "state": "RELEASED"
+            }
+          ]
+        }
+      ],
+      "complete_runs": 3,
+      "start_seconds_median": 5.737,
+      "consumer_fps_median": 118.9,
+      "vram_peak_mib_max": 1220.0,
+      "visible_mean_range": [
+        39.48,
+        39.48
+      ],
+      "all_released": true
+    }
+  },
+  "scope": "Unpaced full-clip application runs per detector profile on one clip. Timing, resource use, and profile integration only (person-class normalization, geometry policy, provenance labels). Visible counts are detector outputs, NOT accuracy; no labelled comparison has been made."
+}

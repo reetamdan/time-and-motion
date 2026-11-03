@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:17:41.048177+00:00",
+  "run_dir": "reports\\model-evaluation\\rf-detr\\deepstream\\pretracker-bilinear-scaling-20261026T161624Z",
+  "infer_config": "/workspace/perception/candidates/rf_detr/deepstream/diagnostics/cam01_rf_detr_infer_diag_bilinear_scaling.txt",
+  "infer_config_sha256": "87f54f971bcec6db1dc90119ad16732b98668eaa35476b5ab6d7a50f0dab5a00",
+  "onnx_sha256": "6f44424eef16662df03114bcff91990dfee8dda5de4c2e5d20758f56dde7dcba",
+  "onnxruntime_version": "1.31.0",
+  "stage_results": {
+    "B_engine_inside_deepstream_raw_slots": "FAIL",
+    "B_engine_inside_deepstream_person_decodes": "PASS",
+    "C_native_parser_and_scaling": "PASS",
+    "D_end_to_end_pre_tracker_vs_hf_strict": "FAIL"
+  },
+  "frames": [
+    {
+      "frame_index": 141,
+      "A_input_ds_vs_hf_contract": {
+        "max_abs": 0.8308708518743515,
+        "mean_abs": 0.03984452977298503,
+        "p99_abs": 0.334235934615135,
+        "per_channel_mean_signed_a_minus_b": [
+          -0.0057305630094788285,
+          -0.0029231786845969054,
+          -0.006145629264004526
+        ],
+        "psnr_db_unit_range": 22.395960630408634
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 1.532381534576416,
+          "mean_abs": 0.004220759379558074,
+          "p99_abs": 0.013129711151123047
+        },
+        "pred_boxes": {
+          "max_abs": 0.6272442042827606,
+          "mean_abs": 0.0014368695889910063,
+          "p99_abs": 0.0011048999428749054
+        },
+        "slots_logits_delta_gt_1e-3": 175,
+        "person_decodes_ds": 38,
+        "person_decodes_onnx": 38,
+        "person_query_order_equal": true,
+        "person_score_max_abs": 0.0003305375576019287,
+        "raw_slot_result": "FAIL",
+        "person_decode_result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 38,
+        "right_count": 38,
+        "matches": 38,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999988279427822,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 0.000102996826171875,
+        "median_bbox_abs_delta_px": 4.4345855712890625e-05,
+        "all_class_id_zero_person": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_hf_strict": {
+        "left_count": 38,
+        "right_count": 41,
+        "matches": 26,
+        "unmatched_left": [
+          1,
+          12,
+          18,
+          20,
+          21,
+          24,
+          25,
+          29,
+          30,
+          31,
+          33,
+          35
+        ],
+        "unmatched_right": [
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          26,
+          28,
+          33,
+          34,
+          39
+        ],
+        "min_iou": 0.8270100719392757,
+        "max_score_abs_delta": 0.019940674304962158,
+        "max_bbox_abs_delta_px": 28.453633308410645,
+        "median_bbox_abs_delta_px": 5.2580084800720215,
+        "result": "FAIL",
+        "unmatched_pre_tracker_confidences": [
+          0.2551,
+          0.3251,
+          0.3715,
+          0.3935,
+          0.3951,
+          0.4064,
+          0.4077,
+          0.4298,
+          0.4391,
+          0.4475,
+          0.4717,
+          0.4885
+        ]
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 38,
+        "right_count": 38,
+        "matches": 38,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999996560686909,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_vs_hf_strict_matches": 26
+      }
+    },
+    {
+      "frame_index": 283,
+      "A_input_ds_vs_hf_contract": {
+        "max_abs": 0.7621553242206573,
+        "mean_abs": 0.03897557576941324,
+        "p99_abs": 0.32625140935182484,
+        "per_channel_mean_signed_a_minus_b": [
+          -0.0054485170113593995,
+          -0.0029143398608511006,
+          -0.005929460025598132
+        ],
+        "psnr_db_unit_range": 22.548583107299706
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 0.00043582916259765625,
+          "mean_abs": 4.282504210978637e-06,
+          "p99_abs": 3.62396240234375e-05
+        },
+        "pred_boxes": {
+          "max_abs": 2.3365020751953125e-05,
+          "mean_abs": 1.946223589281241e-07,
+          "p99_abs": 2.801716327667236e-06
+        },
+        "slots_logits_delta_gt_1e-3": 0,
+        "person_decodes_ds": 41,
+        "person_decodes_onnx": 41,
+        "person_query_order_equal": true,
+        "person_score_max_abs": 1.1026859283447266e-06,
+        "raw_slot_result": "PASS",
+        "person_decode_result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 41,
+        "right_count": 41,
+        "matches": 41,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999989937510955,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 9.632110595703125e-05,
+        "median_bbox_abs_delta_px": 4.184246063232422e-05,
+        "all_class_id_zero_person": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_hf_strict": {
+        "left_count": 41,
+        "right_count": 43,
+        "matches": 28,
+        "unmatched_left": [
+          1,
+          3,
+          10,
+          14,
+          15,
+          19,
+          22,
+          26,
+          27,
+          29,
+          31,
+          37,
+          39
+        ],
+        "unmatched_right": [
+          1,
+          2,
+          6,
+          7,
+          8,
+          15,
+          17,
+          21,
+          25,
+          29,
+          36,
+          39,
+          40,
+          41,
+          42
+        ],
+        "min_iou": 0.8434807554699538,
+        "max_score_abs_delta": 0.0191381573677063,
+        "max_bbox_abs_delta_px": 18.866517543792725,
+        "median_bbox_abs_delta_px": 3.925153613090515,
+        "result": "FAIL",
+        "unmatched_pre_tracker_confidences": [
+          0.2629,
+          0.2794,
+          0.3167,
+          0.3393,
+          0.3499,
+          0.3893,
+          0.3996,
+          0.4257,
+          0.4264,
+          0.4366,
+          0.4456,
+          0.5647,
+          0.6054
+        ]
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 40,
+        "right_count": 41,
+        "matches": 40,
+        "unmatched_left": [],
+        "unmatched_right": [
+          1
+        ],
+        "min_iou": 0.9999992757320628,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_vs_hf_strict_matches": 28
+      }
+    }
+  ],
+  "tolerances": {
+    "raw_logits": 0.001,
+    "raw_boxes": 0.0001,
+    "person_score": 0.005,
+    "parser_score": 1e-05,
+    "parser_iou_min": 0.99,
+    "parser_bbox_px": 0.05,
+    "strict_crosscheck": {
+      "score_abs_delta_max": 0.02,
+      "bbox_iou_min": 0.5
+    }
+  },
+  "scope": "Two real frames; implementation consistency only. Not labeled accuracy."
+}

@@ -1,0 +1,7 @@
+utc_started=2026-10-23T20:41:21Z
+run_id=final-demo-preflight-windows
+mode=production
+preflight=1
+strict=0
+backend_health_url=http://127.0.0.1:8000/health/ready
+note=Process readiness is not a benchmark or acceptance result.

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-26T16:16:51.101241+00:00",
+  "source": "/workspace/demo/cam01.mp4",
+  "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "infer_config": "/workspace/perception/candidates/rf_detr/deepstream/diagnostics/cam01_rf_detr_infer_diag_default_scaling.txt",
+  "infer_config_sha256": "7b612b0b63179f8b1900effbcd1c2a639d84b33e733a215a2555a17b5a9df0b0",
+  "tracker_config": "/workspace/perception/candidates/rt_detr/deepstream/config_tracker_NvDCF_candidate.yml",
+  "pyservicemaker_version": "0.0.1",
+  "numpy_version": "1.26.4",
+  "cwd": "/tmp/rtdetr-diag.wQg80o",
+  "pipeline_returned": true,
+  "clean_eos": true,
+  "error": null,
+  "ended_at_utc": "2026-10-26T16:17:04.562151+00:00",
+  "elapsed_seconds": 13.374688555000006,
+  "pre_tracker_frames": 710,
+  "post_tracker_frames": 710,
+  "eos_message_count": 1,
+  "tensor_records": [
+    {
+      "frame_number": 141,
+      "item": 0,
+      "layer": "logits",
+      "unique_id": 1,
+      "shape": [
+        300,
+        91
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "path": "logits_000141.npy",
+      "numpy_shape": [
+        300,
+        91
+      ],
+      "numpy_dtype": "float32",
+      "sha256": "fd33db2aa3c82b16de6cb03de35b1b9f704ed855cd6ff771a1773040fd90ff08"
+    },
+    {
+      "frame_number": 141,
+      "item": 0,
+      "layer": "pred_boxes",
+      "unique_id": 1,
+      "shape": [
+        300,
+        4
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "path": "pred_boxes_000141.npy",
+      "numpy_shape": [
+        300,
+        4
+      ],
+      "numpy_dtype": "float32",
+      "sha256": "821c82a5dd8082a528f3f61feb529d3bf9b186b49884e63e830dd11ba1393fdb"
+    },
+    {
+      "frame_number": 283,
+      "item": 0,
+      "layer": "logits",
+      "unique_id": 1,
+      "shape": [
+        300,
+        91
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "path": "logits_000283.npy",
+      "numpy_shape": [
+        300,
+        91
+      ],
+      "numpy_dtype": "float32",
+      "sha256": "82f30dca7743cb6d7e2fe1f6132c78153b12a7b1d4571e3ad457a1c3ebdc26c8"
+    },
+    {
+      "frame_number": 283,
+      "item": 0,
+      "layer": "pred_boxes",
+      "unique_id": 1,
+      "shape": [
+        300,
+        4
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "path": "pred_boxes_000283.npy",
+      "numpy_shape": [
+        300,
+        4
+      ],
+      "numpy_dtype": "float32",
+      "sha256": "d262abb3fcea8afe7b49cf7f44626ded42c816b8e3922d4ba895f9aeceff5749"
+    }
+  ],
+  "tensor_errors": []
+}

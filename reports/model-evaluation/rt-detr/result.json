@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T15:10:11Z",
+  "candidate": {
+    "model_id": "PekingU/rtdetr_v2_r18vd",
+    "revision": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+    "architecture": "RtDetrV2ForObjectDetection",
+    "task": "COCO person only"
+  },
+  "result": "FAIL",
+  "accepted": false,
+  "positive_integration_result": "PASS",
+  "closeout_classification": "Positive DeepStream integration, but candidate not accepted because the strict ONNX-to-post-NvDCF crosscheck failed.",
+  "checks": {
+    "provenance_download_and_export_environment": {
+      "result": "PASS",
+      "checkpoint_local_verification": "PASS",
+      "evidence": [
+        "reports/model-evaluation/rt-detr/provenance/provenance.json",
+        "reports/model-evaluation/rt-detr/provenance/checkpoint-verification.json",
+        "reports/model-evaluation/rt-detr/export/environment.json"
+      ]
+    },
+    "hf_onnx_raw_and_person_decode_parity": {
+      "result": "PASS",
+      "frames": [141, 283],
+      "person_decodes": {
+        "141": 76,
+        "283": 63
+      },
+      "evidence": [
+        "reports/model-evaluation/rt-detr/export/run-001/export.json",
+        "reports/model-evaluation/rt-detr/export/run-001/parity.json"
+      ]
+    },
+    "decode_and_native_parser_unit_tests": {
+      "result": "PASS",
+      "decode_tests": 8,
+      "native_parser_scope": "Person slot, geometry, deterministic order, top-k, no NMS, dimensions, and class mapping.",
+      "evidence": [
+        "reports/model-evaluation/rt-detr/tests/decode-unit-tests.log",
+        "reports/model-evaluation/rt-detr/parser/build-test-attempt-2.log"
+      ]
+    },
+    "tensorrt_engine_build": {
+      "result": "PASS",
+      "precision": "FP32 strongly typed; --noTF32; no FP16 flag",
+      "evidence": [
+        "reports/model-evaluation/rt-detr/engine/build-command.json",
+        "reports/model-evaluation/rt-detr/engine/20261026T143021Z/summary.json"
+      ]
+    },
+    "deepstream_positive_integration": {
+      "result": "PASS",
+      "frames": 710,
+      "clean_eos": true,
+      "person_records": 48687,
+      "valid_person_boxes": 48687,
+      "invalid_boxes": 0,
+      "invalid_scores": 0,
+      "invalid_track_ids": 0,
+      "unique_person_ids": 464,
+      "multi_frame_person_ids": 455,
+      "max_objects_per_frame": 84,
+      "empty_frames": 2,
+      "elapsed_seconds": 10.273285132999995,
+      "decoded_frames_per_elapsed_second": 69.1112911603444,
+      "performance_scope": "One 710-frame 1920x1080 clip at batch 1 only; no realtime, multi-stream capacity, or accuracy extrapolation.",
+      "evidence": [
+        "reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z/result.json",
+        "reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z/run-summary.json"
+      ]
+    },
+    "serialized_tensorrt_frame_141_analysis": {
+      "result": "PASS",
+      "analysis_only_no_new_inference": true,
+      "onnx_to_trt_logits_max_abs": 0.00012111663818359375,
+      "onnx_to_trt_pred_boxes_max_abs": 1.0281801223754883e-05,
+      "onnx_person_decodes": 76,
+      "trt_person_decodes": 76,
+      "person_query_order_equal": true,
+      "person_score_max_abs": 1.3709068298339844e-06,
+      "person_box_xyxy_pixels_max_abs": 0.0012516975402832031,
+      "scope": "Exact saved HF input tensor through the serialized TensorRT engine for frame 141 only; not an observation of tensors inside DeepStream.",
+      "evidence": "reports/model-evaluation/rt-detr/engine/trt-parity/trt-parity-000141.json"
+    },
+    "strict_onnx_to_post_nvdcf_crosscheck": {
+      "result": "FAIL",
+      "criteria": {
+        "score_abs_delta_max": 0.02,
+        "bbox_iou_min": 0.5,
+        "matching": "strict one-to-one"
+      },
+      "frames": {
+        "141": {
+          "onnx_person_decodes": 76,
+          "post_nvdcf_person_objects": 75,
+          "one_to_one_matches": 51
+        },
+        "283": {
+          "onnx_person_decodes": 63,
+          "post_nvdcf_person_objects": 60,
+          "one_to_one_matches": 33
+        }
+      },
+      "evidence": "reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z/onnx-deepstream-crosscheck.json",
+      "evidence_sha256": "26ffadbf417eb4531ef08acdb21ab72774ede7a926bc5a5c61bf4ecece3568da",
+      "preservation": "Original FAIL evidence retained unchanged."
+    },
+    "raw_tensor_parity_inside_deepstream": {
+      "result": "BLOCKED",
+      "reason": "output-tensor-meta=1 was enabled, but the unmodified object-metadata extractor did not capture raw pre-tracker nvinfer tensors."
+    },
+    "labeled_accuracy_and_quality_baseline_selection": {
+      "result": "BLOCKED",
+      "reason": "No ground-truth labels; precision, recall, ID-switch rate, exact crowd counts, and quality-baseline selection were not measured."
+    }
+  },
+  "mismatch_characterization": {
+    "established": [
+      "The serialized TensorRT engine passed raw and person-decode parity against HF/ONNX on the exact saved frame-141 input under the existing tolerances.",
+      "Native parser tests passed, and the full DeepStream run produced valid person boxes and persistent NvDCF IDs with clean EOS.",
+      "The strict ONNX-to-post-NvDCF crosscheck failed on both examined frames and remains unresolved."
+    ],
+    "not_established": [
+      "No gross serialized-engine numeric divergence was observed on frame 141, but DeepStream preprocessing, actual input geometry, coordinate transformation, and post-NvDCF effects were not isolated like-for-like.",
+      "Lower post-tracker counts can plausibly reflect NvDCF target management, but the available evidence does not attribute all score and box mismatches to tracking."
+    ],
+    "conclusion": "Do not claim full ONNX-to-DeepStream parity. The frame-141 TensorRT result narrows the investigation but does not clear the DeepStream mismatch."
+  },
+  "artifact_identities": {
+    "checkpoint": {
+      "path": "models/rt-detr-person-candidate/upstream/model.safetensors",
+      "size_bytes": 80904640,
+      "sha256": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+    },
+    "onnx": {
+      "path": "models/rt-detr-person-candidate/rt_detr_r18vd_raw.onnx",
+      "size_bytes": 81332083,
+      "sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07"
+    },
+    "tensorrt_engine": {
+      "path": "models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine",
+      "size_bytes": 101010804,
+      "sha256": "8de3838604f343d17fba248b866e95c4785d91ac768a3973351024402186c3b1"
+    },
+    "unmodified_extractor_sha256": "6093b5d5d06089225b3bf60b0342fedccc50efde477f9663c5ef61ff91abad25"
+  },
+  "license_caveat": "HF metadata declares Apache-2.0, but the pinned HF revision has no LICENSE file. The separately pinned upstream RT-DETR LICENSE and this distinction are preserved.",
+  "remaining_work": [
+    "In a future diagnostic run, capture raw pre-tracker nvinfer tensors and the exact DeepStream input geometry/preprocessing for a like-for-like comparison before NvDCF.",
+    "Obtain labeled data before any detection/tracking accuracy evaluation or quality-baseline selection."
+  ],
+  "cleanup": "reports/model-evaluation/rt-detr/cleanup.json",
+  "artifact_inventory": "reports/model-evaluation/rt-detr/artifact-inventory.json",
+  "closeout_write_scope": "RT-DETR closeout reports plus the explicitly requested provenance status correction; no model/configuration change, new inference, or validator rerun."
+}

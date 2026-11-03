@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:57:50Z",
+  "result": "FIXED",
+  "original_observation": {"evidence": "reports/validation/live-eos-replay-cam01/result.json (unchanged, sha256 b236fa54...)", "second_operator_stop_http_seconds": 22.719},
+  "root_causes": [
+    {"cause": "Image entrypoint /opt/nvidia/deepstream/deepstream/entrypoint.sh runs as PID 1 in bash without exec, so SIGTERM was ignored and docker stop always waited its 10 s grace before SIGKILL.",
+     "measurement": "docker stop of a sleeping container: 10.49 s without --init, 0.45 s with --init. Real extractor mid-run under --init: stopped in 0.66 s at ~375/710 frames, last JSONL line valid, no run-summary (process killed).",
+     "fix": "scripts/deepstream.sh: docker run --rm --init"},
+    {"cause": "The backend stdout reader stopped reading when stop_event was set. wsl.exe, still relaying container stdout, blocked on the full unread Windows pipe and could not exit, so process.wait(5) timed out and the wrapper was killed.",
+     "measurement": "Instrumented backend stop with --init only: docker stop 0.8 s, then process.wait(5) timeout -> kill (total 5.83 s). After fix: 0.72 s and 0.78 s total, wrapper exit rc=143 (SIGTERM), no kill.",
+     "fix": "backend/app/perception/service_maker.py: reader keeps draining (discarding) stdout after stop until EOF; regression test fails on the old logic and passes on the new one."},
+    {"cause": "docker stop subprocess timeout (10 s) equalled docker's default grace (10 s), so the call could time out before docker's own SIGKILL escalation.",
+     "fix": "docker stop --time 5 with subprocess timeout 15 s; non-zero exit is logged."}
+  ],
+  "related_defect_found_during_validation": {
+    "defect": "analytics_fps = 1/(delta time.monotonic()) per frame was None whenever consecutive frames shared a ~15.6 ms Windows clock tick; the first new validation run failed first_pre_eos_fresh_metrics_present because every pre-EOS sample had analytics_fps=null (the original PASS showed 62.5 = 1/16 ms, a tick artifact).",
+    "fix": "ArrivalRate: frames over a 2 s perf_counter window, reported only once arrivals span >= 0.5 s.",
+    "measurement": "Full real run: 710 frames arrive steadily (78-96 per 250 ms) over ~1.95 s, mean 365 frames/s; reported analytics_fps 361-391. The file pipeline runs unpaced (sync=False), roughly 12x the 29.97 fps source rate. Bursts after consumer delays can legitimately report higher momentary rates (1032 observed once).",
+    "evidence": "reports/validation/stop-latency/arrival-timeline.txt"
+  },
+  "end_to_end_validation_runs": [
+    {"dir": "reports/validation/live-eos-replay-cam01-init-20261026T164648Z", "fixes": "--init only", "result": "FAIL (fresh metrics: analytics_fps null)", "second_operator_stop_http_seconds": 12.953},
+    {"dir": "reports/validation/live-eos-replay-cam01-stopfix-20261026T165232Z", "fixes": "--init + reader drain", "result": "FAIL (fresh metrics: analytics_fps null)", "second_operator_stop_http_seconds": 0.781},
+    {"dir": "reports/validation/live-eos-replay-cam01-stopfix-rate-20261026T165416Z", "fixes": "+ 30-frame window rate", "result": "PASS 28/28, but analytics_fps 6704 judged a burst artifact; superseded", "second_operator_stop_http_seconds": 0.765},
+    {"dir": "reports/validation/live-eos-replay-cam01-stopfix-timerate-20261026T165548Z", "fixes": "+ 2 s time-window rate (current code)", "result": "PASS 28/28", "second_operator_stop_http_seconds": 0.813}
+  ],
+  "command": "AEGIS_LIVE_EOS_RUN_DIR=reports/validation/<new dir> .venv/Scripts/python.exe scripts/validate_live_eos.py",
+  "scope": "Single camera, single clip, laptop. Stop latency is an observed timing, not a guaranteed bound or a multi-camera result.",
+  "scripts": "Measurement scripts copied into this directory for reproducibility."
+}

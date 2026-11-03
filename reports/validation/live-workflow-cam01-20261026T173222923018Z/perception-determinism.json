@@ -1,0 +1,30 @@
+{
+ "schema_version": 1,
+ "comparisons": {
+  "paced_vs_unpaced": {
+   "a": "e4b50a60-5c0e-4b1e-b047-c6e420b64dce.jsonl",
+   "b": "eb68e150-f7c3-4e0d-beb0-6508e079b048.jsonl",
+   "common_frames": 710,
+   "frames_identical_person_boxes_scores": 561,
+   "frames_identical_track_id_sets": 69,
+   "first_differing_frame": 72
+  },
+  "unpaced_vs_unpaced_control_A": {
+   "a": "arrivals-9f9a82.jsonl",
+   "b": "arrivals-f6fd55.jsonl",
+   "common_frames": 710,
+   "frames_identical_person_boxes_scores": 599,
+   "frames_identical_track_id_sets": 284,
+   "first_differing_frame": 335
+  },
+  "unpaced_vs_unpaced_control_B": {
+   "a": "06d8e1a6-a4c6-4b87-9bbc-97c3b01a133b.jsonl",
+   "b": "5f89bb9d-8d1d-46b6-b368-1ee768bb6bd9.jsonl",
+   "common_frames": 710,
+   "frames_identical_person_boxes_scores": 597,
+   "frames_identical_track_id_sets": 131,
+   "first_differing_frame": 127
+  }
+ },
+ "note": "Same source clip, same pinned container/model/config; differences are run-to-run perception variation."
+}

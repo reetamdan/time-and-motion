@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T12:14:00.934450+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe' validate_browser_workflow.py",
+  "run_dir": "reports\\validation\\browser-workflow-cam01-20261028T121257373533Z",
+  "result": "PASS",
+  "checks": {
+    "real_backend_served_on_socket": "PASS",
+    "dashboard_live_connection": "PASS",
+    "start_control_reaches_running": "PASS",
+    "real_live_count_rendered": "PASS",
+    "uncalibrated_entries_exits_unknown_not_zero": "PASS",
+    "history_chart_renders_during_run": "PASS",
+    "clean_eof_shown_without_stop": "PASS",
+    "final_bucket_displayed_after_eof_without_stop": "PASS",
+    "stale_count_shown_unavailable_not_zero": "PASS",
+    "ui_history_matches_api": "PASS",
+    "ui_detects_backend_loss": "PASS",
+    "backend_restart_served": "PASS",
+    "ui_reconnects_live": "PASS",
+    "old_epoch_history_labelled_not_live_after_restart": "PASS",
+    "restart_reconciled_run_not_running": "PASS",
+    "new_epoch_history_is_current": "PASS",
+    "stop_control_reaches_stopped": "PASS",
+    "stopped_epoch_history_not_live": "PASS",
+    "exact_container_absent_after_ui_stop": "PASS",
+    "reset_returns_idle": "PASS",
+    "reset_clears_history_display": "PASS",
+    "fault_backend_served": "PASS",
+    "fault_run_running": "PASS",
+    "stop_failed_presented": "PASS",
+    "start_disabled_while_cleanup_unconfirmed": "PASS",
+    "stop_failed_visible_at_all_tested_widths": "PASS",
+    "stop_not_confirmed_reason_visible": "PASS",
+    "cleanup_retry_reaches_stopped": "PASS",
+    "cleanup_alert_resolved_after_retry": "PASS",
+    "no_leftover_cam01_containers": "PASS"
+  },
+  "observed": {
+    "browser": {
+      "engine": "chromium (installed Google Chrome)",
+      "version": "156.0.8078.49",
+      "playwright": "1.55.0",
+      "headless": true
+    },
+    "start_control_reaches_running": {
+      "status": "RUNNING :: Running"
+    },
+    "real_live_count_rendered": {
+      "sampled_texts": [
+        "15"
+      ]
+    },
+    "uncalibrated_entries_exits_unknown_not_zero": {
+      "entries": null,
+      "exits": null
+    },
+    "history_chart_renders_during_run": {
+      "samples": 2,
+      "epoch": "f6961088-d849-4a75-b3fa-5b1ea6cfd259",
+      "scope": "live",
+      "line_paths": 2,
+      "label": "Current epoch f6961088"
+    },
+    "clean_eof_shown_without_stop": {
+      "text": "Source ended \u00b7 clean EOF (history complete)"
+    },
+    "final_bucket_displayed_after_eof_without_stop": {
+      "samples": 48,
+      "epoch": "f6961088-d849-4a75-b3fa-5b1ea6cfd259",
+      "scope": "live",
+      "line_paths": 2,
+      "label": "Current epoch f6961088"
+    },
+    "stale_count_shown_unavailable_not_zero": {
+      "text": "Unavailable",
+      "run_status": "RUNNING :: Running"
+    },
+    "ui_history_matches_api": {
+      "api_samples": 48
+    },
+    "ui_detects_backend_loss": {
+      "connection": [
+        "Reconnecting"
+      ]
+    },
+    "old_epoch_history_labelled_not_live_after_restart": {
+      "samples": 48,
+      "epoch": "f6961088-d849-4a75-b3fa-5b1ea6cfd259",
+      "scope": "previous",
+      "line_paths": 2,
+      "label": "Previous epoch f6961088 \u00b7 not live"
+    },
+    "restart_reconciled_run_not_running": {
+      "run_status": "IDLE"
+    },
+    "new_epoch_history_is_current": {
+      "samples": 1,
+      "epoch": "93d10aba-abe4-492a-82f6-acd1b8f9ad9c",
+      "scope": "live",
+      "line_paths": 0,
+      "label": "Current epoch 93d10aba"
+    },
+    "stop_control_reaches_stopped": {
+      "status": "STOPPED :: Stopped"
+    },
+    "stopped_epoch_history_not_live": {
+      "samples": 2,
+      "epoch": "93d10aba-abe4-492a-82f6-acd1b8f9ad9c",
+      "scope": "previous",
+      "line_paths": 2,
+      "label": "Previous epoch 93d10aba \u00b7 not live"
+    },
+    "exact_container_absent_after_ui_stop": {
+      "container": "aegis-cam-01-93d10aba-abe4-492a-82f6-acd1b8f9ad9c"
+    },
+    "reset_returns_idle": {
+      "status": "IDLE :: Idle"
+    },
+    "reset_clears_history_display": {
+      "samples": 0,
+      "epoch": "",
+      "scope": "none",
+      "line_paths": 0,
+      "label": "Source time \u00b7 0.5 s buckets"
+    },
+    "stop_failed_presented": {
+      "status": "STOP_FAILED :: Stop Failed"
+    },
+    "stop_failed_visible_at_all_tested_widths": {
+      "390x844": true,
+      "1280x800": true,
+      "1440x900": true,
+      "1920x1080": true
+    },
+    "cleanup_retry_reaches_stopped": {
+      "status": "STOPPED :: Stopped"
+    },
+    "cleanup_alert_resolved_after_retry": {
+      "alerts": [
+        [
+          "Camera stop not confirmed",
+          "RESOLVED"
+        ]
+      ]
+    },
+    "no_leftover_cam01_containers": {
+      "names": []
+    }
+  },
+  "errors": [],
+  "scope": {
+    "A_real_hardware": "Documented run-backend.ps1 on a real loopback socket + headless Chrome; real GPU cam01 run. Structural UI/lifecycle evidence; not detection/count accuracy.",
+    "B_TEST_ONLY_fault_injection": "Same dashboard, test-only adapter with an injected first-release failure; no perception evidence."
+  }
+}

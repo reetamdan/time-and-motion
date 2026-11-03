@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-10-23T20:56:13.385Z",
+  "passed": false,
+  "checks": [
+    {
+      "name": "unhandled validation error",
+      "passed": false,
+      "detail": "Error: Server did not become ready: fetch failed\n    at waitForServer (file:///C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/scripts/validate-e2e.mjs:46:9)\n    at async file:///C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/scripts/validate-e2e.mjs:140:3"
+    }
+  ]
+}

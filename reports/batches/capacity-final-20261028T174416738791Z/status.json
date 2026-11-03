@@ -1,0 +1,41 @@
+{
+  "started_utc": "2026-10-28T17:44:16.750402+00:00",
+  "supervisor_pid": 14324,
+  "parent_pid": 29952,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "capacity_repeats",
+      "started_utc": "2026-10-28T17:44:16.751908+00:00",
+      "available_at_start_mib": 7336.1,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\benchmark\\run_capacity.py",
+        "--plan",
+        "repeats"
+      ],
+      "pid": 32488,
+      "exit_code": 2,
+      "ended_utc": "2026-10-28T17:56:53.389900+00:00",
+      "run_dir": "reports/benchmarks/capacity-repeats-20261028T174417346278Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    }
+  ],
+  "state": "INTERRUPTED",
+  "host_available_min_mib": 5735.3,
+  "ended_utc": "2026-10-28T17:56:53.604440+00:00",
+  "stop_reason": "step capacity_repeats exited 2 (batch stop rule)",
+  "not_started": [
+    "capacity_soak",
+    "capacity_ladder"
+  ]
+}

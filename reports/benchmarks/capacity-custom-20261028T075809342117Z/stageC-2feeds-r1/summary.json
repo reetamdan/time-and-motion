@@ -1,0 +1,99 @@
+{
+  "stage": "C",
+  "feeds": 2,
+  "repeat": 1,
+  "result": {
+    "feeds": {
+      "bench-01": {
+        "frames_total": 4718,
+        "frames_in_window": 599,
+        "cadence_fps": 29.95,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.912,
+          "p95": -199.853,
+          "max": -199.7
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 17.6,
+        "covered_window_s": 20.0,
+        "processing_age_p95_ms": -199.853
+      },
+      "bench-02": {
+        "frames_total": 4735,
+        "frames_in_window": 599,
+        "cadence_fps": 29.95,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.911,
+          "p95": -199.848,
+          "max": -199.7
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 17.65,
+        "covered_window_s": 20.0,
+        "processing_age_p95_ms": -199.848
+      }
+    },
+    "crashed": [],
+    "containers_absent_after": {
+      "aegis-bench-c-01-b3c05b55": true,
+      "aegis-bench-c-02-b3c05b55": true
+    },
+    "resources": {
+      "gpu_util_percent": {
+        "p50": 12.0,
+        "p95": 35.0,
+        "max": 72.0
+      },
+      "nvdec_util_percent": {
+        "p50": 3.0,
+        "p95": 12.0,
+        "max": 21.0
+      },
+      "vram_used_mib": {
+        "p50": 1299.0,
+        "p95": 1299.0,
+        "max": 1299.0
+      },
+      "gpu_temp_c": {
+        "p50": 59.0,
+        "p95": 60.0,
+        "max": 60.0
+      },
+      "gpu_power_w": {
+        "p50": 26.37,
+        "p95": 35.78,
+        "max": 39.71
+      },
+      "sm_clock_mhz": {
+        "p50": 975.0,
+        "p95": 1380.0,
+        "max": 1387.0
+      },
+      "pstates": [
+        "P0",
+        "P4",
+        "P5",
+        "P8"
+      ],
+      "host_cpu_percent": {
+        "p50": 9.3,
+        "p95": 13.6,
+        "max": 15.7
+      },
+      "host_ram_used_mib": {
+        "p50": 12161.9,
+        "p95": 12457.5,
+        "max": 12459.8
+      },
+      "gpu_samples": 20,
+      "host_samples": 19
+    }
+  },
+  "gate": {
+    "pass": true,
+    "failures": [],
+    "cleanup_confirmed": true
+  }
+}

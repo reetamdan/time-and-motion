@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-cctv-benchmark-summary.schema.json",
+  "title": "Evidence-linked local CCTV benchmark summary",
+  "type": "object",
+  "required": ["schema_version", "run_id", "timestamps", "hardware", "workload", "sources", "durations", "metrics", "raw_metrics", "errors", "acceptance"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "timestamps": {
+      "type": "object",
+      "required": ["started_utc", "finished_utc"],
+      "properties": {
+        "started_utc": {"type": "string", "format": "date-time"},
+        "warmup_started_utc": {"type": ["string", "null"], "format": "date-time"},
+        "steady_state_started_utc": {"type": ["string", "null"], "format": "date-time"},
+        "finished_utc": {"type": "string", "format": "date-time"}
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "required": ["gpu_name", "gpu_identity_verified_by", "driver", "cuda_runtime_or_toolkit", "tensorrt", "deepstream", "host", "wsl", "container_image_digest", "power_context"],
+      "properties": {
+        "gpu_name": {"type": "string", "minLength": 1},
+        "gpu_uuid": {"type": ["string", "null"]},
+        "gpu_identity_verified_by": {"type": "string", "minLength": 1},
+        "driver": {"$ref": "#/$defs/textObservation"},
+        "cuda_runtime_or_toolkit": {"$ref": "#/$defs/textObservation"},
+        "tensorrt": {"$ref": "#/$defs/textObservation"},
+        "deepstream": {"$ref": "#/$defs/textObservation"},
+        "host": {"type": "string", "minLength": 1},
+        "wsl": {"$ref": "#/$defs/textObservation"},
+        "container_image_digest": {"$ref": "#/$defs/textObservation"},
+        "power_context": {"$ref": "#/$defs/textObservation"},
+        "competing_workloads": {"$ref": "#/$defs/textObservation"}
+      }
+    },
+    "workload": {
+      "type": "object",
+      "required": ["stage", "streams", "profile_sha256", "pacing", "configured_analytics_fps", "detector", "tracker", "calibration", "reid", "preview", "recording", "skipped_optional_work"],
+      "properties": {
+        "stage": {"enum": ["A", "B", "C", "D", "E", "F", "G", "H"]},
+        "streams": {"type": "integer", "minimum": 1},
+        "profile_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+        "pacing": {"enum": ["real-time", "unpaced-max-throughput", "other-documented"]},
+        "configured_analytics_fps": {"type": "object"},
+        "detector": {"type": "object"},
+        "tracker": {"type": "object"},
+        "calibration": {"type": "object"},
+        "reid": {"type": "object"},
+        "preview": {"type": "object"},
+        "recording": {"type": "object"},
+        "skipped_optional_work": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["camera_id", "reference", "sha256", "resolution", "codec_profile", "source_fps", "duplicated_content"],
+        "properties": {
+          "camera_id": {"type": "string", "minLength": 1},
+          "reference": {"type": "string", "minLength": 1},
+          "sha256": {"$ref": "#/$defs/textObservation"},
+          "resolution": {"$ref": "#/$defs/textObservation"},
+          "codec_profile": {"$ref": "#/$defs/textObservation"},
+          "source_fps": {"$ref": "#/$defs/measurement"},
+          "duplicated_content": {"type": "boolean"}
+        }
+      }
+    },
+    "durations": {
+      "type": "object",
+      "required": ["warmup_seconds", "measured_seconds", "basis"],
+      "properties": {
+        "warmup_seconds": {"type": "number", "minimum": 0},
+        "measured_seconds": {"type": "number", "exclusiveMinimum": 0},
+        "basis": {"enum": ["configured-only", "observed-monotonic"]}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["per_camera", "vram_mib", "gpu_utilization_percent", "nvdec_utilization_percent", "gpu_temperature_c", "cpu_utilization_percent", "ram", "inference_latency_ms", "processing_age_ms", "queue_depth", "dropped_frames", "intentional_sampling", "storage_pressure"],
+      "properties": {
+        "per_camera": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["camera_id", "source_fps", "decode_fps", "detector_fps", "tracker_fps", "analytics_fps", "processing_age_ms", "queue_depth", "dropped_frames"],
+            "properties": {
+              "camera_id": {"type": "string", "minLength": 1},
+              "source_fps": {"$ref": "#/$defs/measurement"},
+              "decode_fps": {"$ref": "#/$defs/measurement"},
+              "detector_fps": {"$ref": "#/$defs/measurement"},
+              "tracker_fps": {"$ref": "#/$defs/measurement"},
+              "analytics_fps": {"$ref": "#/$defs/measurement"},
+              "processing_age_ms": {"$ref": "#/$defs/distribution"},
+              "queue_depth": {"$ref": "#/$defs/measurement"},
+              "dropped_frames": {"type": "object"}
+            }
+          }
+        },
+        "vram_mib": {"$ref": "#/$defs/distribution"},
+        "gpu_utilization_percent": {"$ref": "#/$defs/distribution"},
+        "nvdec_utilization_percent": {"$ref": "#/$defs/distribution"},
+        "gpu_temperature_c": {"$ref": "#/$defs/distribution"},
+        "cpu_utilization_percent": {"$ref": "#/$defs/distribution"},
+        "ram": {"type": "object"},
+        "inference_latency_ms": {"$ref": "#/$defs/distribution"},
+        "processing_age_ms": {"$ref": "#/$defs/distributionWithBasis"},
+        "queue_depth": {"type": "object"},
+        "dropped_frames": {"type": "object"},
+        "intentional_sampling": {"type": "object"},
+        "storage_pressure": {"$ref": "#/$defs/measurement"}
+      }
+    },
+    "raw_metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "collector"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+          "collector": {"type": "string", "minLength": 1},
+          "description": {"type": "string"}
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": {"type": "string"},
+          "message": {"type": "string"},
+          "scope": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "accuracy_reference_links": {"type": "array", "items": {"type": "string"}},
+    "acceptance": {
+      "type": "object",
+      "required": ["result", "profile", "thresholds_frozen_before_run", "reasons", "bottleneck_or_next_action"],
+      "properties": {
+        "result": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_EVALUATED"]},
+        "profile": {"type": "string", "minLength": 1},
+        "thresholds_frozen_before_run": {"type": "boolean"},
+        "reasons": {"type": "array", "items": {"type": "string"}},
+        "bottleneck_or_next_action": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "textObservation": {
+      "type": "object",
+      "required": ["value", "source"],
+      "properties": {
+        "value": {"type": ["string", "null"]},
+        "source": {"type": "string", "minLength": 1},
+        "unavailable_reason": {"type": ["string", "null"]}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "required": ["value", "status", "source"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "status": {"enum": ["measured", "unavailable", "pending"]},
+        "source": {"type": "string", "minLength": 1},
+        "unavailable_reason": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "measured"}}}, "then": {"properties": {"value": {"type": "number"}}}},
+        {"if": {"properties": {"status": {"enum": ["unavailable", "pending"]}}}, "then": {"properties": {"value": {"type": "null"}, "unavailable_reason": {"type": "string", "minLength": 1}}}}
+      ]
+    },
+    "distribution": {
+      "type": "object",
+      "required": ["baseline", "p50", "p95", "peak", "source"],
+      "properties": {
+        "baseline": {"$ref": "#/$defs/measurement"},
+        "p50": {"$ref": "#/$defs/measurement"},
+        "p95": {"$ref": "#/$defs/measurement"},
+        "peak": {"$ref": "#/$defs/measurement"},
+        "source": {"type": "string", "minLength": 1}
+      }
+    },
+    "distributionWithBasis": {
+      "allOf": [
+        {"$ref": "#/$defs/distribution"},
+        {"type": "object", "required": ["time_basis"], "properties": {"time_basis": {"enum": ["receive-to-result", "capture-to-result", "media-or-replay-lag", "mixed-do-not-compare", "unavailable"]}}}
+      ]
+    }
+  }
+}

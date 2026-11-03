@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "frames": [
+    {
+      "frame_index": 141,
+      "input_max_abs": 1.1920928955078125e-06,
+      "logits_max_abs": 8.630752563476562e-05,
+      "topk_calls": [
+        {
+          "shape": [
+            1,
+            1024
+          ],
+          "k": 300,
+          "selected_set_symmetric_difference": 0,
+          "order_equal": true,
+          "processor_kth_minus_next_margin": 0.0071277618408203125,
+          "manual_kth_minus_next_margin": 0.007133007049560547
+        }
+      ]
+    },
+    {
+      "frame_index": 283,
+      "input_max_abs": 1.1920928955078125e-06,
+      "logits_max_abs": 1.7878971099853516,
+      "topk_calls": [
+        {
+          "shape": [
+            1,
+            1024
+          ],
+          "k": 300,
+          "selected_set_symmetric_difference": 0,
+          "order_equal": false,
+          "processor_kth_minus_next_margin": 0.0021038055419921875,
+          "manual_kth_minus_next_margin": 0.0020987987518310547
+        }
+      ]
+    }
+  ]
+}

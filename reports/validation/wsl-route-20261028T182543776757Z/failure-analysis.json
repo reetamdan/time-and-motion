@@ -1,0 +1,13 @@
+{
+ "run": "reports/validation/wsl-route-20261028T182543776757Z",
+ "result": "FAIL (20/23), preserved",
+ "batch": "reports/batches/revalidate-pacing-r3-20261028T181841589055Z",
+ "failed_checks": [
+  "backend_restarted_same_database",
+  "backend_2_terminated",
+  "validator_completed_without_exception (URLError 10061 connection refused)"
+ ],
+ "cause": "Backend 2 never started: backend-2.log is empty and no backend-2.pid was written. start_backend() ran `wsl.exe -e setsid bash -c ...`; plain setsid forks, wsl.exe returns at once, and the detached child raced the WSL session teardown. Same defect as reports/validation/rtsp-controlled-20261028T165356944756Z (fixed there earlier in this session); this validator had the same pattern twice.",
+ "not_the_cause": "Not the product: backend 1 in the same run passed every check (GPU counts, evidence, clean EOF, 710 frames, stop and exact release) and the same code passed 30/30 in runs wsl-route-20261028T165017434597Z and wsl-route-20261028T173541051820Z.",
+ "fix": "scripts/validate_wsl_route.py: both spawns (backend and run-demo) use `setsid --wait`, so wsl.exe stays attached until the process exits; stop_backend() already waits for it."
+}

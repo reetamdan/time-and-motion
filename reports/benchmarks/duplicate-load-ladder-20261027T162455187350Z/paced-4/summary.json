@@ -1,0 +1,134 @@
+{
+  "mode": "paced",
+  "feeds": 4,
+  "http_status": 200,
+  "start_seconds": 5.742,
+  "run_status": "RUNNING",
+  "run_id": "baf3a397-f09b-475b-a1a3-93a157011d62",
+  "stop_seconds": 0.93,
+  "stop_status": "STOPPED",
+  "idle_metrics": {
+    "timestamp": "2026-10-27T16:27:40.708Z",
+    "scope": "windows-host",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_utilization": 2.0,
+    "vram_used_mib": 828.0,
+    "vram_total_mib": 12227.0,
+    "gpu_temperature_c": 56.0,
+    "nvdec_utilization": 0.0,
+    "cpu_utilization": 8.6,
+    "ram_used_mb": 10586.15234375,
+    "ram_total_mb": 15577.80078125,
+    "process_rss_mb": 56.0078125,
+    "unavailable_reason": null
+  },
+  "per_camera": {
+    "cam-01": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 24.063,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.051,
+      "backend_queue_ms_p50": 594.373,
+      "backend_queue_ms_p95": 608.064,
+      "source_lag_s_p50": -0.039,
+      "source_lag_s_p95": -0.011,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 15.547480803000013,
+      "extractor_pipeline_fps": 45.67,
+      "extractor_clean_eos": true
+    },
+    "cam-02": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 24.063,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.057,
+      "backend_queue_ms_p50": 595.901,
+      "backend_queue_ms_p95": 608.07,
+      "source_lag_s_p50": -0.039,
+      "source_lag_s_p95": -0.011,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 15.575431636000019,
+      "extractor_pipeline_fps": 45.58,
+      "extractor_clean_eos": true
+    },
+    "cam-03": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 24.063,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.04,
+      "backend_queue_ms_p50": 594.847,
+      "backend_queue_ms_p95": 607.811,
+      "source_lag_s_p50": -0.039,
+      "source_lag_s_p95": -0.011,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 15.684160074999994,
+      "extractor_pipeline_fps": 45.27,
+      "extractor_clean_eos": true
+    },
+    "cam-04": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 24.063,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.042,
+      "backend_queue_ms_p50": 594.552,
+      "backend_queue_ms_p95": 607.868,
+      "source_lag_s_p50": -0.039,
+      "source_lag_s_p95": -0.011,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 15.662585259000025,
+      "extractor_pipeline_fps": 45.33,
+      "extractor_clean_eos": true
+    }
+  },
+  "gpu": {
+    "baseline_vram_mib": 828.0,
+    "vram_used_mib_p50": 838.0,
+    "vram_used_mib_peak": 2099.0,
+    "vram_total_mib": 12227.0,
+    "gpu_util_p50": 3.0,
+    "gpu_util_p95": 83.0,
+    "nvdec_util_p50": 0.0,
+    "nvdec_util_p95": 22.0,
+    "temp_c_peak": 67.0,
+    "power_w_p50": 12.97,
+    "sm_clock_mhz_p50": 352.0,
+    "samples": 31
+  },
+  "host": {
+    "cpu_util_p50": 6.9,
+    "cpu_util_p95": 52.1,
+    "ram_used_mb_peak": 12310.51953125,
+    "backend_rss_mb_peak": 60.42578125
+  },
+  "ownership": [
+    {
+      "name": "aegis-cam-01-f03351f3-2ac7-4128-82ce-b19e0f10086b",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-02-2359e366-2880-407f-8af8-49bfb5e2b360",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-03-ca7957c8-8a2b-402c-a246-48a8c60b46e6",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-04-2be26024-b551-430b-afa2-08c7347a2ea8",
+      "state": "RELEASED"
+    }
+  ],
+  "containers_left": [],
+  "evaluation": {
+    "acceptable": true,
+    "reasons": []
+  }
+}

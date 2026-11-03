@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T12:27:00.634871+00:00",
+  "result": "PASS",
+  "checks": {
+    "start_http_ok": "PASS",
+    "run_running": "PASS",
+    "camera_epoch_present": "PASS",
+    "disabled_cameras_isolated": "PASS",
+    "real_visible_count_observed": "PASS",
+    "calibration_warning_preserved": "PASS",
+    "provisional_profile_disclosed": "PASS",
+    "container_runtime_reported": "PASS",
+    "container_capability_scopes": "PASS",
+    "smoke_not_baseline": "PASS",
+    "stop_http_ok": "PASS",
+    "container_cleaned_up": "PASS"
+  },
+  "observed": {
+    "run_id": "8ad5d1e5-de62-432e-80a1-be18871d4020",
+    "camera_epoch": "beebe69a-0e46-4fed-a1ea-cc905a73f5fa",
+    "first_visible_person_count": 15,
+    "maximum_observed_person_count_before_stop": 15,
+    "camera_health_at_observation": "CALIBRATION WARNING",
+    "stop_status": "STOPPED",
+    "runtime_adapter": "deepstream-service-maker",
+    "capability_scopes": [
+      "pinned-deepstream-container"
+    ],
+    "remaining_container_id": null
+  },
+  "limitations": [
+    "The run was stopped after the first fresh positive visible count to test operator stop and container cleanup; full-clip coverage is validated separately.",
+    "Visible person counts are real tracker outputs, not ground-truth accuracy or calibrated facility occupancy.",
+    "TrafficCamNet is a provisional smoke profile; final candidate comparison remains pending."
+  ]
+}

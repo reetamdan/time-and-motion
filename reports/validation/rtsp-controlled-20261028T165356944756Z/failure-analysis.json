@@ -1,0 +1,10 @@
+{
+  "run": "reports/validation/rtsp-controlled-20261028T165356944756Z",
+  "result": "FAIL (15/24), preserved",
+  "batch": "reports/batches/revalidate-pacing-20261028T164313428735Z",
+  "symptom": "cam-02 (RTSP) never produced a frame: 'Service Maker produced no valid stdout frame metadata within the startup deadline'; both publisher logs: 'Connection to tcp://172.17.0.1:8554 failed: Connection refused'.",
+  "cause": "The test RTSP server (mediamtx) never started: no mediamtx.pid and no mediamtx.log were written. spawn() ran `wsl.exe -e setsid bash -c ...`; plain setsid forks when it is a process-group leader, so wsl.exe returned at once and the detached child raced the WSL session teardown. Reproduced in isolation: wsl.exe had exited (rc 0) while the pid file appeared only after 4.0 s. The validator then slept a fixed 2 s and never checked that the server was listening.",
+  "not_the_cause": "Not the extractor pacing change and not the product RTSP path: the same product code passed 25/25 once the server was up.",
+  "fix": "scripts/validate_rtsp_source.py: spawn() uses `setsid --wait` (wsl.exe stays attached until the process exits; kill_owned already waits for it), and a new check rtsp_test_server_listening waits up to 60 s for the pid file and a TCP connect to 172.17.0.1:8554; if it never listens the run records FAIL and still writes result.json after cleanup.",
+  "rerun": "reports/validation/rtsp-controlled-20261028T170733053902Z PASS 25/25 (batch reports/batches/rtsp-rerun-20261028T170728567221Z); live source 0.999 source s per host s; no container, mediamtx or ffmpeg left."
+}

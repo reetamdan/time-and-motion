@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T17:41:20.005256+00:00",
+  "result": "PASS",
+  "metrics_endpoint": {
+    "timestamp": "2026-10-26T17:41:19.584Z",
+    "scope": "windows-host",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_utilization": 0.0,
+    "vram_used_mib": 1486.0,
+    "vram_total_mib": 12227.0,
+    "gpu_temperature_c": 54.0,
+    "nvdec_utilization": 0.0,
+    "cpu_utilization": 0.9,
+    "ram_used_mb": 11051.421875,
+    "ram_total_mb": 15577.80078125,
+    "process_rss_mb": 56.4921875,
+    "unavailable_reason": null
+  },
+  "persisted_system_metrics_rows": 4,
+  "persisted_gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "persisted_time_range_utc": [
+    "2026-10-26T17:41:13.099Z",
+    "2026-10-26T17:41:19.584Z"
+  ],
+  "previous_attempt": "telemetry-check-20261026T174100595915Z FAIL: app lifetime (<1 s) shorter than the 2 s collector cycle; 0 rows persisted",
+  "scope": "Single host, idle (no perception run), 7 s window; real nvidia-smi/psutil collectors via the API and persisted to SQLite. Not a load or capacity measurement."
+}

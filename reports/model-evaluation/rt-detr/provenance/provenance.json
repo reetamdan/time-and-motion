@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-10-26T13:06:26.452859+00:00",
+  "result": "PASS",
+  "model": {
+    "id": "PekingU/rtdetr_v2_r18vd",
+    "revision": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+    "architecture": "RtDetrV2ForObjectDetection",
+    "checkpoint": {
+      "path": "models/rt-detr-person-candidate/upstream/model.safetensors",
+      "sha256": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+      "size_bytes": 80904640,
+      "download_url": "https://huggingface.co/PekingU/rtdetr_v2_r18vd/resolve/5650961749fa93567c0d46fc7f43ea4f9e914107/model.safetensors",
+      "verification": "HF expanded tree LFS oid/size matched supplied immutable expectations; downloader separately verifies local bytes"
+    },
+    "declared_license": "apache-2.0",
+    "coco_person_logit_slot": 0,
+    "num_queries": 300,
+    "num_classes": 80,
+    "upstream_config_transformers_version": "4.49.0.dev0"
+  },
+  "preprocessing": {
+    "input_shape_chw": [
+      3,
+      640,
+      640
+    ],
+    "color": "RGB",
+    "resize": "direct to 640x640; no aspect preservation",
+    "rescale_factor": 0.00392156862745098,
+    "do_normalize": false,
+    "resample_bilinear_pil_enum": 2
+  },
+  "license_caveat": "HF metadata declares Apache-2.0, but the pinned HF tree contains no LICENSE file. The separately pinned upstream RT-DETR commit contains Apache-2.0; these are distinct sources and the caveat is preserved.",
+  "upstream_license": {
+    "repository": "lyuwenyu/RT-DETR",
+    "revision": "df2a96c8c3a098567a1149bf0248da6efe6d495d",
+    "path": "models\\rt-detr-person-candidate\\licenses\\RT-DETR-upstream-Apache-2.0.LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "git_blob_sha1": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+    "api_url": "https://api.github.com/repos/lyuwenyu/RT-DETR/contents/LICENSE?ref=df2a96c8c3a098567a1149bf0248da6efe6d495d"
+  },
+  "hf_source_files": [
+    {
+      "path": "models\\rt-detr-person-candidate\\upstream\\README.md",
+      "url": "https://huggingface.co/PekingU/rtdetr_v2_r18vd/raw/5650961749fa93567c0d46fc7f43ea4f9e914107/README.md",
+      "size_bytes": 3542,
+      "sha256": "4a26a3a6de73500f181e4edbc75b3f3f19ca6dde0fdaceeeb78167f223973305",
+      "git_blob_sha1": "37d358fb4e1d91881c4081fc8df0b75d0c2cd99e"
+    },
+    {
+      "path": "models\\rt-detr-person-candidate\\upstream\\config.json",
+      "url": "https://huggingface.co/PekingU/rtdetr_v2_r18vd/raw/5650961749fa93567c0d46fc7f43ea4f9e914107/config.json",
+      "size_bytes": 5437,
+      "sha256": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+      "git_blob_sha1": "6f984c30c65857419deeeebfdf7dc4e7d7bce6f8"
+    },
+    {
+      "path": "models\\rt-detr-person-candidate\\upstream\\preprocessor_config.json",
+      "url": "https://huggingface.co/PekingU/rtdetr_v2_r18vd/raw/5650961749fa93567c0d46fc7f43ea4f9e914107/preprocessor_config.json",
+      "size_bytes": 444,
+      "sha256": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1",
+      "git_blob_sha1": "fcdff16b42e5ebc51d28f59184490c6eff91a88b"
+    }
+  ],
+  "official_api_evidence": [
+    "hf-model-api.json",
+    "hf-tree-api.json",
+    "github-license-api.json"
+  ],
+  "checkpoint_local_verification": "PASS",
+  "checkpoint_local_verification_evidence": "checkpoint-verification.json"
+}

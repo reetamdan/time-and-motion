@@ -1,0 +1,13 @@
+{
+  "run": "reports/benchmarks/capacity-repeats-20261028T174417346278Z",
+  "batch": "reports/batches/capacity-final-20261028T174416738791Z",
+  "result": "INTERRUPTED by operator (STOP file, 2026-10-28T17:56:45Z) after stageA-4feeds-r1; not an acceptance result",
+  "extractor": "8dd882fd... (second pacing fix)",
+  "steps": {
+    "stageA-4feeds-r1": "protocol gates PASS; host-time pacing FAIL: lead on the WSL wall clock grew +1.22..+1.38 s at every guest time-sync step (21 steps, every ~32.2 s) and never returned: 29.7 s after 661 s of source; check_host_pacing.py at sync points: rate 0.954, max 32.4 s ahead"
+  },
+  "finding": "The earlier 'single glitched reads' were a misreading. Direct measurement: inside WSL the monotonic clock runs 2-6 % fast and the wall clock runs with it, stepped back ~1.1-1.5 s every ~30-32 s by time sync (clockprobe.py: steps -1.48/-1.54/-1.50 s at 32.2 s intervals; WSL-minus-host sampled from Windows: a sawtooth from ~-0.85 s to ~+0.6 s). 8dd882fd confirmed each step over 0.3 s and re-anchored, keeping every step: ~4 % fast against host time. 8a2340e2 waited out steps under 1.2 s (correct) and re-anchored on larger ones (+7.3 s).",
+  "fix": "extractor 4ef4f94a...: GuestHostClock = wall time just after the last sync step + monotonic time since it / monotonic rate measured between kept sync steps (raw wall until two steps are seen or when there are none); SourcePacer waits out clock steps <= 3 s and re-anchors only on a confirmed larger jump. Tests: test_v2_pacer_holds_the_producer_to_host_time_through_wsl_clock_syncs (simulated measured clocks, 600 s), negative control on raw monotonic, clock reset, wait-out. Real WSL vs host: reports/validation/wsl-pacing-clock-probe-20261028T181725Z (600.57 s of source in 600.63 s of host time).",
+  "checker": "scripts/benchmark/check_host_pacing.py now judges stage A-C producer records at the first frame after each sync step, where the WSL wall clock equals host time plus a constant; it FAILs all three earlier pacers on their stage A r1 data (e846ce3e 0.984, 8a2340e2 0.995, 8dd882fd 0.954).",
+  "cleanup": "Supervisor stop: step exited 2, batch stop rule; no leftover containers or processes."
+}

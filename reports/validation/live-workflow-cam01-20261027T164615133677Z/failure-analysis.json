@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "written_at": "2026-10-27",
+  "result_json_unchanged": true,
+  "failures": {
+    "recorded_replay_matches_live_paced_history": "Validator artifact: live history is read through the API, which now adds presentation-only fields bucket_span/buckets_present (1/1 when not downsampled); the repository-based replay rows lack them, so dict equality failed. Comparison fixed in scripts/validate_live_workflow.py; data equality is rechecked in the next run.",
+    "restart_recovery_released_exact_container / no_leftover_cam01_containers": "Docker stall: docker stop timed out (15 s) and the container stayed in Docker's 'removing' state through the bounded kill/rm escalation (about 35 s) - 'docker inspect' itself hung for over 2 minutes and then reported 'removing'. The backend behaved as designed: the ownership row stayed UNRESOLVED, the run was restored as STOP_FAILED (not STOPPED), and starts were blocked. Docker finished removing the container afterwards (absent at 2026-10-27T16:55Z). The previous run of the same check released it in 1.14 s."
+  }
+}

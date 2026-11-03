@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "name": "rtsp_controlled",
+      "script": "scripts/validate_rtsp_source.py"
+    }
+  ]
+}

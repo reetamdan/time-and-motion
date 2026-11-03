@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T18:39:53.321169+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_wsl_route.py",
+  "run_dir": "reports\\validation\\wsl-route-20261028T183618808723Z",
+  "result": "PASS",
+  "checks": {
+    "install_wsl_toolchain_exit_0": "PASS",
+    "setup_exit_0": "PASS",
+    "wsl_pytest_exit_0": "PASS",
+    "validate_config_exit_0": "PASS",
+    "port_8774_free_before_1": "PASS",
+    "backend_served_from_wsl": "PASS",
+    "launch_message_matches_route": "PASS",
+    "readiness_ok": "PASS",
+    "start_running": "PASS",
+    "provenance_artifacts_match": "PASS",
+    "real_gpu_counts_via_docker_from_wsl": "PASS",
+    "telemetry_scope_wsl2": "PASS",
+    "evidence_marker_with_wsl_ffmpeg": "PASS",
+    "evidence_image_served": "PASS",
+    "clean_eof": "PASS",
+    "history_persisted_all_frames": "PASS",
+    "stop_confirmed": "PASS",
+    "exact_container_absent_after_stop": "PASS",
+    "backend_1_terminated": "PASS",
+    "port_8774_free_before_2": "PASS",
+    "backend_restarted_same_database": "PASS",
+    "history_survives_restart": "PASS",
+    "second_start_running": "PASS",
+    "documented_reset_returns_idle": "PASS",
+    "reset_released_container": "PASS",
+    "backend_2_terminated": "PASS",
+    "run_demo_strict_preflight_and_ready": "PASS",
+    "run_demo_terminated": "PASS",
+    "no_owned_container_left": "PASS",
+    "validator_completed_without_exception": "PASS"
+  },
+  "observed": {
+    "install_wsl_toolchain_exit_0": {
+      "tail": [
+        "  ffmpeg: ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers",
+        "Next: source /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.install/wsl/env.sh && bash scripts/setup/setup.sh --isolated-frontend",
+        "Python 3.12 is already installed"
+      ]
+    },
+    "setup_exit_0": {
+      "tail": [
+        "",
+        "No model, footage, container image, or engine readiness is implied. Install those",
+        "artifacts explicitly and run scripts/offline-test/run.sh before an offline demo."
+      ]
+    },
+    "wsl_pytest_exit_0": {
+      "tail": [
+        "",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "274 passed, 2 skipped, 1 warning in 60.84s (0:01:00)"
+      ]
+    },
+    "wsl_pytest_summary": [
+      "274 passed, 2 skipped, 1 warning in 60.84s (0:01:00)"
+    ],
+    "validate_config_exit_0": {
+      "tail": [
+        "  }",
+        " }",
+        "}"
+      ]
+    },
+    "port_8774_free_before_1": {
+      "listeners": ""
+    },
+    "launch_message_matches_route": {
+      "log_head": "Starting backend.app.main:app on http://127.0.0.1:8774 (local artifacts only)\nINFO:     Started server process [1261]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete."
+    },
+    "readiness_ok": {
+      "status": 200,
+      "checks": {
+        "status": "ready",
+        "checks": [
+          {
+            "name": "configuration",
+            "ready": true,
+            "detail": "Validated revision 76e696870e2c"
+          },
+          {
+            "name": "persistence",
+            "ready": true,
+            "detail": "SQLite query succeeded with foreign keys and WAL migration"
+          },
+          {
+            "name": "sources",
+            "ready": true,
+            "detail": "All enabled source files are present"
+          },
+          {
+            "name": "models",
+            "ready": true,
+            "detail": "Pinned detector/engine/tracker artifacts available"
+          },
+          {
+            "name": "perception",
+            "ready": true,
+            "detail": "Pinned DeepStream runtime + trafficcamnet-smoke (provisional_smoke) + NvDCF; real boxes and IDs. Not an evaluated PRD baseline."
+          }
+        ]
+      }
+    },
+    "environment": {
+      "host": {
+        "hostname": "LAPTOP-G1S896R7",
+        "os": "Linux",
+        "os_release": "6.6.87.2-microsoft-standard-WSL2",
+        "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+        "architecture": "x86_64",
+        "python": "3.12.15"
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "driver_version": "610.47",
+        "vram_total_mib": 12227.0,
+        "scope": "wsl2",
+        "unavailable_reason": null
+      },
+      "runtime": {
+        "offline": true,
+        "adapter": "deepstream-service-maker",
+        "available": true,
+        "runtime_detected": true,
+        "detail": "Pinned DeepStream runtime + trafficcamnet-smoke (provisional_smoke) + NvDCF; real boxes and IDs. Not an evaluated PRD baseline.",
+        "capabilities": {
+          "deepstream": {
+            "available": false,
+            "scope": "unavailable",
+            "detail": null,
+            "unavailable_reason": "deepstream-app is not on the local PATH"
+          },
+          "gstreamer": {
+            "available": false,
+            "scope": "unavailable",
+            "detail": null,
+            "unavailable_reason": "gst-launch-1.0 is not on the local PATH"
+          },
+          "nvstreammux": {
+            "available": false,
+            "scope": "unavailable",
+            "detail": null,
+            "unavailable_reason": "gst-inspect-1.0 is not on the local PATH"
+          },
+          "nvinfer": {
+            "available": false,
+            "scope": "unavailable",
+            "detail": null,
+            "unavailable_reason": "gst-inspect-1.0 is not on the local PATH"
+          },
+          "nvv4l2decoder": {
+            "available": false,
+            "scope": "unavailable",
+            "detail": null,
+            "unavailable_reason": "gst-inspect-1.0 is not on the local PATH"
+          }
+        }
+      },
+      "sources": [
+        {
+          "id": "cam-01",
+          "source_type": "file",
+          "source_label": "cam01.mp4",
+          "available": true,
+          "unavailable_reason": null
+        },
+        {
+          "id": "cam-02",
+          "source_type": "file",
+          "source_label": "cam02.mp4",
+          "available": false,
+          "unavailable_reason": "Camera is disabled"
+        },
+        {
+          "id": "cam-03",
+          "source_type": "file",
+          "source_label": "cam03.mp4",
+          "available": false,
+          "unavailable_reason": "Camera is disabled"
+        },
+        {
+          "id": "cam-04",
+          "source_type": "file",
+          "source_label": "cam04.mp4",
+          "available": false,
+          "unavailable_reason": "Camera is disabled"
+        }
+      ],
+      "models": {
+        "selected_model": "trafficcamnet-smoke",
+        "selection_mode": "provisional_smoke",
+        "evaluated_baseline_selected": false,
+        "selected_available": true,
+        "models": [
+          {
+            "id": "trafficcamnet-smoke",
+            "role": "detector",
+            "enabled": true,
+            "selected": true,
+            "revision": "deepstream-9.2-bundled-resnet18-trafficcamnet-pruned",
+            "checkpoint_available": true,
+            "engine_available": true,
+            "unavailable_reason": null
+          },
+          {
+            "id": "rt-detr-person-candidate",
+            "role": "detector",
+            "enabled": true,
+            "selected": false,
+            "revision": "PekingU/rtdetr_v2_r18vd@5650961749fa93567c0d46fc7f43ea4f9e914107",
+            "checkpoint_available": true,
+            "engine_available": true,
+            "unavailable_reason": null
+          },
+          {
+            "id": "rf-detr-person-candidate",
+            "role": "detector",
+            "enabled": true,
+            "selected": false,
+            "revision": "Roboflow/rf-detr-small@3bdc465063270f99769da5a1b4c00c68bd2d439d",
+            "checkpoint_available": true,
+            "engine_available": true,
+            "unavailable_reason": null
+          }
+        ],
+        "tracker": {
+          "name": "NVIDIA NvDCF multi-object tracker",
+          "enabled": true,
+          "revision": "deepstream-9.2-nvdcf-perf-13662e73754e",
+          "available": true,
+          "unavailable_reason": null
+        }
+      },
+      "configuration_revision": "76e696870e2ce94f1ed73416f1fba74daf19dec16c3c01b8eb54bb02b7a16a6e",
+      "blockers": [
+        "Source cam-02: Camera is disabled",
+        "Source cam-03: Camera is disabled",
+        "Source cam-04: Camera is disabled"
+      ]
+    },
+    "start_running": {
+      "status": 200,
+      "run_status": "RUNNING"
+    },
+    "provenance_artifacts_match": {
+      "checks": [
+        [
+          "detector.checkpoint",
+          "MATCH"
+        ],
+        [
+          "detector.engine",
+          "MATCH"
+        ],
+        [
+          "detector.infer_config",
+          "MATCH"
+        ],
+        [
+          "tracker.config",
+          "MATCH"
+        ],
+        [
+          "pipeline.wrapper",
+          "MATCH"
+        ],
+        [
+          "pipeline.extractor",
+          "MATCH"
+        ],
+        [
+          "pipeline.capability_probe",
+          "MATCH"
+        ],
+        [
+          "pipeline.image_reference",
+          "MATCH"
+        ]
+      ]
+    },
+    "real_gpu_counts_via_docker_from_wsl": {
+      "visible_count": 19,
+      "source_position_s": 5.372033333
+    },
+    "telemetry_scope_wsl2": {
+      "scope": "wsl2",
+      "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"
+    },
+    "evidence_marker_with_wsl_ffmpeg": {
+      "status": 201
+    },
+    "evidence_image_served": {
+      "bytes": 293641
+    },
+    "clean_eof": {
+      "outcome": "CLEAN_EOF"
+    },
+    "history_persisted_all_frames": {
+      "frames": 710,
+      "samples": 48
+    },
+    "exact_container_absent_after_stop": {
+      "container": "aegis-cam-01-b11b307d-dc04-4c08-b30e-bb6f631c7147"
+    },
+    "listener_pid_1": "1261",
+    "stop_1": {
+      "pid": "1261",
+      "orphaned_children": [],
+      "port_free": true
+    },
+    "port_8774_free_before_2": {
+      "listeners": ""
+    },
+    "history_survives_restart": {
+      "samples": 48
+    },
+    "second_start_running": {
+      "status": 200,
+      "run_status": "RUNNING",
+      "error": null
+    },
+    "documented_reset_returns_idle": {
+      "code": 0,
+      "tail": [
+        "API acknowledged run-scoped reset for '51139433-7d1e-41f6-82c5-57772f91763f' (HTTP 200).",
+        "This script deleted no files; source footage, models, configs, and calibration were not touched directly."
+      ]
+    },
+    "reset_released_container": {
+      "container": "aegis-cam-01-aac2691c-3669-4092-a3ba-4ad83bed5edb"
+    },
+    "listener_pid_2": "2291",
+    "stop_2": {
+      "pid": "2291",
+      "orphaned_children": [],
+      "port_free": true
+    },
+    "run_demo_strict_preflight_and_ready": {
+      "log_tail": [
+        "Logs: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/demo/20261028T183941Z",
+        "Press Ctrl+C to stop.",
+        "Readiness does not prove detections, analytics, four-feed capacity, or offline acceptance."
+      ]
+    },
+    "listener_pid_run-demo": "2816",
+    "stop_run-demo": {
+      "pid": "2803",
+      "orphaned_children": [],
+      "port_free": true
+    },
+    "run_demo_terminated": {
+      "children": [
+        "2816"
+      ]
+    },
+    "no_owned_container_left": {
+      "names": []
+    }
+  },
+  "route": "WSL application route: backend (uvicorn) and frontend build inside WSL Ubuntu-22.04; perception through docker called directly from WSL (host_route linux-docker). Real GPU run of demo/cam01.mp4."
+}

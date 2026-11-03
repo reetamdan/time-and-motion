@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T17:41:00.915758+00:00",
+  "result": "FAIL",
+  "metrics_endpoint": {
+    "timestamp": "2026-10-26T17:41:00.811Z",
+    "scope": "windows-host",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_utilization": 0.0,
+    "vram_used_mib": 1486.0,
+    "vram_total_mib": 12227.0,
+    "gpu_temperature_c": 54.0,
+    "nvdec_utilization": 0.0,
+    "cpu_utilization": 1.2,
+    "ram_used_mb": 10975.2421875,
+    "ram_total_mb": 15577.80078125,
+    "process_rss_mb": 56.41015625,
+    "unavailable_reason": null
+  },
+  "persisted_system_metrics_rows": 0,
+  "persisted_gpu_name": null,
+  "snapshot_has_metrics": false,
+  "scope": "Single host, idle (no perception run); real nvidia-smi/psutil collectors via the API and persisted to SQLite. Not a load or capacity measurement."
+}

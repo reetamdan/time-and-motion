@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:30:00Z",
+  "candidate": {
+    "model_id": "Roboflow/rf-detr-small",
+    "revision": "3bdc465063270f99769da5a1b4c00c68bd2d439d",
+    "architecture": "RfDetrForObjectDetection",
+    "task": "COCO person only (sparse COCO slot 1 -> app class 0)"
+  },
+  "result": "FAIL",
+  "accepted": false,
+  "positive_integration_result": "PASS",
+  "closeout_classification": "Working isolated DeepStream integration (variant 2, resize in graph), but not accepted: the unchanged strict end-to-end crosscheck still fails on near-threshold objects, and there is no labeled accuracy evaluation.",
+  "runtime_selection_changed": false,
+  "checks": {
+    "provenance_and_checkpoint": {
+      "result": "PASS",
+      "detail": "Pinned HF tree LFS oid and local SHA-256 both equal 2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d. Pinned tree has no LICENSE file; upstream GitHub declares Apache-2.0.",
+      "evidence": ["reports/model-evaluation/rf-detr/provenance/provenance.json", "reports/model-evaluation/rf-detr/provenance/download.log"]
+    },
+    "export_environment": {
+      "result": "PASS",
+      "detail": "Isolated .install/rf-detr-export venv: transformers 5.20.2, torch 2.14.1+cpu, onnx 1.23.2, onnxruntime 1.31.0; pip check clean.",
+      "evidence": "reports/model-evaluation/rf-detr/export/environment.json"
+    },
+    "preprocessing_contract_verified": {
+      "result": "PASS",
+      "detail": "RfDetrImageProcessor at 512x512: rescale -> torchvision bilinear resize with antialias=False -> ImageNet mean/std. Processor tensor equals the manual contract to 1.2e-6.",
+      "evidence": "reports/model-evaluation/rf-detr/export/run-002/parity.json"
+    },
+    "decode_and_native_parser_unit_tests": {
+      "result": "PASS",
+      "decode_tests": 8,
+      "native_parser": "person slot 1, strict > threshold (matches HF post-processor), geometry 512x512 and 1920x1080, order, top-k, no NMS, dimension rejection",
+      "evidence": ["reports/model-evaluation/rf-detr/tests/decode-unit-tests.log", "reports/model-evaluation/rf-detr/parser/build-test-attempt-2.log"]
+    },
+    "onnx_export": {
+      "attempts": [
+        {"run": "export/run-001", "result": "FAIL", "reason": "Legacy exporter cannot export aten::_upsample_bicubic2d_aa (DINOv2 position-embedding interpolation, always taken while tracing). Retained."},
+        {"run": "export/run-002", "result": "EXPORTED", "variant": "1: input [1,3,512,512] RGB/255, mean/std in graph",
+         "fix": "Static-geometry patch: return stored position embeddings when the 32x32 grid matches (HF eager semantics); raises otherwise."},
+        {"run": "export/run-003-resize-in-graph", "result": "EXPORTED", "variant": "2: input [1,3,1080,1920] RGB/255; ONNX Resize(linear, half_pixel) to 512 + mean/std in graph"}
+      ]
+    },
+    "hf_onnx_parity": {
+      "raw_slot_result": "FAIL",
+      "person_set_result": "PASS",
+      "detail": "Variant 1 frame 141 raw PASS (logits 1.4e-4). Frame 283 raw slots differ (1.79) because near-tied encoder top-300 proposal scores (gaps 2.4e-6 and 7.9e-6 at ranks 98/99 and 219/220) reorder under rounding-level differences; RF-DETR pairs each slot with a learned query, so reordering changes low-confidence slot values. Person decodes are identical in count and query order (score delta <= 4.9e-4). Variant 2 shows the same near-tie effect on frame 141. Order-independent strict person sets (one-to-one, IoU>=0.5, score delta<=0.02) match 41/41 and 43/43 for both variants.",
+      "evidence": [
+        "reports/model-evaluation/rf-detr/export/run-002/parity.json",
+        "reports/model-evaluation/rf-detr/export/run-002/parity-identical-input.json",
+        "reports/model-evaluation/rf-detr/export/run-002/topk-selection-diagnosis.json",
+        "reports/model-evaluation/rf-detr/export/run-002/topk-margin-diagnosis.json",
+        "reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/parity.json",
+        "reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/person-set-parity.json"
+      ]
+    },
+    "tensorrt_engine_build": {
+      "result": "PASS",
+      "precision": "FP32 --stronglyTyped --noTF32, no FP16 flag; TensorRT 10.16 in the pinned DeepStream 9.2 image",
+      "engines": {
+        "variant_1": {"path": "models/rf-detr-person-candidate/rf_detr_small_rgb01_fp32_sm120.engine", "evidence": "reports/model-evaluation/rf-detr/engine/20261026T161459Z"},
+        "variant_2": {"path": "models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm120.engine", "evidence": "reports/model-evaluation/rf-detr/engine/20261026T162029Z"}
+      }
+    },
+    "tensorrt_vs_onnx_identical_input": {
+      "variant_1": {"raw_slot_result": "PASS", "person_set_result": "PASS", "worst_logits_max_abs": 0.00023126602172851562, "worst_pred_boxes_max_abs": 5.143880844116211e-05},
+      "variant_2": {"raw_slot_result": "FAIL", "person_set_result": "PASS", "detail": "TensorRT and ONNX Runtime take different near-tie orders; person sets 41/41 and 43/43 (score delta <= 0.006, box <= 2.6 px)."},
+      "evidence": ["reports/model-evaluation/rf-detr/engine/20261026T161459Z/trt-parity.json", "reports/model-evaluation/rf-detr/engine/20261026T162029Z/trt-parity.json"]
+    },
+    "deepstream_preprocessing": {
+      "result": "VARIANT 1 REJECTED, VARIANT 2 ADOPTED FOR THE CANDIDATE",
+      "variant_1_input_mean_abs_vs_hf_contract": {"default_scaling": 0.039, "scaling_filter_1_gpu": 0.0398},
+      "variant_1_finding": "Both nvinfer settings are closest to top-left nearest sampling (0.0058 / 0.012), not torch half-pixel bilinear without antialias.",
+      "variant_2_input_mean_abs_vs_hf_contract": 0.00255,
+      "variant_2_residual": "Uniform ~-0.002 per channel (about -0.5/255), consistent with YUV->RGB rounding differences.",
+      "evidence": [
+        "reports/model-evaluation/rf-detr/deepstream/pretracker-bilinear-scaling-20261026T161624Z/pretracker-comparison.json",
+        "reports/model-evaluation/rf-detr/deepstream/pretracker-default-scaling-20261026T161649Z/pretracker-comparison.json",
+        "reports/model-evaluation/rf-detr/deepstream/pretracker-1080p-in-graph-20261026T162137Z/pretracker-comparison.json"
+      ]
+    },
+    "deepstream_like_for_like_variant_2": {
+      "engine_in_deepstream_vs_onnx_person_set": "PASS",
+      "engine_in_deepstream_raw_slots": "FAIL (near-tie reordering on frame 141; frame 283 1.01e-3 logits, just above 1e-3)",
+      "native_parser_and_scaling": "PASS (40/40, 44/44 exact)",
+      "nvdcf_effect": "No box displacement (<= 6.1e-05 px); removes 2-3 detector objects per examined frame.",
+      "evidence": "reports/model-evaluation/rf-detr/deepstream/pretracker-1080p-in-graph-20261026T162137Z/pretracker-comparison.json"
+    },
+    "strict_end_to_end_crosscheck_unchanged_criteria": {
+      "result": "FAIL",
+      "criteria": {"matching": "strict one-to-one", "bbox_iou_min": 0.5, "score_abs_delta_max": 0.02},
+      "pre_tracker_vs_hf": {
+        "variant_1_bilinear": {"141": "26/38 (hf 41)", "283": "28/41 (hf 43)"},
+        "variant_1_default": {"141": "24/37 (hf 41)", "283": "33/43 (hf 43)"},
+        "variant_2": {"141": "36/40 (hf 41)", "283": "43/44 (hf 43)"}
+      },
+      "variant_2_unmatched_confidences": {"141": [0.3218, 0.3428, 0.4387, 0.4916], "283": [0.2508]},
+      "interpretation_limit": "Remaining mismatches are near-threshold objects. The RT-DETR control showed two equally valid CPU references can also fail this criterion, but that does not convert this FAIL into a PASS."
+    },
+    "deepstream_positive_integration": {
+      "result": "PASS",
+      "extractor": "perception/deepstream/service_maker/extract_metadata.py (unmodified, sha256 6093b5d5...)",
+      "infer_config": "perception/candidates/rf_detr/deepstream/cam01_rf_detr_1080p_infer.txt",
+      "tracker_config": "perception/candidates/rt_detr/deepstream/config_tracker_NvDCF_candidate.yml (shared candidate NvDCF config)",
+      "frames": 710, "clean_eos": true, "person_records": 28051, "valid_person_boxes": 28051,
+      "invalid_boxes": 0, "invalid_scores": 0, "invalid_track_ids": 0,
+      "unique_person_ids": 241, "multi_frame_person_ids": 238, "max_objects_per_frame": 47, "empty_frames": 2,
+      "elapsed_seconds": 11.845995553999984, "decoded_frames_per_elapsed_second": 59.935865817563766,
+      "performance_scope": "One 710-frame 1920x1080 clip, batch 1, FP32. No realtime, multi-stream, or capacity claim.",
+      "evidence": ["reports/model-evaluation/rf-detr/deepstream/integration-20261026T162321Z/result.json"]
+    },
+    "visual_sanity": {
+      "result": "OBSERVED",
+      "detail": "Frame 141 overlay: boxes lie on people; most scores < 0.5 in this dense crowd; many visible people unboxed at threshold 0.25. Qualitative only.",
+      "evidence": "reports/model-evaluation/rf-detr/deepstream/pretracker-1080p-in-graph-20261026T162137Z/frame_000141_pretracker_overlay.jpg"
+    },
+    "labeled_accuracy_and_quality_baseline_selection": {
+      "result": "BLOCKED",
+      "reason": "No ground-truth labels. RT-DETR yields more boxes per frame (76 vs ~40 at 0.25 on frame 141) but box count is not accuracy; no winner can be claimed."
+    }
+  },
+  "artifact_identities": {
+    "checkpoint_sha256": "2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d",
+    "onnx_variant_1": {"path": "models/rf-detr-person-candidate/rf_detr_small_rgb01_norm_in_graph.onnx", "sha256": "6f44424eef16662df03114bcff91990dfee8dda5de4c2e5d20758f56dde7dcba"},
+    "onnx_variant_2": {"path": "models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx", "sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb"},
+    "engine_hashes": "reports/model-evaluation/rf-detr/engine/*/sha256.txt",
+    "parser_source_sha256": "f9f00d3b8ac6e58cb6a2247d6349351be365de7a9711026d9a01c45c35a91278",
+    "parser_library_sha256": "9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64",
+    "note": "The two variant-1 DeepStream diagnostic runs used the earlier 512-only parser build (library sha256 8434453a...; build-test-attempt-1-512-only.log)."
+  },
+  "variant_2_operational_constraint": "Requires 1920x1080 nvstreammux output (non-1080p cameras would be rescaled by nvstreammux, reintroducing NvBufSurfTransform resampling). Full-frame FP32 input is about 24.9 MB per frame on the GPU.",
+  "remaining_work": [
+    "Labeled frames from the target cameras for precision/recall, counting error and ID-switch evaluation of RF-DETR vs RT-DETR vs TrafficCamNet.",
+    "Decide whether cross-pipeline detector agreement should be a documented sensitivity measurement instead of an acceptance gate; this needs a requirements decision and is not made here.",
+    "FP16 / precision optimisation only after the FP32 baseline is accepted."
+  ]
+}

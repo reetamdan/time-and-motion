@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "utc_started": "2026-10-23T20:41:28.296028+00:00",
+  "utc_finished": "2026-10-23T20:41:28.378137+00:00",
+  "project_root": "/mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv",
+  "mode": "development_static_preflight",
+  "python": "3.10.12",
+  "yaml_parser": "5.4.1",
+  "static_preflight_result": "FAIL",
+  "failure_count": 6,
+  "warning_count": 9,
+  "network_isolation": "NOT VERIFIED",
+  "offline_acceptance": "NOT DETERMINED BY THIS STATIC CHECK",
+  "checks": [
+    {
+      "name": "project_root",
+      "status": "PASS",
+      "detail": "/mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv"
+    },
+    {
+      "name": "config_cameras_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/cameras.yaml"
+    },
+    {
+      "name": "config_cameras_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "config_floors_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/floors.yaml"
+    },
+    {
+      "name": "config_floors_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "config_zones_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/zones.yaml"
+    },
+    {
+      "name": "config_zones_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "config_portals_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/portals.yaml"
+    },
+    {
+      "name": "config_portals_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "config_analytics_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/analytics.yaml"
+    },
+    {
+      "name": "config_analytics_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "config_models_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/models.yaml"
+    },
+    {
+      "name": "config_models_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "config_runtime_exists",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/runtime.yaml"
+    },
+    {
+      "name": "config_runtime_parse",
+      "status": "PASS",
+      "detail": "Document parsed as a mapping/object"
+    },
+    {
+      "name": "backend_config_schema",
+      "status": "FAIL",
+      "detail": "Project configuration validator is unavailable: No module named 'pydantic'"
+    },
+    {
+      "name": "floors_unique_ids",
+      "status": "PASS",
+      "detail": "2 unique id(s)"
+    },
+    {
+      "name": "cameras_unique_ids",
+      "status": "PASS",
+      "detail": "4 unique id(s)"
+    },
+    {
+      "name": "zones_unique_ids",
+      "status": "PASS",
+      "detail": "6 unique id(s)"
+    },
+    {
+      "name": "camera_cam-01_source",
+      "status": "FAIL",
+      "detail": "Local file is missing: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/cam01.mp4"
+    },
+    {
+      "name": "camera_cam-01_source_hash",
+      "status": "WARN",
+      "detail": "Source checksum is not pinned: missing sidecar /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/SHA256SUMS"
+    },
+    {
+      "name": "camera_cam-02_source",
+      "status": "FAIL",
+      "detail": "Local file is missing: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/cam02.mp4"
+    },
+    {
+      "name": "camera_cam-02_source_hash",
+      "status": "WARN",
+      "detail": "Source checksum is not pinned: missing sidecar /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/SHA256SUMS"
+    },
+    {
+      "name": "camera_cam-03_source",
+      "status": "FAIL",
+      "detail": "Local file is missing: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/cam03.mp4"
+    },
+    {
+      "name": "camera_cam-03_source_hash",
+      "status": "WARN",
+      "detail": "Source checksum is not pinned: missing sidecar /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/SHA256SUMS"
+    },
+    {
+      "name": "camera_cam-04_source",
+      "status": "FAIL",
+      "detail": "Local file is missing: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/cam04.mp4"
+    },
+    {
+      "name": "camera_cam-04_source_hash",
+      "status": "WARN",
+      "detail": "Source checksum is not pinned: missing sidecar /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/data/demo/SHA256SUMS"
+    },
+    {
+      "name": "enabled_camera_count",
+      "status": "PASS",
+      "detail": "4 enabled camera(s); no stream-capacity claim is made"
+    },
+    {
+      "name": "config_cross_references",
+      "status": "PASS",
+      "detail": "Available camera/zone floor references and unique ids were checked"
+    },
+    {
+      "name": "selected_model",
+      "status": "FAIL",
+      "detail": "selected_model must reference an enabled model for the demo"
+    },
+    {
+      "name": "model_rt-detr-person-candidate_disabled",
+      "status": "WARN",
+      "detail": "Disabled/unselected candidate is not required by this demo; its accuracy and runtime remain unevaluated"
+    },
+    {
+      "name": "model_yolo-person-candidate_disabled",
+      "status": "WARN",
+      "detail": "Disabled/unselected candidate is not required by this demo; its accuracy and runtime remain unevaluated"
+    },
+    {
+      "name": "tracker_enabled",
+      "status": "WARN",
+      "detail": "Authoritative tracker is disabled; tracking is not ready"
+    },
+    {
+      "name": "frontend_local_build",
+      "status": "PASS",
+      "detail": "Found /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/frontend/dist/index.html",
+      "evidence": {
+        "sha256": "786482059c92289e7a4f39b529082156515c04d811403a3498ccb72ace790e1b"
+      }
+    },
+    {
+      "name": "frontend_html_external_assets",
+      "status": "PASS",
+      "detail": "No external script/style/media assets found in index.html"
+    },
+    {
+      "name": "frontend_dynamic_network_review",
+      "status": "WARN",
+      "detail": "Static HTML inspection cannot prove built JavaScript, maps, fonts, workers, or APIs make no external requests"
+    },
+    {
+      "name": "runtime_database_parent",
+      "status": "PASS",
+      "detail": "Database parent: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/var"
+    },
+    {
+      "name": "network_isolation",
+      "status": "WARN",
+      "detail": "No operator attestation supplied; this script performs no external-network probe and proves no isolation"
+    }
+  ]
+}

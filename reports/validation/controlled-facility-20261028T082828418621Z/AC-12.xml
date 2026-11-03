@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="2" failures="0" skipped="0" tests="6" time="0.116" timestamp="2026-10-28T13:58:31.225882+05:30" hostname="LAPTOP-G1S896R7"><testcase classname="tests.test_fusion" name="test_controlled_overlap_counts_one_person_once" time="0.001" /><testcase classname="tests.test_fusion" name="test_same_camera_simultaneous_tracks_cannot_share_a_group" time="0.000" /><testcase classname="tests.test_fusion" name="test_time_distance_and_overlap_gates_prevent_false_merges" time="0.000" /><testcase classname="tests.test_fusion" name="test_uncalibrated_overlap_has_no_authoritative_occupancy" time="0.000" /><testcase classname="tests.test_facility_analytics" name="test_overlap_fusion_counts_one_person_seen_by_two_cameras" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-12'&quot;">self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-12')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-12'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.test_facility_freshness" name="test_overlapping_camera_views_and_zones_deduplicate_once" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-12'&quot;">self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-12')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-12'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError</error></testcase></testsuite></testsuites>

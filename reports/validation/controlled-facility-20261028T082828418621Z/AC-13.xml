@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="2" failures="0" skipped="0" tests="2" time="0.125" timestamp="2026-10-28T13:58:31.891748+05:30" hostname="LAPTOP-G1S896R7"><testcase classname="tests.test_facility_freshness" name="test_building_sums_deduplicated_floors" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-13'&quot;">self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-13')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-13'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.test_facility_freshness" name="test_floor_capability_reports_dedup_policy" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-13'&quot;">self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-13')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-13'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError</error></testcase></testsuite></testsuites>

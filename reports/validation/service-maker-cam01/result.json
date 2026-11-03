@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T09:39:11.672114+00:00",
+  "result": "PASS",
+  "scope": "Service Maker metadata structure, complete frame coverage, real boxes/IDs/PTS, clean EOS and capacity proxies; not detection or tracking accuracy",
+  "checks": {
+    "pipeline_returned": "PASS",
+    "clean_eos": "PASS",
+    "json_parse": "PASS",
+    "exact_frame_coverage": "PASS",
+    "summary_frame_count": "PASS",
+    "schema_and_geometry": "PASS",
+    "source_identity": "PASS",
+    "real_pts": "PASS",
+    "valid_boxes": "PASS",
+    "finite_scores": "PASS",
+    "valid_track_ids": "PASS",
+    "nonempty_person_detections": "PASS",
+    "persistent_person_tracks": "PASS",
+    "tracker_capacity_headroom": "PASS",
+    "completion_log": "PASS"
+  },
+  "warnings": [
+    "A GLib source-removal diagnostic occurred after source EOS; clean EOS and complete output were independently verified.",
+    "The clip's AAC audio track has no container decoder; video decode/inference completed and no audio analytics are claimed.",
+    "1 tracker scores fall outside [0,1]; values are preserved, not treated as normalized probabilities."
+  ],
+  "metrics": {
+    "expected_frames": 710,
+    "actual_frames": 710,
+    "first_frame_number": 0,
+    "last_frame_number": 709,
+    "empty_frames": 2,
+    "objects": 12468,
+    "person_objects": 12199,
+    "per_class_records": {
+      "bicycle": 269,
+      "person": 12199
+    },
+    "unique_person_ids": 128,
+    "multi_frame_person_ids": 125,
+    "max_objects_per_frame": 26,
+    "tracker_capacity": 150,
+    "capacity_warning_frames": [],
+    "parse_errors": [],
+    "schema_errors": 0,
+    "invalid_boxes": 0,
+    "invalid_tracker_boxes": 0,
+    "invalid_scores": 0,
+    "invalid_track_ids": 0,
+    "duplicate_person_ids_within_frame": 0,
+    "missing_or_invalid_pts": 0,
+    "non_increasing_pts": 0,
+    "tracker_score_unit_interval_advisories": 1,
+    "jsonl_bytes": 4189033
+  },
+  "provenance": {
+    "source": "demo/cam01.mp4",
+    "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+    "camera_epoch": "smoke-20261026-local-artifacts",
+    "pyservicemaker_version": "0.0.1",
+    "pyyaml_version": "6.0.2",
+    "elapsed_seconds": 6.384357442999999,
+    "artifact_sha256": {
+      "extractor": "70f4e617281bc22a3531502394f40d79aeb6dd615b9333a825e529be2f3af42e",
+      "infer_config": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+      "tracker_config": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+      "engine": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+      "jsonl": "3c74a80dc69b40df221ce13dc501e150067f11b6968812c9d8c595a3786d619d"
+    }
+  },
+  "limitations": [
+    "TrafficCamNet is a pipeline smoke model, not the evaluated PRD detector baseline.",
+    "No ground-truth reference labels exist for this clip; precision, recall, ID-switch rate and exact crowd counts are not measured.",
+    "Current-frame Service Maker objects differ from deepstream-app tracker KITTI dumps, which can include past-frame target reports; outputs are not expected to be record-identical.",
+    "The two empty initial frames are retained; no detections or tracks are synthesized."
+  ]
+}

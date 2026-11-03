@@ -1,0 +1,23 @@
+{
+  "finding_1_startup_failure": {
+    "status_after_start": "DEGRADED",
+    "status_after_stop": "STOPPED",
+    "adapter_stop_calls": 1,
+    "containers_left": []
+  },
+  "finding_2_restart": {
+    "status_before_restart": "STOP_FAILED",
+    "persisted_after_initialize": "STOPPED",
+    "adapter_stop_calls_on_restart": 1,
+    "new_run_status": "RUNNING",
+    "new_run_is_different": true,
+    "start_error": null,
+    "containers_left": [
+      "aegis-cam-01-23a909f3-3451-4225-958d-0795042a78db"
+    ]
+  },
+  "reproduced": {
+    "finding_1": false,
+    "finding_2": false
+  }
+}

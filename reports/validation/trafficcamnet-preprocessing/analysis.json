@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:42:29.350459+00:00",
+  "model": "TrafficCamNet (provisional smoke, FP16)",
+  "runs": {
+    "pretracker-default-scaling-20261026T164051Z": {
+      "run_dir": "reports\\validation\\trafficcamnet-preprocessing\\pretracker-default-scaling-20261026T164051Z",
+      "A_input_resemblance": {
+        "141": {
+          "mean_abs_by_emulation": {
+            "nearest_top_left": 0.004208372383617364,
+            "nearest_half_pixel": 0.028349111868771846,
+            "bilinear_half_pixel_no_aa": 0.020996153378889645,
+            "pil_bilinear_antialias": 0.020962525142025627,
+            "pil_box_area": 0.021119824690832307
+          },
+          "closest": "nearest_top_left"
+        },
+        "283": {
+          "mean_abs_by_emulation": {
+            "nearest_top_left": 0.004164729486454865,
+            "nearest_half_pixel": 0.028024622486757723,
+            "bilinear_half_pixel_no_aa": 0.020822915398681065,
+            "pil_bilinear_antialias": 0.020771765811533366,
+            "pil_box_area": 0.021012549416489824
+          },
+          "closest": "nearest_top_left"
+        }
+      },
+      "B_behaviour_proxies": {
+        "pre_tracker_person_detections_total": 12957,
+        "pre_tracker_person_per_frame_mean": 18.249295774647887,
+        "pre_tracker_person_per_frame_median": 18.0,
+        "pre_tracker_count_jitter_mean_abs_consecutive": 1.7954866008462624,
+        "post_tracker_person_per_frame_mean": 17.161971830985916,
+        "unique_person_track_ids": 130,
+        "multi_frame_track_ids": 127,
+        "track_length_frames_median": 53.0,
+        "tracks_ge_30_frames": 83
+      }
+    },
+    "pretracker-bilinear-scaling-20261026T164120Z": {
+      "run_dir": "reports\\validation\\trafficcamnet-preprocessing\\pretracker-bilinear-scaling-20261026T164120Z",
+      "A_input_resemblance": {
+        "141": {
+          "mean_abs_by_emulation": {
+            "nearest_top_left": 0.014520205945434272,
+            "nearest_half_pixel": 0.034700380756285266,
+            "bilinear_half_pixel_no_aa": 0.026486559960891942,
+            "pil_bilinear_antialias": 0.02528717910800861,
+            "pil_box_area": 0.026821523618294128
+          },
+          "closest": "nearest_top_left"
+        },
+        "283": {
+          "mean_abs_by_emulation": {
+            "nearest_top_left": 0.014422797515177747,
+            "nearest_half_pixel": 0.03428054528342317,
+            "bilinear_half_pixel_no_aa": 0.026165221788298866,
+            "pil_bilinear_antialias": 0.024965770811481325,
+            "pil_box_area": 0.02650797238888462
+          },
+          "closest": "nearest_top_left"
+        }
+      },
+      "B_behaviour_proxies": {
+        "pre_tracker_person_detections_total": 11959,
+        "pre_tracker_person_per_frame_mean": 16.843661971830986,
+        "pre_tracker_person_per_frame_median": 17.0,
+        "pre_tracker_count_jitter_mean_abs_consecutive": 1.6784203102961919,
+        "post_tracker_person_per_frame_mean": 15.850704225352112,
+        "unique_person_track_ids": 118,
+        "multi_frame_track_ids": 114,
+        "track_length_frames_median": 47.5,
+        "tracks_ge_30_frames": 72
+      }
+    },
+    "pretracker-supersample-scaling-20261026T164141Z": {
+      "run_dir": "reports\\validation\\trafficcamnet-preprocessing\\pretracker-supersample-scaling-20261026T164141Z",
+      "A_input_resemblance": {
+        "141": {
+          "mean_abs_by_emulation": {
+            "nearest_top_left": 0.020646009211152595,
+            "nearest_half_pixel": 0.01363818634916397,
+            "bilinear_half_pixel_no_aa": 0.0051495161525083565,
+            "pil_bilinear_antialias": 0.006972120974418418,
+            "pil_box_area": 0.007377684793374737
+          },
+          "closest": "bilinear_half_pixel_no_aa"
+        },
+        "283": {
+          "mean_abs_by_emulation": {
+            "nearest_top_left": 0.02050196408971495,
+            "nearest_half_pixel": 0.013592435734891398,
+            "bilinear_half_pixel_no_aa": 0.005072630234413511,
+            "pil_bilinear_antialias": 0.006913051667611309,
+            "pil_box_area": 0.007202747212062712
+          },
+          "closest": "bilinear_half_pixel_no_aa"
+        }
+      },
+      "B_behaviour_proxies": {
+        "pre_tracker_person_detections_total": 11161,
+        "pre_tracker_person_per_frame_mean": 15.719718309859156,
+        "pre_tracker_person_per_frame_median": 16.0,
+        "pre_tracker_count_jitter_mean_abs_consecutive": 1.6995768688293371,
+        "post_tracker_person_per_frame_mean": 14.807042253521127,
+        "unique_person_track_ids": 101,
+        "multi_frame_track_ids": 100,
+        "track_length_frames_median": 66,
+        "tracks_ge_30_frames": 66
+      }
+    }
+  },
+  "C_cross_variant_person_agreement_iou_only": {
+    "pretracker-default-scaling-20261026T164051Z vs pretracker-bilinear-scaling-20261026T164120Z @ 141": {
+      "matches": 17,
+      "left": 22,
+      "right": 17,
+      "median_bbox_abs_delta_px": 11.2109375
+    },
+    "pretracker-default-scaling-20261026T164051Z vs pretracker-bilinear-scaling-20261026T164120Z @ 283": {
+      "matches": 15,
+      "left": 19,
+      "right": 17,
+      "median_bbox_abs_delta_px": 20.37109375
+    },
+    "pretracker-default-scaling-20261026T164051Z vs pretracker-supersample-scaling-20261026T164141Z @ 141": {
+      "matches": 18,
+      "left": 22,
+      "right": 18,
+      "median_bbox_abs_delta_px": 19.27129364013672
+    },
+    "pretracker-default-scaling-20261026T164051Z vs pretracker-supersample-scaling-20261026T164141Z @ 283": {
+      "matches": 17,
+      "left": 19,
+      "right": 17,
+      "median_bbox_abs_delta_px": 15.74273681640625
+    },
+    "pretracker-bilinear-scaling-20261026T164120Z vs pretracker-supersample-scaling-20261026T164141Z @ 141": {
+      "matches": 17,
+      "left": 17,
+      "right": 18,
+      "median_bbox_abs_delta_px": 19.678436279296875
+    },
+    "pretracker-bilinear-scaling-20261026T164120Z vs pretracker-supersample-scaling-20261026T164141Z @ 283": {
+      "matches": 14,
+      "left": 17,
+      "right": 17,
+      "median_bbox_abs_delta_px": 14.429855346679688
+    }
+  },
+  "limits": "No ground truth. Counts, jitter and track lengths are behaviour proxies only; more detections or longer tracks are not evidence of better accuracy. TrafficCamNet's own training-time resize is not documented here, so no variant is 'correct'."
+}

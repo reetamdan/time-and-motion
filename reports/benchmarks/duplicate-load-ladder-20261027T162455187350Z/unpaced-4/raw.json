@@ -1,0 +1,732 @@
+{
+ "polls": [
+  {
+   "t": 0.046,
+   "cpu": 19.6,
+   "ram_mb": 15147.7578125,
+   "rss_mb": 56.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 0.834166666,
+     "analytics_fps": null,
+     "backend_queue_ms": 4.84850000066217,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 1,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 0.834166666,
+     "analytics_fps": null,
+     "backend_queue_ms": 3.925999997591134,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 1,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 0.834166666,
+     "analytics_fps": null,
+     "backend_queue_ms": 6.73570000071777,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 1,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 0.8008,
+     "analytics_fps": null,
+     "backend_queue_ms": 3.026700003829319,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 1,
+     "visible_count": 16,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 0.609,
+   "cpu": 19.6,
+   "ram_mb": 15147.7578125,
+   "rss_mb": 56.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 3.737066666,
+     "analytics_fps": 174.7098585436985,
+     "backend_queue_ms": 1.7282999979215674,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 7,
+     "visible_count": 15,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 3.570233333,
+     "analytics_fps": 166.39085401860058,
+     "backend_queue_ms": 2.711799999815412,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 7,
+     "visible_count": 20,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 3.6036,
+     "analytics_fps": 167.97723242769388,
+     "backend_queue_ms": 7.506900001317263,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 7,
+     "visible_count": 20,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 3.6036,
+     "analytics_fps": 167.13604037890858,
+     "backend_queue_ms": 6.644599998253398,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 7,
+     "visible_count": 20,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 1.171,
+   "cpu": 19.6,
+   "ram_mb": 15147.7578125,
+   "rss_mb": 56.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 6.473133333,
+     "analytics_fps": 164.54736234444397,
+     "backend_queue_ms": 5.265799998596776,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 12,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 6.172833333,
+     "analytics_fps": 156.66613103406016,
+     "backend_queue_ms": 2.115299997967668,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 12,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 6.339666666,
+     "analytics_fps": 161.04091364312194,
+     "backend_queue_ms": 5.5808999968576245,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 12,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 6.339666666,
+     "analytics_fps": 160.83705076444323,
+     "backend_queue_ms": 1.297599999816157,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 12,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 1.718,
+   "cpu": 72.1,
+   "ram_mb": 14769.4921875,
+   "rss_mb": 57.65625,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 9.3093,
+     "analytics_fps": 158.80273970823578,
+     "backend_queue_ms": 1.7650000008870848,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 18,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 9.042366666,
+     "analytics_fps": 154.14463993252812,
+     "backend_queue_ms": 0.9227999980794266,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 18,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 9.3093,
+     "analytics_fps": 158.73985540545706,
+     "backend_queue_ms": 1.2021000002278015,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 18,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 9.175833333,
+     "analytics_fps": 156.95294654119868,
+     "backend_queue_ms": 2.1914999961154535,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 18,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 2.296,
+   "cpu": 72.1,
+   "ram_mb": 14769.4921875,
+   "rss_mb": 57.65625,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 12.078733333,
+     "analytics_fps": 152.9767750661898,
+     "backend_queue_ms": 1.6477999961352907,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 24,
+     "visible_count": 19,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 11.8118,
+     "analytics_fps": 149.34089298922663,
+     "backend_queue_ms": 5.318399998941459,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 23,
+     "visible_count": 19,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 11.878533333,
+     "analytics_fps": 150.77885795885334,
+     "backend_queue_ms": 0.6686000051558949,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 23,
+     "visible_count": 16,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 11.878533333,
+     "analytics_fps": 150.23128857998591,
+     "backend_queue_ms": 5.703900002117734,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 23,
+     "visible_count": 15,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 2.875,
+   "cpu": 72.1,
+   "ram_mb": 14769.4921875,
+   "rss_mb": 57.65625,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 15.081733333,
+     "analytics_fps": 153.50377619260908,
+     "backend_queue_ms": 1.6086000032373704,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 30,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 14.7147,
+     "analytics_fps": 151.87260439927687,
+     "backend_queue_ms": 3.426300005230587,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 29,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 14.8148,
+     "analytics_fps": 151.00956645581255,
+     "backend_queue_ms": 0.7266000029630959,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 29,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 14.881533333,
+     "analytics_fps": 151.56426150975133,
+     "backend_queue_ms": 5.2863000018987805,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 29,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 3.453,
+   "cpu": 72.1,
+   "ram_mb": 14769.4921875,
+   "rss_mb": 57.65625,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 17.951266666,
+     "analytics_fps": 153.6253890427336,
+     "backend_queue_ms": 2.551199999288656,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 35,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 17.6176,
+     "analytics_fps": 153.2135567162553,
+     "backend_queue_ms": 1.374399995256681,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 35,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 17.784433333,
+     "analytics_fps": 151.11235203384004,
+     "backend_queue_ms": 0.3395000021555461,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 35,
+     "visible_count": 21,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 17.784433333,
+     "analytics_fps": 152.59770231039795,
+     "backend_queue_ms": 1.8070000005536713,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 35,
+     "visible_count": 19,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 4.046,
+   "cpu": 55.2,
+   "ram_mb": 14302.10546875,
+   "rss_mb": 58.33203125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 21.054366666,
+     "analytics_fps": 156.3569989404357,
+     "backend_queue_ms": 4.895300000498537,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 42,
+     "visible_count": 11,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 20.653966666,
+     "analytics_fps": 153.80328287808408,
+     "backend_queue_ms": 3.3703000008245,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 41,
+     "visible_count": 16,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 20.754066666,
+     "analytics_fps": 152.21165807259194,
+     "backend_queue_ms": 3.8186999954632483,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 41,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 20.787433333,
+     "analytics_fps": 153.66576999737393,
+     "backend_queue_ms": 3.415700004552491,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 41,
+     "visible_count": 15,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 4.609,
+   "cpu": 55.2,
+   "ram_mb": 14302.10546875,
+   "rss_mb": 58.33203125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 157.26510178222563,
+     "backend_queue_ms": 3.698100001201965,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 156.1385702610843,
+     "backend_queue_ms": 11.62330000079237,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 155.19429549791067,
+     "backend_queue_ms": 1.1675999994622543,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 155.69150381379717,
+     "backend_queue_ms": 2.2096000029705465,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 5.14,
+   "cpu": 55.2,
+   "ram_mb": 14302.10546875,
+   "rss_mb": 58.33203125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 157.26510178222563,
+     "backend_queue_ms": 3.698100001201965,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 156.1385702610843,
+     "backend_queue_ms": 11.62330000079237,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 155.19429549791067,
+     "backend_queue_ms": 1.1675999994622543,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 155.69150381379717,
+     "backend_queue_ms": 2.2096000029705465,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 5.671,
+   "cpu": 55.2,
+   "ram_mb": 14302.10546875,
+   "rss_mb": 58.33203125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 157.26510178222563,
+     "backend_queue_ms": 3.698100001201965,
+     "dropped_frames": 0,
+     "stream_outcome": "CLEAN_EOF",
+     "persisted_count_samples": 48,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 156.1385702610843,
+     "backend_queue_ms": 11.62330000079237,
+     "dropped_frames": 0,
+     "stream_outcome": "CLEAN_EOF",
+     "persisted_count_samples": 48,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-03": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 155.19429549791067,
+     "backend_queue_ms": 1.1675999994622543,
+     "dropped_frames": 0,
+     "stream_outcome": "CLEAN_EOF",
+     "persisted_count_samples": 48,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-04": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 155.69150381379717,
+     "backend_queue_ms": 2.2096000029705465,
+     "dropped_frames": 0,
+     "stream_outcome": "CLEAN_EOF",
+     "persisted_count_samples": 48,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  }
+ ],
+ "gpu_samples": [
+  {
+   "t": 39109.765,
+   "gpu_util": 0.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 57.0,
+   "power_w": 12.48,
+   "sm_clock_mhz": 232.0,
+   "pstate": "P4"
+  },
+  {
+   "t": 39110.765,
+   "gpu_util": 6.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 57.0,
+   "power_w": 13.49,
+   "sm_clock_mhz": 255.0,
+   "pstate": "P4"
+  },
+  {
+   "t": 39111.765,
+   "gpu_util": 1.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 57.0,
+   "power_w": 13.06,
+   "sm_clock_mhz": 262.0,
+   "pstate": "P4"
+  },
+  {
+   "t": 39112.781,
+   "gpu_util": 2.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 863.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 57.0,
+   "power_w": 12.2,
+   "sm_clock_mhz": 330.0,
+   "pstate": "P5"
+  },
+  {
+   "t": 39113.796,
+   "gpu_util": 2.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 863.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 57.0,
+   "power_w": 12.44,
+   "sm_clock_mhz": 300.0,
+   "pstate": "P5"
+  },
+  {
+   "t": 39114.812,
+   "gpu_util": 4.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 895.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 57.0,
+   "power_w": 7.44,
+   "sm_clock_mhz": 270.0,
+   "pstate": "P8"
+  },
+  {
+   "t": 39115.843,
+   "gpu_util": 1.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 1980.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 58.0,
+   "power_w": 18.4,
+   "sm_clock_mhz": 1717.0,
+   "pstate": "P2"
+  },
+  {
+   "t": 39116.828,
+   "gpu_util": 1.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 2010.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 58.0,
+   "power_w": 21.45,
+   "sm_clock_mhz": 1627.0,
+   "pstate": "P2"
+  },
+  {
+   "t": 39117.843,
+   "gpu_util": 84.0,
+   "nvdec_util": 24.0,
+   "vram_used_mib": 2125.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 65.0,
+   "power_w": 95.45,
+   "sm_clock_mhz": 2602.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39118.859,
+   "gpu_util": 82.0,
+   "nvdec_util": 23.0,
+   "vram_used_mib": 2125.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 66.0,
+   "power_w": 99.86,
+   "sm_clock_mhz": 2587.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39119.859,
+   "gpu_util": 82.0,
+   "nvdec_util": 23.0,
+   "vram_used_mib": 2109.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 67.0,
+   "power_w": 100.56,
+   "sm_clock_mhz": 2587.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39120.89,
+   "gpu_util": 83.0,
+   "nvdec_util": 22.0,
+   "vram_used_mib": 2109.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 68.0,
+   "power_w": 101.53,
+   "sm_clock_mhz": 2587.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39121.859,
+   "gpu_util": 83.0,
+   "nvdec_util": 23.0,
+   "vram_used_mib": 1461.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 69.0,
+   "power_w": 101.96,
+   "sm_clock_mhz": 2580.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39122.89,
+   "gpu_util": 0.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 841.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 61.0,
+   "power_w": 38.94,
+   "sm_clock_mhz": 1005.0,
+   "pstate": "P4"
+  }
+ ]
+}

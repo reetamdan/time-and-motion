@@ -1,0 +1,9 @@
+{
+  "status": "INTERRUPTED - incomplete, not an acceptance result",
+  "reason": "signal received",
+  "before_step": "stageA-4feeds-r3",
+  "completed_steps": [
+    "stageA-4feeds-r1",
+    "stageA-4feeds-r2"
+  ]
+}

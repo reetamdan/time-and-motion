@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-10-26T15:10:11Z",
+  "result": "PASS",
+  "docker": {
+    "command": "wsl.exe -d Ubuntu-22.04 -- docker ps --no-trunc",
+    "exit_code": 0,
+    "running_containers": 0,
+    "observation": "Header only; no running containers in the candidate Docker context."
+  },
+  "exact_process_checks": {
+    "host_command_pattern": "pgrep -x <name>",
+    "wsl_command_pattern": "wsl.exe -d Ubuntu-22.04 -- pgrep -x <name>",
+    "processes": {
+      "trtexec": {
+        "host": "NOT_RUNNING",
+        "wsl": "NOT_RUNNING"
+      },
+      "deepstream-app": {
+        "host": "NOT_RUNNING",
+        "wsl": "NOT_RUNNING"
+      },
+      "gst-launch-1.0": {
+        "host": "NOT_RUNNING",
+        "wsl": "NOT_RUNNING"
+      }
+    }
+  },
+  "scope": "Post-run cleanup for the RT-DETR candidate. The host docker CLI was not on the Git Bash PATH; the successful container check used the Ubuntu-22.04 WSL Docker context used for the candidate work."
+}

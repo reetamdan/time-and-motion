@@ -1,0 +1,131 @@
+{
+  "stage": "A",
+  "feeds": 4,
+  "repeat": 2,
+  "result": {
+    "feeds": {
+      "bench-01": {
+        "frames_total": 21672,
+        "frames_in_window": 17975,
+        "cadence_fps": 29.958,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.908,
+          "p95": -199.854,
+          "max": -198.7
+        },
+        "backlog_growth_ms": -0.0,
+        "objects_per_frame_mean": 0.0,
+        "covered_window_s": 600.0,
+        "processing_age_p95_ms": -199.854
+      },
+      "bench-02": {
+        "frames_total": 21690,
+        "frames_in_window": 17975,
+        "cadence_fps": 29.958,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.903,
+          "p95": -199.859,
+          "max": -199.4
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 0.0,
+        "covered_window_s": 600.0,
+        "processing_age_p95_ms": -199.859
+      },
+      "bench-03": {
+        "frames_total": 21708,
+        "frames_in_window": 17975,
+        "cadence_fps": 29.958,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.9,
+          "p95": -199.82,
+          "max": -198.6
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 0.0,
+        "covered_window_s": 600.0,
+        "processing_age_p95_ms": -199.82
+      },
+      "bench-04": {
+        "frames_total": 21726,
+        "frames_in_window": 17975,
+        "cadence_fps": 29.958,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.901,
+          "p95": -199.814,
+          "max": -198.8
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 0.0,
+        "covered_window_s": 600.0,
+        "processing_age_p95_ms": -199.814
+      }
+    },
+    "crashed": [],
+    "containers_absent_after": {
+      "aegis-bench-a-01-e02af936": true,
+      "aegis-bench-a-02-e02af936": true,
+      "aegis-bench-a-03-e02af936": true,
+      "aegis-bench-a-04-e02af936": true
+    },
+    "resources": {
+      "gpu_util_percent": {
+        "p50": 15.0,
+        "p95": 22.0,
+        "max": 30.0
+      },
+      "nvdec_util_percent": {
+        "p50": 26.0,
+        "p95": 36.0,
+        "max": 53.0
+      },
+      "vram_used_mib": {
+        "p50": 1730.0,
+        "p95": 1735.0,
+        "max": 1798.0
+      },
+      "gpu_temp_c": {
+        "p50": 57.0,
+        "p95": 58.0,
+        "max": 59.0
+      },
+      "gpu_power_w": {
+        "p50": 14.5,
+        "p95": 16.21,
+        "max": 44.24
+      },
+      "sm_clock_mhz": {
+        "p50": 877.0,
+        "p95": 1005.0,
+        "max": 2047.0
+      },
+      "pstates": [
+        "P0",
+        "P4",
+        "P5",
+        "P8"
+      ],
+      "host_cpu_percent": {
+        "p50": 5.0,
+        "p95": 10.0,
+        "max": 21.0
+      },
+      "host_ram_used_mib": {
+        "p50": 14356.5,
+        "p95": 14483.9,
+        "max": 14624.7
+      },
+      "gpu_samples": 596,
+      "host_samples": 595
+    }
+  },
+  "gate": {
+    "pass": true,
+    "failures": [],
+    "cleanup_confirmed": true
+  }
+}

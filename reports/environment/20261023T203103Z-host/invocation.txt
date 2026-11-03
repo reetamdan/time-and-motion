@@ -1,0 +1,5 @@
+utc_started=2026-10-23T20:31:03.1640046+00:00
+project_root=C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv
+powershell=5.1.26100.9711
+wsl_distribution=Ubuntu-22.04
+note=Inspection only; no drivers, packages, images, or system settings are changed.

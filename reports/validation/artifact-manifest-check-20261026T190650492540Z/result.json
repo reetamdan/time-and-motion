@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T19:06:50.914357+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_artifact_manifest.py",
+  "run_dir": "reports\\validation\\artifact-manifest-check-20261026T190650492540Z",
+  "result": "BLOCKED",
+  "items": {
+    "pins:backend/requirements.txt": {
+      "status": "PASS",
+      "unpinned": [],
+      "hash_locked": false
+    },
+    "pins:backend/requirements-dev.txt": {
+      "status": "PASS",
+      "unpinned": [],
+      "hash_locked": false
+    },
+    "pins:perception/deepstream/service_maker/requirements.txt": {
+      "status": "PASS",
+      "unpinned": [],
+      "hash_locked": false
+    },
+    "pip_check_backend_venv": {
+      "status": "PASS",
+      "output": "No broken requirements found."
+    },
+    "frontend_lockfile": {
+      "status": "PASS",
+      "sha256": "5f324a215b585db594906f705df3eb560ce37f86930bf0ffd4f9df591c128c83",
+      "lockfileVersion": 3
+    },
+    "deepstream_image_digest_pinned": {
+      "status": "PASS",
+      "image": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85"
+    },
+    "model:trafficcamnet-smoke": {
+      "status": "PASS",
+      "revision": "deepstream-9.2-bundled-resnet18-trafficcamnet-pruned",
+      "checkpoint_sha256_matches": true,
+      "engine_sha256_matches": true,
+      "license_ref": "NVIDIA DeepStream SDK License Agreement for bundled sample artifacts; see THIRD_PARTY.md"
+    },
+    "model:rt-detr-person-candidate": {
+      "status": "NOT_APPLICABLE",
+      "reason": "disabled candidate placeholder"
+    },
+    "model:rf-detr-person-candidate": {
+      "status": "NOT_APPLICABLE",
+      "reason": "disabled candidate placeholder"
+    },
+    "tracker_config": {
+      "status": "PASS",
+      "revision": "deepstream-9.2-nvdcf-perf-13662e73754e",
+      "sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+      "manifest_sha256_recorded": false
+    },
+    "calibration_manifests": {
+      "status": "BLOCKED",
+      "reason": "No camera has a calibration yet (all MISSING); a calibration manifest cannot exist without calibration data.",
+      "enabled_cameras": [
+        "cam-01"
+      ]
+    }
+  },
+  "scope": "PRD AC-24 (locks, hashes, model/engine/calibration manifests). Inference run-to-run determinism is a separate, reported observation, not an AC-24 prerequisite."
+}

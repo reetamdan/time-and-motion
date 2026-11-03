@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T17:25:00Z",
+  "question": "Does demo/cam01.mp4 support a manually verifiable image-space line-crossing example?",
+  "answer": "NO",
+  "evidence": {
+    "global_motion": "reports/validation/cam01-camera-motion/global-motion.json",
+    "cumulative_global_shift_px": {"dx": 1308.1, "dy": 835.5},
+    "frames_pairs_with_global_shift_over_2px": "329 of 709",
+    "visual_inspection": "Frames 0/240/480/705 (640x360 tiles) show the background, horizon and water area changing position: the camera pans/moves through the scene (handheld or panning telephoto stock footage)."
+  },
+  "reason": "A fixed pixel-space line is not attached to the ground in a moving view, so a counted crossing would mix person motion with camera motion and could not be verified as a person crossing a physical boundary. The scene is also a dense, continuous crowd without an identifiable doorway, portal or marked boundary.",
+  "decision": "No crossing is configured for cam-01. Image-space line crossing is implemented generically (configured per camera, source-time based, idempotent, persisted) and covered by tests, so it can be enabled on fixed-camera footage with a defined boundary.",
+  "external_input_required": "Fixed-mount footage with a physical entry/exit boundary (and, for AC-09 acceptance, reference crossing labels)."
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "dump_present": true,
+  "frame_bytes": 4915200,
+  "layout": "CHW float32 little-endian, first batch item, appended once per nvinfer batch",
+  "frames": [
+    {
+      "frame_index": 141,
+      "path": "ds_input_000141.f32le",
+      "sha256": "41cee75b6a093ff6bb8a08371a0291ad74c2451ff4e38eeb241c93dcb072e17a"
+    },
+    {
+      "frame_index": 283,
+      "error": "short read"
+    }
+  ],
+  "dump_size_bytes": 702873600,
+  "dump_batches": 143,
+  "dump_size_is_whole_batches": true
+}

@@ -1,0 +1,40 @@
+{
+  "steps": [
+    {
+      "name": "capacity_repeats",
+      "script": "scripts/benchmark/run_capacity.py",
+      "args": [
+        "--plan",
+        "repeats"
+      ],
+      "stop_batch_on_exit_codes": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "capacity_soak",
+      "script": "scripts/benchmark/run_capacity.py",
+      "args": [
+        "--plan",
+        "soak"
+      ],
+      "stop_batch_on_exit_codes": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "capacity_ladder",
+      "script": "scripts/benchmark/run_capacity.py",
+      "args": [
+        "--plan",
+        "ladder"
+      ],
+      "stop_batch_on_exit_codes": [
+        2,
+        3
+      ]
+    }
+  ]
+}

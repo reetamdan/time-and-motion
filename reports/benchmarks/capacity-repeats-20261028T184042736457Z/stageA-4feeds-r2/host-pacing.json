@@ -1,0 +1,79 @@
+{
+ "tolerance": {
+  "rate": 0.002,
+  "max_ahead_s": 1.0,
+  "min_source_s": 20.0,
+  "min_rate_source_s": 120.0
+ },
+ "files": [
+  {
+   "file": "reports\\benchmarks\\capacity-repeats-20261028T184042736457Z\\stageA-4feeds-r2\\bench-01.jsonl",
+   "basis": "producer emit time (WSL wall clock) at the first frame after each guest time-sync step",
+   "frames": 21700,
+   "rate_guest_wall_per_source": 1.00054,
+   "sync_points": 22,
+   "source_s": 645.539,
+   "host_s": 645.475,
+   "rate_host_per_source": 0.99993,
+   "drift_s": {
+    "max_ahead": 0.066,
+    "max_behind": -0.114,
+    "final": 0.064
+   },
+   "rate_judged": true,
+   "verdict": "PASS"
+  },
+  {
+   "file": "reports\\benchmarks\\capacity-repeats-20261028T184042736457Z\\stageA-4feeds-r2\\bench-02.jsonl",
+   "basis": "producer emit time (WSL wall clock) at the first frame after each guest time-sync step",
+   "frames": 21717,
+   "rate_guest_wall_per_source": 1.00054,
+   "sync_points": 22,
+   "source_s": 645.539,
+   "host_s": 645.475,
+   "rate_host_per_source": 0.99993,
+   "drift_s": {
+    "max_ahead": 0.066,
+    "max_behind": -0.114,
+    "final": 0.064
+   },
+   "rate_judged": true,
+   "verdict": "PASS"
+  },
+  {
+   "file": "reports\\benchmarks\\capacity-repeats-20261028T184042736457Z\\stageA-4feeds-r2\\bench-03.jsonl",
+   "basis": "producer emit time (WSL wall clock) at the first frame after each guest time-sync step",
+   "frames": 21733,
+   "rate_guest_wall_per_source": 1.00053,
+   "sync_points": 22,
+   "source_s": 645.539,
+   "host_s": 645.478,
+   "rate_host_per_source": 0.99993,
+   "drift_s": {
+    "max_ahead": 0.067,
+    "max_behind": -0.112,
+    "final": 0.061
+   },
+   "rate_judged": true,
+   "verdict": "PASS"
+  },
+  {
+   "file": "reports\\benchmarks\\capacity-repeats-20261028T184042736457Z\\stageA-4feeds-r2\\bench-04.jsonl",
+   "basis": "producer emit time (WSL wall clock) at the first frame after each guest time-sync step",
+   "frames": 21748,
+   "rate_guest_wall_per_source": 1.00053,
+   "sync_points": 22,
+   "source_s": 645.539,
+   "host_s": 645.475,
+   "rate_host_per_source": 0.99993,
+   "drift_s": {
+    "max_ahead": 0.066,
+    "max_behind": -0.114,
+    "final": 0.064
+   },
+   "rate_judged": true,
+   "verdict": "PASS"
+  }
+ ],
+ "verdict": "PASS"
+}

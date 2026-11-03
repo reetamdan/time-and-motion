@@ -1,0 +1,36 @@
+{
+  "started_utc": "2026-10-28T14:01:42.830433+00:00",
+  "supervisor_pid": 17924,
+  "parent_pid": 6960,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "documented_commands",
+      "started_utc": "2026-10-28T14:01:42.830433+00:00",
+      "available_at_start_mib": 6770.5,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_documented_commands.py"
+      ],
+      "pid": 15848,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T14:04:34.384348+00:00",
+      "run_dir": "reports\\validation\\documented-commands-20261028T140143584826Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    }
+  ],
+  "state": "COMPLETE",
+  "host_available_min_mib": 5819.4,
+  "ended_utc": "2026-10-28T14:04:34.636131+00:00",
+  "stop_reason": null,
+  "not_started": []
+}

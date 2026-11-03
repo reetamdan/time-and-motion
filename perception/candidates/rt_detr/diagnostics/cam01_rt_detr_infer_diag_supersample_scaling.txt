@@ -1,0 +1,31 @@
+# DIAGNOSTIC ONLY (not a runtime config): candidate config + nvinfer input-tensor dump; scaling-filter=3 (NvBufSurfTransformInter_Algo2, GPU-Super supersampling) on GPU compute; isolates the resize filter only.
+[property]
+gpu-id=0
+onnx-file=/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw.onnx
+model-engine-file=/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine
+labelfile-path=/workspace/perception/candidates/rt_detr/deepstream/labels.txt
+custom-lib-path=/workspace/perception/candidates/rt_detr/parser/libnvds_infercustomparser_rtdetr.so
+parse-bbox-func-name=NvDsInferParseCustomRtDetrPerson
+batch-size=1
+process-mode=1
+network-type=0
+network-mode=0
+strongly-typed=1
+num-detected-classes=1
+interval=0
+gie-unique-id=1
+model-color-format=0
+net-scale-factor=0.00392156862745098
+maintain-aspect-ratio=0
+infer-dims=3;640;640
+# DETR queries are already a set prediction; do not apply NMS.
+cluster-mode=4
+output-tensor-meta=1
+# Appends the first batch item's CHW float32 input to ./ip_tensor_dump.bin per batch.
+dump-input-tensor=1
+scaling-filter=3
+scaling-compute-hw=1
+
+[class-attrs-all]
+pre-cluster-threshold=0.25
+topk=300

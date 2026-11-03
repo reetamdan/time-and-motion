@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:19:27.888818+00:00",
+  "variant": "1080p_resize_norm_in_graph",
+  "model_id": "Roboflow/rf-detr-small",
+  "revision": "3bdc465063270f99769da5a1b4c00c68bd2d439d",
+  "checkpoint_sha256": "2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d",
+  "onnx_path": "models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx",
+  "onnx_sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb",
+  "onnx_size_bytes": 115505297,
+  "onnx_io": {
+    "inputs": [
+      {
+        "name": "input",
+        "shape": [
+          1,
+          3,
+          1080,
+          1920
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "logits",
+        "shape": [
+          1,
+          300,
+          91
+        ]
+      },
+      {
+        "name": "pred_boxes",
+        "shape": [
+          1,
+          300,
+          4
+        ]
+      }
+    ],
+    "resize_nodes": [
+      {
+        "name": "/Resize",
+        "attributes": {
+          "coordinate_transformation_mode": "half_pixel",
+          "cubic_coeff_a": -0.75,
+          "mode": "linear",
+          "nearest_mode": "floor"
+        }
+      },
+      {
+        "name": "/model/model/backbone/Resize",
+        "attributes": {
+          "coordinate_transformation_mode": "asymmetric",
+          "cubic_coeff_a": -0.75,
+          "mode": "nearest",
+          "nearest_mode": "floor"
+        }
+      }
+    ]
+  },
+  "torch_onnx_export": {
+    "opset_version": 17,
+    "dynamo": false
+  },
+  "export_patch": "transformers.models.rf_detr.modeling_rf_detr.RfDetrDinov2Embeddings.interpolate_pos_encoding",
+  "input_contract": "input [1,3,1080,1920] float32 RGB in [0,1] (nvinfer net-scale-factor=1/255, same-size, no scaling); graph: bilinear half-pixel no-antialias resize to 512, (x-mean)/std",
+  "versions": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.2",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0"
+  }
+}

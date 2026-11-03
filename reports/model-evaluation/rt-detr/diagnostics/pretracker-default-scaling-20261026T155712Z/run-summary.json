@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-26T15:57:18.486100+00:00",
+  "source": "/workspace/demo/cam01.mp4",
+  "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "infer_config": "/workspace/perception/candidates/rt_detr/diagnostics/cam01_rt_detr_infer_diag_default_scaling.txt",
+  "infer_config_sha256": "7ded4cee6598b5eabddb65f5f8375994c9b81297e1fc27cdac6d8401aa780897",
+  "tracker_config": "/workspace/perception/candidates/rt_detr/deepstream/config_tracker_NvDCF_candidate.yml",
+  "pyservicemaker_version": "0.0.1",
+  "numpy_version": "1.26.4",
+  "cwd": "/tmp/rtdetr-diag.FirUAb",
+  "pipeline_returned": true,
+  "clean_eos": true,
+  "error": null,
+  "ended_at_utc": "2026-10-26T15:57:35.939118+00:00",
+  "elapsed_seconds": 17.348516013999983,
+  "pre_tracker_frames": 710,
+  "post_tracker_frames": 710,
+  "eos_message_count": 1,
+  "tensor_records": [
+    {
+      "frame_number": 141,
+      "item": 0,
+      "layer": "logits",
+      "unique_id": 1,
+      "shape": [
+        300,
+        80
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "RuntimeError: tensor is not host-resident (dlpack device (2, 0))"
+    },
+    {
+      "frame_number": 141,
+      "item": 0,
+      "layer": "pred_boxes",
+      "unique_id": 1,
+      "shape": [
+        300,
+        4
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "RuntimeError: tensor is not host-resident (dlpack device (2, 0))"
+    },
+    {
+      "frame_number": 283,
+      "item": 0,
+      "layer": "logits",
+      "unique_id": 1,
+      "shape": [
+        300,
+        80
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "RuntimeError: tensor is not host-resident (dlpack device (2, 0))"
+    },
+    {
+      "frame_number": 283,
+      "item": 0,
+      "layer": "pred_boxes",
+      "unique_id": 1,
+      "shape": [
+        300,
+        4
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "RuntimeError: tensor is not host-resident (dlpack device (2, 0))"
+    }
+  ],
+  "tensor_errors": [
+    "frame 141 logits: RuntimeError: tensor is not host-resident (dlpack device (2, 0))",
+    "frame 141 pred_boxes: RuntimeError: tensor is not host-resident (dlpack device (2, 0))",
+    "frame 283 logits: RuntimeError: tensor is not host-resident (dlpack device (2, 0))",
+    "frame 283 pred_boxes: RuntimeError: tensor is not host-resident (dlpack device (2, 0))"
+  ]
+}

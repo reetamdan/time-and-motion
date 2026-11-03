@@ -1,0 +1,9 @@
+{
+  "status": "INTERRUPTED - incomplete, not an acceptance result",
+  "reason": "insufficient host memory headroom: 3361.9 MiB available, 3768 MiB needed (4 feeds x 650 + floor 768 + backend 400)",
+  "before_step": "stageD-4feeds-r1",
+  "kind": "insufficient_headroom",
+  "completed_steps": [
+    "stageC-4feeds-r1"
+  ]
+}

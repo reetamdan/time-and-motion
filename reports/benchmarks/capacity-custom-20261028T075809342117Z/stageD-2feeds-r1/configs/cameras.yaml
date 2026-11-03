@@ -1,0 +1,47 @@
+schema_version: 1
+cameras:
+- id: cam-01
+  name: DUPLICATE INPUT 1 of cam01-repeat33 (load test only)
+  floor_id: floor-1
+  enabled: true
+  source_type: file
+  source: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\demo\derived\cam01-repeat33.mp4
+  analytics_fps: 8
+  preview_fps: 5
+  overlap_group: null
+  calibration_ref: null
+  calibration_status: MISSING
+  calibration_revision: null
+  replay_group: demo-session
+  timestamp_offset_ms: 0
+  position:
+  - 130
+  - 105
+  coverage_polygon: &id001
+  - - 25
+    - 35
+  - - 310
+    - 35
+  - - 330
+    - 285
+  - - 30
+    - 285
+- id: cam-02
+  name: DUPLICATE INPUT 2 of cam01-repeat33 (load test only)
+  floor_id: floor-1
+  enabled: true
+  source_type: file
+  source: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\demo\derived\cam01-repeat33.mp4
+  analytics_fps: 8
+  preview_fps: 5
+  overlap_group: null
+  calibration_ref: null
+  calibration_status: MISSING
+  calibration_revision: null
+  replay_group: demo-session
+  timestamp_offset_ms: 0
+  position:
+  - 170
+  - 105
+  coverage_polygon: *id001
+load_test_note: DUPLICATE INPUT of labelled repeated footage; load measurement only

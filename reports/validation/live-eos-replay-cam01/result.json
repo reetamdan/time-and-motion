@@ -1,0 +1,950 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T12:25:18.655768+00:00",
+  "result": "PASS",
+  "command": ".venv/Scripts/python.exe scripts/validate_live_eos.py",
+  "scope": "Real FastAPI -> supervisor -> WSL/Docker -> Service Maker natural file EOS, stale API state, operator stop, and fresh second-epoch replay",
+  "checks": {
+    "first_start_http_ok": "PASS",
+    "first_run_active": "PASS",
+    "first_epoch_present": "PASS",
+    "first_real_positive_visible_count": "PASS",
+    "first_positive_before_natural_eos": "PASS",
+    "first_pre_eos_fresh_metrics_present": "PASS",
+    "natural_eos_clean_completion": "PASS",
+    "natural_eos_exact_710_frames": "PASS",
+    "natural_eos_jsonl_coverage": "PASS",
+    "natural_eos_container_removed": "PASS",
+    "natural_eos_backend_drained_710_frames": "PASS",
+    "stale_values_null": "PASS",
+    "stale_health_degraded": "PASS",
+    "stale_last_good_age_threshold": "PASS",
+    "stale_last_good_age_increases": "PASS",
+    "stale_run_remains_active": "PASS",
+    "first_operator_stop_http_ok": "PASS",
+    "first_operator_stop_run_stopped": "PASS",
+    "first_container_absent_after_operator_stop": "PASS",
+    "second_start_http_ok": "PASS",
+    "second_epoch_different": "PASS",
+    "second_replay_fresh_positive_visible_count": "PASS",
+    "second_operator_stop_http_ok": "PASS",
+    "second_operator_stop_run_stopped": "PASS",
+    "both_epoch_containers_absent_after_second_stop": "PASS",
+    "testclient_shutdown_completed": "PASS",
+    "adapter_sessions_disposed": "PASS",
+    "final_exact_epoch_containers_absent": "PASS"
+  },
+  "check_details": {
+    "first_start_http_ok": {
+      "http_status": 200
+    },
+    "first_run_active": {
+      "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+      "run_status": "RUNNING",
+      "generated_at": "2026-10-26T12:24:34.269Z",
+      "sequence": 4,
+      "camera": {
+        "id": "cam-01",
+        "health": "CALIBRATION WARNING",
+        "calibration_status": "MISSING",
+        "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+      }
+    },
+    "first_epoch_present": {
+      "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2"
+    },
+    "first_real_positive_visible_count": {
+      "first_positive": {
+        "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:34.317Z",
+        "sequence": 132,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+          "visible_count": 15,
+          "source_fps": 29.970029670629074,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      },
+      "last_sample": {
+        "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:34.317Z",
+        "sequence": 132,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+          "visible_count": 15,
+          "source_fps": 29.970029670629074,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      },
+      "positive_samples_before_eos_wait": 1
+    },
+    "first_positive_before_natural_eos": {
+      "positive_snapshot_generated_at": "2026-10-26T12:24:34.317Z",
+      "natural_eos_ended_at": "2026-10-26T12:24:38.453713+00:00",
+      "positive_observed_before_eos": true,
+      "error": null
+    },
+    "first_pre_eos_fresh_metrics_present": {
+      "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+      "run_status": "RUNNING",
+      "generated_at": "2026-10-26T12:24:34.372Z",
+      "sequence": 261,
+      "camera": {
+        "id": "cam-01",
+        "health": "CALIBRATION WARNING",
+        "calibration_status": "MISSING",
+        "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "visible_count": 15,
+        "source_fps": 29.970029670629074,
+        "analytics_fps": 62.50000000147793,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": 0.0,
+        "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+      }
+    },
+    "natural_eos_clean_completion": {
+      "summary": {
+        "schema_version": 1,
+        "started_at_utc": "2026-10-26T12:24:27.675806+00:00",
+        "source": "/workspace/demo/cam01.mp4",
+        "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+        "camera_id": "cam-01",
+        "camera_epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "output": "/workspace/backend/var/perception/cam-01/7c0109f2-7cb6-47ae-a2a8-f00344a403a2.jsonl",
+        "infer_config": "/workspace/perception/deepstream/cam01_trafficcamnet_smoke_infer.txt",
+        "tracker_config": "/workspace/perception/deepstream/reference/config_tracker_NvDCF_perf.yml",
+        "tracker_lib": "/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so",
+        "render_mode": "DISCARD",
+        "pyservicemaker_version": "0.0.1",
+        "pyyaml_version": "6.0.2",
+        "pipeline_returned": true,
+        "clean_eos": true,
+        "eos_message_count": 1,
+        "error": null,
+        "ended_at_utc": "2026-10-26T12:24:38.453713+00:00",
+        "elapsed_seconds": 10.777930102,
+        "frames_written": 710,
+        "objects_written": 12448,
+        "first_frame_number": 0,
+        "last_frame_number": 709
+      },
+      "error": null
+    },
+    "natural_eos_exact_710_frames": {
+      "schema_version": 1,
+      "started_at_utc": "2026-10-26T12:24:27.675806+00:00",
+      "source": "/workspace/demo/cam01.mp4",
+      "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+      "camera_id": "cam-01",
+      "camera_epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "output": "/workspace/backend/var/perception/cam-01/7c0109f2-7cb6-47ae-a2a8-f00344a403a2.jsonl",
+      "infer_config": "/workspace/perception/deepstream/cam01_trafficcamnet_smoke_infer.txt",
+      "tracker_config": "/workspace/perception/deepstream/reference/config_tracker_NvDCF_perf.yml",
+      "tracker_lib": "/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so",
+      "render_mode": "DISCARD",
+      "pyservicemaker_version": "0.0.1",
+      "pyyaml_version": "6.0.2",
+      "pipeline_returned": true,
+      "clean_eos": true,
+      "eos_message_count": 1,
+      "error": null,
+      "ended_at_utc": "2026-10-26T12:24:38.453713+00:00",
+      "elapsed_seconds": 10.777930102,
+      "frames_written": 710,
+      "objects_written": 12448,
+      "first_frame_number": 0,
+      "last_frame_number": 709
+    },
+    "natural_eos_jsonl_coverage": {
+      "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\7c0109f2-7cb6-47ae-a2a8-f00344a403a2.jsonl",
+      "records": 710,
+      "first_frame_number": 0,
+      "last_frame_number": 709,
+      "wrong_epoch_or_camera_records": 0,
+      "parse_error_count": 0,
+      "parse_errors": [],
+      "exact_710_contiguous": true
+    },
+    "natural_eos_container_removed": {
+      "container_name": "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "all_absent": true,
+      "elapsed_seconds": 0.6710000000002765,
+      "inspection": {
+        "command": [
+          "wsl.exe",
+          "-d",
+          "Ubuntu-22.04",
+          "--",
+          "docker",
+          "ps",
+          "-a",
+          "--format",
+          "{{.ID}}:{{.Names}}:{{.State}}"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "matches": {
+          "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": []
+        },
+        "parse_errors": [],
+        "all_absent": true
+      }
+    },
+    "natural_eos_backend_drained_710_frames": {
+      "passed": true,
+      "session_present": true,
+      "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "expected_frames": 710,
+      "frames_consumed": 710,
+      "queue_empty": true,
+      "queue_size": 0,
+      "reader_done": true,
+      "reader_thread_alive": false,
+      "reader_error": null,
+      "malformed_frames": 0,
+      "consumer_task_present": true,
+      "consumer_task_done": true,
+      "consumer_task_cancelled": false,
+      "consumer_task_exception": null,
+      "wait_seconds": 0.0
+    },
+    "stale_values_null": {
+      "first": {
+        "id": "cam-01",
+        "health": "DEGRADED",
+        "calibration_status": "MISSING",
+        "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": 8234.000000000378,
+        "unavailable_reason": "No fresh perception metadata; last values are not current"
+      },
+      "later": {
+        "id": "cam-01",
+        "health": "DEGRADED",
+        "calibration_status": "MISSING",
+        "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": 8500.0,
+        "unavailable_reason": "No fresh perception metadata; last values are not current"
+      }
+    },
+    "stale_health_degraded": {
+      "first_health": "DEGRADED",
+      "later_health": "DEGRADED"
+    },
+    "stale_last_good_age_threshold": {
+      "configured_stale_after_ms": 1500.0,
+      "first_age_ms": 8234.000000000378,
+      "later_age_ms": 8500.0
+    },
+    "stale_last_good_age_increases": {
+      "first_age_ms": 8234.000000000378,
+      "later_age_ms": 8500.0,
+      "delta_ms": 265.99999999962165
+    },
+    "stale_run_remains_active": {
+      "first": {
+        "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:43.426Z",
+        "sequence": 715,
+        "camera": {
+          "id": "cam-01",
+          "health": "DEGRADED",
+          "calibration_status": "MISSING",
+          "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+          "visible_count": null,
+          "source_fps": null,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 8234.000000000378,
+          "unavailable_reason": "No fresh perception metadata; last values are not current"
+        }
+      },
+      "later": {
+        "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:43.701Z",
+        "sequence": 716,
+        "camera": {
+          "id": "cam-01",
+          "health": "DEGRADED",
+          "calibration_status": "MISSING",
+          "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+          "visible_count": null,
+          "source_fps": null,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 8500.0,
+          "unavailable_reason": "No fresh perception metadata; last values are not current"
+        }
+      }
+    },
+    "first_operator_stop_http_ok": {
+      "http_status": 200,
+      "elapsed_seconds": 0.030999999999039574
+    },
+    "first_operator_stop_run_stopped": {
+      "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+      "run_status": "STOPPED",
+      "generated_at": "2026-10-26T12:24:43.728Z",
+      "sequence": 717,
+      "camera": {
+        "id": "cam-01",
+        "health": "OFFLINE",
+        "calibration_status": "MISSING",
+        "epoch": null,
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Demo run stopped; source-only preview is available"
+      }
+    },
+    "first_container_absent_after_operator_stop": {
+      "container_name": "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "all_absent": true,
+      "elapsed_seconds": 0.14100000000144064,
+      "inspection": {
+        "command": [
+          "wsl.exe",
+          "-d",
+          "Ubuntu-22.04",
+          "--",
+          "docker",
+          "ps",
+          "-a",
+          "--format",
+          "{{.ID}}:{{.Names}}:{{.State}}"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "matches": {
+          "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": []
+        },
+        "parse_errors": [],
+        "all_absent": true
+      }
+    },
+    "second_start_http_ok": {
+      "http_status": 200
+    },
+    "second_epoch_different": {
+      "first_epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "second_epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+      "snapshot": {
+        "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:55.287Z",
+        "sequence": 720,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+          "visible_count": null,
+          "source_fps": null,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": null,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      }
+    },
+    "second_replay_fresh_positive_visible_count": {
+      "positive_snapshot": {
+        "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:55.343Z",
+        "sequence": 867,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+          "visible_count": 16,
+          "source_fps": 29.97003056883178,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      },
+      "first_positive": {
+        "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:55.343Z",
+        "sequence": 867,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+          "visible_count": 16,
+          "source_fps": 29.97003056883178,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      },
+      "last_sample": {
+        "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:55.343Z",
+        "sequence": 867,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+          "visible_count": 16,
+          "source_fps": 29.97003056883178,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      }
+    },
+    "second_operator_stop_http_ok": {
+      "http_status": 200,
+      "elapsed_seconds": 22.71899999999914
+    },
+    "second_operator_stop_run_stopped": {
+      "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+      "run_status": "STOPPED",
+      "generated_at": "2026-10-26T12:25:18.095Z",
+      "sequence": 1018,
+      "camera": {
+        "id": "cam-01",
+        "health": "OFFLINE",
+        "calibration_status": "MISSING",
+        "epoch": null,
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Demo run stopped; source-only preview is available"
+      }
+    },
+    "both_epoch_containers_absent_after_second_stop": {
+      "exact_container_names": [
+        "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db"
+      ],
+      "all_absent": true,
+      "elapsed_seconds": 0.15600000000085856,
+      "inspection": {
+        "command": [
+          "wsl.exe",
+          "-d",
+          "Ubuntu-22.04",
+          "--",
+          "docker",
+          "ps",
+          "-a",
+          "--format",
+          "{{.ID}}:{{.Names}}:{{.State}}"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "matches": {
+          "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": [],
+          "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db": []
+        },
+        "parse_errors": [],
+        "all_absent": true
+      }
+    },
+    "testclient_shutdown_completed": {
+      "entered": true,
+      "clean_exit": true
+    },
+    "adapter_sessions_disposed": {
+      "adapter_available": true,
+      "remaining_session_count": 0,
+      "sessions": []
+    },
+    "final_exact_epoch_containers_absent": {
+      "exact_container_names": [
+        "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db"
+      ],
+      "all_absent": true,
+      "elapsed_seconds": 0.13999999999941792,
+      "inspection": {
+        "command": [
+          "wsl.exe",
+          "-d",
+          "Ubuntu-22.04",
+          "--",
+          "docker",
+          "ps",
+          "-a",
+          "--format",
+          "{{.ID}}:{{.Names}}:{{.State}}"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "matches": {
+          "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": [],
+          "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db": []
+        },
+        "parse_errors": [],
+        "all_absent": true
+      }
+    }
+  },
+  "observed": {
+    "configuration": {
+      "source": "./demo/cam01.mp4",
+      "source_type": "file",
+      "calibration_status": "MISSING",
+      "selected_model": "trafficcamnet-smoke",
+      "model_selection_mode": "provisional_smoke",
+      "tracker": "NVIDIA NvDCF multi-object tracker",
+      "tracker_revision": "deepstream-9.2-nvdcf-perf-13662e73754e",
+      "stale_after_ms": 1500.0,
+      "expected_natural_eos_frames": 710,
+      "wsl_distro": "Ubuntu-22.04"
+    },
+    "first_epoch": {
+      "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+      "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "container_name": "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+      "start_request_seconds": 22.46899999999914,
+      "time_to_first_positive_from_start_response_seconds": 0.06300000000010186,
+      "natural_eos_wait_after_positive_phase_seconds": 0.9529999999995198,
+      "natural_eos_from_start_response_seconds": 1.0159999999996217,
+      "extractor_summary": {
+        "schema_version": 1,
+        "started_at_utc": "2026-10-26T12:24:27.675806+00:00",
+        "source": "/workspace/demo/cam01.mp4",
+        "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+        "camera_id": "cam-01",
+        "camera_epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "output": "/workspace/backend/var/perception/cam-01/7c0109f2-7cb6-47ae-a2a8-f00344a403a2.jsonl",
+        "infer_config": "/workspace/perception/deepstream/cam01_trafficcamnet_smoke_infer.txt",
+        "tracker_config": "/workspace/perception/deepstream/reference/config_tracker_NvDCF_perf.yml",
+        "tracker_lib": "/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so",
+        "render_mode": "DISCARD",
+        "pyservicemaker_version": "0.0.1",
+        "pyyaml_version": "6.0.2",
+        "pipeline_returned": true,
+        "clean_eos": true,
+        "eos_message_count": 1,
+        "error": null,
+        "ended_at_utc": "2026-10-26T12:24:38.453713+00:00",
+        "elapsed_seconds": 10.777930102,
+        "frames_written": 710,
+        "objects_written": 12448,
+        "first_frame_number": 0,
+        "last_frame_number": 709
+      },
+      "extractor_summary_error": null,
+      "positive_samples_through_eos": 9,
+      "maximum_visible_count_through_eos": 19,
+      "fresh_metrics_sample": {
+        "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:34.372Z",
+        "sequence": 261,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+          "visible_count": 15,
+          "source_fps": 29.970029670629074,
+          "analytics_fps": 62.50000000147793,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      },
+      "positive_eos_ordering": {
+        "positive_snapshot_generated_at": "2026-10-26T12:24:34.317Z",
+        "natural_eos_ended_at": "2026-10-26T12:24:38.453713+00:00",
+        "positive_observed_before_eos": true,
+        "error": null
+      },
+      "jsonl": {
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\7c0109f2-7cb6-47ae-a2a8-f00344a403a2.jsonl",
+        "records": 710,
+        "first_frame_number": 0,
+        "last_frame_number": 709,
+        "wrong_epoch_or_camera_records": 0,
+        "parse_error_count": 0,
+        "parse_errors": [],
+        "exact_710_contiguous": true
+      },
+      "natural_eos_container": {
+        "all_absent": true,
+        "elapsed_seconds": 0.6710000000002765,
+        "inspection": {
+          "command": [
+            "wsl.exe",
+            "-d",
+            "Ubuntu-22.04",
+            "--",
+            "docker",
+            "ps",
+            "-a",
+            "--format",
+            "{{.ID}}:{{.Names}}:{{.State}}"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "matches": {
+            "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": []
+          },
+          "parse_errors": [],
+          "all_absent": true
+        }
+      },
+      "backend_drain": {
+        "passed": true,
+        "session_present": true,
+        "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+        "expected_frames": 710,
+        "frames_consumed": 710,
+        "queue_empty": true,
+        "queue_size": 0,
+        "reader_done": true,
+        "reader_thread_alive": false,
+        "reader_error": null,
+        "malformed_frames": 0,
+        "consumer_task_present": true,
+        "consumer_task_done": true,
+        "consumer_task_cancelled": false,
+        "consumer_task_exception": null,
+        "wait_seconds": 0.0
+      },
+      "stale_samples": {
+        "first": {
+          "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+          "run_status": "RUNNING",
+          "generated_at": "2026-10-26T12:24:43.426Z",
+          "sequence": 715,
+          "camera": {
+            "id": "cam-01",
+            "health": "DEGRADED",
+            "calibration_status": "MISSING",
+            "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+            "visible_count": null,
+            "source_fps": null,
+            "analytics_fps": null,
+            "frame_age_ms": null,
+            "dropped_frames": 0,
+            "last_good_age_ms": 8234.000000000378,
+            "unavailable_reason": "No fresh perception metadata; last values are not current"
+          }
+        },
+        "later": {
+          "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+          "run_status": "RUNNING",
+          "generated_at": "2026-10-26T12:24:43.701Z",
+          "sequence": 716,
+          "camera": {
+            "id": "cam-01",
+            "health": "DEGRADED",
+            "calibration_status": "MISSING",
+            "epoch": "7c0109f2-7cb6-47ae-a2a8-f00344a403a2",
+            "visible_count": null,
+            "source_fps": null,
+            "analytics_fps": null,
+            "frame_age_ms": null,
+            "dropped_frames": 0,
+            "last_good_age_ms": 8500.0,
+            "unavailable_reason": "No fresh perception metadata; last values are not current"
+          }
+        },
+        "sample_interval_seconds": 0.25,
+        "last_good_age_delta_ms": 265.99999999962165
+      },
+      "operator_stop": {
+        "elapsed_seconds": 0.030999999999039574,
+        "snapshot": {
+          "run_id": "aee5a185-b1e3-4875-84e8-4e90ced45df3",
+          "run_status": "STOPPED",
+          "generated_at": "2026-10-26T12:24:43.728Z",
+          "sequence": 717,
+          "camera": {
+            "id": "cam-01",
+            "health": "OFFLINE",
+            "calibration_status": "MISSING",
+            "epoch": null,
+            "visible_count": null,
+            "source_fps": null,
+            "analytics_fps": null,
+            "frame_age_ms": null,
+            "dropped_frames": 0,
+            "last_good_age_ms": null,
+            "unavailable_reason": "Demo run stopped; source-only preview is available"
+          }
+        }
+      },
+      "container_after_operator_stop": {
+        "all_absent": true,
+        "elapsed_seconds": 0.14100000000144064,
+        "inspection": {
+          "command": [
+            "wsl.exe",
+            "-d",
+            "Ubuntu-22.04",
+            "--",
+            "docker",
+            "ps",
+            "-a",
+            "--format",
+            "{{.ID}}:{{.Names}}:{{.State}}"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "matches": {
+            "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": []
+          },
+          "parse_errors": [],
+          "all_absent": true
+        }
+      }
+    },
+    "second_epoch": {
+      "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+      "epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+      "container_name": "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db",
+      "start_request_seconds": 11.421999999998661,
+      "time_to_first_positive_from_start_response_seconds": 0.06199999999989814,
+      "first_positive": {
+        "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+        "run_status": "RUNNING",
+        "generated_at": "2026-10-26T12:24:55.343Z",
+        "sequence": 867,
+        "camera": {
+          "id": "cam-01",
+          "health": "CALIBRATION WARNING",
+          "calibration_status": "MISSING",
+          "epoch": "420f6edf-5d30-420c-9184-bd8bfee704db",
+          "visible_count": 16,
+          "source_fps": 29.97003056883178,
+          "analytics_fps": null,
+          "frame_age_ms": null,
+          "dropped_frames": 0,
+          "last_good_age_ms": 0.0,
+          "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable"
+        }
+      },
+      "fresh_metrics_sample": null,
+      "positive_samples_before_stop": 1,
+      "maximum_visible_count_before_stop": 16,
+      "operator_stop": {
+        "elapsed_seconds": 22.71899999999914,
+        "snapshot": {
+          "run_id": "aa7be36f-9913-4289-b123-cc7807015322",
+          "run_status": "STOPPED",
+          "generated_at": "2026-10-26T12:25:18.095Z",
+          "sequence": 1018,
+          "camera": {
+            "id": "cam-01",
+            "health": "OFFLINE",
+            "calibration_status": "MISSING",
+            "epoch": null,
+            "visible_count": null,
+            "source_fps": null,
+            "analytics_fps": null,
+            "frame_age_ms": null,
+            "dropped_frames": 0,
+            "last_good_age_ms": null,
+            "unavailable_reason": "Demo run stopped; source-only preview is available"
+          }
+        }
+      }
+    },
+    "containers_after_second_operator_stop": {
+      "all_absent": true,
+      "elapsed_seconds": 0.15600000000085856,
+      "inspection": {
+        "command": [
+          "wsl.exe",
+          "-d",
+          "Ubuntu-22.04",
+          "--",
+          "docker",
+          "ps",
+          "-a",
+          "--format",
+          "{{.ID}}:{{.Names}}:{{.State}}"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "matches": {
+          "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": [],
+          "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db": []
+        },
+        "parse_errors": [],
+        "all_absent": true
+      }
+    },
+    "epoch_1_artifacts": {
+      "log": {
+        "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\7c0109f2-7cb6-47ae-a2a8-f00344a403a2.log",
+        "copied": true,
+        "evidence_file": "epoch-1.log",
+        "bytes": 4942
+      },
+      "summary": {
+        "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\7c0109f2-7cb6-47ae-a2a8-f00344a403a2.summary.json",
+        "copied": true,
+        "evidence_file": "epoch-1.summary.json",
+        "bytes": 1052
+      },
+      "frames": {
+        "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\7c0109f2-7cb6-47ae-a2a8-f00344a403a2.jsonl",
+        "copied": true,
+        "evidence_file": "epoch-1.frames.jsonl",
+        "bytes": 4187902
+      }
+    },
+    "epoch_2_artifacts": {
+      "log": {
+        "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\420f6edf-5d30-420c-9184-bd8bfee704db.log",
+        "copied": true,
+        "evidence_file": "epoch-2.log",
+        "bytes": 4769
+      },
+      "summary": {
+        "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\420f6edf-5d30-420c-9184-bd8bfee704db.summary.json",
+        "copied": false,
+        "reason": "File absent"
+      },
+      "frames": {
+        "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\var\\perception\\cam-01\\420f6edf-5d30-420c-9184-bd8bfee704db.jsonl",
+        "copied": true,
+        "evidence_file": "epoch-2.frames.jsonl",
+        "bytes": 3478462
+      }
+    },
+    "total_elapsed_seconds": 71.32799999999952
+  },
+  "errors": [],
+  "cleanup": {
+    "fallback_operations": [],
+    "operator_stop": {
+      "http_status": 200,
+      "run_status": "STOPPED",
+      "elapsed_seconds": 0.014999999999417923
+    },
+    "adapter_sessions": {
+      "adapter_available": true,
+      "remaining_session_count": 0,
+      "sessions": []
+    },
+    "before_fallback": {
+      "command": [
+        "wsl.exe",
+        "-d",
+        "Ubuntu-22.04",
+        "--",
+        "docker",
+        "ps",
+        "-a",
+        "--format",
+        "{{.ID}}:{{.Names}}:{{.State}}"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "matches": {
+        "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": [],
+        "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db": []
+      },
+      "parse_errors": [],
+      "all_absent": true
+    },
+    "final_exact_container_observation": {
+      "all_absent": true,
+      "elapsed_seconds": 0.13999999999941792,
+      "inspection": {
+        "command": [
+          "wsl.exe",
+          "-d",
+          "Ubuntu-22.04",
+          "--",
+          "docker",
+          "ps",
+          "-a",
+          "--format",
+          "{{.ID}}:{{.Names}}:{{.State}}"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "matches": {
+          "aegis-cam-01-7c0109f2-7cb6-47ae-a2a8-f00344a403a2": [],
+          "aegis-cam-01-420f6edf-5d30-420c-9184-bd8bfee704db": []
+        },
+        "parse_errors": [],
+        "all_absent": true
+      }
+    }
+  },
+  "limitations": [
+    "Only the existing authorized demo/cam01.mp4 source and provisional TrafficCamNet + NvDCF smoke profile were exercised.",
+    "Visible counts are real tracker-derived API outputs, not ground-truth accuracy, precision/recall, or calibrated facility occupancy.",
+    "Camera calibration is MISSING; no calibrated geometry, crossing, occupancy, or other analytics accuracy is claimed.",
+    "The first epoch runs to natural 710-frame EOS; the second epoch is intentionally stopped after a fresh positive replay count and is not a full-clip coverage run.",
+    "The nominal sub-15-second EOS duration is contextual, not a performance guarantee; observed timings are reported and the natural-EOS timeout is 60 seconds.",
+    "Natural-EOS and post-stop container absence are checked before fallback removal; any fallback removal is recorded separately and cannot turn an earlier failed check into a pass."
+  ]
+}

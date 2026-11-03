@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T12:17:04.612792+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe' validate_ui_refactor.py",
+  "run_dir": "reports\\validation\\ui-refactor-cam01-20261028T121443274778Z",
+  "result": "FAIL",
+  "checks": {
+    "backend_served": "PASS",
+    "live_connection": "PASS",
+    "skip_link_first_tab_stop": "PASS",
+    "skip_link_focuses_main": "PASS",
+    "ui_start_reaches_running": "PASS",
+    "replay_mode_locked_while_running": "PASS",
+    "facility_metrics_unavailable_with_reason": "PASS",
+    "camera_tile_shows_live_count": "PASS",
+    "inspector_opens_with_keyboard": "PASS",
+    "focus_moves_into_inspector": "PASS",
+    "tab_trapped_in_inspector": "PASS",
+    "long_clip_reached_75s": "PASS",
+    "range_mode_requests_window_range": "PASS",
+    "earlier_enabled_with_long_history": "PASS",
+    "earlier_window_requests_older_range": "PASS",
+    "later_window_returns_forward": "PASS",
+    "escape_closes_inspector": "PASS",
+    "focus_returns_to_tile": "PASS",
+    "marker_saved": "PASS",
+    "open_in_evidence_highlights_card": "PASS",
+    "deep_link_highlights_card": "PASS",
+    "view_button_unique_in_card": "PASS",
+    "viewer_opens": "PASS",
+    "viewer_shows_expected_record": "PASS",
+    "viewer_shows_full_frame": "FAIL",
+    "viewer_closes_on_escape": "PASS",
+    "focus_returns_to_view_button": "PASS",
+    "reset_dialog_opens": "PASS",
+    "reset_dialog_escape_cancels": "PASS",
+    "theme_switches_to_light": "PASS",
+    "theme_persists_after_reload": "PASS",
+    "run_status_visible_every_width_and_view": "PASS",
+    "no_horizontal_overflow_every_width_and_view": "PASS",
+    "mobile_nav_opens": "PASS",
+    "mobile_nav_navigates_and_closes": "PASS",
+    "ui_stop_reaches_stopped": "PASS",
+    "no_external_requests": "PASS",
+    "no_console_errors": "PASS",
+    "fault_backend_served": "PASS",
+    "cleanup_banner_shown": "PASS",
+    "cleanup_banner_and_retry_visible_every_width": "PASS",
+    "start_disabled_during_stop_failed": "PASS",
+    "start_api_returns_409_cleanup_unconfirmed": "PASS",
+    "retry_cleanup_reaches_stopped": "PASS"
+  },
+  "observed": {
+    "ui_start_reaches_running": {
+      "status": "RUNNING :: Running"
+    },
+    "facility_metrics_unavailable_with_reason": {
+      "excerpt": "FACILITY METRICS \u00b7 CALIBRATED\n\nOccupancy, flow and queues\n\nThese need runtime-valid calibration and fresh cameras. Unavailable values show their reason; they are never shown as 0.\n\nUnavailable\nEXPECTED IN BUILDING\nUnavailable\nboundary_coverage_complete is false (not every entrance is covered)\nENTRIE"
+    },
+    "camera_tile_shows_live_count": {
+      "text": "0"
+    },
+    "range_mode_requests_window_range": {
+      "requests": [
+        "http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?epoch=485be2f0-10a3-4ba3-9258-43f12fac3271&window=range&from_source_s=0.066733333&to_source_s=74.0029&limit=10000&max_points=600"
+      ]
+    },
+    "earlier_enabled_with_long_history": {
+      "buttons": [
+        "",
+        "Newest",
+        "Browse range",
+        "30 s",
+        "2 min",
+        "10 min",
+        "Earlier",
+        "Later",
+        "Mark evidence"
+      ]
+    },
+    "earlier_window_requests_older_range": {
+      "newest": [
+        44.0029,
+        74.0029
+      ],
+      "earlier": [
+        14.002899999999997,
+        44.0029
+      ]
+    },
+    "later_window_returns_forward": {
+      "last": [
+        "http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?epoch=485be2f0-10a3-4ba3-9258-43f12fac3271&window=range&from_source_s=44.0029&to_source_s=74.0029&limit=10000&max_points=600"
+      ]
+    },
+    "open_in_evidence_highlights_card": {
+      "url": "http://127.0.0.1:8771/#evidence?item=a7211217-0501-4357-9665-dab82eaf779c"
+    },
+    "deep_link_highlights_card": {
+      "group": "a7211217-0501-4357-9665-dab82eaf779c"
+    },
+    "view_button_unique_in_card": {
+      "matches": 1
+    },
+    "viewer_opens": {
+      "url": "http://127.0.0.1:8771/#evidence?item=f3e74001-37df-461d-afb8-11bcd91c7994"
+    },
+    "viewer_shows_expected_record": {
+      "state": {
+        "src": "http://127.0.0.1:8771/api/v1/evidence/f3e74001-37df-461d-afb8-11bcd91c7994",
+        "w": 1920,
+        "h": 1080,
+        "fit": "contain",
+        "box": [
+          857,
+          482
+        ],
+        "view": [
+          1440,
+          900
+        ],
+        "rect": {
+          "x": 585,
+          "y": 114.1875,
+          "width": 859,
+          "height": 484.0625,
+          "top": 114.1875,
+          "right": 1444,
+          "bottom": 598.25,
+          "left": 585
+        }
+      },
+      "expected": "f3e74001-37df-461d-afb8-11bcd91c7994"
+    },
+    "viewer_shows_full_frame": {
+      "state": {
+        "src": "http://127.0.0.1:8771/api/v1/evidence/f3e74001-37df-461d-afb8-11bcd91c7994",
+        "w": 1920,
+        "h": 1080,
+        "fit": "contain",
+        "box": [
+          857,
+          482
+        ],
+        "view": [
+          1440,
+          900
+        ],
+        "rect": {
+          "x": 585,
+          "y": 114.1875,
+          "width": 859,
+          "height": 484.0625,
+          "top": 114.1875,
+          "right": 1444,
+          "bottom": 598.25,
+          "left": 585
+        }
+      }
+    },
+    "diagnostic:viewer": {
+      "url": "http://127.0.0.1:8771/#evidence?item=f3e74001-37df-461d-afb8-11bcd91c7994",
+      "network_failures": [
+        "GET http://127.0.0.1:8771/api/v1/cameras/cam-01/preview: net::ERR_ABORTED",
+        "GET http://127.0.0.1:8771/api/v1/evidence/66f58efa-7474-42c5-bba9-7c31400957cc: net::ERR_ABORTED"
+      ],
+      "view_buttons_page": {
+        "count": 1,
+        "visible": true,
+        "texts": [
+          "View"
+        ]
+      },
+      "viewer": {
+        "count": 1,
+        "visible": true,
+        "texts": [
+          "EVIDENCE VIEWER\n\nEvidence \u00b7 cam-01\n\nsource 76.07 s\n\nDecoded source frame \u00b7 sourc"
+        ]
+      },
+      "large_image": {
+        "count": 1,
+        "visible": true,
+        "texts": [
+          ""
+        ]
+      },
+      "cards": {
+        "count": 1,
+        "visible": true,
+        "texts": [
+          "cam-01\nOperator marker\nView\nFrame \u00b7 source 76.07 s\nClip \u00b7 source 71.17\u201379.14 s\nM"
+        ]
+      }
+    },
+    "run_status_visible_every_width_and_view": {},
+    "no_horizontal_overflow_every_width_and_view": {},
+    "mobile_nav_navigates_and_closes": {
+      "url": "http://127.0.0.1:8771/#alerts"
+    },
+    "no_external_requests": {
+      "external": []
+    },
+    "no_console_errors": {
+      "errors": []
+    },
+    "cleanup_banner_and_retry_visible_every_width": {
+      "390": true,
+      "768": true,
+      "1024": true,
+      "1280": true,
+      "1440": true,
+      "1920": true
+    },
+    "start_api_returns_409_cleanup_unconfirmed": {
+      "status": 409,
+      "code": "CLEANUP_UNCONFIRMED"
+    }
+  },
+  "errors": [],
+  "scope": "Refactored dashboard on a real backend socket with a real GPU cam01 run (Part A) and a TEST-ONLY fault adapter (Part B, no perception evidence). UI behaviour only; not detection accuracy."
+}

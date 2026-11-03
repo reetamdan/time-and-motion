@@ -1,0 +1,32 @@
+# Isolated RF-DETR candidate, variant 2; selected TrafficCamNet runtime is unchanged.
+# Graph input is the full 1920x1080 pipeline frame as RGB in [0,1]; nvinfer performs only a same-size
+# colour conversion. The HF resize (bilinear, half-pixel, no antialias) and ImageNet mean/std are inside
+# the ONNX graph: nvinfer scaling did not reproduce the HF resize, and net-scale-factor cannot express per-channel std.
+[property]
+gpu-id=0
+onnx-file=/workspace/models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx
+model-engine-file=/workspace/models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm120.engine
+labelfile-path=/workspace/perception/candidates/rf_detr/deepstream/labels.txt
+custom-lib-path=/workspace/perception/candidates/rf_detr/parser/libnvds_infercustomparser_rfdetr.so
+parse-bbox-func-name=NvDsInferParseCustomRfDetrPerson
+batch-size=1
+process-mode=1
+network-type=0
+network-mode=0
+strongly-typed=1
+num-detected-classes=1
+interval=0
+gie-unique-id=1
+model-color-format=0
+net-scale-factor=0.00392156862745098
+offsets=0;0;0
+maintain-aspect-ratio=0
+infer-dims=3;1080;1920
+# Requires 1920x1080 nvstreammux output so nvinfer's transform is same-size.
+# DETR queries are already a set prediction; do not apply NMS.
+cluster-mode=4
+output-tensor-meta=1
+
+[class-attrs-all]
+pre-cluster-threshold=0.25
+topk=300

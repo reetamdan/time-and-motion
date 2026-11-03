@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "name": "wsl_route",
+      "script": "scripts/validate_wsl_route.py"
+    }
+  ]
+}

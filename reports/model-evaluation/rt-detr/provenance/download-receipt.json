@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "utc_finished": "2026-10-26T13:09:18.914473+00:00",
+  "manifest": "/mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/models/rt-detr-person-candidate/download-manifest.json",
+  "manifest_sha256": "f4676af8d5f2f6281723bb826bc9944f50a37bb347a27d916d263cae299502a4",
+  "artifacts": [
+    {
+      "url": "https://huggingface.co/PekingU/rtdetr_v2_r18vd/resolve/5650961749fa93567c0d46fc7f43ea4f9e914107/model.safetensors",
+      "path": "models/rt-detr-person-candidate/upstream/model.safetensors",
+      "revision": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+      "sha256": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+      "license": "Apache-2.0 declared in HF metadata; pinned HF tree has no LICENSE; separate upstream RT-DETR commit df2a96c8c3a098567a1149bf0248da6efe6d495d contains Apache-2.0",
+      "provenance": "PekingU/rtdetr_v2_r18vd immutable Hugging Face revision; RtDetrV2ForObjectDetection model.safetensors; HF expanded-tree LFS oid and size independently checked",
+      "size_bytes": 80904640,
+      "action": "downloaded_verified"
+    }
+  ],
+  "note": "Verified installation artifacts only; this is not inference or acceptance evidence."
+}

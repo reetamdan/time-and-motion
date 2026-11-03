@@ -1,0 +1,10 @@
+utc_started=2026-10-28T16:53:37Z
+run_id=20261028T165337Z
+mode=production
+preflight=1
+strict=1
+backend_health_url=http://127.0.0.1:8774/health/ready
+note=Process readiness is not a benchmark or acceptance result.
+backend_pid=13695
+processes_ready_at=2026-10-28T16:53:53Z
+utc_stopped=2026-10-28T16:53:55Z

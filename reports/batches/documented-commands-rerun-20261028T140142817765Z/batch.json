@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "name": "documented_commands",
+      "script": "scripts/validate_documented_commands.py"
+    }
+  ]
+}

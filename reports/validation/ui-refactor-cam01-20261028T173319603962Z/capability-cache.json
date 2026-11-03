@@ -1,0 +1,23 @@
+{
+  "available": true,
+  "fingerprint": "b8738ada00409ae85057a0a4a3be1c1d2eb3fd1fa99d5a32da812b7ca3ff1c94",
+  "blockers": [],
+  "fields": {
+    "probe_version": "1",
+    "deepstream_app": "ok",
+    "deepstream_version": "deepstream-app version 9.2.0",
+    "gst_nvstreammux": "ok",
+    "gst_nvinfer": "ok",
+    "gst_nvtracker": "ok",
+    "gst_nvv4l2decoder": "ok",
+    "extractor": "ok",
+    "gpu": "ok",
+    "gpu_detail": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, 610.47",
+    "tensorrt_version": "10.16.0.72-1+cuda13.2",
+    "probe_complete": "1"
+  },
+  "validated_at_utc": "2026-10-28T17:33:24.760900+00:00",
+  "validated_at_epoch": 1793208804.7609003,
+  "probe_seconds": 3.14,
+  "source": "probe"
+}

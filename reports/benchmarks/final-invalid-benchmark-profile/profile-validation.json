@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-23T20:41:27.309656+00:00",
+  "result": "FAIL",
+  "scope": "profile and local media identity only; not a benchmark or replay result",
+  "profile": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\configs\\cameras.yaml",
+  "profile_sha256": "fe5e8a2801b227c4655bfc488634a392fe65a685fd78c32b5dcecb2fe1d2aa76",
+  "requested_streams": 4,
+  "sources": [
+    {
+      "configured_path": "./data/demo/cam01.mp4",
+      "resolved_path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\data\\demo\\cam01.mp4",
+      "status": "FAIL",
+      "error": "missing or empty local media file"
+    },
+    {
+      "configured_path": "./data/demo/cam02.mp4",
+      "resolved_path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\data\\demo\\cam02.mp4",
+      "status": "FAIL",
+      "error": "missing or empty local media file"
+    },
+    {
+      "configured_path": "./data/demo/cam03.mp4",
+      "resolved_path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\data\\demo\\cam03.mp4",
+      "status": "FAIL",
+      "error": "missing or empty local media file"
+    },
+    {
+      "configured_path": "./data/demo/cam04.mp4",
+      "resolved_path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\data\\demo\\cam04.mp4",
+      "status": "FAIL",
+      "error": "missing or empty local media file"
+    }
+  ],
+  "reference": null,
+  "errors": [
+    "./data/demo/cam01.mp4: missing or empty local media file",
+    "./data/demo/cam02.mp4: missing or empty local media file",
+    "./data/demo/cam03.mp4: missing or empty local media file",
+    "./data/demo/cam04.mp4: missing or empty local media file"
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T18:47:04.660015+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_live_workflow.py",
+  "run_dir": "reports\\validation\\live-workflow-cam01-20261026T184501506952Z",
+  "result": "PASS",
+  "checks": {
+    "websocket_initial_snapshot": "PASS",
+    "paced_start_ok": "PASS",
+    "paced_real_positive_counts": "PASS",
+    "paced_replay_mode_reported": "PASS",
+    "paced_history_persisted_during_run": "PASS",
+    "paced_natural_eos_goes_stale_not_zero": "PASS",
+    "paced_clean_eof_reported": "PASS",
+    "paced_all_frames_in_history_before_stop": "PASS",
+    "paced_stop_ok": "PASS",
+    "paced_exact_container_absent": "PASS",
+    "paced_stop_after_eof_adds_no_bucket": "PASS",
+    "websocket_delivered_positive_live_counts": "PASS",
+    "unpaced_start_ok": "PASS",
+    "unpaced_real_positive_counts": "PASS",
+    "unpaced_replay_mode_reported": "PASS",
+    "unpaced_history_persisted_during_run": "PASS",
+    "unpaced_natural_eos_goes_stale_not_zero": "PASS",
+    "unpaced_clean_eof_reported": "PASS",
+    "unpaced_all_frames_in_history_before_stop": "PASS",
+    "unpaced_stop_ok": "PASS",
+    "unpaced_exact_container_absent": "PASS",
+    "unpaced_stop_after_eof_adds_no_bucket": "PASS",
+    "paced_follows_source_time": "PASS",
+    "unpaced_faster_than_source_time": "PASS",
+    "start_does_not_stall_consumer": "PASS",
+    "paced_history_covers_clip": "PASS",
+    "history_single_segment": "PASS",
+    "paced_unpaced_identical_source_time_buckets": "PASS",
+    "recorded_real_observations_identical_under_two_supplied_receive_timelines": "PASS",
+    "recorded_paced_delivery_actually_waited": "PASS",
+    "recorded_unpaced_delivery_much_faster": "PASS",
+    "recorded_delivery_speeds_identical_history_incl_eof_bucket": "PASS",
+    "recorded_replay_matches_live_paced_history": "PASS",
+    "owned_resources_recorded_and_released": "PASS",
+    "no_image_line_configured_for_moving_camera": "PASS",
+    "frontend_bundle_served_with_history_view": "PASS",
+    "restart_recovery_found_running_owned_container": "PASS",
+    "restart_recovery_released_exact_container": "PASS",
+    "no_leftover_cam01_containers": "PASS"
+  },
+  "observed": {
+    "identity": {
+      "configuration_revision": "11dcfff7bc860089b0cc08c5616ccac274c9ca75739a12f0aa9dee5604be870f",
+      "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+      "extractor_sha256": "6093b5d5d06089225b3bf60b0342fedccc50efde477f9663c5ef61ff91abad25",
+      "infer_config_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+      "engine_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+      "deepstream_image": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+      "wrapper_sha256": "49f8311c979fc83164ec2709872ba568eaede2e4cf9e625e070e7a2a12178b0d",
+      "python": "3.12.15"
+    },
+    "paced_history_during_run": {
+      "source_position_s": 8.241566666,
+      "samples": 16
+    },
+    "paced_timing": {
+      "start_http_seconds": 21.200640700000804,
+      "source_seconds_per_wall_second": 0.9478933689097958,
+      "live_window_wall_seconds": 24.957413399999496,
+      "last_source_position_s": 23.7237,
+      "analytics_fps_median": 30.004151074254654,
+      "analytics_fps_max": 30.16042632367738,
+      "backend_queue_ms_median": 598.306899999443,
+      "snapshot_samples": 92,
+      "stale_snapshot": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "DEGRADED",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "230364bf-c076-40a0-a7ae-815161bfd63a",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 1593.9999999973224,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "paced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": null,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "backend_queue_ms": null,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0"
+      },
+      "persisted_source_seconds_per_wall_second": 0.996841663424378,
+      "first_observed_backend_queue_ms": 58.19380000320962
+    },
+    "paced_eof": {
+      "stream_outcome": "CLEAN_EOF",
+      "frames_in_history_before_stop": 710,
+      "buckets_before_stop": 48
+    },
+    "paced_stop": {
+      "http_seconds": 0.5328115000011167,
+      "container": "aegis-cam-01-230364bf-c076-40a0-a7ae-815161bfd63a",
+      "absent": true,
+      "returncode": 0,
+      "names_seen": []
+    },
+    "paced_history_before_stop_samples": 48,
+    "websocket": {
+      "messages_read_after_run": 90,
+      "snapshot_messages": 61,
+      "positive_count_messages": 47
+    },
+    "unpaced_history_during_run": {
+      "source_position_s": 8.141466666,
+      "samples": 16
+    },
+    "unpaced_timing": {
+      "start_http_seconds": 16.617747399999644,
+      "source_seconds_per_wall_second": 6.8121588265221105,
+      "live_window_wall_seconds": 3.2817301000031875,
+      "last_source_position_s": 23.7237,
+      "analytics_fps_median": 385.6166407113917,
+      "analytics_fps_max": 399.40531519277914,
+      "backend_queue_ms_median": 2.6523999986238778,
+      "snapshot_samples": 14,
+      "stale_snapshot": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "DEGRADED",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "9b7ead3c-8bd0-4d5c-9344-777d3756e4e7",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 1764.999999999418,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "unpaced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": null,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "backend_queue_ms": null,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0"
+      },
+      "persisted_source_seconds_per_wall_second": 12.606406736408568,
+      "first_observed_backend_queue_ms": 0.6117000011727214
+    },
+    "unpaced_eof": {
+      "stream_outcome": "CLEAN_EOF",
+      "frames_in_history_before_stop": 710,
+      "buckets_before_stop": 48
+    },
+    "unpaced_stop": {
+      "http_seconds": 0.27366710000205785,
+      "container": "aegis-cam-01-9b7ead3c-8bd0-4d5c-9344-777d3756e4e7",
+      "absent": true,
+      "returncode": 0,
+      "names_seen": []
+    },
+    "unpaced_history_before_stop_samples": 48,
+    "raw_perception_agreement_paced_vs_unpaced": {
+      "a": "230364bf-c076-40a0-a7ae-815161bfd63a.jsonl",
+      "b": "9b7ead3c-8bd0-4d5c-9344-777d3756e4e7.jsonl",
+      "common_frames": 710,
+      "frames_identical_person_boxes_scores": 589,
+      "frames_identical_track_id_sets": 71,
+      "first_differing_frame": 72
+    },
+    "recorded_real_replay_supplied_receive_timelines": {
+      "source": "backend\\var\\perception\\cam-01\\230364bf-c076-40a0-a7ae-815161bfd63a.jsonl",
+      "receive_timestamp_spacing_s": [
+        0.0,
+        0.05
+      ],
+      "buckets": 48,
+      "identical": true,
+      "wall_seconds_for_both": 1.0746591999995871,
+      "scope": "Batches are emitted back to back with different supplied receive timestamps; this proves the analytics ignore receive time. It is NOT a test of two real delivery speeds."
+    },
+    "recorded_real_delivery_through_consumer": {
+      "paced": {
+        "mode": "paced",
+        "wall_seconds": 23.669291799997154,
+        "outcome": "CLEAN_EOF",
+        "stop_added_rows": 0,
+        "frames": 710,
+        "buckets": 48
+      },
+      "unpaced": {
+        "mode": "unpaced",
+        "wall_seconds": 0.36493850000260863,
+        "outcome": "CLEAN_EOF",
+        "stop_added_rows": 0,
+        "frames": 710,
+        "buckets": 48
+      }
+    },
+    "recorded_replay_matches_live_paced_history": true,
+    "owned_resources": [
+      {
+        "camera_epoch": "230364bf-c076-40a0-a7ae-815161bfd63a",
+        "resource_name": "aegis-cam-01-230364bf-c076-40a0-a7ae-815161bfd63a",
+        "runtime": "docker@wsl:Ubuntu-22.04",
+        "state": "RELEASED",
+        "attempts": 1
+      },
+      {
+        "camera_epoch": "9b7ead3c-8bd0-4d5c-9344-777d3756e4e7",
+        "resource_name": "aegis-cam-01-9b7ead3c-8bd0-4d5c-9344-777d3756e4e7",
+        "runtime": "docker@wsl:Ubuntu-22.04",
+        "state": "RELEASED",
+        "attempts": 1
+      }
+    ],
+    "line_crossings": {
+      "camera_id": "cam-01",
+      "run_id": "1d4312ee-8c78-46a8-b8e2-7a6f32571137",
+      "camera_epoch": "9b7ead3c-8bd0-4d5c-9344-777d3756e4e7",
+      "time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+      "configured_image_lines": [],
+      "crossings": [],
+      "unavailable_reason": "No image_pixels line is configured for this camera"
+    },
+    "hardware_restart_recovery": {
+      "run_id": "9a52e566-0cb9-4fbd-b19c-a9a5b0fcd2ef",
+      "container": "aegis-cam-01-a8072f56-3ffc-4a4b-a591-b81ba951c194",
+      "recorded_before_crash": [
+        {
+          "run_id": "9a52e566-0cb9-4fbd-b19c-a9a5b0fcd2ef",
+          "camera_id": "cam-01",
+          "camera_epoch": "a8072f56-3ffc-4a4b-a591-b81ba951c194",
+          "adapter_name": "deepstream-service-maker",
+          "resource_kind": "container",
+          "resource_name": "aegis-cam-01-a8072f56-3ffc-4a4b-a591-b81ba951c194",
+          "runtime": "docker@wsl:Ubuntu-22.04",
+          "state": "ACTIVE",
+          "attempts": 0,
+          "last_error": null,
+          "created_at": "2026-10-26T18:46:56.584Z",
+          "updated_at": "2026-10-26T18:47:02.574Z"
+        }
+      ],
+      "container_present_before_recovery": true,
+      "recovery_seconds_including_app_start": 1.1419902999987244,
+      "unreleased_after_recovery": [],
+      "persisted_run_status_after_recovery": "STOPPED",
+      "snapshot_run_status": "IDLE",
+      "container_absent_after_recovery": true
+    },
+    "leftover_aegis_cam01_containers": []
+  },
+  "errors": [],
+  "scope": "One real clip, one camera, laptop; structural integration and time-model behaviour. Not detection, tracking, count or crossing accuracy; not multi-camera, calibration or capacity evidence."
+}

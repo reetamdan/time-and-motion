@@ -1,0 +1,107 @@
+{
+  "timestamp": "2026-10-23T21:08:30.784Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "development launcher and API startup",
+      "passed": true,
+      "detail": "http://127.0.0.1:5173"
+    },
+    {
+      "name": "facility snapshot contract",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "cameras": 4,
+        "floors": 2
+      }
+    },
+    {
+      "name": "real GPU telemetry probe",
+      "passed": true,
+      "detail": {
+        "timestamp": "2026-10-23T21:08:23.886Z",
+        "scope": "wsl2",
+        "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "gpu_utilization": 21,
+        "vram_used_mib": 1013,
+        "vram_total_mib": 12227,
+        "gpu_temperature_c": 63,
+        "nvdec_utilization": 0,
+        "cpu_utilization": 4.9,
+        "ram_used_mb": 13668.34765625,
+        "ram_total_mb": 15577.80078125,
+        "process_rss_mb": 52.953125,
+        "unavailable_reason": null
+      }
+    },
+    {
+      "name": "readiness exposes real blockers",
+      "passed": true,
+      "detail": {
+        "status": 503,
+        "failed": [
+          "sources",
+          "models",
+          "perception"
+        ]
+      }
+    },
+    {
+      "name": "WebSocket initial snapshot",
+      "passed": true,
+      "detail": {
+        "sequence": 1
+      }
+    },
+    {
+      "name": "demo lifecycle starts with honest degradation",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "run_status": "DEGRADED",
+        "alerts": 5
+      }
+    },
+    {
+      "name": "alert acknowledgment",
+      "passed": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "bounded history query",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "screenshot:overview",
+      "passed": true,
+      "detail": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\2026-10-23T21-08-16-699Z\\overview.png"
+    },
+    {
+      "name": "screenshot:floor-plans",
+      "passed": true,
+      "detail": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\2026-10-23T21-08-16-699Z\\floor-plans.png"
+    },
+    {
+      "name": "screenshot:system",
+      "passed": true,
+      "detail": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\2026-10-23T21-08-16-699Z\\system.png"
+    },
+    {
+      "name": "demo stop",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "run-scoped reset",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "run_id": null
+      }
+    }
+  ]
+}

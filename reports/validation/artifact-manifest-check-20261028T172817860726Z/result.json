@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T17:28:18.568565+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_artifact_manifest.py",
+  "run_dir": "reports\\validation\\artifact-manifest-check-20261028T172817860726Z",
+  "result": "BLOCKED",
+  "items": {
+    "pins:backend/requirements.txt": {
+      "status": "PASS",
+      "unpinned": [],
+      "hash_locked": false
+    },
+    "pins:backend/requirements-dev.txt": {
+      "status": "PASS",
+      "unpinned": [],
+      "hash_locked": false
+    },
+    "pins:perception/deepstream/service_maker/requirements.txt": {
+      "status": "PASS",
+      "unpinned": [],
+      "hash_locked": false
+    },
+    "pip_check_backend_venv": {
+      "status": "PASS",
+      "output": "No broken requirements found.",
+      "interpreter": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe"
+    },
+    "frontend_lockfile": {
+      "status": "PASS",
+      "sha256": "fcbe6f322ee1e9bd449ef5773bb773d9c254dbb722f1526c4d954f7eeac8dce4",
+      "lockfileVersion": 3
+    },
+    "deepstream_image_digest_pinned": {
+      "status": "PASS",
+      "image": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85"
+    },
+    "model:trafficcamnet-smoke": {
+      "status": "PASS",
+      "revision": "deepstream-9.2-bundled-resnet18-trafficcamnet-pruned",
+      "acceptance": "provisional_smoke",
+      "selected": true,
+      "license_ref": "NVIDIA DeepStream SDK License Agreement for bundled sample artifacts; see THIRD_PARTY.md",
+      "identities": [
+        {
+          "name": "checkpoint",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx",
+          "expected_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "current_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "status": "MATCH"
+        },
+        {
+          "name": "engine",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine",
+          "expected_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+          "current_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+          "status": "MATCH"
+        },
+        {
+          "name": "infer_config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\cam01_trafficcamnet_smoke_infer.txt",
+          "expected_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+          "current_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+          "status": "MATCH"
+        }
+      ]
+    },
+    "model:rt-detr-person-candidate": {
+      "status": "PASS",
+      "revision": "PekingU/rtdetr_v2_r18vd@5650961749fa93567c0d46fc7f43ea4f9e914107",
+      "acceptance": "candidate_unaccepted",
+      "selected": false,
+      "license_ref": "Apache-2.0 declared in HF metadata (no LICENSE in the pinned tree); see THIRD_PARTY.md",
+      "identities": [
+        {
+          "name": "checkpoint",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\rt-detr-person-candidate\\rt_detr_r18vd_raw.onnx",
+          "expected_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+          "current_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+          "status": "MATCH"
+        },
+        {
+          "name": "engine",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\rt-detr-person-candidate\\rt_detr_r18vd_raw_fp32_sm120.engine",
+          "expected_sha256": "8de3838604f343d17fba248b866e95c4785d91ac768a3973351024402186c3b1",
+          "current_sha256": "8de3838604f343d17fba248b866e95c4785d91ac768a3973351024402186c3b1",
+          "status": "MATCH"
+        },
+        {
+          "name": "infer_config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\candidates\\rt_detr\\deepstream\\cam01_rt_detr_infer_r2.txt",
+          "expected_sha256": "35cc10073b50018eb0f09fae93f362b6d51063aebd9204ab3489ebd59f0397d0",
+          "current_sha256": "35cc10073b50018eb0f09fae93f362b6d51063aebd9204ab3489ebd59f0397d0",
+          "status": "MATCH"
+        },
+        {
+          "name": "parser_library",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\candidates\\rt_detr\\parser\\libnvds_infercustomparser_rtdetr.so",
+          "expected_sha256": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+          "current_sha256": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+          "status": "MATCH"
+        }
+      ]
+    },
+    "model:rf-detr-person-candidate": {
+      "status": "PASS",
+      "revision": "Roboflow/rf-detr-small@3bdc465063270f99769da5a1b4c00c68bd2d439d",
+      "acceptance": "candidate_unaccepted",
+      "selected": false,
+      "license_ref": "Apache-2.0 declared in HF metadata and upstream roboflow/rf-detr; see THIRD_PARTY.md",
+      "identities": [
+        {
+          "name": "checkpoint",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx",
+          "expected_sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb",
+          "current_sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb",
+          "status": "MATCH"
+        },
+        {
+          "name": "engine",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_fp32_sm120.engine",
+          "expected_sha256": "23084d724625f0ad6e7355b8ba36d514512f1af59cb4213e6a95df636a28fdd3",
+          "current_sha256": "23084d724625f0ad6e7355b8ba36d514512f1af59cb4213e6a95df636a28fdd3",
+          "status": "MATCH"
+        },
+        {
+          "name": "infer_config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\candidates\\rf_detr\\deepstream\\cam01_rf_detr_1080p_infer.txt",
+          "expected_sha256": "0fc2b840ce2ea8c9a965872124e99342b43f5e2940e4f996977adeb3015f4206",
+          "current_sha256": "0fc2b840ce2ea8c9a965872124e99342b43f5e2940e4f996977adeb3015f4206",
+          "status": "MATCH"
+        },
+        {
+          "name": "parser_library",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\candidates\\rf_detr\\parser\\libnvds_infercustomparser_rfdetr.so",
+          "expected_sha256": "9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64",
+          "current_sha256": "9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64",
+          "status": "MATCH"
+        }
+      ]
+    },
+    "tracker_config": {
+      "status": "PASS",
+      "revision": "deepstream-9.2-nvdcf-perf-13662e73754e",
+      "identity": {
+        "name": "tracker_config",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+        "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      }
+    },
+    "pipeline_artifacts": {
+      "status": "PASS",
+      "identities": [
+        {
+          "name": "wrapper",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\deepstream.sh",
+          "expected_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "current_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "status": "MATCH"
+        },
+        {
+          "name": "extractor",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+          "expected_sha256": "8dd882fde1c6701b8717afcdca5dd55301d8399de3789b897d6e88390ce3d871",
+          "current_sha256": "8dd882fde1c6701b8717afcdca5dd55301d8399de3789b897d6e88390ce3d871",
+          "status": "MATCH"
+        },
+        {
+          "name": "probe_script",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\capability-probe.sh",
+          "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "status": "MATCH"
+        }
+      ],
+      "image": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85"
+    },
+    "calibration_manifests": {
+      "status": "BLOCKED",
+      "loaded_calibrations": [],
+      "reason": "No camera has a calibration yet (all MISSING); a calibration manifest cannot exist without calibration data.",
+      "enabled_cameras": [
+        "cam-01"
+      ]
+    }
+  },
+  "scope": "PRD AC-24 (locks, hashes, model/engine/calibration manifests). Inference run-to-run determinism is a separate, reported observation, not an AC-24 prerequisite."
+}

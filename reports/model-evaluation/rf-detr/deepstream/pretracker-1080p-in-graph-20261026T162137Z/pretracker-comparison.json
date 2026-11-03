@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:22:48.891853+00:00",
+  "run_dir": "reports\\model-evaluation\\rf-detr\\deepstream\\pretracker-1080p-in-graph-20261026T162137Z",
+  "infer_config": "/workspace/perception/candidates/rf_detr/deepstream/diagnostics/cam01_rf_detr_infer_diag_1080p_in_graph.txt",
+  "infer_config_sha256": "0c665bc66f4e1a99067b7927cdf24dcb7f03ebb6d96485037b3f21c18f119c8d",
+  "onnx": "models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx",
+  "onnx_sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb",
+  "onnxruntime_version": "1.31.0",
+  "stage_results": {
+    "B_engine_inside_deepstream_raw_slots": "FAIL",
+    "B_engine_inside_deepstream_person_decodes": "PASS",
+    "B_engine_inside_deepstream_person_set_strict": "PASS",
+    "C_native_parser_and_scaling": "PASS",
+    "D_end_to_end_pre_tracker_vs_hf_strict": "FAIL"
+  },
+  "frames": [
+    {
+      "frame_index": 141,
+      "A_input_ds_vs_hf_contract": {
+        "max_abs": 0.10588228702545166,
+        "mean_abs": 0.0025527578753566926,
+        "p99_abs": 0.011764705181121826,
+        "per_channel_mean_signed_a_minus_b": [
+          -0.0019488644914415574,
+          -0.0019800811913410145,
+          -0.001954994594759037
+        ],
+        "psnr_db_unit_range": 48.2256813351761
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 2.3972952365875244,
+          "mean_abs": 0.008425164170317597,
+          "p99_abs": 0.19844530105590097
+        },
+        "pred_boxes": {
+          "max_abs": 0.5971372127532959,
+          "mean_abs": 0.0023650850902777166,
+          "p99_abs": 0.021986354142427392
+        },
+        "slots_logits_delta_gt_1e-3": 288,
+        "person_decodes_ds": 40,
+        "person_decodes_onnx": 40,
+        "person_query_order_equal": true,
+        "person_score_max_abs": 0.0005620419979095459,
+        "person_set_strict": {
+          "matches": 40,
+          "left_count": 40,
+          "right_count": 40,
+          "max_score_abs_delta": 0.0005620419979095459,
+          "max_bbox_abs_delta_px": 0.4411160945892334
+        },
+        "person_set_result": "PASS",
+        "raw_slot_result": "FAIL",
+        "person_decode_result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 40,
+        "right_count": 40,
+        "matches": 40,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999987251735127,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 9.632110595703125e-05,
+        "median_bbox_abs_delta_px": 3.170967102050781e-05,
+        "all_class_id_zero_person": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_hf_strict": {
+        "left_count": 40,
+        "right_count": 41,
+        "matches": 36,
+        "unmatched_left": [
+          12,
+          19,
+          30,
+          37
+        ],
+        "unmatched_right": [
+          5,
+          8,
+          28,
+          34,
+          40
+        ],
+        "min_iou": 0.6431309871646438,
+        "max_score_abs_delta": 0.017863810062408447,
+        "max_bbox_abs_delta_px": 141.1116659641266,
+        "median_bbox_abs_delta_px": 0.5262134671211243,
+        "result": "FAIL",
+        "unmatched_pre_tracker_confidences": [
+          0.3218,
+          0.3428,
+          0.4387,
+          0.4916
+        ]
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 38,
+        "right_count": 40,
+        "matches": 38,
+        "unmatched_left": [],
+        "unmatched_right": [
+          0,
+          19
+        ],
+        "min_iou": 0.9999994663514583,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_vs_hf_strict_matches": 35
+      }
+    },
+    {
+      "frame_index": 283,
+      "A_input_ds_vs_hf_contract": {
+        "max_abs": 0.08627450466156006,
+        "mean_abs": 0.0025475975296179176,
+        "p99_abs": 0.011764705181121826,
+        "per_channel_mean_signed_a_minus_b": [
+          -0.0019395764887348726,
+          -0.0019707727335332528,
+          -0.0019564978083113087
+        ],
+        "psnr_db_unit_range": 48.207160155468586
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 0.0010089874267578125,
+          "mean_abs": 1.9725801307203132e-05,
+          "p99_abs": 0.0002541589736938469
+        },
+        "pred_boxes": {
+          "max_abs": 0.00010849535465240479,
+          "mean_abs": 1.5025236643850803e-06,
+          "p99_abs": 2.608239650726315e-05
+        },
+        "slots_logits_delta_gt_1e-3": 1,
+        "person_decodes_ds": 44,
+        "person_decodes_onnx": 44,
+        "person_query_order_equal": true,
+        "person_score_max_abs": 3.129243850708008e-06,
+        "person_set_strict": {
+          "matches": 44,
+          "left_count": 44,
+          "right_count": 44,
+          "max_score_abs_delta": 3.129243850708008e-06,
+          "max_bbox_abs_delta_px": 0.002880692481994629
+        },
+        "person_set_result": "PASS",
+        "raw_slot_result": "FAIL",
+        "person_decode_result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 44,
+        "right_count": 44,
+        "matches": 44,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999988451733328,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 0.00011110305786132812,
+        "median_bbox_abs_delta_px": 4.8100948333740234e-05,
+        "all_class_id_zero_person": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_hf_strict": {
+        "left_count": 44,
+        "right_count": 43,
+        "matches": 43,
+        "unmatched_left": [
+          1
+        ],
+        "unmatched_right": [],
+        "min_iou": 0.9902768552458426,
+        "max_score_abs_delta": 0.005539119243621826,
+        "max_bbox_abs_delta_px": 1.832015037536621,
+        "median_bbox_abs_delta_px": 0.2954787015914917,
+        "result": "FAIL",
+        "unmatched_pre_tracker_confidences": [
+          0.2508
+        ]
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 41,
+        "right_count": 44,
+        "matches": 41,
+        "unmatched_left": [],
+        "unmatched_right": [
+          0,
+          1,
+          4
+        ],
+        "min_iou": 0.9999996257169859,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_vs_hf_strict_matches": 41
+      }
+    }
+  ],
+  "tolerances": {
+    "raw_logits": 0.001,
+    "raw_boxes": 0.0001,
+    "person_score": 0.005,
+    "parser_score": 1e-05,
+    "parser_iou_min": 0.99,
+    "parser_bbox_px": 0.05,
+    "strict_crosscheck": {
+      "score_abs_delta_max": 0.02,
+      "bbox_iou_min": 0.5
+    }
+  },
+  "scope": "Two real frames; implementation consistency only. Not labeled accuracy."
+}

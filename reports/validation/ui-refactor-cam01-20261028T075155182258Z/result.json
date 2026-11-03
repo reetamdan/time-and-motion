@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T07:54:50.091890+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe' validate_ui_refactor.py",
+  "run_dir": "reports\\validation\\ui-refactor-cam01-20261028T075155182258Z",
+  "result": "FAIL",
+  "checks": {
+    "backend_served": "PASS",
+    "live_connection": "PASS",
+    "skip_link_first_tab_stop": "PASS",
+    "skip_link_focuses_main": "PASS",
+    "ui_start_reaches_running": "PASS",
+    "replay_mode_locked_while_running": "PASS",
+    "facility_metrics_unavailable_with_reason": "PASS",
+    "camera_tile_shows_live_count": "PASS",
+    "inspector_opens_with_keyboard": "PASS",
+    "focus_moves_into_inspector": "PASS",
+    "tab_trapped_in_inspector": "PASS",
+    "long_clip_reached_75s": "PASS",
+    "range_mode_requests_window_range": "PASS",
+    "earlier_enabled_with_long_history": "PASS",
+    "earlier_window_requests_older_range": "PASS",
+    "later_window_returns_forward": "PASS",
+    "escape_closes_inspector": "PASS",
+    "focus_returns_to_tile": "PASS",
+    "marker_saved": "PASS",
+    "open_in_evidence_highlights_card": "PASS",
+    "deep_link_highlights_card": "PASS",
+    "view_button_unique_in_card": "PASS",
+    "viewer_opens": "PASS",
+    "viewer_shows_expected_record": "PASS",
+    "viewer_shows_full_frame": "PASS",
+    "viewer_closes_on_escape": "PASS",
+    "focus_returns_to_view_button": "PASS",
+    "reset_dialog_opens": "PASS",
+    "reset_dialog_escape_cancels": "PASS",
+    "theme_switches_to_light": "PASS",
+    "theme_persists_after_reload": "PASS",
+    "run_status_visible_every_width_and_view": "PASS",
+    "no_horizontal_overflow_every_width_and_view": "PASS",
+    "mobile_nav_opens": "PASS",
+    "fault_backend_served": "PASS",
+    "cleanup_banner_shown": "PASS",
+    "cleanup_banner_and_retry_visible_every_width": "PASS",
+    "start_disabled_during_stop_failed": "PASS",
+    "start_api_returns_409_cleanup_unconfirmed": "PASS",
+    "retry_cleanup_reaches_stopped": "PASS"
+  },
+  "observed": {
+    "ui_start_reaches_running": {
+      "status": "RUNNING :: Running"
+    },
+    "facility_metrics_unavailable_with_reason": {
+      "excerpt": "FACILITY METRICS \u00b7 CALIBRATED\n\nOccupancy, flow and queues\n\nThese need runtime-valid calibration and fresh cameras. Unavailable values show their reason; they are never shown as 0.\n\nUnavailable\nEXPECTED IN BUILDING\nUnavailable\nboundary_coverage_complete is false (not every entrance is covered)\nENTRIE"
+    },
+    "camera_tile_shows_live_count": {
+      "text": "0"
+    },
+    "range_mode_requests_window_range": {
+      "requests": [
+        "http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?limit=2400&max_points=600",
+        "http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?epoch=faba8f9b-f9ad-495d-9cfd-2d7e9c8f6d0e&window=range&from_source_s=0.066733333&to_source_s=74.5034&limit=10000&max_points=600"
+      ]
+    },
+    "earlier_enabled_with_long_history": {
+      "buttons": [
+        "",
+        "Newest",
+        "Browse range",
+        "30 s",
+        "2 min",
+        "10 min",
+        "Earlier",
+        "Later",
+        "Mark evidence"
+      ]
+    },
+    "earlier_window_requests_older_range": {
+      "newest": [
+        44.5034,
+        74.5034
+      ],
+      "earlier": [
+        14.5034,
+        44.5034
+      ]
+    },
+    "later_window_returns_forward": {
+      "last": [
+        "http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?epoch=faba8f9b-f9ad-495d-9cfd-2d7e9c8f6d0e&window=range&from_source_s=44.5034&to_source_s=74.5034&limit=10000&max_points=600"
+      ]
+    },
+    "open_in_evidence_highlights_card": {
+      "url": "http://127.0.0.1:8771/#evidence?item=0a8fef8e-b583-495d-90e7-242d64ed72b5"
+    },
+    "deep_link_highlights_card": {
+      "group": "0a8fef8e-b583-495d-90e7-242d64ed72b5"
+    },
+    "view_button_unique_in_card": {
+      "matches": 1
+    },
+    "viewer_opens": {
+      "url": "http://127.0.0.1:8771/#evidence?item=6d3c1c1e-15c4-40b0-afef-4dd7cf35c678"
+    },
+    "viewer_shows_expected_record": {
+      "state": {
+        "src": "http://127.0.0.1:8771/api/v1/evidence/6d3c1c1e-15c4-40b0-afef-4dd7cf35c678",
+        "w": 1920,
+        "h": 1080,
+        "fit": "contain",
+        "box": [
+          857,
+          482
+        ],
+        "view": [
+          1440,
+          900
+        ],
+        "rect": {
+          "x": 581.1635131835938,
+          "y": 114.1875,
+          "width": 859.0000610351562,
+          "height": 484.0625,
+          "top": 114.1875,
+          "right": 1440.16357421875,
+          "bottom": 598.25,
+          "left": 581.1635131835938
+        }
+      },
+      "expected": "6d3c1c1e-15c4-40b0-afef-4dd7cf35c678"
+    },
+    "viewer_shows_full_frame": {
+      "state": {
+        "src": "http://127.0.0.1:8771/api/v1/evidence/6d3c1c1e-15c4-40b0-afef-4dd7cf35c678",
+        "w": 1920,
+        "h": 1080,
+        "fit": "contain",
+        "box": [
+          857,
+          482
+        ],
+        "view": [
+          1440,
+          900
+        ],
+        "rect": {
+          "x": 581.1635131835938,
+          "y": 114.1875,
+          "width": 859.0000610351562,
+          "height": 484.0625,
+          "top": 114.1875,
+          "right": 1440.16357421875,
+          "bottom": 598.25,
+          "left": 581.1635131835938
+        }
+      }
+    },
+    "run_status_visible_every_width_and_view": {},
+    "no_horizontal_overflow_every_width_and_view": {},
+    "cleanup_banner_and_retry_visible_every_width": {
+      "390": true,
+      "768": true,
+      "1024": true,
+      "1280": true,
+      "1440": true,
+      "1920": true
+    },
+    "start_api_returns_409_cleanup_unconfirmed": {
+      "status": 409,
+      "code": "CLEANUP_UNCONFIRMED"
+    }
+  },
+  "errors": [
+    "A_real_hardware: TimeoutError: Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"navigation\", name=\"Primary navigation (mobile)\").get_by_role(\"button\", name=re.compile(r\"^Alerts( |$)\"))\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_ui_refactor.py\", line 337, in main\n    part(run, page, external, console) if label.startswith(\"A\") else part(run, page)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_ui_refactor.py\", line 267, in part_a\n    nav.get_by_role(\"button\", name=re.compile(r\"^Alerts( |$)\")).click()\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 15543, in click\n    self._sync(\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Lib\\site-packages\\playwright\\_impl\\_locator.py\", line 160, in click\n    return await self._frame.click(self._selector, strict=True, **params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 549, in click\n    await self._channel.send(\"click\", self._timeout, locals_to_params(locals()))\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 558, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"navigation\", name=\"Primary navigation (mobile)\").get_by_role(\"button\", name=re.compile(r\"^Alerts( |$)\"))\n\n"
+  ],
+  "scope": "Refactored dashboard on a real backend socket with a real GPU cam01 run (Part A) and a TEST-ONLY fault adapter (Part B, no perception evidence). UI behaviour only; not detection accuracy."
+}

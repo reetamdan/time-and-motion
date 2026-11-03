@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "frames": [
+    {
+      "frame_index": 141,
+      "diverging_ranks": [],
+      "score_gaps_at_diverging_ranks": [],
+      "min_adjacent_gap_in_top300": 4.76837158203125e-06,
+      "max_proposal_score_abs_delta_between_inputs": 0.0006716251373291016
+    },
+    {
+      "frame_index": 283,
+      "diverging_ranks": [
+        98,
+        99,
+        219,
+        220
+      ],
+      "score_gaps_at_diverging_ranks": [
+        7.867813110351562e-06,
+        0.005727529525756836,
+        2.384185791015625e-06,
+        0.007867813110351562
+      ],
+      "min_adjacent_gap_in_top300": 2.384185791015625e-06,
+      "max_proposal_score_abs_delta_between_inputs": 3.0040740966796875e-05
+    }
+  ]
+}

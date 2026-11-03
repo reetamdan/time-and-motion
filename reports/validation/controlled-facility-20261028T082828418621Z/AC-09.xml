@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="7" time="0.132" timestamp="2026-10-28T13:58:28.949655+05:30" hostname="LAPTOP-G1S896R7"><testcase classname="tests.test_crossing" name="test_directional_crossing_jitter_debounce_and_idempotency" time="0.002" /><testcase classname="tests.test_crossing" name="test_crossing_requires_confirmation_beyond_dead_band" time="0.000" /><testcase classname="tests.test_crossing" name="test_stale_track_cannot_complete_old_crossing" time="0.000" /><testcase classname="tests.test_crossing" name="test_stale_observation_does_not_mutate_boundary_state" time="0.000" /><testcase classname="tests.test_crossing" name="test_epoch_prevents_numeric_tracker_id_collision" time="0.000" /><testcase classname="tests.test_crossing" name="test_minimum_track_persistence_suppresses_unconfirmed_crossing" time="0.000" /><testcase classname="tests.test_facility_analytics" name="test_floor_boundary_crossing_feeds_entries_and_the_ledger" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-09'&quot;">self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-09')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-09'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError</error></testcase></testsuite></testsuites>

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-28",
+  "purpose": "Consolidated status of the detector numerical comparisons, reconciling the 2026-10-26 failed crosschecks with the diagnostics that followed. Cites existing evidence; adds no new inference results except where a fresh run path is named.",
+  "acceptance_unchanged": {"trafficcamnet-smoke": "provisional_smoke", "rt-detr-person-candidate": "candidate_unaccepted", "rf-detr-person-candidate": "candidate_unaccepted"},
+  "implementation_correctness": {
+    "rt_detr": {
+      "tensorrt_in_deepstream_vs_onnxruntime_on_identical_input": "PASS (worst logits 1.25e-4, boxes 2.3e-5; tolerances 1e-3/1e-4)",
+      "native_parser_vs_python_decode_of_deepstream_tensors": "PASS (worst box 0.000165 px, score 6e-8)",
+      "nvdcf_effect": "CHARACTERIZED: tracker does not move boxes on the sampled frames; it removes 0-3 detector objects (target management)",
+      "evidence": "reports/model-evaluation/rt-detr/diagnostics/result.json"
+    },
+    "rf_detr": {
+      "tensorrt_vs_onnx_identical_input": "variant 1 raw-slot PASS; variant 2 raw-slot FAIL by near-tie reordering (score gaps 2.4e-6, 7.9e-6); order-independent person sets PASS; native parser PASS",
+      "evidence": "reports/model-evaluation/rf-detr/result.json, conclusion-corrections.json"
+    }
+  },
+  "comparator_defects_found_and_fixed": [
+    {
+      "defect": "The original HF/ONNX reference frames were decoded with a BT.601 colour matrix (OpenCV) although the stream is tagged BT.709 limited range; reference tensors are bit-identical to an ffmpeg BT.601 decode.",
+      "fix": "Corrected BT.709 limited-range reference built with ffmpeg (reports/model-evaluation/rt-detr/diagnostics/corrected-reference-20261026T160220Z). Original failed evidence kept unchanged (sha256 26ffadbf...)."
+    },
+    {
+      "defect": "The original crosscheck compared ONNX detector decodes with POST-NvDCF objects, mixing tracker target management into a detector comparison (a 66.8 px 'delta' was a greedy match between different detections).",
+      "fix": "Pre-tracker comparison (diagnostic extractor in perception/candidates/rt_detr/diagnostics; for the application pipeline the v2 extractor --stage detect now provides the same pre-tracker output path)."
+    }
+  ],
+  "pipeline_fidelity_change_adopted": {
+    "change": "RT-DETR candidate infer config r2 adds scaling-filter=3 + scaling-compute-hw=1 (GPU-Super), closest measured emulation of the model's antialiased bilinear reference resize.",
+    "measured_effect_on_sampled_frames": {"input_mean_abs_vs_bt709_reference": "0.0253 (default) -> 0.0078", "strict_matches_frame_141": "52 -> 67 of 76", "strict_matches_frame_283": "36 -> 56 of 67"},
+    "file": "perception/candidates/rt_detr/deepstream/cam01_rt_detr_infer_r2.txt (r1 kept)",
+    "not_applied_to": "trafficcamnet-smoke: its protected inference config (sha 8165a340...) stays unchanged; its training preprocessing is not documented in the bundled sample, so a resize change there is an accuracy question for the labelled evaluation"
+  },
+  "strict_cross_pipeline_crosscheck": {
+    "criteria_unchanged": {"matching": "strict one-to-one", "bbox_iou_min": 0.5, "score_abs_delta_max": 0.02},
+    "result": "FAIL (both candidates, every preprocessing variant tested)",
+    "control": "The same strict check also FAILS between two CPU-only references that differ only in YUV->RGB matrix (frame 141: 74/76 vs 75; frame 283: 61/63 vs 66), reports/model-evaluation/rt-detr/diagnostics/corrected-reference-20261026T160220Z/reference-sensitivity-control.json",
+    "interpretation": "With implementation parity established on identical inputs, the residual disagreement is the detectors' sensitivity to small input differences in a dense crowd of mostly low-confidence (0.25-0.5) detections. The gate is retained and reported as FAIL; it is not relaxed and it is not evidence that either detector is better or worse.",
+    "status": "unresolved by design: no further implementation defect is indicated; only labelled accuracy can decide detector quality"
+  },
+  "remaining": [
+    "Human-reviewed labels (data/annotations/cam01-v1, Tier 1 = 12 frames) for the labelled accuracy evaluation (AC-05).",
+    "Fresh timed/profile run of the RT-DETR r2 config: reports/model-evaluation/timed-runs/ (produced in this session if listed in docs/progress-notes.md)."
+  ]
+}

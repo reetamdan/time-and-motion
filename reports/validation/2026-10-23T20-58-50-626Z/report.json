@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-10-23T20:59:36.082Z",
+  "passed": false,
+  "checks": [
+    {
+      "name": "unhandled validation error",
+      "passed": false,
+      "detail": "Error: Server did not become ready: UI 404; API 404; cause: none\n    at waitForServer (file:///C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/scripts/validate-e2e.mjs:48:9)\n    at async file:///C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/scripts/validate-e2e.mjs:142:3"
+    }
+  ]
+}

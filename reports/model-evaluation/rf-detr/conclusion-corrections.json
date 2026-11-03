@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T17:45:00Z",
+  "applies_to": "reports/model-evaluation/rf-detr/result.json (left unchanged)",
+  "corrections": [
+    {
+      "original": "closeout_classification / interpretation_limit: \"strict end-to-end crosscheck still fails on near-threshold objects\" / \"Remaining mismatches are near-threshold objects\"",
+      "corrected": "Variant 2 unmatched pre-tracker confidences are 0.3218, 0.3428, 0.4387 and 0.4916 (frame 141) and 0.2508 (frame 283); variant 1 had unmatched objects up to 0.6054. Several are well above the 0.25 threshold, so the discrepancies are not explained as threshold-edge noise.",
+      "reason": "Values around 0.44-0.61 are not near a 0.25 threshold."
+    },
+    {
+      "original": "hf_onnx_parity: near-tie reordering explanation",
+      "corrected": "Near-tied two-stage proposal scores (gaps 2.4e-6 and 7.9e-6) explain the raw-slot differences observed on frame 283 (variant 1) and frame 141 (variant 2). Two frames do not establish that RF-DETR backends are generally equivalent, nor that all cross-backend differences are of this kind.",
+      "reason": "Mechanism shown on sampled frames only."
+    }
+  ],
+  "unchanged_results": {
+    "same_input_engine_and_parser_consistency": "Raw-slot parity PASS (variant 1 TRT vs ORT) and FAIL (variant 2, near-tie reordering on the sampled frame); order-independent person sets PASS; native parser PASS",
+    "cross_pipeline_agreement_under_different_preprocessing": "FAIL (strict crosscheck, unchanged criteria)",
+    "labeled_detection_tracking_quality": "BLOCKED (no labels)",
+    "accepted": false
+  }
+}

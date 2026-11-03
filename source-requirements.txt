@@ -1,0 +1,2470 @@
+# PRODUCT REQUIREMENTS DOCUMENT / IMPLEMENTATION PROMPT
+
+## Project Name
+
+Local Multi-Camera Crowd Intelligence Demo
+
+## Your Role
+
+You are the lead software engineer, computer-vision engineer, NVIDIA DeepStream engineer, systems architect, frontend engineer, backend engineer, and DevOps engineer for this project.
+
+Your job is to BUILD a working end-to-end demo, not merely produce another plan or research report.
+
+Do not redo the market/repository/model research unless a selected dependency is genuinely unavailable or incompatible.
+
+The research and architectural decisions in this PRD are already complete and should be treated as project requirements.
+
+You are running on the ACTUAL DEVELOPMENT LAPTOP that will be used for the demonstration.
+
+The current laptop has:
+
+- NVIDIA GeForce RTX 5070 Ti Laptop GPU
+- 12,227 MiB VRAM, approximately 12 GB
+- Blackwell architecture
+- Windows 11 host
+- observed NVIDIA driver from prior inspection: 610.47
+
+DO NOT treat this hardware as hypothetical.
+
+DO NOT ask whether the RTX 5070 Ti is available.
+
+DO NOT design for some generic GPU instead.
+
+Inspect the current machine, verify that the RTX 5070 Ti is accessible from the development environment, and build/benchmark directly against it.
+
+The later production-scale target may be an NVIDIA RTX A6000 with 48 GB VRAM, but the CURRENT implementation and demo must be developed and validated on the RTX 5070 Ti laptop.
+
+Inspect the existing project directory first.
+
+Preserve useful existing work.
+
+Then implement the project incrementally.
+
+Do not stop after scaffolding.
+
+Do not return only pseudocode.
+
+Do not replace difficult functionality with fake or hard-coded values where real pipeline values can be generated.
+
+Do not repeatedly ask for confirmation.
+
+Make reasonable engineering decisions where necessary and document them.
+
+The final deliverable must be a runnable local application.
+
+---
+
+# 1. PROJECT OBJECTIVE
+
+Build a fully local AI-powered CCTV crowd-intelligence demonstration for a large two-floor mess hall.
+
+The future production system may eventually process approximately 20 CCTV/RTSP cameras.
+
+The CURRENT demo is being built directly on this machine:
+
+```text
+GPU:
+NVIDIA GeForce RTX 5070 Ti Laptop GPU
+
+VRAM:
+12,227 MiB / approximately 12 GB
+
+GPU architecture:
+Blackwell
+
+Host OS:
+Windows 11
+```
+
+This is not an estimated or future machine.
+
+This is the laptop on which you are currently implementing the project.
+
+Use it.
+
+Verify it.
+
+Benchmark it.
+
+Optimize the demo for it.
+
+If the demonstration succeeds, the same architecture will later be migrated to:
+
+```text
+NVIDIA RTX A6000
+48 GB VRAM
+native Ubuntu deployment preferred
+```
+
+The laptop application must therefore be a smaller implementation of the real architecture rather than a disposable prototype.
+
+---
+
+# 2. PRODUCT PURPOSE
+
+Turn multiple CCTV feeds into useful facility-level crowd intelligence.
+
+The important outputs are:
+
+- live person detection
+- camera-local person tracking
+- zone occupancy
+- floor occupancy
+- entry counts
+- exit counts
+- directional movement
+- crowd density/congestion
+- queue size
+- queue state
+- staircase traffic
+- camera health
+- stale/frozen feed detection
+- overlapping-camera duplicate suppression
+- temporary cross-camera association where evidence supports it
+- two-floor live visualization
+- historical analytics
+- GPU/system telemetry
+
+The system is NOT intended to establish permanent real-world identities.
+
+Do not implement:
+
+- facial recognition
+- facial enrollment
+- permanent biometric profiles
+- demographic inference
+- emotion recognition
+- persistent gait biometrics
+
+Temporary multi-camera identifiers are allowed only as session/visit-scoped tracking hypotheses.
+
+The system must support:
+
+```text
+UNKNOWN
+```
+
+when cross-camera evidence is ambiguous.
+
+Never force an identity association just because two people look similar.
+
+---
+
+# 3. FULLY LOCAL REQUIREMENT
+
+The runtime must remain fully local.
+
+At runtime there must be:
+
+- no cloud inference
+- no OpenAI API
+- no external VLM API
+- no remote CCTV analytics API
+- no cloud database
+- no hosted vector database
+- no hosted TypeSafe Jev request
+- no uploading CCTV footage
+- no uploading person crops
+- no uploading embeddings
+
+One-time dependency/model downloading during installation is acceptable.
+
+Once installation is complete, the application should be capable of running with outbound Internet access disabled.
+
+The following must stay local:
+
+- footage
+- frames
+- person crops
+- embeddings
+- tracking IDs
+- event metadata
+- logs
+- database
+- analytics
+- evidence clips
+- dashboard
+- model inference
+
+---
+
+# 4. RESEARCH DECISIONS ALREADY COMPLETED
+
+Do not repeat broad GitHub/Hugging Face/Kaggle research before implementation.
+
+The selected architectural direction is:
+
+```text
+NVIDIA DeepStream 9.2
++
+GStreamer
++
+NVDEC
++
+TensorRT
++
+NVIDIA multi-object tracking
++
+deterministic crowd analytics
++
+camera/floor topology
++
+optional constrained multi-camera association
+```
+
+The closest larger existing NVIDIA reference architecture identified during research is:
+
+```text
+DeepStream 9.2
++
+MV3DT
++
+NVIDIA VSS Warehouse multi-camera / Re-ID workflow
+```
+
+However:
+
+DO NOT deploy the entire VSS stack during the first demo.
+
+The complete VSS architecture can introduce:
+
+- Kafka
+- Milvus
+- etcd
+- MinIO
+- additional services
+- additional model containers
+- more complicated recovery/state management
+
+The first demo should use the smallest reliable architecture that demonstrates the required capabilities.
+
+Only evaluate the full VSS Re-ID gallery later if it materially improves cross-camera association.
+
+---
+
+# 5. CURRENT DEVELOPMENT ENVIRONMENT
+
+The host machine is confirmed as:
+
+```text
+Windows 11
+RTX 5070 Ti Laptop GPU
+12 GB class VRAM
+Blackwell
+```
+
+Preferred development route:
+
+```text
+Windows 11
+      ↓
+WSL2
+      ↓
+Ubuntu 24.04
+      ↓
+NVIDIA container / Docker environment where appropriate
+      ↓
+DeepStream 9.2
+      ↓
+CUDA
+      ↓
+TensorRT
+```
+
+Do not ask whether the laptop has an NVIDIA GPU.
+
+It does.
+
+Your first responsibility is to verify that the confirmed RTX 5070 Ti is visible from:
+
+- Windows
+- WSL2
+- CUDA
+- container runtime if used
+- DeepStream
+
+Record the actual environment information.
+
+Useful initial checks include the equivalent of:
+
+```text
+nvidia-smi
+CUDA visibility
+TensorRT availability
+DeepStream version
+Docker GPU access
+WSL GPU access
+```
+
+Do not reinstall the NVIDIA driver blindly if the existing working driver is sufficient.
+
+Inspect before changing system-level components.
+
+Research-established DeepStream 9.2 Linux environment guidance includes approximately:
+
+```text
+Ubuntu 24.04
+GStreamer 1.24.2
+CUDA 13.2
+TensorRT 10.16.0.72
+```
+
+Prefer release-matched dependencies.
+
+Do not blindly follow old DeepStream tutorials.
+
+Modern DeepStream development favors:
+
+```text
+pyservicemaker / Service Maker
+```
+
+over deprecated:
+
+```text
+pyds
+```
+
+Use current supported interfaces or C++ where appropriate.
+
+---
+
+# 6. RTX 5070 TI BLACKWELL-SPECIFIC REQUIREMENT
+
+The CURRENT laptop GPU is Blackwell.
+
+This is not an optional compatibility note.
+
+It directly applies to this machine.
+
+The current DeepStream MV3DT RT-DETR reference requires:
+
+```text
+strongly-typed=1
+```
+
+for RT-DETR on Blackwell.
+
+Without it, the application may appear to run while producing empty detections or empty metadata.
+
+Therefore:
+
+DO NOT declare the pipeline operational merely because:
+
+```text
+container runs
+video plays
+GPU utilization exists
+process exits with code 0
+```
+
+Verify real output.
+
+Required verification:
+
+```text
+actual person detections > 0 on known frames
+actual bounding boxes
+actual metadata
+actual tracker IDs
+actual analytics events
+actual counts
+```
+
+Where practical, add a startup or integration test that fails if the selected detector produces no expected metadata on a known test clip.
+
+---
+
+# 7. CURRENT GPU CAPACITY
+
+The RTX 5070 Ti Laptop GPU is the CONFIRMED current execution device.
+
+Do not merely say:
+
+"if the laptop has 12 GB VRAM."
+
+It does.
+
+Use the actual approximately 12 GB VRAM budget when implementing the demo.
+
+The GPU has one sixth-generation NVDEC engine.
+
+Do not misinterpret NVIDIA's 12-session NVENC figure as a twelve-camera decode limit.
+
+Encoding and decoding are different.
+
+Actual stream capacity must be measured on THIS laptop.
+
+Capacity depends on:
+
+- codec
+- profile
+- resolution
+- source FPS
+- decoder throughput
+- detector FPS
+- batching
+- tracker cost
+- person count
+- Re-ID frequency
+- GPU memory
+- preprocessing
+- display/OSD overhead
+
+The research did not establish that this laptop can process twenty full streams.
+
+Do not claim that it can.
+
+The goal of the current machine is to produce a convincing working demo and actual capacity measurements.
+
+---
+
+# 8. FULL-SYSTEM PLANNING NUMBERS
+
+These are workload calculations, not benchmark results.
+
+Twenty hypothetical 25 FPS cameras:
+
+```text
+20 × 25 = 500 decoded frames/second
+```
+
+Detector sampling at 5 FPS/camera:
+
+```text
+20 × 5 = 100 detector frames/second
+```
+
+Detector sampling at 10 FPS/camera:
+
+```text
+20 × 10 = 200 detector frames/second
+```
+
+Illustrative appearance workload:
+
+```text
+15 visible people/camera
+× 20 cameras
+× 1 embedding/person/second
+
+≈ 300 embeddings/second
+```
+
+Example compressed-stream storage:
+
+```text
+20 × 2 Mbps
+= 40 Mbps
+≈ 432 GB/day
+```
+
+```text
+20 × 4 Mbps
+= 80 Mbps
+≈ 864 GB/day
+```
+
+Do not use these values as actual camera specifications.
+
+---
+
+# 9. CURRENT DEMO SCOPE
+
+The demo is being developed on the RTX 5070 Ti laptop.
+
+Do not begin with twenty streams.
+
+Initial target:
+
+```text
+4 simultaneous feeds
+```
+
+Use four representative feeds where possible.
+
+Recommended roles:
+
+```text
+Camera 1
+Entrance / Exit
+
+Camera 2
+Dining / Crowd Area
+
+Camera 3
+Overlapping View
+
+Camera 4
+Staircase / Queue / Transition
+```
+
+Initially use prerecorded authorized CCTV clips.
+
+The architecture must also support replacing:
+
+```text
+file path
+```
+
+with:
+
+```text
+RTSP URL
+```
+
+without rewriting analytics code.
+
+Once four streams work, benchmark progressively on THIS 5070 Ti:
+
+```text
+1 stream
+2 streams
+4 streams
+6 streams
+8 streams
+```
+
+Continue beyond eight only if useful.
+
+Do not choose an arbitrary maximum beforehand.
+
+Measure it.
+
+---
+
+# 10. VIDEO PIPELINE
+
+Implement approximately:
+
+```text
+Video file / RTSP
+       ↓
+GStreamer
+       ↓
+bounded queues
+       ↓
+timestamps + health metadata
+       ↓
+NVDEC
+       ↓
+GPU preprocessing
+       ↓
+batched TensorRT detector
+       ↓
+one authoritative tracker per camera
+       ↓
+analytics
+       ↓
+optional calibration / multi-camera fusion
+       ↓
+local event API
+       ↓
+backend
+       ↓
+dashboard
+```
+
+Keep frames GPU-resident where reasonable.
+
+Avoid:
+
+```text
+GPU → CPU → GPU
+```
+
+copies unless necessary.
+
+Do not unnecessarily re-encode streams.
+
+Prefer preserving compressed source video for recording/evidence where possible.
+
+---
+
+# 11. DETECTOR CANDIDATES
+
+Research has already identified these two primary lightweight candidates:
+
+```text
+PekingU/rtdetr_v2_r18vd
+```
+
+and:
+
+```text
+Roboflow/rf-detr-small
+```
+
+Benchmark both directly on the CURRENT RTX 5070 Ti.
+
+Use the same footage.
+
+Evaluate:
+
+- standing people
+- seated people
+- distant people
+- partial occlusion
+- dense groups
+- queues
+- tables/chairs
+- people carrying trays
+- entrances
+- staircases
+
+Do not select the detector solely based on published benchmark scores.
+
+The winning detector must be selected from:
+
+```text
+site accuracy
++
+tracking stability
++
+latency
++
+VRAM
++
+throughput
+```
+
+Prefer TensorRT inference.
+
+Start with FP16 where suitable.
+
+Only consider INT8 if measured accuracy remains acceptable.
+
+Keep detector interfaces modular so larger models can later be compared.
+
+---
+
+# 12. DETECTION CAPACITY LIMITS
+
+Audit all detection and tracking caps.
+
+Do not inherit an example configuration such as:
+
+```text
+topk=20
+```
+
+without checking it.
+
+A crowded mess hall may contain far more than 20 visible people.
+
+Audit:
+
+- top-k
+- NMS
+- parser limits
+- maximum detections
+- `maxTargetsPerStream`
+- shadow-track limits
+- embedding batch limits
+- metadata limits
+
+The system must not silently ignore people because of sample configuration defaults.
+
+---
+
+# 13. LOCAL TRACKING
+
+Use exactly one authoritative tracker per feed.
+
+Start with:
+
+```text
+NvDCF / NvMultiObjectTracker
+```
+
+Possible comparison baselines:
+
+```text
+NvSORT
+ByteTrack
+BoT-SORT
+```
+
+But these must not simultaneously create competing production track IDs.
+
+Use local identifiers structured around:
+
+```text
+camera_id
+camera_epoch
+local_track_id
+```
+
+Example:
+
+```text
+cam_02 / epoch_3 / track_17
+```
+
+If a camera reconnects:
+
+increment/change:
+
+```text
+camera_epoch
+```
+
+Never interpret a reused local numeric tracker ID as the previous physical person after restart/reconnect.
+
+---
+
+# 14. COMMON TRACK/EVENT SCHEMA
+
+Implement a common structured schema.
+
+At minimum:
+
+```text
+camera_id
+camera_epoch
+local_track_id
+
+temporary_global_track_id
+global_candidate_ids
+
+floor_id
+
+capture_time_estimate
+receive_time
+pts
+clock_quality
+timestamp_uncertainty
+
+bbox
+footpoint
+world_position
+world_position_uncertainty
+
+visibility
+detection_confidence
+association_score
+tracking_state
+
+model_revision
+tracker_revision
+calibration_revision
+
+observed_or_inferred
+
+evidence_frame_reference
+evidence_clip_reference
+```
+
+Nullable fields are acceptable where information is unavailable.
+
+Do NOT call raw embedding cosine similarity:
+
+```text
+identity_probability
+```
+
+unless it has actually been calibrated as such.
+
+---
+
+# 15. TIMESTAMPING
+
+Preserve separate concepts for:
+
+- RTP timestamp
+- PTS
+- receive time
+- capture/source-time estimate
+- synchronization quality
+- clock offset/drift estimate
+
+Do not assume host arrival time equals image capture time.
+
+For future RTSP deployment:
+
+use local NTP.
+
+Use PTP only when supported by the real camera/network hardware.
+
+Inspect RTCP Sender Reports.
+
+Do not let one delayed camera stall every stream indefinitely.
+
+Use bounded queues and stale-stream handling.
+
+---
+
+# 16. CAMERA HEALTH
+
+Build camera health from the beginning.
+
+Detect:
+
+- disconnected feed
+- stale feed
+- frozen stream
+- repeated frames
+- black frames
+- decode errors
+- latency growth
+- FPS drop
+- timestamp anomalies
+- reconnects
+- possible camera movement/calibration invalidation
+
+Expose states such as:
+
+```text
+HEALTHY
+DEGRADED
+OFFLINE
+CALIBRATION WARNING
+```
+
+Dashboard should show the last-good-frame age.
+
+---
+
+# 17. TWO-FLOOR FACILITY MODEL
+
+Never represent the building as one flat map.
+
+Create:
+
+```text
+Floor 1
+Floor 2
+```
+
+as independent coordinate systems.
+
+Each should support:
+
+- floor dimensions
+- zones
+- dining regions
+- queue regions
+- corridors
+- entrances
+- exits
+- staircase entrances
+- landings
+- pillars
+- walls
+- blind areas
+- coverage polygons
+- overlaps
+
+Create a graph connecting floors through explicit transitions.
+
+Example:
+
+```text
+Dining_F1_A
+   ↓
+Stair_F1_Entrance
+   ↓
+Stair_A
+   ↓
+Stair_F2_Landing
+   ↓
+Dining_F2_A
+```
+
+Cross-camera matching must obey this topology.
+
+No unrestricted all-camera matching.
+
+---
+
+# 18. CALIBRATION
+
+Use existing NVIDIA MV3DT/current calibration tooling where useful.
+
+Support:
+
+- intrinsics
+- distortion
+- extrinsics
+- ground-plane mapping
+- world projection
+- manual surveyed anchors
+
+Automatic calibration is optional.
+
+Correctness matters more than automation.
+
+Version calibrations.
+
+A calibration becomes suspect/invalid when:
+
+- camera moves
+- camera zoom changes
+- crop changes
+- resolution changes
+
+Store calibration revision IDs with generated analytics.
+
+---
+
+# 19. OVERLAPPING CAMERA FUSION
+
+This is one of the most important demo features.
+
+Start with two overlapping cameras.
+
+Demonstrate:
+
+```text
+Cam A local track 11
+Cam B local track 4
+
+→ same temporary global observation
+
+→ occupancy count = 1
+```
+
+rather than:
+
+```text
+occupancy count = 2
+```
+
+Use MV3DT or equivalent calibrated fusion.
+
+Measure:
+
+- duplicate count errors
+- reprojection error
+- time alignment
+- ID consistency
+- calibration sensitivity
+
+Do not expand to many camera groups until this controlled pair works.
+
+---
+
+# 20. NON-OVERLAP / STAIR ASSOCIATION
+
+Treat this separately from overlapping-view fusion.
+
+Use multiple signals:
+
+```text
+appearance
++
+exit zone
++
+entry zone
++
+elapsed time
++
+direction
++
+reachable camera topology
++
+floor
++
+mutual exclusion
+```
+
+Example:
+
+```text
+Track leaves Cam 4
+Floor 1 stair entrance
+
+8.2 seconds later
+
+new track appears
+Floor 2 stair landing
+
+appearance similarity high
+travel time plausible
+topology valid
+direction valid
+
+→ candidate association
+```
+
+If two people are equally plausible:
+
+```text
+UNKNOWN
+```
+
+Do not force a merge.
+
+---
+
+# 21. APPEARANCE RE-ID
+
+Re-ID is optional in the earliest milestone.
+
+Do not embed every person on every frame.
+
+Use selective high-quality crops.
+
+Possible filters:
+
+- minimum crop dimensions
+- low blur
+- sufficient visibility
+- limited occlusion
+- update frequency
+- useful orientation
+
+Research baseline:
+
+```text
+kaiyangzhou/osnet
+```
+
+The architecture must allow replacing the embedding model later.
+
+Some OSNet weights have MSMT17 training provenance, so do not treat experimental use as automatic production clearance.
+
+---
+
+# 22. FULL NVIDIA VSS GALLERY
+
+Do NOT make this a first-demo dependency.
+
+Potential future benefits:
+
+- appearance gallery
+- CLIP-ReID
+- reassociation after gaps
+- retrieval infrastructure
+
+Potential complexity:
+
+- Kafka
+- Milvus
+- etcd
+- MinIO
+- additional inference/service containers
+
+First demonstrate the project without this dependency.
+
+Evaluate VSS only if measured cross-camera accuracy warrants it.
+
+---
+
+# 23. BASIC ANALYTICS
+
+Use:
+
+```text
+nvdsanalytics
+```
+
+or equivalent deterministic state logic for:
+
+- ROI occupancy
+- line crossing
+- directional movement
+- overcrowding
+
+Build facility intelligence on top.
+
+---
+
+# 24. OCCUPANCY
+
+Support:
+
+- camera visible count
+- zone occupancy
+- floor occupancy
+- building occupancy estimate
+
+Never simply add counts from overlapping cameras.
+
+Use fused tracks or authoritative zones.
+
+For building occupancy:
+
+```text
+initial occupancy
++
+entries
+-
+exits
+```
+
+then reconcile with current visible/fused observations.
+
+If boundary coverage is incomplete:
+
+label it:
+
+```text
+ESTIMATED OCCUPANCY
+```
+
+not exact occupancy.
+
+---
+
+# 25. COUNT CONSERVATION
+
+Build this as a core product feature.
+
+Example:
+
+```text
+Initial occupancy       120
+Entries                  +18
+Exits                    -10
+----------------------------
+Expected                 128
+
+Visible fused            126
+Unresolved transitions     2
+----------------------------
+Difference                 0
+```
+
+Expose:
+
+- expected count
+- visible count
+- unresolved transitions
+- discrepancy
+- confidence/quality
+
+---
+
+# 26. ENTRY / EXIT
+
+Use directional line crossing.
+
+Implement:
+
+- hysteresis
+- debounce
+- minimum track persistence
+- movement direction
+
+Avoid multiple counts caused by:
+
+- jitter
+- retracking
+- overlapping cameras
+- tracker reset
+
+Show:
+
+```text
+IN
+OUT
+CURRENT OCCUPANCY
+```
+
+---
+
+# 27. QUEUE ANALYTICS
+
+Use configurable:
+
+- queue polygons
+- optional queue centerlines
+- service boundaries
+
+Track:
+
+- current queue size
+- joins
+- leaves
+- growth
+- shrinkage
+- throughput
+- estimated wait where sufficiently observable
+
+Do not classify every stationary person as queued.
+
+Use persistence, geometry and movement.
+
+---
+
+# 28. CONGESTION
+
+Implement explainable congestion rather than generic AI anomaly scores.
+
+Potential inputs:
+
+- people/m²
+- average speed
+- dwell time
+- throughput
+- queue overflow
+- counterflow
+- persistence
+
+Possible UI levels:
+
+```text
+NORMAL
+BUSY
+CONGESTED
+SEVERELY CONGESTED
+```
+
+Thresholds must be configurable.
+
+Do not infer panic, injury or intent.
+
+---
+
+# 29. STAIR FLOW
+
+Treat staircases as explicit transitions.
+
+Track:
+
+```text
+Floor 1 → Floor 2
+Floor 2 → Floor 1
+```
+
+Expose flows such as:
+
+```text
+UP: 14 people/min
+DOWN: 9 people/min
+```
+
+Distinguish actual visible trajectory from inferred blind-gap transition.
+
+---
+
+# 30. DASHBOARD
+
+Build a polished local operations dashboard.
+
+Preferred frontend:
+
+```text
+React
+```
+
+Preferred backend:
+
+```text
+FastAPI
+```
+
+or equivalent.
+
+Demo database:
+
+```text
+SQLite
+```
+
+is acceptable.
+
+Design the persistence layer so PostgreSQL migration is straightforward.
+
+Dashboard should contain:
+
+## Live Camera Grid
+
+Four feeds.
+
+Each tile:
+
+- camera name
+- floor
+- camera health
+- bounding boxes
+- local track IDs
+- people count
+- source FPS
+- analytics FPS
+- frame age
+
+## Floor 1 Map
+
+Show:
+
+- cameras
+- camera coverage
+- zones
+- occupancy
+- queues
+- congestion
+- entrances/exits
+- flow
+
+## Floor 2 Map
+
+Same.
+
+## Facility Metrics
+
+Show:
+
+- Floor 1 occupancy
+- Floor 2 occupancy
+- building occupancy estimate
+- IN
+- OUT
+- queue sizes
+- stair flow
+- congestion state
+- unresolved transitions
+- cameras healthy / total cameras
+
+## Alerts
+
+Examples:
+
+- overcrowding
+- queue overflow
+- camera offline
+- frozen camera
+- timestamp problem
+- calibration warning
+- occupancy discrepancy
+
+## System Performance
+
+Show current measurements from THIS RTX 5070 Ti machine:
+
+- GPU utilization
+- VRAM used / total
+- GPU temperature
+- NVDEC utilization where accessible
+- CPU
+- RAM
+- inference FPS
+- latency/frame age
+- dropped frames
+
+Do not hardcode GPU values.
+
+Read the real machine.
+
+---
+
+# 31. USER INTERFACE QUALITY
+
+The dashboard should resemble a genuine monitoring/operations application.
+
+Avoid:
+
+- notebook-style presentation
+- raw JSON everywhere
+- oversized debug text
+- excessive gradients
+- childish styling
+
+Prefer:
+
+- dark professional dashboard
+- compact cards
+- clearly differentiated alerts
+- responsive video layout
+- clean maps
+- readable charts
+- consistent typography
+
+Use actual live analytics.
+
+---
+
+# 32. DEMO STORY
+
+The final demonstration should support this sequence:
+
+1. Person enters Camera 1.
+2. Detector identifies the person.
+3. Tracker assigns local ID.
+4. Entrance line crossing occurs.
+5. Building occupancy increases.
+6. Person enters overlapping Camera 2 view.
+7. Camera 2 has another local ID.
+8. Overlap fusion associates them as one temporary global track.
+9. Person is NOT counted twice.
+10. Person approaches stair transition.
+11. Floor 1 track disappears.
+12. Candidate appears on Floor 2.
+13. Time/topology/appearance are evaluated.
+14. Confident association creates temporary continuity.
+15. Ambiguous association remains UNKNOWN.
+16. Dashboard updates floor occupancy and flow.
+
+---
+
+# 33. LOCAL RECORDING
+
+Preserve source compressed footage where practical.
+
+Create evidence clips for:
+
+- alerts
+- ambiguous transitions
+- debugging
+- evaluation
+
+Do not constantly generate unnecessary re-encoded video.
+
+Retention must be configurable.
+
+---
+
+# 34. DATA MODEL
+
+Suggested entities:
+
+```text
+cameras
+camera_sessions
+camera_health
+
+floors
+zones
+portals
+camera_calibrations
+
+local_tracks
+global_track_hypotheses
+association_candidates
+
+line_crossings
+occupancy_snapshots
+queue_snapshots
+flow_events
+alerts
+
+evidence_clips
+
+model_versions
+calibration_versions
+system_metrics
+```
+
+---
+
+# 35. CONFIGURATION
+
+Do not hardcode facility structure.
+
+Use configuration files such as:
+
+```text
+configs/
+    cameras.yaml
+    floors.yaml
+    zones.yaml
+    portals.yaml
+    analytics.yaml
+    models.yaml
+    runtime.yaml
+```
+
+Example:
+
+```yaml
+id: cam_01
+name: Main Entrance
+floor: floor_1
+source_type: file
+source: ./data/demo/cam01.mp4
+enabled: true
+analytics_fps: 8
+overlap_group: entrance_group
+```
+
+Later an RTSP source should require only configuration changes.
+
+---
+
+# 36. MODEL VERSIONING
+
+Pin every model.
+
+Record:
+
+- model
+- checkpoint
+- version/hash
+- runtime
+- TensorRT engine
+- precision
+- resolution
+- preprocessing
+- thresholds
+
+Do not silently auto-update models.
+
+---
+
+# 37. TENSORRT ENGINES
+
+Build TensorRT engines for the CURRENT RTX 5070 Ti environment.
+
+Do not assume a serialized engine made for the 5070 Ti can simply be copied to the future A6000.
+
+Provide a build script.
+
+For future migration:
+
+rebuild appropriate engines on/for the A6000 environment.
+
+---
+
+# 38. CALIBRATION VERSIONING
+
+Store:
+
+- revision
+- camera
+- timestamp
+- source resolution
+- distortion assumptions
+- calibration parameters
+- validation error
+- status
+
+Never silently reuse calibration after camera geometry changes.
+
+---
+
+# 39. PERFORMANCE TELEMETRY
+
+Instrument from the beginning.
+
+Collect:
+
+```text
+source FPS
+decode FPS
+detector FPS
+tracker FPS
+end-to-end frame age
+inference latency
+queue depth
+dropped frames
+
+GPU utilization
+GPU VRAM usage
+NVDEC utilization
+GPU temperature
+
+CPU utilization
+system RAM
+
+per-camera lag
+restart count
+```
+
+These numbers must come from the current RTX 5070 Ti laptop.
+
+Do not fabricate benchmark results.
+
+---
+
+# 40. BENCHMARK PROCEDURE
+
+Benchmark on this laptop in this order:
+
+```text
+A. decode only
+
+B. decode + detection
+
+C. decode + detection + tracking
+
+D. + analytics
+
+E. + overlap fusion
+
+F. + selective Re-ID
+
+G. + backend/dashboard
+
+H. optional advanced AI
+```
+
+For stream-count scaling test:
+
+```text
+1
+2
+4
+6
+8
+```
+
+Record results.
+
+Stop increasing when latency, frame drops, temperatures or resource consumption become unsuitable.
+
+Do not decide the laptop's maximum stream capacity before running these tests.
+
+---
+
+# 41. PERFORMANCE REPORT FORMAT
+
+For every meaningful benchmark, output:
+
+```text
+GPU:
+RTX 5070 Ti Laptop
+
+Number of feeds:
+
+Source resolution:
+
+Source codec:
+
+Source FPS:
+
+Analytics FPS:
+
+Detector:
+
+Detector precision:
+
+Tracker:
+
+VRAM usage:
+
+GPU utilization:
+
+NVDEC utilization:
+
+CPU utilization:
+
+RAM:
+
+p50 latency:
+
+p95 latency:
+
+Dropped frames:
+
+GPU temperature:
+
+Test duration:
+```
+
+Use measured values.
+
+---
+
+# 42. LAPTOP DEMO ACCEPTANCE CRITERIA
+
+The current RTX 5070 Ti demo is successful when:
+
+## GPU
+
+The actual RTX 5070 Ti is used for accelerated inference.
+
+## Detection
+
+Real person detections are produced.
+
+## Tracking
+
+Camera-local tracks work.
+
+## Multi-stream
+
+Four streams operate simultaneously.
+
+## Entry/exit
+
+Directional counts work.
+
+## Occupancy
+
+Zone/floor occupancy works.
+
+## Overlap
+
+One controlled overlapping-camera case is deduplicated.
+
+## Floors
+
+Floor 1 and Floor 2 exist independently.
+
+## Stair transition
+
+One controlled cross-floor transition is represented.
+
+## Uncertainty
+
+Ambiguous Re-ID remains UNKNOWN.
+
+## Queue
+
+At least one queue measurement works.
+
+## Congestion
+
+At least one congestion rule works.
+
+## Health
+
+Feed failure/staleness is visible.
+
+## Performance
+
+Actual RTX 5070 Ti telemetry is recorded.
+
+## Offline
+
+System runs without cloud inference.
+
+---
+
+# 43. OFFLINE ACCEPTANCE TEST
+
+Before marking the laptop demo complete:
+
+1. Download all dependencies.
+2. Pin them.
+3. Store model files locally.
+4. Build TensorRT engines locally.
+5. Build frontend assets locally.
+6. Configure explicit local paths.
+7. Configure local DB.
+8. Reboot.
+9. Disable outbound Internet.
+10. Launch application.
+11. Run four feeds.
+12. Confirm GPU detection.
+13. Confirm tracking.
+14. Confirm analytics.
+15. Confirm dashboard.
+16. Confirm no external inference dependency.
+
+If Hugging Face libraries are used, support offline/local loading.
+
+`HF_HUB_OFFLINE=1` may prevent Hub requests but does not download missing resources.
+
+Ensure everything needed is already present.
+
+---
+
+# 44. DO NOT BUILD THESE FIRST
+
+Do not delay the laptop demo for:
+
+- large VLMs
+- full VSS deployment
+- facial recognition
+- gait recognition
+- permanent identity
+- complex action recognition
+- large-scale training
+- twenty-camera UI
+- elaborate vector-search infrastructure
+
+Finish core tracking/counting/geometry first.
+
+---
+
+# 45. OPTIONAL LOCAL VLM
+
+Only after the main demo works.
+
+Architecture:
+
+```text
+event
+   ↓
+selected frames / short clip
+   ↓
+low-priority local VLM worker
+   ↓
+description
+```
+
+Example:
+
+```text
+Queue appears to extend outside its designated region.
+```
+
+The VLM must never control:
+
+- identity
+- exact counts
+- track merging
+- authoritative safety decisions
+
+If the VLM fails, the main CCTV system must continue.
+
+---
+
+# 46. TYPESAFE AI JEV
+
+"Jev" in this project means:
+
+```text
+TypeSafe AI's Jev
+```
+
+not Meta V-JEPA.
+
+Research found a hosted structured-decision interface and experimental image functionality.
+
+No verified self-hosted/offline Jev runtime was identified.
+
+Therefore:
+
+DO NOT make a network request to hosted Jev.
+
+If useful, define an interface:
+
+```text
+DecisionEngine.evaluate(event, context)
+```
+
+that can later have alternative implementations.
+
+---
+
+# 47. PROJECT STRUCTURE
+
+Suggested repository structure:
+
+```text
+project/
+│
+├── apps/
+│   ├── backend/
+│   └── frontend/
+│
+├── perception/
+│   ├── deepstream/
+│   ├── detectors/
+│   ├── trackers/
+│   ├── association/
+│   └── calibration/
+│
+├── analytics/
+│   ├── occupancy/
+│   ├── queues/
+│   ├── flow/
+│   ├── congestion/
+│   └── health/
+│
+├── configs/
+│   ├── cameras.yaml
+│   ├── floors.yaml
+│   ├── zones.yaml
+│   ├── portals.yaml
+│   ├── analytics.yaml
+│   ├── models.yaml
+│   └── runtime.yaml
+│
+├── data/
+│   ├── demo/
+│   ├── calibration/
+│   ├── evidence/
+│   └── db/
+│
+├── models/
+│
+├── scripts/
+│   ├── setup/
+│   ├── benchmark/
+│   ├── calibration/
+│   └── offline-test/
+│
+├── tests/
+├── docs/
+├── docker/
+│
+├── README.md
+├── THIRD_PARTY.md
+└── .env.example
+```
+
+Adapt if a useful existing structure already exists.
+
+---
+
+# 48. REQUIRED AUTOMATION
+
+Provide easy scripts/commands for:
+
+```text
+environment verification
+
+setup
+
+model download
+
+TensorRT engine build
+
+run demo
+
+run backend
+
+run frontend
+
+benchmark
+
+offline test
+
+reset temporary demo data
+```
+
+Environment verification must explicitly confirm the current:
+
+```text
+RTX 5070 Ti Laptop GPU
+```
+
+is visible and usable.
+
+---
+
+# 49. LOGGING
+
+Use structured logs.
+
+Include:
+
+- time
+- camera
+- component
+- severity
+- event
+- latency
+- track identifiers where appropriate
+- model revision
+- calibration revision
+
+Avoid per-frame log spam outside debug mode.
+
+---
+
+# 50. FAILURE HANDLING
+
+Handle:
+
+- camera failure
+- invalid RTSP
+- corrupted file
+- tracker restart
+- reconnect
+- missing calibration
+- Re-ID unavailable
+- DB issue
+- frontend reconnect
+- optional VLM failure
+- GPU-memory pressure
+
+One failed camera should not crash the whole system where reasonable.
+
+---
+
+# 51. REPLAY / REGRESSION HARNESS
+
+Build a reproducible replay system.
+
+Use fixed representative clips to evaluate changes to:
+
+- detector
+- tracker
+- thresholds
+- calibration
+- analytics
+- Re-ID
+
+Store expected/reference results for selected scenes where possible.
+
+Every future change should be testable against the same clips.
+
+---
+
+# 52. EVALUATION METRICS
+
+Keep metrics separated by task.
+
+Detection:
+
+- precision
+- recall
+- misses
+- false positives
+
+Tracking:
+
+- ID switches
+- IDF1
+- HOTA where applicable
+
+Multi-camera:
+
+- duplicate count error
+- false merges
+- false splits
+- unresolved rate
+- handover accuracy
+
+Occupancy:
+
+- MAE
+- absolute count error
+- relative count error
+
+Entry/exit:
+
+- precision
+- recall
+
+Queues:
+
+- queue count error
+- wait-time error where measurable
+
+Alerts:
+
+- precision
+- recall
+- false alarms/hour
+
+System:
+
+- p50 latency
+- p95 latency
+- frame age
+- dropped frames
+- VRAM
+- GPU utilization
+- NVDEC utilization
+- thermals
+
+Never collapse this into one generic "AI accuracy" score.
+
+---
+
+# 53. DEVELOPMENT PHASES
+
+## PHASE 0 — VERIFY CURRENT LAPTOP
+
+This phase runs on the actual RTX 5070 Ti laptop.
+
+Verify:
+
+```text
+Windows GPU detection
+WSL2 GPU access
+nvidia-smi
+CUDA
+TensorRT
+DeepStream
+container GPU access
+```
+
+Capture actual versions.
+
+Do not reinstall anything unnecessarily.
+
+Deliver:
+
+environment report.
+
+STOP/GO:
+
+The RTX 5070 Ti is accessible to the inference environment.
+
+---
+
+## PHASE 1 — SINGLE VIDEO GPU PIPELINE
+
+Run one prerecorded video.
+
+Verify:
+
+```text
+hardware decode
+GPU inference
+real person detections
+metadata
+```
+
+Do not proceed until actual detections exist.
+
+---
+
+## PHASE 2 — DETECTOR BENCHMARK
+
+Compare:
+
+```text
+RT-DETRv2 R18
+RF-DETR Small
+```
+
+on the actual RTX 5070 Ti.
+
+Record:
+
+accuracy/performance/VRAM.
+
+Choose the best baseline.
+
+---
+
+## PHASE 3 — LOCAL TRACKING
+
+Add NvDCF/NvMultiObjectTracker.
+
+Verify local IDs.
+
+Implement:
+
+```text
+camera_epoch
+```
+
+and track lifecycle.
+
+---
+
+## PHASE 4 — FOUR FEEDS
+
+Run four simultaneous feeds.
+
+Implement:
+
+- camera manager
+- feed health
+- metrics
+- bounded processing
+
+STOP/GO:
+
+No uncontrolled backlog or severe frame-age growth.
+
+---
+
+## PHASE 5 — CROWD ANALYTICS
+
+Implement:
+
+- ROI counts
+- line crossing
+- IN/OUT
+- occupancy
+- queues
+- congestion
+- stair flow
+- count conservation
+
+Validate against manually inspected clips.
+
+---
+
+## PHASE 6 — TWO-FLOOR DASHBOARD
+
+Implement:
+
+- four camera tiles
+- Floor 1 map
+- Floor 2 map
+- facility KPIs
+- queue state
+- congestion
+- health
+- current RTX 5070 Ti performance
+
+---
+
+## PHASE 7 — TWO-CAMERA OVERLAP
+
+Calibrate two overlapping views.
+
+Implement MV3DT/equivalent fusion.
+
+Demonstrate one person being counted once rather than twice.
+
+---
+
+## PHASE 8 — CONTROLLED GAP / STAIR ASSOCIATION
+
+Add selective appearance matching if required.
+
+Combine:
+
+```text
+appearance
+time
+topology
+direction
+zones
+```
+
+Support UNKNOWN.
+
+---
+
+## PHASE 9 — LAPTOP CAPACITY BENCHMARK
+
+On the actual 5070 Ti test:
+
+```text
+1
+2
+4
+6
+8
+```
+
+feeds where possible.
+
+Measure the real capacity.
+
+Do not predict it beforehand.
+
+---
+
+## PHASE 10 — OFFLINE DEMO FREEZE
+
+Pin everything.
+
+Cold boot.
+
+Disable outbound Internet.
+
+Launch the whole demo.
+
+Validate all required functionality.
+
+---
+
+# 54. FUTURE A6000 MIGRATION
+
+After this RTX 5070 Ti laptop demo is accepted, the system is expected to move to:
+
+```text
+NVIDIA RTX A6000
+48 GB VRAM
+```
+
+Do not rewrite the application.
+
+Reuse:
+
+- configuration
+- event schema
+- analytics
+- backend
+- database interface
+- dashboard
+- building topology
+- test harness
+
+Use native Ubuntu 24.04 if possible.
+
+Build new TensorRT engines suitable for the A6000 environment.
+
+Scale gradually:
+
+```text
+4
+→ 8
+→ 12
+→ 16
+→ 20
+```
+
+Do not claim success at 20 feeds without measuring it.
+
+---
+
+# 55. PRODUCTION 20-CAMERA GATE
+
+Eventually test:
+
+- all real 20 feeds
+- actual codec
+- actual resolution
+- actual FPS
+- peak crowd level
+- detector
+- tracker
+- overlap fusion
+- Re-ID
+- recording
+- DB
+- dashboard
+
+Also test:
+
+- reconnects
+- clock drift
+- camera reboot
+- storage pressure
+- process restart
+- OOM conditions
+- thermal behavior
+- dropped frames
+- p95 frame age
+- long-duration stability
+
+---
+
+# 56. DEFINITION OF DONE FOR CURRENT TASK
+
+Do not mark complete merely because code exists.
+
+The RTX 5070 Ti laptop demo is DONE when:
+
+```text
+RTX 5070 Ti confirmed and used
+
+DeepStream pipeline works
+
+hardware decode works
+
+person detection works
+
+local tracking works
+
+four simultaneous feeds work
+
+entry/exit works
+
+occupancy works
+
+queue analytics works
+
+congestion analytics works
+
+camera health works
+
+two-floor dashboard works
+
+controlled overlap deduplication works
+
+actual GPU telemetry works
+
+benchmarks are recorded
+
+offline mode works
+
+installation/run instructions exist
+
+code is structured for future A6000 migration
+```
+
+---
+
+# 57. IMPLEMENTATION BEHAVIOR
+
+When working on this project:
+
+1. Inspect the real current system first.
+2. Do not ask whether the 5070 Ti exists.
+3. Treat it as the confirmed current GPU.
+4. Verify actual access to it.
+5. Maintain a task list.
+6. Implement phase by phase.
+7. Test after each major change.
+8. Record real results.
+9. Never invent benchmark values.
+10. Never hide failures.
+11. Keep optional features outside the critical path.
+12. Prefer existing reliable NVIDIA components over unnecessary rewrites.
+13. Keep configuration external.
+14. Keep dependencies pinned.
+15. Maintain README documentation.
+16. Continue implementation instead of stopping after planning.
+
+---
+
+# 58. STATUS REPORTING
+
+At every major milestone report:
+
+```text
+Completed:
+
+Validated:
+
+RTX 5070 Ti measured performance:
+
+Current VRAM use:
+
+Current stream count:
+
+Known problems:
+
+Next implementation action:
+```
+
+If something fails:
+
+explain exactly what failed.
+
+Fix it where practical.
+
+Do not simply omit the feature.
+
+---
+
+# 59. PRIORITY ORDER
+
+When resources are constrained on the 12 GB RTX 5070 Ti, prioritize:
+
+```text
+1. reliable stream ingestion
+2. timestamps / feed health
+3. person detection
+4. local tracking
+5. entry/exit
+6. occupancy
+7. overlap deduplication
+8. floor topology
+9. cross-camera handovers
+10. queue/congestion
+11. dashboard enhancements
+12. optional advanced AI
+```
+
+Under GPU pressure, remove or postpone optional workloads before degrading authoritative counting/tracking.
+
+---
+
+# 60. FINAL EXPECTED DEMO
+
+The final product should prove:
+
+"We have implemented a fully local multi-camera crowd-intelligence system directly on this RTX 5070 Ti Laptop GPU. It processes several CCTV feeds using GPU acceleration, detects and tracks people, calculates entry/exit and occupancy, understands a two-floor facility, avoids duplicate counting across a controlled overlapping-camera setup, handles uncertain cross-camera transitions conservatively, monitors queues/congestion/camera health, displays everything in a professional dashboard, measures its actual hardware performance, and can later be migrated without architectural redesign to an RTX A6000 for larger-scale deployment."
+
+---
+
+# 61. START NOW
+
+Do not perform another generic research phase.
+
+Begin with PHASE 0.
+
+Inspect this actual laptop.
+
+Confirm:
+
+```text
+NVIDIA GeForce RTX 5070 Ti Laptop GPU
+```
+
+from the current environment.
+
+Verify GPU access through the intended WSL2/DeepStream stack.
+
+Record actual installed versions.
+
+Then proceed directly to getting one video through GPU decode and real person detection.
+
+Continue through the phases rather than stopping after producing another implementation plan.

@@ -1,0 +1,853 @@
+{
+ "info": {
+  "dataset": "cam01-v1",
+  "source": "demo/cam01.mp4",
+  "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "frame_index_basis": "decoded frame index n == DeepStream frame_number",
+  "review": {
+   "status": "UNREVIEWED",
+   "annotators": [],
+   "reviewer": null,
+   "reviewed_at": null,
+   "tool": null,
+   "notes": null
+  },
+  "annotation_status_schema": "images[].annotation_status: COMPLETE (all people boxed + reviewed; zero boxes = reviewed negative) | UNREVIEWED | EXCLUDED (needs exclusion_reason). Added 2026-10-27 (schema only; no labels)."
+ },
+ "images": [
+  {
+   "id": 15,
+   "file_name": "frames/frame_000015.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 15,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "33e2524b80027d8a3a48f18a8c37a74fab353f8569e262e8fc65f2eb11755962"
+  },
+  {
+   "id": 50,
+   "file_name": "frames/frame_000050.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 50,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "a0c21a37926be60bf94b9f475827e2cfa15f3ef70cb8ddcc0f06aa9455e4404e"
+  },
+  {
+   "id": 85,
+   "file_name": "frames/frame_000085.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 85,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "df538a6468b502fe54ddc9d86547830808bf036719a996b305091d07b6c544fd"
+  },
+  {
+   "id": 120,
+   "file_name": "frames/frame_000120.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 120,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "a4fa04d65015750cd983db234d5cf2fc35a803959c089a2dab451879332368c9"
+  },
+  {
+   "id": 155,
+   "file_name": "frames/frame_000155.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 155,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "835151b621217d1815a1be4c3493c4caf7aa4cc82e08d86b808605f7e0277b0c"
+  },
+  {
+   "id": 190,
+   "file_name": "frames/frame_000190.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 190,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "d7f073490e99b8668e8c1437c22b84f7149b2bb8bf730372daf83857710d12bb"
+  },
+  {
+   "id": 200,
+   "file_name": "frames/frame_000200.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 200,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "21b8b046efc0167dd95b23bbf77f3f44630606f3dfa7df8928c8061fbd3a5fef"
+  },
+  {
+   "id": 201,
+   "file_name": "frames/frame_000201.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 201,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "2c812bbac3dde6f5182697877cd4c1b434ed8c75404e5ca1d3a98f4d41be1b95"
+  },
+  {
+   "id": 202,
+   "file_name": "frames/frame_000202.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 202,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "19009c6a1f95266d5a159d2d6166e4cdc0dc5386ff6082006ae0f227e912dfc3"
+  },
+  {
+   "id": 203,
+   "file_name": "frames/frame_000203.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 203,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "f136b8b641b323e11f8be50b0cd4feeed90905d7c4204c996ffaa422771f6267"
+  },
+  {
+   "id": 204,
+   "file_name": "frames/frame_000204.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 204,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "77c2321af88fda77b11d469c081ed59defcb56aac8ea43d32e3ca0e8310132fd"
+  },
+  {
+   "id": 205,
+   "file_name": "frames/frame_000205.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 205,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "4d534c2efa57e9966941ff0d11826d7ded114ac635022e2a82f06eded0b11bca"
+  },
+  {
+   "id": 206,
+   "file_name": "frames/frame_000206.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 206,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "61bbcbbfdd449a898c5bfde79cc4d6f544855712fb8dde3211157fd1071da3a8"
+  },
+  {
+   "id": 207,
+   "file_name": "frames/frame_000207.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 207,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "94c41801f5677a5c39858b6e838c943a0b6fe0c99cdf73a393a70c8f076bae37"
+  },
+  {
+   "id": 208,
+   "file_name": "frames/frame_000208.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 208,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "5421467b4dba1c2509e7d150109fed29089c5352c760404c6604737ffe5bab01"
+  },
+  {
+   "id": 209,
+   "file_name": "frames/frame_000209.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 209,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "d74edf633805cb8a882cd443eb8401c3302c2288652ef40e1bd061145ee3af90"
+  },
+  {
+   "id": 210,
+   "file_name": "frames/frame_000210.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 210,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "083d3f3154c56600ee21346175cbb32721dd4e93b935a72737d195184bca73f2"
+  },
+  {
+   "id": 211,
+   "file_name": "frames/frame_000211.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 211,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "cc9a178ba1d1915b909ef0abade7e5468b026a285196a3eaccfc18e16774d20b"
+  },
+  {
+   "id": 212,
+   "file_name": "frames/frame_000212.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 212,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "83c9620f5cce96a5d2979c3fe29192c358006ce14696e7c664ac50d7a8ee0580"
+  },
+  {
+   "id": 213,
+   "file_name": "frames/frame_000213.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 213,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "1d5ef51afcf6aed4d98d48f0f73a36da6691e87a584bf5f8620204bd38055848"
+  },
+  {
+   "id": 214,
+   "file_name": "frames/frame_000214.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 214,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "ecf70d451e825be2372773593eb93a6b2628e7eace4683b2814a8067b4b263a4"
+  },
+  {
+   "id": 215,
+   "file_name": "frames/frame_000215.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 215,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "255b40387796b9766b8e9065e0af2c5d763032dd007fc67eb774f2f687d7715b"
+  },
+  {
+   "id": 216,
+   "file_name": "frames/frame_000216.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 216,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "d0116b5044309f8bf223013d05784c04a018ac32170eadfa0a8d0dd81b1e3e38"
+  },
+  {
+   "id": 217,
+   "file_name": "frames/frame_000217.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 217,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "27ef3991338e76f59a1c728b8b7c680c1d663913a8c75549819b1f9a84dc4c5e"
+  },
+  {
+   "id": 218,
+   "file_name": "frames/frame_000218.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 218,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "05964fb8f19c441144a4d78f2dc2199c98f1e381de239bec85e2f8b456ce3712"
+  },
+  {
+   "id": 219,
+   "file_name": "frames/frame_000219.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 219,
+   "sets": [
+    "tracking-A"
+   ],
+   "tier": 2,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "1fd97b02b31b9d966e27037b7dfc513ba8ea85f4621f8e70356e42dfc0e656b6"
+  },
+  {
+   "id": 225,
+   "file_name": "frames/frame_000225.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 225,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "56a9002220f64e514c6149e2a08aa3e686e4502c57170b086541508b0724a90f"
+  },
+  {
+   "id": 260,
+   "file_name": "frames/frame_000260.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 260,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "19171ec25a48d0264f17db98e60588e892ecc433e679a04c3f5ae490bad3a075"
+  },
+  {
+   "id": 295,
+   "file_name": "frames/frame_000295.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 295,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "16998746e49d1fa278243356f9cfe8ea380d4cd4317c2f07370993bfcff32164"
+  },
+  {
+   "id": 330,
+   "file_name": "frames/frame_000330.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 330,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "703fda34f10752b7a6079c955425dcfdb99cf0dd94be755890ee28a51883f855"
+  },
+  {
+   "id": 365,
+   "file_name": "frames/frame_000365.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 365,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "c5d40b0d6258b188a3926dca709c09a25131162428f2f3b0ceafa329a9c11c86"
+  },
+  {
+   "id": 400,
+   "file_name": "frames/frame_000400.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 400,
+   "sets": [
+    "detection"
+   ],
+   "tier": 1,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "769dc35fc050e950d310b1ba41e94c927e1c2b64b420a9269f4caa48abb2f02e"
+  },
+  {
+   "id": 435,
+   "file_name": "frames/frame_000435.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 435,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "c0c35e414959c8811d7471fbd911ac39edd97cf4d97ef77ed9404ad2c23ef54f"
+  },
+  {
+   "id": 470,
+   "file_name": "frames/frame_000470.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 470,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "e7033868884548f017179dc9328373f63b3a44842935ca48e3062b2bdc996166"
+  },
+  {
+   "id": 500,
+   "file_name": "frames/frame_000500.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 500,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "f42771b205e86617e07cd4b600c4d76d7b0c3ab00a4f7e67322c1e6e44fcc98c"
+  },
+  {
+   "id": 501,
+   "file_name": "frames/frame_000501.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 501,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "f2f5e86c33c11b2cad8140334bb827945c7fb7cf2ee9c44b405a65cf5ca07203"
+  },
+  {
+   "id": 502,
+   "file_name": "frames/frame_000502.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 502,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "d05368a0e7ac7654f2e5cb4f76653bc3c9cf0e097ca7f2c9cde1acd16e73ea87"
+  },
+  {
+   "id": 503,
+   "file_name": "frames/frame_000503.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 503,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "077da0674fd030872dfac2a692d473ece9df3ddf702300e64abeed6d21cec3c9"
+  },
+  {
+   "id": 504,
+   "file_name": "frames/frame_000504.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 504,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "9e5ecc8067c074d86b671ddf2751faef48dc13192034c638ea2ced0c8c784ff5"
+  },
+  {
+   "id": 505,
+   "file_name": "frames/frame_000505.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 505,
+   "sets": [
+    "detection",
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "89bf60c2a2852f5f6f85ff68667b844629b46f4c0d229f12e2d85d61d353bfcc"
+  },
+  {
+   "id": 506,
+   "file_name": "frames/frame_000506.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 506,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "65f21215b2b98bda918967cb8229a9af036d7116edbebce7d010ee539500b685"
+  },
+  {
+   "id": 507,
+   "file_name": "frames/frame_000507.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 507,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "23d148f23fb16b4a2140c065c081ac851c819fe1f8aca0170f06c53c5ab42aac"
+  },
+  {
+   "id": 508,
+   "file_name": "frames/frame_000508.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 508,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "c7fea21c230d812a7c5f58ce661769c669b1ee4ff2000ecaf100473576a11a40"
+  },
+  {
+   "id": 509,
+   "file_name": "frames/frame_000509.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 509,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "4540206c815abbc2c171af5c58e619eda241f8ae9615a545f734f9522efaface"
+  },
+  {
+   "id": 510,
+   "file_name": "frames/frame_000510.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 510,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "3c5ac9f745605023d8f0cf7ea7d472c331a6933e30c9f2a8ef5c86884da9f719"
+  },
+  {
+   "id": 511,
+   "file_name": "frames/frame_000511.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 511,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "522810ed72bdcee3e0a7c7a6a75559869a7f60fb93acf44fc627a4994f8a2bd8"
+  },
+  {
+   "id": 512,
+   "file_name": "frames/frame_000512.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 512,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "5bba1b8c0f703fb7d073ff43ed913dce3eb4611df588d1685bf9ec71ae3408b7"
+  },
+  {
+   "id": 513,
+   "file_name": "frames/frame_000513.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 513,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "6abc2c889db75ea68e5c3740f2d74d781e348f53e91f052c55c3febe43fe1ce8"
+  },
+  {
+   "id": 514,
+   "file_name": "frames/frame_000514.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 514,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "893d7af13d46ab7211a07528cff801501e0e3847032be08fd3801139dbc39e53"
+  },
+  {
+   "id": 515,
+   "file_name": "frames/frame_000515.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 515,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "49b106f7cf6776979e44fba6d17d8388599bd041c0f04f3ece4d20ed3efd998d"
+  },
+  {
+   "id": 516,
+   "file_name": "frames/frame_000516.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 516,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "b6d201f2c80f7d391e418ccffb3c70da30f9e0706baff9e8591b87d58b6570c2"
+  },
+  {
+   "id": 517,
+   "file_name": "frames/frame_000517.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 517,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "eb6345e70ca54129ec996fbf24e21791a1ce982f14aa276fa0ec85a7ed751473"
+  },
+  {
+   "id": 518,
+   "file_name": "frames/frame_000518.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 518,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "6f472021315efa711f18313f20a6a07d67bdae05046b8553043e8dd2cc504c9d"
+  },
+  {
+   "id": 519,
+   "file_name": "frames/frame_000519.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 519,
+   "sets": [
+    "tracking-B"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "f9fcb19cb82e5337e5560a0d1635a7452dadd3a454079e884d63f4e3b9fb8837"
+  },
+  {
+   "id": 540,
+   "file_name": "frames/frame_000540.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 540,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "b6604c3e25c3b98aec2e6979b9e15ce2e6e9c57d1bc3971d22380fec7ef13756"
+  },
+  {
+   "id": 575,
+   "file_name": "frames/frame_000575.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 575,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "2ebf7e1b419e4a9b726d3c8e72adba2d6b2a5ba673e5dbfe363bfc5184d844cf"
+  },
+  {
+   "id": 610,
+   "file_name": "frames/frame_000610.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 610,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "cc8514fcc3487e7f4ec3c98f5c3b47b4dd6edaf9aa2337e836d6d66136dd5b68"
+  },
+  {
+   "id": 645,
+   "file_name": "frames/frame_000645.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 645,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "c9024e102120aa526484a573b843d1f8d74adc061d976f0d59478014167ed549"
+  },
+  {
+   "id": 680,
+   "file_name": "frames/frame_000680.jpg",
+   "width": 1920,
+   "height": 1080,
+   "frame_number": 680,
+   "sets": [
+    "detection"
+   ],
+   "tier": 3,
+   "ignore_regions": [],
+   "annotation_status": "UNREVIEWED",
+   "sha256": "9844a39839667ec00dbc29bb660beb4324fcba9759ff01e8b939fa0002522fff"
+  }
+ ],
+ "categories": [
+  {
+   "id": 1,
+   "name": "person"
+  }
+ ],
+ "annotations": []
+}

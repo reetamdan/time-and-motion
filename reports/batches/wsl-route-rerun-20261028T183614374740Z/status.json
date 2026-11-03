@@ -1,0 +1,36 @@
+{
+  "started_utc": "2026-10-28T18:36:14.385330+00:00",
+  "supervisor_pid": 26628,
+  "parent_pid": 30800,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "wsl_route",
+      "started_utc": "2026-10-28T18:36:14.386336+00:00",
+      "available_at_start_mib": 7103.0,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_wsl_route.py"
+      ],
+      "pid": 30380,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T18:39:53.811379+00:00",
+      "run_dir": "reports\\validation\\wsl-route-20261028T183618808723Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    }
+  ],
+  "state": "COMPLETE",
+  "host_available_min_mib": 4095.6,
+  "ended_utc": "2026-10-28T18:39:54.010348+00:00",
+  "stop_reason": null,
+  "not_started": []
+}

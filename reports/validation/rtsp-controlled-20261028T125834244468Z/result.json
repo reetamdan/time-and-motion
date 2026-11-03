@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T13:03:48.042409+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_rtsp_source.py",
+  "run_dir": "reports\\validation\\rtsp-controlled-20261028T125834244468Z",
+  "result": "FAIL",
+  "checks": {
+    "rtsp_test_server_installed": "PASS",
+    "start_with_live_camera": "PASS",
+    "live_counts_from_rtsp": "FAIL",
+    "live_source_advances_in_real_time": "FAIL",
+    "live_camera_has_no_preview_and_no_evidence": "PASS",
+    "evidence_refused_for_live_with_reason": "FAIL",
+    "publisher_killed": "PASS",
+    "loss_visible_unavailable_not_zero": "PASS",
+    "file_camera_unaffected": "PASS",
+    "reconnect_attempts_back_off": "PASS",
+    "reconnects_with_new_epoch_and_counts_resume": "FAIL",
+    "reconnect_alert_resolved": "FAIL",
+    "stop_confirmed": "PASS",
+    "password_absent_from_api": "PASS",
+    "publisher_terminated": "PASS",
+    "rtsp_server_terminated": "PASS",
+    "password_absent_from_backend_and_container_logs": "PASS",
+    "extractor_summaries_record_live_source_without_credentials": "FAIL",
+    "all_owned_containers_released": "PASS",
+    "no_owned_container_left": "PASS"
+  },
+  "observed": {
+    "timeline": [],
+    "rtsp_test_server_installed": {
+      "tail": [
+        "mediamtx ready: v1.21.2"
+      ]
+    },
+    "start_with_live_camera": {
+      "run_status": "DEGRADED"
+    },
+    "live_counts_from_rtsp": {
+      "visible_count": null,
+      "epoch": "ba81bb44-aed1-44a3-8209-8c2ea3706c71"
+    },
+    "live_source_advances_in_real_time": {
+      "source_seconds_per_second": 0.0,
+      "analytics_fps": null
+    },
+    "live_camera_has_no_preview_and_no_evidence": {
+      "reason": "Live sources have no local recording buffer in this version; evidence clips need the source file"
+    },
+    "evidence_refused_for_live_with_reason": {
+      "status": 409
+    },
+    "loss_visible_unavailable_not_zero": {
+      "seconds_after_kill": 3.7,
+      "health": "OFFLINE",
+      "reason": "Live source lost (Source initialization failed: Service Maker produced no valid stdout frame metadata within the startup deadline (malformed_frames=0, reader_error=None)); reconnect attempt 5 in 30 s"
+    },
+    "while_down": {
+      "cam-01": {
+        "health": "DEGRADED",
+        "visible_count": null,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "source_position_s": null,
+        "stream_outcome": "CLEAN_EOF"
+      },
+      "cam-02": {
+        "health": "OFFLINE",
+        "visible_count": null,
+        "reconnect_attempt": 5,
+        "next_reconnect_at": "2026-10-28T13:01:29.972Z",
+        "unavailable_reason": "Live source lost (Source initialization failed: Service Maker produced no valid stdout frame metadata within the startup deadline (malformed_frames=0, reader_error=None)); reconnect attempt 5 in 30 s",
+        "source_position_s": null,
+        "stream_outcome": null
+      }
+    },
+    "file_camera_unaffected": {
+      "before": 0,
+      "after": null,
+      "outcome": "CLEAN_EOF"
+    },
+    "reconnect_attempts_back_off": {
+      "attempt": 5
+    },
+    "reconnects_with_new_epoch_and_counts_resume": {
+      "seconds_after_restore": 120.2,
+      "epoch": null,
+      "visible_count": null
+    },
+    "reconnect_alert_resolved": {
+      "alerts": [
+        [
+          "OPEN",
+          "CONTROLLED RTSP (cam01 republished locally): Source initialization failed: Service Maker produced no valid stdout frame "
+        ]
+      ]
+    },
+    "extractor_summaries_record_live_source_without_credentials": {
+      "summaries": 0
+    },
+    "ownership": [
+      [
+        "cam-01",
+        "aegis-cam-01-674aa19f-d9de-4f51-a635-2b4e40f18292",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-0d1ff3ef-2d37-4a93-9bb7-9e8867c8d32b",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-50cbfbe0-0e73-4fa0-aa8f-2c747c923e1b",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-6ada948e-7914-42e2-be63-2e4c71c57ce7",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-ba81bb44-aed1-44a3-8209-8c2ea3706c71",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-c03b03f3-a01e-46f7-8244-801facc2e3d3",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-f3b8421a-1cb3-4d9f-bf55-409bbaec330d",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-f67db990-0049-4f58-af85-1e9dfe8b297e",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-fa3a9c0a-6232-4fa4-828e-a904c17bd080",
+        "RELEASED"
+      ]
+    ],
+    "all_owned_containers_released": {
+      "rows": 9
+    },
+    "no_owned_container_left": []
+  },
+  "scope": "CONTROLLED local RTSP: demo/cam01.mp4 republished in real time by ffmpeg through a test-only mediamtx in WSL; Windows backend route, real GPU. Proves the live ingestion, loss, backoff and reconnect software path; not a physical camera, real network behaviour, or new footage."
+}

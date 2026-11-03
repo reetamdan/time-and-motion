@@ -1,0 +1,71 @@
+{
+ "tolerance": {
+  "rate": 0.002,
+  "max_ahead_s": 1.0,
+  "min_source_s": 20.0,
+  "min_rate_source_s": 120.0
+ },
+ "files": [
+  {
+   "file": "reports\\validation\\paced-lead-2feeds-20261028T181842115333Z\\v1\\cam-01.release.jsonl",
+   "basis": "backend read time (host wall clock)",
+   "frames": 710,
+   "source_s": 23.657,
+   "host_s": 23.134,
+   "rate_host_per_source": 0.99827,
+   "drift_s": {
+    "max_ahead": 0.534,
+    "max_behind": 0.0,
+    "final": 0.523
+   },
+   "rate_judged": false,
+   "verdict": "PASS"
+  },
+  {
+   "file": "reports\\validation\\paced-lead-2feeds-20261028T181842115333Z\\v1\\cam-02.release.jsonl",
+   "basis": "backend read time (host wall clock)",
+   "frames": 513,
+   "source_s": 17.084,
+   "host_s": 16.532,
+   "rate_host_per_source": 0.99638,
+   "drift_s": {
+    "max_ahead": 0.567,
+    "max_behind": 0.0,
+    "final": 0.552
+   },
+   "verdict": "TOO_SHORT"
+  },
+  {
+   "file": "reports\\validation\\paced-lead-2feeds-20261028T181842115333Z\\v2\\cam-01.release.jsonl",
+   "basis": "backend read time (host wall clock)",
+   "frames": 710,
+   "rate_guest_wall_per_source": 0.99975,
+   "source_s": 23.657,
+   "host_s": 23.8,
+   "rate_host_per_source": 1.03229,
+   "drift_s": {
+    "max_ahead": 0.475,
+    "max_behind": -0.914,
+    "final": -0.143
+   },
+   "rate_judged": false,
+   "verdict": "PASS"
+  },
+  {
+   "file": "reports\\validation\\paced-lead-2feeds-20261028T181842115333Z\\v2\\cam-02.release.jsonl",
+   "basis": "backend read time (host wall clock)",
+   "frames": 204,
+   "rate_guest_wall_per_source": 0.99686,
+   "source_s": 6.773,
+   "host_s": 6.305,
+   "rate_host_per_source": 0.95321,
+   "drift_s": {
+    "max_ahead": 0.468,
+    "max_behind": 0.0,
+    "final": 0.468
+   },
+   "verdict": "TOO_SHORT"
+  }
+ ],
+ "verdict": "PASS"
+}

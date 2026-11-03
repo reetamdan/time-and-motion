@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "inputs": [
+    {
+      "frame_index": 141,
+      "path": "reports\\model-evaluation\\rt-detr\\engine\\trt-parity\\pixel_values_000141.f32le",
+      "sha256": "71578f627add86f3f81ed74a9276ce0c52c8463b389487e9194f7e95ae76c7c6",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "dtype": "little-endian float32",
+      "size_bytes": 4915200,
+      "source_npz": "reports\\model-evaluation\\rt-detr\\export\\run-001\\hf_frame_000141.npz",
+      "source_npz_sha256": "b99860ef536cacd1df7664119dffb0d97415f38abf194e1e05e130ad2bbc4c13"
+    },
+    {
+      "frame_index": 283,
+      "path": "reports\\model-evaluation\\rt-detr\\engine\\trt-parity\\pixel_values_000283.f32le",
+      "sha256": "07b840945b5068e03c54190a9039f1ad8d5e19638781a5f10b70dda04b807315",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "dtype": "little-endian float32",
+      "size_bytes": 4915200,
+      "source_npz": "reports\\model-evaluation\\rt-detr\\export\\run-001\\hf_frame_000283.npz",
+      "source_npz_sha256": "57589895e1551b15ec6c40bad5a92ec7fe835b0f9c2564450a7f7673fefae038"
+    }
+  ]
+}

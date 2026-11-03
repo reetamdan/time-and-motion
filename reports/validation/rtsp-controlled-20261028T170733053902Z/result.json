@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T17:10:15.456646+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_rtsp_source.py",
+  "run_dir": "reports\\validation\\rtsp-controlled-20261028T170733053902Z",
+  "result": "PASS",
+  "checks": {
+    "rtsp_test_server_installed": "PASS",
+    "rtsp_test_server_listening": "PASS",
+    "start_with_live_camera": "PASS",
+    "live_counts_from_rtsp": "PASS",
+    "live_source_advances_in_real_time": "PASS",
+    "live_camera_has_no_preview_and_no_evidence": "PASS",
+    "evidence_refused_for_live_with_reason": "PASS",
+    "publisher_killed": "PASS",
+    "loss_visible_unavailable_not_zero": "PASS",
+    "file_camera_unaffected": "PASS",
+    "reconnect_attempts_back_off": "PASS",
+    "reconnects_with_new_epoch_and_counts_resume": "PASS",
+    "reconnect_alert_resolved": "PASS",
+    "stall_detected_and_released": "PASS",
+    "stall_recovers_with_new_epoch": "PASS",
+    "publisher_killed_again": "PASS",
+    "stop_confirmed": "PASS",
+    "stop_cancels_pending_reconnect": "PASS",
+    "password_absent_from_api": "PASS",
+    "publisher_terminated": "PASS",
+    "rtsp_server_terminated": "PASS",
+    "password_absent_from_backend_and_container_logs": "PASS",
+    "extractor_summaries_record_live_source_without_credentials": "PASS",
+    "all_owned_containers_released": "PASS",
+    "no_owned_container_left": "PASS"
+  },
+  "observed": {
+    "timeline": [],
+    "rtsp_test_server_installed": {
+      "tail": [
+        "mediamtx ready: v1.21.2"
+      ]
+    },
+    "rtsp_test_server_listening": {
+      "pid_file": true,
+      "server_exited": null
+    },
+    "start_with_live_camera": {
+      "run_status": "RUNNING"
+    },
+    "live_counts_from_rtsp": {
+      "visible_count": 15,
+      "epoch": "fb14d313-725b-4075-8581-2e7c591c7609"
+    },
+    "live_source_advances_in_real_time": {
+      "source_seconds_per_second": 0.999,
+      "analytics_fps": 30.04075629413519
+    },
+    "live_camera_has_no_preview_and_no_evidence": {
+      "reason": "Live sources have no local recording buffer in this version; evidence clips need the source file"
+    },
+    "evidence_refused_for_live_with_reason": {
+      "status": 503
+    },
+    "loss_visible_unavailable_not_zero": {
+      "seconds_after_kill": 2.7,
+      "health": "OFFLINE",
+      "reason": "Live source lost (ABNORMAL_TERMINATION: live source ended after 403 frames); reconnect attempt 1 in 2 s"
+    },
+    "reconnect_delays_by_attempt": {
+      "1": 2.0,
+      "2": 4.0,
+      "3": 8.0
+    },
+    "reconnect_watch_seconds": 44.5,
+    "while_down": {
+      "cam-01": {
+        "health": "DEGRADED",
+        "visible_count": null,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "source_position_s": null,
+        "stream_outcome": "CLEAN_EOF"
+      },
+      "cam-02": {
+        "health": "OFFLINE",
+        "visible_count": null,
+        "reconnect_attempt": 3,
+        "next_reconnect_at": "2026-10-28T17:09:00.154Z",
+        "unavailable_reason": "Live source lost (Source initialization failed: Service Maker produced no valid stdout frame metadata within the startup deadline (malformed_frames=0, reader_error=None)); reconnect attempt 3 in 8 s",
+        "source_position_s": null,
+        "stream_outcome": null
+      }
+    },
+    "file_camera_unaffected": {
+      "before": 15.448766666,
+      "after": null,
+      "outcome": "CLEAN_EOF"
+    },
+    "reconnect_attempts_back_off": {
+      "observed_delays": {
+        "1": 2.0,
+        "2": 4.0,
+        "3": 8.0
+      },
+      "expected_delays": {
+        "1": 2.0,
+        "2": 4.0,
+        "3": 8.0
+      },
+      "cap_s": 30.0
+    },
+    "reconnects_with_new_epoch_and_counts_resume": {
+      "seconds_after_restore": 19.6,
+      "epoch": "7148cb45-c845-4dcb-b98a-0788ebf85d16",
+      "visible_count": 15
+    },
+    "reconnect_alert_resolved": {
+      "alerts": [
+        [
+          "RESOLVED",
+          "CONTROLLED RTSP (cam01 republished locally): Source initialization failed: Service Maker produced no valid stdout frame "
+        ]
+      ]
+    },
+    "stall_detected_and_released": {
+      "seconds_after_freeze": 11.94,
+      "stall_seconds": 10.0,
+      "reason": "CONTROLLED RTSP (cam01 republished locally): ABNORMAL_TERMINATION: no frame for more than 10 s",
+      "mechanism": "backend live watchdog"
+    },
+    "stall_recovers_with_new_epoch": {
+      "epoch": "f2dac935-6f8f-43b5-8f9e-3cd395a80853"
+    },
+    "stop_confirmed": {
+      "stopped_with_pending_reconnect": true,
+      "next_reconnect_at": "2026-10-28T17:09:39.796Z"
+    },
+    "stop_cancels_pending_reconnect": {
+      "owned_rows_at_stop": 6,
+      "owned_rows_later": 6,
+      "running": []
+    },
+    "extractor_summaries_record_live_source_without_credentials": {
+      "summaries": 2
+    },
+    "ownership": [
+      [
+        "cam-01",
+        "aegis-cam-01-4ce0f25c-880e-432b-8c32-b8e77e47dc29",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-2db65221-b635-4451-aa4e-c652b4835125",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-7148cb45-c845-4dcb-b98a-0788ebf85d16",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-86ac2505-b861-4fe2-9f05-923ef4810345",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-f2dac935-6f8f-43b5-8f9e-3cd395a80853",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-fb14d313-725b-4075-8581-2e7c591c7609",
+        "RELEASED"
+      ]
+    ],
+    "all_owned_containers_released": {
+      "rows": 6
+    },
+    "no_owned_container_left": []
+  },
+  "scope": "CONTROLLED local RTSP: demo/cam01.mp4 republished in real time by ffmpeg through a test-only mediamtx in WSL; Windows backend route, real GPU. Proves the live ingestion, loss, backoff and reconnect software path; not a physical camera, real network behaviour, or new footage."
+}

@@ -1,0 +1,9 @@
+{
+  "frames_delivered": 30,
+  "sample_seconds": 0.5,
+  "frames_persisted_after_eof_before_stop": 15,
+  "buckets_after_eof_before_stop": 1,
+  "frames_persisted_after_stop": 30,
+  "buckets_after_stop": 2,
+  "reproduced": true
+}

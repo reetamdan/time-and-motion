@@ -1,0 +1,584 @@
+{
+  "http_status": 200,
+  "snapshot": {
+    "schema_version": "1.0",
+    "run_id": "88b33aea-7223-4dc5-a64f-777c8778775c",
+    "run_status": "RUNNING",
+    "generated_at": "2026-10-26T10:59:55.908Z",
+    "sequence": 4,
+    "watermark": 4,
+    "cameras": [
+      {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "CALIBRATION WARNING",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "8bf18a34-76d7-4f38-af6a-fe6a7a47bf99",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable",
+        "preview_url": "/api/v1/cameras/cam-01/preview"
+      },
+      {
+        "id": "cam-02",
+        "name": "Dining and Service Queue",
+        "floor_id": "floor-1",
+        "enabled": false,
+        "health": "OFFLINE",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam02.mp4",
+        "epoch": null,
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Camera disabled in configuration",
+        "preview_url": "/api/v1/cameras/cam-02/preview"
+      },
+      {
+        "id": "cam-03",
+        "name": "Dining Overlap View",
+        "floor_id": "floor-1",
+        "enabled": false,
+        "health": "OFFLINE",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam03.mp4",
+        "epoch": null,
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Camera disabled in configuration",
+        "preview_url": "/api/v1/cameras/cam-03/preview"
+      },
+      {
+        "id": "cam-04",
+        "name": "Upper Stair Landing",
+        "floor_id": "floor-2",
+        "enabled": false,
+        "health": "OFFLINE",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam04.mp4",
+        "epoch": null,
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Camera disabled in configuration",
+        "preview_url": "/api/v1/cameras/cam-04/preview"
+      }
+    ],
+    "floors": [
+      {
+        "id": "floor-1",
+        "name": "Floor 1 \u00b7 Illustrative",
+        "level": 1,
+        "width": 1000,
+        "height": 600,
+        "visible_occupancy": null,
+        "estimated_occupancy": null,
+        "quality": "UNAVAILABLE",
+        "zones": [
+          {
+            "id": "entrance-f1",
+            "floor_id": "floor-1",
+            "name": "North Entrance",
+            "kind": "entrance",
+            "polygon": [
+              [
+                35.0,
+                45.0
+              ],
+              [
+                280.0,
+                45.0
+              ],
+              [
+                280.0,
+                245.0
+              ],
+              [
+                35.0,
+                245.0
+              ]
+            ],
+            "capacity": null,
+            "occupancy": null,
+            "congestion": "UNAVAILABLE",
+            "queue_size": null
+          },
+          {
+            "id": "dining-f1",
+            "floor_id": "floor-1",
+            "name": "Dining Area",
+            "kind": "dining",
+            "polygon": [
+              [
+                350.0,
+                300.0
+              ],
+              [
+                910.0,
+                300.0
+              ],
+              [
+                910.0,
+                545.0
+              ],
+              [
+                350.0,
+                545.0
+              ]
+            ],
+            "capacity": 80.0,
+            "occupancy": null,
+            "congestion": "UNAVAILABLE",
+            "queue_size": null
+          },
+          {
+            "id": "queue-f1",
+            "floor_id": "floor-1",
+            "name": "Service Queue",
+            "kind": "queue",
+            "polygon": [
+              [
+                365.0,
+                95.0
+              ],
+              [
+                720.0,
+                95.0
+              ],
+              [
+                720.0,
+                245.0
+              ],
+              [
+                365.0,
+                245.0
+              ]
+            ],
+            "capacity": 16.0,
+            "occupancy": null,
+            "congestion": "UNAVAILABLE",
+            "queue_size": null
+          },
+          {
+            "id": "stair-f1",
+            "floor_id": "floor-1",
+            "name": "Floor 1 Stair Access",
+            "kind": "stairs",
+            "polygon": [
+              [
+                770.0,
+                55.0
+              ],
+              [
+                950.0,
+                55.0
+              ],
+              [
+                950.0,
+                255.0
+              ],
+              [
+                770.0,
+                255.0
+              ]
+            ],
+            "capacity": null,
+            "occupancy": null,
+            "congestion": "UNAVAILABLE",
+            "queue_size": null
+          }
+        ],
+        "cameras": [
+          {
+            "id": "cam-01",
+            "name": "Outdoor Pedestrian Area",
+            "position": [
+              90.0,
+              105.0
+            ],
+            "coverage_polygon": [
+              [
+                25.0,
+                35.0
+              ],
+              [
+                310.0,
+                35.0
+              ],
+              [
+                330.0,
+                285.0
+              ],
+              [
+                30.0,
+                285.0
+              ]
+            ],
+            "health": "CALIBRATION WARNING",
+            "calibration_status": "MISSING"
+          },
+          {
+            "id": "cam-02",
+            "name": "Dining and Service Queue",
+            "position": [
+              440.0,
+              110.0
+            ],
+            "coverage_polygon": [
+              [
+                280.0,
+                90.0
+              ],
+              [
+                770.0,
+                80.0
+              ],
+              [
+                795.0,
+                530.0
+              ],
+              [
+                275.0,
+                530.0
+              ]
+            ],
+            "health": "OFFLINE",
+            "calibration_status": "MISSING"
+          },
+          {
+            "id": "cam-03",
+            "name": "Dining Overlap View",
+            "position": [
+              760.0,
+              120.0
+            ],
+            "coverage_polygon": [
+              [
+                420.0,
+                110.0
+              ],
+              [
+                940.0,
+                95.0
+              ],
+              [
+                955.0,
+                525.0
+              ],
+              [
+                410.0,
+                520.0
+              ]
+            ],
+            "health": "OFFLINE",
+            "calibration_status": "MISSING"
+          }
+        ],
+        "walls": [
+          [
+            [
+              20.0,
+              20.0
+            ],
+            [
+              980.0,
+              20.0
+            ]
+          ],
+          [
+            [
+              980.0,
+              20.0
+            ],
+            [
+              980.0,
+              580.0
+            ]
+          ],
+          [
+            [
+              980.0,
+              580.0
+            ],
+            [
+              20.0,
+              580.0
+            ]
+          ],
+          [
+            [
+              20.0,
+              580.0
+            ],
+            [
+              20.0,
+              20.0
+            ]
+          ],
+          [
+            [
+              330.0,
+              270.0
+            ],
+            [
+              735.0,
+              270.0
+            ]
+          ]
+        ],
+        "portals": [
+          {
+            "id": "stair-a",
+            "name": "Stair A",
+            "position": [
+              855.0,
+              160.0
+            ],
+            "direction": "BOTH"
+          }
+        ]
+      },
+      {
+        "id": "floor-2",
+        "name": "Floor 2 \u00b7 Illustrative",
+        "level": 2,
+        "width": 1000,
+        "height": 600,
+        "visible_occupancy": null,
+        "estimated_occupancy": null,
+        "quality": "UNAVAILABLE",
+        "zones": [
+          {
+            "id": "landing-f2",
+            "floor_id": "floor-2",
+            "name": "Floor 2 Stair Landing",
+            "kind": "stairs",
+            "polygon": [
+              [
+                55.0,
+                55.0
+              ],
+              [
+                390.0,
+                55.0
+              ],
+              [
+                390.0,
+                355.0
+              ],
+              [
+                55.0,
+                355.0
+              ]
+            ],
+            "capacity": null,
+            "occupancy": null,
+            "congestion": "UNAVAILABLE",
+            "queue_size": null
+          },
+          {
+            "id": "dining-f2",
+            "floor_id": "floor-2",
+            "name": "Upper Dining Area",
+            "kind": "dining",
+            "polygon": [
+              [
+                485.0,
+                70.0
+              ],
+              [
+                930.0,
+                70.0
+              ],
+              [
+                930.0,
+                510.0
+              ],
+              [
+                485.0,
+                510.0
+              ]
+            ],
+            "capacity": 45.0,
+            "occupancy": null,
+            "congestion": "UNAVAILABLE",
+            "queue_size": null
+          }
+        ],
+        "cameras": [
+          {
+            "id": "cam-04",
+            "name": "Upper Stair Landing",
+            "position": [
+              155.0,
+              140.0
+            ],
+            "coverage_polygon": [
+              [
+                45.0,
+                40.0
+              ],
+              [
+                420.0,
+                45.0
+              ],
+              [
+                435.0,
+                390.0
+              ],
+              [
+                35.0,
+                390.0
+              ]
+            ],
+            "health": "OFFLINE",
+            "calibration_status": "MISSING"
+          }
+        ],
+        "walls": [
+          [
+            [
+              20.0,
+              20.0
+            ],
+            [
+              980.0,
+              20.0
+            ]
+          ],
+          [
+            [
+              980.0,
+              20.0
+            ],
+            [
+              980.0,
+              580.0
+            ]
+          ],
+          [
+            [
+              980.0,
+              580.0
+            ],
+            [
+              20.0,
+              580.0
+            ]
+          ],
+          [
+            [
+              20.0,
+              580.0
+            ],
+            [
+              20.0,
+              20.0
+            ]
+          ],
+          [
+            [
+              435.0,
+              80.0
+            ],
+            [
+              435.0,
+              510.0
+            ]
+          ]
+        ],
+        "portals": [
+          {
+            "id": "stair-a",
+            "name": "Stair A",
+            "position": [
+              220.0,
+              180.0
+            ],
+            "direction": "BOTH"
+          }
+        ]
+      }
+    ],
+    "alerts": [],
+    "kpis": {
+      "building_expected": null,
+      "building_visible": null,
+      "building_estimated": null,
+      "unresolved_transitions": null,
+      "discrepancy": null,
+      "quality": "UNAVAILABLE",
+      "entries": 0,
+      "exits": 0,
+      "queue_total": null,
+      "max_wait_seconds": null,
+      "stair_up_per_min": null,
+      "stair_down_per_min": null,
+      "congested_zones": 0,
+      "healthy_cameras": 0,
+      "enabled_cameras": 1
+    },
+    "associations": [],
+    "system_metrics": {
+      "timestamp": "2026-10-26T10:59:46.791Z",
+      "scope": "wsl2",
+      "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "gpu_utilization": 7.0,
+      "vram_used_mib": 1601.0,
+      "vram_total_mib": 12227.0,
+      "gpu_temperature_c": 66.0,
+      "nvdec_utilization": 0.0,
+      "cpu_utilization": 22.4,
+      "ram_used_mb": 13091.3359375,
+      "ram_total_mb": 15577.80078125,
+      "process_rss_mb": 57.703125,
+      "unavailable_reason": null
+    },
+    "notices": [
+      {
+        "severity": "WARNING",
+        "title": "Illustrative, uncalibrated floor fixtures",
+        "message": "Both floor layouts are ILLUSTRATIVE and UNCALIBRATED; geometry-dependent counts are unavailable."
+      },
+      {
+        "severity": "INFO",
+        "title": "Provisional perception smoke profile",
+        "message": "TrafficCamNet/NvDCF supplies real person boxes, IDs and visible counts; the evaluated PRD detector baseline remains unselected."
+      },
+      {
+        "severity": "WARNING",
+        "title": "Configured sources unavailable",
+        "message": "Unavailable camera sources: cam-02, cam-03, cam-04. Other cameras remain isolated."
+      }
+    ]
+  }
+}

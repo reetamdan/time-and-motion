@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:21:10.502020+00:00",
+  "onnx": "models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx",
+  "export_run": "reports\\model-evaluation\\rf-detr\\export\\run-003-resize-in-graph",
+  "frames": [
+    {
+      "frame_index": 141,
+      "logits_max_abs": 1.345301628112793,
+      "pred_boxes_max_abs": 0.15409597754478455,
+      "slots_logits_delta_gt_1e-3": 255,
+      "onnx_person_decodes": 41,
+      "trt_person_decodes": 41,
+      "person_query_order_equal": false,
+      "person_score_max_abs": 0.0058029890060424805,
+      "person_box_max_abs_px": 524.6643376350403,
+      "person_set_strict": {
+        "matches": 41,
+        "left_count": 41,
+        "right_count": 41,
+        "max_score_abs_delta": 0.006004244089126587,
+        "max_bbox_abs_delta_px": 2.5726354122161865,
+        "result": "PASS"
+      },
+      "raw_slot_parity": "FAIL",
+      "person_decode_parity": "FAIL"
+    },
+    {
+      "frame_index": 283,
+      "logits_max_abs": 1.787567377090454,
+      "pred_boxes_max_abs": 0.7801125049591064,
+      "slots_logits_delta_gt_1e-3": 292,
+      "onnx_person_decodes": 43,
+      "trt_person_decodes": 43,
+      "person_query_order_equal": true,
+      "person_score_max_abs": 0.0020962953567504883,
+      "person_box_max_abs_px": 0.4522526264190674,
+      "person_set_strict": {
+        "matches": 43,
+        "left_count": 43,
+        "right_count": 43,
+        "max_score_abs_delta": 0.0020962953567504883,
+        "max_bbox_abs_delta_px": 0.4522526264190674,
+        "result": "PASS"
+      },
+      "raw_slot_parity": "FAIL",
+      "person_decode_parity": "PASS"
+    }
+  ],
+  "tolerances": {
+    "raw_logits": 0.001,
+    "raw_boxes": 0.0001,
+    "person_score": 0.005
+  },
+  "note": "Raw-slot parity is order-sensitive on frames whose encoder top-300 proposal scores contain near-ties (see export/run-002/topk-margin-diagnosis.json)."
+}

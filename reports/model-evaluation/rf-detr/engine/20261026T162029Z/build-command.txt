@@ -1,0 +1,1 @@
+trtexec --onnx=/workspace/models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx --saveEngine=/workspace/models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm120.engine --stronglyTyped --noTF32 --skipInference

@@ -1,0 +1,182 @@
+{
+  "started_utc": "2026-10-28T16:43:13.438464+00:00",
+  "supervisor_pid": 15996,
+  "parent_pid": 3772,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "paced_lead",
+      "started_utc": "2026-10-28T16:43:13.439972+00:00",
+      "available_at_start_mib": 9831.0,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_paced_lead.py"
+      ],
+      "pid": 11832,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:44:30.720189+00:00",
+      "run_dir": "reports\\validation\\paced-lead-2feeds-20261028T164318793403Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "live_workflow",
+      "started_utc": "2026-10-28T16:44:30.926994+00:00",
+      "available_at_start_mib": 6474.3,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_live_workflow.py"
+      ],
+      "pid": 32300,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:46:02.167083+00:00",
+      "run_dir": "reports\\validation\\live-workflow-cam01-20261028T164431569508Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "fault_isolation",
+      "started_utc": "2026-10-28T16:46:02.409864+00:00",
+      "available_at_start_mib": 6721.5,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_fault_isolation.py"
+      ],
+      "pid": 20004,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:46:37.629974+00:00",
+      "run_dir": "reports\\validation\\fault-isolation-2feeds-20261028T164602703227Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "browser_workflow",
+      "started_utc": "2026-10-28T16:46:37.833680+00:00",
+      "available_at_start_mib": 6463.3,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_browser_workflow.py"
+      ],
+      "pid": 5152,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:47:30.060506+00:00",
+      "run_dir": "reports\\validation\\browser-workflow-cam01-20261028T164638239717Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "browser_evidence",
+      "started_utc": "2026-10-28T16:47:30.268000+00:00",
+      "available_at_start_mib": 6802.4,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_browser_evidence.py"
+      ],
+      "pid": 25156,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:47:54.485002+00:00",
+      "run_dir": "reports\\validation\\browser-evidence-cam01-20261028T164730587092Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "ui_refactor",
+      "started_utc": "2026-10-28T16:47:54.693873+00:00",
+      "available_at_start_mib": 6675.2,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_ui_refactor.py"
+      ],
+      "pid": 16092,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:50:16.956413+00:00",
+      "run_dir": "reports\\validation\\ui-refactor-cam01-20261028T164755009862Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "wsl_route",
+      "started_utc": "2026-10-28T16:50:17.163660+00:00",
+      "available_at_start_mib": 6877.1,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_wsl_route.py"
+      ],
+      "pid": 26344,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T16:53:56.439771+00:00",
+      "run_dir": "reports\\validation\\wsl-route-20261028T165017434597Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "rtsp_controlled",
+      "started_utc": "2026-10-28T16:53:56.647162+00:00",
+      "available_at_start_mib": 7354.8,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_rtsp_source.py"
+      ],
+      "pid": 32388,
+      "exit_code": 1,
+      "ended_utc": "2026-10-28T17:03:30.033184+00:00",
+      "run_dir": "reports\\validation\\rtsp-controlled-20261028T165356944756Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    },
+    {
+      "name": "screenshots_after",
+      "started_utc": "2026-10-28T17:03:30.235785+00:00",
+      "available_at_start_mib": 7331.0,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\capture_ui_screenshots.py",
+        "--label",
+        "after"
+      ],
+      "pid": 15172,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T17:05:17.477965+00:00",
+      "run_dir": null,
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    }
+  ],
+  "state": "COMPLETE_WITH_FAILURES",
+  "host_available_min_mib": 5143.7,
+  "ended_utc": "2026-10-28T17:05:17.680999+00:00",
+  "stop_reason": null,
+  "not_started": []
+}

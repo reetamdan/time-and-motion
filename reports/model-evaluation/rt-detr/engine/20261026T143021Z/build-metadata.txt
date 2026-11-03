@@ -1,0 +1,5 @@
+utc_started=2026-10-26T14:30:21Z
+onnx=/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw.onnx
+engine=/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine
+validator=/workspace/scripts/rt-detr-candidate/validate_engine.sh
+trtexec_args= --stronglyTyped --noTF32

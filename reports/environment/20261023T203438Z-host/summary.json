@@ -1,0 +1,245 @@
+{
+    "schema_version":  1,
+    "run_id":  "20261023T203438Z",
+    "utc_finished":  "2026-10-23T20:34:48.5868758+00:00",
+    "scope":  "windows-host-with-read-only-wsl-probes",
+    "phase_0_result":  "BLOCKED",
+    "phase_0_note":  "Host probes alone cannot prove DeepStream, NVDEC, TensorRT, or accelerated inference. Run verify-environment.sh in the intended runtime.",
+    "overall_probe_status":  "required_probes_failed",
+    "required_failure_count":  1,
+    "optional_unavailable_count":  12,
+    "probes":  [
+                   {
+                       "name":  "windows_os",
+                       "required":  true,
+                       "command":  "Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture, LastBootUpTime | Format-List",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_os.log"
+                   },
+                   {
+                       "name":  "windows_gpu_identity",
+                       "required":  true,
+                       "command":  "Get-CimInstance Win32_VideoController; require RTX 5070 Ti identity",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_gpu_identity.log"
+                   },
+                   {
+                       "name":  "windows_computer",
+                       "required":  false,
+                       "command":  "Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer, Model, TotalPhysicalMemory, NumberOfLogicalProcessors | Format-List",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_computer.log"
+                   },
+                   {
+                       "name":  "windows_cpu",
+                       "required":  false,
+                       "command":  "Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed | Format-List",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_cpu.log"
+                   },
+                   {
+                       "name":  "windows_disks",
+                       "required":  false,
+                       "command":  "Get-PSDrive -PSProvider FileSystem | Select-Object Name, Used, Free, Root | Format-Table -AutoSize",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_disks.log"
+                   },
+                   {
+                       "name":  "windows_battery",
+                       "required":  false,
+                       "command":  "Get-CimInstance Win32_Battery | Select-Object Name, BatteryStatus, EstimatedChargeRemaining | Format-List",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_battery.log"
+                   },
+                   {
+                       "name":  "windows_nvidia_smi",
+                       "required":  true,
+                       "command":  "nvidia-smi.exe",
+                       "status":  "failed",
+                       "exit_code":  255,
+                       "log":  "windows_nvidia_smi.log"
+                   },
+                   {
+                       "name":  "windows_nvidia_smi_query",
+                       "required":  false,
+                       "command":  "nvidia-smi.exe --query-gpu=name,uuid,driver_version,memory.total,memory.used,temperature.gpu,utilization.gpu --format=csv",
+                       "status":  "failed",
+                       "exit_code":  255,
+                       "log":  "windows_nvidia_smi_query.log"
+                   },
+                   {
+                       "name":  "windows_nvcc",
+                       "required":  false,
+                       "command":  "nvcc.exe --version",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_nvcc.log"
+                   },
+                   {
+                       "name":  "windows_node",
+                       "required":  false,
+                       "command":  "node.exe --version",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_node.log"
+                   },
+                   {
+                       "name":  "windows_npm",
+                       "required":  false,
+                       "command":  "npm.cmd --version",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_npm.log"
+                   },
+                   {
+                       "name":  "windows_python",
+                       "required":  false,
+                       "command":  "python.exe --version",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "windows_python.log"
+                   },
+                   {
+                       "name":  "windows_ffmpeg",
+                       "required":  false,
+                       "command":  "ffmpeg.exe -version",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_ffmpeg.log"
+                   },
+                   {
+                       "name":  "windows_gstreamer",
+                       "required":  false,
+                       "command":  "gst-launch-1.0.exe --version",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_gstreamer.log"
+                   },
+                   {
+                       "name":  "windows_deepstream",
+                       "required":  false,
+                       "command":  "deepstream-app.exe --version",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_deepstream.log"
+                   },
+                   {
+                       "name":  "windows_tensorrt",
+                       "required":  false,
+                       "command":  "trtexec.exe --version",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_tensorrt.log"
+                   },
+                   {
+                       "name":  "windows_docker_version",
+                       "required":  false,
+                       "command":  "docker.exe version",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_docker_version.log"
+                   },
+                   {
+                       "name":  "windows_docker_info",
+                       "required":  false,
+                       "command":  "docker.exe info",
+                       "status":  "not_found",
+                       "exit_code":  127,
+                       "log":  "windows_docker_info.log"
+                   },
+                   {
+                       "name":  "wsl_status",
+                       "required":  true,
+                       "command":  "wsl.exe --status",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_status.log"
+                   },
+                   {
+                       "name":  "wsl_version",
+                       "required":  false,
+                       "command":  "wsl.exe --version",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_version.log"
+                   },
+                   {
+                       "name":  "wsl_distros",
+                       "required":  true,
+                       "command":  "wsl.exe --list --verbose",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_distros.log"
+                   },
+                   {
+                       "name":  "wsl_kernel",
+                       "required":  true,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec uname -a",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_kernel.log"
+                   },
+                   {
+                       "name":  "wsl_os_release",
+                       "required":  true,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec cat /etc/os-release",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_os_release.log"
+                   },
+                   {
+                       "name":  "wsl_nvidia_smi",
+                       "required":  true,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec bash -lc nvidia-smi",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_nvidia_smi.log"
+                   },
+                   {
+                       "name":  "wsl_nvidia_smi_query",
+                       "required":  false,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec bash -lc nvidia-smi --query-gpu=name,uuid,driver_version,memory.total,memory.used,temperature.gpu,utilization.gpu --format=csv",
+                       "status":  "passed",
+                       "exit_code":  0,
+                       "log":  "wsl_nvidia_smi_query.log"
+                   },
+                   {
+                       "name":  "wsl_deepstream",
+                       "required":  false,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec bash -lc deepstream-app --version",
+                       "status":  "failed",
+                       "exit_code":  127,
+                       "log":  "wsl_deepstream.log"
+                   },
+                   {
+                       "name":  "wsl_gstreamer",
+                       "required":  false,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec bash -lc gst-launch-1.0 --version",
+                       "status":  "failed",
+                       "exit_code":  127,
+                       "log":  "wsl_gstreamer.log"
+                   },
+                   {
+                       "name":  "wsl_tensorrt",
+                       "required":  false,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec bash -lc trtexec --version",
+                       "status":  "failed",
+                       "exit_code":  127,
+                       "log":  "wsl_tensorrt.log"
+                   },
+                   {
+                       "name":  "wsl_docker",
+                       "required":  false,
+                       "command":  "wsl.exe --distribution Ubuntu-22.04 --exec bash -lc docker version",
+                       "status":  "failed",
+                       "exit_code":  127,
+                       "log":  "wsl_docker.log"
+                   }
+               ]
+}

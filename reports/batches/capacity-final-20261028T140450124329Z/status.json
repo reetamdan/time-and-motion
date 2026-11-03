@@ -1,0 +1,28 @@
+{
+  "started_utc": "2026-10-28T14:04:50.138582+00:00",
+  "supervisor_pid": 22800,
+  "parent_pid": 10008,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "capacity_repeats",
+      "started_utc": "2026-10-28T14:04:50.140096+00:00",
+      "available_at_start_mib": 6316.1,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\benchmark\\run_capacity.py",
+        "--plan",
+        "repeats"
+      ],
+      "pid": 32096
+    }
+  ],
+  "state": "INTERRUPTED (host killed the process tree; status finalised by hand afterwards)",
+  "host_available_min_mib": 6316.1
+}

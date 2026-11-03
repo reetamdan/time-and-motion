@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="5" time="0.122" timestamp="2026-10-28T13:58:32.562267+05:30" hostname="LAPTOP-G1S896R7"><testcase classname="tests.test_facility_freshness" name="test_runtime_stair_transition_records_unknown_association_and_inferred_flow" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-14'&quot;">self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-14')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-14'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.test_occupancy" name="test_internal_floor_transfer_conserves_building_totals" time="0.000" /><testcase classname="tests.test_freshness_flow" name="test_stale_value_is_retained_for_diagnostics_but_null_for_contract" time="0.000" /><testcase classname="tests.test_freshness_flow" name="test_stale_track_is_not_fresh" time="0.000" /><testcase classname="tests.test_freshness_flow" name="test_rolling_flow_is_directional_windowed_and_idempotent" time="0.000" /></testsuite></testsuites>

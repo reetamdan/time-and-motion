@@ -1,0 +1,86 @@
+[
+ {
+  "wall_s": 12.270730600001116,
+  "source_position_s": 15.982633333,
+  "visible_count": 18,
+  "analytics_fps": null,
+  "source_fps": 29.970029670629074,
+  "health": "CALIBRATION WARNING",
+  "replay_mode": "unpaced",
+  "persisted": 31,
+  "backend_queue_ms": 3.6179000017000362,
+  "segment": 0
+ },
+ {
+  "wall_s": 12.55761970000458,
+  "source_position_s": 19.285933333,
+  "visible_count": 17,
+  "analytics_fps": 1050.3456567283345,
+  "source_fps": 29.970029670629074,
+  "health": "CALIBRATION WARNING",
+  "replay_mode": "unpaced",
+  "persisted": 38,
+  "backend_queue_ms": 1.8050999933620915,
+  "segment": 0
+ },
+ {
+  "wall_s": 12.833438500005286,
+  "source_position_s": 22.489133333,
+  "visible_count": 19,
+  "analytics_fps": 819.5602693307425,
+  "source_fps": 29.970029670629074,
+  "health": "CALIBRATION WARNING",
+  "replay_mode": "unpaced",
+  "persisted": 44,
+  "backend_queue_ms": 2.5826999990385957,
+  "segment": 0
+ },
+ {
+  "wall_s": 13.10487760000251,
+  "source_position_s": 23.7237,
+  "visible_count": 18,
+  "analytics_fps": 763.0763190431434,
+  "source_fps": 29.970029670629074,
+  "health": "CALIBRATION WARNING",
+  "replay_mode": "unpaced",
+  "persisted": 47,
+  "backend_queue_ms": 2.1620999978040345,
+  "segment": 0
+ },
+ {
+  "wall_s": 13.374151900003199,
+  "source_position_s": 23.7237,
+  "visible_count": 18,
+  "analytics_fps": 763.0763190431434,
+  "source_fps": 29.970029670629074,
+  "health": "CALIBRATION WARNING",
+  "replay_mode": "unpaced",
+  "persisted": 47,
+  "backend_queue_ms": 2.1620999978040345,
+  "segment": 0
+ },
+ {
+  "wall_s": 21.824554999999236,
+  "source_position_s": 23.7237,
+  "visible_count": 18,
+  "analytics_fps": 763.0763190431434,
+  "source_fps": 29.970029670629074,
+  "health": "CALIBRATION WARNING",
+  "replay_mode": "unpaced",
+  "persisted": 47,
+  "backend_queue_ms": 2.1620999978040345,
+  "segment": 0
+ },
+ {
+  "wall_s": 22.094867600004363,
+  "source_position_s": null,
+  "visible_count": null,
+  "analytics_fps": null,
+  "source_fps": null,
+  "health": "DEGRADED",
+  "replay_mode": "unpaced",
+  "persisted": 47,
+  "backend_queue_ms": null,
+  "segment": 0
+ }
+]

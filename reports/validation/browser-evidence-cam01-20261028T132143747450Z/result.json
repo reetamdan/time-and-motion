@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T13:22:06.981020+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe' validate_browser_evidence.py",
+  "run_dir": "reports\\validation\\browser-evidence-cam01-20261028T132143747450Z",
+  "result": "PASS",
+  "checks": {
+    "backend_served_on_socket": "PASS",
+    "capability_matrix_rendered": "PASS",
+    "capability_reason_names_missing_calibration": "PASS",
+    "artifact_identity_table_all_match": "PASS",
+    "run_started": "PASS",
+    "source_time_reached": "PASS",
+    "marker_saved_in_drawer": "PASS",
+    "api_evidence_bound_to_live_epoch": "PASS",
+    "evidence_card_rendered": "PASS",
+    "card_camera_epoch_source_time_match_api": "PASS",
+    "snapshot_image_renders_full_resolution": "PASS",
+    "clip_metadata_loaded": "PASS",
+    "clip_plays": "PASS",
+    "only_this_runs_clip_present": "PASS",
+    "clip_file_removed": "PASS",
+    "missing_clip_shown_unavailable": "PASS",
+    "snapshot_still_renders": "PASS",
+    "api_reports_clip_unavailable": "PASS",
+    "operator_alert_links_evidence": "PASS",
+    "run_stopped": "PASS",
+    "owned_container_absent": "PASS"
+  },
+  "observed": {
+    "capability_reason_names_missing_calibration": {
+      "excerpt": "Per camera\nCAMERA\tCAMERA-LOCAL COUNTS\tIMAGE-LINE CROSSINGS\tFLOOR POSITIONS\tENTRIES / EXITS\ncam-01\nEnabled \u00b7 not running\n\t\ncamera not running\t\nno image_pixels line configured\t\ncalibration MISSING\t\ncalibration MISSING\ncam-02\nDisabled\n\t\ncamera not running\t\nno image_pixels line configured\t\ncalibration M"
+    },
+    "artifact_identity_table_all_match": {
+      "excerpt": "ARTIFACT\tSTATUS\tEXPECTED (RECORDED)\tCURRENT (RECOMPUTED)\ndetector.checkpoint\nC:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx\n\t\nMATCH\n\td92f97bd840b6885\u2026\td92f97bd840b6885\u2026\ndetector.engine\nC:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine\n"
+    },
+    "run_started": {
+      "status": "RUNNING :: Running"
+    },
+    "marker_saved_in_drawer": {
+      "text": "Saved at source 4.14 s\n\nFrame + clip 0.07\u20137.21 s (keyframe-aligned start). Epoch 81df2cfa.\n\nOpen in Evidence"
+    },
+    "api_evidence_bound_to_live_epoch": {
+      "evidence": "81df2cfa-4ae4-4cef-bdee-993462015b0b",
+      "camera": "81df2cfa-4ae4-4cef-bdee-993462015b0b"
+    },
+    "card_camera_epoch_source_time_match_api": {
+      "camera": "cam-01",
+      "epoch": "81df2cfa-4ae4-4cef-bdee-993462015b0b",
+      "marked": "4.137466666",
+      "api_marked": 4.137466666
+    },
+    "snapshot_image_renders_full_resolution": {
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    "clip_metadata_loaded": {
+      "duration": 7.140467,
+      "api_span": 7.140467
+    },
+    "clip_plays": {
+      "currentTime": 0.596
+    },
+    "missing_clip_shown_unavailable": {
+      "text": "Evidence file is missing or empty. Nothing is shown in its place."
+    },
+    "api_reports_clip_unavailable": {
+      "reason": "Evidence file is missing or empty"
+    },
+    "operator_alert_links_evidence": {
+      "href": "#evidence?item=be2e27f3-96a8-49a1-802f-66901fa6d271"
+    },
+    "run_stopped": {
+      "status": "STOPPED :: Stopped"
+    }
+  },
+  "errors": [],
+  "scope": "Real backend socket + headless Chrome + real paced cam01 GPU run. The evidence marker is a manual operator action. File removal targets only this run's own evidence root."
+}

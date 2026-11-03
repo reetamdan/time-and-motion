@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-10-26T16:24:23.796944+00:00",
+  "result": "PASS",
+  "model": {
+    "id": "Roboflow/rf-detr-small",
+    "revision": "3bdc465063270f99769da5a1b4c00c68bd2d439d",
+    "architecture": "RfDetrForObjectDetection",
+    "config_transformers_version": "5.8.0.dev0",
+    "loaded_with_transformers": "5.20.2"
+  },
+  "files": [
+    {
+      "path": "models/rf-detr-person-candidate/upstream/README.md",
+      "sha256": "67276e4f7fb6d5e8753699173f86ba37b0aa17184f53ef1ad79253907f0015a5",
+      "size_bytes": 4718,
+      "hf_tree_size": 4718,
+      "hf_lfs_oid": null,
+      "download_url": "https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/README.md"
+    },
+    {
+      "path": "models/rf-detr-person-candidate/upstream/config.json",
+      "sha256": "cbc9ccde8860c7587c0672cd4df1e9ae2ee93112fef853283435e95dd7e0a595",
+      "size_bytes": 5771,
+      "hf_tree_size": 5771,
+      "hf_lfs_oid": null,
+      "download_url": "https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/config.json"
+    },
+    {
+      "path": "models/rf-detr-person-candidate/upstream/preprocessor_config.json",
+      "sha256": "dba1fb5bb4d70d94b3495b7bcb1f881bc61d42c73433fcec13be34c523550a0b",
+      "size_bytes": 442,
+      "hf_tree_size": 442,
+      "hf_lfs_oid": null,
+      "download_url": "https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/preprocessor_config.json"
+    },
+    {
+      "path": "models/rf-detr-person-candidate/upstream/.gitattributes",
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+      "size_bytes": 1519,
+      "hf_tree_size": 1519,
+      "hf_lfs_oid": null,
+      "download_url": "https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/.gitattributes"
+    },
+    {
+      "path": "models/rf-detr-person-candidate/upstream/model.safetensors",
+      "sha256": "2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d",
+      "size_bytes": 128504496,
+      "hf_tree_size": 128504496,
+      "hf_lfs_oid": "2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d",
+      "download_url": "https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/model.safetensors"
+    }
+  ],
+  "hf_tree_has_license_file": false,
+  "hf_metadata_license": "apache-2.0",
+  "upstream_license_evidence": {
+    "repository": "https://github.com/roboflow/rf-detr",
+    "spdx_id": "Apache-2.0",
+    "license_file_blob_sha": "56db37c53b61c7976042682a83d85383a6bf6007",
+    "observed_branch_head": "5b22dfc0940697ce1abdfa681a5f7392b3eddbfb",
+    "observed_branch_head_date": "2026-10-16T05:38:07Z",
+    "evidence": "reports/model-evaluation/rf-detr/provenance/github-license-api.json"
+  },
+  "license_caveat": "HF metadata declares apache-2.0 but the pinned HF tree contains no LICENSE file. Upstream GitHub roboflow/rf-detr declares Apache-2.0 (blob recorded). The HF checkpoint is a transformers-format repackaging; equating it with the upstream release is an inference, not verified. Review before redistribution.",
+  "class_mapping": {
+    "slots": "sparse COCO ids 0..90 (91 logits)",
+    "person_slot": 1,
+    "slot_0": "N/A",
+    "app_class_id": 0
+  },
+  "preprocessing_contract": {
+    "processor": "RfDetrImageProcessor (TorchvisionBackend)",
+    "size": [
+      512,
+      512
+    ],
+    "order": "rescale 1/255 -> bilinear resize antialias=False -> normalize -> pad (no-op at fixed size)",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "resample": 2,
+    "source": ".install/rf-detr-export/venv/Lib/site-packages/transformers/models/rf_detr/image_processing_rf_detr.py:557"
+  },
+  "download_log": "reports/model-evaluation/rf-detr/provenance/download.log"
+}

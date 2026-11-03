@@ -1,0 +1,38 @@
+{
+ "purpose": "Validate the v2 extractor's SourcePacer + GuestHostClock against Windows host time inside WSL (no GPU, no DeepStream): a WSL python3 process paces 29.97 fps frame numbers with the extractor's own classes; Windows timestamps each stdout line on arrival.",
+ "extractor_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+ "guest_clock_observation": {
+  "probe": "clockprobe.py (75 s, idle)",
+  "sync_steps_s": [
+   -1.484,
+   -1.542,
+   -1.496
+  ],
+  "step_interval_s": 32.2,
+  "host_offset_sampling": "wsl date vs host every ~1.7 s for 100 s: WSL-minus-host rose ~4.9 % (from ~-0.85 s to ~+0.6 s) and was stepped back ~1.45 s every ~30.5 s"
+ },
+ "runs": [
+  {
+   "frames": 4500,
+   "source_s": 150.12,
+   "host_s": 149.96,
+   "rate_host_per_source": 1.00331,
+   "max_ahead_s": 1.209,
+   "max_ahead_after_70s": 0.569,
+   "final_ahead_s": 0.159,
+   "guest": "sync_steps 4, rate 1.0293, reanchors 0"
+  },
+  {
+   "frames": 18000,
+   "source_s": 600.57,
+   "host_s": 600.63,
+   "rate_host_per_source": 1.00039,
+   "max_ahead_s": 0.869,
+   "max_ahead_after_70s": 0.366,
+   "final_ahead_s": -0.065,
+   "guest": "sync_steps 19, rate 1.0383, reanchors 0"
+  }
+ ],
+ "result": "PASS (10-min run: |rate-1| = 0.04 % <= 0.2 %; <= 0.37 s ahead after the first two sync steps; up to 0.87 s ahead during the first ~60 s, before the clock rate is known)",
+ "scope": "Pacer/clock only, through the wsl.exe stdout relay (its jitter is included in 'ahead'); GPU confirmation is the capacity protocol."
+}

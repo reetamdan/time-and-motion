@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "created_at_utc": "2026-10-26T13:42:25.832637+00:00",
+  "command": [
+    "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv\\Scripts\\python.exe",
+    "scripts/rt-detr-candidate/export_onnx.py",
+    "--run-dir",
+    "reports/model-evaluation/rt-detr/export/run-001"
+  ],
+  "offline": {
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1"
+  },
+  "upstream": "models\\rt-detr-person-candidate\\upstream",
+  "checkpoint_sha256": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+  "implementation_class": "transformers.models.rt_detr_v2.modeling_rt_detr_v2.RTDetrV2ForObjectDetection",
+  "hf_api_declared_architecture": "RtDetrV2ForObjectDetection",
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "evaluation_mode": true,
+  "wrapper": "RawOutputWrapper returns only outputs.logits and outputs.pred_boxes",
+  "export_command": {
+    "function": "torch.onnx.export",
+    "args": [
+      "RawOutputWrapper(model.eval())",
+      "pixel_values[1,3,640,640]",
+      "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\rt-detr-person-candidate\\rt_detr_r18vd_raw.onnx"
+    ],
+    "kwargs": {
+      "input_names": [
+        "pixel_values"
+      ],
+      "output_names": [
+        "logits",
+        "pred_boxes"
+      ],
+      "opset_version": 17,
+      "do_constant_folding": true,
+      "dynamic_axes": null,
+      "dynamo": false,
+      "export_params": true
+    }
+  },
+  "export_code_sha256": "a11643727a2576061f384966bf9c25fc73bc48e2ae2ed47b4b3829d920535eba",
+  "decode_code_sha256": "8d9dce9030ba5917643f02276ee69c4b55d1111595cae7a36b8d7b9de7129e87",
+  "onnx": "models\\rt-detr-person-candidate\\rt_detr_r18vd_raw.onnx",
+  "onnx_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+  "onnx_size_bytes": 81332083,
+  "onnx_ir_version": 8,
+  "onnx_opset": [
+    {
+      "domain": "",
+      "version": 17
+    }
+  ],
+  "actual_onnx_contract": {
+    "inputs": [
+      {
+        "name": "pixel_values",
+        "dtype": "float32",
+        "shape": [
+          1,
+          3,
+          640,
+          640
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "logits",
+        "dtype": "float32",
+        "shape": [
+          1,
+          300,
+          80
+        ]
+      },
+      {
+        "name": "pred_boxes",
+        "dtype": "float32",
+        "shape": [
+          1,
+          300,
+          4
+        ]
+      }
+    ]
+  },
+  "operator_counts": {
+    "Add": 135,
+    "And": 1,
+    "AveragePool": 3,
+    "Cast": 14,
+    "Clip": 9,
+    "Concat": 27,
+    "Constant": 245,
+    "ConstantOfShape": 2,
+    "Conv": 69,
+    "Div": 8,
+    "Erf": 1,
+    "Expand": 8,
+    "Gather": 2,
+    "GatherElements": 2,
+    "Greater": 2,
+    "GridSample": 9,
+    "Identity": 6,
+    "LayerNormalization": 12,
+    "Less": 1,
+    "Log": 4,
+    "MatMul": 67,
+    "MaxPool": 1,
+    "Mul": 73,
+    "Not": 2,
+    "ReduceMax": 1,
+    "ReduceSum": 4,
+    "Relu": 33,
+    "Reshape": 70,
+    "Resize": 2,
+    "Shape": 10,
+    "Sigmoid": 32,
+    "Slice": 31,
+    "Softmax": 7,
+    "Split": 3,
+    "Sub": 7,
+    "Tile": 2,
+    "TopK": 1,
+    "Transpose": 37,
+    "Unsqueeze": 22,
+    "Where": 1
+  },
+  "frames": [
+    {
+      "frame_index": 141,
+      "source_image": "reports\\model-evaluation\\rt-detr\\frames\\frame_000141.png",
+      "source_image_sha256": "94dfb4597f20321ef98c8d91f448e24630205b4f4cdb6ed4924d16d75b59c7a7",
+      "source_size": [
+        1920,
+        1080
+      ],
+      "pixel_values_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "pixel_values_dtype": "torch.float32",
+      "preprocessing_manual_max_abs": 0.0,
+      "hf_logits_shape": [
+        1,
+        300,
+        80
+      ],
+      "hf_pred_boxes_shape": [
+        1,
+        300,
+        4
+      ],
+      "hf_person_detections": 76,
+      "official_postprocessor_person_detections": 76,
+      "hf_decode_torch_reference_parity": "PASS",
+      "reference_npz": "hf_frame_000141.npz",
+      "decode_json": "hf_decode_frame_000141.json",
+      "max_person_confidence": 0.6315394043922424
+    },
+    {
+      "frame_index": 283,
+      "source_image": "reports\\model-evaluation\\rt-detr\\frames\\frame_000283.png",
+      "source_image_sha256": "524deed4c35c9c3df5e6558788d243452439ec62ea408f2222da6fd4c70ec4c0",
+      "source_size": [
+        1920,
+        1080
+      ],
+      "pixel_values_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "pixel_values_dtype": "torch.float32",
+      "preprocessing_manual_max_abs": 0.0,
+      "hf_logits_shape": [
+        1,
+        300,
+        80
+      ],
+      "hf_pred_boxes_shape": [
+        1,
+        300,
+        4
+      ],
+      "hf_person_detections": 63,
+      "official_postprocessor_person_detections": 63,
+      "hf_decode_torch_reference_parity": "PASS",
+      "reference_npz": "hf_frame_000283.npz",
+      "decode_json": "hf_decode_frame_000283.json",
+      "max_person_confidence": 0.7169507741928101
+    }
+  ],
+  "quality_scope": "Implementation parity and known-positive integration only; no ground-truth labels or precision/recall"
+}

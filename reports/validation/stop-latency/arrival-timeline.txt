@@ -1,0 +1,4 @@
+frames 710 first_at 11.86 last_at 13.78 mean_rate 369.9
+frames per 250ms: [56, 91, 94, 91, 94, 93, 93, 91, 7]
+inter-arrival ms p50 0.093 p90 0.256 max 31.8
+reported analytics_fps min/median/max 361.3 370.8 382.3

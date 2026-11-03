@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:10:00Z",
+  "purpose": "Resolve the outstanding RT-DETR requirement: capture raw pre-tracker nvinfer tensors and exact DeepStream input preprocessing, compare like-for-like with HF/ONNX/TensorRT before examining tracker effects.",
+  "candidate_acceptance_changed": false,
+  "candidate_accepted": false,
+  "original_failed_evidence_preserved": {
+    "path": "reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z/onnx-deepstream-crosscheck.json",
+    "sha256_verified_unchanged": "26ffadbf417eb4531ef08acdb21ab72774ede7a926bc5a5c61bf4ecece3568da"
+  },
+  "unchanged_identities_verified": {
+    "engine_sha256": "8de3838604f343d17fba248b866e95c4785d91ac768a3973351024402186c3b1",
+    "production_extractor_sha256": "6093b5d5d06089225b3bf60b0342fedccc50efde477f9663c5ef61ff91abad25",
+    "candidate_infer_config": "perception/candidates/rt_detr/deepstream/cam01_rt_detr_infer.txt (not modified)"
+  },
+  "method": {
+    "diagnostic_extractor": "perception/candidates/rt_detr/diagnostics/extract_pretracker.py (probe on nvinfer output before NvDCF, second probe after NvDCF, raw output-tensor-meta copied from CUDA via DLPack + cudaMemcpy)",
+    "input_capture": "nvinfer dump-input-tensor=1 (DeepStream 9.2 nvdsinfer_context_impl.cpp writes first batch item CHW float32 per batch); sliced by perception/candidates/rt_detr/diagnostics/slice_input_dump.py; full 710-batch dump was 3,489,792,000 bytes, kept only frames 141/283",
+    "container_command": "DEEPSTREAM_CONTAINER_NAME=aegis-rtdetr-diag-<ts> bash scripts/deepstream.sh bash /workspace/perception/candidates/rt_detr/diagnostics/run_diagnostic.sh <variant> /workspace/reports/model-evaluation/rt-detr/diagnostics/<run> --with-tracker",
+    "comparison": ".install/rt-detr-export/venv/Scripts/python.exe scripts/rt-detr-candidate/compare_pretracker.py --run-dir <run>",
+    "colour_attribution": ".install/rt-detr-export/venv/Scripts/python.exe scripts/rt-detr-candidate/attribute_colour.py --run-dir <supersample run>",
+    "corrected_reference": ".install/rt-detr-export/venv/Scripts/python.exe scripts/rt-detr-candidate/crosscheck_corrected_reference.py --out-dir reports/model-evaluation/rt-detr/diagnostics/corrected-reference-20261026T160220Z --run-dir <each run>",
+    "sensitivity_control": ".install/rt-detr-export/venv/Scripts/python.exe scripts/rt-detr-candidate/reference_sensitivity.py"
+  },
+  "attempts": [
+    {"run": "pretracker-default-scaling-20261026T155630Z", "result": "FAIL", "reason": "Diagnostic bug: tensor_items yields UserMetadata; get_layers requires as_tensor_output(). Exception in probe aborted the pipeline at frame 141 (SIGABRT, exit 134). Retained."},
+    {"run": "pretracker-default-scaling-20261026T155712Z", "result": "PARTIAL", "reason": "Clean EOS 710/710 and input dump captured, but output tensors are CUDA-resident (DLPack device 2) and were not copied. Retained."},
+    {"run": "pretracker-default-scaling-20261026T155805Z", "result": "COMPLETE", "scaling": "nvinfer default (identical to candidate config)"},
+    {"run": "pretracker-bilinear-scaling-20261026T155837Z", "result": "COMPLETE", "scaling": "scaling-filter=1, scaling-compute-hw=1"},
+    {"run": "pretracker-supersample-scaling-20261026T160037Z", "result": "COMPLETE", "scaling": "scaling-filter=3 (GPU-Super), scaling-compute-hw=1"}
+  ],
+  "stage_results": {
+    "B_tensorrt_engine_inside_deepstream_vs_onnx_on_identical_input": {
+      "result": "PASS",
+      "runs_passing": 3,
+      "worst_logits_max_abs": 0.00012540817260742188,
+      "worst_pred_boxes_max_abs": 2.3096799850463867e-05,
+      "person_query_order_equal": true,
+      "tolerances": {"logits": 0.001, "pred_boxes": 0.0001}
+    },
+    "C_native_parser_and_nvinfer_coordinate_scaling": {
+      "result": "PASS",
+      "detail": "Every pre-tracker object matched one-to-one the Python decode of DeepStream's own raw tensors; worst box delta 0.000165 px, worst score delta 6e-8.",
+      "tolerances": {"score": 1e-05, "iou_min": 0.99, "bbox_px": 0.05}
+    },
+    "E_nvdcf_effect": {
+      "result": "CHARACTERIZED",
+      "detail": "Post-NvDCF objects matched pre-tracker objects with box delta <= 9.2e-05 px. NvDCF did not move boxes in these frames; it only removed 0-3 detector objects (target management). The 66.8 px delta in the original crosscheck was a greedy match between different detections, not a tracker displacement.",
+      "frames_default_scaling": {"141": "75 post of 76 pre", "283": "60 post of 62 pre"}
+    },
+    "A_preprocessing": {
+      "result": "ROOT CAUSE IDENTIFIED",
+      "findings": [
+        "The original HF/ONNX reference tensors are bit-identical (mean abs 0.00000) to ffmpeg decoding with a BT.601 matrix, while the stream is tagged BT.709 limited range (ffprobe). OpenCV decoded the reference PNGs with the wrong colour matrix.",
+        "DeepStream's input is closest to a BT.709 limited-range decode.",
+        "nvinfer default scaling behaves like top-left nearest-neighbour sampling (closest CPU emulation), unlike the HF processor's antialiased PIL bilinear resize.",
+        "scaling-filter=3 (GPU-Super) is closest to the PIL antialiased resize; against a colour-correct BT.709 HF reference, DS input mean abs error drops from 0.0253 (default) to 0.0078."
+      ],
+      "input_mean_abs_vs_original_bt601_reference": {"default": 0.0287, "bilinear": 0.0323, "supersample": 0.0124},
+      "input_mean_abs_vs_corrected_bt709_reference": {"default": 0.0253, "bilinear": 0.0303, "supersample": 0.0078},
+      "evidence": [
+        "reports/model-evaluation/rt-detr/diagnostics/pretracker-supersample-scaling-20261026T160037Z/colour-attribution.json",
+        "reports/model-evaluation/rt-detr/diagnostics/*/pretracker-comparison.json"
+      ]
+    },
+    "D_strict_end_to_end_crosscheck_unchanged_criteria": {
+      "result": "FAIL",
+      "vs_original_bt601_reference": {"default": {"141": "51/76", "283": "35/62"}, "supersample": {"141": "67/76", "283": "57/67"}},
+      "vs_corrected_bt709_reference_pre_tracker": {"default": {"141": "52/76", "283": "36/62"}, "bilinear": {"141": "53/74", "283": "33/64"}, "supersample": {"141": "67/76", "283": "56/67"}},
+      "sensitivity_control": "Two CPU-only HF references differing only in YUV->RGB matrix also FAIL the same strict criterion against each other (141: 74/76 vs 75; 283: 61/63 vs 66; IoU-only max score delta 0.083).",
+      "unmatched_confidence_profile": "All unmatched supersample pre-tracker objects have confidence <= 0.494, mostly 0.25-0.34, i.e. at or near the 0.25 decision threshold.",
+      "evidence": [
+        "reports/model-evaluation/rt-detr/diagnostics/corrected-reference-20261026T160220Z/corrected-reference-crosscheck.json",
+        "reports/model-evaluation/rt-detr/diagnostics/corrected-reference-20261026T160220Z/reference-sensitivity-control.json"
+      ]
+    }
+  },
+  "conclusion": "Like-for-like parity inside DeepStream is established: identical input tensors give engine outputs matching ONNX Runtime and the native parser reproduces the Python decode exactly. The strict crosscheck failure is caused by preprocessing differences (wrong BT.601 colour matrix in the OpenCV-built reference, and nvinfer's default nearest-like resize), not by TensorRT, the parser, or NvDCF box modification. The strict criterion is only satisfiable with identical preprocessing; it is not weakened here and remains FAIL. RT-DETR stays accepted=false.",
+  "recommendations": [
+    "If RT-DETR is revisited, use scaling-filter=3 + scaling-compute-hw=1 in a new candidate config version and build references from a BT.709 limited-range decode.",
+    "The production TrafficCamNet config also uses the default nvinfer scaling filter; evaluate the same setting there before any accuracy work.",
+    "Use DeepStream-input-tensor references (stage B) for engine/parser parity and keep cross-pipeline detector agreement as a separate, documented sensitivity measurement.",
+    "Detector quality still requires labeled data; nothing here measures precision/recall."
+  ]
+}

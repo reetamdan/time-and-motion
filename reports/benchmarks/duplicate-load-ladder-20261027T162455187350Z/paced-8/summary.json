@@ -1,0 +1,214 @@
+{
+  "mode": "paced",
+  "feeds": 8,
+  "http_status": 200,
+  "start_seconds": 6.572,
+  "run_status": "RUNNING",
+  "run_id": "2ce69595-dd5f-48e9-90c0-b2a0d79c4d84",
+  "stop_seconds": 2.016,
+  "stop_status": "STOPPED",
+  "idle_metrics": {
+    "timestamp": "2026-10-27T16:28:52.440Z",
+    "scope": "windows-host",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_utilization": 28.0,
+    "vram_used_mib": 828.0,
+    "vram_total_mib": 12227.0,
+    "gpu_temperature_c": 57.0,
+    "nvdec_utilization": 0.0,
+    "cpu_utilization": 4.9,
+    "ram_used_mb": 11408.5390625,
+    "ram_total_mb": 15577.80078125,
+    "process_rss_mb": 56.1484375,
+    "unavailable_reason": null
+  },
+  "per_camera": {
+    "cam-01": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.009,
+      "backend_queue_ms_p50": 594.872,
+      "backend_queue_ms_p95": 607.97,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.689706959000006,
+      "extractor_pipeline_fps": 48.33,
+      "extractor_clean_eos": true
+    },
+    "cam-02": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 29.97,
+      "backend_queue_ms_p50": 595.777,
+      "backend_queue_ms_p95": 608.419,
+      "source_lag_s_p50": -0.028,
+      "source_lag_s_p95": 0.016,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.353391286999994,
+      "extractor_pipeline_fps": 49.47,
+      "extractor_clean_eos": true
+    },
+    "cam-03": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.015,
+      "backend_queue_ms_p50": 594.599,
+      "backend_queue_ms_p95": 612.21,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.523450367999999,
+      "extractor_pipeline_fps": 48.89,
+      "extractor_clean_eos": true
+    },
+    "cam-04": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.009,
+      "backend_queue_ms_p50": 593.668,
+      "backend_queue_ms_p95": 606.749,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.48177999699999,
+      "extractor_pipeline_fps": 49.03,
+      "extractor_clean_eos": true
+    },
+    "cam-05": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.007,
+      "backend_queue_ms_p50": 593.209,
+      "backend_queue_ms_p95": 611.155,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.354207742,
+      "extractor_pipeline_fps": 49.46,
+      "extractor_clean_eos": true
+    },
+    "cam-06": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.015,
+      "backend_queue_ms_p50": 594.039,
+      "backend_queue_ms_p95": 607.612,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.427783763999969,
+      "extractor_pipeline_fps": 49.21,
+      "extractor_clean_eos": true
+    },
+    "cam-07": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.002,
+      "backend_queue_ms_p50": 594.496,
+      "backend_queue_ms_p95": 607.73,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.34113092200002,
+      "extractor_pipeline_fps": 49.51,
+      "extractor_clean_eos": true
+    },
+    "cam-08": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 23.75,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 30.015,
+      "backend_queue_ms_p50": 593.732,
+      "backend_queue_ms_p95": 607.542,
+      "source_lag_s_p50": -0.045,
+      "source_lag_s_p95": -0.001,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 14.624166365000008,
+      "extractor_pipeline_fps": 48.55,
+      "extractor_clean_eos": true
+    }
+  },
+  "gpu": {
+    "baseline_vram_mib": 828.0,
+    "vram_used_mib_p50": 848.0,
+    "vram_used_mib_peak": 3370.0,
+    "vram_total_mib": 12227.0,
+    "gpu_util_p50": 5.0,
+    "gpu_util_p95": 83.0,
+    "nvdec_util_p50": 0.0,
+    "nvdec_util_p95": 30.0,
+    "temp_c_peak": 70.0,
+    "power_w_p50": 12.97,
+    "sm_clock_mhz_p50": 345.0,
+    "samples": 33
+  },
+  "host": {
+    "cpu_util_p50": 13.5,
+    "cpu_util_p95": 89.4,
+    "ram_used_mb_peak": 15030.26171875,
+    "backend_rss_mb_peak": 62.515625
+  },
+  "ownership": [
+    {
+      "name": "aegis-cam-01-c7f34d90-beae-4538-8de6-206267e9bc7d",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-02-97474103-daa6-4190-a561-f09d98427b55",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-03-3162e2b0-e691-4136-b55d-7576d9839919",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-04-a0ef491d-e7f7-463a-a555-c15d3c91939a",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-05-3d1888c9-55b3-4963-b5f2-673e38b8c6d8",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-06-a6e20dae-8365-4918-a866-5ebd5586cd41",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-07-a3115bfe-2810-42b2-9131-8660b25f6ced",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-08-9654caaa-3f7d-41ef-89fb-0242ae945f25",
+      "state": "RELEASED"
+    }
+  ],
+  "containers_left": [],
+  "evaluation": {
+    "acceptable": true,
+    "reasons": []
+  }
+}

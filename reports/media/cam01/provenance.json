@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "source": {
+    "filename": "cam01.mp4",
+    "project_relative_path": "demo/cam01.mp4",
+    "size_bytes": 17687764,
+    "sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+    "authorization": {
+      "statement": "User-supplied statement: the video was copied from a user-authorized source to demo/cam01.mp4 for this CCTV project.",
+      "statement_basis": "Supplied by the user in the task instructions",
+      "independently_verified": false,
+      "license_or_redistribution_rights_claimed": false
+    }
+  },
+  "technical_probe": {
+    "tool": "opencv-python-headless 5.0.0",
+    "decode_backend": "FFMPEG",
+    "codec_fourcc": "h264",
+    "codec_name": "H.264 / AVC",
+    "width": 1920,
+    "height": 1080,
+    "fps": 29.97002997002997,
+    "container_reported_frame_count": 710,
+    "sequential_decoded_frame_count": 710,
+    "duration_seconds": 23.690333333333335,
+    "first_timestamp_ms": 0.0,
+    "last_frame_timestamp_ms": 23656.96666666667,
+    "timestamps_strictly_increasing": true,
+    "clean_eof": true,
+    "frame_count_matches_container_report": true,
+    "decode_errors": [],
+    "probe_details": "reports/media/cam01/media_probe.json"
+  },
+  "visual_assessment": {
+    "inspection_basis": "Six time-spread full-frame JPEGs and their labeled contact sheet were visually inspected.",
+    "scene": "A densely occupied outdoor pedestrian area with unpaved, rough ground in bright, hazy daylight.",
+    "camera_angle": "Elevated, oblique downward-looking view. No obvious large viewpoint change is visible across the six samples; camera intrinsics and extrinsics are unknown.",
+    "crowd_and_occlusion": "Dense crowding is visible in every inspected sample, with frequent person-to-person occlusion, partially visible bodies, and people cropped by image boundaries. No numerical crowd count was produced.",
+    "motion": "People change positions across the time-spread samples and show varied orientations and close interactions. Motion was not manually annotated frame by frame, and no track ground truth was produced.",
+    "visible_people": true,
+    "known_positive_person_detection_smoke_test": {
+      "suitable": true,
+      "scope": "The clip can verify that a person detector produces some detections on known-positive footage. It is not, by itself, a detection-accuracy or tracking benchmark."
+    },
+    "entrance_validation": {
+      "supported": false,
+      "reason": "No bounded doorway, gate, entrance threshold, or unambiguous entry/exit crossing zone is visible in the inspected samples."
+    },
+    "queue_validation": {
+      "supported": false,
+      "reason": "The crowd is dense, but no stable ordered queue and associated service point can be reliably established from the inspected samples."
+    },
+    "stair_validation": {
+      "supported": false,
+      "reason": "No staircase, stair landing, or vertical circulation transition is visible in the inspected samples."
+    }
+  },
+  "evidence": {
+    "contact_sheet": {
+      "path": "reports/media/cam01/contact_sheet.jpg",
+      "size_bytes": 577273,
+      "width": 1800,
+      "height": 876
+    },
+    "frames": [
+      {
+        "path": "reports/media/cam01/frame_000000_t000000ms.jpg",
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "size_bytes": 478127,
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "path": "reports/media/cam01/frame_000141_t004705ms.jpg",
+        "frame_index": 141,
+        "timestamp_ms": 4704.7,
+        "size_bytes": 513557,
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "path": "reports/media/cam01/frame_000283_t009443ms.jpg",
+        "frame_index": 283,
+        "timestamp_ms": 9442.767,
+        "size_bytes": 503902,
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "path": "reports/media/cam01/frame_000425_t014181ms.jpg",
+        "frame_index": 425,
+        "timestamp_ms": 14180.833,
+        "size_bytes": 540312,
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "path": "reports/media/cam01/frame_000567_t018919ms.jpg",
+        "frame_index": 567,
+        "timestamp_ms": 18918.9,
+        "size_bytes": 515214,
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "path": "reports/media/cam01/frame_000709_t023657ms.jpg",
+        "frame_index": 709,
+        "timestamp_ms": 23656.967,
+        "size_bytes": 510267,
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "all_images_below_3000000_bytes": true
+  },
+  "validation_scope_and_limitations": [
+    "Single 23.690333-second clip from one uncalibrated view; no multi-camera, overlap, or floor-transition validation is claimed.",
+    "Visual assessment is based on representative samples, not exhaustive annotation of every frame.",
+    "No ground-truth person counts, identities, tracks, entrance events, queue metrics, or stair events were created or inferred.",
+    "No person identification or sensitive-trait inference was performed.",
+    "Calibration remains MISSING; geometry-dependent validation is not supported.",
+    "A clean OpenCV sequential decode is not a formal compressed-bitstream conformance audit."
+  ],
+  "configuration": {
+    "path": "configs/cameras.yaml",
+    "cam_01_name": "Outdoor Pedestrian Area",
+    "cam_01_source": "./demo/cam01.mp4",
+    "enabled_camera_ids": [
+      "cam-01"
+    ],
+    "disabled_but_preserved_camera_ids": [
+      "cam-02",
+      "cam-03",
+      "cam-04"
+    ],
+    "camera_slot_count": 4,
+    "all_calibration_statuses": "MISSING"
+  }
+}

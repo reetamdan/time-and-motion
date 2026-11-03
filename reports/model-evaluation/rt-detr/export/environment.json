@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "created_at_utc": "2026-10-26T13:23:16.438098+00:00",
+  "venv": ".install\\rt-detr-export\\venv",
+  "requirements": ".install\\rt-detr-export\\requirements.txt",
+  "requirements_sha256": "1795f63ee13ca050f0e4cc2707b6a5ab09f4c35798a5176c80e3e5159f9f3fa6",
+  "download_inventory": ".install\\rt-detr-export\\downloaded-files.json",
+  "download_inventory_sha256": "cefa6b4d1fa3e67e5035eeed99c454944125a2036c823f197b95d064cfd79d90",
+  "installed_freeze": ".install\\rt-detr-export\\installed-freeze.txt",
+  "installed_freeze_sha256": "2cc1a9642434285d23f597ab261f2771bea2e0d1efa89c5908254ef47b8aaea7",
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "torchvision": "0.21.0+cpu",
+    "transformers": "4.49.0",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.20.1",
+    "numpy": "2.1.3",
+    "pillow": "11.1.0"
+  },
+  "commands": [
+    "C:\\Users\\Reetam\\AppData\\Roaming\\kimi-desktop\\daimon-share\\daimon\\runtime\\python\\.venv\\Scripts\\python.exe -m venv C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv",
+    "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv\\Scripts\\python.exe -m pip download --dest C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\wheels --requirement C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu",
+    "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv\\Scripts\\python.exe -m pip install --no-index --no-deps --find-links C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\wheels --requirement C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\requirements.txt",
+    "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv\\Scripts\\python.exe -m pip check"
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "name": "stageA-4feeds-r2",
+  "stage": "A",
+  "feeds": 4,
+  "repeat": 2,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 3368,
+    "available_mib": 7002.4,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 6173.1,
+      "host_available_after_20s_mib": 7002.4,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": -563942511,
+      "uncertainty_ns": 32886550,
+      "best_round_trip_ns": 65773100,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": -313269535,
+      "uncertainty_ns": 35942600,
+      "best_round_trip_ns": 71885200,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+        "actual": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+        "actual": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+        "actual": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "e846ce3e9552701826f4c13dae312122e16a767ab10066cc100fad29ff983be1",
+        "actual": "e846ce3e9552701826f4c13dae312122e16a767ab10066cc100fad29ff983be1",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "e846ce3e9552701826f4c13dae312122e16a767ab10066cc100fad29ff983be1",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "configs_tree": "81c14688dd4acfcb45cb9e61105695e0c79754147702bd2f1f7e71a705127e1e",
+    "backend_code_tree": "3bf0284f65f8c56e8b93309ada02c7fb7945131fe69bef67861b2a447d934855",
+    "benchmark_script": "f55861b84852dfb83fd62b99cb89edea3e64d3709a63ac5278c5c227a7c0b21e"
+  },
+  "result": {
+    "expected": [
+      "bench-01",
+      "bench-02",
+      "bench-03",
+      "bench-04"
+    ],
+    "feeds": {
+      "bench-01": {
+        "producer": {
+          "frames_total": 22158,
+          "frames_in_window": 18388,
+          "cadence_fps": 30.647,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -8611.218,
+            "p95": -3166.806,
+            "max": -2536.3,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": -12185.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-02": {
+        "producer": {
+          "frames_total": 22177,
+          "frames_in_window": 18388,
+          "cadence_fps": 30.647,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -8611.24,
+            "p95": -3166.76,
+            "max": -2536.3,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": -12185.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-03": {
+        "producer": {
+          "frames_total": 22193,
+          "frames_in_window": 18388,
+          "cadence_fps": 30.647,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -8611.276,
+            "p95": -3166.802,
+            "max": -2536.4,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": -12185.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-04": {
+        "producer": {
+          "frames_total": 22210,
+          "frames_in_window": 18388,
+          "cadence_fps": 30.647,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -8611.255,
+            "p95": -3166.775,
+            "max": -2536.3,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": -12185.0,
+          "objects_per_frame_mean": 0.0
+        }
+      }
+    },
+    "crashed": [],
+    "ended": "covered",
+    "resource_stop": null,
+    "containers": [
+      "aegis-bench-a-01-69b1994b",
+      "aegis-bench-a-02-69b1994b",
+      "aegis-bench-a-03-69b1994b",
+      "aegis-bench-a-04-69b1994b"
+    ],
+    "containers_absent_after": {
+      "aegis-bench-a-01-69b1994b": true,
+      "aegis-bench-a-02-69b1994b": true,
+      "aegis-bench-a-03-69b1994b": true,
+      "aegis-bench-a-04-69b1994b": true
+    },
+    "exit_codes": {
+      "bench-01": 143,
+      "bench-02": 143,
+      "bench-03": 143,
+      "bench-04": 143
+    },
+    "resources": {
+      "window_samples": 527,
+      "gpu_util_percent": {
+        "p50": 11.0,
+        "p95": 18.0,
+        "min": 7.0,
+        "max": 24.0
+      },
+      "nvdec_util_percent": {
+        "p50": 22.0,
+        "p95": 32.0,
+        "min": 6.0,
+        "max": 50.0
+      },
+      "vram_used_mib": {
+        "p50": 1563.0,
+        "p95": 1563.0,
+        "min": 1563.0,
+        "max": 1563.0
+      },
+      "gpu_temp_c": {
+        "p50": 55.0,
+        "p95": 56.0,
+        "min": 55.0,
+        "max": 56.0
+      },
+      "gpu_power_w": {
+        "p50": 12.23,
+        "p95": 12.87,
+        "min": 11.45,
+        "max": 13.45
+      },
+      "sm_clock_mhz": {
+        "p50": 570.0,
+        "p95": 675.0,
+        "min": 457.0,
+        "max": 795.0
+      },
+      "pstates": [
+        "P8"
+      ],
+      "host_cpu_percent": {
+        "p50": 4.0,
+        "p95": 6.2,
+        "min": 1.7,
+        "max": 9.1
+      },
+      "host_available_mib": {
+        "p50": 5638.9,
+        "p95": 5651.4,
+        "min": 5540.7,
+        "max": 5657.6
+      },
+      "host_used_mib": {
+        "p50": 9938.9,
+        "p95": 9957.3,
+        "min": 9920.2,
+        "max": 10037.1
+      },
+      "host_commit_available_mib": {
+        "p50": 19023.2,
+        "p95": 19045.4,
+        "min": 18984.8,
+        "max": 19051.3
+      },
+      "wsl_available_mib": {
+        "p50": 6067.9,
+        "p95": 6070.5,
+        "min": 6047.8,
+        "max": 6071.2
+      },
+      "wsl_cached_mib": {
+        "p50": 1597.2,
+        "p95": 1600.8,
+        "min": 1597.0,
+        "max": 1600.8
+      },
+      "backend_rss_mib": null,
+      "host_used_growth_mib": -14.5,
+      "wsl_cached_growth_mib": 3.8,
+      "backend_rss_growth_mib": null,
+      "container_rss_mib": {
+        "aegis-bench-a-01-69b1994b": {
+          "min": 281.8,
+          "max": 284.2
+        },
+        "aegis-bench-a-02-69b1994b": {
+          "min": 283.5,
+          "max": 285.6
+        },
+        "aegis-bench-a-03-69b1994b": {
+          "min": 271.8,
+          "max": 274.3
+        },
+        "aegis-bench-a-04-69b1994b": {
+          "min": 278.2,
+          "max": 279.7
+        }
+      },
+      "container_rss_growth_mib": {
+        "aegis-bench-a-01-69b1994b": 1.1,
+        "aegis-bench-a-02-69b1994b": 0.6,
+        "aegis-bench-a-03-69b1994b": 0.9,
+        "aegis-bench-a-04-69b1994b": 0.4
+      },
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": true,
+    "failures": [],
+    "cleanup_confirmed": true
+  },
+  "status": "PASS"
+}

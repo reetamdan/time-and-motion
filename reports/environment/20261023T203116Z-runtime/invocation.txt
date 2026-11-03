@@ -1,0 +1,5 @@
+utc_started=2026-10-23T20:31:16Z
+project_root=/mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv
+script=scripts/setup/verify-environment.sh
+note=Inspection only; no installation, image pull, driver change, or benchmark is performed.
+argv: scripts/setup/verify-environment.sh

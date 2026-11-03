@@ -1,0 +1,2 @@
+6f44424eef16662df03114bcff91990dfee8dda5de4c2e5d20758f56dde7dcba  /workspace/models/rf-detr-person-candidate/rf_detr_small_rgb01_norm_in_graph.onnx
+d2b7a39d0eb16b392fd608c267042ea301bcf12e6bbc69260bb752b258738dae  /workspace/models/rf-detr-person-candidate/rf_detr_small_rgb01_fp32_sm120.engine

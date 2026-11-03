@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "written_at": "2026-10-27",
+  "result_json_unchanged": true,
+  "failures": {
+    "restart_recovery_released_exact_container / no_leftover_cam01_containers": "Reproduced twice; cause is the validator's crash simulation, not the recovery code. The 'crashed' backend was abandoned in-process, so its stdout reader thread stayed alive but blocked (consumer cancelled, paced queue full) and stopped draining the docker CLI's pipe; Docker could not complete the attached container's stop/removal ('removing' state) within the bounded escalation. Recovery reported it correctly as UNRESOLVED / STOP_FAILED. In a real crash the process and its pipes die. The validator now runs the first backend in its own process (scripts/repro/abandon_backend.py) and hard-kills it."
+  }
+}

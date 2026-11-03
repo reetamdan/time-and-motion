@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:24:23.804564+00:00",
+  "venv": ".install/rf-detr-export/venv",
+  "base_python": "C:/Users/Reetam/AppData/Local/Programs/Python/Python312/python.exe (3.12.0)",
+  "install_command": "pip install transformers==5.20.2 torch torchvision onnx onnxruntime pillow numpy safetensors onnxscript --extra-index-url https://download.pytorch.org/whl/cpu",
+  "installed_freeze": ".install/rf-detr-export/installed-freeze.txt",
+  "installed_freeze_sha256": "e7d6d9a049d780507be894a22128f0d58e381bb16c0e09cc95e8d3d052cc74c1",
+  "pip_check": "reports/model-evaluation/rf-detr/export/pip-check.log (exit 0)",
+  "versions": {
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.1+cpu",
+    "transformers": "5.20.2",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0",
+    "onnxscript": "0.7.2",
+    "numpy": "2.5.4",
+    "pillow": "13.0.0"
+  },
+  "isolation": "Separate from .venv (backend) and .install/rt-detr-export; never used by runtime."
+}

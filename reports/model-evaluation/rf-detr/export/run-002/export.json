@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:11:37.066978+00:00",
+  "model_id": "Roboflow/rf-detr-small",
+  "revision": "3bdc465063270f99769da5a1b4c00c68bd2d439d",
+  "checkpoint_sha256": "2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d",
+  "onnx_path": "models\\rf-detr-person-candidate\\rf_detr_small_rgb01_norm_in_graph.onnx",
+  "onnx_sha256": "6f44424eef16662df03114bcff91990dfee8dda5de4c2e5d20758f56dde7dcba",
+  "onnx_size_bytes": 115504551,
+  "onnx_io": {
+    "inputs": [
+      {
+        "name": "input",
+        "shape": [
+          1,
+          3,
+          512,
+          512
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "logits",
+        "shape": [
+          1,
+          300,
+          91
+        ]
+      },
+      {
+        "name": "pred_boxes",
+        "shape": [
+          1,
+          300,
+          4
+        ]
+      }
+    ],
+    "opset": [
+      {
+        "domain": "",
+        "version": 17
+      }
+    ],
+    "op_types": [
+      "Add",
+      "And",
+      "Cast",
+      "Concat",
+      "Constant",
+      "ConstantOfShape",
+      "Conv",
+      "Cos",
+      "Div",
+      "Equal",
+      "Erf",
+      "Exp",
+      "Expand",
+      "Flatten",
+      "Gather",
+      "GatherElements",
+      "Greater",
+      "GridSample",
+      "LayerNormalization",
+      "Less",
+      "MatMul",
+      "Mul",
+      "Not",
+      "Or",
+      "ReduceMax",
+      "ReduceSum",
+      "Relu",
+      "Reshape",
+      "Resize",
+      "ScatterND",
+      "Shape",
+      "Sigmoid",
+      "Sin",
+      "Slice",
+      "Softmax",
+      "Split",
+      "Squeeze",
+      "Sub",
+      "Tile",
+      "TopK",
+      "Transpose",
+      "Unsqueeze",
+      "Where"
+    ]
+  },
+  "torch_onnx_export": {
+    "opset_version": 17,
+    "dynamo": false
+  },
+  "export_patch": {
+    "target": "transformers.models.rf_detr.modeling_rf_detr.RfDetrDinov2Embeddings.interpolate_pos_encoding",
+    "behaviour": "returns stored position embeddings when the 32x32 patch grid matches (HF eager semantics); raises otherwise",
+    "applies_to": "ONNX export and the in-process parity forward passes; eager HF already takes this path at 512x512"
+  },
+  "input_contract": "input [1,3,512,512] float32 RGB in [0,1], direct (non-aspect-preserving) bilinear resize without antialias; (x-mean)/std inside graph",
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "person_logit_slot": 1,
+  "threshold": 0.25,
+  "reference_frames": "BT.709 limited-range ffmpeg decodes from the RT-DETR corrected-reference directory (colour-correct; see RT-DETR diagnostics)",
+  "versions": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.2",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.5.4"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "person_detections": 48687,
+  "bounding_boxes": 48687,
+  "metadata_observed": true,
+  "known_clip_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "persistent_person_track_ids": 455,
+  "candidate_result": "/workspace/reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z/result.json",
+  "extractor_exit": 0,
+  "failed_checks": [],
+  "errors": []
+}

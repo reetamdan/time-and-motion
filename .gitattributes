@@ -1,0 +1,10 @@
+# All text files are LF, on every platform. Bash scripts run inside WSL/Linux and break
+# with CRLF, and several files (extractor, configs, deepstream.sh) are pinned by SHA-256
+# in configs/models.yaml, so a checkout must reproduce them byte for byte.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.woff binary
+*.woff2 binary
+*.so binary

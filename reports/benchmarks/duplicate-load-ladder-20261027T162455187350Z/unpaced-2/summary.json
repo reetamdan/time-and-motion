@@ -1,0 +1,94 @@
+{
+  "mode": "unpaced",
+  "feeds": 2,
+  "http_status": 200,
+  "start_seconds": 4.82,
+  "run_status": "RUNNING",
+  "run_id": "19e8ed11-99b1-40ab-b209-228220aae5fc",
+  "stop_seconds": 0.531,
+  "stop_status": "STOPPED",
+  "idle_metrics": {
+    "timestamp": "2026-10-27T16:25:14.952Z",
+    "scope": "windows-host",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_utilization": 0.0,
+    "vram_used_mib": 853.0,
+    "vram_total_mib": 12227.0,
+    "gpu_temperature_c": 56.0,
+    "nvdec_utilization": 0.0,
+    "cpu_utilization": 5.2,
+    "ram_used_mb": 13643.37109375,
+    "ram_total_mb": 15577.80078125,
+    "process_rss_mb": 56.1875,
+    "unavailable_reason": null
+  },
+  "per_camera": {
+    "cam-01": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 3.422,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 270.948,
+      "backend_queue_ms_p50": 1.324,
+      "backend_queue_ms_p95": 15.118,
+      "source_lag_s_p50": null,
+      "source_lag_s_p95": null,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 5.171513662999999,
+      "extractor_pipeline_fps": 137.29,
+      "extractor_clean_eos": true
+    },
+    "cam-02": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 3.422,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 269.608,
+      "backend_queue_ms_p50": 1.577,
+      "backend_queue_ms_p95": 11.397,
+      "source_lag_s_p50": null,
+      "source_lag_s_p95": null,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 5.1723143979999975,
+      "extractor_pipeline_fps": 137.27,
+      "extractor_clean_eos": true
+    }
+  },
+  "gpu": {
+    "baseline_vram_mib": 853.0,
+    "vram_used_mib_p50": 881.0,
+    "vram_used_mib_peak": 1489.0,
+    "vram_total_mib": 12227.0,
+    "gpu_util_p50": 3.0,
+    "gpu_util_p95": 82.0,
+    "nvdec_util_p50": 0.0,
+    "nvdec_util_p95": 25.0,
+    "temp_c_peak": 66.0,
+    "power_w_p50": 15.03,
+    "sm_clock_mhz_p50": 975.0,
+    "samples": 9
+  },
+  "host": {
+    "cpu_util_p50": 33.5,
+    "cpu_util_p95": 33.5,
+    "ram_used_mb_peak": 14462.2421875,
+    "backend_rss_mb_peak": 57.30078125
+  },
+  "ownership": [
+    {
+      "name": "aegis-cam-01-744ee08c-fe56-4bbc-bc8c-59352db8f2c0",
+      "state": "RELEASED"
+    },
+    {
+      "name": "aegis-cam-02-093c4e3f-3723-4140-a35e-3c60a45f7ac2",
+      "state": "RELEASED"
+    }
+  ],
+  "containers_left": [],
+  "evaluation": {
+    "acceptable": true,
+    "reasons": []
+  }
+}

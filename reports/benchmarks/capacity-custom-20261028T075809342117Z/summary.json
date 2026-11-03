@@ -1,0 +1,676 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-28T07:58:15.266205+00:00",
+  "command": "scripts\\benchmark\\run_capacity.py --plan custom --stages A,B,C,D --feeds 2 --repeats 1 --warmup 10 --measure 20",
+  "protocol": {
+    "profile": "paced real-time demo profile (PRD 18.3): producer paced to the source timeline, 200 ms lead",
+    "warmup_s": 120,
+    "measure_s": 600,
+    "repeats": 3,
+    "feeds_for_stage_comparison": 4,
+    "ladder": [
+      1,
+      2,
+      4,
+      6,
+      8
+    ],
+    "ladder_stage": "D",
+    "ladder_stop_rule": "stop increasing at the first step that fails any gate",
+    "gates": {
+      "cadence_fps_min_per_feed": 7.2,
+      "cadence_basis": "90% of the configured analytics target 8 fps/camera (configs/cameras.yaml analytics_fps)",
+      "p95_processing_age_ms_max": 2000,
+      "backlog_growth_ms_max": 500,
+      "frame_gaps_max": 0,
+      "crash_or_oom": "none allowed"
+    },
+    "reported_not_gated": [
+      "fraction of the 29.97 fps source rate sustained per feed",
+      "GPU/NVDEC/VRAM/temperature/power/SM clock",
+      "host CPU/RAM (Windows host incl. the WSL VM)",
+      "aggregate throughput"
+    ],
+    "frozen_before_measurement": true
+  },
+  "deviations_from_protocol": {
+    "warmup_s": 10.0,
+    "measure_s": 20.0,
+    "repeats": 1
+  },
+  "plan": [
+    [
+      "A",
+      2,
+      1
+    ],
+    [
+      "B",
+      2,
+      1
+    ],
+    [
+      "C",
+      2,
+      1
+    ],
+    [
+      "D",
+      2,
+      1
+    ]
+  ],
+  "footage": {
+    "schema_version": 1,
+    "label": "REPEATED / CONCATENATED DEMO FOOTAGE - load and duration testing only",
+    "file": "demo/derived/cam01-repeat33.mp4",
+    "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc",
+    "built_from": {
+      "file": "demo/cam01.mp4",
+      "sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+      "repeats": 33
+    },
+    "construction": "ffmpeg -f concat -safe 0 -i demo/derived/cam01-repeat33.concat.txt -c copy -movflags +faststart demo/derived/cam01-repeat33.mp4 (stream copy, no re-encode; ffmpeg 9.0 Gyan build)",
+    "stream": {
+      "codec": "h264",
+      "profile": "High",
+      "width": 1920,
+      "height": 1080,
+      "fps": "30000/1001",
+      "frames": 23430,
+      "duration_s": 782.09
+    },
+    "timestamps": "Decoded frame PTS strictly increasing over all 23430 frames (checked with ffprobe frame=pts_time); each join step is 0.043 s instead of 0.033 s, below the backend's 2 s source-discontinuity threshold, so the whole file is one source segment.",
+    "limitations": [
+      "The same 23.7 s of footage repeats 33 times: content, crowd, and detector load are periodic, not a 13-minute real scene.",
+      "Not independent footage, not a distinct camera, not usable for accuracy, counting, or facility claims.",
+      "A moving handheld camera: no fixed boundary, no calibration."
+    ],
+    "created_utc": "2026-10-28"
+  },
+  "clock_offset": {
+    "wsl_minus_host_ns": 26310508,
+    "best_round_trip_ns": 64002000,
+    "samples": 7
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, 610.47, 12227 MiB, [N/A]",
+    "host": "Windows-11-10.0.26200-SP0",
+    "cpu_count": 32,
+    "python": "3.12.15",
+    "power": {
+      "plugged_in": true,
+      "battery_percent": 80
+    },
+    "wsl_distro": "Ubuntu-22.04",
+    "image": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+    "selected_model": "trafficcamnet-smoke",
+    "acceptance": "provisional_smoke",
+    "artifacts": [
+      {
+        "name": "detector.checkpoint",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx",
+        "expected_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+        "current_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+        "status": "MATCH"
+      },
+      {
+        "name": "detector.engine",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine",
+        "expected_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+        "current_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+        "status": "MATCH"
+      },
+      {
+        "name": "detector.infer_config",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\cam01_trafficcamnet_smoke_infer.txt",
+        "expected_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+        "current_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+        "status": "MATCH"
+      },
+      {
+        "name": "tracker.config",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+        "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      {
+        "name": "pipeline.wrapper",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\deepstream.sh",
+        "expected_sha256": "49f8311c979fc83164ec2709872ba568eaede2e4cf9e625e070e7a2a12178b0d",
+        "current_sha256": "49f8311c979fc83164ec2709872ba568eaede2e4cf9e625e070e7a2a12178b0d",
+        "status": "MATCH"
+      },
+      {
+        "name": "pipeline.extractor",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+        "expected_sha256": "e83c607749fdf604da4b08ea1a066ed6f7194fb46a606e2f3f712984a0361082",
+        "current_sha256": "e83c607749fdf604da4b08ea1a066ed6f7194fb46a606e2f3f712984a0361082",
+        "status": "MATCH"
+      },
+      {
+        "name": "pipeline.capability_probe",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\capability-probe.sh",
+        "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      {
+        "name": "pipeline.image_reference",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\environment\\deepstream92\\image-reference.txt",
+        "expected_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "current_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    ],
+    "competing_gpu_processes": "2288, [Insufficient Permissions], [N/A]\n12084, C:\\Windows\\System32\\ShellHost.exe, [N/A]\n11548, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe, [N/A]\n11796, C:\\Windows\\explorer.exe, [N/A]\n13704, C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe, [N/A]\n13596, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe, [N/A]\n15808, C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\155.0.4283.62\\msedgewebview2.exe, [N/A]\n15908, C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe, [N/A]\n19136, C:\\Program Files\\Cloudflare\\Cloudflare WARP\\Cloudflare WARP.exe, [N/A]\n22424, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe, [N/A]\n15680, C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.24.11911.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe, [N/A]\n24864, C:\\Program Files\\Docker\\Docker\\frontend\\Docker Desktop.exe, [N/A]\n2696, C:\\Windows\\System32\\ApplicationFrameHost.exe, [N/A]\n27400, C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe, [N/A]"
+  },
+  "not_run": {
+    "E": "calibrated overlap fusion needs calibrated overlapping footage",
+    "F": "selective Re-ID is not implemented/enabled",
+    "G": "needs the accepted core profile (detector accuracy unaccepted) with dashboard/preview/recording settings",
+    "H": "optional advanced AI out of scope"
+  },
+  "finished_at_utc": "2026-10-28T08:03:30.707659+00:00",
+  "steps": [
+    {
+      "stage": "A",
+      "feeds": 2,
+      "repeat": 1,
+      "gate": {
+        "pass": true,
+        "failures": [],
+        "cleanup_confirmed": true
+      },
+      "feeds_metrics": {
+        "bench-01": {
+          "frames_total": 1086,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.879,
+            "p95": -199.695,
+            "max": -199.6
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0,
+          "covered_window_s": 20.0,
+          "processing_age_p95_ms": -199.695
+        },
+        "bench-02": {
+          "frames_total": 1101,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.876,
+            "p95": -199.693,
+            "max": -199.6
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0,
+          "covered_window_s": 20.0,
+          "processing_age_p95_ms": -199.693
+        }
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "p50": 9.0,
+          "p95": 13.0,
+          "max": 18.0
+        },
+        "nvdec_util_percent": {
+          "p50": 12.0,
+          "p95": 15.0,
+          "max": 17.0
+        },
+        "vram_used_mib": {
+          "p50": 1103.0,
+          "p95": 1103.0,
+          "max": 1103.0
+        },
+        "gpu_temp_c": {
+          "p50": 54.0,
+          "p95": 54.0,
+          "max": 54.0
+        },
+        "gpu_power_w": {
+          "p50": 10.82,
+          "p95": 11.27,
+          "max": 11.46
+        },
+        "sm_clock_mhz": {
+          "p50": 555.0,
+          "p95": 630.0,
+          "max": 652.0
+        },
+        "pstates": [
+          "P8"
+        ],
+        "host_cpu_percent": {
+          "p50": 3.0,
+          "p95": 6.6,
+          "max": 8.5
+        },
+        "host_ram_used_mib": {
+          "p50": 11335.1,
+          "p95": 11375.0,
+          "max": 11380.6
+        },
+        "gpu_samples": 19,
+        "host_samples": 19
+      }
+    },
+    {
+      "stage": "B",
+      "feeds": 2,
+      "repeat": 1,
+      "gate": {
+        "pass": true,
+        "failures": [],
+        "cleanup_confirmed": true
+      },
+      "feeds_metrics": {
+        "bench-01": {
+          "frames_total": 1345,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.901,
+            "p95": -199.674,
+            "max": -199.6
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 18.82,
+          "covered_window_s": 20.0,
+          "processing_age_p95_ms": -199.674
+        },
+        "bench-02": {
+          "frames_total": 1361,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.904,
+            "p95": -199.684,
+            "max": -199.6
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 18.82,
+          "covered_window_s": 20.0,
+          "processing_age_p95_ms": -199.684
+        }
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "p50": 9.0,
+          "p95": 28.0,
+          "max": 28.0
+        },
+        "nvdec_util_percent": {
+          "p50": 3.0,
+          "p95": 8.0,
+          "max": 9.0
+        },
+        "vram_used_mib": {
+          "p50": 1227.0,
+          "p95": 1227.0,
+          "max": 1227.0
+        },
+        "gpu_temp_c": {
+          "p50": 56.0,
+          "p95": 57.0,
+          "max": 57.0
+        },
+        "gpu_power_w": {
+          "p50": 23.78,
+          "p95": 29.22,
+          "max": 29.75
+        },
+        "sm_clock_mhz": {
+          "p50": 780.0,
+          "p95": 1492.0,
+          "max": 1530.0
+        },
+        "pstates": [
+          "P4",
+          "P5",
+          "P8"
+        ],
+        "host_cpu_percent": {
+          "p50": 4.6,
+          "p95": 6.8,
+          "max": 6.8
+        },
+        "host_ram_used_mib": {
+          "p50": 11637.1,
+          "p95": 11652.3,
+          "max": 11660.0
+        },
+        "gpu_samples": 20,
+        "host_samples": 20
+      }
+    },
+    {
+      "stage": "C",
+      "feeds": 2,
+      "repeat": 1,
+      "gate": {
+        "pass": true,
+        "failures": [],
+        "cleanup_confirmed": true
+      },
+      "feeds_metrics": {
+        "bench-01": {
+          "frames_total": 4718,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.912,
+            "p95": -199.853,
+            "max": -199.7
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 17.6,
+          "covered_window_s": 20.0,
+          "processing_age_p95_ms": -199.853
+        },
+        "bench-02": {
+          "frames_total": 4735,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.911,
+            "p95": -199.848,
+            "max": -199.7
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 17.65,
+          "covered_window_s": 20.0,
+          "processing_age_p95_ms": -199.848
+        }
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "p50": 12.0,
+          "p95": 35.0,
+          "max": 72.0
+        },
+        "nvdec_util_percent": {
+          "p50": 3.0,
+          "p95": 12.0,
+          "max": 21.0
+        },
+        "vram_used_mib": {
+          "p50": 1299.0,
+          "p95": 1299.0,
+          "max": 1299.0
+        },
+        "gpu_temp_c": {
+          "p50": 59.0,
+          "p95": 60.0,
+          "max": 60.0
+        },
+        "gpu_power_w": {
+          "p50": 26.37,
+          "p95": 35.78,
+          "max": 39.71
+        },
+        "sm_clock_mhz": {
+          "p50": 975.0,
+          "p95": 1380.0,
+          "max": 1387.0
+        },
+        "pstates": [
+          "P0",
+          "P4",
+          "P5",
+          "P8"
+        ],
+        "host_cpu_percent": {
+          "p50": 9.3,
+          "p95": 13.6,
+          "max": 15.7
+        },
+        "host_ram_used_mib": {
+          "p50": 12161.9,
+          "p95": 12457.5,
+          "max": 12459.8
+        },
+        "gpu_samples": 20,
+        "host_samples": 19
+      }
+    },
+    {
+      "stage": "D",
+      "feeds": 2,
+      "repeat": 1,
+      "gate": {
+        "pass": true,
+        "failures": [],
+        "cleanup_confirmed": true
+      },
+      "feeds_metrics": {
+        "cam-01": {
+          "frames_total": 976,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.899,
+            "p95": -199.697,
+            "max": -199.3
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 17.63,
+          "covered_window_s": 20.0,
+          "backend_released_in_window": 599,
+          "emit_to_release_ms": {
+            "p50": 247.658,
+            "p95": 255.435,
+            "max": 289.0
+          },
+          "processing_age_p95_ms": 255.4
+        },
+        "cam-02": {
+          "frames_total": 1005,
+          "frames_in_window": 599,
+          "cadence_fps": 29.95,
+          "frame_gaps": 0,
+          "schedule_lag_ms": {
+            "p50": -199.904,
+            "p95": -199.744,
+            "max": -199.4
+          },
+          "backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 17.61,
+          "covered_window_s": 20.0,
+          "backend_released_in_window": 599,
+          "emit_to_release_ms": {
+            "p50": 275.199,
+            "p95": 282.609,
+            "max": 321.3
+          },
+          "processing_age_p95_ms": 282.6
+        }
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "p50": 7.0,
+          "p95": 23.0,
+          "max": 49.0
+        },
+        "nvdec_util_percent": {
+          "p50": 3.0,
+          "p95": 9.0,
+          "max": 20.0
+        },
+        "vram_used_mib": {
+          "p50": 1377.0,
+          "p95": 1460.0,
+          "max": 1460.0
+        },
+        "gpu_temp_c": {
+          "p50": 59.0,
+          "p95": 60.0,
+          "max": 60.0
+        },
+        "gpu_power_w": {
+          "p50": 29.38,
+          "p95": 32.42,
+          "max": 47.23
+        },
+        "sm_clock_mhz": {
+          "p50": 1485.0,
+          "p95": 1987.0,
+          "max": 2107.0
+        },
+        "pstates": [
+          "P2",
+          "P4",
+          "P5",
+          "P8"
+        ],
+        "host_cpu_percent": {
+          "p50": 20.1,
+          "p95": 49.3,
+          "max": 63.1
+        },
+        "host_ram_used_mib": {
+          "p50": 12810.3,
+          "p95": 14209.9,
+          "max": 14282.7
+        },
+        "gpu_samples": 20,
+        "host_samples": 20
+      }
+    }
+  ],
+  "conditions": {
+    "A-2": {
+      "repeats": 1,
+      "passed": 1,
+      "cadence_fps": {
+        "mean": 29.95,
+        "stdev": 0.0,
+        "min": 29.95,
+        "max": 29.95
+      },
+      "processing_age_p95_ms": {
+        "mean": -199.69,
+        "stdev": 0.001,
+        "min": -199.695,
+        "max": -199.693
+      },
+      "backlog_growth_ms": {
+        "mean": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_util_p95": {
+        "mean": 13.0,
+        "min": 13.0,
+        "max": 13.0
+      },
+      "aggregate_cadence_fps": [
+        59.9
+      ]
+    },
+    "B-2": {
+      "repeats": 1,
+      "passed": 1,
+      "cadence_fps": {
+        "mean": 29.95,
+        "stdev": 0.0,
+        "min": 29.95,
+        "max": 29.95
+      },
+      "processing_age_p95_ms": {
+        "mean": -199.68,
+        "stdev": 0.005,
+        "min": -199.684,
+        "max": -199.674
+      },
+      "backlog_growth_ms": {
+        "mean": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_util_p95": {
+        "mean": 28.0,
+        "min": 28.0,
+        "max": 28.0
+      },
+      "aggregate_cadence_fps": [
+        59.9
+      ]
+    },
+    "C-2": {
+      "repeats": 1,
+      "passed": 1,
+      "cadence_fps": {
+        "mean": 29.95,
+        "stdev": 0.0,
+        "min": 29.95,
+        "max": 29.95
+      },
+      "processing_age_p95_ms": {
+        "mean": -199.85,
+        "stdev": 0.002,
+        "min": -199.853,
+        "max": -199.848
+      },
+      "backlog_growth_ms": {
+        "mean": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_util_p95": {
+        "mean": 35.0,
+        "min": 35.0,
+        "max": 35.0
+      },
+      "aggregate_cadence_fps": [
+        59.9
+      ]
+    },
+    "D-2": {
+      "repeats": 1,
+      "passed": 1,
+      "cadence_fps": {
+        "mean": 29.95,
+        "stdev": 0.0,
+        "min": 29.95,
+        "max": 29.95
+      },
+      "processing_age_p95_ms": {
+        "mean": 269.0,
+        "stdev": 13.6,
+        "min": 255.4,
+        "max": 282.6
+      },
+      "backlog_growth_ms": {
+        "mean": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_util_p95": {
+        "mean": 23.0,
+        "min": 23.0,
+        "max": 23.0
+      },
+      "aggregate_cadence_fps": [
+        59.9
+      ]
+    }
+  }
+}

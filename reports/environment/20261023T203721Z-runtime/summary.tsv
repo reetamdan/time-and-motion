@@ -1,0 +1,39 @@
+name	required	status	exit_code	log	command
+os_release	required	passed	0	os_release.log	cat /etc/os-release 
+kernel	required	passed	0	kernel.log	uname -a 
+cpu	optional	passed	0	cpu.log	bash -c command\ -v\ lscpu\ \>/dev/null\ 2\>\&1\ \&\&\ lscpu\ \|\|\ \{\ echo\ \"lscpu\ unavailable\"\;\ exit\ 127\;\ \}\; 
+memory	optional	passed	0	memory.log	bash -c command\ -v\ free\ \>/dev/null\ 2\>\&1\ \&\&\ free\ -h\ \|\|\ \{\ echo\ \"free\ unavailable\"\;\ exit\ 127\;\ \}\; 
+disk	optional	passed	0	disk.log	df -h /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv 
+nvidia_smi	required	passed	0	nvidia_smi.log	nvidia-smi 
+nvidia_smi_query	required	passed	0	nvidia_smi_query.log	nvidia-smi --query-gpu=name\,uuid\,driver_version\,memory.total\,memory.used\,temperature.gpu\,utilization.gpu --format=csv 
+expected_gpu_identity	required	passed	0	expected_gpu_identity.log	bash -o pipefail -c nvidia-smi\ --query-gpu=name\ --format=csv\,noheader\ \|\ grep\ -Ei\ \"RTX\[\[:space:\]\]+5070\[\[:space:\]\]+Ti\" 
+nvcc	optional	not_found	127	nvcc.log	nvcc --version 
+python3	optional	passed	0	python3.log	python3 --version 
+node	optional	failed	126	node.log	node --version 
+npm	optional	failed	126	npm.log	npm --version 
+ffmpeg	optional	not_found	127	ffmpeg.log	ffmpeg -version 
+docker_version	optional	not_found	127	docker_version.log	docker version 
+docker_info	optional	not_found	127	docker_info.log	docker info 
+selected_python_version	optional	passed	0	selected_python_version.log	python3 --version 
+python_package_versions	optional	passed	0	python_package_versions.log	python3 -c import\ importlib.metadata\ as\ m\,\ json\;\ names=\(\"torch\"\,\"tensorrt\"\,\"tensorrt-cu13\"\,\"pycuda\"\,\"numpy\"\,\"PyYAML\"\,\"fastapi\"\,\"uvicorn\"\)\;\ print\(json.dumps\(\{n:\(m.version\(n\)\ if\ any\(d.metadata\[\"Name\"\].lower\(\)==n.lower\(\)\ for\ d\ in\ m.distributions\(\)\)\ else\ \"not\ installed\"\)\ for\ n\ in\ names\}\,\ indent=2\)\) 
+cuda_torch_compute	required	failed	1	cuda_torch_compute.log	python3 -c import\ json\,\ torch\;\ assert\ torch.cuda.is_available\(\)\,\ \"torch.cuda.is_available\(\)\ is\ false\"\;\ torch.cuda.init\(\)\;\ x=torch.arange\(1024\,device=\"cuda\"\,dtype=torch.float64\)\;\ actual=\(x\*x\).sum\(\).item\(\)\;\ expected=sum\(i\*i\ for\ i\ in\ range\(1024\)\)\;\ assert\ actual==expected\,\ \(actual\,expected\)\;\ print\(json.dumps\(\{\"device\":torch.cuda.get_device_name\(0\)\,\"capability\":torch.cuda.get_device_capability\(0\)\,\"torch\":torch.__version__\,\"torch_cuda\":torch.version.cuda\,\"compute_check\":\"passed\"\}\)\) 
+tensorrt_python	required	failed	1	tensorrt_python.log	python3 -c import\ json\,\ tensorrt\;\ print\(json.dumps\(\{\"tensorrt\":getattr\(tensorrt\,\"__version__\"\,\"unknown\"\)\}\)\) 
+trtexec	optional	not_found	127	trtexec.log	trtexec --version 
+deepstream_version	required	not_found	127	deepstream_version.log	deepstream-app --version 
+gstreamer_version	required	not_found	127	gstreamer_version.log	gst-launch-1.0 --version 
+gstreamer_plugin_nvstreammux	required	not_found	127	gstreamer_plugin_nvstreammux.log	gst-inspect-1.0 nvstreammux 
+gstreamer_plugin_nvinfer	required	not_found	127	gstreamer_plugin_nvinfer.log	gst-inspect-1.0 nvinfer 
+gstreamer_plugin_nvtracker	required	not_found	127	gstreamer_plugin_nvtracker.log	gst-inspect-1.0 nvtracker 
+gstreamer_plugin_nvdsanalytics	required	not_found	127	gstreamer_plugin_nvdsanalytics.log	gst-inspect-1.0 nvdsanalytics 
+gstreamer_plugin_nvvideoconvert	required	not_found	127	gstreamer_plugin_nvvideoconvert.log	gst-inspect-1.0 nvvideoconvert 
+gstreamer_plugin_nvv4l2decoder	optional	not_found	127	gstreamer_plugin_nvv4l2decoder.log	gst-inspect-1.0 nvv4l2decoder 
+gstreamer_plugin_nvh264dec	optional	not_found	127	gstreamer_plugin_nvh264dec.log	gst-inspect-1.0 nvh264dec 
+gstreamer_plugin_nvh265dec	optional	not_found	127	gstreamer_plugin_nvh265dec.log	gst-inspect-1.0 nvh265dec 
+artifact_config_cameras	optional	passed	0	artifact_config_cameras.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/cameras.yaml 
+artifact_config_floors	optional	passed	0	artifact_config_floors.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/floors.yaml 
+artifact_config_zones	optional	passed	0	artifact_config_zones.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/zones.yaml 
+artifact_config_portals	optional	passed	0	artifact_config_portals.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/portals.yaml 
+artifact_config_analytics	optional	passed	0	artifact_config_analytics.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/analytics.yaml 
+artifact_config_models	optional	passed	0	artifact_config_models.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/models.yaml 
+artifact_config_runtime	optional	passed	0	artifact_config_runtime.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/configs/runtime.yaml 
+artifact_frontend_build	optional	passed	0	artifact_frontend_build.log	test -f /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/frontend/dist/index.html 

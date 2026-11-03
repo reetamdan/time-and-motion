@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T11:20:30.437670+00:00",
+  "result": "FAIL",
+  "command": ".venv/Scripts/python.exe scripts/validate_live_eos.py",
+  "scope": "Real FastAPI -> supervisor -> WSL/Docker -> Service Maker natural file EOS, stale API state, operator stop, and fresh second-epoch replay",
+  "checks": {
+    "first_start_http_ok": "PASS",
+    "first_run_active": "PASS",
+    "first_epoch_present": "FAIL",
+    "first_real_positive_visible_count": "NOT_RUN",
+    "first_positive_before_natural_eos": "NOT_RUN",
+    "first_pre_eos_fresh_metrics_present": "NOT_RUN",
+    "natural_eos_clean_completion": "NOT_RUN",
+    "natural_eos_exact_710_frames": "NOT_RUN",
+    "natural_eos_jsonl_coverage": "NOT_RUN",
+    "natural_eos_container_removed": "NOT_RUN",
+    "stale_values_null": "NOT_RUN",
+    "stale_health_degraded": "NOT_RUN",
+    "stale_last_good_age_threshold": "NOT_RUN",
+    "stale_last_good_age_increases": "NOT_RUN",
+    "stale_run_remains_active": "NOT_RUN",
+    "first_operator_stop_http_ok": "NOT_RUN",
+    "first_operator_stop_run_stopped": "NOT_RUN",
+    "first_container_absent_after_operator_stop": "NOT_RUN",
+    "second_start_http_ok": "NOT_RUN",
+    "second_epoch_different": "NOT_RUN",
+    "second_replay_fresh_positive_visible_count": "NOT_RUN",
+    "second_operator_stop_http_ok": "NOT_RUN",
+    "second_operator_stop_run_stopped": "NOT_RUN",
+    "both_epoch_containers_absent_after_second_stop": "NOT_RUN",
+    "testclient_shutdown_completed": "PASS",
+    "adapter_sessions_disposed": "PASS",
+    "final_exact_epoch_containers_absent": "FAIL"
+  },
+  "check_details": {
+    "first_start_http_ok": {
+      "http_status": 200
+    },
+    "first_run_active": {
+      "run_id": "d2aaf3e5-8a56-42cd-b899-0bfcb8681733",
+      "run_status": "DEGRADED",
+      "generated_at": "2026-10-26T11:20:30.053Z",
+      "sequence": 5,
+      "camera": {
+        "id": "cam-01",
+        "health": "OFFLINE",
+        "calibration_status": "MISSING",
+        "epoch": null,
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "dropped_frames": 0,
+        "last_good_age_ms": null,
+        "unavailable_reason": "Source initialization failed: name 'camera_epoch' is not defined"
+      }
+    },
+    "first_epoch_present": {
+      "epoch": null
+    },
+    "first_real_positive_visible_count": "Not executed",
+    "first_positive_before_natural_eos": "Not executed",
+    "first_pre_eos_fresh_metrics_present": "Not executed",
+    "natural_eos_clean_completion": "Not executed",
+    "natural_eos_exact_710_frames": "Not executed",
+    "natural_eos_jsonl_coverage": "Not executed",
+    "natural_eos_container_removed": "Not executed",
+    "stale_values_null": "Not executed",
+    "stale_health_degraded": "Not executed",
+    "stale_last_good_age_threshold": "Not executed",
+    "stale_last_good_age_increases": "Not executed",
+    "stale_run_remains_active": "Not executed",
+    "first_operator_stop_http_ok": "Not executed",
+    "first_operator_stop_run_stopped": "Not executed",
+    "first_container_absent_after_operator_stop": "Not executed",
+    "second_start_http_ok": "Not executed",
+    "second_epoch_different": "Not executed",
+    "second_replay_fresh_positive_visible_count": "Not executed",
+    "second_operator_stop_http_ok": "Not executed",
+    "second_operator_stop_run_stopped": "Not executed",
+    "both_epoch_containers_absent_after_second_stop": "Not executed",
+    "testclient_shutdown_completed": {
+      "entered": true,
+      "clean_exit": true
+    },
+    "adapter_sessions_disposed": {
+      "adapter_available": true,
+      "remaining_session_count": 0,
+      "sessions": []
+    },
+    "final_exact_epoch_containers_absent": {
+      "exact_container_names": [],
+      "all_absent": false,
+      "elapsed_seconds": 0,
+      "inspection": {
+        "error": "No epoch was captured"
+      }
+    }
+  },
+  "observed": {
+    "configuration": {
+      "source": "./demo/cam01.mp4",
+      "source_type": "file",
+      "calibration_status": "MISSING",
+      "selected_model": "trafficcamnet-smoke",
+      "model_selection_mode": "provisional_smoke",
+      "tracker": "NVIDIA NvDCF multi-object tracker",
+      "tracker_revision": "deepstream-9.2-nvdcf-perf-13662e73754e",
+      "stale_after_ms": 1500.0,
+      "expected_natural_eos_frames": 710,
+      "wsl_distro": "Ubuntu-22.04"
+    },
+    "first_epoch": {},
+    "second_epoch": {},
+    "total_elapsed_seconds": 31.65600000000086
+  },
+  "errors": [
+    {
+      "stage": "lifecycle",
+      "type": "RuntimeError",
+      "message": "First start did not return a usable cam-01 epoch",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_live_eos.py\", line 713, in main\n    run_lifecycle(client, checks, observed, artifacts, docker, stale_after_ms)\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_live_eos.py\", line 393, in run_lifecycle\n    raise RuntimeError(\"First start did not return a usable cam-01 epoch\")\nRuntimeError: First start did not return a usable cam-01 epoch\n"
+    }
+  ],
+  "cleanup": {
+    "fallback_operations": [],
+    "operator_stop": {
+      "http_status": 200,
+      "run_status": "STOPPED",
+      "elapsed_seconds": 0.01599999999962165
+    },
+    "adapter_sessions": {
+      "adapter_available": true,
+      "remaining_session_count": 0,
+      "sessions": []
+    },
+    "before_fallback": {
+      "command": [
+        "wsl.exe",
+        "-d",
+        "Ubuntu-22.04",
+        "--",
+        "docker",
+        "ps",
+        "-a",
+        "--format",
+        "{{.ID}}:{{.Names}}:{{.State}}"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "matches": {},
+      "parse_errors": [],
+      "all_absent": true
+    },
+    "final_exact_container_observation": {
+      "all_absent": false,
+      "elapsed_seconds": 0,
+      "inspection": {
+        "error": "No epoch was captured"
+      }
+    }
+  },
+  "limitations": [
+    "Only the existing authorized demo/cam01.mp4 source and provisional TrafficCamNet + NvDCF smoke profile were exercised.",
+    "Visible counts are real tracker-derived API outputs, not ground-truth accuracy, precision/recall, or calibrated facility occupancy.",
+    "Camera calibration is MISSING; no calibrated geometry, crossing, occupancy, or other analytics accuracy is claimed.",
+    "The first epoch runs to natural 710-frame EOS; the second epoch is intentionally stopped after a fresh positive replay count and is not a full-clip coverage run.",
+    "The nominal sub-15-second EOS duration is contextual, not a performance guarantee; observed timings are reported and the natural-EOS timeout is 60 seconds.",
+    "Natural-EOS and post-stop container absence are checked before fallback removal; any fallback removal is recorded separately and cannot turn an earlier failed check into a pass."
+  ]
+}

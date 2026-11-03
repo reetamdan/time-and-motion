@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-10-23T21:01:24.672Z",
+  "passed": false,
+  "checks": [
+    {
+      "name": "development launcher and API startup",
+      "passed": true,
+      "detail": "http://127.0.0.1:5173"
+    },
+    {
+      "name": "facility snapshot contract",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "cameras": 4,
+        "floors": 2
+      }
+    },
+    {
+      "name": "real GPU telemetry probe",
+      "passed": false,
+      "detail": {
+        "timestamp": "2026-10-23T21:01:22.261Z",
+        "scope": "unavailable",
+        "gpu_name": null,
+        "gpu_utilization": null,
+        "vram_used_mib": null,
+        "vram_total_mib": null,
+        "gpu_temperature_c": null,
+        "nvdec_utilization": null,
+        "cpu_utilization": 1.9,
+        "ram_used_mb": 13867.9921875,
+        "ram_total_mb": 15577.80078125,
+        "process_rss_mb": 52.33203125,
+        "unavailable_reason": "local: Failed to initialize NVML: Unknown Error; WSL Ubuntu-22.04: Command '['wsl.exe', '-d', 'Ubuntu-22.04', '--', 'nvidia-smi', '--query-gpu=name,driver_version,utilization.gpu,memory.used,memory.total,temperature.gpu,utilization.decoder', '--format=csv,noheader,nounits']' timed out after 2.5 seconds"
+      }
+    },
+    {
+      "name": "readiness exposes real blockers",
+      "passed": true,
+      "detail": {
+        "status": 503,
+        "failed": [
+          "sources",
+          "models",
+          "perception"
+        ]
+      }
+    },
+    {
+      "name": "unhandled validation error",
+      "passed": false,
+      "detail": "Error: WebSocket connection failed\n    at WebSocket.<anonymous> (file:///C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/scripts/validate-e2e.mjs:77:20)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)\n    at WebSocket.dispatchEvent (node:internal/event_target:776:26)\n    at fireEvent (node:internal/deps/undici/undici:14147:14)\n    at #onSocketClose (node:internal/deps/undici/undici:15449:11)\n    at Object.onSocketClose (node:internal/deps/undici/undici:15153:72)\n    at failWebsocketConnection (node:internal/deps/undici/undici:14569:17)\n    at Object.processResponse (node:internal/deps/undici/undici:14472:15)\n    at node:internal/deps/undici/undici:13181:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    }
+  ]
+}

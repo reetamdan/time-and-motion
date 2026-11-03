@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T08:28:54.844828+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_controlled_facility.py",
+  "run_dir": "reports\\validation\\controlled-facility-20261028T082842664367Z",
+  "evidence_scope": "unit/controlled",
+  "result": "PASS",
+  "criteria": {
+    "AC-09": {
+      "behaviour": "directional entry/exit with dead band, debounce, confirmation, idempotency; floor-map crossings feed entries/exits and the ledger",
+      "selection": [
+        "tests/test_crossing.py",
+        "tests/test_facility_analytics.py::test_floor_boundary_crossing_feeds_entries_and_the_ledger"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_crossing::test_directional_crossing_jitter_debounce_and_idempotency",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_crossing::test_crossing_requires_confirmation_beyond_dead_band",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_crossing::test_stale_track_cannot_complete_old_crossing",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_crossing::test_stale_observation_does_not_mutate_boundary_state",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_crossing::test_epoch_prevents_numeric_tracker_id_collision",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_crossing::test_minimum_track_persistence_suppresses_unconfirmed_crossing",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_analytics::test_floor_boundary_crossing_feeds_entries_and_the_ledger",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-10": {
+      "behaviour": "zone/floor occupancy from calibrated positions; nested/partially overlapping zones counted once per floor; stale/ended/failed cameras withdraw figures",
+      "selection": [
+        "tests/test_facility_analytics.py::test_zone_occupancy_capabilities_and_resolution_invalidation",
+        "tests/test_facility_freshness.py"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_facility_analytics::test_zone_occupancy_capabilities_and_resolution_invalidation",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_ten_second_old_observation_is_unavailable_not_counted",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_recovery_after_stale_and_epoch_reset",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_partial_camera_failure_degrades_only_affected_zones",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_all_cameras_stale_makes_every_facility_figure_unavailable",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_source_discontinuity_resets_time_dependent_state",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_one_person_in_two_nested_zones_counts_once_on_the_floor",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_partially_overlapping_zones_with_two_people",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_overlapping_camera_views_and_zones_deduplicate_once",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_distinct_people_in_disjoint_camera_zones_sum",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_incomplete_zone_coverage_leaves_floor_unavailable",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_building_sums_deduplicated_floors",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_runtime_expires_zone_floor_without_new_frames",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_runtime_stair_transition_records_unknown_association_and_inferred_flow",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_evaluation_throttle_is_per_camera_source_time",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_api_snapshot_and_persistence_agree_on_expiry",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_floor_capability_reports_dedup_policy",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-11": {
+      "behaviour": "ledger: entries/exits, reconciliation, explicit discrepancies, audited reinitialisation; building figure withdrawn when boundary cameras are not current",
+      "selection": [
+        "tests/test_occupancy.py",
+        "tests/test_facility_freshness.py::test_all_cameras_stale_makes_every_facility_figure_unavailable"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_occupancy::test_external_entries_exits_and_reconciliation_example",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_occupancy::test_internal_floor_transfer_conserves_building_totals",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_occupancy::test_negative_and_inconsistent_ledgers_are_never_silently_clamped",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_occupancy::test_allocation_discrepancy_is_explicit",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_occupancy::test_reinitialization_is_audited_and_clears_counters",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_all_cameras_stale_makes_every_facility_figure_unavailable",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-12": {
+      "behaviour": "two local tracks of one person in an overlap count once; negative merge checks (same camera, time/distance gates, uncalibrated overlap)",
+      "selection": [
+        "tests/test_fusion.py",
+        "tests/test_facility_analytics.py::test_overlap_fusion_counts_one_person_seen_by_two_cameras",
+        "tests/test_facility_freshness.py::test_overlapping_camera_views_and_zones_deduplicate_once"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_fusion::test_controlled_overlap_counts_one_person_once",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_fusion::test_same_camera_simultaneous_tracks_cannot_share_a_group",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_fusion::test_time_distance_and_overlap_gates_prevent_false_merges",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_fusion::test_uncalibrated_overlap_has_no_authoritative_occupancy",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_analytics::test_overlap_fusion_counts_one_person_seen_by_two_cameras",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_overlapping_camera_views_and_zones_deduplicate_once",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-13": {
+      "behaviour": "floors are independent maps and scopes; building sums de-duplicated floors",
+      "selection": [
+        "tests/test_facility_freshness.py::test_building_sums_deduplicated_floors",
+        "tests/test_facility_freshness.py::test_floor_capability_reports_dedup_policy"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_facility_freshness::test_building_sums_deduplicated_floors",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_floor_capability_reports_dedup_policy",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-14": {
+      "behaviour": "stair transition reaches association + flow through the runtime; flow is inferred, not observed; balanced internal floor transfer in the ledger",
+      "selection": [
+        "tests/test_facility_freshness.py::test_runtime_stair_transition_records_unknown_association_and_inferred_flow",
+        "tests/test_occupancy.py::test_internal_floor_transfer_conserves_building_totals",
+        "tests/test_freshness_flow.py"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_facility_freshness::test_runtime_stair_transition_records_unknown_association_and_inferred_flow",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_occupancy::test_internal_floor_transfer_conserves_building_totals",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_freshness_flow::test_stale_value_is_retained_for_diagnostics_but_null_for_contract",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_freshness_flow::test_stale_track_is_not_fresh",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_freshness_flow::test_rolling_flow_is_directional_windowed_and_idempotent",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-15": {
+      "behaviour": "ambiguous / unsupported association stays UNKNOWN; topology/time/staleness hard gates; revocation audited",
+      "selection": [
+        "tests/test_association.py"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_association::test_clear_topology_and_evidence_confirm_once",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_association::test_ambiguous_candidates_remain_unknown",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_association::test_topology_time_and_staleness_are_hard_gates",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_association::test_missing_or_low_evidence_is_not_an_identity_probability",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_association::test_revocation_is_a_new_audited_decision",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-16": {
+      "behaviour": "queue membership with dwell and movement, observed-service wait only, occlusion/expiry never become zero",
+      "selection": [
+        "tests/test_queue_congestion.py"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_queue_congestion::test_queue_join_leave_dwell_and_stationary_nonmember",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_queue_congestion::test_queue_service_wait_requires_observed_service_completion",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_queue_congestion::test_queue_occlusion_and_expiration_do_not_become_zero",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_queue_congestion::test_congestion_persistence_hysteresis_and_recovery",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_queue_congestion::test_density_requires_valid_metric_area",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-17": {
+      "behaviour": "congestion persistence, hysteresis, recovery, density needs a valid area; alerts opened/resolved through the runtime",
+      "selection": [
+        "tests/test_queue_congestion.py::test_congestion_persistence_hysteresis_and_recovery",
+        "tests/test_facility_analytics.py::test_congestion_needs_persistence_and_recovers_with_hysteresis"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_queue_congestion::test_congestion_persistence_hysteresis_and_recovery",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_analytics::test_congestion_needs_persistence_and_recovers_with_hysteresis",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "AC-19": {
+      "behaviour": "calibration revision/validation enforced at load; resolution/crop change invalidates geometry at runtime; time-quality gates",
+      "selection": [
+        "tests/test_facility_analytics.py::test_valid_calibration_requires_a_matching_validating_file",
+        "tests/test_facility_analytics.py::test_image_line_on_a_different_frame_size_is_disabled",
+        "tests/test_facility_analytics.py::test_calibration_projection_rejects_points_off_the_floor",
+        "tests/test_facility_freshness.py::test_source_discontinuity_resets_time_dependent_state"
+      ],
+      "cases": [
+        {
+          "test": "tests.test_facility_analytics::test_valid_calibration_requires_a_matching_validating_file",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_analytics::test_image_line_on_a_different_frame_size_is_disabled",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_analytics::test_calibration_projection_rejects_points_off_the_floor",
+          "result": "PASS"
+        },
+        {
+          "test": "tests.test_facility_freshness::test_source_discontinuity_resets_time_dependent_state",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    }
+  },
+  "limits": "Synthetic tracks and a synthetic scaling calibration. Proves the implemented software path and its unavailable/UNKNOWN semantics. It is not physical acceptance: no real fixed-camera crossings, surveyed geometry, calibrated overlap footage, stair views, or queue scenes were used."
+}

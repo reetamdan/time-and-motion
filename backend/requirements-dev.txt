@@ -1,0 +1,7 @@
+-r requirements.txt
+httpx==0.28.1
+pytest==8.3.5
+# Calibration fitting tool (scripts/config/fit_calibration.py); not used by the backend at runtime.
+numpy==2.5.4
+# Smoke-validation helpers (scripts/validate_deepstream_smoke.py, tests/test_deepstream_smoke_validation.py).
+opencv-python-headless==5.0.0.93

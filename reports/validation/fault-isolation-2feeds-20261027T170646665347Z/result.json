@@ -1,0 +1,627 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-27T17:07:30.153093+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_fault_isolation.py",
+  "run_dir": "reports\\validation\\fault-isolation-2feeds-20261027T170646665347Z",
+  "result": "PASS",
+  "checks": {
+    "both_feeds_running": "PASS",
+    "fault_injected_on_own_container": "PASS",
+    "failed_camera_reports_abnormal_termination": "PASS",
+    "failed_camera_stale_not_zero": "PASS",
+    "unaffected_camera_kept_advancing": "PASS",
+    "unaffected_camera_clean_eof": "PASS",
+    "abnormal_end_alert_raised_for_failed_camera_only": "PASS",
+    "unaffected_camera_history_complete": "PASS",
+    "stop_confirms_both_released": "PASS",
+    "ownership_rows_released": "PASS",
+    "no_owned_container_left": "PASS"
+  },
+  "observed": {
+    "timeline": [
+      {
+        "t": 0.03,
+        "cam-01": {
+          "source_position_s": 6.973633333,
+          "visible_count": 14,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 6.940266666,
+          "visible_count": 15,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 0.58,
+        "cam-01": {
+          "source_position_s": 7.540866666,
+          "visible_count": 18,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 7.5075,
+          "visible_count": 17,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 1.11,
+        "cam-01": {
+          "source_position_s": 8.074733333,
+          "visible_count": 18,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 8.041366666,
+          "visible_count": 21,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 1.66,
+        "cam-01": {
+          "source_position_s": 8.6086,
+          "visible_count": 15,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 8.575233333,
+          "visible_count": 18,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 2.19,
+        "cam-01": {
+          "source_position_s": 9.142466666,
+          "visible_count": 15,
+          "last_good_age_ms": 31.000000002677552,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 9.1091,
+          "visible_count": 17,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 2.73,
+        "cam-01": {
+          "source_position_s": 9.7097,
+          "visible_count": 19,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 9.676333333,
+          "visible_count": 19,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 3.25,
+        "cam-01": {
+          "source_position_s": 10.2102,
+          "visible_count": 16,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 10.176833333,
+          "visible_count": 19,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 3.81,
+        "cam-01": {
+          "source_position_s": 10.777433333,
+          "visible_count": 22,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 10.7107,
+          "visible_count": 21,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 4.34,
+        "cam-01": {
+          "source_position_s": 11.3113,
+          "visible_count": 22,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 11.277933333,
+          "visible_count": 21,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 4.88,
+        "cam-01": {
+          "source_position_s": 11.845166666,
+          "visible_count": 17,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 11.778433333,
+          "visible_count": 15,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 5.41,
+        "cam-01": {
+          "source_position_s": 12.379033333,
+          "visible_count": 16,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 12.345666666,
+          "visible_count": 16,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 5.94,
+        "cam-01": {
+          "source_position_s": 12.9129,
+          "visible_count": 15,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 12.879533333,
+          "visible_count": 15,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 6.48,
+        "cam-01": {
+          "source_position_s": 13.446766666,
+          "visible_count": 16,
+          "last_good_age_ms": 31.9999999992433,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 13.4134,
+          "visible_count": 16,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 7.02,
+        "cam-01": {
+          "source_position_s": 13.980633333,
+          "visible_count": 15,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 13.947266666,
+          "visible_count": 12,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 7.55,
+        "cam-01": {
+          "source_position_s": 14.481133333,
+          "visible_count": 16,
+          "last_good_age_ms": 31.9999999992433,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 14.447766666,
+          "visible_count": 18,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 8.06,
+        "cam-01": {
+          "source_position_s": 15.015,
+          "visible_count": 16,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 14.981633333,
+          "visible_count": 17,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 8.59,
+        "cam-01": {
+          "source_position_s": 15.548866666,
+          "visible_count": 19,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 15.5155,
+          "visible_count": 17,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 9.12,
+        "cam-01": {
+          "source_position_s": 16.082733333,
+          "visible_count": 21,
+          "last_good_age_ms": 31.000000002677552,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 16.049366666,
+          "visible_count": 20,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 9.64,
+        "cam-01": {
+          "source_position_s": 16.6166,
+          "visible_count": 21,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 16.549866666,
+          "visible_count": 21,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 10.16,
+        "cam-01": {
+          "source_position_s": 17.1171,
+          "visible_count": 16,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 17.083733333,
+          "visible_count": 18,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 10.7,
+        "cam-01": {
+          "source_position_s": 17.684333333,
+          "visible_count": 17,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 17.6176,
+          "visible_count": 17,
+          "last_good_age_ms": 31.000000002677552,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 11.25,
+        "cam-01": {
+          "source_position_s": 18.2182,
+          "visible_count": 17,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 18.184833333,
+          "visible_count": 19,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 11.77,
+        "cam-01": {
+          "source_position_s": 18.7187,
+          "visible_count": 15,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 18.685333333,
+          "visible_count": 17,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 12.3,
+        "cam-01": {
+          "source_position_s": 19.285933333,
+          "visible_count": 18,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 19.2192,
+          "visible_count": 15,
+          "last_good_age_ms": 31.000000002677552,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 12.83,
+        "cam-01": {
+          "source_position_s": 19.786433333,
+          "visible_count": 12,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 19.2192,
+          "visible_count": 15,
+          "last_good_age_ms": 546.0000000020955,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 13.34,
+        "cam-01": {
+          "source_position_s": 20.3203,
+          "visible_count": 19,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": 19.2192,
+          "visible_count": 15,
+          "last_good_age_ms": 1061.9999999980791,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "CALIBRATION WARNING"
+        }
+      },
+      {
+        "t": 13.86,
+        "cam-01": {
+          "source_position_s": 20.8208,
+          "visible_count": 16,
+          "last_good_age_ms": 16.00000000325963,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 1578.0000000013388,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      },
+      {
+        "t": 14.39,
+        "cam-01": {
+          "source_position_s": 21.354666666,
+          "visible_count": 12,
+          "last_good_age_ms": 15.999999995983671,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 2108.9999999967404,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      },
+      {
+        "t": 14.91,
+        "cam-01": {
+          "source_position_s": 21.888533333,
+          "visible_count": 18,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 2625.0,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      },
+      {
+        "t": 15.45,
+        "cam-01": {
+          "source_position_s": 22.4224,
+          "visible_count": 19,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 3171.0000000020955,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      },
+      {
+        "t": 15.98,
+        "cam-01": {
+          "source_position_s": 22.956266666,
+          "visible_count": 18,
+          "last_good_age_ms": 0.0,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 3703.000000001339,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      },
+      {
+        "t": 16.5,
+        "cam-01": {
+          "source_position_s": 23.456766666,
+          "visible_count": 15,
+          "last_good_age_ms": 14.999999999417923,
+          "stream_outcome": null,
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 4218.000000000757,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      },
+      {
+        "t": 17.05,
+        "cam-01": {
+          "source_position_s": 23.7237,
+          "visible_count": 18,
+          "last_good_age_ms": 296.9999999986612,
+          "stream_outcome": "CLEAN_EOF",
+          "health": "CALIBRATION WARNING"
+        },
+        "cam-02": {
+          "source_position_s": null,
+          "visible_count": null,
+          "last_good_age_ms": 4764.999999999418,
+          "stream_outcome": "ABNORMAL_TERMINATION",
+          "health": "DEGRADED"
+        }
+      }
+    ],
+    "fault_injected_on_own_container": {
+      "container": "aegis-cam-02-7ed295fc-8481-4ce6-bd1d-a6b48027d238",
+      "cam01_position_at_kill": 6.172833333,
+      "cam02_position_at_kill": 6.139466666
+    },
+    "failed_camera_reports_abnormal_termination": {
+      "outcome": "ABNORMAL_TERMINATION",
+      "detail": "extractor exited with code 137"
+    },
+    "failed_camera_stale_not_zero": {
+      "visible_count": null,
+      "last_good_age_ms": 4811.999999998079,
+      "health": "DEGRADED"
+    },
+    "unaffected_camera_kept_advancing": {
+      "first": 6.973633333,
+      "last": 23.7237
+    },
+    "unaffected_camera_clean_eof": {
+      "outcome": "CLEAN_EOF"
+    },
+    "abnormal_end_alert_raised_for_failed_camera_only": {
+      "alert": "DUPLICATE INPUT 2 of cam01.mp4 (load test only): ABNORMAL_TERMINATION: extractor exited with code 137"
+    },
+    "unaffected_camera_history_complete": {
+      "cam-01": 710,
+      "cam-02": 568
+    },
+    "ownership": [
+      [
+        "cam-01",
+        "aegis-cam-01-f718f1a3-ffc6-461f-9655-f7be232997e6",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-7ed295fc-8481-4ce6-bd1d-a6b48027d238",
+        "RELEASED"
+      ]
+    ],
+    "no_owned_container_left": []
+  },
+  "scope": "Two DUPLICATE-INPUT feeds of demo/cam01.mp4 (cam-01, cam-02), real GPU containers, real backend socket. Fault = docker kill of cam-02's own container. Health/failure isolation only."
+}

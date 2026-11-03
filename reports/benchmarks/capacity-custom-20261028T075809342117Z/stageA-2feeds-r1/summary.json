@@ -1,0 +1,96 @@
+{
+  "stage": "A",
+  "feeds": 2,
+  "repeat": 1,
+  "result": {
+    "feeds": {
+      "bench-01": {
+        "frames_total": 1086,
+        "frames_in_window": 599,
+        "cadence_fps": 29.95,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.879,
+          "p95": -199.695,
+          "max": -199.6
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 0.0,
+        "covered_window_s": 20.0,
+        "processing_age_p95_ms": -199.695
+      },
+      "bench-02": {
+        "frames_total": 1101,
+        "frames_in_window": 599,
+        "cadence_fps": 29.95,
+        "frame_gaps": 0,
+        "schedule_lag_ms": {
+          "p50": -199.876,
+          "p95": -199.693,
+          "max": -199.6
+        },
+        "backlog_growth_ms": 0.0,
+        "objects_per_frame_mean": 0.0,
+        "covered_window_s": 20.0,
+        "processing_age_p95_ms": -199.693
+      }
+    },
+    "crashed": [],
+    "containers_absent_after": {
+      "aegis-bench-a-01-93d609b5": true,
+      "aegis-bench-a-02-93d609b5": true
+    },
+    "resources": {
+      "gpu_util_percent": {
+        "p50": 9.0,
+        "p95": 13.0,
+        "max": 18.0
+      },
+      "nvdec_util_percent": {
+        "p50": 12.0,
+        "p95": 15.0,
+        "max": 17.0
+      },
+      "vram_used_mib": {
+        "p50": 1103.0,
+        "p95": 1103.0,
+        "max": 1103.0
+      },
+      "gpu_temp_c": {
+        "p50": 54.0,
+        "p95": 54.0,
+        "max": 54.0
+      },
+      "gpu_power_w": {
+        "p50": 10.82,
+        "p95": 11.27,
+        "max": 11.46
+      },
+      "sm_clock_mhz": {
+        "p50": 555.0,
+        "p95": 630.0,
+        "max": 652.0
+      },
+      "pstates": [
+        "P8"
+      ],
+      "host_cpu_percent": {
+        "p50": 3.0,
+        "p95": 6.6,
+        "max": 8.5
+      },
+      "host_ram_used_mib": {
+        "p50": 11335.1,
+        "p95": 11375.0,
+        "max": 11380.6
+      },
+      "gpu_samples": 19,
+      "host_samples": 19
+    }
+  },
+  "gate": {
+    "pass": true,
+    "failures": [],
+    "cleanup_confirmed": true
+  }
+}

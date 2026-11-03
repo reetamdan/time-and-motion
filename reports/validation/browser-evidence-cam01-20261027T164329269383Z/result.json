@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-27T16:44:02.484502+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\browser-tests\\venv\\Scripts\\python.exe' validate_browser_evidence.py",
+  "run_dir": "reports\\validation\\browser-evidence-cam01-20261027T164329269383Z",
+  "result": "FAIL",
+  "checks": {
+    "backend_served_on_socket": "PASS",
+    "capability_matrix_rendered": "PASS",
+    "capability_reason_names_missing_calibration": "PASS",
+    "artifact_identity_table_all_match": "PASS",
+    "run_started": "PASS",
+    "source_time_reached": "PASS",
+    "marker_saved_in_drawer": "PASS",
+    "api_evidence_bound_to_live_epoch": "PASS",
+    "evidence_card_rendered": "PASS",
+    "card_camera_epoch_source_time_match_api": "PASS",
+    "snapshot_image_renders_full_resolution": "PASS",
+    "clip_metadata_loaded": "PASS",
+    "clip_plays": "PASS",
+    "only_this_runs_clip_present": "PASS",
+    "owned_container_absent": "FAIL"
+  },
+  "observed": {
+    "capability_reason_names_missing_calibration": {
+      "excerpt": "CAMERA\tCAMERA-LOCAL COUNTS\tIMAGE-LINE CROSSINGS\tFLOOR POSITIONS\tENTRIES / EXITS\n\ncam-01\nEnabled, not running\n\t\ncamera not running\t\nno image_pixels line configured\t\ncalibration MISSING\t\ncalibration MISSING\n\ncam-02\nDisabled\n\t\ncamera not running\t\nno image_pixels line configured\t\ncalibration MISSING\t\nno"
+    },
+    "artifact_identity_table_all_match": {
+      "excerpt": "ARTIFACT\tSTATUS\tEXPECTED (RECORDED)\tCURRENT (RECOMPUTED)\n\ndetector.checkpoint\n\t\nMATCH\n\td92f97bd840b6885\u2026\td92f97bd840b6885\u2026\n\ndetector.engine\n\t\nMATCH\n\te96668b546dc77b9\u2026\te96668b546dc77b9\u2026\n\ndetector.infer_config\n\t\nMATCH\n\t8165a340f72b5717\u2026\t8165a340f72b5717\u2026\n\ntracker.config\n\t\nMATCH\n\t13662e73754e8e65\u2026\t13662e73754e8e65\u2026\n\npipeline.wrapper\n\t\nMATCH\n\t49f8311c979fc831\u2026\t49f8311c979fc831\u2026\n\npipeline.extractor\n\t\nM"
+    },
+    "run_started": {
+      "status": "RUNNING :: Running"
+    },
+    "marker_saved_in_drawer": {
+      "text": "Saved at source 4.2 s \u00b7 clip 0.07\u20137.27 s (keyframe-aligned). See Evidence."
+    },
+    "api_evidence_bound_to_live_epoch": {
+      "evidence": "3b348be8-fab6-414b-90c6-f1f3c2a71285",
+      "camera": "3b348be8-fab6-414b-90c6-f1f3c2a71285"
+    },
+    "card_camera_epoch_source_time_match_api": {
+      "camera": "cam-01",
+      "epoch": "3b348be8-fab6-414b-90c6-f1f3c2a71285",
+      "marked": "4.2042",
+      "api_marked": 4.2042
+    },
+    "snapshot_image_renders_full_resolution": {
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    "clip_metadata_loaded": {
+      "duration": 7.2072,
+      "api_span": 7.2072
+    },
+    "clip_plays": {
+      "currentTime": 0.5987
+    }
+  },
+  "errors": [
+    "Traceback (most recent call last):\n  File \"C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_browser_evidence.py\", line 124, in main\n    files[0].unlink()\n  File \"C:\\Users\\Reetam\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1343, in unlink\n    os.unlink(self)\nPermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\\\Users\\\\Reetam\\\\Desktop\\\\projects\\\\aditya_freelance\\\\dsa\\\\cctv\\\\reports\\\\validation\\\\browser-evidence-cam01-20261027T164329269383Z\\\\evidence\\\\e4c07816-ae5e-497f-88ea-08a7620d8446\\\\cam-01\\\\27108d49-8ccc-470e-84ea-a148163134b1\\\\clip.mp4'\n"
+  ],
+  "scope": "Real backend socket + headless Chrome + real paced cam01 GPU run. The evidence marker is a manual operator action. File removal targets only this run's own evidence root."
+}

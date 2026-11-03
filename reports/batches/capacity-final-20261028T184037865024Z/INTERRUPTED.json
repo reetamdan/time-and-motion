@@ -1,0 +1,12 @@
+{
+  "status": "INTERRUPTED - incomplete batch, not an acceptance result",
+  "reason": "step capacity_repeats exited 2 (batch stop rule)",
+  "completed_or_stopped_steps": [
+    "capacity_repeats"
+  ],
+  "not_started": [
+    "capacity_soak",
+    "capacity_ladder"
+  ],
+  "at_utc": "2026-10-28T19:08:58.301275+00:00"
+}

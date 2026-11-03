@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "command": "bash scripts/setup/download-models.sh --manifest models/rt-detr-person-candidate/download-manifest.json",
+  "downloader": "scripts/setup/download-models.sh",
+  "downloader_sha256": "eed0beb3f618e33fb8577e42e7955a850441277e7a1973275f3d45d2c1e1ae29",
+  "manifest": "models/rt-detr-person-candidate/download-manifest.json",
+  "manifest_sha256": "f4676af8d5f2f6281723bb826bc9944f50a37bb347a27d916d263cae299502a4",
+  "checkpoint": "models/rt-detr-person-candidate/upstream/model.safetensors",
+  "sha256": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+  "size_bytes": 80904640,
+  "downloader_action": "downloaded_verified",
+  "receipt": "reports/model-evaluation/rt-detr/provenance/download-receipt.json",
+  "note": "Installation bytes only; this is not export, inference, quality, or DeepStream evidence."
+}

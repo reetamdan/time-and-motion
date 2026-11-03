@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T13:11:37.213115+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_rtsp_source.py",
+  "run_dir": "reports\\validation\\rtsp-controlled-20261028T130821248323Z",
+  "result": "FAIL",
+  "checks": {
+    "rtsp_test_server_installed": "PASS",
+    "start_with_live_camera": "PASS",
+    "live_counts_from_rtsp": "PASS",
+    "live_source_advances_in_real_time": "PASS",
+    "live_camera_has_no_preview_and_no_evidence": "PASS",
+    "evidence_refused_for_live_with_reason": "PASS",
+    "publisher_killed": "PASS",
+    "loss_visible_unavailable_not_zero": "PASS",
+    "file_camera_unaffected": "PASS",
+    "reconnect_attempts_back_off": "PASS",
+    "reconnects_with_new_epoch_and_counts_resume": "PASS",
+    "reconnect_alert_resolved": "PASS",
+    "stall_detected_by_watchdog": "FAIL",
+    "stall_recovers_with_new_epoch": "PASS",
+    "publisher_killed_again": "PASS",
+    "stop_confirmed": "PASS",
+    "stop_cancels_pending_reconnect": "PASS",
+    "password_absent_from_api": "PASS",
+    "publisher_terminated": "PASS",
+    "rtsp_server_terminated": "PASS",
+    "password_absent_from_backend_and_container_logs": "PASS",
+    "extractor_summaries_record_live_source_without_credentials": "PASS",
+    "all_owned_containers_released": "PASS",
+    "no_owned_container_left": "PASS"
+  },
+  "observed": {
+    "timeline": [],
+    "rtsp_test_server_installed": {
+      "tail": [
+        "mediamtx ready: v1.21.2"
+      ]
+    },
+    "start_with_live_camera": {
+      "run_status": "RUNNING"
+    },
+    "live_counts_from_rtsp": {
+      "visible_count": 16,
+      "epoch": "6dc90dd7-5165-463f-ae7b-a98f8250725f"
+    },
+    "live_source_advances_in_real_time": {
+      "source_seconds_per_second": 1.002,
+      "analytics_fps": 30.040739749210662
+    },
+    "live_camera_has_no_preview_and_no_evidence": {
+      "reason": "Live sources have no local recording buffer in this version; evidence clips need the source file"
+    },
+    "evidence_refused_for_live_with_reason": {
+      "status": 503
+    },
+    "loss_visible_unavailable_not_zero": {
+      "seconds_after_kill": 2.8,
+      "health": "OFFLINE",
+      "reason": "Live source lost (ABNORMAL_TERMINATION: live source ended after 390 frames); reconnect attempt 1 in 2 s"
+    },
+    "reconnect_delays_by_attempt": {
+      "1": 2.0,
+      "2": 4.0,
+      "3": 8.0
+    },
+    "reconnect_watch_seconds": 42.7,
+    "while_down": {
+      "cam-01": {
+        "health": "DEGRADED",
+        "visible_count": null,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "source_position_s": null,
+        "stream_outcome": "CLEAN_EOF"
+      },
+      "cam-02": {
+        "health": "OFFLINE",
+        "visible_count": null,
+        "reconnect_attempt": 3,
+        "next_reconnect_at": "2026-10-28T13:09:51.931Z",
+        "unavailable_reason": "Live source lost (Source initialization failed: Service Maker produced no valid stdout frame metadata within the startup deadline (malformed_frames=0, reader_error=None)); reconnect attempt 3 in 8 s",
+        "source_position_s": null,
+        "stream_outcome": null
+      }
+    },
+    "file_camera_unaffected": {
+      "before": 15.982633333,
+      "after": null,
+      "outcome": "CLEAN_EOF"
+    },
+    "reconnect_attempts_back_off": {
+      "observed_delays": {
+        "1": 2.0,
+        "2": 4.0,
+        "3": 8.0
+      },
+      "expected_delays": {
+        "1": 2.0,
+        "2": 4.0,
+        "3": 8.0
+      },
+      "cap_s": 30.0
+    },
+    "reconnects_with_new_epoch_and_counts_resume": {
+      "seconds_after_restore": 23.3,
+      "epoch": "72eb6ea4-3af5-49e5-8cae-cd653b1c7cfc",
+      "visible_count": 12
+    },
+    "reconnect_alert_resolved": {
+      "alerts": [
+        [
+          "RESOLVED",
+          "CONTROLLED RTSP (cam01 republished locally): Source initialization failed: Service Maker produced no valid stdout frame "
+        ]
+      ]
+    },
+    "stall_detected_by_watchdog": {
+      "seconds_after_freeze": 40.0,
+      "stall_seconds": 10.0,
+      "reason": null
+    },
+    "stall_recovers_with_new_epoch": {
+      "epoch": "cd39ef19-597f-44c7-9fc5-8b42dbdd0f3c"
+    },
+    "stop_confirmed": {
+      "stopped_with_pending_reconnect": true,
+      "next_reconnect_at": "2026-10-28T13:11:00.771Z"
+    },
+    "stop_cancels_pending_reconnect": {
+      "owned_rows_at_stop": 7,
+      "owned_rows_later": 7,
+      "running": []
+    },
+    "extractor_summaries_record_live_source_without_credentials": {
+      "summaries": 3
+    },
+    "ownership": [
+      [
+        "cam-01",
+        "aegis-cam-01-73da0234-c9f6-42b5-8861-92f722c56882",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-46e5f44c-fc8e-43c9-834b-9ad4db37c7ad",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-6dc90dd7-5165-463f-ae7b-a98f8250725f",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-72eb6ea4-3af5-49e5-8cae-cd653b1c7cfc",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-b0909f78-8ebf-4615-9c7d-79e957079ecf",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-cd39ef19-597f-44c7-9fc5-8b42dbdd0f3c",
+        "RELEASED"
+      ],
+      [
+        "cam-02",
+        "aegis-cam-02-e5916eec-bb1a-4d87-9cba-f778e378a7fa",
+        "RELEASED"
+      ]
+    ],
+    "all_owned_containers_released": {
+      "rows": 7
+    },
+    "no_owned_container_left": []
+  },
+  "scope": "CONTROLLED local RTSP: demo/cam01.mp4 republished in real time by ffmpeg through a test-only mediamtx in WSL; Windows backend route, real GPU. Proves the live ingestion, loss, backoff and reconnect software path; not a physical camera, real network behaviour, or new footage."
+}

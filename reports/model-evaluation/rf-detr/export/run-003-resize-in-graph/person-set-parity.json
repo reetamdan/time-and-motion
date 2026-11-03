@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:19:51.342658+00:00",
+  "criteria": "strict one-to-one, IoU>=0.5, score delta<=0.02",
+  "comparisons": {
+    "onnx1080p_vs_hf_141": {
+      "left": "reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/onnx_decode_frame_000141.json",
+      "right": "reports/model-evaluation/rf-detr/export/run-002/hf_decode_frame_000141.json",
+      "left_count": 41,
+      "right_count": 41,
+      "matches": 41,
+      "min_iou": 0.9941722250566253,
+      "max_score_abs_delta": 0.0060134828090667725,
+      "max_bbox_abs_delta_px": 2.5765460729599,
+      "median_bbox_abs_delta_px": 0.004971027374267578,
+      "result": "PASS"
+    },
+    "onnx1080p_vs_hf_283": {
+      "left": "reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/onnx_decode_frame_000283.json",
+      "right": "reports/model-evaluation/rf-detr/export/run-002/hf_decode_frame_000283.json",
+      "left_count": 43,
+      "right_count": 43,
+      "matches": 43,
+      "min_iou": 0.9983672745091596,
+      "max_score_abs_delta": 0.0020957887172698975,
+      "max_bbox_abs_delta_px": 0.45222043991088867,
+      "median_bbox_abs_delta_px": 0.01062154769897461,
+      "result": "PASS"
+    },
+    "onnx512_vs_hf_141": {
+      "left": "reports/model-evaluation/rf-detr/export/run-002/onnx_decode_frame_000141.json",
+      "right": "reports/model-evaluation/rf-detr/export/run-002/hf_decode_frame_000141.json",
+      "left_count": 41,
+      "right_count": 41,
+      "matches": 41,
+      "min_iou": 0.9999880416562045,
+      "max_score_abs_delta": 1.0251998901367188e-05,
+      "max_bbox_abs_delta_px": 0.005294680595397949,
+      "median_bbox_abs_delta_px": 3.5762786865234375e-05,
+      "result": "PASS"
+    },
+    "onnx512_vs_hf_283": {
+      "left": "reports/model-evaluation/rf-detr/export/run-002/onnx_decode_frame_000283.json",
+      "right": "reports/model-evaluation/rf-detr/export/run-002/hf_decode_frame_000283.json",
+      "left_count": 43,
+      "right_count": 43,
+      "matches": 43,
+      "min_iou": 0.9998052383001459,
+      "max_score_abs_delta": 0.0004903078079223633,
+      "max_bbox_abs_delta_px": 0.022643208503723145,
+      "median_bbox_abs_delta_px": 0.0009441375732421875,
+      "result": "PASS"
+    }
+  }
+}

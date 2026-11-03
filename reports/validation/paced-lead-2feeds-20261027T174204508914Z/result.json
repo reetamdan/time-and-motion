@@ -1,0 +1,3782 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-27T17:43:16.669179+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_paced_lead.py",
+  "run_dir": "reports\\validation\\paced-lead-2feeds-20261027T174204508914Z",
+  "clock_skew": {
+    "skew_ns": -133870725,
+    "rtt_ns": 65885400,
+    "samples": 7
+  },
+  "result": "PASS",
+  "checks": {
+    "v2_lead_bounded_p95_under_1s": "PASS",
+    "v2_failure_visible_within_3s": "PASS",
+    "v2_failed_camera_abnormal": "PASS",
+    "v2_unaffected_camera_clean_eof_710": "PASS",
+    "v1_unaffected_camera_clean_eof_710": "PASS",
+    "v2_visibility_faster_than_v1": "PASS",
+    "all_owned_released": "PASS",
+    "no_owned_container_left": "PASS"
+  },
+  "phases": {
+    "v1": {
+      "phase": "v1",
+      "extractor_overrides": {
+        "extractor_path": "./perception/deepstream/service_maker/extract_metadata.py",
+        "extractor_sha256": "6093b5d5d06089225b3bf60b0342fedccc50efde477f9663c5ef61ff91abad25",
+        "extractor_schema_version": "1.0",
+        "extractor_pacing": "none"
+      },
+      "timeline": [
+        {
+          "t": 0.67,
+          "cam-01": {
+            "source_position_s": 6.673333333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 6.7067,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 0.8,
+          "cam-01": {
+            "source_position_s": 6.8068,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 6.840166666,
+            "stream_outcome": null,
+            "visible_count": 14
+          }
+        },
+        {
+          "t": 0.92,
+          "cam-01": {
+            "source_position_s": 6.940266666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 6.973633333,
+            "stream_outcome": null,
+            "visible_count": 14
+          }
+        },
+        {
+          "t": 1.06,
+          "cam-01": {
+            "source_position_s": 7.073733333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 7.1071,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 1.19,
+          "cam-01": {
+            "source_position_s": 7.2072,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 7.240566666,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 1.31,
+          "cam-01": {
+            "source_position_s": 7.340666666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 7.374033333,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 1.42,
+          "cam-01": {
+            "source_position_s": 7.440766666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 7.474133333,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.56,
+          "cam-01": {
+            "source_position_s": 7.574233333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 7.6076,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 1.69,
+          "cam-01": {
+            "source_position_s": 7.7077,
+            "stream_outcome": null,
+            "visible_count": 24
+          },
+          "cam-02": {
+            "source_position_s": 7.741066666,
+            "stream_outcome": null,
+            "visible_count": 23
+          }
+        },
+        {
+          "t": 1.81,
+          "cam-01": {
+            "source_position_s": 7.841166666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 7.874533333,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 1.94,
+          "cam-01": {
+            "source_position_s": 7.941266666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 7.974633333,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 2.08,
+          "cam-01": {
+            "source_position_s": 8.074733333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 8.141466666,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 2.19,
+          "cam-01": {
+            "source_position_s": 8.2082,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 8.241566666,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 2.33,
+          "cam-01": {
+            "source_position_s": 8.341666666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 8.375033333,
+            "stream_outcome": null,
+            "visible_count": 13
+          }
+        },
+        {
+          "t": 2.47,
+          "cam-01": {
+            "source_position_s": 8.475133333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 8.5085,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 2.59,
+          "cam-01": {
+            "source_position_s": 8.6086,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 8.641966666,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 2.73,
+          "cam-01": {
+            "source_position_s": 8.742066666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 8.775433333,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 2.86,
+          "cam-01": {
+            "source_position_s": 8.875533333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 8.9089,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 3.0,
+          "cam-01": {
+            "source_position_s": 9.009,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 9.042366666,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 3.11,
+          "cam-01": {
+            "source_position_s": 9.1091,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 9.142466666,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 3.22,
+          "cam-01": {
+            "source_position_s": 9.242566666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 9.275933333,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 3.33,
+          "cam-01": {
+            "source_position_s": 9.342666666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 9.376033333,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 3.45,
+          "cam-01": {
+            "source_position_s": 9.476133333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 9.5095,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 3.59,
+          "cam-01": {
+            "source_position_s": 9.6096,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 9.642966666,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 3.73,
+          "cam-01": {
+            "source_position_s": 9.743066666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 9.776433333,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 3.84,
+          "cam-01": {
+            "source_position_s": 9.843166666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 9.9099,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 3.98,
+          "cam-01": {
+            "source_position_s": 9.976633333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 10.043366666,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 4.11,
+          "cam-01": {
+            "source_position_s": 10.1101,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 10.143466666,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 4.23,
+          "cam-01": {
+            "source_position_s": 10.243566666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 10.276933333,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 4.36,
+          "cam-01": {
+            "source_position_s": 10.377033333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 10.4104,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 4.48,
+          "cam-01": {
+            "source_position_s": 10.477133333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 10.5105,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 4.61,
+          "cam-01": {
+            "source_position_s": 10.6106,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 10.643966666,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 4.72,
+          "cam-01": {
+            "source_position_s": 10.7107,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": 10.777433333,
+            "stream_outcome": null,
+            "visible_count": 22
+          }
+        },
+        {
+          "t": 4.84,
+          "cam-01": {
+            "source_position_s": 10.844166666,
+            "stream_outcome": null,
+            "visible_count": 25
+          },
+          "cam-02": {
+            "source_position_s": 10.877533333,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 4.97,
+          "cam-01": {
+            "source_position_s": 10.977633333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 11.011,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 5.09,
+          "cam-01": {
+            "source_position_s": 11.1111,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 11.144466666,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 5.23,
+          "cam-01": {
+            "source_position_s": 11.244566666,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": 11.277933333,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 5.36,
+          "cam-01": {
+            "source_position_s": 11.378033333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 11.4114,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 5.48,
+          "cam-01": {
+            "source_position_s": 11.478133333,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": 11.544866666,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 5.64,
+          "cam-01": {
+            "source_position_s": 11.644966666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 11.678333333,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 5.75,
+          "cam-01": {
+            "source_position_s": 11.745066666,
+            "stream_outcome": null,
+            "visible_count": 12
+          },
+          "cam-02": {
+            "source_position_s": 11.778433333,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 5.86,
+          "cam-01": {
+            "source_position_s": 11.878533333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 11.9119,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 6.01,
+          "cam-01": {
+            "source_position_s": 12.012,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 12.045366666,
+            "stream_outcome": null,
+            "visible_count": 14
+          }
+        },
+        {
+          "t": 6.12,
+          "cam-01": {
+            "source_position_s": 12.145466666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 12.178833333,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 6.23,
+          "cam-01": {
+            "source_position_s": 12.245566666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 12.278933333,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 6.34,
+          "cam-01": {
+            "source_position_s": 12.345666666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 12.379033333,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 6.48,
+          "cam-01": {
+            "source_position_s": 12.479133333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 12.5125,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 6.62,
+          "cam-01": {
+            "source_position_s": 12.645966666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 12.679333333,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 6.76,
+          "cam-01": {
+            "source_position_s": 12.779433333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 12.8128,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 6.88,
+          "cam-01": {
+            "source_position_s": 12.879533333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 12.946266666,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 7.01,
+          "cam-01": {
+            "source_position_s": 13.013,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 13.046366666,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 7.16,
+          "cam-01": {
+            "source_position_s": 13.146466666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 13.2132,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 7.28,
+          "cam-01": {
+            "source_position_s": 13.279933333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 13.3133,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 7.41,
+          "cam-01": {
+            "source_position_s": 13.4134,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 13.446766666,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 7.53,
+          "cam-01": {
+            "source_position_s": 13.546866666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 13.580233333,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 7.66,
+          "cam-01": {
+            "source_position_s": 13.680333333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 13.7137,
+            "stream_outcome": null,
+            "visible_count": 13
+          }
+        },
+        {
+          "t": 7.78,
+          "cam-01": {
+            "source_position_s": 13.8138,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 13.847166666,
+            "stream_outcome": null,
+            "visible_count": 12
+          }
+        },
+        {
+          "t": 7.89,
+          "cam-01": {
+            "source_position_s": 13.9139,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 13.947266666,
+            "stream_outcome": null,
+            "visible_count": 12
+          }
+        },
+        {
+          "t": 8.01,
+          "cam-01": {
+            "source_position_s": 14.014,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 14.047366666,
+            "stream_outcome": null,
+            "visible_count": 14
+          }
+        },
+        {
+          "t": 8.14,
+          "cam-01": {
+            "source_position_s": 14.147466666,
+            "stream_outcome": null,
+            "visible_count": 11
+          },
+          "cam-02": {
+            "source_position_s": 14.180833333,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 8.25,
+          "cam-01": {
+            "source_position_s": 14.280933333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 14.3143,
+            "stream_outcome": null,
+            "visible_count": 13
+          }
+        },
+        {
+          "t": 8.38,
+          "cam-01": {
+            "source_position_s": 14.381033333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 14.4144,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 8.51,
+          "cam-01": {
+            "source_position_s": 14.5145,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 14.547866666,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 8.64,
+          "cam-01": {
+            "source_position_s": 14.647966666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 14.681333333,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 8.75,
+          "cam-01": {
+            "source_position_s": 14.781433333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 14.8148,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 8.88,
+          "cam-01": {
+            "source_position_s": 14.881533333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 14.9149,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 9.01,
+          "cam-01": {
+            "source_position_s": 15.015,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 15.048366666,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 9.14,
+          "cam-01": {
+            "source_position_s": 15.148466666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 15.181833333,
+            "stream_outcome": null,
+            "visible_count": 14
+          }
+        },
+        {
+          "t": 9.26,
+          "cam-01": {
+            "source_position_s": 15.281933333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 15.3153,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 9.41,
+          "cam-01": {
+            "source_position_s": 15.4154,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 15.448766666,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 9.53,
+          "cam-01": {
+            "source_position_s": 15.548866666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 15.582233333,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 9.67,
+          "cam-01": {
+            "source_position_s": 15.682333333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 15.7157,
+            "stream_outcome": null,
+            "visible_count": 16
+          }
+        },
+        {
+          "t": 9.78,
+          "cam-01": {
+            "source_position_s": 15.782433333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 15.8158,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 9.89,
+          "cam-01": {
+            "source_position_s": 15.882533333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 15.949266666,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 10.03,
+          "cam-01": {
+            "source_position_s": 16.049366666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 16.082733333,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 10.14,
+          "cam-01": {
+            "source_position_s": 16.149466666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 16.182833333,
+            "stream_outcome": null,
+            "visible_count": 22
+          }
+        },
+        {
+          "t": 10.25,
+          "cam-01": {
+            "source_position_s": 16.282933333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": 16.3163,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 10.38,
+          "cam-01": {
+            "source_position_s": 16.383033333,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": 16.4164,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 10.5,
+          "cam-01": {
+            "source_position_s": 16.5165,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": 16.549866666,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 10.62,
+          "cam-01": {
+            "source_position_s": 16.649966666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 16.683333333,
+            "stream_outcome": null,
+            "visible_count": 20
+          }
+        },
+        {
+          "t": 10.75,
+          "cam-01": {
+            "source_position_s": 16.783433333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": 16.8168,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 10.88,
+          "cam-01": {
+            "source_position_s": 16.883533333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": 16.9169,
+            "stream_outcome": null,
+            "visible_count": 21
+          }
+        },
+        {
+          "t": 11.0,
+          "cam-01": {
+            "source_position_s": 17.017,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 17.050366666,
+            "stream_outcome": null,
+            "visible_count": 17
+          }
+        },
+        {
+          "t": 11.14,
+          "cam-01": {
+            "source_position_s": 17.150466666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 17.183833333,
+            "stream_outcome": null,
+            "visible_count": 22
+          }
+        },
+        {
+          "t": 11.25,
+          "cam-01": {
+            "source_position_s": 17.250566666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 17.283933333,
+            "stream_outcome": null,
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 11.38,
+          "cam-01": {
+            "source_position_s": 17.384033333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 17.4174,
+            "stream_outcome": null,
+            "visible_count": 18
+          }
+        },
+        {
+          "t": 11.48,
+          "cam-01": {
+            "source_position_s": 17.484133333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 11.61,
+          "cam-01": {
+            "source_position_s": 17.6176,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 11.75,
+          "cam-01": {
+            "source_position_s": 17.751066666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 11.86,
+          "cam-01": {
+            "source_position_s": 17.884533333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 11.98,
+          "cam-01": {
+            "source_position_s": 17.984633333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.12,
+          "cam-01": {
+            "source_position_s": 18.1181,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.25,
+          "cam-01": {
+            "source_position_s": 18.251566666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.39,
+          "cam-01": {
+            "source_position_s": 18.385033333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.51,
+          "cam-01": {
+            "source_position_s": 18.5185,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.64,
+          "cam-01": {
+            "source_position_s": 18.651966666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.75,
+          "cam-01": {
+            "source_position_s": 18.752066666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 12.88,
+          "cam-01": {
+            "source_position_s": 18.885533333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 19
+          }
+        },
+        {
+          "t": 13.0,
+          "cam-01": {
+            "source_position_s": 18.985633333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.12,
+          "cam-01": {
+            "source_position_s": 19.1191,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.23,
+          "cam-01": {
+            "source_position_s": 19.252566666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.38,
+          "cam-01": {
+            "source_position_s": 19.386033333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.48,
+          "cam-01": {
+            "source_position_s": 19.486133333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.61,
+          "cam-01": {
+            "source_position_s": 19.6196,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.75,
+          "cam-01": {
+            "source_position_s": 19.753066666,
+            "stream_outcome": null,
+            "visible_count": 11
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.88,
+          "cam-01": {
+            "source_position_s": 19.886533333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.98,
+          "cam-01": {
+            "source_position_s": 19.986633333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.11,
+          "cam-01": {
+            "source_position_s": 20.1201,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.23,
+          "cam-01": {
+            "source_position_s": 20.253566666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.36,
+          "cam-01": {
+            "source_position_s": 20.353666666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.5,
+          "cam-01": {
+            "source_position_s": 20.487133333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.64,
+          "cam-01": {
+            "source_position_s": 20.653966666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.75,
+          "cam-01": {
+            "source_position_s": 20.754066666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.89,
+          "cam-01": {
+            "source_position_s": 20.887533333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.01,
+          "cam-01": {
+            "source_position_s": 21.021,
+            "stream_outcome": null,
+            "visible_count": 12
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.14,
+          "cam-01": {
+            "source_position_s": 21.154466666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.26,
+          "cam-01": {
+            "source_position_s": 21.287933333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.38,
+          "cam-01": {
+            "source_position_s": 21.388033333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.51,
+          "cam-01": {
+            "source_position_s": 21.5215,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.62,
+          "cam-01": {
+            "source_position_s": 21.6216,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.75,
+          "cam-01": {
+            "source_position_s": 21.755066666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.88,
+          "cam-01": {
+            "source_position_s": 21.888533333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.01,
+          "cam-01": {
+            "source_position_s": 22.022,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.14,
+          "cam-01": {
+            "source_position_s": 22.155466666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.26,
+          "cam-01": {
+            "source_position_s": 22.288933333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.39,
+          "cam-01": {
+            "source_position_s": 22.4224,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.53,
+          "cam-01": {
+            "source_position_s": 22.5225,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.64,
+          "cam-01": {
+            "source_position_s": 22.655966666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.76,
+          "cam-01": {
+            "source_position_s": 22.789433333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.89,
+          "cam-01": {
+            "source_position_s": 22.9229,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.03,
+          "cam-01": {
+            "source_position_s": 23.023,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.14,
+          "cam-01": {
+            "source_position_s": 23.156466666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.25,
+          "cam-01": {
+            "source_position_s": 23.256566666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.38,
+          "cam-01": {
+            "source_position_s": 23.390033333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.51,
+          "cam-01": {
+            "source_position_s": 23.5235,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.64,
+          "cam-01": {
+            "source_position_s": 23.656966666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.78,
+          "cam-01": {
+            "source_position_s": 23.7237,
+            "stream_outcome": "CLEAN_EOF",
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        }
+      ],
+      "start_status": 200,
+      "kill": {
+        "container": "aegis-cam-02-9e140d3e-1fab-4e3f-b9f0-1a0be9ac1f5a",
+        "returncode": 0,
+        "cam02_position_at_kill_s": 6.039366666,
+        "cam01_position_at_kill_s": 6.006
+      },
+      "cam02_outcome": "ABNORMAL_TERMINATION",
+      "kill_to_visible_outcome_s": 11.48,
+      "cam01_outcome": "CLEAN_EOF",
+      "history_frames": {
+        "cam-01": 710,
+        "cam-02": 508
+      },
+      "stop": {
+        "status": 200,
+        "run_status": "STOPPED"
+      },
+      "ownership": [
+        [
+          "cam-01",
+          "aegis-cam-01-2e7730d7-5701-473f-bb4b-f78b73f8a395",
+          "RELEASED"
+        ],
+        [
+          "cam-02",
+          "aegis-cam-02-9e140d3e-1fab-4e3f-b9f0-1a0be9ac1f5a",
+          "RELEASED"
+        ]
+      ],
+      "cameras": {
+        "cam-01": {
+          "frames_produced": 710,
+          "frames_released": 710,
+          "max_queue_depth": 16,
+          "lead": {
+            "available": false,
+            "reason": "producer records carry no emitted_unix_ns (v1 schema 1.0)"
+          }
+        },
+        "cam-02": {
+          "frames_produced": 522,
+          "frames_released": 522,
+          "max_queue_depth": 16,
+          "lead": {
+            "available": false,
+            "reason": "producer records carry no emitted_unix_ns (v1 schema 1.0)"
+          },
+          "frames_released_after_kill": 342,
+          "source_seconds_released_after_kill": 11.38
+        }
+      },
+      "leftover_containers": []
+    },
+    "v2": {
+      "phase": "v2",
+      "extractor_overrides": null,
+      "timeline": [
+        {
+          "t": 0.53,
+          "cam-01": {
+            "source_position_s": 6.6066,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": null,
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 0.66,
+          "cam-01": {
+            "source_position_s": 6.740066666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 0.78,
+          "cam-01": {
+            "source_position_s": 6.873533333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 0.89,
+          "cam-01": {
+            "source_position_s": 6.973633333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.03,
+          "cam-01": {
+            "source_position_s": 7.1071,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.14,
+          "cam-01": {
+            "source_position_s": 7.240566666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.28,
+          "cam-01": {
+            "source_position_s": 7.374033333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.41,
+          "cam-01": {
+            "source_position_s": 7.474133333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.51,
+          "cam-01": {
+            "source_position_s": 7.6076,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.64,
+          "cam-01": {
+            "source_position_s": 7.7077,
+            "stream_outcome": null,
+            "visible_count": 24
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.76,
+          "cam-01": {
+            "source_position_s": 7.841166666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.88,
+          "cam-01": {
+            "source_position_s": 7.941266666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 1.98,
+          "cam-01": {
+            "source_position_s": 8.074733333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": 6.6066,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": 15
+          }
+        },
+        {
+          "t": 2.11,
+          "cam-01": {
+            "source_position_s": 8.174833333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.23,
+          "cam-01": {
+            "source_position_s": 8.3083,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.36,
+          "cam-01": {
+            "source_position_s": 8.441766666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.47,
+          "cam-01": {
+            "source_position_s": 8.541866666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.58,
+          "cam-01": {
+            "source_position_s": 8.675333333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.72,
+          "cam-01": {
+            "source_position_s": 8.8088,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.84,
+          "cam-01": {
+            "source_position_s": 8.942266666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 2.98,
+          "cam-01": {
+            "source_position_s": 9.042366666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.11,
+          "cam-01": {
+            "source_position_s": 9.2092,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.23,
+          "cam-01": {
+            "source_position_s": 9.3093,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.36,
+          "cam-01": {
+            "source_position_s": 9.442766666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.5,
+          "cam-01": {
+            "source_position_s": 9.576233333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.62,
+          "cam-01": {
+            "source_position_s": 9.7097,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.76,
+          "cam-01": {
+            "source_position_s": 9.843166666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 3.89,
+          "cam-01": {
+            "source_position_s": 9.976633333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.03,
+          "cam-01": {
+            "source_position_s": 10.1101,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.16,
+          "cam-01": {
+            "source_position_s": 10.243566666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.28,
+          "cam-01": {
+            "source_position_s": 10.377033333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.39,
+          "cam-01": {
+            "source_position_s": 10.477133333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.51,
+          "cam-01": {
+            "source_position_s": 10.577233333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.62,
+          "cam-01": {
+            "source_position_s": 10.7107,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.75,
+          "cam-01": {
+            "source_position_s": 10.844166666,
+            "stream_outcome": null,
+            "visible_count": 25
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 4.88,
+          "cam-01": {
+            "source_position_s": 10.977633333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.01,
+          "cam-01": {
+            "source_position_s": 11.077733333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.12,
+          "cam-01": {
+            "source_position_s": 11.2112,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.25,
+          "cam-01": {
+            "source_position_s": 11.344666666,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.38,
+          "cam-01": {
+            "source_position_s": 11.478133333,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.51,
+          "cam-01": {
+            "source_position_s": 11.578233333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.66,
+          "cam-01": {
+            "source_position_s": 11.745066666,
+            "stream_outcome": null,
+            "visible_count": 12
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.78,
+          "cam-01": {
+            "source_position_s": 11.845166666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 5.89,
+          "cam-01": {
+            "source_position_s": 11.978633333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.03,
+          "cam-01": {
+            "source_position_s": 12.1121,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.14,
+          "cam-01": {
+            "source_position_s": 12.245566666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.28,
+          "cam-01": {
+            "source_position_s": 12.345666666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.41,
+          "cam-01": {
+            "source_position_s": 12.479133333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.53,
+          "cam-01": {
+            "source_position_s": 12.6126,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.67,
+          "cam-01": {
+            "source_position_s": 12.746066666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.78,
+          "cam-01": {
+            "source_position_s": 12.846166666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 6.89,
+          "cam-01": {
+            "source_position_s": 12.979633333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.01,
+          "cam-01": {
+            "source_position_s": 13.079733333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.16,
+          "cam-01": {
+            "source_position_s": 13.246566666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.26,
+          "cam-01": {
+            "source_position_s": 13.346666666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.38,
+          "cam-01": {
+            "source_position_s": 13.446766666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.5,
+          "cam-01": {
+            "source_position_s": 13.580233333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.62,
+          "cam-01": {
+            "source_position_s": 13.7137,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.75,
+          "cam-01": {
+            "source_position_s": 13.847166666,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.86,
+          "cam-01": {
+            "source_position_s": 13.947266666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 7.98,
+          "cam-01": {
+            "source_position_s": 14.080733333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.11,
+          "cam-01": {
+            "source_position_s": 14.180833333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.22,
+          "cam-01": {
+            "source_position_s": 14.3143,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.33,
+          "cam-01": {
+            "source_position_s": 14.4144,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.47,
+          "cam-01": {
+            "source_position_s": 14.547866666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.59,
+          "cam-01": {
+            "source_position_s": 14.681333333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.7,
+          "cam-01": {
+            "source_position_s": 14.781433333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.83,
+          "cam-01": {
+            "source_position_s": 14.9149,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 8.94,
+          "cam-01": {
+            "source_position_s": 15.015,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.06,
+          "cam-01": {
+            "source_position_s": 15.148466666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.2,
+          "cam-01": {
+            "source_position_s": 15.281933333,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.31,
+          "cam-01": {
+            "source_position_s": 15.4154,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.44,
+          "cam-01": {
+            "source_position_s": 15.5155,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.58,
+          "cam-01": {
+            "source_position_s": 15.648966666,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.7,
+          "cam-01": {
+            "source_position_s": 15.782433333,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.81,
+          "cam-01": {
+            "source_position_s": 15.9159,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 9.95,
+          "cam-01": {
+            "source_position_s": 16.016,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.08,
+          "cam-01": {
+            "source_position_s": 16.182833333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.2,
+          "cam-01": {
+            "source_position_s": 16.282933333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.33,
+          "cam-01": {
+            "source_position_s": 16.4164,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.45,
+          "cam-01": {
+            "source_position_s": 16.5165,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.58,
+          "cam-01": {
+            "source_position_s": 16.683333333,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.72,
+          "cam-01": {
+            "source_position_s": 16.783433333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.83,
+          "cam-01": {
+            "source_position_s": 16.9169,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 10.97,
+          "cam-01": {
+            "source_position_s": 17.050366666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.11,
+          "cam-01": {
+            "source_position_s": 17.183833333,
+            "stream_outcome": null,
+            "visible_count": 22
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.23,
+          "cam-01": {
+            "source_position_s": 17.3173,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.36,
+          "cam-01": {
+            "source_position_s": 17.450766666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.48,
+          "cam-01": {
+            "source_position_s": 17.550866666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.62,
+          "cam-01": {
+            "source_position_s": 17.7177,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.75,
+          "cam-01": {
+            "source_position_s": 17.8178,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 11.88,
+          "cam-01": {
+            "source_position_s": 17.951266666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.01,
+          "cam-01": {
+            "source_position_s": 18.084733333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.14,
+          "cam-01": {
+            "source_position_s": 18.2182,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.26,
+          "cam-01": {
+            "source_position_s": 18.351666666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.39,
+          "cam-01": {
+            "source_position_s": 18.451766666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.51,
+          "cam-01": {
+            "source_position_s": 18.585233333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.66,
+          "cam-01": {
+            "source_position_s": 18.752066666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.76,
+          "cam-01": {
+            "source_position_s": 18.852166666,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 12.88,
+          "cam-01": {
+            "source_position_s": 18.952266666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.01,
+          "cam-01": {
+            "source_position_s": 19.085733333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.12,
+          "cam-01": {
+            "source_position_s": 19.2192,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.23,
+          "cam-01": {
+            "source_position_s": 19.3193,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.36,
+          "cam-01": {
+            "source_position_s": 19.452766666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.48,
+          "cam-01": {
+            "source_position_s": 19.552866666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.62,
+          "cam-01": {
+            "source_position_s": 19.686333333,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.73,
+          "cam-01": {
+            "source_position_s": 19.8198,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.86,
+          "cam-01": {
+            "source_position_s": 19.953266666,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 13.98,
+          "cam-01": {
+            "source_position_s": 20.053366666,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.11,
+          "cam-01": {
+            "source_position_s": 20.186833333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.22,
+          "cam-01": {
+            "source_position_s": 20.286933333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.36,
+          "cam-01": {
+            "source_position_s": 20.4204,
+            "stream_outcome": null,
+            "visible_count": 17
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.48,
+          "cam-01": {
+            "source_position_s": 20.553866666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.62,
+          "cam-01": {
+            "source_position_s": 20.687333333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.76,
+          "cam-01": {
+            "source_position_s": 20.854166666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 14.89,
+          "cam-01": {
+            "source_position_s": 20.954266666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.0,
+          "cam-01": {
+            "source_position_s": 21.087733333,
+            "stream_outcome": null,
+            "visible_count": 16
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.12,
+          "cam-01": {
+            "source_position_s": 21.2212,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.23,
+          "cam-01": {
+            "source_position_s": 21.3213,
+            "stream_outcome": null,
+            "visible_count": 13
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.36,
+          "cam-01": {
+            "source_position_s": 21.454766666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.5,
+          "cam-01": {
+            "source_position_s": 21.554866666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.61,
+          "cam-01": {
+            "source_position_s": 21.688333333,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.73,
+          "cam-01": {
+            "source_position_s": 21.8218,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.84,
+          "cam-01": {
+            "source_position_s": 21.9219,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 15.98,
+          "cam-01": {
+            "source_position_s": 22.055366666,
+            "stream_outcome": null,
+            "visible_count": 14
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.12,
+          "cam-01": {
+            "source_position_s": 22.2222,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.25,
+          "cam-01": {
+            "source_position_s": 22.3223,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.36,
+          "cam-01": {
+            "source_position_s": 22.455766666,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.5,
+          "cam-01": {
+            "source_position_s": 22.555866666,
+            "stream_outcome": null,
+            "visible_count": 21
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.64,
+          "cam-01": {
+            "source_position_s": 22.7227,
+            "stream_outcome": null,
+            "visible_count": 20
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.76,
+          "cam-01": {
+            "source_position_s": 22.856166666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 16.89,
+          "cam-01": {
+            "source_position_s": 22.989633333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.01,
+          "cam-01": {
+            "source_position_s": 23.089733333,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.12,
+          "cam-01": {
+            "source_position_s": 23.2232,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.23,
+          "cam-01": {
+            "source_position_s": 23.3233,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.38,
+          "cam-01": {
+            "source_position_s": 23.456766666,
+            "stream_outcome": null,
+            "visible_count": 15
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.48,
+          "cam-01": {
+            "source_position_s": 23.556866666,
+            "stream_outcome": null,
+            "visible_count": 19
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.62,
+          "cam-01": {
+            "source_position_s": 23.690333333,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.75,
+          "cam-01": {
+            "source_position_s": 23.7237,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.88,
+          "cam-01": {
+            "source_position_s": 23.7237,
+            "stream_outcome": null,
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        },
+        {
+          "t": 17.98,
+          "cam-01": {
+            "source_position_s": 23.7237,
+            "stream_outcome": "CLEAN_EOF",
+            "visible_count": 18
+          },
+          "cam-02": {
+            "source_position_s": null,
+            "stream_outcome": "ABNORMAL_TERMINATION",
+            "visible_count": null
+          }
+        }
+      ],
+      "start_status": 200,
+      "kill": {
+        "container": "aegis-cam-02-ca2a6398-31e2-4fc4-be5b-aed40855d17b",
+        "returncode": 0,
+        "cam02_position_at_kill_s": 6.1061,
+        "cam01_position_at_kill_s": 6.072733333
+      },
+      "cam02_outcome": "ABNORMAL_TERMINATION",
+      "kill_to_visible_outcome_s": 0.66,
+      "cam01_outcome": "CLEAN_EOF",
+      "history_frames": {
+        "cam-01": 710,
+        "cam-02": 193
+      },
+      "stop": {
+        "status": 200,
+        "run_status": "STOPPED"
+      },
+      "ownership": [
+        [
+          "cam-01",
+          "aegis-cam-01-25b4d68f-3900-4cc2-99c9-d3ad009b54d8",
+          "RELEASED"
+        ],
+        [
+          "cam-02",
+          "aegis-cam-02-ca2a6398-31e2-4fc4-be5b-aed40855d17b",
+          "RELEASED"
+        ]
+      ],
+      "cameras": {
+        "cam-01": {
+          "frames_produced": 710,
+          "frames_released": 710,
+          "max_queue_depth": 10,
+          "lead": {
+            "available": true,
+            "frames": 709,
+            "lead_s": {
+              "p50": 0.167,
+              "p95": 0.167,
+              "max": 0.2002
+            },
+            "producer_to_backend_read_ms": {
+              "p50": -105.777,
+              "p95": -24.425,
+              "max": -16.819467
+            }
+          }
+        },
+        "cam-02": {
+          "frames_produced": 197,
+          "frames_released": 197,
+          "max_queue_depth": 9,
+          "lead": {
+            "available": true,
+            "frames": 195,
+            "lead_s": {
+              "p50": 0.133,
+              "p95": 0.133,
+              "max": 0.166833334
+            },
+            "producer_to_backend_read_ms": {
+              "p50": -137.194,
+              "p95": -103.886,
+              "max": -99.784863
+            }
+          },
+          "frames_released_after_kill": 15,
+          "source_seconds_released_after_kill": 0.47
+        }
+      },
+      "leftover_containers": []
+    }
+  },
+  "scope": "Paced FILE replay of two duplicate-input feeds (cam01.mp4 as cam-01/cam-02) through the Windows backend and the WSL docker stdout pipe on the real GPU. RTSP/live sources were not tested. Fault = docker kill of cam-02's own container at source position >= 6 s."
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:15:45.682334+00:00",
+  "frames": [
+    {
+      "frame_index": 141,
+      "logits_max_abs": 0.00011920928955078125,
+      "pred_boxes_max_abs": 8.687376976013184e-06,
+      "slots_logits_delta_gt_1e-3": 0,
+      "onnx_person_decodes": 41,
+      "trt_person_decodes": 41,
+      "person_query_order_equal": true,
+      "person_score_max_abs": 1.3470649719238281e-05,
+      "person_box_max_abs_px": 0.007579922676086426,
+      "raw_slot_parity": "PASS",
+      "person_decode_parity": "PASS"
+    },
+    {
+      "frame_index": 283,
+      "logits_max_abs": 0.00023126602172851562,
+      "pred_boxes_max_abs": 5.143880844116211e-05,
+      "slots_logits_delta_gt_1e-3": 0,
+      "onnx_person_decodes": 43,
+      "trt_person_decodes": 43,
+      "person_query_order_equal": true,
+      "person_score_max_abs": 7.748603820800781e-07,
+      "person_box_max_abs_px": 0.0011730194091796875,
+      "raw_slot_parity": "PASS",
+      "person_decode_parity": "PASS"
+    }
+  ],
+  "tolerances": {
+    "raw_logits": 0.001,
+    "raw_boxes": 0.0001,
+    "person_score": 0.005
+  },
+  "note": "Raw-slot parity is order-sensitive on frames whose encoder top-300 proposal scores contain near-ties (see export/run-002/topk-margin-diagnosis.json)."
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-26T16:41:23.265422+00:00",
+  "source": "/workspace/demo/cam01.mp4",
+  "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "infer_config": "/workspace/perception/deepstream/diagnostics/cam01_trafficcamnet_infer_diag_bilinear_scaling.txt",
+  "infer_config_sha256": "72834c784f5c45a864fd82ef955840e8663c2fa360572674bde7592c041fd427",
+  "tracker_config": "/workspace/perception/deepstream/reference/config_tracker_NvDCF_perf.yml",
+  "pyservicemaker_version": "0.0.1",
+  "numpy_version": "1.26.4",
+  "cwd": "/tmp/rtdetr-diag.f1YplU",
+  "pipeline_returned": true,
+  "clean_eos": true,
+  "error": null,
+  "ended_at_utc": "2026-10-26T16:41:39.685244+00:00",
+  "elapsed_seconds": 16.286957916,
+  "pre_tracker_frames": 710,
+  "post_tracker_frames": 710,
+  "eos_message_count": 1,
+  "tensor_records": [
+    {
+      "frame_number": 141,
+      "item": 0,
+      "layer": "output_cov/Sigmoid:0",
+      "unique_id": 1,
+      "shape": [
+        4,
+        34,
+        60
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_cov/Sigmoid:0_000141.npy'"
+    },
+    {
+      "frame_number": 141,
+      "item": 0,
+      "layer": "output_bbox/BiasAdd:0",
+      "unique_id": 1,
+      "shape": [
+        16,
+        34,
+        60
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_bbox/BiasAdd:0_000141.npy'"
+    },
+    {
+      "frame_number": 283,
+      "item": 0,
+      "layer": "output_cov/Sigmoid:0",
+      "unique_id": 1,
+      "shape": [
+        4,
+        34,
+        60
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_cov/Sigmoid:0_000283.npy'"
+    },
+    {
+      "frame_number": 283,
+      "item": 0,
+      "layer": "output_bbox/BiasAdd:0",
+      "unique_id": 1,
+      "shape": [
+        16,
+        34,
+        60
+      ],
+      "dtype": "float32",
+      "dlpack_device": [
+        2,
+        0
+      ],
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_bbox/BiasAdd:0_000283.npy'"
+    }
+  ],
+  "tensor_errors": [
+    "frame 141 output_cov/Sigmoid:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_cov/Sigmoid:0_000141.npy'",
+    "frame 141 output_bbox/BiasAdd:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_bbox/BiasAdd:0_000141.npy'",
+    "frame 283 output_cov/Sigmoid:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_cov/Sigmoid:0_000283.npy'",
+    "frame 283 output_bbox/BiasAdd:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-bilinear-scaling-20261026T164120Z/tensors/output_bbox/BiasAdd:0_000283.npy'"
+  ]
+}

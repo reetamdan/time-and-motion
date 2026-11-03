@@ -1,0 +1,14 @@
+{
+  "run": "reports/benchmarks/capacity-repeats-20261028T171232471951Z",
+  "batch": "reports/batches/capacity-final-20261028T171228002551Z",
+  "result": "INTERRUPTED by operator (STOP file, 2026-10-28T17:26:10Z); not an acceptance result",
+  "extractor": "8a2340e2... (first pacing-clock fix)",
+  "steps": {
+    "stageA-4feeds-r1": "protocol gates PASS, but host-time pacing FAIL: scripts/benchmark/check_host_pacing.py rate 0.9929 host s per source s, producer 7.29 s ahead after 731 s on all 4 feeds",
+    "stageA-4feeds-r2": "cut short by the stop (FAIL: no producer frames in the measured window)"
+  },
+  "finding": "The WSL guest wall clock returns single reads ~1.08-1.17 s behind about every 31.2 s (23 events in 731 s), at the same instants in all four containers (shared guest kernel clock), correct again within one frame (33 ms). The 8a2340e2 pacer treated any wait > lead + 1 s (1.2 s) as a real clock step and re-anchored to that read, so each glitch that crossed 1.2 s moved the schedule ~1-1.6 s ahead permanently: lead 0.20 s until 420 s, then 1.8, 3.5, 6.5, 7.3 s.",
+  "why_the_protocol_gates_passed": "Stage A-C schedule lag is measured on the same guest wall clock the pacer used; a re-anchor shifts both, so lag stayed small. Only a host-time reference exposes it, hence check_host_pacing.py.",
+  "fix": "extractor 8dd882fd...: waits re-read the clock in 50 ms slices; a wait > lead + 1 s is re-anchored only when it persists over 3 reads 0.1 s apart; summary adds pace_implausible_clock_reads. Test: tests/test_service_maker.py::test_v2_pacer_ignores_a_single_glitched_clock_read (glitches of 1.1 s and 1.4 s, 600 s, lead <= 0.2 s, no re-anchor).",
+  "cleanup": "Supervisor stop: step exited 2, batch stop rule; no leftover or removed containers; no benchmark or supervisor process left."
+}

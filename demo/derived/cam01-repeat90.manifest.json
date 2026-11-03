@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "label": "REPEATED / CONCATENATED DEMO FOOTAGE - load, soak and duration testing only",
+  "file": "demo/derived/cam01-repeat90.mp4",
+  "sha256": "a4c2c7d51f831dcb0189d4ceec7de3bbc63dbe0aa2b6ff2c9f69eb16818d8d5f",
+  "built_from": {
+    "file": "demo/cam01.mp4",
+    "sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+    "repeats": 90
+  },
+  "construction": "ffmpeg -f concat -safe 0 -i demo/derived/cam01-repeat90.concat.txt -c copy -movflags +faststart demo/derived/cam01-repeat90.mp4 (stream copy, no re-encode; ffmpeg 9.0 Gyan build)",
+  "stream": {
+    "codec": "h264",
+    "profile": "High",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30000/1001",
+    "frames": 63900,
+    "duration_s": 2133.0
+  },
+  "timestamps": "Packet PTS strictly increasing over all 63900 packets (ffprobe packet=pts_time, sorted; no repeated or non-increasing value); each join step is 0.043 s instead of 0.033 s, below the backend's 2 s source-discontinuity threshold, so the whole file is one source segment.",
+  "purpose": "PRD 18.3 final full-demo soak: 120 s warm-up + 1800 s measured needs >= ~1980 s of source; cam01-repeat33 (782 s) is too short.",
+  "limitations": [
+    "The same 23.7 s of footage repeats 90 times: content, crowd, and detector load are periodic, not a 35-minute real scene.",
+    "Not independent footage, not a distinct camera, not usable for accuracy, counting, or facility claims.",
+    "A moving handheld camera: no fixed boundary, no calibration."
+  ],
+  "created_utc": "2026-10-28"
+}

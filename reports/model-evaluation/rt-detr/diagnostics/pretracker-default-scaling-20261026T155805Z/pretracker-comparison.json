@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:00:13.954939+00:00",
+  "run_dir": "reports\\model-evaluation\\rt-detr\\diagnostics\\pretracker-default-scaling-20261026T155805Z",
+  "infer_config": "/workspace/perception/candidates/rt_detr/diagnostics/cam01_rt_detr_infer_diag_default_scaling.txt",
+  "infer_config_sha256": "7ded4cee6598b5eabddb65f5f8375994c9b81297e1fc27cdac6d8401aa780897",
+  "onnx_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+  "onnxruntime_version": "1.20.1",
+  "stage_results": {
+    "B_engine_inside_deepstream": "PASS",
+    "C_native_parser_and_scaling": "PASS",
+    "D_end_to_end_pre_tracker_vs_hf_input_onnx": "FAIL"
+  },
+  "frames": [
+    {
+      "frame_index": 141,
+      "A_input_ds_vs_hf": {
+        "max_abs": 0.6039215624332428,
+        "mean_abs": 0.02866800171311297,
+        "p99_abs": 0.20784318447113037,
+        "per_channel_mean_signed_a_minus_b": [
+          0.007878451814358414,
+          0.01508122012190597,
+          0.0024729497021189675
+        ],
+        "psnr_db_unit_range": 25.987411780616796,
+        "ds_input_range": [
+          0.0,
+          1.0
+        ]
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 8.726119995117188e-05,
+          "mean_abs": 3.1047264734903972e-06,
+          "p99_abs": 2.384185791015625e-05
+        },
+        "pred_boxes": {
+          "max_abs": 2.3096799850463867e-05,
+          "mean_abs": 1.9614119082689284e-07,
+          "p99_abs": 2.846866846084594e-06
+        },
+        "person_decodes_ds_tensors": 76,
+        "person_decodes_onnx_on_ds_input": 76,
+        "person_query_order_equal": true,
+        "result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 76,
+        "right_count": 76,
+        "matches": 76,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999983304927849,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 0.000164031982421875,
+        "median_bbox_abs_delta_px": 4.684925079345703e-05,
+        "pre_tracker_track_ids_all_untracked": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_original_onnx_reference_strict": {
+        "left_count": 76,
+        "right_count": 76,
+        "matches": 51,
+        "unmatched_left": [
+          0,
+          6,
+          7,
+          8,
+          10,
+          11,
+          13,
+          15,
+          19,
+          23,
+          29,
+          31,
+          32,
+          39,
+          42,
+          45,
+          47,
+          48,
+          53,
+          56,
+          60,
+          63,
+          68,
+          73,
+          75
+        ],
+        "unmatched_right": [
+          1,
+          2,
+          9,
+          12,
+          18,
+          19,
+          22,
+          23,
+          29,
+          31,
+          36,
+          39,
+          40,
+          44,
+          50,
+          51,
+          53,
+          59,
+          63,
+          67,
+          71,
+          72,
+          73,
+          74,
+          75
+        ],
+        "min_iou": 0.6270385307652876,
+        "max_score_abs_delta": 0.019585400819778442,
+        "max_bbox_abs_delta_px": 66.78508806228638,
+        "median_bbox_abs_delta_px": 3.0625691413879395,
+        "result": "FAIL",
+        "iou_only_matches_for_context": 72,
+        "iou_only_max_score_abs_delta": 0.05996072292327881
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 75,
+        "right_count": 76,
+        "matches": 75,
+        "unmatched_left": [],
+        "unmatched_right": [
+          11
+        ],
+        "min_iou": 0.9999992168758555,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_count": 75,
+        "pre_count": 76,
+        "post_vs_original_onnx_reference_matches": 51
+      },
+      "F_resize_emulation_vs_ds_input": {
+        "pil_bilinear_antialias_(hf)": {
+          "max_abs": 0.6039215624332428,
+          "mean_abs": 0.02866800171311297,
+          "p99_abs": 0.20784318447113037,
+          "per_channel_mean_signed_a_minus_b": [
+            0.007878451814358414,
+            0.01508122012190597,
+            0.0024729497021189675
+          ],
+          "psnr_db_unit_range": 25.987411780616796
+        },
+        "nearest_half_pixel": {
+          "max_abs": 0.7764705866575241,
+          "mean_abs": 0.031212472852625222,
+          "p99_abs": 0.24705880880355835,
+          "per_channel_mean_signed_a_minus_b": [
+            0.007856661242403789,
+            0.01505258400571165,
+            0.0024483442669020407
+          ],
+          "psnr_db_unit_range": 24.835202848749706
+        },
+        "nearest_top_left": {
+          "max_abs": 0.2666667103767395,
+          "mean_abs": 0.010125503003100675,
+          "p99_abs": 0.05098038911819458,
+          "per_channel_mean_signed_a_minus_b": [
+            0.007794544214575581,
+            0.015018787273575071,
+            0.002413408226293541
+          ],
+          "psnr_db_unit_range": 36.65121275757664
+        },
+        "bilinear_no_antialias": {
+          "max_abs": 0.7568627446889877,
+          "mean_abs": 0.03057930623738798,
+          "p99_abs": 0.2392157018184662,
+          "per_channel_mean_signed_a_minus_b": [
+            0.007899907622359023,
+            0.015089971007070062,
+            0.002489656671366447
+          ],
+          "psnr_db_unit_range": 25.07241298696122
+        },
+        "closest_by_mean_abs": "nearest_top_left"
+      }
+    },
+    {
+      "frame_index": 283,
+      "A_input_ds_vs_hf": {
+        "max_abs": 0.6117646992206573,
+        "mean_abs": 0.028458765525821644,
+        "p99_abs": 0.2078431248664856,
+        "per_channel_mean_signed_a_minus_b": [
+          0.008299216632394746,
+          0.015539879062273484,
+          0.0025107774099637934
+        ],
+        "psnr_db_unit_range": 26.098536223703142,
+        "ds_input_range": [
+          0.0,
+          1.0
+        ]
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 0.00012540817260742188,
+          "mean_abs": 3.0651986598968506e-06,
+          "p99_abs": 2.193450927734375e-05
+        },
+        "pred_boxes": {
+          "max_abs": 6.735324859619141e-06,
+          "mean_abs": 1.3758117953936258e-07,
+          "p99_abs": 1.9681453704833974e-06
+        },
+        "person_decodes_ds_tensors": 62,
+        "person_decodes_onnx_on_ds_input": 62,
+        "person_query_order_equal": true,
+        "result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 62,
+        "right_count": 62,
+        "matches": 62,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999985003332902,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 0.00011205673217773438,
+        "median_bbox_abs_delta_px": 4.7206878662109375e-05,
+        "pre_tracker_track_ids_all_untracked": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_original_onnx_reference_strict": {
+        "left_count": 62,
+        "right_count": 63,
+        "matches": 35,
+        "unmatched_left": [
+          3,
+          6,
+          8,
+          9,
+          15,
+          19,
+          20,
+          22,
+          24,
+          27,
+          30,
+          31,
+          32,
+          37,
+          38,
+          39,
+          41,
+          42,
+          44,
+          45,
+          47,
+          50,
+          51,
+          52,
+          55,
+          58,
+          60
+        ],
+        "unmatched_right": [
+          2,
+          5,
+          6,
+          9,
+          12,
+          13,
+          14,
+          15,
+          19,
+          20,
+          21,
+          22,
+          26,
+          30,
+          32,
+          33,
+          34,
+          35,
+          39,
+          41,
+          43,
+          44,
+          47,
+          49,
+          55,
+          59,
+          60,
+          62
+        ],
+        "min_iou": 0.6845326371862223,
+        "max_score_abs_delta": 0.018758773803710938,
+        "max_bbox_abs_delta_px": 177.22097074985504,
+        "median_bbox_abs_delta_px": 2.920207142829895,
+        "result": "FAIL",
+        "iou_only_matches_for_context": 60,
+        "iou_only_max_score_abs_delta": 0.05187466740608215
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 60,
+        "right_count": 62,
+        "matches": 60,
+        "unmatched_left": [],
+        "unmatched_right": [
+          0,
+          33
+        ],
+        "min_iou": 0.9999992757497664,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_count": 60,
+        "pre_count": 62,
+        "post_vs_original_onnx_reference_matches": 33
+      },
+      "F_resize_emulation_vs_ds_input": {
+        "pil_bilinear_antialias_(hf)": {
+          "max_abs": 0.6117646992206573,
+          "mean_abs": 0.028458765525821644,
+          "p99_abs": 0.2078431248664856,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008299216632394746,
+            0.015539879062273484,
+            0.0025107774099637934
+          ],
+          "psnr_db_unit_range": 26.098536223703142
+        },
+        "nearest_half_pixel": {
+          "max_abs": 0.7333333194255829,
+          "mean_abs": 0.030940717545242555,
+          "p99_abs": 0.24313724040985107,
+          "per_channel_mean_signed_a_minus_b": [
+            0.00827773243466254,
+            0.015523574444563338,
+            0.002497048231596182
+          ],
+          "psnr_db_unit_range": 24.97921121222599
+        },
+        "nearest_top_left": {
+          "max_abs": 0.22745099663734436,
+          "mean_abs": 0.01036419616854649,
+          "p99_abs": 0.05098041892051697,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008208789040622833,
+            0.015433922173217525,
+            0.002376854444489709
+          ],
+          "psnr_db_unit_range": 36.47097332655693
+        },
+        "bilinear_no_antialias": {
+          "max_abs": 0.7215686142444611,
+          "mean_abs": 0.030316636790726458,
+          "p99_abs": 0.2352941334247589,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008282672677969458,
+            0.015521056416897636,
+            0.002491179262751757
+          ],
+          "psnr_db_unit_range": 25.210974942056833
+        },
+        "closest_by_mean_abs": "nearest_top_left"
+      }
+    }
+  ],
+  "tolerances": {
+    "engine_logits_max_abs": 0.001,
+    "engine_pred_boxes_max_abs": 0.0001,
+    "parser_score_abs": 1e-05,
+    "parser_iou_min": 0.99,
+    "parser_bbox_px": 0.05,
+    "strict_crosscheck": {
+      "score_abs_delta_max": 0.02,
+      "bbox_iou_min": 0.5
+    }
+  },
+  "scope": "Two real frames; implementation consistency only. Not labeled accuracy."
+}

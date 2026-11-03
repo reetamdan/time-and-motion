@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "label": "REPEATED / CONCATENATED DEMO FOOTAGE - load and duration testing only",
+  "file": "demo/derived/cam01-repeat33.mp4",
+  "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc",
+  "built_from": {"file": "demo/cam01.mp4", "sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503", "repeats": 33},
+  "construction": "ffmpeg -f concat -safe 0 -i demo/derived/cam01-repeat33.concat.txt -c copy -movflags +faststart demo/derived/cam01-repeat33.mp4 (stream copy, no re-encode; ffmpeg 9.0 Gyan build)",
+  "stream": {"codec": "h264", "profile": "High", "width": 1920, "height": 1080, "fps": "30000/1001", "frames": 23430, "duration_s": 782.09},
+  "timestamps": "Decoded frame PTS strictly increasing over all 23430 frames (checked with ffprobe frame=pts_time); each join step is 0.043 s instead of 0.033 s, below the backend's 2 s source-discontinuity threshold, so the whole file is one source segment.",
+  "limitations": [
+    "The same 23.7 s of footage repeats 33 times: content, crowd, and detector load are periodic, not a 13-minute real scene.",
+    "Not independent footage, not a distinct camera, not usable for accuracy, counting, or facility claims.",
+    "A moving handheld camera: no fixed boundary, no calibration."
+  ],
+  "created_utc": "2026-10-28"
+}

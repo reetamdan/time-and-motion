@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "engine": "/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine",
+  "engine_sha256": "8de3838604f343d17fba248b866e95c4785d91ac768a3973351024402186c3b1",
+  "build_result": "passed",
+  "real_detection_validation": {
+    "status": "pass",
+    "person_detections": 48687,
+    "bounding_boxes": 48687,
+    "metadata_observed": true,
+    "known_clip_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+    "persistent_person_track_ids": 455,
+    "candidate_result": "/workspace/reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z/result.json",
+    "extractor_exit": 0,
+    "failed_checks": [],
+    "errors": []
+  },
+  "scope_note": "Engine build and known-positive detector output only; NVDEC, tracking, analytics, capacity, and acceptance remain unproven."
+}

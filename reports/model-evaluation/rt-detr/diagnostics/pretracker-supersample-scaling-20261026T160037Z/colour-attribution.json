@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:01:45.170756+00:00",
+  "ffmpeg": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+  "source_colour_metadata": "h264 yuv420p, color_range=tv, color_space/transfer/primaries=bt709 (ffprobe)",
+  "frames": [
+    {
+      "frame_index": 141,
+      "variants": {
+        "bt709_tv/bilinear+accurate_rnd+full_chroma_int": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.007764001689538418,
+            "max_abs": 0.22745096683502197,
+            "per_channel_mean_signed": [
+              -0.001668767757328169,
+              -0.0019682496739733325,
+              -0.0018296888181248505
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.010478324221821822,
+            "max_abs": 0.09019607305526733,
+            "per_channel_mean_signed": [
+              -0.009703661219336936,
+              -0.016999282142678568,
+              -0.0043776711491227615
+            ]
+          }
+        },
+        "bt709_tv/bicubic": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.008159212614846183,
+            "max_abs": 0.23137253522872925,
+            "per_channel_mean_signed": [
+              0.0020881352350261297,
+              0.0037630616629212455,
+              0.001897409831672121
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.006394636617048187,
+            "max_abs": 0.08235293626785278,
+            "per_channel_mean_signed": [
+              -0.005946758226982638,
+              -0.011267970805783989,
+              -0.00065057249932579
+            ]
+          }
+        },
+        "bt601_tv/bilinear+accurate_rnd+full_chroma_int": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.010174310768616125,
+            "max_abs": 0.19607847929000854,
+            "per_channel_mean_signed": [
+              0.0042563241790048775,
+              0.009495502720910735,
+              -0.0005010277001201757
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.004128542481485056,
+            "max_abs": 0.027450978755950928,
+            "per_channel_mean_signed": [
+              -0.0037785692830038897,
+              -0.005535529747794499,
+              -0.003049010031118087
+            ]
+          }
+        },
+        "bt601_tv/bicubic": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.01235112244389408,
+            "max_abs": 0.21176475286483765,
+            "per_channel_mean_signed": [
+              0.008034893462008768,
+              0.015031032468705234,
+              0.0025479823309979112
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.0,
+            "max_abs": 0.0,
+            "per_channel_mean_signed": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "bt709_pc/bilinear+accurate_rnd+full_chroma_int": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.025603468330785594,
+            "max_abs": 0.23137253522872925,
+            "per_channel_mean_signed": [
+              0.0053902754405498856,
+              -0.0033268018397029663,
+              0.002500810184810689
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.024633849389034974,
+            "max_abs": 0.09019608795642853,
+            "per_channel_mean_signed": [
+              -0.002644618021458882,
+              -0.0183578343084082,
+              -4.71721461872221e-05
+            ]
+          }
+        },
+        "bt709_pc/bicubic": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.025349276230032653,
+            "max_abs": 0.2392156720161438,
+            "per_channel_mean_signed": [
+              0.007140055252457387,
+              0.0001419960601015191,
+              0.004382665259672649
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.023848833546368648,
+            "max_abs": 0.08627450466156006,
+            "per_channel_mean_signed": [
+              -0.0008948382095513807,
+              -0.014889036408603715,
+              0.0018346829286747378
+            ]
+          }
+        }
+      },
+      "closest_to_deepstream": "bt709_tv/bilinear+accurate_rnd+full_chroma_int",
+      "closest_to_hf_reference": "bt601_tv/bicubic"
+    },
+    {
+      "frame_index": 283,
+      "variants": {
+        "bt709_tv/bilinear+accurate_rnd+full_chroma_int": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.007660811576591489,
+            "max_abs": 0.2039215862751007,
+            "per_channel_mean_signed": [
+              -0.0016410023892603931,
+              -0.0019670912087622126,
+              -0.0018602970584288413
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.010753443609813378,
+            "max_abs": 0.09019610285758972,
+            "per_channel_mean_signed": [
+              -0.010088206647706101,
+              -0.017410137378401486,
+              -0.00430154715444587
+            ]
+          }
+        },
+        "bt709_tv/bicubic": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.008077047651674244,
+            "max_abs": 0.2196078598499298,
+            "per_channel_mean_signed": [
+              0.002152042993493524,
+              0.003775105948525379,
+              0.0018748247237090254
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.0066570096236227986,
+            "max_abs": 0.08627453446388245,
+            "per_channel_mean_signed": [
+              -0.006295161264952185,
+              -0.011667940221113894,
+              -0.0005664253723080037
+            ]
+          }
+        },
+        "bt601_tv/bilinear+accurate_rnd+full_chroma_int": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.010239619392975024,
+            "max_abs": 0.19215688109397888,
+            "per_channel_mean_signed": [
+              0.00463271279248147,
+              0.009890943574400807,
+              -0.0006682110752080916
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.004165565694089916,
+            "max_abs": 0.023529410362243652,
+            "per_channel_mean_signed": [
+              -0.0038144914659642383,
+              -0.005552102595238466,
+              -0.003109461171225121
+            ]
+          }
+        },
+        "bt601_tv/bicubic": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.01249205729116511,
+            "max_abs": 0.20784315466880798,
+            "per_channel_mean_signed": [
+              0.008447204258445709,
+              0.015443046169639273,
+              0.0024412500960170292
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.0,
+            "max_abs": 0.0,
+            "per_channel_mean_signed": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "bt709_pc/bilinear+accurate_rnd+full_chroma_int": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.0261030569116762,
+            "max_abs": 0.21960783004760742,
+            "per_channel_mean_signed": [
+              0.006200468370479939,
+              -0.0029213465616885516,
+              0.002790016518338234
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.025162016545030686,
+            "max_abs": 0.09019608795642853,
+            "per_channel_mean_signed": [
+              -0.0022467358879657696,
+              -0.018364392731327825,
+              0.00034876642232120505
+            ]
+          }
+        },
+        "bt709_pc/bicubic": {
+          "vs_deepstream_input": {
+            "mean_abs": 0.02590756066107133,
+            "max_abs": 0.2235293984413147,
+            "per_channel_mean_signed": [
+              0.008016740598468458,
+              0.0005927753467585716,
+              0.0046181127869749615
+            ]
+          },
+          "vs_hf_reference_input": {
+            "mean_abs": 0.02442410546905497,
+            "max_abs": 0.08627451956272125,
+            "per_channel_mean_signed": [
+              -0.00043046365997724935,
+              -0.014850270822880702,
+              0.0021768626909579327
+            ]
+          }
+        }
+      },
+      "closest_to_deepstream": "bt709_tv/bilinear+accurate_rnd+full_chroma_int",
+      "closest_to_hf_reference": "bt601_tv/bicubic"
+    }
+  ],
+  "scope": "Attribution of preprocessing differences only; not a detector-quality measure."
+}

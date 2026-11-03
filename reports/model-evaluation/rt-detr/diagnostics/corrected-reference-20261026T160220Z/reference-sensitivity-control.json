@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "supersample_run": "reports\\model-evaluation\\rt-detr\\diagnostics\\pretracker-supersample-scaling-20261026T160037Z",
+ "criteria": "unchanged strict one-to-one IoU>=0.5, score delta<=0.02",
+ "frames": {
+  "141": {
+   "cpu_bt601_vs_cpu_bt709_strict": "74/76 vs 75",
+   "cpu_iou_only": 74,
+   "cpu_iou_only_max_dscore": 0.016495048999786377,
+   "ds_supersample_unmatched_confidences": [
+    0.25,
+    0.255,
+    0.261,
+    0.298,
+    0.317,
+    0.336,
+    0.378,
+    0.418,
+    0.424
+   ],
+   "ds_supersample_iou_only": "73/76",
+   "ds_iou_only_max_dscore": 0.040678173303604126,
+   "ds_conf>=0.5_strict": "9/10 vs 9"
+  },
+  "283": {
+   "cpu_bt601_vs_cpu_bt709_strict": "61/63 vs 66",
+   "cpu_iou_only": 63,
+   "cpu_iou_only_max_dscore": 0.08251368999481201,
+   "ds_supersample_unmatched_confidences": [
+    0.253,
+    0.265,
+    0.268,
+    0.27,
+    0.294,
+    0.306,
+    0.306,
+    0.316,
+    0.339,
+    0.402,
+    0.494
+   ],
+   "ds_supersample_iou_only": "64/67",
+   "ds_iou_only_max_dscore": 0.08297574520111084,
+   "ds_conf>=0.5_strict": "11/11 vs 11"
+  }
+ }
+}

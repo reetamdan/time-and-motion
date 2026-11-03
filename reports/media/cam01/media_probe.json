@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "demo/cam01.mp4",
+    "filename": "cam01.mp4",
+    "size_bytes": 17687764,
+    "sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503"
+  },
+  "tooling": {
+    "python_package": "opencv-python-headless",
+    "opencv_version": "5.0.0",
+    "decode_backend": "FFMPEG"
+  },
+  "container_reported": {
+    "codec_fourcc": "h264",
+    "codec_name": "H.264 / AVC",
+    "codec_fourcc_integer": 875967080,
+    "width": 1920,
+    "height": 1080,
+    "fps": 29.97002997002997,
+    "frame_count": 710,
+    "duration_seconds_from_reported_count_and_fps": 23.690333333333335
+  },
+  "sequential_decode": {
+    "decoded_frame_count": 710,
+    "decoded_duration_seconds_at_reported_fps": 23.690333333333335,
+    "clean_eof": true,
+    "frame_count_matches_container_report": true,
+    "decode_errors": [],
+    "first_decoded_frame_shape": [
+      1920,
+      1080
+    ],
+    "last_decoded_frame_shape": [
+      1920,
+      1080
+    ],
+    "first_timestamp_ms": 0.0,
+    "last_timestamp_ms": 23656.96666666667,
+    "timestamps_strictly_increasing": true,
+    "minimum_timestamp_delta_ms": 33.36666666666497,
+    "maximum_timestamp_delta_ms": 33.366666666672245
+  },
+  "evidence_images": [
+    {
+      "path": "reports/media/cam01/frame_000000_t000000ms.jpg",
+      "size_bytes": 478127,
+      "width": 1920,
+      "height": 1080,
+      "jpeg_quality": 92,
+      "resize_scale_from_source": 1.0,
+      "frame_index": 0,
+      "timestamp_ms": 0.0,
+      "source_width": 1920,
+      "source_height": 1080
+    },
+    {
+      "path": "reports/media/cam01/frame_000141_t004705ms.jpg",
+      "size_bytes": 513557,
+      "width": 1920,
+      "height": 1080,
+      "jpeg_quality": 92,
+      "resize_scale_from_source": 1.0,
+      "frame_index": 141,
+      "timestamp_ms": 4704.7,
+      "source_width": 1920,
+      "source_height": 1080
+    },
+    {
+      "path": "reports/media/cam01/frame_000283_t009443ms.jpg",
+      "size_bytes": 503902,
+      "width": 1920,
+      "height": 1080,
+      "jpeg_quality": 92,
+      "resize_scale_from_source": 1.0,
+      "frame_index": 283,
+      "timestamp_ms": 9442.767,
+      "source_width": 1920,
+      "source_height": 1080
+    },
+    {
+      "path": "reports/media/cam01/frame_000425_t014181ms.jpg",
+      "size_bytes": 540312,
+      "width": 1920,
+      "height": 1080,
+      "jpeg_quality": 92,
+      "resize_scale_from_source": 1.0,
+      "frame_index": 425,
+      "timestamp_ms": 14180.833,
+      "source_width": 1920,
+      "source_height": 1080
+    },
+    {
+      "path": "reports/media/cam01/frame_000567_t018919ms.jpg",
+      "size_bytes": 515214,
+      "width": 1920,
+      "height": 1080,
+      "jpeg_quality": 92,
+      "resize_scale_from_source": 1.0,
+      "frame_index": 567,
+      "timestamp_ms": 18918.9,
+      "source_width": 1920,
+      "source_height": 1080
+    },
+    {
+      "path": "reports/media/cam01/frame_000709_t023657ms.jpg",
+      "size_bytes": 510267,
+      "width": 1920,
+      "height": 1080,
+      "jpeg_quality": 92,
+      "resize_scale_from_source": 1.0,
+      "frame_index": 709,
+      "timestamp_ms": 23656.967,
+      "source_width": 1920,
+      "source_height": 1080
+    }
+  ],
+  "contact_sheet": {
+    "path": "reports/media/cam01/contact_sheet.jpg",
+    "size_bytes": 577273,
+    "width": 1800,
+    "height": 876,
+    "jpeg_quality": 92,
+    "resize_scale_from_source": 1.0,
+    "sampled_frame_indices": [
+      0,
+      141,
+      283,
+      425,
+      567,
+      709
+    ]
+  },
+  "image_size_limit_bytes_exclusive": 3000000,
+  "method_notes": [
+    "Metadata is read through the OpenCV VideoCapture backend; codec identity is the reported FourCC.",
+    "The complete clip was decoded sequentially once for validation and again only as needed to extract selected frames.",
+    "A false read at the container-reported final frame is treated as normal EOF; early termination or empty frames are recorded as decode errors.",
+    "JPEG quality or dimensions were reduced only when necessary to keep each evidence image below the byte limit."
+  ]
+}

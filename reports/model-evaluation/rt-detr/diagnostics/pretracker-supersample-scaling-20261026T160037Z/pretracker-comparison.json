@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:01:08.410244+00:00",
+  "run_dir": "reports\\model-evaluation\\rt-detr\\diagnostics\\pretracker-supersample-scaling-20261026T160037Z",
+  "infer_config": "/workspace/perception/candidates/rt_detr/diagnostics/cam01_rt_detr_infer_diag_supersample_scaling.txt",
+  "infer_config_sha256": "231b86c80f91254232d87186d64fb13faa5d65871dcd3b7da03309d051a59d35",
+  "onnx_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+  "onnxruntime_version": "1.20.1",
+  "stage_results": {
+    "B_engine_inside_deepstream": "PASS",
+    "C_native_parser_and_scaling": "PASS",
+    "D_end_to_end_pre_tracker_vs_hf_input_onnx": "FAIL"
+  },
+  "frames": [
+    {
+      "frame_index": 141,
+      "A_input_ds_vs_hf": {
+        "max_abs": 0.21176475286483765,
+        "mean_abs": 0.01235112244389408,
+        "p99_abs": 0.058823585510253906,
+        "per_channel_mean_signed_a_minus_b": [
+          0.008034893462008768,
+          0.015031032468705234,
+          0.0025479823309979112
+        ],
+        "psnr_db_unit_range": 34.973758864544216,
+        "ds_input_range": [
+          0.05490196496248245,
+          1.0
+        ]
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 7.43865966796875e-05,
+          "mean_abs": 2.786010503768921e-06,
+          "p99_abs": 1.9073486328125e-05
+        },
+        "pred_boxes": {
+          "max_abs": 7.465481758117676e-06,
+          "mean_abs": 1.2118446951111158e-07,
+          "p99_abs": 1.4020502567291248e-06
+        },
+        "person_decodes_ds_tensors": 76,
+        "person_decodes_onnx_on_ds_input": 76,
+        "person_query_order_equal": true,
+        "result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 76,
+        "right_count": 76,
+        "matches": 76,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999982632625237,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 0.00014257431030273438,
+        "median_bbox_abs_delta_px": 4.9114227294921875e-05,
+        "pre_tracker_track_ids_all_untracked": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_original_onnx_reference_strict": {
+        "left_count": 76,
+        "right_count": 76,
+        "matches": 67,
+        "unmatched_left": [
+          0,
+          1,
+          15,
+          19,
+          32,
+          38,
+          43,
+          44,
+          55
+        ],
+        "unmatched_right": [
+          26,
+          27,
+          32,
+          39,
+          59,
+          69,
+          71,
+          72,
+          74
+        ],
+        "min_iou": 0.8701360692799016,
+        "max_score_abs_delta": 0.017294466495513916,
+        "max_bbox_abs_delta_px": 25.594655990600586,
+        "median_bbox_abs_delta_px": 1.1554856300354004,
+        "result": "FAIL",
+        "iou_only_matches_for_context": 73,
+        "iou_only_max_score_abs_delta": 0.03479278087615967
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 74,
+        "right_count": 76,
+        "matches": 74,
+        "unmatched_left": [],
+        "unmatched_right": [
+          13,
+          16
+        ],
+        "min_iou": 0.9999994150020245,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_count": 74,
+        "pre_count": 76,
+        "post_vs_original_onnx_reference_matches": 65
+      },
+      "F_resize_emulation_vs_ds_input": {
+        "pil_bilinear_antialias_(hf)": {
+          "max_abs": 0.21176475286483765,
+          "mean_abs": 0.01235112244389408,
+          "p99_abs": 0.058823585510253906,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008034893462008768,
+            0.015031032468705234,
+            0.0025479823309979112
+          ],
+          "psnr_db_unit_range": 34.973758864544216
+        },
+        "nearest_half_pixel": {
+          "max_abs": 0.3176470398902893,
+          "mean_abs": 0.016312653834442397,
+          "p99_abs": 0.094117671251297,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008013102890054143,
+            0.015002396352510914,
+            0.0025233768957809845
+          ],
+          "psnr_db_unit_range": 31.959865624305404
+        },
+        "nearest_top_left": {
+          "max_abs": 0.6588235795497894,
+          "mean_abs": 0.027845710948246657,
+          "p99_abs": 0.2196078598499298,
+          "per_channel_mean_signed_a_minus_b": [
+            0.007950985862225934,
+            0.014968599620374334,
+            0.0024884408551724847
+          ],
+          "psnr_db_unit_range": 25.895771775157918
+        },
+        "bilinear_no_antialias": {
+          "max_abs": 0.2392156720161438,
+          "mean_abs": 0.014507836196906206,
+          "p99_abs": 0.0784313976764679,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008056349270009377,
+            0.015039783353869325,
+            0.002564689300245391
+          ],
+          "psnr_db_unit_range": 33.196012753678765
+        },
+        "closest_by_mean_abs": "pil_bilinear_antialias_(hf)"
+      }
+    },
+    {
+      "frame_index": 283,
+      "A_input_ds_vs_hf": {
+        "max_abs": 0.20784315466880798,
+        "mean_abs": 0.01249205729116511,
+        "p99_abs": 0.0627450942993164,
+        "per_channel_mean_signed_a_minus_b": [
+          0.008447204258445709,
+          0.015443046169639273,
+          0.0024412500960170292
+        ],
+        "psnr_db_unit_range": 34.877016415361055,
+        "ds_input_range": [
+          0.02352941408753395,
+          1.0
+        ]
+      },
+      "B_engine_in_ds_vs_onnx_same_input": {
+        "logits": {
+          "max_abs": 0.00012159347534179688,
+          "mean_abs": 2.9617746671040854e-06,
+          "p99_abs": 2.09808349609375e-05
+        },
+        "pred_boxes": {
+          "max_abs": 3.948807716369629e-06,
+          "mean_abs": 1.2785118694106738e-07,
+          "p99_abs": 1.6689300537109375e-06
+        },
+        "person_decodes_ds_tensors": 67,
+        "person_decodes_onnx_on_ds_input": 67,
+        "person_query_order_equal": true,
+        "result": "PASS"
+      },
+      "C_parser_scaling_vs_python_decode_of_ds_tensors": {
+        "left_count": 67,
+        "right_count": 67,
+        "matches": 67,
+        "unmatched_left": [],
+        "unmatched_right": [],
+        "min_iou": 0.9999981870818472,
+        "max_score_abs_delta": 5.960464477539063e-08,
+        "max_bbox_abs_delta_px": 0.00014972686767578125,
+        "median_bbox_abs_delta_px": 5.14984130859375e-05,
+        "pre_tracker_track_ids_all_untracked": true,
+        "result": "PASS"
+      },
+      "D_pre_tracker_vs_original_onnx_reference_strict": {
+        "left_count": 67,
+        "right_count": 63,
+        "matches": 57,
+        "unmatched_left": [
+          0,
+          1,
+          6,
+          7,
+          8,
+          11,
+          13,
+          14,
+          20,
+          27
+        ],
+        "unmatched_right": [
+          39,
+          46,
+          52,
+          56,
+          60,
+          62
+        ],
+        "min_iou": 0.9324819086293133,
+        "max_score_abs_delta": 0.018533140420913696,
+        "max_bbox_abs_delta_px": 12.39384651184082,
+        "median_bbox_abs_delta_px": 1.0203806161880493,
+        "result": "FAIL",
+        "iou_only_matches_for_context": 61,
+        "iou_only_max_score_abs_delta": 0.05486786365509033
+      },
+      "E_post_nvdcf_vs_pre_tracker": {
+        "left_count": 64,
+        "right_count": 67,
+        "matches": 64,
+        "unmatched_left": [],
+        "unmatched_right": [
+          5,
+          13,
+          35
+        ],
+        "min_iou": 0.9999996416937994,
+        "max_score_abs_delta": 0.0,
+        "max_bbox_abs_delta_px": 6.103515625e-05,
+        "median_bbox_abs_delta_px": 0.0,
+        "post_count": 64,
+        "pre_count": 67,
+        "post_vs_original_onnx_reference_matches": 55
+      },
+      "F_resize_emulation_vs_ds_input": {
+        "pil_bilinear_antialias_(hf)": {
+          "max_abs": 0.20784315466880798,
+          "mean_abs": 0.01249205729116511,
+          "p99_abs": 0.0627450942993164,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008447204258445709,
+            0.015443046169639273,
+            0.0024412500960170292
+          ],
+          "psnr_db_unit_range": 34.877016415361055
+        },
+        "nearest_half_pixel": {
+          "max_abs": 0.3372548818588257,
+          "mean_abs": 0.016369751150355494,
+          "p99_abs": 0.0941176563501358,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008425720060713501,
+            0.015426741551929126,
+            0.0024275209176494172
+          ],
+          "psnr_db_unit_range": 31.943799039059748
+        },
+        "nearest_top_left": {
+          "max_abs": 0.6901961416006088,
+          "mean_abs": 0.027603399411955252,
+          "p99_abs": 0.21568630635738373,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008356776666673796,
+            0.015337089280583313,
+            0.002307327130542944
+          ],
+          "psnr_db_unit_range": 26.01454727018804
+        },
+        "bilinear_no_antialias": {
+          "max_abs": 0.2705882489681244,
+          "mean_abs": 0.014581391463198467,
+          "p99_abs": 0.0784313976764679,
+          "per_channel_mean_signed_a_minus_b": [
+            0.008430660304020421,
+            0.015424223524263425,
+            0.0024216519488049924
+          ],
+          "psnr_db_unit_range": 33.15682226264095
+        },
+        "closest_by_mean_abs": "pil_bilinear_antialias_(hf)"
+      }
+    }
+  ],
+  "tolerances": {
+    "engine_logits_max_abs": 0.001,
+    "engine_pred_boxes_max_abs": 0.0001,
+    "parser_score_abs": 1e-05,
+    "parser_iou_min": 0.99,
+    "parser_bbox_px": 0.05,
+    "strict_crosscheck": {
+      "score_abs_delta_max": 0.02,
+      "bbox_iou_min": 0.5
+    }
+  },
+  "scope": "Two real frames; implementation consistency only. Not labeled accuracy."
+}

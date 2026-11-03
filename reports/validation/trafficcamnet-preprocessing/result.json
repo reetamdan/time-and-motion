@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:42:44Z",
+  "result": "CHARACTERIZED",
+  "production_config_changed": false,
+  "production_config": {"path": "perception/deepstream/cam01_trafficcamnet_smoke_infer.txt", "sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405"},
+  "engine_sha256_unchanged": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+  "runs": ["pretracker-default-scaling-20261026T164051Z", "pretracker-bilinear-scaling-20261026T164120Z", "pretracker-supersample-scaling-20261026T164141Z"],
+  "commands": [
+    "DEEPSTREAM_CONTAINER_NAME=aegis-tcn-diag-<ts> bash scripts/deepstream.sh env CONFIG_DIR=/workspace/perception/deepstream/diagnostics CONFIG_PREFIX=trafficcamnet NETWORK_SIZE=544x960 TRACKER_CONFIG=/workspace/perception/deepstream/reference/config_tracker_NvDCF_perf.yml bash /workspace/perception/candidates/rt_detr/diagnostics/run_diagnostic.sh <variant> <out> --with-tracker",
+    ".install/rf-detr-export/venv/Scripts/python.exe scripts/analyze_trafficcamnet_preprocessing.py --out reports/validation/trafficcamnet-preprocessing/analysis.json <run dirs>"
+  ],
+  "findings": [
+    "Production default nvinfer scaling (1920x1080 -> 960x544) is closest to top-left-aligned nearest sampling (mean abs 0.0042 vs that emulation).",
+    "scaling-filter=3 (supersample) is closest to half-pixel bilinear at this ~2x ratio (0.0051); scaling-filter=1 is still nearest-like (0.0145).",
+    "Filter choice materially changes output: pre-tracker persons/frame 18.25 (default), 16.84 (bilinear), 15.72 (supersample); unique track IDs 130/118/101; median track length 53/47.5/66 frames; cross-variant same-frame boxes shift 11-20 px median and 2-5 persons appear/disappear.",
+    "All variants detect roughly 15-18 persons/frame in a scene where frame 141 visibly contains far more people; TrafficCamNet remains a plumbing smoke model, not a crowd-counting baseline."
+  ],
+  "decision": "No production change. None of the variants can be shown more accurate without labels; this is recorded as a preprocessing sensitivity that any labeled evaluation must fix explicitly in config.",
+  "raw_tensor_capture": "Not captured in these runs: TrafficCamNet layer names contain '/', so the .npy paths were invalid (recorded in run-summary tensor_errors). Fixed in extract_pretracker.py afterwards; raw tensors were not needed for this analysis.",
+  "evidence": "reports/validation/trafficcamnet-preprocessing/analysis.json"
+}

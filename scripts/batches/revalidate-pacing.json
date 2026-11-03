@@ -1,0 +1,11 @@
+{"steps": [
+ {"name": "paced_lead", "script": "scripts/validate_paced_lead.py"},
+ {"name": "live_workflow", "script": "scripts/validate_live_workflow.py"},
+ {"name": "fault_isolation", "script": "scripts/validate_fault_isolation.py"},
+ {"name": "browser_workflow", "python": ".install/browser-tests/venv/Scripts/python.exe", "script": "scripts/validate_browser_workflow.py"},
+ {"name": "browser_evidence", "python": ".install/browser-tests/venv/Scripts/python.exe", "script": "scripts/validate_browser_evidence.py"},
+ {"name": "ui_refactor", "python": ".install/browser-tests/venv/Scripts/python.exe", "script": "scripts/validate_ui_refactor.py"},
+ {"name": "wsl_route", "script": "scripts/validate_wsl_route.py"},
+ {"name": "rtsp_controlled", "script": "scripts/validate_rtsp_source.py"},
+ {"name": "screenshots_after", "python": ".install/browser-tests/venv/Scripts/python.exe", "script": "scripts/capture_ui_screenshots.py", "args": ["--label", "after"]}
+]}

@@ -1,0 +1,36 @@
+{
+  "started_utc": "2026-10-28T17:07:28.576945+00:00",
+  "supervisor_pid": 2544,
+  "parent_pid": 21556,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "rtsp_controlled",
+      "started_utc": "2026-10-28T17:07:28.578454+00:00",
+      "available_at_start_mib": 7942.3,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\validate_rtsp_source.py"
+      ],
+      "pid": 27524,
+      "exit_code": 0,
+      "ended_utc": "2026-10-28T17:10:16.017187+00:00",
+      "run_dir": "reports\\validation\\rtsp-controlled-20261028T170733053902Z",
+      "leftover_containers": [],
+      "removed_containers": [],
+      "preexisting_containers_untouched": [],
+      "interrupted_by_supervisor": null
+    }
+  ],
+  "state": "COMPLETE",
+  "host_available_min_mib": 5021.2,
+  "ended_utc": "2026-10-28T17:10:16.222585+00:00",
+  "stop_reason": null,
+  "not_started": []
+}

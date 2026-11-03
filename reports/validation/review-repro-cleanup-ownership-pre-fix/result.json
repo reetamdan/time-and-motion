@@ -1,0 +1,25 @@
+{
+  "finding_1_startup_failure": {
+    "status_after_start": "DEGRADED",
+    "status_after_stop": "STOPPED",
+    "adapter_stop_calls": 0,
+    "containers_left": [
+      "aegis-cam-01-1932bbac-af51-4a18-b5e3-369ecc151906"
+    ]
+  },
+  "finding_2_restart": {
+    "status_before_restart": "STOP_FAILED",
+    "persisted_after_initialize": "STOPPED",
+    "adapter_stop_calls_on_restart": 0,
+    "new_run_status": "RUNNING",
+    "new_run_is_different": true,
+    "containers_left": [
+      "aegis-cam-01-371c5e61-43f2-4e82-8563-cbcdc4d4c7a0",
+      "aegis-cam-01-a701e786-0ea8-4600-8c73-bf0f60c008f8"
+    ]
+  },
+  "reproduced": {
+    "finding_1": true,
+    "finding_2": true
+  }
+}

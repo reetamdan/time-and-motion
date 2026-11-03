@@ -1,0 +1,33 @@
+{
+  "steps": [
+    {
+      "name": "ui_refactor",
+      "python": ".install/browser-tests/venv/Scripts/python.exe",
+      "script": "scripts/validate_ui_refactor.py"
+    },
+    {
+      "name": "fault_isolation",
+      "script": "scripts/validate_fault_isolation.py"
+    },
+    {
+      "name": "paced_lead",
+      "script": "scripts/validate_paced_lead.py"
+    },
+    {
+      "name": "rtsp_controlled",
+      "script": "scripts/validate_rtsp_source.py"
+    },
+    {
+      "name": "detector_profiles",
+      "script": "scripts/benchmark/run_detector_profiles.py",
+      "args": [
+        "--runs",
+        "3"
+      ]
+    },
+    {
+      "name": "documented_commands",
+      "script": "scripts/validate_documented_commands.py"
+    }
+  ]
+}

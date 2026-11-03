@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "written_at": "2026-10-27",
+  "applies_to": "result.json in this directory (unchanged)",
+  "correction": "The evidence check 'snapshot_frame_within_one_frame_of_marker' compared the snapshot's PTS with the requested time in the same assumed timeline and therefore could not detect a timeline offset. DeepStream's PTS for cam01 frame 0 is 0.0667 s while ffmpeg's is 0.0 (H.264 B-frame reorder delay, has_b_frames=2), so this run's snapshot and clip were extracted 2 frames (~67 ms) later than the marked pipeline frame. The start-latency, artifact-identity, provenance, cache, and cleanup results are unaffected.",
+  "fix": "backend/app/services/evidence.py aligns the pipeline timeline to the file on the epoch's first decoded frame; scripts/validate_startup_and_evidence.py now verifies the snapshot against an independent decode of the pipeline frame_number (PSNR) and of frame_number+2."
+}

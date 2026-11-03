@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-10-24T14:15:50.842866+00:00",
+  "source": "/workspace/demo/cam01.mp4",
+  "pipeline": "filesrc ! qtdemux ! h264parse ! nvv4l2decoder ! nvvideoconvert ! I420 1280x720 ! fdsink",
+  "pipeline_return_code": 0,
+  "decoded_i420_bytes": 981504000,
+  "decoded_frames": 710,
+  "remainder_bytes": 0,
+  "passed": true
+}

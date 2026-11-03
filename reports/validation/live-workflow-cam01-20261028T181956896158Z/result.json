@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-28T18:21:28.267515+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_live_workflow.py",
+  "run_dir": "reports\\validation\\live-workflow-cam01-20261028T181956896158Z",
+  "result": "PASS",
+  "checks": {
+    "configured_artifacts_all_match": "PASS",
+    "websocket_initial_snapshot": "PASS",
+    "paced_start_ok": "PASS",
+    "paced_real_positive_counts": "PASS",
+    "paced_replay_mode_reported": "PASS",
+    "paced_history_persisted_during_run": "PASS",
+    "paced_natural_eos_goes_stale_not_zero": "PASS",
+    "paced_clean_eof_reported": "PASS",
+    "paced_all_frames_in_history_before_stop": "PASS",
+    "paced_stop_ok": "PASS",
+    "paced_exact_container_absent": "PASS",
+    "paced_stop_after_eof_adds_no_bucket": "PASS",
+    "paced_run_provenance_extractor_matches_configuration": "PASS",
+    "paced_extractor_ran_with_configured_pacing": "PASS",
+    "websocket_delivered_positive_live_counts": "PASS",
+    "unpaced_start_ok": "PASS",
+    "unpaced_real_positive_counts": "PASS",
+    "unpaced_replay_mode_reported": "PASS",
+    "unpaced_history_persisted_during_run": "PASS",
+    "unpaced_natural_eos_goes_stale_not_zero": "PASS",
+    "unpaced_clean_eof_reported": "PASS",
+    "unpaced_all_frames_in_history_before_stop": "PASS",
+    "unpaced_stop_ok": "PASS",
+    "unpaced_exact_container_absent": "PASS",
+    "unpaced_stop_after_eof_adds_no_bucket": "PASS",
+    "unpaced_run_provenance_extractor_matches_configuration": "PASS",
+    "unpaced_extractor_ran_with_configured_pacing": "PASS",
+    "paced_follows_source_time": "PASS",
+    "unpaced_faster_than_source_time": "PASS",
+    "start_does_not_stall_consumer": "PASS",
+    "paced_history_covers_clip": "PASS",
+    "history_single_segment": "PASS",
+    "paced_unpaced_identical_source_time_buckets": "PASS",
+    "recorded_real_observations_identical_under_two_supplied_receive_timelines": "PASS",
+    "recorded_paced_delivery_actually_waited": "PASS",
+    "recorded_unpaced_delivery_much_faster": "PASS",
+    "recorded_delivery_speeds_identical_history_incl_eof_bucket": "PASS",
+    "recorded_replay_matches_live_paced_history": "PASS",
+    "owned_resources_recorded_and_released": "PASS",
+    "no_image_line_configured_for_moving_camera": "PASS",
+    "frontend_bundle_served_with_history_view": "PASS",
+    "restart_recovery_found_running_owned_container": "PASS",
+    "restart_recovery_released_exact_container": "PASS",
+    "no_leftover_cam01_containers": "PASS"
+  },
+  "observed": {
+    "identity": {
+      "configuration_revision": "76e696870e2ce94f1ed73416f1fba74daf19dec16c3c01b8eb54bb02b7a16a6e",
+      "selected_model": "trafficcamnet-smoke",
+      "selection_mode": "provisional_smoke",
+      "source": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\demo\\cam01.mp4",
+      "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+      "artifacts": [
+        {
+          "name": "detector.checkpoint",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx",
+          "expected_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "current_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.engine",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine",
+          "expected_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+          "current_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.infer_config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\cam01_trafficcamnet_smoke_infer.txt",
+          "expected_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+          "current_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+          "status": "MATCH"
+        },
+        {
+          "name": "tracker.config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+          "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.wrapper",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\deepstream.sh",
+          "expected_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "current_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.extractor",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+          "expected_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+          "current_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.capability_probe",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\capability-probe.sh",
+          "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.image_reference",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\environment\\deepstream92\\image-reference.txt",
+          "expected_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "current_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "status": "MATCH"
+        }
+      ],
+      "python": "3.12.15"
+    },
+    "paced_history_during_run": {
+      "source_position_s": 8.141466666,
+      "samples": 16
+    },
+    "paced_timing": {
+      "start_http_seconds": 7.987458399999014,
+      "source_seconds_per_wall_second": 0.9401339138851467,
+      "live_window_wall_seconds": 25.12790959999984,
+      "last_source_position_s": 23.7237,
+      "analytics_fps_median": 31.15294538535335,
+      "analytics_fps_max": 31.930490060013753,
+      "backend_queue_ms_median": 7.534199998190161,
+      "snapshot_samples": 95,
+      "stale_snapshot": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "DEGRADED",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "a0cef1bd-076e-42fa-95c8-89c6e79e37e2",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 1578.0000000013388,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "paced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": null,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "backend_queue_ms": null,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0",
+        "frames_at_detection_limit": 0,
+        "detection_limit": 300,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "evidence_available": true,
+        "evidence_unavailable_reason": null
+      },
+      "persisted_source_seconds_per_wall_second": 0.9889827101068414,
+      "first_observed_backend_queue_ms": 53.58580000029178
+    },
+    "paced_eof": {
+      "stream_outcome": "CLEAN_EOF",
+      "frames_in_history_before_stop": 710,
+      "buckets_before_stop": 48
+    },
+    "paced_stop": {
+      "http_seconds": 0.24577549999958137,
+      "container": "aegis-cam-01-a0cef1bd-076e-42fa-95c8-89c6e79e37e2",
+      "absent": true,
+      "returncode": 0,
+      "names_seen": []
+    },
+    "paced_history_before_stop_samples": 48,
+    "paced_extractor": {
+      "configured_path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+      "provenance_check": {
+        "current_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+        "expected_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+        "name": "pipeline.extractor",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+        "status": "MATCH"
+      },
+      "summary": {
+        "extractor_version": 2,
+        "schema_version": "1.1",
+        "pace": "source",
+        "pace_lead_ms": 200.0,
+        "frames_written": 710,
+        "clean_eos": true,
+        "pace_total_wait_seconds": 23.287,
+        "pace_frames_late_over_1s": 0
+      },
+      "expected_pace": "source"
+    },
+    "websocket": {
+      "messages_read_after_run": 78,
+      "snapshot_messages": 57,
+      "positive_count_messages": 48
+    },
+    "unpaced_history_during_run": {
+      "source_position_s": 11.344666666,
+      "samples": 23
+    },
+    "unpaced_timing": {
+      "start_http_seconds": 6.0779638000021805,
+      "source_seconds_per_wall_second": 6.819533771068074,
+      "live_window_wall_seconds": 3.2830739000055473,
+      "last_source_position_s": 23.7237,
+      "analytics_fps_median": 371.2108936007947,
+      "analytics_fps_max": 379.1290730470129,
+      "backend_queue_ms_median": 3.789800000959076,
+      "snapshot_samples": 14,
+      "stale_snapshot": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "DEGRADED",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "6aa36d01-cc34-4e08-a956-48064a0f022e",
+        "visible_count": null,
+        "source_fps": null,
+        "analytics_fps": null,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 1719.0000000045984,
+        "unavailable_reason": "No fresh perception metadata; last values are not current",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "unpaced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": null,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "backend_queue_ms": null,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0",
+        "frames_at_detection_limit": 0,
+        "detection_limit": 300,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "evidence_available": true,
+        "evidence_unavailable_reason": null
+      },
+      "persisted_source_seconds_per_wall_second": 12.322204330112722,
+      "first_observed_backend_queue_ms": 0.20789999689441174
+    },
+    "unpaced_eof": {
+      "stream_outcome": "CLEAN_EOF",
+      "frames_in_history_before_stop": 710,
+      "buckets_before_stop": 48
+    },
+    "unpaced_stop": {
+      "http_seconds": 0.22915440000360832,
+      "container": "aegis-cam-01-6aa36d01-cc34-4e08-a956-48064a0f022e",
+      "absent": true,
+      "returncode": 0,
+      "names_seen": []
+    },
+    "unpaced_history_before_stop_samples": 48,
+    "unpaced_extractor": {
+      "configured_path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+      "provenance_check": {
+        "current_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+        "expected_sha256": "4ef4f94a552c65af0896a9e1b00f35b8f5afba15032fd4a8e8183eacd4527cf4",
+        "name": "pipeline.extractor",
+        "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+        "status": "MATCH"
+      },
+      "summary": {
+        "extractor_version": 2,
+        "schema_version": "1.1",
+        "pace": "none",
+        "pace_lead_ms": null,
+        "frames_written": 710,
+        "clean_eos": true,
+        "pace_total_wait_seconds": 0.0,
+        "pace_frames_late_over_1s": 0
+      },
+      "expected_pace": "none"
+    },
+    "raw_perception_agreement_paced_vs_unpaced": {
+      "a": "a0cef1bd-076e-42fa-95c8-89c6e79e37e2.jsonl",
+      "b": "6aa36d01-cc34-4e08-a956-48064a0f022e.jsonl",
+      "common_frames": 710,
+      "frames_identical_person_boxes_scores": 594,
+      "frames_identical_track_id_sets": 71,
+      "first_differing_frame": 72
+    },
+    "recorded_real_replay_supplied_receive_timelines": {
+      "source": "backend\\var\\perception\\cam-01\\a0cef1bd-076e-42fa-95c8-89c6e79e37e2.jsonl",
+      "receive_timestamp_spacing_s": [
+        0.0,
+        0.05
+      ],
+      "buckets": 48,
+      "identical": true,
+      "wall_seconds_for_both": 0.8831302000035066,
+      "scope": "Batches are emitted back to back with different supplied receive timestamps; this proves the analytics ignore receive time. It is NOT a test of two real delivery speeds."
+    },
+    "recorded_real_delivery_through_consumer": {
+      "paced": {
+        "mode": "paced",
+        "wall_seconds": 23.64901020000252,
+        "outcome": "CLEAN_EOF",
+        "stop_added_rows": 0,
+        "frames": 710,
+        "buckets": 48
+      },
+      "unpaced": {
+        "mode": "unpaced",
+        "wall_seconds": 0.004895500002021436,
+        "outcome": "CLEAN_EOF",
+        "stop_added_rows": 0,
+        "frames": 710,
+        "buckets": 48
+      }
+    },
+    "recorded_replay_matches_live_paced_history": true,
+    "owned_resources": [
+      {
+        "camera_epoch": "a0cef1bd-076e-42fa-95c8-89c6e79e37e2",
+        "resource_name": "aegis-cam-01-a0cef1bd-076e-42fa-95c8-89c6e79e37e2",
+        "runtime": "docker@wsl:Ubuntu-22.04",
+        "state": "RELEASED",
+        "attempts": 1
+      },
+      {
+        "camera_epoch": "6aa36d01-cc34-4e08-a956-48064a0f022e",
+        "resource_name": "aegis-cam-01-6aa36d01-cc34-4e08-a956-48064a0f022e",
+        "runtime": "docker@wsl:Ubuntu-22.04",
+        "state": "RELEASED",
+        "attempts": 1
+      }
+    ],
+    "line_crossings": {
+      "camera_id": "cam-01",
+      "run_id": "b22d135a-4cdb-4354-a2f5-a4420c9a60f3",
+      "camera_epoch": "6aa36d01-cc34-4e08-a956-48064a0f022e",
+      "time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+      "configured_image_lines": [],
+      "crossings": [],
+      "unavailable_reason": "No image_pixels line is configured for this camera"
+    },
+    "frontend_js_assets_served": [
+      "/assets/Alerts-DloU6XS8.js",
+      "/assets/Analytics-vujOE-h-.js",
+      "/assets/CameraInspector-J_dgU-d9.js",
+      "/assets/Evidence-DeDstUl2.js",
+      "/assets/Floors-CugWXEee.js",
+      "/assets/System-CP8beOl3.js",
+      "/assets/chart-BEOvjh1t.js",
+      "/assets/clock-3-B9kAWuM8.js",
+      "/assets/file-image--Qs5EH5e.js",
+      "/assets/index-BWcHDJSj.js"
+    ],
+    "hardware_restart_recovery": {
+      "run_id": "87650e71-17ec-4031-9baf-d1f8b10adcfc",
+      "container": "aegis-cam-01-e2b0a551-a0f4-4906-ad70-cadfb68868ca",
+      "recorded_before_crash": [
+        {
+          "run_id": "87650e71-17ec-4031-9baf-d1f8b10adcfc",
+          "camera_id": "cam-01",
+          "camera_epoch": "e2b0a551-a0f4-4906-ad70-cadfb68868ca",
+          "adapter_name": "deepstream-service-maker",
+          "resource_kind": "container",
+          "resource_name": "aegis-cam-01-e2b0a551-a0f4-4906-ad70-cadfb68868ca",
+          "runtime": "docker@wsl:Ubuntu-22.04",
+          "state": "ACTIVE",
+          "attempts": 0,
+          "last_error": null,
+          "created_at": "2026-10-28T18:21:16.729Z",
+          "updated_at": "2026-10-28T18:21:24.709Z"
+        }
+      ],
+      "container_present_before_recovery": true,
+      "recovery_seconds_including_app_start": 0.6558935000066413,
+      "unreleased_after_recovery": [],
+      "persisted_run_status_after_recovery": "STOPPED",
+      "snapshot_run_status": "IDLE",
+      "container_absent_after_recovery": true
+    },
+    "leftover_aegis_cam01_containers": []
+  },
+  "errors": [],
+  "scope": "One real clip, one camera, laptop; structural integration and time-model behaviour. Not detection, tracking, count or crossing accuracy; not multi-camera, calibration or capacity evidence."
+}

@@ -1,0 +1,74 @@
+{
+  "mode": "unpaced",
+  "feeds": 1,
+  "http_status": 200,
+  "start_seconds": 12.13,
+  "run_status": "RUNNING",
+  "run_id": "14900d1e-4b37-4b13-854d-4649d9da9818",
+  "stop_seconds": 0.251,
+  "stop_status": "STOPPED",
+  "idle_metrics": {
+    "timestamp": "2026-10-27T16:24:56.218Z",
+    "scope": "windows-host",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_utilization": 10.0,
+    "vram_used_mib": 853.0,
+    "vram_total_mib": 12227.0,
+    "gpu_temperature_c": 53.0,
+    "nvdec_utilization": 0.0,
+    "cpu_utilization": 2.2,
+    "ram_used_mb": 12403.953125,
+    "ram_total_mb": 15577.80078125,
+    "process_rss_mb": 55.8359375,
+    "unavailable_reason": null
+  },
+  "per_camera": {
+    "cam-01": {
+      "stream_outcome": "CLEAN_EOF",
+      "wall_to_end_s": 2.797,
+      "frames_persisted": 710,
+      "dropped_frames": 0,
+      "frames_at_detection_limit": 0,
+      "analytics_fps_p50": 377.005,
+      "backend_queue_ms_p50": 2.825,
+      "backend_queue_ms_p95": 7.499,
+      "source_lag_s_p50": null,
+      "source_lag_s_p95": null,
+      "extractor_frames_written": 710,
+      "extractor_elapsed_s": 5.403696667000002,
+      "extractor_pipeline_fps": 131.39,
+      "extractor_clean_eos": true
+    }
+  },
+  "gpu": {
+    "baseline_vram_mib": 853.0,
+    "vram_used_mib_p50": 856.0,
+    "vram_used_mib_peak": 1171.0,
+    "vram_total_mib": 12227.0,
+    "gpu_util_p50": 5.0,
+    "gpu_util_p95": 21.0,
+    "nvdec_util_p50": 0.0,
+    "nvdec_util_p95": 12.0,
+    "temp_c_peak": 61.0,
+    "power_w_p50": 7.54,
+    "sm_clock_mhz_p50": 277.0,
+    "samples": 15
+  },
+  "host": {
+    "cpu_util_p50": 31.7,
+    "cpu_util_p95": 31.7,
+    "ram_used_mb_peak": 13824.125,
+    "backend_rss_mb_peak": 57.0390625
+  },
+  "ownership": [
+    {
+      "name": "aegis-cam-01-ca40f791-cca2-4067-ab09-a821e7d9e258",
+      "state": "RELEASED"
+    }
+  ],
+  "containers_left": [],
+  "evaluation": {
+    "acceptable": true,
+    "reasons": []
+  }
+}

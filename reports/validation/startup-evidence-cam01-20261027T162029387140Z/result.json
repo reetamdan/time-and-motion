@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-27T16:21:14.041608+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_startup_and_evidence.py",
+  "run_dir": "reports\\validation\\startup-evidence-cam01-20261027T162029387140Z",
+  "result": "PASS",
+  "checks": {
+    "artifact_identities_all_match": "PASS",
+    "tracker_identity_compared": "PASS",
+    "cold_start_running": "PASS",
+    "cold_start_probed": "PASS",
+    "provenance_records_selected_unaccepted_detector": "PASS",
+    "provenance_artifact_checks_match": "PASS",
+    "source_position_reached": "PASS",
+    "evidence_marker_created": "PASS",
+    "evidence_linked_to_run_epoch": "PASS",
+    "snapshot_frame_within_one_frame_of_marker": "PASS",
+    "clip_starts_on_keyframe_at_or_before_request": "PASS",
+    "operator_marker_snapshot_served": "PASS",
+    "operator_marker_clip_served": "PASS",
+    "operator_alert_info_links_evidence": "PASS",
+    "stop_A1": "PASS",
+    "warm_start_running": "PASS",
+    "warm_start_reused_memory_cache": "PASS",
+    "invalidate_forces_probe": "PASS",
+    "restart_start_running": "PASS",
+    "restart_reused_disk_cache": "PASS",
+    "evidence_survives_backend_restart": "PASS",
+    "all_owned_containers_released_and_absent": "PASS"
+  },
+  "observed": {
+    "starts": [
+      {
+        "label": "A1_cold",
+        "http_status": 200,
+        "run_status": "RUNNING",
+        "run_id": "ee653977-636d-4655-bf30-16d368a8be39",
+        "epoch": "44727d6a-befc-475a-a6b9-5e2017ccec7d",
+        "start_seconds": 12.397,
+        "capability_source": "probe",
+        "capability_probe_seconds": 6.25
+      },
+      {
+        "label": "A2_warm_memory",
+        "http_status": 200,
+        "run_status": "RUNNING",
+        "run_id": "d362e1bf-e76a-4ccd-9ed2-26faa9b858a6",
+        "epoch": "b774bbfb-d2cf-4af8-92ea-115c1fcb9e25",
+        "start_seconds": 5.278,
+        "capability_source": "memory",
+        "capability_probe_seconds": 6.25
+      },
+      {
+        "label": "A3_after_invalidate",
+        "http_status": 200,
+        "run_status": "RUNNING",
+        "run_id": "48698bd6-4b4d-4a5d-8c01-b63c15a42a1e",
+        "epoch": "1f728870-f11b-43d1-9256-fa20000c577a",
+        "start_seconds": 8.24,
+        "capability_source": "probe",
+        "capability_probe_seconds": 3.109
+      },
+      {
+        "label": "B1_restart_disk_cache",
+        "http_status": 200,
+        "run_status": "RUNNING",
+        "run_id": "4efa0d8d-b326-40bd-9370-96352c55a6b7",
+        "epoch": "47e4f5e2-23d1-4e7f-bd9f-1d8c60a9cd2d",
+        "start_seconds": 5.39,
+        "capability_source": "disk",
+        "capability_probe_seconds": 3.109
+      }
+    ],
+    "stops": [
+      {
+        "http_status": 200,
+        "run_status": "STOPPED",
+        "stop_seconds": 0.978
+      },
+      {
+        "http_status": 200,
+        "run_status": "STOPPED",
+        "stop_seconds": 0.991
+      },
+      {
+        "http_status": 200,
+        "run_status": "STOPPED",
+        "stop_seconds": 0.938
+      },
+      {
+        "http_status": 200,
+        "run_status": "STOPPED",
+        "stop_seconds": 0.963
+      }
+    ],
+    "artifact_identities_all_match": {
+      "detector.checkpoint": "MATCH",
+      "detector.engine": "MATCH",
+      "detector.infer_config": "MATCH",
+      "tracker.config": "MATCH",
+      "pipeline.wrapper": "MATCH",
+      "pipeline.extractor": "MATCH",
+      "pipeline.capability_probe": "MATCH",
+      "pipeline.image_reference": "MATCH"
+    },
+    "cold_start_running": {
+      "label": "A1_cold",
+      "http_status": 200,
+      "run_status": "RUNNING",
+      "run_id": "ee653977-636d-4655-bf30-16d368a8be39",
+      "epoch": "44727d6a-befc-475a-a6b9-5e2017ccec7d",
+      "start_seconds": 12.397,
+      "capability_source": "probe",
+      "capability_probe_seconds": 6.25
+    },
+    "provenance_A1": {
+      "run_id": "ee653977-636d-4655-bf30-16d368a8be39",
+      "recorded_at": "2026-10-27T16:20:37.635Z",
+      "adapter": {
+        "available": true,
+        "blockers": [],
+        "name": "deepstream-service-maker",
+        "runtime_detected": true
+      },
+      "artifact_checks": [
+        {
+          "current_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "expected_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "name": "detector.checkpoint",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+          "expected_sha256": "e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f",
+          "name": "detector.engine",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+          "expected_sha256": "8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405",
+          "name": "detector.infer_config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\cam01_trafficcamnet_smoke_infer.txt",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "name": "tracker.config",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "49f8311c979fc83164ec2709872ba568eaede2e4cf9e625e070e7a2a12178b0d",
+          "expected_sha256": "49f8311c979fc83164ec2709872ba568eaede2e4cf9e625e070e7a2a12178b0d",
+          "name": "pipeline.wrapper",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\deepstream.sh",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "6093b5d5d06089225b3bf60b0342fedccc50efde477f9663c5ef61ff91abad25",
+          "expected_sha256": "6093b5d5d06089225b3bf60b0342fedccc50efde477f9663c5ef61ff91abad25",
+          "name": "pipeline.extractor",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\perception\\deepstream\\service_maker\\extract_metadata.py",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "name": "pipeline.capability_probe",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\capability-probe.sh",
+          "status": "MATCH"
+        },
+        {
+          "current_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "expected_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "name": "pipeline.image_reference",
+          "path": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\environment\\deepstream92\\image-reference.txt",
+          "status": "MATCH"
+        }
+      ],
+      "cameras": {
+        "cam-01": {
+          "calibration_revision": null,
+          "calibration_status": "MISSING",
+          "enabled": true,
+          "source_label": "cam01.mp4"
+        },
+        "cam-02": {
+          "calibration_revision": null,
+          "calibration_status": "MISSING",
+          "enabled": false,
+          "source_label": "cam02.mp4"
+        },
+        "cam-03": {
+          "calibration_revision": null,
+          "calibration_status": "MISSING",
+          "enabled": false,
+          "source_label": "cam03.mp4"
+        },
+        "cam-04": {
+          "calibration_revision": null,
+          "calibration_status": "MISSING",
+          "enabled": false,
+          "source_label": "cam04.mp4"
+        }
+      },
+      "capability": {
+        "available": true,
+        "fields": {
+          "deepstream_app": "ok",
+          "deepstream_version": "deepstream-app version 9.2.0",
+          "extractor": "ok",
+          "gpu": "ok",
+          "gpu_detail": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, 610.47",
+          "gst_nvinfer": "ok",
+          "gst_nvstreammux": "ok",
+          "gst_nvtracker": "ok",
+          "gst_nvv4l2decoder": "ok",
+          "probe_complete": "1",
+          "probe_version": "1",
+          "tensorrt_version": "10.16.0.72-1+cuda13.2"
+        },
+        "probe_seconds": 6.25,
+        "source": "probe",
+        "validated_at_utc": "2026-10-27T16:20:37.632183+00:00"
+      },
+      "configuration_files": {
+        "analytics": "68aa633634b9fa11b3340c3ea2d1a77e9c4ab5d83e96155f37ca18c4b97cc3c1",
+        "cameras": "d06c7949e23a6c5cdfd9c81df1744882c545e71d7804371aa4b1d7e2bbbcc9e8",
+        "floors": "9d99e2efb77d6797331e5e6f1af8d954285f941f2ae2ca48ac8e9b3172dd673b",
+        "models": "e3a4959c4868be2475dd875cf529c42a3eeb490d1bb57c39821c59a0c8fb2547",
+        "portals": "fecf7043184f0a7a24c536abb5439c827ad6065a20639a2e53695af9b550cc8a",
+        "runtime": "90afc951a56edb16fa440cd23e669fcdd6ce6c1ca387bc15b0dc78045bab75bb",
+        "zones": "1b3eaf3aa6cce51bab359d3418cd8931b546668ddadee0a0da8f6af4cdefe03d"
+      },
+      "configuration_revision": "559702a106f695c82c1edcfc4d9a887320c25a1d5bdf3dbbba357bbe5110fbfb",
+      "detector": {
+        "acceptance": "provisional_smoke",
+        "class_map": {
+          "0": "car",
+          "1": "bicycle",
+          "2": "person",
+          "3": "road_sign"
+        },
+        "evaluation_ref": null,
+        "id": "trafficcamnet-smoke",
+        "input_shape": [
+          1,
+          3,
+          544,
+          960
+        ],
+        "precision": "FP16",
+        "profile": {
+          "parser": {
+            "function": null,
+            "kind": "builtin",
+            "library_path": null,
+            "library_sha256": null,
+            "name": "nvdsinfer-default-resnet-detector"
+          },
+          "person_class_id": 2,
+          "person_label": "person",
+          "pipeline_frame": [
+            1920,
+            1080
+          ],
+          "preprocessing": "nvstreammux 1920x1080 (no padding) -> nvinfer scale to 960x544 (default scaling), RGB, x/255; cluster-mode=2 (NMS)",
+          "source_geometry_policy": "stretch_disclosed",
+          "tracker_frame": [
+            960,
+            544
+          ]
+        },
+        "revision": "deepstream-9.2-bundled-resnet18-trafficcamnet-pruned"
+      },
+      "image": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+      "replay_mode": "paced",
+      "schema_version": 1,
+      "selection_mode": "provisional_smoke",
+      "tracker": {
+        "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "name": "NVIDIA NvDCF multi-object tracker",
+        "revision": "deepstream-9.2-nvdcf-perf-13662e73754e"
+      }
+    },
+    "source_position_reached": 5.1051,
+    "evidence_marker_created": {
+      "status": 201,
+      "body": null
+    },
+    "evidence_marker": {
+      "group_id": "49e92802-4031-408b-a26e-e225eb1b1015",
+      "snapshot": {
+        "id": "e82c8c32-86c5-45c6-bdb6-6fdca25a6c50",
+        "run_id": "ee653977-636d-4655-bf30-16d368a8be39",
+        "camera_id": "cam-01",
+        "camera_epoch": "44727d6a-befc-475a-a6b9-5e2017ccec7d",
+        "kind": "operator_marker_snapshot",
+        "media_type": "image/jpeg",
+        "label": "OPERATOR MARKER - manual evidence request; not an analytics or alert detection",
+        "trigger": "operator_marker",
+        "group_id": "49e92802-4031-408b-a26e-e225eb1b1015",
+        "note": "validator marker",
+        "timestamp_basis": "camera epoch source timeline (file PTS seconds minus stream start_time)",
+        "source_marked_s": 5.138466666,
+        "source_start_s": 5.138467,
+        "source_end_s": 5.138467,
+        "checksum": "1a98f1519157038dcce7d626ac58c7f54980ae963a9fc8b57c0c5affb88ab4fc",
+        "size_bytes": 299648,
+        "created_at": "2026-10-27T16:20:48.928Z",
+        "file_available": true,
+        "unavailable_reason": null,
+        "url": "/api/v1/evidence/e82c8c32-86c5-45c6-bdb6-6fdca25a6c50",
+        "metadata": {
+          "actual_frame_source_s": 5.138467,
+          "alert_key": null,
+          "extraction": "accurate decode of the first frame at/after the requested time",
+          "group_id": "49e92802-4031-408b-a26e-e225eb1b1015",
+          "note": "validator marker",
+          "provenance": {
+            "detector_acceptance": "provisional_smoke",
+            "detector_id": "trafficcamnet-smoke",
+            "replay_mode": "paced",
+            "source_position_reached_s": 5.138466666
+          },
+          "requested_source_time_s": 5.138466666,
+          "scope": "Real source media from the configured file at a recorded source time; counts or detections are not burned into the media",
+          "source_label": "cam01.mp4",
+          "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+          "stream_start_time_s": 0.0,
+          "tool": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+          "trigger": "operator_marker"
+        }
+      },
+      "clip": {
+        "id": "dcf86b05-4ea4-4c6d-b7d2-5d47fc8bf851",
+        "run_id": "ee653977-636d-4655-bf30-16d368a8be39",
+        "camera_id": "cam-01",
+        "camera_epoch": "44727d6a-befc-475a-a6b9-5e2017ccec7d",
+        "kind": "operator_marker_clip",
+        "media_type": "video/mp4",
+        "label": "OPERATOR MARKER - manual evidence request; not an analytics or alert detection",
+        "trigger": "operator_marker",
+        "group_id": "49e92802-4031-408b-a26e-e225eb1b1015",
+        "note": "validator marker",
+        "timestamp_basis": "camera epoch source timeline (file PTS seconds minus stream start_time)",
+        "source_marked_s": 5.138466666,
+        "source_start_s": 0.0,
+        "source_end_s": 8.2082,
+        "checksum": "26567a9f02b0d1d2062abf20abcef8a74b524579dc01e306f12c64c17bbb00ce",
+        "size_bytes": 6209668,
+        "created_at": "2026-10-27T16:20:48.939Z",
+        "file_available": true,
+        "unavailable_reason": null,
+        "url": "/api/v1/evidence/dcf86b05-4ea4-4c6d-b7d2-5d47fc8bf851",
+        "metadata": {
+          "alert_key": null,
+          "clip_duration_s": 8.2082,
+          "extraction": "stream copy (no re-encode); starts on the keyframe at or before the requested start",
+          "group_id": "49e92802-4031-408b-a26e-e225eb1b1015",
+          "keyframe_aligned_start_s": 0.0,
+          "note": "validator marker",
+          "provenance": {
+            "detector_acceptance": "provisional_smoke",
+            "detector_id": "trafficcamnet-smoke",
+            "replay_mode": "paced",
+            "source_position_reached_s": 5.138466666
+          },
+          "requested_source_end_s": 8.138466666,
+          "requested_source_start_s": 2.1384666660000002,
+          "requested_source_time_s": 5.138466666,
+          "scope": "Real source media from the configured file at a recorded source time; counts or detections are not burned into the media",
+          "source_label": "cam01.mp4",
+          "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+          "stream_start_time_s": 0.0,
+          "tool": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+          "trigger": "operator_marker"
+        }
+      },
+      "alert_id": "45116153-f4bc-513a-b909-3b04e9509dbb"
+    },
+    "snapshot_frame_within_one_frame_of_marker": {
+      "marked": 5.138466666,
+      "frame": 5.138467
+    },
+    "clip_starts_on_keyframe_at_or_before_request": {
+      "requested": 2.1384666660000002,
+      "actual": 0.0,
+      "end": 8.2082
+    },
+    "operator_marker_snapshot_served": {
+      "bytes": 299648
+    },
+    "operator_marker_clip_served": {
+      "bytes": 6209668
+    },
+    "stop_A1": {
+      "http_status": 200,
+      "run_status": "STOPPED",
+      "stop_seconds": 0.978
+    },
+    "warm_start_running": {
+      "label": "A2_warm_memory",
+      "http_status": 200,
+      "run_status": "RUNNING",
+      "run_id": "d362e1bf-e76a-4ccd-9ed2-26faa9b858a6",
+      "epoch": "b774bbfb-d2cf-4af8-92ea-115c1fcb9e25",
+      "start_seconds": 5.278,
+      "capability_source": "memory",
+      "capability_probe_seconds": 6.25
+    },
+    "invalidate_forces_probe": {
+      "label": "A3_after_invalidate",
+      "http_status": 200,
+      "run_status": "RUNNING",
+      "run_id": "48698bd6-4b4d-4a5d-8c01-b63c15a42a1e",
+      "epoch": "1f728870-f11b-43d1-9256-fa20000c577a",
+      "start_seconds": 8.24,
+      "capability_source": "probe",
+      "capability_probe_seconds": 3.109
+    },
+    "restart_start_running": {
+      "label": "B1_restart_disk_cache",
+      "http_status": 200,
+      "run_status": "RUNNING",
+      "run_id": "4efa0d8d-b326-40bd-9370-96352c55a6b7",
+      "epoch": "47e4f5e2-23d1-4e7f-bd9f-1d8c60a9cd2d",
+      "start_seconds": 5.39,
+      "capability_source": "disk",
+      "capability_probe_seconds": 3.109
+    },
+    "evidence_survives_backend_restart": {
+      "records": 2,
+      "bytes": 6509316,
+      "max_records": 200,
+      "max_bytes": 4294967296,
+      "max_age_days": 7
+    },
+    "cleanup": {
+      "owned": [
+        {
+          "name": "aegis-cam-01-44727d6a-befc-475a-a6b9-5e2017ccec7d",
+          "state": "RELEASED"
+        },
+        {
+          "name": "aegis-cam-01-b774bbfb-d2cf-4af8-92ea-115c1fcb9e25",
+          "state": "RELEASED"
+        },
+        {
+          "name": "aegis-cam-01-1f728870-f11b-43d1-9256-fa20000c577a",
+          "state": "RELEASED"
+        },
+        {
+          "name": "aegis-cam-01-47e4f5e2-23d1-4e7f-bd9f-1d8c60a9cd2d",
+          "state": "RELEASED"
+        }
+      ],
+      "present": []
+    },
+    "start_seconds": {
+      "A1_cold": 12.397,
+      "A2_warm_memory": 5.278,
+      "A3_after_invalidate": 8.24,
+      "B1_restart_disk_cache": 5.39
+    }
+  },
+  "scope": "One camera (cam-01, the supplied clip), real GPU/container via the documented Windows route. Start time = availability (artifact hashes + liveness + capability) + container launch + engine load + first metadata frame. The evidence marker is a manual operator action, not an analytics event."
+}

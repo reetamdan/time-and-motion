@@ -1,0 +1,8 @@
+{
+  "result": "FAIL (preserved)",
+  "failed_check": "tests_documented_python_wsl",
+  "detail": "260 passed, 2 skipped, 2 failed: tests/test_supervised_batch.py (both tests, Linux only). All other 18 checks PASS.",
+  "cause": "Real defect in the new batch supervisor on POSIX: a killed parent that its own parent has not yet reaped is a zombie, which psutil.pid_exists / kill(pid, 0) still report as alive, so neither the supervisor (watching its wrapper) nor supervised_entry (watching the supervisor) noticed the death. Windows was unaffected (process handles report exit).",
+  "fix": "POSIX detection by reparenting (os.getppid() != recorded parent) plus zombie status; scripts/run_supervised_batch.py and scripts/lib/supervised_entry.py. Both tests then pass on Windows and in WSL; documented commands rerun in a fresh directory.",
+  "written_utc": "2026-10-28"
+}

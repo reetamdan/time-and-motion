@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T19:04:28.779717+00:00",
+  "command": "'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe' validate_documented_commands.py",
+  "run_dir": "reports\\validation\\documented-commands-20261026T190314154588Z",
+  "result": "FAIL",
+  "checks": {
+    "setup_create_venv": "PASS",
+    "setup_pip_install": "PASS",
+    "setup_pip_check": "PASS",
+    "setup_npm_ci": "PASS",
+    "setup_npm_run_build": "PASS",
+    "tests_documented_python_command_runs": "FAIL",
+    "tests_documented_frontend": "PASS",
+    "run_backend_ps1_serves_health_live": "PASS",
+    "health_ready_structured": "PASS",
+    "dashboard_served_by_backend": "PASS",
+    "api_start_running": "PASS",
+    "api_stop_stopped": "PASS",
+    "reset_demo_ps1_resets": "PASS",
+    "reset_demo_ps1_refuses_mismatch": "PASS",
+    "troubleshooting_references_exist": "PASS",
+    "no_leftover_cam01_containers": "PASS"
+  },
+  "steps": {
+    "setup_create_venv": {
+      "command": [
+        "py",
+        "-3.12",
+        "-m",
+        "venv",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\venv-windows"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv",
+      "returncode": 0,
+      "seconds": 7.1,
+      "log": "setup_create_venv.log",
+      "tail": []
+    },
+    "setup_pip_install": {
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\venv-windows\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\backend\\requirements.txt"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv",
+      "returncode": 0,
+      "seconds": 11.9,
+      "log": "setup_pip_install.log",
+      "tail": [
+        "",
+        "[notice] A new release of pip is available: 23.2.1 -> 26.2.2",
+        "[notice] To update, run: C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\venv-windows\\Scripts\\python.exe -m pip install --upgrade pip"
+      ]
+    },
+    "setup_pip_check": {
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\venv-windows\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv",
+      "returncode": 0,
+      "seconds": 0.7,
+      "log": "setup_pip_check.log",
+      "tail": [
+        "No broken requirements found."
+      ]
+    },
+    "setup_npm_ci": {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.CMD",
+        "ci"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\frontend",
+      "returncode": 0,
+      "seconds": 11.3,
+      "log": "setup_npm_ci.log",
+      "tail": [
+        "  run `npm fund` for details",
+        "",
+        "found 0 vulnerabilities"
+      ]
+    },
+    "setup_npm_run_build": {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.CMD",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\frontend",
+      "returncode": 0,
+      "seconds": 7.3,
+      "log": "setup_npm_run_build.log",
+      "tail": [
+        "- Using dynamic import() to code-split the application",
+        "- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting",
+        "- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\u001b[39m"
+      ]
+    },
+    "tests_documented_python": {
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv-wsl\\bin\\python",
+        "-m",
+        "pytest",
+        "tests"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv",
+      "returncode": null,
+      "seconds": 0.0,
+      "log": "tests_documented_python.log",
+      "tail": [
+        "FileNotFoundError: [WinError 2] The system cannot find the file specified"
+      ]
+    },
+    "tests_documented_frontend": {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.CMD",
+        "test"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261026T190314154588Z\\scratch\\frontend",
+      "returncode": 0,
+      "seconds": 1.5,
+      "log": "tests_documented_frontend.log",
+      "tail": [
+        "      Tests  21 passed (21)",
+        "   Start at  00:33:53",
+        "   Duration  606ms (import 68%, transform 24%, tests 7%, worker 2%)"
+      ]
+    },
+    "health_ready": {
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "checks": [
+          {
+            "name": "configuration",
+            "ready": true,
+            "detail": "Validated revision 11dcfff7bc86"
+          },
+          {
+            "name": "persistence",
+            "ready": true,
+            "detail": "SQLite query succeeded with foreign keys and WAL migration"
+          },
+          {
+            "name": "sources",
+            "ready": true,
+            "detail": "All enabled source files are present"
+          },
+          {
+            "name": "models",
+            "ready": true,
+            "detail": "Pinned detector/engine/tracker artifacts available"
+          },
+          {
+            "name": "perception",
+            "ready": true,
+            "detail": "Validated TrafficCamNet/NvDCF provisional smoke profile; real boxes and IDs are supported, not an evaluated PRD baseline"
+          }
+        ]
+      }
+    },
+    "api_start": {
+      "status": 200,
+      "run_status": "RUNNING",
+      "run_id": "8f8d6d01-bd57-4ddd-aae3-767a9ed134f0"
+    },
+    "api_stop": {
+      "status": 200,
+      "run_status": "STOPPED"
+    },
+    "reset_demo_ps1": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\reset-demo.ps1",
+        "-RunId",
+        "8f8d6d01-bd57-4ddd-aae3-767a9ed134f0"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv",
+      "returncode": 0,
+      "seconds": 0.6,
+      "log": "reset_demo_ps1.log",
+      "tail": [
+        "API acknowledged run-scoped reset for '8f8d6d01-bd57-4ddd-aae3-767a9ed134f0'.",
+        "This script deleted no files; source footage, models, configs, and calibration were not touched directly."
+      ]
+    },
+    "reset_demo_ps1_mismatch": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\reset-demo.ps1",
+        "-RunId",
+        "not-the-active-run"
+      ],
+      "cwd": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv",
+      "returncode": 1,
+      "seconds": 0.5,
+      "log": "reset_demo_ps1_mismatch.log",
+      "tail": [
+        "+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+        "    + CategoryInfo          : OperationStopped: (Reset target mi... reset was sent:String) [], RuntimeException",
+        "    + FullyQualifiedErrorId : Reset target mismatch: requested 'not-the-active-run', active ''; no reset was sent"
+      ]
+    },
+    "troubleshooting_references": {
+      "checked": [
+        "reports/environment/deepstream92/image-reference.txt",
+        "scripts/setup/setup.sh",
+        "scripts/run-demo.ps1",
+        "scripts/run-backend.ps1",
+        "scripts/deepstream.sh"
+      ],
+      "missing": []
+    }
+  },
+  "deviations": [
+    "Setup ran in a scratch copy (venv + frontend copy), not in place, to avoid replacing the working .venv/node_modules or changing run-backend.ps1's interpreter choice.",
+    "Run/reset used CCTV_DATABASE_PATH (fresh DB) and loopback port 8768."
+  ],
+  "scope": "Documented Windows setup/run/reset/test commands and troubleshooting references on this laptop. Not offline cold start (AC-23) and not the WSL production wrapper."
+}

@@ -1,0 +1,337 @@
+{
+ "polls": [
+  {
+   "t": 0.062,
+   "cpu": 11.8,
+   "ram_mb": 14319.5,
+   "rss_mb": 56.45703125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 1.234566666,
+     "analytics_fps": null,
+     "backend_queue_ms": 0.5763000008300878,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 2,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 1.3013,
+     "analytics_fps": null,
+     "backend_queue_ms": 0.38099999801488593,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 2,
+     "visible_count": 14,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 0.64,
+   "cpu": 11.8,
+   "ram_mb": 14319.5,
+   "rss_mb": 56.45703125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 6.673333333,
+     "analytics_fps": 321.723763428042,
+     "backend_queue_ms": 3.548900000168942,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 13,
+     "visible_count": 16,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 6.573233333,
+     "analytics_fps": 313.24616843744263,
+     "backend_queue_ms": 1.262099998712074,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 13,
+     "visible_count": 19,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 1.219,
+   "cpu": 11.8,
+   "ram_mb": 14319.5,
+   "rss_mb": 56.45703125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 11.945266666,
+     "analytics_fps": 298.0063791783167,
+     "backend_queue_ms": 1.324400000157766,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 23,
+     "visible_count": 19,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 11.945266666,
+     "analytics_fps": 296.3041385529452,
+     "backend_queue_ms": 3.9719999986118637,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 23,
+     "visible_count": 19,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 1.797,
+   "cpu": 33.5,
+   "ram_mb": 14462.2421875,
+   "rss_mb": 57.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 16.182833333,
+     "analytics_fps": 272.6811894519336,
+     "backend_queue_ms": 0.7987999997567385,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 32,
+     "visible_count": 22,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 16.282933333,
+     "analytics_fps": 273.0850417166352,
+     "backend_queue_ms": 0.7107999990694225,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 32,
+     "visible_count": 21,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 2.359,
+   "cpu": 33.5,
+   "ram_mb": 14462.2421875,
+   "rss_mb": 57.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 21.855166666,
+     "analytics_fps": 270.94828070658684,
+     "backend_queue_ms": 0.3722000037669204,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 43,
+     "visible_count": 15,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 21.788433333,
+     "analytics_fps": 269.0056237236272,
+     "backend_queue_ms": 1.577399998495821,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 43,
+     "visible_count": 17,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 2.89,
+   "cpu": 33.5,
+   "ram_mb": 14462.2421875,
+   "rss_mb": 57.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 268.16004695557194,
+     "backend_queue_ms": 15.118399998755194,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 269.6077102388069,
+     "backend_queue_ms": 11.397499998565763,
+     "dropped_frames": 0,
+     "stream_outcome": null,
+     "persisted_count_samples": 47,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  },
+  {
+   "t": 3.422,
+   "cpu": 33.5,
+   "ram_mb": 14462.2421875,
+   "rss_mb": 57.30078125,
+   "cameras": {
+    "cam-01": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 268.16004695557194,
+     "backend_queue_ms": 15.118399998755194,
+     "dropped_frames": 0,
+     "stream_outcome": "CLEAN_EOF",
+     "persisted_count_samples": 48,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    },
+    "cam-02": {
+     "source_position_s": 23.7237,
+     "analytics_fps": 269.6077102388069,
+     "backend_queue_ms": 11.397499998565763,
+     "dropped_frames": 0,
+     "stream_outcome": "CLEAN_EOF",
+     "persisted_count_samples": 48,
+     "visible_count": 18,
+     "frames_at_detection_limit": 0,
+     "health": "CALIBRATION WARNING"
+    }
+   }
+  }
+ ],
+ "gpu_samples": [
+  {
+   "t": 39097.375,
+   "gpu_util": 0.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 12.31,
+   "sm_clock_mhz": 285.0,
+   "pstate": "P4"
+  },
+  {
+   "t": 39098.39,
+   "gpu_util": 13.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 13.1,
+   "sm_clock_mhz": 277.0,
+   "pstate": "P5"
+  },
+  {
+   "t": 39099.406,
+   "gpu_util": 3.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 12.53,
+   "sm_clock_mhz": 307.0,
+   "pstate": "P5"
+  },
+  {
+   "t": 39100.421,
+   "gpu_util": 3.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 858.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 9.88,
+   "sm_clock_mhz": 262.0,
+   "pstate": "P8"
+  },
+  {
+   "t": 39101.437,
+   "gpu_util": 3.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 858.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 7.37,
+   "sm_clock_mhz": 285.0,
+   "pstate": "P8"
+  },
+  {
+   "t": 39102.453,
+   "gpu_util": 9.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 881.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 7.8,
+   "sm_clock_mhz": 337.0,
+   "pstate": "P8"
+  },
+  {
+   "t": 39103.453,
+   "gpu_util": 1.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 1417.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 56.0,
+   "power_w": 18.97,
+   "sm_clock_mhz": 1792.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39104.484,
+   "gpu_util": 77.0,
+   "nvdec_util": 23.0,
+   "vram_used_mib": 1489.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 63.0,
+   "power_w": 93.86,
+   "sm_clock_mhz": 2452.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39105.515,
+   "gpu_util": 82.0,
+   "nvdec_util": 25.0,
+   "vram_used_mib": 1489.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 64.0,
+   "power_w": 75.4,
+   "sm_clock_mhz": 2617.0,
+   "pstate": "P4"
+  },
+  {
+   "t": 39106.531,
+   "gpu_util": 78.0,
+   "nvdec_util": 23.0,
+   "vram_used_mib": 1489.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 66.0,
+   "power_w": 87.04,
+   "sm_clock_mhz": 2602.0,
+   "pstate": "P0"
+  },
+  {
+   "t": 39107.5,
+   "gpu_util": 1.0,
+   "nvdec_util": 0.0,
+   "vram_used_mib": 853.0,
+   "vram_total_mib": 12227.0,
+   "temp_c": 58.0,
+   "power_w": 15.03,
+   "sm_clock_mhz": 975.0,
+   "pstate": "P4"
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T16:30:00Z",
+  "result": "PASS",
+  "commands": [
+    {"command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider tests perception/candidates/rt_detr/tests", "result": "99 passed, 1 warning (before this session's changes)"},
+    {"command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider tests perception/candidates/rt_detr/tests perception/candidates/rf_detr/tests", "result": "107 passed, 1 warning (after RF-DETR decode tests and doc updates)"},
+    {"command": "npm --prefix frontend test", "result": "3 files, 17 tests passed"},
+    {"command": "npm run build", "result": "tsc --noEmit + vite build succeeded"}
+  ],
+  "warning": "starlette.testclient DeprecationWarning for anyio.abc.BlockingPortal alias (third-party, non-failing)",
+  "scope": "Unit/integration test and frontend build baseline only; not PRD acceptance."
+}

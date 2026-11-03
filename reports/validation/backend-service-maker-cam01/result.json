@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-26T12:27:51.123332+00:00",
+  "result": "PASS",
+  "checks": {
+    "adapter_available": "PASS",
+    "all_frames_consumed": "PASS",
+    "real_person_observations": "PASS",
+    "real_track_ids": "PASS",
+    "persistent_track_ids": "PASS",
+    "no_uncalibrated_geometry": "PASS",
+    "contract_errors_absent": "PASS",
+    "source_pts_preserved": "PASS",
+    "monotonic_freshness_basis": "PASS"
+  },
+  "adapter": {
+    "name": "deepstream-service-maker",
+    "available": true,
+    "runtime_detected": true,
+    "detail": "Validated TrafficCamNet/NvDCF provisional smoke profile; real boxes and IDs are supported, not an evaluated PRD baseline",
+    "blockers": []
+  },
+  "metrics": {
+    "frames": 710,
+    "person_observations": 12194,
+    "unique_person_ids": 126,
+    "multi_frame_person_ids": 124,
+    "max_visible_persons_per_frame": 26,
+    "elapsed_seconds": 8.531000000000859,
+    "errors": []
+  },
+  "limitations": [
+    "This proves real backend observation delivery, not detector accuracy or facility calibration.",
+    "Geometry positions are intentionally null; facility crossings and calibrated occupancy are not asserted.",
+    "TrafficCamNet remains a provisional smoke profile, not the evaluated PRD baseline."
+  ]
+}
