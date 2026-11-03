@@ -1,0 +1,150 @@
+&&&& RUNNING TensorRT.trtexec [TensorRT v101600] [b72] # trtexec --onnx=/workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx --saveEngine=/workspace/.install/windows/a6000/engines/trafficcamnet-smoke_sm86.engine --skipInference --fp16
+[11/03/2026-19:19:58] [W] Weakly-typed networks have been deprecated in TensorRT. You can use the AutoCast tool (https://nvidia.github.io/TensorRT-Model-Optimizer/guides/8_autocast.html) to convert the network to be strongly typed.
+[11/03/2026-19:19:58] [I] === Model Options ===
+[11/03/2026-19:19:58] [I] Format: ONNX
+[11/03/2026-19:19:58] [I] Model: /workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx
+[11/03/2026-19:19:58] [I] Output:
+[11/03/2026-19:19:58] [I] === Build Options ===
+[11/03/2026-19:19:58] [I] Memory Pools: workspace: default, dlaSRAM: default, dlaLocalDRAM: default, dlaGlobalDRAM: default, tacticSharedMem: default
+[11/03/2026-19:19:58] [I] avgTiming: 8
+[11/03/2026-19:19:58] [I] Precision: FP32+FP16
+[11/03/2026-19:19:58] [I] LayerPrecisions: 
+[11/03/2026-19:19:58] [I] Layer Device Types: 
+[11/03/2026-19:19:58] [I] Decomposable Attentions: 
+[11/03/2026-19:19:58] [I] Calibration: 
+[11/03/2026-19:19:58] [I] Refit: Disabled
+[11/03/2026-19:19:58] [I] Strip weights: Disabled
+[11/03/2026-19:19:58] [I] Version Compatible: Disabled
+[11/03/2026-19:19:58] [I] ONNX Plugin InstanceNorm: Disabled
+[11/03/2026-19:19:58] [I] ONNX kENABLE_UINT8_AND_ASYMMETRIC_QUANTIZATION_DLA flag: Disabled
+[11/03/2026-19:19:58] [I] ONNX kREPORT_CAPABILITY_DLA flag: Disabled
+[11/03/2026-19:19:58] [I] ONNX kADJUST_FOR_DLA flag: Disabled
+[11/03/2026-19:19:58] [I] ONNX kENABLE_PLUGIN_OVERRIDE flag: Disabled
+[11/03/2026-19:19:58] [I] TensorRT runtime: full
+[11/03/2026-19:19:58] [I] Lean DLL Path: 
+[11/03/2026-19:19:58] [I] Tempfile Controls: { in_memory: allow, temporary: allow }
+[11/03/2026-19:19:58] [I] Exclude Lean Runtime: Disabled
+[11/03/2026-19:19:58] [I] Sparsity: Disabled
+[11/03/2026-19:19:58] [I] Safe mode: Disabled
+[11/03/2026-19:19:58] [I] Build DLA standalone loadable: Disabled
+[11/03/2026-19:19:58] [I] Allow GPU fallback for DLA: Disabled
+[11/03/2026-19:19:58] [I] DirectIO mode: Disabled
+[11/03/2026-19:19:58] [I] Restricted mode: Disabled
+[11/03/2026-19:19:58] [I] Skip inference: Enabled
+[11/03/2026-19:19:58] [I] Save engine: /workspace/.install/windows/a6000/engines/trafficcamnet-smoke_sm86.engine
+[11/03/2026-19:19:58] [I] Load engine: 
+[11/03/2026-19:19:58] [I] Profiling verbosity: 0
+[11/03/2026-19:19:58] [I] Tactic sources: Using default tactic sources
+[11/03/2026-19:19:58] [I] timingCacheMode: local
+[11/03/2026-19:19:58] [I] timingCacheFile: 
+[11/03/2026-19:19:58] [I] Enable Compilation Cache: Enabled
+[11/03/2026-19:19:58] [I] Enable Monitor Memory: Disabled
+[11/03/2026-19:19:58] [I] CPU Only Mode: Disabled
+[11/03/2026-19:19:58] [I] errorOnTimingCacheMiss: Disabled
+[11/03/2026-19:19:58] [I] Preview Features: Use default preview flags.
+[11/03/2026-19:19:58] [I] MaxAuxStreams: -1
+[11/03/2026-19:19:58] [I] BuilderOptimizationLevel: -1
+[11/03/2026-19:19:58] [I] MaxTactics: -1
+[11/03/2026-19:19:58] [I] Calibration Profile Index: 0
+[11/03/2026-19:19:58] [I] Weight Streaming: Disabled
+[11/03/2026-19:19:58] [I] Runtime Platform: Same As Build
+[11/03/2026-19:19:58] [I] Debug Tensors: 
+[11/03/2026-19:19:58] [I] Distributive Independence: Disabled
+[11/03/2026-19:19:58] [I] Mark Unfused Tensors As Debug Tensors: Disabled
+[11/03/2026-19:19:58] [I] Input(s)s format: fp32:CHW
+[11/03/2026-19:19:58] [I] Output(s)s format: fp32:CHW
+[11/03/2026-19:19:58] [I] Input build shapes: model
+[11/03/2026-19:19:58] [I] Input calibration shapes: model
+[11/03/2026-19:19:58] [I] === System Options ===
+[11/03/2026-19:19:58] [I] Device: 0
+[11/03/2026-19:19:58] [I] DLACore: 
+[11/03/2026-19:19:58] [I] Loaded static plugins:
+[11/03/2026-19:19:58] [I] setPluginsToSerialize:
+[11/03/2026-19:19:58] [I] dynamicPlugins:
+[11/03/2026-19:19:58] [I] ignoreParsedPluginLibs: 0
+[11/03/2026-19:19:58] [I] 
+[11/03/2026-19:19:58] [I] === Inference Options ===
+[11/03/2026-19:19:58] [I] Batch: Explicit
+[11/03/2026-19:19:58] [I] Input inference shapes: model
+[11/03/2026-19:19:58] [I] Iterations: 10
+[11/03/2026-19:19:58] [I] Duration: 3s (+ 200ms warm up)
+[11/03/2026-19:19:58] [I] Sleep time: 0ms
+[11/03/2026-19:19:58] [I] Idle time: 0ms
+[11/03/2026-19:19:58] [I] Inference Streams: 1
+[11/03/2026-19:19:58] [I] ExposeDMA: Disabled
+[11/03/2026-19:19:58] [I] Data transfers: Enabled
+[11/03/2026-19:19:58] [I] Spin-wait: Disabled
+[11/03/2026-19:19:58] [I] Multithreading: Disabled
+[11/03/2026-19:19:58] [I] CUDA Graph: Disabled
+[11/03/2026-19:19:58] [I] Separate profiling: Disabled
+[11/03/2026-19:19:58] [I] Time Deserialize: Disabled
+[11/03/2026-19:19:58] [I] Time Refit: Disabled
+[11/03/2026-19:19:58] [I] NVTX verbosity: 0
+[11/03/2026-19:19:58] [I] Persistent Cache Ratio: 0
+[11/03/2026-19:19:58] [I] Optimization Profile Index: 0
+[11/03/2026-19:19:58] [I] Weight Streaming Budget: 100.000000%
+[11/03/2026-19:19:58] [I] Inputs:
+[11/03/2026-19:19:58] [I] Debug Tensor Save Destinations:
+[11/03/2026-19:19:58] [I] Dump All Debug Tensor in Formats: 
+[11/03/2026-19:19:58] [I] === Reporting Options ===
+[11/03/2026-19:19:58] [I] Verbose: Disabled
+[11/03/2026-19:19:58] [I] Averages: 10 inferences
+[11/03/2026-19:19:58] [I] Percentiles: 90,95,99
+[11/03/2026-19:19:58] [I] Dump refittable layers:Disabled
+[11/03/2026-19:19:58] [I] Dump output: Disabled
+[11/03/2026-19:19:58] [I] Profile: Disabled
+[11/03/2026-19:19:58] [I] Export timing to JSON file: 
+[11/03/2026-19:19:58] [I] Export output to JSON file: 
+[11/03/2026-19:19:58] [I] Export profile to JSON file: 
+[11/03/2026-19:19:58] [I] 
+[11/03/2026-19:19:58] [I] === Device Information ===
+[11/03/2026-19:19:58] [I] Available Devices: 
+[11/03/2026-19:19:58] [I]   Device 0: "NVIDIA RTX A6000" UUID: GPU-867df774-6c82-4067-6846-078d70a66d09
+[11/03/2026-19:19:58] [I] Selected Device: NVIDIA RTX A6000
+[11/03/2026-19:19:58] [I] Selected Device ID: 0
+[11/03/2026-19:19:58] [I] Selected Device UUID: GPU-867df774-6c82-4067-6846-078d70a66d09
+[11/03/2026-19:19:58] [I] Compute Capability: 8.6
+[11/03/2026-19:19:58] [I] SMs: 84
+[11/03/2026-19:19:58] [I] Device Global Memory: 49139 MiB
+[11/03/2026-19:19:58] [I] Shared Memory per SM: 100 KiB
+[11/03/2026-19:19:58] [I] Memory Bus Width: 384 bits (ECC disabled)
+[11/03/2026-19:19:58] [I] Application Compute Clock Rate: 1.8 GHz
+[11/03/2026-19:19:58] [I] Application Memory Clock Rate: 8.001 GHz
+[11/03/2026-19:19:58] [I] 
+[11/03/2026-19:19:58] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
+[11/03/2026-19:19:58] [I] 
+[11/03/2026-19:19:58] [I] TensorRT version: 10.16.0
+[11/03/2026-19:19:58] [I] Loading standard plugins
+[11/03/2026-19:19:58] [I] [TRT] [MemUsageChange] Init CUDA: CPU +1, GPU +0, now: CPU 32, GPU 1596 (MiB)
+[11/03/2026-19:19:58] [I] Start parsing network model.
+[11/03/2026-19:19:58] [I] [TRT] ----------------------------------------------------------------
+[11/03/2026-19:19:58] [I] [TRT] Input filename:   /workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx
+[11/03/2026-19:19:58] [I] [TRT] ONNX IR version:  0.0.7
+[11/03/2026-19:19:58] [I] [TRT] Opset version:    12
+[11/03/2026-19:19:58] [I] [TRT] Producer name:    tf2onnx
+[11/03/2026-19:19:58] [I] [TRT] Producer version: 1.9.2
+[11/03/2026-19:19:58] [I] [TRT] Domain:           
+[11/03/2026-19:19:58] [I] [TRT] Model version:    0
+[11/03/2026-19:19:58] [I] [TRT] Doc string:       
+[11/03/2026-19:19:58] [I] [TRT] ----------------------------------------------------------------
+[11/03/2026-19:19:58] [I] Finished parsing network model. Parse time: 0.0386417
+[11/03/2026-19:19:58] [W] Dynamic dimensions required for input: input_1:0, but no shapes were provided. Automatically overriding shape to: 1x3x544x960
+[11/03/2026-19:19:58] [I] Set shape of input tensor input_1:0 for optimization profile 0 to: MIN=1x3x544x960 OPT=1x3x544x960 MAX=1x3x544x960
+[11/03/2026-19:19:59] [I] [TRT] [MemUsageChange] Init builder kernel library: CPU +195, GPU +4, now: CPU 498, GPU 1600 (MiB)
+[11/03/2026-19:19:59] [I] [TRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[11/03/2026-19:20:20] [I] [TRT] Detected 1 inputs and 2 output network tensors.
+[11/03/2026-19:20:23] [I] [TRT] Total Host Persistent Memory: 156480 bytes
+[11/03/2026-19:20:23] [I] [TRT] Total Device Persistent Memory: 1024 bytes
+[11/03/2026-19:20:23] [I] [TRT] Max Scratch Memory: 0 bytes
+[11/03/2026-19:20:23] [I] [TRT] [BlockAssignment] Started assigning block shifts. This will take 28 steps to complete.
+[11/03/2026-19:20:23] [I] [TRT] [BlockAssignment] Algorithm ShiftNTopDown took 0.782ms to assign 3 blocks to 28 nodes requiring 14622720 bytes.
+[11/03/2026-19:20:23] [I] [TRT] Total Activation Memory: 14622720 bytes
+[11/03/2026-19:20:23] [I] [TRT] Total Weights Memory: 2682944 bytes
+[11/03/2026-19:20:23] [I] [TRT] Engine generation completed in 24.4552 seconds.
+[11/03/2026-19:20:23] [I] [TRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 0 MiB, GPU 29 MiB
+[11/03/2026-19:20:23] [I] Created engine with size: 2.915 MiB
+[11/03/2026-19:20:23] [I] Engine built in 25.0023 sec.
+[11/03/2026-19:20:23] [I] [TRT] Loaded engine size: 2 MiB
+[11/03/2026-19:20:23] [I] Engine deserialized in 0.0185287 sec.
+[11/03/2026-19:20:23] [I] Skipped inference phase since --skipInference is added.
+&&&& PASSED TensorRT.trtexec [TensorRT v101600] [b72] # trtexec --onnx=/workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx --saveEngine=/workspace/.install/windows/a6000/engines/trafficcamnet-smoke_sm86.engine --skipInference --fp16

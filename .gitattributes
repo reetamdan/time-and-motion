@@ -2,6 +2,8 @@
 # with CRLF, and several files (extractor, configs, deepstream.sh) are pinned by SHA-256
 # in configs/models.yaml, so a checkout must reproduce them byte for byte.
 * text=auto eol=lf
+# Windows batch files need CRLF for cmd.exe.
+*.cmd text eol=crlf
 
 *.png binary
 *.jpg binary

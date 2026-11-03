@@ -186,3 +186,13 @@ def test_real_ffmpeg_extraction_on_the_supplied_clip(tmp_path: Path, repository,
     assert 6.0 < clip["source_end_s"] - clip["source_start_s"] < 8.0
     data = (config.runtime.evidence_root / repository.get_evidence(snapshot["id"])["path"]).read_bytes()
     assert data[:2] == b"\xff\xd8" and len(data) > 10_000
+
+
+def test_retention_order_is_insertion_order_when_timestamps_tie(monkeypatch, repository) -> None:
+    """Fast inserts share a millisecond; "oldest" must then be the first inserted, not a random UUID order."""
+    from backend.app.db import repository as repository_module
+    monkeypatch.setattr(repository_module, "iso_now", lambda: "2026-11-04T00:00:00.000Z")
+    ids = [repository.register_evidence({"path": f"r/{index}.jpg", "media_type": "image/jpeg", "kind": "unit",
+                                         "size_bytes": 1}) for index in range(12)]
+    assert [row["id"] for row in repository.evidence_for_retention()] == ids
+    assert [row["id"] for row in repository.list_evidence()] == list(reversed(ids))

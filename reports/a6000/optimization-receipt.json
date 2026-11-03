@@ -1,0 +1,27 @@
+{
+  "measured_at": "2026-11-04 (local)",
+  "gpu": "NVIDIA RTX A6000 (sm86, 48 GB), driver 596.71, DeepStream 9.2 / TensorRT 10.16 pinned container",
+  "clip": "demo/cam01.mp4 (1920x1080, 29.97 fps, 710 frames, dense crowd)",
+  "detector_pipeline_unpaced": {
+    "method": "extract_metadata_v2 --loop, unpaced, decode+infer+NvDCF, steady-state frames/s over ~35 s; tracked person boxes per frame over the first 710 frames",
+    "trafficcamnet-smoke FP16": {"fps": 495.6, "tracked_people_mean": 17.1, "tracked_people_max": 25},
+    "rt-detr-person-candidate FP32 (strongly typed, no TF32)": {"fps": 164.5, "tracked_people_mean": 68.5, "tracked_people_max": 86},
+    "rf-detr-person-candidate FP32": {"fps": 138.9, "tracked_people_mean": 39.5, "tracked_people_max": 47}
+  },
+  "rt_detr_engine_trtexec": {
+    "fp32_strongly_typed_noTF32": {"mean_gpu_ms": 5.09, "qps": 179.8},
+    "fp32_strongly_typed_tf32": {"mean_gpu_ms": 4.34, "qps": 207.5},
+    "fp16": {"mean_gpu_ms": 2.40, "qps": 347.2}
+  },
+  "rt_detr_fp16_vs_fp32_on_clip": {
+    "detections_per_frame": {"fp32": 72.47, "fp16": 72.35},
+    "fp32_boxes_matched_in_fp16_iou_ge_0_5": 0.9942,
+    "mean_iou_of_matches": 0.9942,
+    "median_confidence_difference": 0.00076,
+    "max_per_frame_count_difference": 4
+  },
+  "tracker_maxTargetsPerStream": {"150": {"tracked_mean": 68.4, "unique_ids": 474}, "300": {"tracked_mean": 68.4, "unique_ids": 476},
+                                  "decision": "unchanged (150): no measured effect on this clip"},
+  "selected": "rt-detr-person-candidate FP16 (candidate_evaluation; no human-reviewed accuracy evaluation exists)",
+  "sqlite": "Repository now reuses one connection: per-transaction cost 16 ms -> <1 ms on this host; camera starts no longer serialized behind database commits"
+}

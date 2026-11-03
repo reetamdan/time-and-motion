@@ -802,7 +802,7 @@ class SQLiteRepository:
         where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
         with self._connection() as connection:
             rows = connection.execute(
-                f"SELECT * FROM evidence {where} ORDER BY created_at DESC, id LIMIT ? OFFSET ?",
+                f"SELECT * FROM evidence {where} ORDER BY created_at DESC, rowid DESC LIMIT ? OFFSET ?",
                 (*parameters, limit, offset)).fetchall()
         return [_row(row, "metadata_json") for row in rows]  # type: ignore[misc]
 
@@ -812,10 +812,10 @@ class SQLiteRepository:
         return {"records": int(row[0]), "bytes": int(row[1])}
 
     def evidence_for_retention(self) -> list[dict[str, Any]]:
-        """Oldest first; the caller decides how many to remove (age and count/size limits)."""
+        """Oldest first (insertion order breaks same-millisecond ties); the caller applies the age and count/size limits."""
         with self._connection() as connection:
             rows = connection.execute(
-                "SELECT id, path, size_bytes, created_at FROM evidence ORDER BY created_at, id").fetchall()
+                "SELECT id, path, size_bytes, created_at FROM evidence ORDER BY created_at, rowid").fetchall()
         return [dict(row) for row in rows]
 
     def delete_evidence(self, evidence_id: str) -> None:

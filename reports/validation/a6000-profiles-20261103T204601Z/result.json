@@ -1,0 +1,583 @@
+{
+  "generated_at_utc": "2026-11-03T20:46:01.800629+00:00",
+  "gpu": "NVIDIA RTX A6000",
+  "scope": "Real single-camera integration and cleanup; not detector accuracy or multi-camera capacity.",
+  "models": [
+    {
+      "id": "trafficcamnet-smoke",
+      "checks": {
+        "all_selected_artifacts_match": true,
+        "runtime_ready": true,
+        "camera_started": true,
+        "clean_end_of_clip": true,
+        "all_710_frames_processed": true,
+        "positive_real_person_counts": true,
+        "history_covers_clip": true,
+        "real_evidence_saved": true,
+        "snapshot_downloadable": true,
+        "clip_downloadable": true,
+        "stopped_cleanly": true,
+        "owned_container_removed": true
+      },
+      "artifacts": [
+        {
+          "name": "detector.checkpoint",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned.onnx",
+          "expected_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "current_sha256": "d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.engine",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\models\\trafficcamnet-smoke\\resnet18_trafficcamnet_pruned_fp16_sm86.engine",
+          "expected_sha256": "6d127a999f809db769010235fa3157cfd520d423bffba895c7865eeb2b3a7336",
+          "current_sha256": "6d127a999f809db769010235fa3157cfd520d423bffba895c7865eeb2b3a7336",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.infer_config",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\a6000\\trafficcamnet-smoke.txt",
+          "expected_sha256": "48a1c262782cf4a5fa5f7085909f41d2365c24c6368ac2a31be06fa19b035e56",
+          "current_sha256": "48a1c262782cf4a5fa5f7085909f41d2365c24c6368ac2a31be06fa19b035e56",
+          "status": "MATCH"
+        },
+        {
+          "name": "tracker.config",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+          "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.wrapper",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\scripts\\deepstream.sh",
+          "expected_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "current_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.extractor",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+          "expected_sha256": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+          "current_sha256": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.capability_probe",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\scripts\\lib\\capability-probe.sh",
+          "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.image_reference",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\reports\\environment\\deepstream92\\image-reference.txt",
+          "expected_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "current_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "status": "MATCH"
+        }
+      ],
+      "readiness": {
+        "status": "ready",
+        "checks": [
+          {
+            "name": "configuration",
+            "ready": true,
+            "detail": "Validated revision dcf55492e48b"
+          },
+          {
+            "name": "persistence",
+            "ready": true,
+            "detail": "SQLite query succeeded with foreign keys and WAL migration"
+          },
+          {
+            "name": "sources",
+            "ready": true,
+            "detail": "All enabled source files are present"
+          },
+          {
+            "name": "models",
+            "ready": true,
+            "detail": "Pinned detector/engine/tracker artifacts available"
+          },
+          {
+            "name": "perception",
+            "ready": true,
+            "detail": "Pinned DeepStream runtime + trafficcamnet-smoke (provisional_smoke) + NvDCF; real boxes and IDs. Not an evaluated PRD baseline."
+          }
+        ]
+      },
+      "run_id": "a207f56a-1ce7-4a67-b571-df652e2a0903",
+      "epoch": "07bead92-8043-4025-95f4-0d1225e93bbf",
+      "final_camera": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "CALIBRATION WARNING",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "07bead92-8043-4025-95f4-0d1225e93bbf",
+        "visible_count": 18,
+        "source_fps": 29.970029670629074,
+        "analytics_fps": 462.6119501346839,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 890.9999999959837,
+        "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "unpaced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": 23.7237,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "source_loop": false,
+        "source_loop_index": null,
+        "source_file_position_s": 23.656966667000003,
+        "backend_queue_ms": 3.2301999963237904,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0",
+        "frames_at_detection_limit": 0,
+        "detection_limit": 300,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "evidence_available": true,
+        "evidence_unavailable_reason": null
+      },
+      "history_samples": 48,
+      "processed_frames": 710,
+      "peak_people": 25,
+      "evidence_marker": {
+        "status_code": 201,
+        "body": {
+          "group_id": "1f027315-2306-414a-969d-e7e691e531c2",
+          "snapshot": {
+            "id": "4313d1c6-8aed-471d-9185-884c52fa2107",
+            "run_id": "a207f56a-1ce7-4a67-b571-df652e2a0903",
+            "camera_id": "cam-01",
+            "camera_epoch": "07bead92-8043-4025-95f4-0d1225e93bbf",
+            "kind": "operator_marker_snapshot",
+            "media_type": "image/jpeg",
+            "label": "OPERATOR MARKER - manual evidence request; not an analytics or alert detection",
+            "trigger": "operator_marker",
+            "group_id": "1f027315-2306-414a-969d-e7e691e531c2",
+            "note": "A6000 profile validation",
+            "timestamp_basis": "camera epoch source timeline (pipeline PTS seconds), mapped onto the source file by aligning the epoch's first decoded frame",
+            "source_marked_s": 4.637966666,
+            "source_start_s": 4.6379663330000005,
+            "source_end_s": 4.6379663330000005,
+            "checksum": "da40a217ce3d217b9c8fb08c5b8bcfce3f37ef2c9b1eb30b8226772f3f98b5f1",
+            "size_bytes": 304903,
+            "created_at": "2026-11-03T20:46:13.356Z",
+            "file_available": true,
+            "unavailable_reason": null,
+            "url": "/api/v1/evidence/4313d1c6-8aed-471d-9185-884c52fa2107",
+            "metadata": {
+              "actual_frame_file_pts_s": 4.571233,
+              "actual_frame_source_s": 4.6379663330000005,
+              "alert_key": null,
+              "extraction": "accurate decode of the first frame at/after the requested time",
+              "group_id": "1f027315-2306-414a-969d-e7e691e531c2",
+              "note": "A6000 profile validation",
+              "pipeline_frame_number": 137,
+              "provenance": {
+                "detector_acceptance": "provisional_smoke",
+                "detector_id": "trafficcamnet-smoke",
+                "replay_mode": "unpaced",
+                "replay_pass_when_marked": null,
+                "source_position_reached_s": 4.637966666
+              },
+              "requested_source_time_s": 4.637966666,
+              "scope": "Real source media from the configured file at a recorded source time; counts or detections are not burned into the media",
+              "source_label": "cam01.mp4",
+              "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+              "stream_start_time_s": 0.0,
+              "timeline_mapping": {
+                "basis": "aligned on the epoch's first decoded frame: file PTS = source time - pipeline origin + file first-frame PTS",
+                "file_first_frame_pts_s": 0.0,
+                "file_pts_minus_source_s": -0.066733333,
+                "pipeline_origin_s": 0.066733333
+              },
+              "tool": "ffmpeg version 9.0.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+              "trigger": "operator_marker"
+            }
+          },
+          "clip": {
+            "id": "093eb3b0-f84a-47e1-8403-a6168240a6a1",
+            "run_id": "a207f56a-1ce7-4a67-b571-df652e2a0903",
+            "camera_id": "cam-01",
+            "camera_epoch": "07bead92-8043-4025-95f4-0d1225e93bbf",
+            "kind": "operator_marker_clip",
+            "media_type": "video/mp4",
+            "label": "OPERATOR MARKER - manual evidence request; not an analytics or alert detection",
+            "trigger": "operator_marker",
+            "group_id": "1f027315-2306-414a-969d-e7e691e531c2",
+            "note": "A6000 profile validation",
+            "timestamp_basis": "camera epoch source timeline (pipeline PTS seconds), mapped onto the source file by aligning the epoch's first decoded frame",
+            "source_marked_s": 4.637966666,
+            "source_start_s": 0.066733333,
+            "source_end_s": 7.707700333,
+            "checksum": "ca19f90c85b56b66528eb3d4e240edbf72e572c5cc81c173b893b8d3743b4332",
+            "size_bytes": 5854895,
+            "created_at": "2026-11-03T20:46:13.376Z",
+            "file_available": true,
+            "unavailable_reason": null,
+            "url": "/api/v1/evidence/093eb3b0-f84a-47e1-8403-a6168240a6a1",
+            "metadata": {
+              "alert_key": null,
+              "clip_duration_s": 7.640967,
+              "extraction": "stream copy (no re-encode); starts on the keyframe at or before the requested start",
+              "group_id": "1f027315-2306-414a-969d-e7e691e531c2",
+              "keyframe_aligned_start_s": 0.066733333,
+              "note": "A6000 profile validation",
+              "pipeline_frame_number": 137,
+              "provenance": {
+                "detector_acceptance": "provisional_smoke",
+                "detector_id": "trafficcamnet-smoke",
+                "replay_mode": "unpaced",
+                "replay_pass_when_marked": null,
+                "source_position_reached_s": 4.637966666
+              },
+              "requested_source_end_s": 7.637966666,
+              "requested_source_start_s": 1.6379666659999994,
+              "requested_source_time_s": 4.637966666,
+              "scope": "Real source media from the configured file at a recorded source time; counts or detections are not burned into the media",
+              "source_label": "cam01.mp4",
+              "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+              "stream_start_time_s": 0.0,
+              "timeline_mapping": {
+                "basis": "aligned on the epoch's first decoded frame: file PTS = source time - pipeline origin + file first-frame PTS",
+                "file_first_frame_pts_s": 0.0,
+                "file_pts_minus_source_s": -0.066733333,
+                "pipeline_origin_s": 0.066733333
+              },
+              "tool": "ffmpeg version 9.0.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+              "trigger": "operator_marker"
+            }
+          },
+          "alert_id": "be49d9cd-e127-5285-b7f6-c370625b36d1"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "rt-detr-person-candidate",
+      "checks": {
+        "all_selected_artifacts_match": true,
+        "runtime_ready": true,
+        "camera_started": true,
+        "clean_end_of_clip": true,
+        "all_710_frames_processed": true,
+        "positive_real_person_counts": true,
+        "history_covers_clip": true,
+        "stopped_cleanly": true,
+        "owned_container_removed": true
+      },
+      "artifacts": [
+        {
+          "name": "detector.checkpoint",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\models\\rt-detr-person-candidate\\rt_detr_r18vd_raw.onnx",
+          "expected_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+          "current_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.engine",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\models\\rt-detr-person-candidate\\rt_detr_r18vd_raw_fp16_sm86.engine",
+          "expected_sha256": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+          "current_sha256": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.infer_config",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\a6000\\rt-detr-person-candidate.txt",
+          "expected_sha256": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+          "current_sha256": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.parser_library",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\candidates\\rt_detr\\parser\\libnvds_infercustomparser_rtdetr.so",
+          "expected_sha256": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+          "current_sha256": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+          "status": "MATCH"
+        },
+        {
+          "name": "tracker.config",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+          "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.wrapper",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\scripts\\deepstream.sh",
+          "expected_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "current_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.extractor",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+          "expected_sha256": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+          "current_sha256": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.capability_probe",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\scripts\\lib\\capability-probe.sh",
+          "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.image_reference",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\reports\\environment\\deepstream92\\image-reference.txt",
+          "expected_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "current_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "status": "MATCH"
+        }
+      ],
+      "readiness": {
+        "status": "ready",
+        "checks": [
+          {
+            "name": "configuration",
+            "ready": true,
+            "detail": "Validated revision 233d2317ade1"
+          },
+          {
+            "name": "persistence",
+            "ready": true,
+            "detail": "SQLite query succeeded with foreign keys and WAL migration"
+          },
+          {
+            "name": "sources",
+            "ready": true,
+            "detail": "All enabled source files are present"
+          },
+          {
+            "name": "models",
+            "ready": true,
+            "detail": "Pinned detector/engine/tracker artifacts available"
+          },
+          {
+            "name": "perception",
+            "ready": true,
+            "detail": "Pinned DeepStream runtime + rt-detr-person-candidate (candidate_unaccepted) + NvDCF; real boxes and IDs. Not an evaluated PRD baseline."
+          }
+        ]
+      },
+      "run_id": "03cb54a0-7164-421a-b3fd-1d9b546151c9",
+      "epoch": "deb4b25d-a45d-4b01-a92b-840b3a6cd911",
+      "final_camera": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "CALIBRATION WARNING",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "deb4b25d-a45d-4b01-a92b-840b3a6cd911",
+        "visible_count": 63,
+        "source_fps": 29.970029670629074,
+        "analytics_fps": 226.545524323607,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 1016.0000000032596,
+        "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "unpaced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": 23.7237,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "source_loop": false,
+        "source_loop_index": null,
+        "source_file_position_s": 23.656966667000003,
+        "backend_queue_ms": 14.71789999777684,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0",
+        "frames_at_detection_limit": 0,
+        "detection_limit": 300,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "evidence_available": true,
+        "evidence_unavailable_reason": null
+      },
+      "history_samples": 48,
+      "processed_frames": 710,
+      "peak_people": 84,
+      "result": "PASS"
+    },
+    {
+      "id": "rf-detr-person-candidate",
+      "checks": {
+        "all_selected_artifacts_match": true,
+        "runtime_ready": true,
+        "camera_started": true,
+        "clean_end_of_clip": true,
+        "all_710_frames_processed": true,
+        "positive_real_person_counts": true,
+        "history_covers_clip": true,
+        "stopped_cleanly": true,
+        "owned_container_removed": true
+      },
+      "artifacts": [
+        {
+          "name": "detector.checkpoint",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx",
+          "expected_sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb",
+          "current_sha256": "13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.engine",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\models\\rf-detr-person-candidate\\rf_detr_small_1080p_rgb01_fp32_sm86.engine",
+          "expected_sha256": "2fc61ea742c6b90575e449cdf99bba34c0181cf873403c592c239134d4c77428",
+          "current_sha256": "2fc61ea742c6b90575e449cdf99bba34c0181cf873403c592c239134d4c77428",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.infer_config",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\a6000\\rf-detr-person-candidate.txt",
+          "expected_sha256": "824be2f4caf09af9c23d587b8be0b209d01272632f62bf84896fbbc530cb0bc9",
+          "current_sha256": "824be2f4caf09af9c23d587b8be0b209d01272632f62bf84896fbbc530cb0bc9",
+          "status": "MATCH"
+        },
+        {
+          "name": "detector.parser_library",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\candidates\\rf_detr\\parser\\libnvds_infercustomparser_rfdetr.so",
+          "expected_sha256": "9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64",
+          "current_sha256": "9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64",
+          "status": "MATCH"
+        },
+        {
+          "name": "tracker.config",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\reference\\config_tracker_NvDCF_perf.yml",
+          "expected_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "current_sha256": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.wrapper",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\scripts\\deepstream.sh",
+          "expected_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "current_sha256": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.extractor",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\perception\\deepstream\\service_maker\\extract_metadata_v2.py",
+          "expected_sha256": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+          "current_sha256": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.capability_probe",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\scripts\\lib\\capability-probe.sh",
+          "expected_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "current_sha256": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+          "status": "MATCH"
+        },
+        {
+          "name": "pipeline.image_reference",
+          "path": "C:\\Users\\Venkat-stu\\Desktop\\Aditya\\time-and-motion\\reports\\environment\\deepstream92\\image-reference.txt",
+          "expected_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "current_sha256": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+          "status": "MATCH"
+        }
+      ],
+      "readiness": {
+        "status": "ready",
+        "checks": [
+          {
+            "name": "configuration",
+            "ready": true,
+            "detail": "Validated revision 4a918232b5c7"
+          },
+          {
+            "name": "persistence",
+            "ready": true,
+            "detail": "SQLite query succeeded with foreign keys and WAL migration"
+          },
+          {
+            "name": "sources",
+            "ready": true,
+            "detail": "All enabled source files are present"
+          },
+          {
+            "name": "models",
+            "ready": true,
+            "detail": "Pinned detector/engine/tracker artifacts available"
+          },
+          {
+            "name": "perception",
+            "ready": true,
+            "detail": "Pinned DeepStream runtime + rf-detr-person-candidate (candidate_unaccepted) + NvDCF; real boxes and IDs. Not an evaluated PRD baseline."
+          }
+        ]
+      },
+      "run_id": "3ae386cb-90c1-413b-99b7-0e1f171388fe",
+      "epoch": "ba7c1a45-7499-4715-a86d-95c1b3526bf7",
+      "final_camera": {
+        "id": "cam-01",
+        "name": "Outdoor Pedestrian Area",
+        "floor_id": "floor-1",
+        "enabled": true,
+        "health": "CALIBRATION WARNING",
+        "calibration_status": "MISSING",
+        "calibration_revision": null,
+        "source_type": "file",
+        "source_label": "cam01.mp4",
+        "epoch": "ba7c1a45-7499-4715-a86d-95c1b3526bf7",
+        "visible_count": 37,
+        "source_fps": 29.970029670629074,
+        "analytics_fps": 137.51648135021617,
+        "frame_age_ms": null,
+        "frame_age_basis": "No capture clock for file replay; source PTS and backend receive time are separate domains",
+        "dropped_frames": 0,
+        "last_good_age_ms": 875.0,
+        "unavailable_reason": "Calibration missing; geometry-dependent analytics unavailable",
+        "preview_url": "/api/v1/cameras/cam-01/preview",
+        "replay_mode": "unpaced",
+        "analytics_fps_basis": "Frames consumed per second of backend host time over a 2 s window. In paced replay it tracks the source rate; in unpaced replay it is local processing throughput. It is not a live-camera frame rate or a multi-camera capacity measurement.",
+        "source_position_s": 23.7237,
+        "source_segment": 0,
+        "source_time_basis": "source PTS seconds within the camera epoch (relative media time, not UTC capture time)",
+        "source_discontinuities": 0,
+        "source_loop": false,
+        "source_loop_index": null,
+        "source_file_position_s": 23.656966667000003,
+        "backend_queue_ms": 8.74879999901168,
+        "persisted_count_samples": 48,
+        "camera_line_crossings": 0,
+        "stream_outcome": "CLEAN_EOF",
+        "stream_outcome_detail": "710 frames drained; extractor exited 0",
+        "frames_at_detection_limit": 0,
+        "detection_limit": 300,
+        "reconnect_attempt": 0,
+        "next_reconnect_at": null,
+        "evidence_available": true,
+        "evidence_unavailable_reason": null
+      },
+      "history_samples": 48,
+      "processed_frames": 710,
+      "peak_people": 47,
+      "result": "PASS"
+    }
+  ],
+  "result": "PASS"
+}

@@ -75,7 +75,7 @@ Exact pinned versions are in `backend/requirements*.txt`, `frontend/package-lock
 
 ## Project status
 
-Developed on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2) and now **running and validated on the target RTX A6000 workstation** (Windows 10 + WSL2, 2026-11-04). On the A6000 the default profile is RT-DETR with an FP16 TensorRT engine: about 68 tracked people per frame on the crowded demo clip (TrafficCamNet: about 17), 2.4 ms inference per frame, and about 220 fps for one feed through the full application. The clip replays continuously, so the dashboard stays live instead of going stale at the clip's end. Measurements and how to rebuild the profile: [operations guide, *RTX A6000 workstation profile*](docs/operations-guide.md#rtx-a6000-workstation-profile-this-pc-windows-route).
+Developed on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2) and now **running and validated on the target RTX A6000 workstation** (Windows 10 + WSL2, 2026-11-04). On the A6000 the default profile is RT-DETR with an FP16 TensorRT engine: about 68 tracked people per frame on the crowded demo clip (TrafficCamNet: about 17), 2.4 ms inference per frame, and about 220 fps for one feed through the full application. The clip replays continuously, so the dashboard stays live instead of going stale at the clip's end. The profile is `configs/a6000/` with A6000 engines in Git LFS; `Start-Aegis.cmd` selects it automatically. Measurements, rebuild and validation: [docs/rtx-a6000.md](docs/rtx-a6000.md).
 
 **Validated with real GPU runs** (evidence under `reports/`, per-criterion status in [docs/acceptance-matrix.md](docs/acceptance-matrix.md)):
 
@@ -148,6 +148,8 @@ bash scripts/setup/setup.sh --dev --isolated-frontend
 bash scripts/run-backend.sh
 ```
 
+On Windows you can instead double-click **`Start-Aegis.cmd`** after steps 1-2 and the venv/frontend setup above. It sets up the environment, picks the RTX A6000 profile (`configs/a6000`) when it detects that GPU, and starts the server.
+
 ### 4. Open the dashboard
 
 Go to **http://127.0.0.1:8000/**. WSL forwards loopback to Windows. Stop the server with **Ctrl+C**.
@@ -218,7 +220,7 @@ Benchmark methodology: [docs/benchmark-methodology.md](docs/benchmark-methodolog
 ```text
 backend/            FastAPI app: analytics, API, persistence, perception bridge, services
 frontend/           React dashboard and design system
-configs/            Camera, facility, analytics, model and runtime YAML
+configs/            Camera, facility, analytics, model and runtime YAML (configs/a6000: generated RTX A6000 profile)
 perception/         DeepStream configs, Service Maker extractor, candidate parsers (C++)
 models/             Detector checkpoints and TensorRT engines (Git LFS)
 demo/               Demo footage and derived load/soak clips (Git LFS)
@@ -237,6 +239,7 @@ Not versioned: virtual environments, `node_modules`, the `.install/` toolchains,
 
 | Document | Contents |
 | --- | --- |
+| [docs/rtx-a6000.md](docs/rtx-a6000.md) | The RTX A6000 workstation profile: what it changes and why, measurements, rebuild and validation |
 | [docs/operations-guide.md](docs/operations-guide.md) | Complete setup, run, replay, tests, benchmarks, offline procedure, reset and retention, calibration, RTSP, troubleshooting, RTX A6000 migration |
 | [docs/acceptance-matrix.md](docs/acceptance-matrix.md) | Status of every PRD acceptance criterion with its evidence |
 | [docs/api-contract.md](docs/api-contract.md) | REST and WebSocket API |
