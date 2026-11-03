@@ -86,7 +86,7 @@ def test_workspace_paths_cannot_escape_project() -> None:
 @pytest.mark.skipif(os.name != "nt", reason="Windows-to-WSL path conversion")
 def test_windows_path_conversion_uses_mounted_drive() -> None:
     converted = wsl_path(PROJECT_ROOT / "scripts" / "deepstream.sh")
-    assert converted.startswith("/mnt/c/")
+    assert converted.startswith(f"/mnt/{PROJECT_ROOT.drive[0].lower()}/")  # CI checks out on D:, this PC on C:
     assert converted.endswith("/scripts/deepstream.sh")
     assert " " not in converted
 
