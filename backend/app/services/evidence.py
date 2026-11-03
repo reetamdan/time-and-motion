@@ -120,8 +120,14 @@ class MediaTools:
         """Video frames in the file (header nb_frames, else counted packets); memoized per file version.
 
         Looped replay uses it to map pipeline frame n onto file frame n mod frame_count.
+
+        The fallback counts packets, not decoded frames: an MP4 header's nb_frames is itself a sample
+        (packet) count, and for the H.264/H.265 streams the pipeline decodes one packet is one frame.
+        ``-count_frames`` decodes the whole file (measured 5.4 s vs 0.2 s for the 24 s demo clip on the
+        A6000 PC) while the camera's start waits, and exceeds the tool timeout on long recordings, which
+        are exactly the containers (MKV/TS) without a header count.
         """
-        if self.unavailable_reason():
+        if not self.ffprobe:
             return None
         stat = source.stat()
         key = (str(source), stat.st_size, stat.st_mtime_ns)
@@ -334,4 +340,3 @@ class EvidenceService:
         retention = self.config.analytics.retention
         return {**self.repository.evidence_usage(), "max_records": self.config.runtime.evidence.max_records,
                 "max_bytes": retention.max_evidence_mib * 1024 * 1024, "max_age_days": retention.evidence_days}
-

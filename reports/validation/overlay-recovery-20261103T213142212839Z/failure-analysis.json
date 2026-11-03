@@ -1,0 +1,6 @@
+{
+  "scope": "Validator preflight failure; no camera pipeline was started.",
+  "cause": "The Windows virtualenv python.exe redirector launches the real interpreter as a child; checking only the wrapper PID did not find the listening socket.",
+  "correction": "Check the spawned process and its descendants for listener ownership before controlling the isolated API.",
+  "cleanup_observation": "After the validator exited, port 8779 had no listener. The production server on 8000 remained running."
+}

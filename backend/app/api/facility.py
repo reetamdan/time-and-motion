@@ -226,6 +226,7 @@ async def versions(request: Request) -> dict[str, object]:
 async def camera_detections(
     request: Request, camera_id: str, after_frame: int | None = Query(default=None, ge=-1),
     limit: int = Query(default=90, ge=0, le=150),
+    after_epoch: str | None = Query(default=None),
 ) -> dict[str, object]:
     """Recent tracked person boxes of the current epoch, for drawing over the source preview.
 
@@ -236,7 +237,7 @@ async def camera_detections(
     service = services(request)
     if camera_id not in service.config.camera_map:
         raise APIError(404, "CAMERA_NOT_FOUND", "Camera does not exist", {"camera_id": camera_id})
-    return service.supervisor.detections(camera_id, after_frame, limit)
+    return service.supervisor.detections(camera_id, after_frame, limit, after_epoch)
 
 
 @router.get("/cameras/{camera_id}/preview")

@@ -1,6 +1,13 @@
 # PRD acceptance matrix
 
-This matrix gives the status of every PRD §27 criterion (AC-01 to AC-26). It was last updated on 2026-10-28 (session 7), from evidence produced or re-checked in this repository. A row changes only when its linked evidence changes.
+This matrix gives the status of every PRD §27 criterion (AC-01 to AC-26). The laptop baseline dates to 2026-10-28 (session 7); the A6000 evidence update below is dated 2026-11-04. A row changes only when its linked evidence changes.
+
+### A6000 evidence update — 2026-11-04
+
+- Hardware is available and all three sm86 engines completed the full clip: `reports/validation/a6000-profiles-20261103T204601Z/result.json`. AC-26b's remaining blocker is real-feed scaling evidence, not access to an A6000.
+- Looping/overlay browser validation: `reports/validation/a6000-browser-loop-overlay-20261103T204644Z/result.json`; independent outage/restart/mobile/evidence checks: `reports/validation/review-20261103T212335Z/result.json` (17/17).
+- Regression check (`scripts/check.py --require-artifacts`, FFmpeg on PATH): 288 Python tests passed, no skips. Frontend: 44 passed; typecheck and build passed. Real A6000/browser rerun after the follow-up review: `reports/validation/overlay-recovery-20261103T215127357311Z/result.json` (17/17). A pointer-only checkout: 281 passed, seven explicit asset/tool skips.
+- This does not close labelled accuracy, calibration, steady-state capacity or the 30-minute soak. Historical laptop validation is not automatically reclassified as A6000 validation.
 
 ## How to read this
 
@@ -27,7 +34,7 @@ Five evidence tiers are kept separate, so that a lower tier is never presented a
 
 Rows with an `a`/`b` suffix split one PRD criterion into parts that are proven independently. AC-25 is split by documented route; AC-26 into design/procedure and on-A6000 validation. No new requirements are added.
 
-Test baseline at this update (delivered code, re-run 2026-11-03):
+Historical laptop test baseline (re-run 2026-11-03; current workstation checks are above):
 
 - Windows `.venv/Scripts/python.exe -m pytest -q tests perception/candidates` → **276 passed**;
 - WSL `.venv-wsl/bin/python -m pytest -q tests perception/candidates` → **274 passed, 2 skipped** (Windows-only tests);
@@ -67,7 +74,7 @@ Test baseline at this update (delivered code, re-run 2026-11-03):
 | AC-25a | Setup/run/reset documented and tested — validated Windows route | PASS | – | PASS | – | – | – | `reports/validation/documented-commands-20261028T140143584826Z/result.json` (19/19): fresh venv + `pip install`/`pip check`, `npm ci`, build, documented Windows and WSL tests, frontend tests, `validate_config.py`, `run-backend.ps1` on a real socket, readiness, dashboard served, start (and idempotent restart) / stop, `reset-demo.ps1` (reset and mismatch refusal), troubleshooting references, no leftover container. A preserved earlier FAIL (`documented-commands-20261028T135542759219Z`) found a Linux defect in the new batch supervisor (fixed) | — | None |
 | AC-25b | Setup/run/reset documented and tested — WSL `.venv-wsl` and `run-demo.sh` routes | PASS | – | PASS | – | – | – | `reports/validation/wsl-route-20261028T183618808723Z` (30/30, current extractor; first passed in `wsl-route-20261028T125420410621Z`): `install-wsl-toolchain.sh`, `setup.sh`, WSL pytest, `validate_config.py`, `run-backend.sh` serving from WSL with real GPU counts via docker, WSL ffmpeg evidence, clean EOF and full history, stop with exact container release, restart on the same database, documented reset, `run-demo.sh --strict` preflight + readiness, termination with the port free. Earlier failed wsl-route runs from that day (the `wsl.exe --` re-parsing defect; a `setsid` start race, fixed with `setsid --wait`) are preserved | — | None |
 | AC-26a | Architecture supports A6000 migration — external config, stable schemas/interfaces, engine rebuild procedure | PASS | PASS | PASS | – | – | – | External YAML config (`CCTV_CONFIG_DIR`); config-driven detector profiles with recorded identities; versioned API and SQLite migrations; adapter interface with the `linux-docker` route validated inside WSL (AC-25b); benchmark launchers and manifest check verified on Linux; engine rebuild procedure executed on this laptop for both candidates; `docs/operations-guide.md` §10 lists which tools run natively on Linux and which still orchestrate from Windows | Port the Windows-orchestrated validators if they are needed on the A6000 | None |
-| AC-26b | On-A6000 validation of the rebuild/scaling procedure (not a separate PRD gate) | BLOCKED | – | – | – | – | – | — | Rebuild engines on the A6000; repeat the validators and real-feed scaling | **RTX A6000 hardware** |
+| AC-26b | On-A6000 validation of the rebuild/scaling procedure (not a separate PRD gate) | BLOCKED | PASS | PASS | – | – | – | Three sm86 engines rebuilt; all profiles processed 710/710 frames with evidence and cleanup (`reports/validation/a6000-profiles-20261103T204601Z/result.json`). Independent loop/overlay/evidence/browser checks passed (`reports/validation/review-20261103T212335Z/result.json`). Scope: one supplied clip | Run the steady-state duplicate-load capacity protocol and real-feed scaling | Physically distinct camera feeds for real-feed scaling; hardware is now available |
 
 Totals: 11 PASS (AC-01–04, 07, 18, 20, 22, 25a, 25b, 26a) · 16 BLOCKED · 1 NOT_RUN (AC-21, paused) · 0 FAIL.
 

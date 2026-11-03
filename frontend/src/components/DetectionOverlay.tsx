@@ -1,4 +1,4 @@
-import { useEffect, useRef, type RefObject } from 'react';
+import { useEffect, type RefObject } from 'react';
 import { api } from '../lib/api';
 import type { Camera, CameraDetections, DetectionFrame } from '../types';
 
@@ -10,6 +10,23 @@ const MAX_BUFFERED_FRAMES = 300;
 export const MATCH_TOLERANCE_S = 0.2;
 /** Paced replay: re-seek the preview when it drifts this far from the pipeline position. */
 export const PACED_RESYNC_S = 0.6;
+/** Boxes not refreshed by a successful poll within this time are cleared (matches the snapshot stale threshold). */
+export const DETECTION_STALE_MS = 1500;
+/** A detections request that takes longer than this is abandoned, so a hung request cannot stall polling. */
+export const DETECTION_REQUEST_TIMEOUT_MS = 3000;
+
+/** Abort on either signal. AbortSignal.any needs Chrome 116 / Firefox 124 / Safari 17.4; without it this
+ *  falls back to a manual combination instead of throwing (which would leave the overlay silently empty). */
+export function requestSignal(cancel: AbortSignal, timeoutMs = DETECTION_REQUEST_TIMEOUT_MS): AbortSignal {
+  if (typeof AbortSignal.any === 'function' && typeof AbortSignal.timeout === 'function') {
+    return AbortSignal.any([cancel, AbortSignal.timeout(timeoutMs)]);
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const abort = () => { clearTimeout(timer); controller.abort(); };
+  if (cancel.aborted) abort(); else cancel.addEventListener('abort', abort, { once: true });
+  return controller.signal;
+}
 
 export interface Rect { x: number; y: number; width: number; height: number }
 
@@ -31,7 +48,7 @@ export function nearestFrame(frames: DetectionFrame[], time: number, tolerance =
   for (const frame of frames) {
     if (frame.file_position_s === null) continue;
     const distance = Math.abs(frame.file_position_s - time);
-    if (distance < bestDistance) {
+    if (distance <= bestDistance) {
       best = frame;
       bestDistance = distance;
     }
@@ -47,10 +64,35 @@ export function syncTarget(mode: 'paced' | 'unpaced' | null | undefined, videoTi
   return drift > PACED_RESYNC_S ? pipelinePosition : null;
 }
 
-function mergeFrames(buffer: DetectionFrame[], incoming: DetectionFrame[]): DetectionFrame[] {
-  if (incoming.length === 0) return buffer;
-  const merged = buffer.concat(incoming);
-  return merged.length > MAX_BUFFERED_FRAMES ? merged.slice(merged.length - MAX_BUFFERED_FRAMES) : merged;
+/** One camera epoch's display cache. Transport success alone does not make old detections fresh. */
+export class DetectionBuffer {
+  frames: DetectionFrame[] = [];
+  size: [number, number] | null = null;
+  private expiresAt = 0;
+
+  constructor(readonly epoch: string | null) {}
+
+  get afterFrame(): number | undefined {
+    return this.frames.at(-1)?.frame_number;
+  }
+
+  accept(response: CameraDetections, now: number): boolean {
+    if (response.camera_epoch !== this.epoch) {
+      this.frames = [];
+      this.size = null;
+      this.expiresAt = 0;
+      return false;
+    }
+    const after = this.afterFrame ?? -1;
+    this.frames = this.frames.concat(response.frames.filter(frame => frame.frame_number > after)).slice(-MAX_BUFFERED_FRAMES);
+    if (response.frame_width && response.frame_height) this.size = [response.frame_width, response.frame_height];
+    this.expiresAt = response.latest_age_ms === null ? 0 : now + DETECTION_STALE_MS - response.latest_age_ms;
+    return this.fresh(now);
+  }
+
+  fresh(now: number): boolean {
+    return now < this.expiresAt;
+  }
 }
 
 function draw(canvas: HTMLCanvasElement, video: HTMLVideoElement, frame: DetectionFrame | null,
@@ -89,19 +131,6 @@ function draw(canvas: HTMLCanvasElement, video: HTMLVideoElement, frame: Detecti
  */
 export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVideoElement | null>,
   canvasRef: RefObject<HTMLCanvasElement | null>, active: boolean, detail: boolean): void {
-  const framesRef = useRef<DetectionFrame[]>([]);
-  const sizeRef = useRef<[number, number] | null>(null);
-  const epochRef = useRef<string | null>(null);
-  const modeRef = useRef(camera.replay_mode);
-  modeRef.current = camera.replay_mode;
-
-  useEffect(() => {
-    if (epochRef.current !== camera.epoch) {
-      epochRef.current = camera.epoch;
-      framesRef.current = [];
-    }
-  }, [camera.epoch]);
-
   useEffect(() => {
     const video = videoRef.current;
     if (video) video.loop = Boolean(camera.source_loop);
@@ -117,20 +146,20 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
     let timer: number | undefined;
     let animation: number | undefined;
     const controller = new AbortController();
+    // Effect-local state prevents a late response from a previous epoch repopulating a new cache.
+    const buffer = new DetectionBuffer(camera.epoch);
 
     const poll = async () => {
-      const last = framesRef.current[framesRef.current.length - 1];
       try {
-        const response: CameraDetections = await api.cameraDetections(camera.id, last?.frame_number, controller.signal);
+        const response: CameraDetections = await api.cameraDetections(camera.id, buffer.afterFrame,
+          requestSignal(controller.signal), camera.epoch ?? undefined);
         if (cancelled) return;
-        if (response.camera_epoch !== epochRef.current) framesRef.current = [];
-        if (response.frame_width && response.frame_height) sizeRef.current = [response.frame_width, response.frame_height];
-        framesRef.current = mergeFrames(framesRef.current, response.frames);
+        const fresh = buffer.accept(response, performance.now());
         const video = videoRef.current;
-        const newest = framesRef.current[framesRef.current.length - 1];
-        if (video && newest && video.readyState >= 1) {
-          const target = syncTarget(modeRef.current, video.currentTime, newest.file_position_s);
-          if (modeRef.current === 'unpaced') {
+        const newest = buffer.frames.at(-1);
+        if (fresh && video && newest && video.readyState >= 1) {
+          const target = syncTarget(camera.replay_mode, video.currentTime, newest.file_position_s);
+          if (camera.replay_mode === 'unpaced') {
             if (!video.paused) video.pause();
           } else if (video.paused) {
             void video.play().catch(() => undefined);
@@ -146,7 +175,8 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
     const render = () => {
       const video = videoRef.current;
       const canvas = canvasRef.current;
-      if (video && canvas) draw(canvas, video, nearestFrame(framesRef.current, video.currentTime), sizeRef.current, detail);
+      if (video && canvas) draw(canvas, video,
+        buffer.fresh(performance.now()) ? nearestFrame(buffer.frames, video.currentTime) : null, buffer.size, detail);
       animation = window.requestAnimationFrame(render);
     };
 
@@ -160,5 +190,5 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
       const canvas = canvasRef.current;
       canvas?.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, [active, camera.id, videoRef, canvasRef, detail]);
+  }, [active, camera.id, camera.epoch, camera.replay_mode, videoRef, canvasRef, detail]);
 }

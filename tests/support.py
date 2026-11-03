@@ -16,8 +16,16 @@ from backend.app.perception.base import AdapterAvailability, ObservationBatch, O
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
+def artifact_present(path: Path | None) -> bool:
+    """LFS pointer files are placeholders, not usable footage or model binaries."""
+    if path is None or not path.is_file():
+        return False
+    with path.open("rb") as stream:
+        return not stream.read(128).startswith(b"version https://git-lfs.github.com/spec/v1")
+
+
 def missing_local_artifacts() -> list[str]:
-    """Footage and selected-model files that are restored locally and not kept in git."""
+    """Footage and selected-model files missing from a checkout without hydrated Git LFS."""
     from backend.app.configuration import load_configuration
 
     config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
@@ -25,7 +33,7 @@ def missing_local_artifacts() -> list[str]:
     selected = next(model for model in config.models.models if model.id == config.models.selected_model)
     paths += [selected.checkpoint_path, selected.engine_path]
     return [str(path.relative_to(PROJECT_ROOT)) if path and path.is_relative_to(PROJECT_ROOT) else str(path)
-            for path in paths if path is None or not path.is_file()]
+            for path in paths if not artifact_present(path)]
 
 
 _MISSING_LOCAL_ARTIFACTS = missing_local_artifacts()

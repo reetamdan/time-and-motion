@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from collections.abc import Iterator
 
 import pytest
 
@@ -16,8 +17,11 @@ def config() -> AppConfig:
 
 
 @pytest.fixture
-def repository(tmp_path: Path, config: AppConfig) -> SQLiteRepository:
+def repository(tmp_path: Path, config: AppConfig) -> Iterator[SQLiteRepository]:
     repository = SQLiteRepository(tmp_path / "repository.db")
     repository.migrate()
     repository.seed_configuration(config)
-    return repository
+    try:
+        yield repository
+    finally:
+        repository.close()

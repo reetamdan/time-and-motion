@@ -74,6 +74,7 @@ class CameraRuntimeState:
     loop_frames: int | None = None
     loop_index: int | None = None
     loop_origins: dict[int, float] = field(default_factory=dict)
+    loop_ends: dict[int, float] = field(default_factory=dict)
     # Position of the latest frame on the source file's own timeline (seconds from its first frame).
     file_position_s: float | None = None
     # Recent tracked person boxes (pipeline pixels) for the dashboard overlay; never used for counts.
@@ -536,15 +537,22 @@ class CameraRuntimeSupervisor:
             if not state.loop_frames:
                 return None, ("The looping source's frame count is unknown (ffprobe), so its replay passes cannot be "
                               "mapped onto the file")
-            candidates = [origin for origin in state.loop_origins.values() if origin <= source_time + 1e-9]
+            # Only a pass with an observed first frame and a reached end can map this time.
+            # Picking the nearest preceding origin silently maps a missing pass onto an older one.
+            candidates = [origin for index, origin in state.loop_origins.items()
+                          if origin <= source_time + 1e-9
+                          and source_time <= state.loop_ends.get(index, origin) + 1e-9]
             if not candidates:
-                return None, "That source time belongs to a replay pass that is no longer mapped onto the file"
+                return None, "That source time is outside the observed, retained replay passes mapped onto the file"
             return max(candidates), None
 
-    def detections(self, camera_id: str, after_frame: int | None = None, limit: int = 90) -> dict[str, Any]:
+    def detections(self, camera_id: str, after_frame: int | None = None, limit: int = 90,
+                   after_epoch: str | None = None) -> dict[str, Any]:
         """Recent tracked person boxes for the dashboard overlay (display only; counts come from analytics)."""
         with self._state_lock:
             state = self._states[camera_id]
+            if after_epoch is not None and after_epoch != state.epoch:
+                after_frame = None  # frame numbers restart at zero in a new epoch
             frames = [frame for frame in state.detections if after_frame is None or frame["frame_number"] > after_frame]
             age = (time.monotonic() - state.last_good_monotonic) * 1000 if state.last_good_monotonic is not None else None
             return {
@@ -966,16 +974,20 @@ class CameraRuntimeSupervisor:
         """Map the frame onto the file timeline (looping aware) and keep its boxes for the overlay."""
         source_time, frame_number = batch.source_time, batch.frame_number
         origin = state.source_origin_s if (state.source_segment or 0) == 0 else None
-        if state.loop and state.loop_frames and isinstance(frame_number, int) and source_time is not None:
+        if (state.source_segment or 0) != 0:
+            state.loop_origins.clear()
+            state.loop_ends.clear()
+        elif state.loop and state.loop_frames and isinstance(frame_number, int) and source_time is not None:
             index, offset = divmod(frame_number, state.loop_frames)
             state.loop_index = index
             if offset == 0:
                 state.loop_origins[index] = source_time
                 for old in sorted(state.loop_origins)[:-MAX_LOOP_ORIGINS]:
                     state.loop_origins.pop(old, None)
-            elif index == 0 and origin is not None:
-                state.loop_origins.setdefault(0, origin)
+                    state.loop_ends.pop(old, None)
             origin = state.loop_origins.get(index)
+            if origin is not None:
+                state.loop_ends[index] = source_time
         elif state.loop:
             origin = None  # frame count unknown: wraps cannot be located, so no pass is mapped onto the file
         state.file_position_s = source_time - origin if source_time is not None and origin is not None else None

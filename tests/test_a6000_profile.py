@@ -11,17 +11,16 @@ import yaml
 from backend.app.configuration import load_configuration
 from backend.app.perception.artifacts import MATCH, HashMemo, runtime_artifact_checks
 
-from .support import PROJECT_ROOT
+from .support import PROJECT_ROOT, artifact_present
 
 PROFILE = PROJECT_ROOT / "configs" / "a6000"
-ENGINE_DIRS = ("trafficcamnet-smoke", "rt-detr-person-candidate", "rf-detr-person-candidate")
 
 
 def _missing_engines() -> list[str]:
     """A6000 engines that are absent or still Git LFS pointer files."""
-    engines = [path for name in ENGINE_DIRS for path in (PROJECT_ROOT / "models" / name).glob("*_sm86.engine")]
-    missing = [str(path.relative_to(PROJECT_ROOT)) for path in engines if path.stat().st_size < 1024]
-    return missing if engines else ["models/*/*_sm86.engine"]
+    document = yaml.safe_load((PROFILE / "models.yaml").read_text(encoding="utf-8"))
+    engines = [PROJECT_ROOT / model["engine_path"] for model in document["models"]]
+    return [str(path.relative_to(PROJECT_ROOT)) for path in engines if not artifact_present(path)]
 
 
 _MISSING = _missing_engines()

@@ -105,8 +105,9 @@ export const api = {
     request<CameraCountHistory>(`${API}/cameras/${encodeURIComponent(cameraId)}/count-history${query({
       epoch, window: 'range', from_source_s: fromSourceS, to_source_s: toSourceS, limit: 10000, max_points: maxPoints })}`),
   /** Recent tracked boxes (display only) newer than `afterFrame`, for the preview overlay. */
-  cameraDetections: (cameraId: string, afterFrame?: number, signal?: AbortSignal) =>
-    request<CameraDetections>(`${API}/cameras/${encodeURIComponent(cameraId)}/detections${query({ after_frame: afterFrame })}`, { signal }),
+  cameraDetections: (cameraId: string, afterFrame?: number, signal?: AbortSignal, afterEpoch?: string) =>
+    request<CameraDetections>(`${API}/cameras/${encodeURIComponent(cameraId)}/detections${query({
+      after_frame: afterFrame, after_epoch: afterEpoch })}`, { signal }),
   history: (metric: string, from: string, to: string, limit = 200, signal?: AbortSignal) =>
     request<HistoryResponse>(`${API}/analytics/history${query({ metric, from, to, limit })}`, { signal }),
   alerts: (status: AlertStatus | 'ALL', severity: AlertSeverity | 'ALL', limit = 100, signal?: AbortSignal) =>

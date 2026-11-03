@@ -1,5 +1,15 @@
 # Progress notes (durable, survives context compaction)
 
+## Current update — 2026-11-04 independent review
+
+Reviewed all six commits, the two A6000 changes since `73e7e77`, GitHub main (`984f439`), and the available project-local development logs. Added epoch-aware overlay cursors, stale-box expiry, missing-loop-boundary evidence refusal. (A decoded-frame-count fallback was tried and reverted in the follow-up review: it delays camera start; see below.) Added a one-command isolated check runner and Windows/Linux GitHub workflow; fixed Git LFS placeholder detection in test prerequisites. Updated current A6000 status without treating historical laptop runs as new measurements.
+
+Verification: 287 Python tests passed plus one skipped real-FFmpeg test that passed separately with FFmpeg on PATH; 42 frontend tests and production build passed. Pointer-only checkout: 281 passed, seven explicit skips. Real A6000/browser: `reports/validation/review-20261103T212335Z/result.json`, 17/17 (loop evidence, transport failure/recovery, epoch restart, mobile unpaced). Repeat with `scripts/a6000/validate_overlay_recovery.py`.
+
+Follow-up review (same day): kept the epoch/freshness, loop-boundary, LFS-detection and check-runner changes. Reverted the frame-count fallback to a packet count (decoding measured 5.4 s vs 0.2 s on the demo clip, paid before the camera starts, and over the 60 s tool timeout on long MKV/TS files). Added a fallback for browsers without `AbortSignal.any`, which previously left the overlay silently empty. `scripts/check.py --require-artifacts` with FFmpeg on PATH: 288 Python tests (no skips), 44 frontend tests and the build pass; real A6000/browser: `reports/validation/overlay-recovery-20261103T215127357311Z/result.json`, 17/17. Operational note: WSL shuts its VM down when idle; the first demo start afterwards waits ~15 s for Docker and readiness reports `not_ready` until Docker is up (measured, it self-recovers).
+
+Remaining priorities: reviewed accuracy labels, A6000 steady-state capacity/30-minute soak, total cross-epoch storage retention, real fixed-camera/calibration inputs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
+
 Session 4 (2026-10-27) — "complete remaining engineering" handoff. Ledger: `docs/acceptance-matrix.md`.
 
 Baseline at start (re-run once): 158 Python tests pass (`--basetemp` in a writable dir is needed in this

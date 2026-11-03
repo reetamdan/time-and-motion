@@ -80,13 +80,14 @@ def test_looping_camera_passes_loop_to_the_extractor_and_others_do_not(monkeypat
     assert paced[paced.index("--output-max-mib") + 1] == f"{base.runtime.replay.frame_log_max_mib:g}"
 
 
-def test_frame_count_reads_the_header_then_falls_back_to_counting_packets(tmp_path: Path) -> None:
+def test_frame_count_reads_the_header_then_falls_back_to_counting_packets(tmp_path: Path, monkeypatch) -> None:
     source = tmp_path / "clip.mp4"
     source.write_bytes(b"x")
     calls: list[list[str]] = []
 
     def runner(command: list[str], timeout: float) -> ToolResult:
         calls.append(command)
+        assert "-count_frames" not in command  # decoding the whole file would delay the camera's start
         if "-count_packets" in command:
             return ToolResult(0, "712\n", "")
         return ToolResult(0, "N/A\n", "")
@@ -94,7 +95,11 @@ def test_frame_count_reads_the_header_then_falls_back_to_counting_packets(tmp_pa
     tools = MediaTools(5, runner=runner, ffmpeg="ffmpeg", ffprobe="ffprobe")
     assert tools.frame_count(source) == 712
     assert tools.frame_count(source) == 712 and len(calls) == 2  # memoized per file version
-    assert MediaTools(5, ffmpeg=None, ffprobe=None).frame_count(source) is None
+    monkeypatch.setattr("backend.app.services.evidence.shutil.which", lambda _: None)
+    assert MediaTools(5).frame_count(source) is None
+    # Mapping only needs ffprobe, even if ffmpeg evidence extraction is unavailable.
+    probe_only = MediaTools(5, runner=runner, ffprobe="ffprobe")
+    assert probe_only.ffmpeg is None and probe_only.frame_count(source) == 712
 
 
 def test_looped_replay_maps_each_pass_onto_the_file_and_never_reports_eof(tmp_path: Path) -> None:
@@ -144,6 +149,37 @@ def test_detections_endpoint_returns_recent_boxes_with_file_positions(tmp_path: 
         assert sorted(body["frames"][0]["boxes"]) == [[10.0, 20.0, 30.0, 60.0, "4"], [10.0, 20.0, 30.0, 60.0, "9"]]
         newer = client.get("/api/v1/cameras/cam-01/detections", params={"after_frame": 2}).json()
         assert [frame["frame_number"] for frame in newer["frames"]] == [3, 4]
+        # An in-flight cursor from a previous run must not suppress the new epoch's low frame numbers.
+        restarted = client.get("/api/v1/cameras/cam-01/detections",
+                               params={"after_frame": 50000, "after_epoch": "previous-epoch"}).json()
+        assert [frame["frame_number"] for frame in restarted["frames"]] == [0, 1, 2, 3, 4]
+        same = client.get("/api/v1/cameras/cam-01/detections",
+                         params={"after_frame": 2, "after_epoch": epoch}).json()
+        assert [frame["frame_number"] for frame in same["frames"]] == [3, 4]
+        client.post("/api/v1/demo/stop")
+        assert client.get("/api/v1/cameras/cam-01/detections").json()["frames"] == []
+
+
+def test_missing_loop_boundary_refuses_evidence_and_recovers_next_pass(tmp_path: Path) -> None:
+    adapter = SuppliedObservationAdapter()
+    media = LoopMedia()
+    app = create_app(config_dir=looping(tmp_path), database_path=tmp_path / "gap.db", perception_adapter=adapter,
+                     media_tools=media, evidence_root=tmp_path / "evidence")
+    with TestClient(app) as client:
+        start = client.post("/api/v1/demo/start").json()
+        epoch = next(c for c in start["cameras"] if c["id"] == "cam-01")["epoch"]
+        for frame in (0, 709, 711, 1000):  # first frame of pass 1 (710) is missing
+            client.portal.call(adapter.emit, batch(epoch, frame))
+        refused = client.post("/api/v1/cameras/cam-01/evidence-markers", json={})
+        assert refused.status_code == 409 and refused.json()["error"]["code"] == "SOURCE_LOOP_UNMAPPED"
+        assert media.calls == []
+        for frame in (1420, 1500):  # pass 2 has an exact boundary again
+            client.portal.call(adapter.emit, batch(epoch, frame))
+        assert client.post("/api/v1/cameras/cam-01/evidence-markers", json={}).status_code == 201
+        assert media.calls[0] == ("snapshot", pytest.approx(80 * 1001 / 30000))
+        # Even after recovery, an explicit time in the unmapped pass cannot fall back to pass 0.
+        old = client.post("/api/v1/cameras/cam-01/evidence-markers", json={"source_time_s": pipeline_time(900)})
+        assert old.status_code == 409
         client.post("/api/v1/demo/stop")
         assert client.get("/api/v1/cameras/cam-01/detections").json()["frames"] == []  # cleared with the epoch
 

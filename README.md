@@ -88,12 +88,12 @@ Developed on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2) and now **running and
 
 **Not yet established:**
 
-- **Detector accuracy.** No human-reviewed labels exist yet; the annotation package is ready in `data/annotations/cam01-v1/`. TrafficCamNet is the default as a *provisional* detector, and the candidates are runnable but unaccepted.
+- **Detector accuracy.** No human-reviewed labels exist yet; the annotation package is ready in `data/annotations/cam01-v1/`. TrafficCamNet is the base profile's *provisional* detector; the A6000 profile selects RT-DETR as an unaccepted candidate. Higher counts and agreement with FP32 are not accuracy measurements.
 - **Calibrated facility metrics.** Occupancy, overlap de-duplication, stairs and queues need camera calibration and real multi-camera footage; only one clip exists.
 - **Steady-state capacity and the 30-minute soak.** The protocol is implemented. The final run passed its first two steps and was then paused.
 - **Steady-state multi-camera capacity on the RTX A6000.** Single-feed throughput and a 5-minute looping soak are measured; the multi-feed capacity protocol has not been run there.
 
-Tests (2026-11-04, RTX A6000 PC): 282 backend tests and 38 frontend tests pass on Windows, and the production build passes. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release), and a browser run confirms live values, boxes and preview sync past the clip's end.
+Tests (2026-11-04, RTX A6000 PC): `scripts/check.py --require-artifacts` (with `scripts/a6000/env.ps1` for FFmpeg) passes 288 backend tests with no skips, 44 frontend tests and the production build. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release). The independent browser check passes 17/17 for loop evidence, overlay outage/recovery, restart cursors and mobile unpaced playback; see [the workstation validation notes](docs/rtx-a6000.md).
 
 ## Requirements
 
@@ -104,7 +104,7 @@ Tests (2026-11-04, RTX A6000 PC): 282 backend tests and 38 frontend tests pass o
 - Windows route: Python 3.12, Node.js 22+, and FFmpeg/ffprobe on `PATH` (needed only for evidence clips).
 - WSL route: nothing extra. The setup script installs a project-local Python 3.12, Node.js and FFmpeg into `.install/wsl` and changes no system packages.
 
-> TensorRT engines are specific to the GPU and TensorRT version that built them. The engines in this repository are for an RTX 5070 Ti (sm120). On other GPUs, rebuild them; see the [operations guide §2](docs/operations-guide.md#models-and-tensorrt-engines).
+> TensorRT engines are specific to the GPU and TensorRT version that built them. This repository includes RTX 5070 Ti (sm120) engines and RTX A6000 (sm86) engines selected by `configs/a6000`. On other GPUs, rebuild them; see the [operations guide §2](docs/operations-guide.md#models-and-tensorrt-engines).
 
 ## Getting started
 
@@ -154,7 +154,7 @@ On Windows you can instead double-click **`Start-Aegis.cmd`** after steps 1-2 an
 
 Go to **http://127.0.0.1:8000/**. WSL forwards loopback to Windows. Stop the server with **Ctrl+C**.
 
-For frontend development with hot reload, run `npm run dev` from the project root on Windows: UI at http://127.0.0.1:7100/, API at http://127.0.0.1:8000/. Before running, you can check the environment with `scripts/setup/verify-host.ps1` (Windows) and `scripts/setup/verify-environment.sh` (WSL/Linux); see [operations guide §1](docs/operations-guide.md#1-prerequisites-and-inspection).
+For frontend development with hot reload on this workstation, run `Start-Aegis.cmd -Dev`: UI at http://127.0.0.1:7100/, API at http://127.0.0.1:8000/. This also selects the A6000 configuration and project Python. Before running, you can check the environment with `scripts/setup/verify-host.ps1` (Windows) and `scripts/setup/verify-environment.sh` (WSL/Linux); see [operations guide §1](docs/operations-guide.md#1-prerequisites-and-inspection).
 
 ## Using the dashboard
 
@@ -191,6 +191,14 @@ To add an RTSP camera, set `source_type: rtsp` with credentials as `${VAR}` refe
 
 ## Testing and validation
 
+One command runs backend tests, frontend tests, typechecking and the production build with isolated test runtime paths:
+
+```powershell
+.venv-windows\Scripts\python.exe scripts\check.py --require-artifacts
+```
+
+On Linux use the project virtualenv's Python. Omit `--require-artifacts` for a checkout without downloaded LFS data; missing assets and LFS placeholders are explicitly skipped. `.github/workflows/checks.yml` runs this lightweight check on Windows and Linux for pushes and pull requests. Real GPU validation remains a separate workstation check.
+
 ```bash
 # Backend (Windows: .\.venv\Scripts\python.exe; WSL: .venv-wsl/bin/python)
 python -m pytest -q tests perception/candidates
@@ -200,7 +208,7 @@ npm --prefix frontend test
 npm --prefix frontend run build
 ```
 
-If the footage or models are missing (no Git LFS), five artifact-dependent tests skip and name the missing files. Set `AEGIS_REQUIRE_LOCAL_ARTIFACTS=1` to make them fail instead.
+If the footage or models are missing (no Git LFS), artifact-dependent tests skip and name the missing files. Set `AEGIS_REQUIRE_LOCAL_ARTIFACTS=1` to make them fail instead. FFmpeg-dependent tests separately require FFmpeg/ffprobe on PATH; on this PC, dot-source `scripts/a6000/env.ps1` first to include the per-user installation.
 
 The project also ships end-to-end validators that use the real GPU. Each writes a new evidence directory under `reports/validation/`:
 

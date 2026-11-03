@@ -1,0 +1,38 @@
+{
+  "checks": {
+    "ready": true,
+    "paced_overlay_after_loop": true,
+    "looped": true,
+    "loop_evidence_created": true,
+    "jpeg_download": true,
+    "mp4_download": true,
+    "failed_overlay_transport_clears_boxes": true,
+    "snapshot_still_live_during_overlay_failure": true,
+    "overlay_transport_recovers": true,
+    "paced_stop": true,
+    "fresh_epoch": true,
+    "old_cursor_recovers": true,
+    "mobile_unpaced_boxes": true,
+    "mobile_no_horizontal_overflow": true,
+    "unpaced_stop": true,
+    "no_browser_errors": true,
+    "cleanup": true
+  },
+  "samples": [],
+  "page_errors": [],
+  "base_commit": "984f439838346b91c6df7d5509a7db97efcec43e",
+  "working_tree_changes": true,
+  "unpaced_painted_samples": [
+    19667,
+    19821,
+    19594,
+    18879,
+    18280,
+    17014,
+    18063,
+    17508,
+    17553,
+    16741
+  ],
+  "result": "PASS"
+}

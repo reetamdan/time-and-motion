@@ -1,0 +1,45 @@
+{
+  "checks": {
+    "ready": true,
+    "paced_overlay_after_loop": true,
+    "looped": true,
+    "loop_evidence_created": true,
+    "jpeg_download": true,
+    "mp4_download": true,
+    "failed_overlay_transport_clears_boxes": true,
+    "snapshot_still_live_during_overlay_failure": true,
+    "overlay_transport_recovers": true,
+    "paced_stop": true,
+    "fresh_epoch": true,
+    "old_cursor_recovers": true,
+    "mobile_unpaced_boxes": true,
+    "mobile_no_horizontal_overflow": true,
+    "unpaced_stop": true,
+    "no_browser_errors": true,
+    "cleanup": true
+  },
+  "page_errors": [],
+  "base_commit": "984f439838346b91c6df7d5509a7db97efcec43e",
+  "working_tree_changes": true,
+  "source_sha256": {
+    "backend/app/services/runtime.py": "d21658f122450e7ec5b2001c558a5b0fc8f7ca8164b6631eae6a7cdb3d4067e1",
+    "backend/app/services/evidence.py": "3898e7f84761c3a66b084e5ab8b879fd37d6277d5aac59475ae9916a49bb2187",
+    "backend/app/api/facility.py": "ca804df62924eef0e9da24ae8e581a772e0eea452976654e73afb8afb3fc2751",
+    "frontend/src/components/DetectionOverlay.tsx": "0b377bb8a40a371ac270bc5566976ac75581894c0a343d6f57b2d4aade1c6dba",
+    "frontend/src/lib/api.ts": "d49f588cbd7f32b2cf20f8faae59d49bc15f998af74c9e07a1692fd3c998a208",
+    "scripts/a6000/validate_overlay_recovery.py": "304d27fa4e62d50f9c3fc63ec7352f088288e34d6fb7ad5b1f4d4dbb1030e773"
+  },
+  "unpaced_painted_samples": [
+    21021,
+    20626,
+    18567,
+    17962,
+    18178,
+    17260,
+    17554,
+    19149,
+    19166,
+    19466
+  ],
+  "result": "PASS"
+}
