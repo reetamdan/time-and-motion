@@ -27,6 +27,7 @@ import logging
 import re
 import shutil
 import subprocess
+import threading
 from pathlib import Path
 from typing import Any, Callable
 import uuid
@@ -176,6 +177,8 @@ class EvidenceService:
         self.root = config.runtime.evidence_root.resolve()
         self.tools = tools or MediaTools(config.runtime.evidence.tool_timeout_seconds)
         self._source_hashes: dict[tuple[str, int, int], str] = {}
+        # Registration and retention are serialized so concurrent captures cannot evict each other's half-made group.
+        self._lock = threading.Lock()
 
     # ------------------------------------------------------------------ capture
 
@@ -250,7 +253,7 @@ class EvidenceService:
             "scope": "Real source media from the configured file at a recorded source time; counts or detections are "
                      "not burned into the media",
         }
-        snapshot_id = self.repository.register_evidence({
+        snapshot_record = {
             **common, "path": str(snapshot_path.relative_to(self.root)), "media_type": "image/jpeg",
             "kind": f"{trigger}_snapshot", "checksum": _sha256(snapshot_path), "codec": "mjpeg",
             "size_bytes": snapshot_path.stat().st_size,
@@ -258,9 +261,9 @@ class EvidenceService:
             "start_at": iso_now(), "end_at": None,
             "metadata": {**base_metadata, "actual_frame_source_s": actual_frame_pts - offset, "actual_frame_file_pts_s": actual_frame_pts,
                          "extraction": "accurate decode of the first frame at/after the requested time"},
-        })
+        }
         clip_start = keyframe - offset
-        clip_id = self.repository.register_evidence({
+        clip_record = {
             **common, "path": str(clip_path.relative_to(self.root)), "media_type": "video/mp4",
             "kind": f"{trigger}_clip", "checksum": _sha256(clip_path), "codec": "h264 (stream copy)",
             "size_bytes": clip_path.stat().st_size,
@@ -270,10 +273,17 @@ class EvidenceService:
                          "requested_source_end_s": requested_end - offset,
                          "keyframe_aligned_start_s": clip_start, "clip_duration_s": clip_duration,
                          "extraction": "stream copy (no re-encode); starts on the keyframe at or before the requested start"},
-        })
-        self.enforce_retention()
-        return {"group_id": group, "snapshot": self.describe(self.repository.get_evidence(snapshot_id)),
-                "clip": self.describe(self.repository.get_evidence(clip_id))}
+        }
+        with self._lock:
+            try:
+                snapshot_id, clip_id = self.repository.register_evidence_group([snapshot_record, clip_record])
+            except Exception:
+                shutil.rmtree(directory, ignore_errors=True)
+                raise
+            self._enforce_retention(keep_group=group)
+            snapshot = self.describe(self.repository.get_evidence(snapshot_id))
+            clip = self.describe(self.repository.get_evidence(clip_id))
+        return {"group_id": group, "snapshot": snapshot, "clip": clip}
 
     # ------------------------------------------------------------------ read
 
@@ -308,32 +318,44 @@ class EvidenceService:
     # ------------------------------------------------------------------ retention
 
     def enforce_retention(self, now: datetime | None = None) -> dict[str, Any]:
-        """Remove the oldest records beyond the age, count, or byte limits (files inside the root only)."""
+        """Remove the oldest evidence groups beyond the age, count, or byte limits (files inside the root only)."""
+        with self._lock:
+            return self._enforce_retention(now=now)
+
+    def _enforce_retention(self, now: datetime | None = None, keep_group: str | None = None) -> dict[str, Any]:
+        """A marker's snapshot and clip are evicted together, oldest group first. The group just captured
+        (``keep_group``) is never evicted, even when it alone exceeds a limit: the operator asked for it, and
+        the caller must be able to return it. Older groups are removed to make room."""
         retention = self.config.analytics.retention
         max_records = self.config.runtime.evidence.max_records
         max_bytes = retention.max_evidence_mib * 1024 * 1024
         cutoff = ((now or datetime.now(timezone.utc)) - timedelta(days=retention.evidence_days)).isoformat()
-        records = self.repository.evidence_for_retention()  # oldest first
-        total_bytes = sum(record["size_bytes"] or 0 for record in records)
-        remaining = len(records)
+        groups: dict[str, list[dict[str, Any]]] = {}
+        for record in self.repository.evidence_for_retention():  # oldest first; dicts keep that order
+            groups.setdefault(record.get("group_id") or record["id"], []).append(record)
+        total_bytes = sum(record["size_bytes"] or 0 for members in groups.values() for record in members)
+        remaining = sum(len(members) for members in groups.values())
         removed: list[str] = []
-        for record in records:
-            expired = record["created_at"] < cutoff
+        for key, members in groups.items():
+            if key == keep_group:
+                continue
+            expired = members[0]["created_at"] < cutoff
             if not (expired or remaining > max_records or total_bytes > max_bytes):
                 break
-            path = self.resolve(record)
-            if path is not None:
-                try:
-                    path.unlink(missing_ok=True)
-                    if path.parent != self.root and not any(path.parent.iterdir()):
-                        path.parent.rmdir()
-                except OSError as exc:
-                    LOGGER.warning("Could not remove evidence file %s: %s", path, exc)
-                    continue
-            self.repository.delete_evidence(record["id"])
-            removed.append(record["id"])
-            remaining -= 1
-            total_bytes -= record["size_bytes"] or 0
+            for record in members:
+                path = self.resolve(record)
+                if path is not None:
+                    try:
+                        path.unlink(missing_ok=True)
+                        if path.parent != self.root and not any(path.parent.iterdir()):
+                            path.parent.rmdir()
+                    except OSError as exc:
+                        LOGGER.warning("Could not remove evidence file %s: %s", path, exc)
+                        continue
+                self.repository.delete_evidence(record["id"])
+                removed.append(record["id"])
+                remaining -= 1
+                total_bytes -= record["size_bytes"] or 0
         return {"removed": removed, "remaining_records": remaining, "remaining_bytes": total_bytes}
 
     def usage(self) -> dict[str, Any]:

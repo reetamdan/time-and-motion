@@ -24,6 +24,9 @@ Exit codes: 0 every executed condition passed and the plan completed; 1 a condit
 
 Run (Windows route):  .venv/Scripts/python.exe scripts/benchmark/run_capacity.py --plan repeats
 Run (native Linux / backend inside WSL):  .venv-wsl/bin/python scripts/benchmark/run_capacity.py --plan repeats
+Profile: --config-dir, else CCTV_CONFIG_DIR, else configs/ (RTX A6000: --config-dir configs/a6000). The selected
+profile is used for every stage and recorded in the report. In the benchmark's copy, frame-log rotation is off
+(raw logs are measurement evidence) and source looping is off (each step's clip is long enough).
 """
 
 from __future__ import annotations
@@ -71,6 +74,8 @@ PORT = 8773
 BASE = f"http://127.0.0.1:{PORT}"
 STAGE_ARG = {"A": "decode", "B": "detect", "C": "track", "D": "track"}
 EXIT_PASS, EXIT_FAIL, EXIT_INTERRUPTED, EXIT_REFUSED = 0, 1, 2, 3
+# The configuration profile under test (set in main from --config-dir / CCTV_CONFIG_DIR).
+CONFIG_DIR = ROOT / "configs"
 
 PROTOCOL: dict[str, Any] = {
     "protocol_version": 2,
@@ -439,6 +444,13 @@ def tree_sha256(directory: Path, pattern: str) -> str:
     return digest.hexdigest()
 
 
+def _display(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def frozen_identities(config, clip: Path) -> dict[str, Any]:
     """Every input whose change would invalidate comparability; recomputed around every condition."""
     pipeline = config.models.pipeline
@@ -450,7 +462,8 @@ def frozen_identities(config, clip: Path) -> dict[str, Any]:
         "extractor_actual": sha256(config.models.pipeline.extractor_path),
         "extractor_schema": pipeline.extractor_schema_version, "pacing": pipeline.extractor_pacing,
         "pace_lead_ms": pipeline.pace_lead_ms,
-        "configs_tree": tree_sha256(ROOT / "configs", "*.yaml"),
+        "config_dir": _display(CONFIG_DIR),
+        "configs_tree": tree_sha256(CONFIG_DIR, "*.yaml"),
         "backend_code_tree": tree_sha256(ROOT / "backend" / "app", "*.py"),
         "benchmark_script": sha256(Path(__file__)),
     }
@@ -848,12 +861,17 @@ class Backend:
 
 
 def write_backend_config(directory: Path, feeds: int, clip: Path) -> list[str]:
-    shutil.copytree(ROOT / "configs", directory)
+    shutil.copytree(CONFIG_DIR, directory, ignore=shutil.ignore_patterns("a6000"))
+    runtime = directory / "runtime.yaml"
+    document = yaml.safe_load(runtime.read_text(encoding="utf-8"))
+    # Raw frame logs are the measurement: never rotate them away mid-step (run_backend refuses a rotated log).
+    document.setdefault("replay", {})["frame_log_max_mib"] = 0
+    runtime.write_text(yaml.safe_dump(document, sort_keys=False), encoding="utf-8")
     path = directory / "cameras.yaml"
     document = yaml.safe_load(path.read_text(encoding="utf-8"))
     template = document["cameras"][0]
     ids = [f"cam-{i:02d}" for i in range(1, feeds + 1)]
-    document["cameras"] = [dict(template, id=camera_id, enabled=True, source=str(clip), overlap_group=None,
+    document["cameras"] = [dict(template, id=camera_id, enabled=True, source=str(clip), overlap_group=None, loop=False,
                                 name=f"DUPLICATE INPUT {i} of {clip.stem} (load test only)", floor_id="floor-1",
                                 position=[90 + 40 * i, 105]) for i, camera_id in enumerate(ids, 1)]
     document["load_test_note"] = "DUPLICATE INPUT of labelled repeated footage; load measurement only"
@@ -1001,10 +1019,13 @@ def run_backend(stage_dir: Path, clip: Path, feeds: int, warmup: float, measure:
     first_emit = None
     for camera, epoch in epochs.items():
         source_dir = directory / camera
-        for suffix in (".jsonl", ".release.jsonl", ".summary.json"):
+        for suffix in (".jsonl", ".jsonl.prev", ".release.jsonl", ".summary.json"):
             source = source_dir / f"{epoch}{suffix}"
             if source.is_file():  # move the run's own raw evidence into the report (no RAM copy, no duplicate on disk)
                 shutil.move(str(source), str(stage_dir / f"{camera}{suffix}"))
+        if (stage_dir / f"{camera}.jsonl.prev").is_file():
+            # Metrics anchor on the first record; a rotated log has lost the start of the run.
+            errors.append(f"{camera}: frame log rotated during the step; the measurement is incomplete")
         producer = producer_metrics(stage_dir / f"{camera}.jsonl", warmup, measure)
         produced = producer.pop("_window_frames", set())
         backend_metrics = release_metrics(stage_dir / f"{camera}.release.jsonl", warmup, measure, produced, offset_ns)
@@ -1109,8 +1130,9 @@ def report_md(summary: dict[str, Any]) -> str:
         ("Configured analytics FPS", "8 per camera (gate 7.2)"),
         ("Measured analytics FPS, per camera", "per step below (D: backend-consumed; A-C: producer)"),
         ("Detector / revision", f"{env['selected_model']} ({env['acceptance']})"),
-        ("Detector precision / type policy", "FP16 TensorRT engine (configs/models.yaml)"),
-        ("Tracker / revision", "NvDCF, configs/models.yaml tracker identity (stages C, D)"),
+        ("Configuration profile", summary["identities_start"].get("config_dir", "configs")),
+        ("Detector precision / type policy", f"{env.get('precision')} TensorRT engine ({env.get('engine')})"),
+        ("Tracker / revision", "NvDCF, models.yaml tracker identity of the profile (stages C, D)"),
         ("Calibration / config revisions", f"configs tree sha256 {summary['identities_start']['configs_tree']}; no calibration (replicas carry no facility claims)"),
         ("Re-ID enabled / update cadence", "disabled (stage F not run)"),
         ("Preview / recording settings", "no recording; soak probes exercise preview/history/evidence" if summary["plan"] == "soak" else "not exercised (stage G not run)"),
@@ -1162,6 +1184,8 @@ def environment(config, clip: Path) -> dict[str, Any]:
             "power": {"plugged_in": battery.power_plugged if battery else None, "battery_percent": battery.percent if battery else None},
             "wsl_distro": DISTRO if runtime_prefix(DISTRO) else None, "image": config.models.pipeline.image,
             "selected_model": config.models.selected_model, "acceptance": config.models.selected.acceptance,
+            "config_dir": _display(CONFIG_DIR), "precision": config.models.selected.precision,
+            "engine": _display(config.models.selected.engine_path) if config.models.selected.engine_path else None,
             "competing_gpu_processes": subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name,used_memory", "--format=csv,noheader"],
                                                       capture_output=True, text=True, check=False).stdout.strip() or "none reported (WDDM may hide them)",
             "competing_host_processes_top_rss": _top_processes()}
@@ -1208,7 +1232,14 @@ def main() -> int:
     parser.add_argument("--ladder", default=",".join(str(n) for n in PROTOCOL["ladder"]),
                         help="feed counts for --plan ladder (A6000: 4,8,12,16,20, recorded as a deviation)")
     parser.add_argument("--run-dir", default=None, help="fresh directory (must not exist)")
+    parser.add_argument("--config-dir", default=None,
+                        help="configuration profile (default: CCTV_CONFIG_DIR, else configs/; RTX A6000: configs/a6000)")
     args = parser.parse_args()
+    global CONFIG_DIR
+    CONFIG_DIR = Path(args.config_dir or os.environ.get("CCTV_CONFIG_DIR") or ROOT / "configs").resolve()
+    if not (CONFIG_DIR / "models.yaml").is_file():
+        print(json.dumps({"refused": f"no models.yaml in configuration profile {CONFIG_DIR}"}))
+        return EXIT_REFUSED
     soak = args.plan == "soak"
     measure = args.measure if args.measure is not None else (PROTOCOL["soak_measure_s"] if soak else PROTOCOL["measure_s"])
     clip = CLIPS["soak" if soak else "capacity"]
@@ -1228,7 +1259,7 @@ def main() -> int:
         deviations["stages"] = args.stages
     if args.plan == "custom":
         deviations["plan"] = "custom (diagnostic; never an acceptance result)"
-    run_dir = Path(args.run_dir) if args.run_dir else ROOT / "reports" / "benchmarks" / f"capacity-{args.plan}-{utc_stamp()}"
+    run_dir = Path(args.run_dir).resolve() if args.run_dir else ROOT / "reports" / "benchmarks" / f"capacity-{args.plan}-{utc_stamp()}"
     run_dir.mkdir(parents=True, exist_ok=False)
     stop_flag = threading.Event()
 
@@ -1238,7 +1269,7 @@ def main() -> int:
         if sig is not None:
             signal.signal(sig, on_signal)
 
-    config = load_configuration(ROOT / "configs", ROOT)
+    config = load_configuration(CONFIG_DIR, ROOT)
     if not clip.is_file():
         (run_dir / "REFUSED.json").write_text(json.dumps({"reason": f"clip missing: {clip}"}) + "\n", encoding="utf-8")
         print(json.dumps({"refused": f"clip missing: {clip}"}))

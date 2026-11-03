@@ -122,6 +122,77 @@ def test_retention_removes_oldest_beyond_count_and_age(tmp_path: Path, repositor
     assert service.list() == []
 
 
+def test_a_marker_is_always_returned_even_when_it_alone_exceeds_the_limits(tmp_path: Path, repository) -> None:
+    _, config = configured(tmp_path)
+    config.runtime.evidence.max_records = 1  # each marker is a snapshot + clip group of two
+    config.analytics.retention.max_evidence_mib = 1  # smaller than one group (1.5 MiB clip below)
+
+    class LargeClip(FakeMedia):
+        def clip(self, source: Path, start: float, duration: float, output: Path) -> None:
+            output.write_bytes(b"0" * (3 * 1024 * 1024 // 2))
+
+    service = EvidenceService(config, repository, LargeClip())
+    run_id = repository.create_run("rev")["id"]
+    first = service.capture_marker(run_id=run_id, camera_id="cam-01", camera_epoch="e", source_time_s=1.0,
+                                   note=None, provenance={})
+    assert first["snapshot"] and first["clip"] and first["snapshot"]["file_available"]
+    second = service.capture_marker(run_id=run_id, camera_id="cam-01", camera_epoch="e", source_time_s=2.0,
+                                    note=None, provenance={})
+    assert second["snapshot"]["file_available"] and second["clip"]["file_available"]
+    # The older group went as a whole; the newest group was kept intact.
+    assert {item["group_id"] for item in service.list()} == {second["group_id"]}
+    assert len(service.list()) == 2
+
+
+def test_retention_evicts_whole_groups_never_half_a_marker(tmp_path: Path, repository) -> None:
+    _, config = configured(tmp_path)
+    config.runtime.evidence.max_records = 5  # odd: a per-record policy would leave a lone clip behind
+    service = EvidenceService(config, repository, FakeMedia())
+    run_id = repository.create_run("rev")["id"]
+    for i in range(4):
+        service.capture_marker(run_id=run_id, camera_id="cam-01", camera_epoch="e", source_time_s=float(i),
+                               note=None, provenance={})
+    listed = service.list()
+    groups: dict[str, int] = {}
+    for item in listed:
+        groups[item["group_id"]] = groups.get(item["group_id"], 0) + 1
+    assert len(listed) == 4 and set(groups.values()) == {2}
+
+
+def test_concurrent_markers_all_succeed_within_the_limit(tmp_path: Path, repository) -> None:
+    from concurrent.futures import ThreadPoolExecutor
+
+    _, config = configured(tmp_path)
+    config.runtime.evidence.max_records = 2
+    service = EvidenceService(config, repository, FakeMedia())
+    run_id = repository.create_run("rev")["id"]
+    with ThreadPoolExecutor(4) as pool:
+        results = list(pool.map(lambda i: service.capture_marker(
+            run_id=run_id, camera_id="cam-01", camera_epoch="e", source_time_s=float(i), note=None, provenance={}), range(8)))
+    assert all(result["snapshot"] and result["clip"] for result in results)
+    assert len(service.list()) == 2
+
+
+def test_failed_registration_leaves_no_records_or_files(tmp_path: Path, repository, monkeypatch) -> None:
+    _, config = configured(tmp_path)
+    service = EvidenceService(config, repository, FakeMedia())
+    run_id = repository.create_run("rev")["id"]
+    original = repository._insert_evidence
+    calls = {"n": 0}
+
+    def fail_second(connection, record):
+        calls["n"] += 1
+        if calls["n"] == 2:
+            raise RuntimeError("disk full while registering the clip")
+        return original(connection, record)
+
+    monkeypatch.setattr(repository, "_insert_evidence", fail_second)
+    with pytest.raises(RuntimeError):
+        service.capture_marker(run_id=run_id, camera_id="cam-01", camera_epoch="e", source_time_s=1.0, note=None, provenance={})
+    assert service.list() == []
+    assert not any((config.runtime.evidence_root / run_id / "cam-01").iterdir())
+
+
 def test_retention_never_deletes_outside_the_root(tmp_path: Path, repository) -> None:
     _, config = configured(tmp_path)
     outside = tmp_path / "keep.txt"

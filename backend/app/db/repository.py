@@ -767,22 +767,33 @@ class SQLiteRepository:
         }
 
     def register_evidence(self, record: dict[str, Any]) -> str:
-        evidence_id = record.get("id") or str(uuid.uuid4())
+        return self.register_evidence_group([record])[0]
+
+    def register_evidence_group(self, records: list[dict[str, Any]]) -> list[str]:
+        """Insert related records (a marker's snapshot and clip) in one transaction: all or none."""
+        ids: list[str] = []
         with self.transaction() as connection:
-            connection.execute(
-                """INSERT INTO evidence(id, run_id, camera_id, path, media_type, kind, timestamp_basis, start_at,
-                   end_at, checksum, codec, metadata_json, created_at, camera_epoch, source_start_s, source_end_s,
-                   source_marked_s, size_bytes, label, status)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (
-                    evidence_id, record.get("run_id"), record.get("camera_id"), record["path"], record["media_type"],
-                    record["kind"], record.get("timestamp_basis"), record.get("start_at"), record.get("end_at"),
-                    record.get("checksum"), record.get("codec"), _json(record.get("metadata", {})), iso_now(),
-                    record.get("camera_epoch"), record.get("source_start_s"), record.get("source_end_s"),
-                    record.get("source_marked_s"), record.get("size_bytes"), record.get("label"),
-                    record.get("status", "AVAILABLE"),
-                ),
-            )
+            for record in records:
+                ids.append(self._insert_evidence(connection, record))
+        return ids
+
+    @staticmethod
+    def _insert_evidence(connection: sqlite3.Connection, record: dict[str, Any]) -> str:
+        evidence_id = record.get("id") or str(uuid.uuid4())
+        connection.execute(
+            """INSERT INTO evidence(id, run_id, camera_id, path, media_type, kind, timestamp_basis, start_at,
+               end_at, checksum, codec, metadata_json, created_at, camera_epoch, source_start_s, source_end_s,
+               source_marked_s, size_bytes, label, status)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                evidence_id, record.get("run_id"), record.get("camera_id"), record["path"], record["media_type"],
+                record["kind"], record.get("timestamp_basis"), record.get("start_at"), record.get("end_at"),
+                record.get("checksum"), record.get("codec"), _json(record.get("metadata", {})), iso_now(),
+                record.get("camera_epoch"), record.get("source_start_s"), record.get("source_end_s"),
+                record.get("source_marked_s"), record.get("size_bytes"), record.get("label"),
+                record.get("status", "AVAILABLE"),
+            ),
+        )
         return evidence_id
 
     def get_evidence(self, evidence_id: str) -> dict[str, Any] | None:
@@ -815,7 +826,8 @@ class SQLiteRepository:
         """Oldest first (insertion order breaks same-millisecond ties); the caller applies the age and count/size limits."""
         with self._connection() as connection:
             rows = connection.execute(
-                "SELECT id, path, size_bytes, created_at FROM evidence ORDER BY created_at, rowid").fetchall()
+                "SELECT id, path, size_bytes, created_at, json_extract(metadata_json, '$.group_id') AS group_id "
+                "FROM evidence ORDER BY created_at, rowid").fetchall()
         return [dict(row) for row in rows]
 
     def delete_evidence(self, evidence_id: str) -> None:

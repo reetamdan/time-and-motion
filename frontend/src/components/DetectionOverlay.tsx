@@ -15,17 +15,19 @@ export const DETECTION_STALE_MS = 1500;
 /** A detections request that takes longer than this is abandoned, so a hung request cannot stall polling. */
 export const DETECTION_REQUEST_TIMEOUT_MS = 3000;
 
-/** Abort on either signal. AbortSignal.any needs Chrome 116 / Firefox 124 / Safari 17.4; without it this
- *  falls back to a manual combination instead of throwing (which would leave the overlay silently empty). */
-export function requestSignal(cancel: AbortSignal, timeoutMs = DETECTION_REQUEST_TIMEOUT_MS): AbortSignal {
-  if (typeof AbortSignal.any === 'function' && typeof AbortSignal.timeout === 'function') {
-    return AbortSignal.any([cancel, AbortSignal.timeout(timeoutMs)]);
-  }
+export interface RequestSignal { signal: AbortSignal; dispose: () => void }
+
+/** One request's signal: aborts when `cancel` aborts or after `timeoutMs`. Call `dispose()` when the request
+ *  settles. It removes the listener on the long-lived `cancel` signal and the timer, so a long-running poll
+ *  loop does not accumulate one listener per request. Plain AbortController + setTimeout works in every browser
+ *  (AbortSignal.any needs Chrome 116 / Firefox 124 / Safari 17.4). */
+export function requestSignal(cancel: AbortSignal, timeoutMs = DETECTION_REQUEST_TIMEOUT_MS): RequestSignal {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  const abort = () => { clearTimeout(timer); controller.abort(); };
-  if (cancel.aborted) abort(); else cancel.addEventListener('abort', abort, { once: true });
-  return controller.signal;
+  const abort = () => controller.abort();
+  const timer = setTimeout(abort, timeoutMs);
+  const dispose = () => { clearTimeout(timer); cancel.removeEventListener('abort', abort); };
+  if (cancel.aborted) { dispose(); abort(); } else cancel.addEventListener('abort', abort, { once: true });
+  return { signal: controller.signal, dispose };
 }
 
 export interface Rect { x: number; y: number; width: number; height: number }
@@ -76,7 +78,10 @@ export class DetectionBuffer {
     return this.frames.at(-1)?.frame_number;
   }
 
-  accept(response: CameraDetections, now: number): boolean {
+  /** `elapsedMs` is the request's round trip: the server's `latest_age_ms` was measured before the response
+   *  was sent, so the full elapsed time is subtracted too (conservative: a slow response cannot make old
+   *  detections look fresh again). */
+  accept(response: CameraDetections, now: number, elapsedMs = 0): boolean {
     if (response.camera_epoch !== this.epoch) {
       this.frames = [];
       this.size = null;
@@ -86,7 +91,8 @@ export class DetectionBuffer {
     const after = this.afterFrame ?? -1;
     this.frames = this.frames.concat(response.frames.filter(frame => frame.frame_number > after)).slice(-MAX_BUFFERED_FRAMES);
     if (response.frame_width && response.frame_height) this.size = [response.frame_width, response.frame_height];
-    this.expiresAt = response.latest_age_ms === null ? 0 : now + DETECTION_STALE_MS - response.latest_age_ms;
+    this.expiresAt = response.latest_age_ms === null ? 0
+      : now + DETECTION_STALE_MS - response.latest_age_ms - Math.max(0, elapsedMs);
     return this.fresh(now);
   }
 
@@ -150,11 +156,14 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
     const buffer = new DetectionBuffer(camera.epoch);
 
     const poll = async () => {
+      const request = requestSignal(controller.signal);
+      const sentAt = performance.now();
       try {
         const response: CameraDetections = await api.cameraDetections(camera.id, buffer.afterFrame,
-          requestSignal(controller.signal), camera.epoch ?? undefined);
+          request.signal, camera.epoch ?? undefined);
         if (cancelled) return;
-        const fresh = buffer.accept(response, performance.now());
+        const now = performance.now();
+        const fresh = buffer.accept(response, now, now - sentAt);
         const video = videoRef.current;
         const newest = buffer.frames.at(-1);
         if (fresh && video && newest && video.readyState >= 1) {
@@ -168,6 +177,8 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
         }
       } catch {
         // The overlay is best-effort; the camera's own state reports any real failure.
+      } finally {
+        request.dispose();
       }
       if (!cancelled) timer = window.setTimeout(poll, DETECTION_POLL_MS);
     };

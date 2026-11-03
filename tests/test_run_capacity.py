@@ -179,3 +179,20 @@ def test_per_repeat_variance_is_not_pooled_across_feeds() -> None:
     table = rc.summarize([item(1, [29.9, 20.0]), item(2, [29.9, 29.9])])["C-2feeds"]
     assert [r["min_feed_cadence_fps"] for r in table["per_repeat"]] == [20.0, 29.9]
     assert table["across_repeats"]["min_feed_cadence_fps"]["n"] == 2
+
+
+@pytest.mark.parametrize("profile", ["configs", "configs/a6000"])
+def test_backend_stage_uses_the_selected_profile_without_rotation_or_looping(tmp_path: Path, monkeypatch, profile: str) -> None:
+    from backend.app.configuration import load_configuration
+
+    selected = load_configuration(PROJECT_ROOT / profile, PROJECT_ROOT)
+    monkeypatch.setattr(rc, "CONFIG_DIR", PROJECT_ROOT / profile)
+    clip = PROJECT_ROOT / "demo" / "derived" / "cam01-repeat33.mp4"
+    ids = rc.write_backend_config(tmp_path / "configs", 3, clip)
+    assert ids == ["cam-01", "cam-02", "cam-03"]
+    assert not (tmp_path / "configs" / "a6000").exists()
+    copied = load_configuration(tmp_path / "configs", PROJECT_ROOT)
+    assert copied.models.selected_model == selected.models.selected_model
+    assert copied.models.selected.engine_path == selected.models.selected.engine_path
+    assert copied.runtime.replay.frame_log_max_mib == 0
+    assert [camera.loop for camera in copied.cameras] == [False, False, False]

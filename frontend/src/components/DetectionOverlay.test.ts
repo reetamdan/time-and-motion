@@ -82,26 +82,59 @@ describe('overlay epoch and freshness handling', () => {
 describe('request signal', () => {
   afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 
-  it('aborts when the poll is cancelled', () => {
+  it('aborts when the poll is cancelled, including an already-cancelled poll', () => {
     const cancelled = new AbortController();
-    const signal = requestSignal(cancelled.signal, 60_000);
-    expect(signal.aborted).toBe(false);
+    const request = requestSignal(cancelled.signal, 60_000);
+    expect(request.signal.aborted).toBe(false);
     cancelled.abort();
-    expect(signal.aborted).toBe(true);
+    expect(request.signal.aborted).toBe(true);
+    expect(requestSignal(cancelled.signal, 60_000).signal.aborted).toBe(true);
   });
 
-  it('falls back to a manual combination where AbortSignal.any is missing', () => {
+  it('aborts after its timeout', () => {
     vi.useFakeTimers();
+    const request = requestSignal(new AbortController().signal, 1000);
+    vi.advanceTimersByTime(999);
+    expect(request.signal.aborted).toBe(false);
+    vi.advanceTimersByTime(2);
+    expect(request.signal.aborted).toBe(true);
+  });
+
+  it('works without AbortSignal.any (older browsers)', () => {
     class LegacySignal { static any = undefined; static timeout = undefined; }
     vi.stubGlobal('AbortSignal', LegacySignal);
     const cancelled = new AbortController();
-    const first = requestSignal(cancelled.signal, 1000);
+    const request = requestSignal(cancelled.signal, 60_000);
     cancelled.abort();
-    expect(first.aborted).toBe(true);
-    const timed = requestSignal(new AbortController().signal, 1000);
-    vi.advanceTimersByTime(999);
-    expect(timed.aborted).toBe(false);
-    vi.advanceTimersByTime(2);
-    expect(timed.aborted).toBe(true);
+    expect(request.signal.aborted).toBe(true);
+  });
+
+  it('leaves no listener on the poll signal or pending timer once each request is disposed', () => {
+    vi.useFakeTimers();
+    const cancelled = new AbortController();
+    let listeners = 0;
+    const add = cancelled.signal.addEventListener.bind(cancelled.signal);
+    const remove = cancelled.signal.removeEventListener.bind(cancelled.signal);
+    cancelled.signal.addEventListener = ((...args: Parameters<typeof add>) => { listeners++; add(...args); }) as typeof add;
+    cancelled.signal.removeEventListener = ((...args: Parameters<typeof remove>) => { listeners--; remove(...args); }) as typeof remove;
+    // Successful requests, then requests that time out: every one disposed in the poll's finally.
+    for (let n = 0; n < 10; n++) requestSignal(cancelled.signal, 1000).dispose();
+    for (let n = 0; n < 10; n++) {
+      const request = requestSignal(cancelled.signal, 1000);
+      vi.advanceTimersByTime(1001);
+      expect(request.signal.aborted).toBe(true);
+      request.dispose();
+    }
+    expect(listeners).toBe(0);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+});
+
+describe('detection freshness with a slow response', () => {
+  it('counts the round trip, so a delayed response cannot revive expired boxes', () => {
+    const buffer = new DetectionBuffer('epoch');
+    const late = response('epoch', [frame(1, 0)], 100);
+    expect(buffer.accept(late, 10_000, 0)).toBe(true);
+    expect(buffer.accept(late, 10_000, DETECTION_STALE_MS)).toBe(false);
   });
 });

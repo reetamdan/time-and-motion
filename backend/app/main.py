@@ -22,6 +22,7 @@ from .perception.deepstream import DeepStreamAdapter
 from .services.context import AppServices
 from .services.environment import EnvironmentService
 from .services.evidence import EvidenceService, MediaTools
+from .services.instance_lock import InstanceLock
 from .services.runtime import CameraRuntimeSupervisor
 from .services.sequence import SequenceState
 from .services.snapshots import SnapshotService
@@ -54,6 +55,7 @@ def create_app(
     logging.getLogger().setLevel(config.runtime.log_level)
 
     repository = SQLiteRepository(config.runtime.database_path)
+    instance_lock = InstanceLock(config.runtime.database_path)
     adapter = perception_adapter or DeepStreamAdapter(config)
     sequence = SequenceState()
     media_tools = media_tools or MediaTools(config.runtime.evidence.tool_timeout_seconds)
@@ -76,6 +78,16 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+        # Refuse to start (before migrations and recovery) while another backend owns this database.
+        instance_lock.acquire()
+        try:
+            async with _serve():
+                yield
+        finally:
+            instance_lock.release()
+
+    @asynccontextmanager
+    async def _serve() -> AsyncIterator[None]:
         try:
             repository.migrate()
             repository.seed_configuration(config)
