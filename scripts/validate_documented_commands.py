@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """AC-25: execute the currently documented setup / run / reset / test commands and check troubleshooting references.
 
-Commands are taken from README.md as written. Deviations, recorded per step:
+Commands are taken from docs/operations-guide.md (formerly README.md) as written. Deviations, recorded per step:
 - setup steps run in a scratch copy (fresh venv, copy of frontend/) so the working project's
   .venv / node_modules are not replaced and run-backend.ps1's interpreter choice is not changed;
 - the run/reset steps use a fresh database through CCTV_DATABASE_PATH and a non-default loopback port.
@@ -66,7 +66,7 @@ def main() -> int:
     steps: dict[str, dict[str, Any]] = {}
     checks: dict[str, bool] = {}
 
-    # --- README §2 "Windows API/frontend development environment" (scratch copy) ---
+    # --- operations guide §2 "Windows API/frontend development environment" (scratch copy) ---
     venv = scratch / "venv-windows"
     steps["setup_create_venv"] = run_step(run_dir, "setup_create_venv", ["py", "-3.12", "-m", "venv", str(venv)], ROOT)
     pip = venv / "Scripts" / "python.exe"
@@ -81,7 +81,7 @@ def main() -> int:
     for name in ("setup_create_venv", "setup_pip_install", "setup_pip_check", "setup_npm_ci", "setup_npm_run_build"):
         checks[name] = steps[name]["returncode"] == 0
 
-    # --- README §4 tests, exactly as documented ---
+    # --- operations guide §4 tests, exactly as documented ---
     steps["tests_documented_python_windows"] = run_step(
         run_dir, "tests_documented_python_windows",
         [str(ROOT / ".venv" / "Scripts" / "python.exe"), "-m", "pytest", "-q", "-p", "no:cacheprovider",
@@ -96,17 +96,17 @@ def main() -> int:
         checks["tests_documented_python_wsl"] = steps["tests_documented_python_wsl"]["returncode"] == 0
     else:
         steps["tests_documented_python_wsl"] = {
-            "status": "NOT_RUN", "reason": "Documented precondition not met in this workspace: .venv-wsl has not been created (README §2)."}
+            "status": "NOT_RUN", "reason": "Documented precondition not met in this workspace: .venv-wsl has not been created (docs/operations-guide.md §2)."}
     steps["tests_documented_frontend"] = run_step(run_dir, "tests_documented_frontend", [npm, "test"], frontend)
     checks["tests_documented_frontend"] = steps["tests_documented_frontend"]["returncode"] == 0
 
-    # --- README §2 "Configuration and environment": configuration validator ---
+    # --- operations guide §2 "Configuration and environment": configuration validator ---
     steps["config_validate"] = run_step(run_dir, "config_validate",
                                         [str(ROOT / ".venv" / "Scripts" / "python.exe"), str(ROOT / "scripts" / "config" / "validate_config.py"),
                                          str(ROOT / "configs")], ROOT)
     checks["config_validate"] = steps["config_validate"]["returncode"] == 0
 
-    # --- README §3 run + §6 reset with the documented scripts ---
+    # --- operations guide §3 run + §6 reset with the documented scripts ---
     database = run_dir / "documented-run.db"
     env = dict(os.environ, CCTV_DATABASE_PATH=str(database))
     backend_log = (run_dir / "run_backend.log").open("w", encoding="utf-8")
@@ -152,7 +152,7 @@ def main() -> int:
         subprocess.run(["taskkill", "/PID", str(backend.pid), "/T", "/F"], capture_output=True, check=False)
         backend_log.close()
 
-    # --- README §10 troubleshooting references must exist ---
+    # --- operations guide §10 troubleshooting references must exist ---
     references = ["reports/environment/deepstream92/image-reference.txt", "scripts/setup/setup.sh", "scripts/run-demo.ps1",
                   "scripts/run-backend.ps1", "scripts/deepstream.sh", "scripts/config/fit_calibration.py",
                   "scripts/config/validate_config.py", "docs/annotation-guide.md", "scripts/lib/capability-probe.sh"]

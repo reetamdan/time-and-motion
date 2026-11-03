@@ -30,7 +30,7 @@ def missing_local_artifacts() -> list[str]:
 
 _MISSING_LOCAL_ARTIFACTS = missing_local_artifacts()
 
-# A fresh clone has no footage or model binaries (see .gitignore and README), so the tests that
+# A fresh clone has no footage or model binaries (without Git LFS; see README), so the tests that
 # exercise them skip there with the missing paths named. Set AEGIS_REQUIRE_LOCAL_ARTIFACTS=1 to
 # make them fail instead, e.g. when validating a fully provisioned machine.
 requires_local_artifacts = pytest.mark.skipif(

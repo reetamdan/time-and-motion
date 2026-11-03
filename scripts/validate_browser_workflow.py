@@ -95,7 +95,7 @@ def wait_for(predicate: Callable[[], Any], timeout: float, interval: float = 0.2
 def start_real_backend(run: Run, database: Path, label: str) -> subprocess.Popen:
     env = dict(os.environ, CCTV_DATABASE_PATH=str(database), BACKEND_PORT=str(REAL_PORT))
     log = (run.directory / f"backend-{label}.log").open("w", encoding="utf-8")
-    # The documented Windows entry point (README §3), unchanged.
+    # The documented Windows entry point (docs/operations-guide.md §3), unchanged.
     return subprocess.Popen(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
                              str(ROOT / "scripts" / "run-backend.ps1"), "-Port", str(REAL_PORT)],
                             cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
