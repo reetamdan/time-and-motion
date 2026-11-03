@@ -1,0 +1,41 @@
+2026/10/28 18:46:07 INF MediaMTX v1.21.2, linux, amd64
+2026/10/28 18:46:07 INF configuration loaded from /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/rtsp-controlled-20261028T131601797642Z/mediamtx.yml
+2026/10/28 18:46:07 INF [RTSP] started with listeners on :8554 (TCP/RTSP)
+2026/10/28 18:46:07 INF [MoQ] started with listeners on :8892 (TCP/HTTP2), :8892 (UDP/HTTP3), :8893 (UDP/QUIC)
+2026/10/28 18:46:09 INF [RTSP] [conn 10.255.255.254:33794] opened
+2026/10/28 18:46:09 INF [RTSP] [session bbec4446] created by 10.255.255.254:33794
+2026/10/28 18:46:09 INF [path cam01] stream is available and online, 2 tracks (H264, MPEG-4 Audio)
+2026/10/28 18:46:09 INF [RTSP] [session bbec4446] is publishing to path 'cam01'
+2026/10/28 18:46:09 INF [path cam01] RTP packets are too big (1460 > 1440), remuxing them into smaller ones
+2026/10/28 18:46:24 INF [RTSP] [conn 172.17.0.2:36010] opened
+2026/10/28 18:46:24 INF [RTSP] [session 35b0b3eb] created by 172.17.0.2:36010
+2026/10/28 18:46:26 INF [RTSP] [session 35b0b3eb] is reading from path 'cam01', with TCP, 2 tracks (H264, MPEG-4 Audio)
+2026/10/28 18:46:38 INF [RTSP] [session bbec4446] destroyed: torn down by 10.255.255.254:33794
+2026/10/28 18:46:38 INF [RTSP] [conn 172.17.0.2:36010] closed: terminated
+2026/10/28 18:46:38 INF [RTSP] [conn 10.255.255.254:33794] closed: EOF
+2026/10/28 18:46:38 INF [RTSP] [session 35b0b3eb] destroyed: terminated
+2026/10/28 18:46:46 INF [RTSP] [conn 172.17.0.2:46636] opened
+2026/10/28 18:46:46 INF [RTSP] [conn 172.17.0.2:46636] closed: no stream is available on path 'cam01'
+2026/10/28 18:47:12 INF [RTSP] [conn 172.17.0.2:47718] opened
+2026/10/28 18:47:12 INF [RTSP] [conn 172.17.0.2:47718] closed: no stream is available on path 'cam01'
+2026/10/28 18:47:24 INF [RTSP] [conn 10.255.255.254:38506] opened
+2026/10/28 18:47:24 INF [RTSP] [session d1639add] created by 10.255.255.254:38506
+2026/10/28 18:47:24 INF [path cam01] stream is available and online, 2 tracks (H264, MPEG-4 Audio)
+2026/10/28 18:47:24 INF [RTSP] [session d1639add] is publishing to path 'cam01'
+2026/10/28 18:47:24 INF [path cam01] RTP packets are too big (1460 > 1440), remuxing them into smaller ones
+2026/10/28 18:47:38 INF [RTSP] [conn 172.17.0.2:59428] opened
+2026/10/28 18:47:38 INF [RTSP] [session c993a9e8] created by 172.17.0.2:59428
+2026/10/28 18:47:39 INF [RTSP] [session c993a9e8] is reading from path 'cam01', with TCP, 2 tracks (H264, MPEG-4 Audio)
+2026/10/28 18:47:57 INF [RTSP] [conn 172.17.0.2:59428] closed: read tcp 172.17.0.1:8554->172.17.0.2:59428: read: connection reset by peer
+2026/10/28 18:47:57 INF [RTSP] [session c993a9e8] destroyed: not in use
+2026/10/28 18:48:01 INF [RTSP] [conn 172.17.0.2:52298] opened
+2026/10/28 18:48:01 INF [RTSP] [session 0a9dfa77] created by 172.17.0.2:52298
+2026/10/28 18:48:03 INF [RTSP] [session 0a9dfa77] is reading from path 'cam01', with TCP, 2 tracks (H264, MPEG-4 Audio)
+2026/10/28 18:48:07 INF [RTSP] [session d1639add] destroyed: torn down by 10.255.255.254:38506
+2026/10/28 18:48:07 INF [RTSP] [conn 10.255.255.254:38506] closed: EOF
+2026/10/28 18:48:07 INF [RTSP] [conn 172.17.0.2:52298] closed: terminated
+2026/10/28 18:48:07 INF [RTSP] [session 0a9dfa77] destroyed: terminated
+2026/10/28 18:48:45 INF shutting down gracefully
+2026/10/28 18:48:45 INF [MoQ] closing
+2026/10/28 18:48:45 INF [RTSP] closing
+2026/10/28 18:48:45 INF waiting for running hooks

@@ -1,0 +1,12 @@
+[supervised_entry] supervisor pid 11344 disappeared: interrupting the script for its own cleanup
+Traceback (most recent call last):
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\lib\supervised_entry.py", line 105, in <module>
+    main()
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\lib\supervised_entry.py", line 101, in main
+    runpy.run_path(str(script), run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261028T135542759219Z\scratch\pytest\test_killed_supervisor_interru0\step.py", line 8, in <module>
+    time.sleep(0.2)
+KeyboardInterrupt

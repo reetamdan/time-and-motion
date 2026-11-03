@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "source": "demo/cam01.mp4",
+  "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "opencv_version": "5.0.0",
+  "frames": [
+    {
+      "frame_index": 141,
+      "path": "reports\\model-evaluation\\rt-detr\\frames\\frame_000141.png",
+      "sha256": "94dfb4597f20321ef98c8d91f448e24630205b4f4cdb6ed4924d16d75b59c7a7",
+      "decoded_bgr_shape": [
+        1080,
+        1920,
+        3
+      ],
+      "pixel_sha256_bgr": "7f43753abd7b40a505677bdea104e0662699ae8f41bea922f845f298ad28de03",
+      "known_positive_basis": "Visible people in authorized clip and existing independent TrafficCamNet smoke metadata; not ground-truth labels"
+    },
+    {
+      "frame_index": 283,
+      "path": "reports\\model-evaluation\\rt-detr\\frames\\frame_000283.png",
+      "sha256": "524deed4c35c9c3df5e6558788d243452439ec62ea408f2222da6fd4c70ec4c0",
+      "decoded_bgr_shape": [
+        1080,
+        1920,
+        3
+      ],
+      "pixel_sha256_bgr": "80517b7f993408e10372a08ab0a97903c958485507d63f1c1e2659e56fc9c84c",
+      "known_positive_basis": "Visible people in authorized clip and existing independent TrafficCamNet smoke metadata; not ground-truth labels"
+    }
+  ],
+  "quality_scope": "Known-positive integration inputs only; no labels and no precision/recall claim"
+}

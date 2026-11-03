@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "metrics": {
+    "frames": 710,
+    "objects": 48687,
+    "person_detections": 48687,
+    "valid_person_bounding_boxes": 48687,
+    "invalid_boxes": 0,
+    "invalid_tracker_boxes": 0,
+    "unexpected_class_records": 0,
+    "unique_person_ids": 464,
+    "multi_frame_person_ids": 455,
+    "max_objects_per_frame": 84,
+    "empty_frames": 2,
+    "schema_errors": 0,
+    "invalid_scores": 0,
+    "invalid_track_ids": 0,
+    "duplicate_person_ids_within_frame": 0,
+    "non_increasing_or_missing_pts": 0,
+    "elapsed_seconds": 10.273285132999995,
+    "decoded_frames_per_elapsed_second": 69.1112911603444
+  },
+  "failed_checks": [],
+  "run_dir": "/workspace/reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z"
+}
+extractor_exit=0 validator_exit=0 run_dir=/workspace/reports/model-evaluation/rt-detr/deepstream/run-20261026T143055Z

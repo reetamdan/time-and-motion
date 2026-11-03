@@ -1,0 +1,10 @@
+2026-10-26T16:04:58Z GET https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/README.md
+2026-10-26T16:04:58Z GET https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/config.json
+2026-10-26T16:04:59Z GET https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/preprocessor_config.json
+2026-10-26T16:04:59Z GET https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/.gitattributes
+2026-10-26T16:05:00Z GET https://huggingface.co/Roboflow/rf-detr-small/resolve/3bdc465063270f99769da5a1b4c00c68bd2d439d/model.safetensors
+67276e4f7fb6d5e8753699173f86ba37b0aa17184f53ef1ad79253907f0015a5 *models/rf-detr-person-candidate/upstream/README.md
+cbc9ccde8860c7587c0672cd4df1e9ae2ee93112fef853283435e95dd7e0a595 *models/rf-detr-person-candidate/upstream/config.json
+2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d *models/rf-detr-person-candidate/upstream/model.safetensors
+dba1fb5bb4d70d94b3495b7bcb1f881bc61d42c73433fcec13be34c523550a0b *models/rf-detr-person-candidate/upstream/preprocessor_config.json
+11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361 *models/rf-detr-person-candidate/upstream/.gitattributes

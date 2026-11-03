@@ -1,0 +1,186 @@
+/*
+ * Aegis Ops design tokens.
+ *
+ * Adapted from OpenIntelligentUI (https://github.com/CopilotKit/OpenIntelligentUI)
+ * revision 8391a94c1c3939c679e40ddd7bfc08a9ef690e70, MIT License, Copyright (c) Atai Barkai.
+ * Sources: apps/app/src/app/globals.css ("Brand Design Tokens", ":root.dark", spacing/radius/
+ * shadow/chart tokens) and packages/design-system/src/index.ts (THEME_CSS semantic
+ * info/danger/success/warning ramps, SVG color ramps). See ./NOTICE.md for what changed.
+ *
+ * Aegis adaptation: the dark operations theme is the default (upstream defaults to light);
+ * the light theme is opt-in via [data-theme="light"]. Glass values are kept as tokens but
+ * resolved to near-opaque surfaces (no backdrop blur over video). Typography uses the same
+ * families as upstream, bundled locally through @fontsource instead of Google Fonts.
+ */
+
+:root {
+  /* ── Brand (upstream "CopilotKit Brand Colors") ─────────────────────── */
+  --color-lilac: #BEC2FF;
+  --color-lilac-light: #D4D7FF;
+  --color-lilac-dark: #9599CC;
+  --color-mint: #85E0CE;
+  --color-mint-light: #A8E9DC;
+  --color-mint-dark: #1B936F;
+  /* Teal ramp from design-system SVG classes (.c-teal, dark mode). */
+  --color-teal: #5DCAA5;
+  --color-teal-strong: #9FE1CB;
+  --color-teal-deep: #085041;
+
+  /* ── Spacing (upstream 8px base) ────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ── Radius (upstream) ──────────────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+
+  /* ── Typography (upstream families, bundled locally) ────────────────── */
+  --font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Spline Sans Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 13px;
+  --text-base: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+  --text-metric: 30px;
+
+  /* ── Motion ─────────────────────────────────────────────────────────── */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration: 180ms;
+  --duration-slow: 300ms;
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --sidebar-width: 236px;
+  --sidebar-rail: 72px;
+  --runbar-height: 64px;
+  --inspector-width: 520px;
+  --z-runbar: 40;
+  --z-drawer: 60;
+  --z-toast: 80;
+
+  /* ══ Dark operations theme (default; upstream ":root.dark" + THEME_CSS dark) ══ */
+  color-scheme: dark;
+  --background: #08090d;
+  --foreground: #ededed;
+  --color-surface: #11131c;
+  --color-surface-light: #0b0c12;
+  --color-container: #151826;
+  --color-container-raised: #1b1f30;
+  --color-glass: rgba(20, 20, 40, 0.92);
+  --color-glass-subtle: rgba(20, 20, 40, 0.6);
+  --color-glass-dark: rgba(10, 10, 20, 0.96);
+
+  --text-primary: #eceef4;
+  --text-secondary: #a9afbd;
+  --text-tertiary: #7d8494;
+
+  --border-default: rgba(255, 255, 255, 0.09);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.24);
+
+  /* Semantic ramps (THEME_CSS dark values; text lifted slightly for contrast on #151826). */
+  --info-bg: #0C447C;
+  --info-text: #9CC5F0;
+  --info-border: #85B7EB;
+  --danger-bg: #501313;
+  --danger-text: #F5A3A3;
+  --danger-border: #F09595;
+  --success-bg: #173404;
+  --success-text: #A9D272;
+  --success-border: #97C459;
+  --warning-bg: #412402;
+  --warning-text: #F2B04A;
+  --warning-border: #EF9F27;
+
+  --accent: var(--color-mint);
+  --accent-strong: var(--color-mint-light);
+  --accent-contrast: #062a22;
+  --accent-secondary: var(--color-lilac);
+  --focus-ring: var(--color-mint);
+
+  --backdrop: rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --shadow-raised: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-glow-lilac: 0 0 20px rgba(190, 194, 255, 0.15);
+  --shadow-glow-mint: 0 0 20px rgba(133, 224, 206, 0.15);
+
+  --chart-tooltip-bg: #1d2133;
+  --chart-tooltip-border: #33384d;
+  --chart-axis: #8f96a6;
+  --chart-grid: rgba(255, 255, 255, 0.07);
+  --chart-series-1: var(--color-mint);
+  --chart-series-2: var(--color-lilac);
+  --chart-series-3: var(--color-teal);
+
+  --video-bg: #000;
+  --plan-bg: #0d0f17;
+}
+
+/* ══ Light theme (upstream ":root" light tokens + THEME_CSS light) ══ */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #F7F7F9;
+  --foreground: #010507;
+  --color-surface: #DEDEE9;
+  --color-surface-light: #F7F7F9;
+  --color-container: #FFFFFF;
+  --color-container-raised: #FAFAFC;
+  --color-glass: rgba(255, 255, 255, 0.94);
+  --color-glass-subtle: rgba(255, 255, 255, 0.6);
+  --color-glass-dark: rgba(255, 255, 255, 0.97);
+
+  --text-primary: #1a1a1a;
+  --text-secondary: #57575B;
+  --text-tertiary: #6f6f75;
+
+  --border-default: #DBDBE5;
+  --border-hover: #c7c7d4;
+  --border-subtle: #EBEBF0;
+  --border-strong: #a9a9b8;
+
+  --info-bg: #E6F1FB;
+  --info-text: #185FA5;
+  --info-border: #185FA5;
+  --danger-bg: #FCEBEB;
+  --danger-text: #A32D2D;
+  --danger-border: #A32D2D;
+  --success-bg: #EAF3DE;
+  --success-text: #3B6D11;
+  --success-border: #3B6D11;
+  --warning-bg: #FAEEDA;
+  --warning-text: #854F0B;
+  --warning-border: #854F0B;
+
+  --accent: var(--color-mint-dark);
+  --accent-strong: #157a5c;
+  --accent-contrast: #ffffff;
+  --accent-secondary: var(--color-lilac-dark);
+  --focus-ring: #189370; /* upstream chat.css :focus-visible */
+
+  --backdrop: rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-raised: 0 10px 25px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #e5e7eb;
+  --chart-axis: #6b7280;
+  --chart-grid: rgba(0, 0, 0, 0.08);
+  --chart-series-1: var(--color-mint-dark);
+  --chart-series-2: #534AB7;
+  --chart-series-3: #0F6E56;
+
+  --plan-bg: #f1f1f6;
+}

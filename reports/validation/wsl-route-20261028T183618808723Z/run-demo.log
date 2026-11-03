@@ -1,0 +1,5 @@
+backend readiness became ready after 4 second(s): http://127.0.0.1:8774/health/ready
+Demo processes are ready at http://127.0.0.1:8774/
+Logs: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/demo/20261028T183941Z
+Press Ctrl+C to stop.
+Readiness does not prove detections, analytics, four-feed capacity, or offline acceptance.

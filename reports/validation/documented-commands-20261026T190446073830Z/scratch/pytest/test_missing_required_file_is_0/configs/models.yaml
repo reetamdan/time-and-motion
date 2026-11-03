@@ -1,0 +1,53 @@
+# No evaluated PRD baseline is selected. TrafficCamNet is an explicit provisional
+# runtime smoke profile only; the RT-DETR and RF-DETR comparison remains required.
+schema_version: 1
+selected_model: trafficcamnet-smoke
+selection_mode: provisional_smoke
+models:
+  - id: trafficcamnet-smoke
+    role: detector
+    enabled: true
+    checkpoint_path: ./models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx
+    engine_path: ./models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+    revision: deepstream-9.2-bundled-resnet18-trafficcamnet-pruned
+    sha256: d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d
+    engine_sha256: e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f
+    source_repository: ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85
+    license_ref: NVIDIA DeepStream SDK License Agreement for bundled sample artifacts; see THIRD_PARTY.md
+    class_map: {0: car, 1: bicycle, 2: person, 3: road_sign}
+    input_shape: [1, 3, 544, 960]
+    precision: FP16
+    parser_revision: deepstream-9.2-nvdsinfer-default-resnet
+  - id: rt-detr-person-candidate
+    role: detector
+    enabled: false
+    checkpoint_path: ./models/rt-detr-person.onnx
+    engine_path: ./models/rt-detr-person.engine
+    revision: null
+    sha256: null
+    engine_sha256: null
+    source_repository: null
+    license_ref: null
+    class_map: {0: person}
+    input_shape: []
+    precision: null
+    parser_revision: null
+  - id: rf-detr-person-candidate
+    role: detector
+    enabled: false
+    checkpoint_path: ./models/rf-detr-person.onnx
+    engine_path: ./models/rf-detr-person.engine
+    revision: null
+    sha256: null
+    engine_sha256: null
+    source_repository: null
+    license_ref: null
+    class_map: {0: person}
+    input_shape: []
+    precision: null
+    parser_revision: null
+tracker:
+  name: NVIDIA NvDCF multi-object tracker
+  enabled: true
+  revision: deepstream-9.2-nvdcf-perf-13662e73754e
+  config_path: ./perception/deepstream/reference/config_tracker_NvDCF_perf.yml

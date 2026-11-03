@@ -1,0 +1,50 @@
+PASS backend_served 
+PASS live_connection 
+PASS skip_link_first_tab_stop 
+PASS skip_link_focuses_main 
+PASS ui_start_reaches_running {"status": "RUNNING :: Running"}
+PASS replay_mode_locked_while_running 
+PASS facility_metrics_unavailable_with_reason {"excerpt": "FACILITY METRICS \u00b7 CALIBRATED\n\nOccupancy, flow and queues\n\nThese need runtime-valid calibration and fresh cameras. Unavailable values show their reason; they are never shown as 0
+PASS camera_tile_shows_live_count {"text": "0"}
+PASS inspector_opens_with_keyboard 
+PASS focus_moves_into_inspector 
+PASS tab_trapped_in_inspector 
+PASS long_clip_reached_75s 
+PASS range_mode_requests_window_range {"requests": ["http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?epoch=8400a625-9836-4c8e-b286-cf8c128b6c78&window=range&from_source_s=0.066733333&to_source_s=74.0029&limit=10000&max_points=60
+PASS earlier_enabled_with_long_history {"buttons": ["", "Newest", "Browse range", "30 s", "2 min", "10 min", "Earlier", "Later", "Mark evidence"]}
+PASS earlier_window_requests_older_range {"newest": [44.5034, 74.5034], "earlier": [14.5034, 44.5034]}
+PASS later_window_returns_forward {"last": ["http://127.0.0.1:8771/api/v1/cameras/cam-01/count-history?epoch=8400a625-9836-4c8e-b286-cf8c128b6c78&window=range&from_source_s=44.5034&to_source_s=74.5034&limit=10000&max_points=600"]}
+PASS escape_closes_inspector 
+PASS focus_returns_to_tile 
+PASS marker_saved 
+PASS open_in_evidence_highlights_card {"url": "http://127.0.0.1:8771/#evidence?item=99057fbd-e465-4787-80df-3f15dcb011c0"}
+PASS deep_link_highlights_card {"group": "99057fbd-e465-4787-80df-3f15dcb011c0"}
+PASS view_button_unique_in_card {"matches": 1}
+PASS viewer_opens {"url": "http://127.0.0.1:8771/#evidence?item=206e2852-8a6e-4a44-a413-a0e86811f9cb"}
+PASS viewer_shows_expected_record {"state": {"src": "http://127.0.0.1:8771/api/v1/evidence/206e2852-8a6e-4a44-a413-a0e86811f9cb", "w": 1920, "h": 1080, "fit": "contain", "box": [857, 482], "view": [1440, 900], "rect": {"x": 561, "y": 
+PASS viewer_shows_full_frame {"state": {"src": "http://127.0.0.1:8771/api/v1/evidence/206e2852-8a6e-4a44-a413-a0e86811f9cb", "w": 1920, "h": 1080, "fit": "contain", "box": [857, 482], "view": [1440, 900], "rect": {"x": 561, "y": 
+PASS viewer_closes_on_escape 
+PASS focus_returns_to_view_button 
+PASS reset_dialog_opens 
+PASS reset_dialog_escape_cancels 
+PASS theme_switches_to_light 
+PASS theme_persists_after_reload 
+PASS run_status_visible_every_width_and_view {}
+PASS no_horizontal_overflow_every_width_and_view {}
+PASS mobile_nav_opens 
+PASS mobile_nav_navigates_and_closes {"url": "http://127.0.0.1:8771/#alerts"}
+PASS ui_stop_reaches_stopped 
+PASS no_external_requests {"external": []}
+PASS no_console_errors {"errors": []}
+PASS fault_backend_served 
+PASS cleanup_banner_shown 
+PASS cleanup_banner_and_retry_visible_every_width {"390": true, "768": true, "1024": true, "1280": true, "1440": true, "1920": true}
+PASS start_disabled_during_stop_failed 
+PASS start_api_returns_409_cleanup_unconfirmed {"status": 409, "code": "CLEANUP_UNCONFIRMED"}
+PASS retry_cleanup_reaches_stopped 
+{
+ "result": "PASS",
+ "run_dir": "reports\\validation\\ui-refactor-cam01-20261028T182320344809Z",
+ "failed": [],
+ "errors": 0
+}

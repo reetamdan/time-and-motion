@@ -1,0 +1,10 @@
+COMMAND: ["C:\\Program Files\\nodejs\\npm.CMD", "ci"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261027T170405838365Z\scratch\frontend
+
+
+added 85 packages, and audited 86 packages in 10s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities

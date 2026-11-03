@@ -1,0 +1,4 @@
+COMMAND: ["C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv-wsl\\bin\\python", "-m", "pytest", "tests"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv
+
+FileNotFoundError: [WinError 2] The system cannot find the file specified

@@ -1,0 +1,51 @@
+Starting backend.app.main:app on http://127.0.0.1:8774 (local artifacts only)
+INFO:     Started server process [1239]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8774 (Press CTRL+C to quit)
+INFO:     127.0.0.1:34988 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34992 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43418 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43422 - "POST /api/v1/demo/start?replay_mode=paced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52856 - "GET /api/v1/runs/fb18cf2b-0338-4566-8d49-132820462541/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52872 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52890 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52892 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52902 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52914 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52922 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52934 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52950 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52958 - "POST /api/v1/cameras/cam-01/evidence-markers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55768 - "GET /api/v1/evidence/f58e0dcd-fbec-427c-8db4-d0fb6b20fe2e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55776 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55788 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55800 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55816 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55822 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55834 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55838 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55842 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55850 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55864 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55878 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55894 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32788 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32794 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32796 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32806 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32808 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32822 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32832 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32842 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32854 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32860 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32864 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32866 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32868 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32880 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1239]

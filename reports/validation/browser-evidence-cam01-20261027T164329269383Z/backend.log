@@ -1,0 +1,58 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [36776]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8771 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51958 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61562 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /assets/index-BXmAYY6N.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60706 - "GET /assets/index-DSotJ2mU.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /assets/inter-latin-wght-normal-Dx4kXJAl.woff2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50434 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59138 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 51653) - "WebSocket /api/v1/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:60999 - "GET /aegis.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59138 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60706 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52034 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52034 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55319 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65512 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51089 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51090 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51091 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51093 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51094 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51095 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51096 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51097 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51098 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51099 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51100 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51101 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "POST /api/v1/cameras/cam-01/evidence-markers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:51102 - "GET /api/v1/evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51103 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/evidence?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60999 - "GET /api/v1/evidence/911294a3-6e73-42dd-92ec-03224cc2356f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/v1/evidence/be8e4058-cf69-4d84-a101-ac9236a80c2c HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60999 - "GET /api/v1/evidence/be8e4058-cf69-4d84-a101-ac9236a80c2c HTTP/1.1" 206 Partial Content
+INFO:     connection closed

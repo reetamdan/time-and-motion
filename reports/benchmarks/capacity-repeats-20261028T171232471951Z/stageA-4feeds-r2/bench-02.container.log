@@ -1,0 +1,39 @@
+Plugin sample_signal_handler initialized
+Plugin sample_video_feeder initialized
+Plugin add_message_meta_probe initialized
+Plugin measure_fps_probe initialized
+Plugin kitti_dump_probe initialized
+Plugin measure_latency_probe initialized
+Plugin sample_video_probe initialized
+Plugin resnet_tensor_parser initialized
+Plugin sample_video_receiver initialized
+Plugin lidar_feeder initialized
+Plugin ensemble_render initialized
+Plugin smart_recording_signal initialized
+Plugin smart_recording_action initialized
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:51.362: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstresindvd.so': libdvdnav.so.4: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:51.372: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdvdread.so': libdvdread.so.8: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:51.451: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstlame.so': libmp3lame.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.351: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstsndfile.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.396: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstfluidsynthmidi.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.426: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstopenmpt.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.481: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdtsdec.so': libdca.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.495: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstpulseaudio.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.496: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmpg123.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.525: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstspandsp.so': libjbig.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.527: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmsdk.so': libmfx.so.1: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 17:25:52.617: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmplex.so': libmjpegutils-2.1.so.0: cannot open shared object file: No such file or directory
+WARNING from nvurisrc_bin_src_elem: No decoder available for type 'audio/mpeg, mpegversion=(int)4, framed=(boolean)true, stream-format=(string)raw, level=(string)2, base-profile=(string)lc, profile=(string)lc, codec_data=(buffer)1190, rate=(int)48000, channels=(int)2'.
+Debug info: ../gst/playback/gsturidecodebin.c(1003): unknown_type_cb (): /GstPipeline:service-maker-cam01-metadata/GstDsNvUriSrcBin:batch_capture-source-0_0/GstURIDecodeBin:nvurisrc_bin_src_elem

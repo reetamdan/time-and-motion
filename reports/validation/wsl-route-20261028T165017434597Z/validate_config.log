@@ -1,0 +1,237 @@
+$ .venv-wsl/bin/python scripts/config/validate_config.py
+
+{
+ "valid": true,
+ "configuration_revision": "e3d4633ab5ca4f5b3e8935ea2103e2f44e9428380262c61c0ab2304d2524316e",
+ "selected_model": "trafficcamnet-smoke",
+ "selection_mode": "provisional_smoke",
+ "artifact_identities": {
+  "detector.checkpoint": "MATCH",
+  "detector.engine": "MATCH",
+  "detector.infer_config": "MATCH",
+  "tracker.config": "MATCH",
+  "pipeline.wrapper": "MATCH",
+  "pipeline.extractor": "MATCH",
+  "pipeline.capability_probe": "MATCH",
+  "pipeline.image_reference": "MATCH"
+ },
+ "calibrations": {},
+ "capabilities_if_enabled_cameras_run": {
+  "cameras": {
+   "cam-01": {
+    "enabled": true,
+    "running": true,
+    "fresh": false,
+    "freshness_reason": null,
+    "camera_local_counts": {
+     "available": true,
+     "reason": null
+    },
+    "image_line_crossings": {
+     "available": false,
+     "reason": "no image_pixels line configured"
+    },
+    "floor_positions": {
+     "available": false,
+     "reason": "calibration MISSING"
+    },
+    "facility_crossings": {
+     "available": false,
+     "reason": "calibration MISSING"
+    }
+   },
+   "cam-02": {
+    "enabled": false,
+    "running": false,
+    "fresh": false,
+    "freshness_reason": null,
+    "camera_local_counts": {
+     "available": false,
+     "reason": "camera not running"
+    },
+    "image_line_crossings": {
+     "available": false,
+     "reason": "no image_pixels line configured"
+    },
+    "floor_positions": {
+     "available": false,
+     "reason": "calibration MISSING"
+    },
+    "facility_crossings": {
+     "available": false,
+     "reason": "no floor_map boundary configured"
+    }
+   },
+   "cam-03": {
+    "enabled": false,
+    "running": false,
+    "fresh": false,
+    "freshness_reason": null,
+    "camera_local_counts": {
+     "available": false,
+     "reason": "camera not running"
+    },
+    "image_line_crossings": {
+     "available": false,
+     "reason": "no image_pixels line configured"
+    },
+    "floor_positions": {
+     "available": false,
+     "reason": "calibration MISSING"
+    },
+    "facility_crossings": {
+     "available": false,
+     "reason": "no floor_map boundary configured"
+    }
+   },
+   "cam-04": {
+    "enabled": false,
+    "running": false,
+    "fresh": false,
+    "freshness_reason": null,
+    "camera_local_counts": {
+     "available": false,
+     "reason": "camera not running"
+    },
+    "image_line_crossings": {
+     "available": false,
+     "reason": "no image_pixels line configured"
+    },
+    "floor_positions": {
+     "available": false,
+     "reason": "calibration MISSING"
+    },
+    "facility_crossings": {
+     "available": false,
+     "reason": "no floor_map boundary configured"
+    }
+   }
+  },
+  "zones": {
+   "entrance-f1": {
+    "kind": "entrance",
+    "occupancy": {
+     "available": false,
+     "reason": "no runtime-valid calibration: cam-01",
+     "current": false,
+     "current_reason": null
+    },
+    "congestion": {
+     "available": false,
+     "reason": "no runtime-valid calibration: cam-01",
+     "current": false,
+     "current_reason": null
+    }
+   },
+   "dining-f1": {
+    "kind": "dining",
+    "occupancy": {
+     "available": false,
+     "reason": "not running: cam-02, cam-03",
+     "current": false,
+     "current_reason": null
+    },
+    "congestion": {
+     "available": false,
+     "reason": "not running: cam-02, cam-03",
+     "current": false,
+     "current_reason": null
+    }
+   },
+   "queue-f1": {
+    "kind": "queue",
+    "occupancy": {
+     "available": false,
+     "reason": "not running: cam-02",
+     "current": false,
+     "current_reason": null
+    },
+    "congestion": {
+     "available": false,
+     "reason": "not running: cam-02",
+     "current": false,
+     "current_reason": null
+    },
+    "queue": {
+     "available": false,
+     "reason": "not running: cam-02",
+     "current": false,
+     "current_reason": null
+    }
+   },
+   "stair-f1": {
+    "kind": "stairs",
+    "occupancy": {
+     "available": false,
+     "reason": "not running: cam-03",
+     "current": false,
+     "current_reason": null
+    },
+    "congestion": {
+     "available": false,
+     "reason": "not running: cam-03",
+     "current": false,
+     "current_reason": null
+    }
+   },
+   "landing-f2": {
+    "kind": "stairs",
+    "occupancy": {
+     "available": false,
+     "reason": "not running: cam-04",
+     "current": false,
+     "current_reason": null
+    },
+    "congestion": {
+     "available": false,
+     "reason": "not running: cam-04",
+     "current": false,
+     "current_reason": null
+    }
+   },
+   "dining-f2": {
+    "kind": "dining",
+    "occupancy": {
+     "available": false,
+     "reason": "no authoritative camera configured",
+     "current": false,
+     "current_reason": null
+    },
+    "congestion": {
+     "available": false,
+     "reason": "no authoritative camera configured",
+     "current": false,
+     "current_reason": null
+    }
+   }
+  },
+  "floors": {
+   "floor-1": {
+    "visible_in_zones": {
+     "available": false,
+     "reason": "zones unavailable: entrance-f1, dining-f1, queue-f1, stair-f1",
+     "aggregation": "de-duplicated union of zone memberships (overlapping zones count a person once)",
+     "fixture_status": "ILLUSTRATIVE_UNCALIBRATED"
+    }
+   },
+   "floor-2": {
+    "visible_in_zones": {
+     "available": false,
+     "reason": "zones unavailable: landing-f2, dining-f2",
+     "aggregation": "de-duplicated union of zone memberships (overlapping zones count a person once)",
+     "fixture_status": "ILLUSTRATIVE_UNCALIBRATED"
+    }
+   }
+  },
+  "building_estimate": {
+   "available": false,
+   "reason": "boundary_coverage_complete is false (not every entrance is covered)"
+  },
+  "stair_association": {
+   "available": false,
+   "reason": "stair-a: cam-03 not running; stair-a: cam-04 not running",
+   "identity_continuity": "UNKNOWN unless a re-identification evidence score is supplied (none configured)",
+   "flow_basis": "inferred: arrivals first seen inside a portal endpoint zone"
+  }
+ }
+}

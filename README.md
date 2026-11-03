@@ -184,7 +184,7 @@ After reviewing the actual file and generated value, it can be created from `dem
 sha256sum cam01.mp4 > SHA256SUMS
 ```
 
-`demo/SHA256SUMS` now exists with this entry (added 2026-10-28); runtime passes recorded before it was added must not be described as strict frozen-preflight passes. Future enabled clips need their own provenance, authorization, synchronization notes, references where evaluation is claimed, and sidecars. Unrelated clips cannot prove overlap deduplication or stair continuity. Do not commit large/sensitive media by default.
+`demo/SHA256SUMS` now exists with this entry (added 2026-10-28); runtime passes recorded before it was added must not be described as strict frozen-preflight passes. Future enabled clips need their own provenance, authorization, synchronization notes, references where evaluation is claimed, and sidecars. Unrelated clips cannot prove overlap deduplication or stair continuity. This repository versions the current clip and its derived files in Git LFS by the project owner's decision; review provenance and authorization before adding any further media.
 
 Reference fixtures belong under `tests/fixtures/`; calibration artifacts belong under `data/calibration/`; model checkpoints/engines belong under `models/`. The offline checker reads `SHA256SUMS` sidecars so unsupported fields need not be added to the strict camera YAML schema.
 
@@ -636,21 +636,28 @@ reports/benchmarks/      Real raw metrics, summaries and reports; no current pas
 reports/offline/         Static checklists and operator cold-start evidence
 ```
 
-### Not in the repository (restore locally)
+### Repository contents, Git LFS, and what is not versioned
 
-Large footage, crops, embeddings, engines, databases, secrets, node modules, and generated logs stay out of source control (`.gitignore`); manifests, lockfiles, checksums and nonsensitive reference metadata are versioned instead. A fresh clone therefore lacks:
+The repository holds the full project data: source, configs, docs, the footage (`demo/`), model checkpoints and TensorRT engines (`models/`), and all evidence under `reports/` and `backend/var/`, including raw per-frame logs, databases, clips, snapshots and frames. Large binary/data types (`*.mp4`, `*.onnx`, `*.engine`, `*.safetensors`, `*.jsonl`, `*.db`, tensors; see `.gitattributes`) are stored in **Git LFS**. Install it before cloning:
 
-| Missing in a clone | Restore with | Identity check |
-| --- | --- | --- |
-| `demo/cam01.mp4` (authorized footage, no redistribution rights) | Copy the authorized file in (§2 *Authorized footage installation*) | `demo/SHA256SUMS`, `reports/media/cam01/` |
-| `demo/derived/cam01-repeat{33,90}.mp4` (load/soak inputs) | Rebuild with the ffmpeg stream-copy command in each manifest's `construction` field | `demo/derived/SHA256SUMS`, `*.manifest.json` |
-| Model checkpoints and TensorRT engines under `models/` | `scripts/setup/download-models.sh` and `scripts/setup/build-engines.sh` (§2 *Models and TensorRT engines*); engines must be built on the target GPU | `configs/models.yaml`, `THIRD_PARTY.md` |
-| `perception/deepstream/service_maker/.deps/` | `bash scripts/deepstream.sh bash /workspace/scripts/setup/install-service-maker-deps.sh` | — |
-| Annotation frames `data/annotations/cam01-v1/frames/` | `scripts/evaluation/build_annotation_package.py` | `data/annotations/cam01-v1/manifest.json` |
-| `.venv*`, `node_modules`, `frontend/dist`, `.install/` | §2 setup commands | Lockfiles and pinned requirements |
-| Bulky raw evidence (`reports/**/*.jsonl`, databases, clips, snapshots, copied scratch environments) | Kept on the original machine; summaries (`result.json`, `summary.json`, `report.md`, screenshots) are committed | — |
+```bash
+git lfs install
+git clone https://github.com/reetamdan/time-and-motion.git
+```
 
-Until footage and the selected model are restored, five artifact-dependent tests skip and name the missing files; perception and readiness report `MISSING_FILE` rather than inventing availability. Evidence summaries record absolute paths from the original Windows machine.
+Without Git LFS a clone contains small pointer files instead of the footage and models. Five artifact-dependent tests then skip and name the missing files, and perception/readiness report `MISSING_FILE` rather than inventing availability. `git lfs pull` fetches the real files afterwards.
+
+Not versioned (`.gitignore`), because they are machine-specific and rebuilt by the setup commands:
+
+| Not versioned | Recreate with |
+| --- | --- |
+| `.venv*`, `node_modules/`, `.install/` (WSL toolchain, model-export environments) | §2 setup commands; lockfiles and pinned requirements are versioned |
+| Copies of whole venvs/node_modules inside `reports/**/scratch/` | Made again by `scripts/validate_documented_commands.py` |
+| `.tmp/`, `.pytest_tmp*/`, caches | Temporary |
+| Key material (`*.key`, `*.pem`, `*.crt`, e.g. the throwaway MediaMTX `auto.key`) and `.env` | Generated locally when needed |
+
+TensorRT engines are tied to the GPU, driver and TensorRT version they were built with (here RTX 5070 Ti, sm120, TensorRT 10.16); on other hardware rebuild them (§2 *Models and TensorRT engines*) and record the new hashes. The footage was supplied for this project without redistribution rights (§2 *Authorized footage installation*).
+Evidence files record absolute paths from the original Windows machine.
 
 ## 10. Troubleshooting and migration
 

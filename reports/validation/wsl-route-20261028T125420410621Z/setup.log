@@ -1,0 +1,89 @@
+$ source .install/wsl/env.sh && bash scripts/setup/setup.sh --dev --isolated-frontend
+
+Creating/reusing project virtual environment: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.venv-wsl
+Requirement already satisfied: fastapi==0.115.12 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 1)) (0.115.12)
+Requirement already satisfied: pydantic==2.11.3 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (2.11.3)
+Requirement already satisfied: PyYAML==6.0.2 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 3)) (6.0.2)
+Requirement already satisfied: psutil==7.0.0 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 4)) (7.0.0)
+Requirement already satisfied: starlette==0.46.2 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 5)) (0.46.2)
+Requirement already satisfied: uvicorn==0.34.2 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 6)) (0.34.2)
+Requirement already satisfied: websockets==15.0.1 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 7)) (15.0.1)
+Requirement already satisfied: typing-extensions>=4.8.0 in ./.venv-wsl/lib/python3.12/site-packages (from fastapi==0.115.12->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 1)) (4.16.0)
+Requirement already satisfied: annotated-types>=0.6.0 in ./.venv-wsl/lib/python3.12/site-packages (from pydantic==2.11.3->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (0.8.0)
+Requirement already satisfied: pydantic-core==2.33.1 in ./.venv-wsl/lib/python3.12/site-packages (from pydantic==2.11.3->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (2.33.1)
+Requirement already satisfied: typing-inspection>=0.4.0 in ./.venv-wsl/lib/python3.12/site-packages (from pydantic==2.11.3->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (0.4.4)
+Requirement already satisfied: anyio<5,>=3.6.2 in ./.venv-wsl/lib/python3.12/site-packages (from starlette==0.46.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 5)) (4.15.1)
+Requirement already satisfied: click>=7.0 in ./.venv-wsl/lib/python3.12/site-packages (from uvicorn==0.34.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 6)) (8.5.0)
+Requirement already satisfied: h11>=0.8 in ./.venv-wsl/lib/python3.12/site-packages (from uvicorn==0.34.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 6)) (0.16.0)
+Requirement already satisfied: idna>=2.8 in ./.venv-wsl/lib/python3.12/site-packages (from anyio<5,>=3.6.2->starlette==0.46.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 5)) (3.20)
+Requirement already satisfied: fastapi==0.115.12 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 1)) (0.115.12)
+Requirement already satisfied: pydantic==2.11.3 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (2.11.3)
+Requirement already satisfied: PyYAML==6.0.2 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 3)) (6.0.2)
+Requirement already satisfied: psutil==7.0.0 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 4)) (7.0.0)
+Requirement already satisfied: starlette==0.46.2 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 5)) (0.46.2)
+Requirement already satisfied: uvicorn==0.34.2 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 6)) (0.34.2)
+Requirement already satisfied: websockets==15.0.1 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 7)) (15.0.1)
+Requirement already satisfied: httpx==0.28.1 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 2)) (0.28.1)
+Requirement already satisfied: pytest==8.3.5 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 3)) (8.3.5)
+Requirement already satisfied: numpy==2.5.4 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 5)) (2.5.4)
+Requirement already satisfied: opencv-python-headless==5.0.0.93 in ./.venv-wsl/lib/python3.12/site-packages (from -r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 7)) (5.0.0.93)
+Requirement already satisfied: typing-extensions>=4.8.0 in ./.venv-wsl/lib/python3.12/site-packages (from fastapi==0.115.12->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 1)) (4.16.0)
+Requirement already satisfied: annotated-types>=0.6.0 in ./.venv-wsl/lib/python3.12/site-packages (from pydantic==2.11.3->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (0.8.0)
+Requirement already satisfied: pydantic-core==2.33.1 in ./.venv-wsl/lib/python3.12/site-packages (from pydantic==2.11.3->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (2.33.1)
+Requirement already satisfied: typing-inspection>=0.4.0 in ./.venv-wsl/lib/python3.12/site-packages (from pydantic==2.11.3->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 2)) (0.4.4)
+Requirement already satisfied: anyio<5,>=3.6.2 in ./.venv-wsl/lib/python3.12/site-packages (from starlette==0.46.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 5)) (4.15.1)
+Requirement already satisfied: click>=7.0 in ./.venv-wsl/lib/python3.12/site-packages (from uvicorn==0.34.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 6)) (8.5.0)
+Requirement already satisfied: h11>=0.8 in ./.venv-wsl/lib/python3.12/site-packages (from uvicorn==0.34.2->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt (line 6)) (0.16.0)
+Requirement already satisfied: certifi in ./.venv-wsl/lib/python3.12/site-packages (from httpx==0.28.1->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 2)) (2026.10.23)
+Requirement already satisfied: httpcore==1.* in ./.venv-wsl/lib/python3.12/site-packages (from httpx==0.28.1->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 2)) (1.0.9)
+Requirement already satisfied: idna in ./.venv-wsl/lib/python3.12/site-packages (from httpx==0.28.1->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 2)) (3.20)
+Requirement already satisfied: iniconfig in ./.venv-wsl/lib/python3.12/site-packages (from pytest==8.3.5->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 3)) (2.3.1)
+Requirement already satisfied: packaging in ./.venv-wsl/lib/python3.12/site-packages (from pytest==8.3.5->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 3)) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in ./.venv-wsl/lib/python3.12/site-packages (from pytest==8.3.5->-r /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements-dev.txt (line 3)) (1.7.0)
+FastAPI and uvicorn imports passed
+Building the frontend in isolated directory: /root/.cache/aegis-ops/frontend-build
+
+added 86 packages in 18s
+
+> aegis-ops-frontend@1.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+âœ“ 2530 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                        0.64 kB â”‚ gzip:   0.37 kB
+dist/assets/plus-jakarta-sans-vietnamese-wght-normal-qRpaaN48.woff2    8.35 kB
+dist/assets/spline-sans-mono-latin-ext-500-normal-OEIRRHyd.woff2       8.35 kB
+dist/assets/spline-sans-mono-latin-ext-400-normal-BfWvPoNT.woff2       8.49 kB
+dist/assets/spline-sans-mono-latin-ext-500-normal-CMfDuBbn.woff       11.09 kB
+dist/assets/spline-sans-mono-latin-ext-400-normal-BkT5i7fe.woff       11.17 kB
+dist/assets/spline-sans-mono-latin-500-normal-Cy_wwipl.woff2          12.78 kB
+dist/assets/spline-sans-mono-latin-400-normal-mUpA6Mve.woff2          12.88 kB
+dist/assets/spline-sans-mono-latin-500-normal-DuiJ5LHB.woff           16.42 kB
+dist/assets/spline-sans-mono-latin-400-normal-739QRW1l.woff           16.59 kB
+dist/assets/plus-jakarta-sans-latin-ext-wght-normal-DmpS2jIq.woff2    21.72 kB
+dist/assets/plus-jakarta-sans-latin-wght-normal-eXO_dkmS.woff2        27.34 kB
+dist/assets/index-J9IwWIGT.css                                        43.33 kB â”‚ gzip:  10.65 kB
+dist/assets/clock-3-B9kAWuM8.js                                        0.19 kB â”‚ gzip:   0.18 kB
+dist/assets/file-image--Qs5EH5e.js                                     0.43 kB â”‚ gzip:   0.29 kB
+dist/assets/Alerts-DloU6XS8.js                                         5.67 kB â”‚ gzip:   2.29 kB
+dist/assets/Analytics-vujOE-h-.js                                      6.72 kB â”‚ gzip:   2.71 kB
+dist/assets/Evidence-DeDstUl2.js                                       7.90 kB â”‚ gzip:   3.00 kB
+dist/assets/Floors-CugWXEee.js                                         8.91 kB â”‚ gzip:   3.25 kB
+dist/assets/CameraInspector-J_dgU-d9.js                               12.80 kB â”‚ gzip:   4.58 kB
+dist/assets/System-CP8beOl3.js                                        14.43 kB â”‚ gzip:   4.54 kB
+dist/assets/index-BWcHDJSj.js                                        285.11 kB â”‚ gzip:  89.41 kB
+dist/assets/chart-BEOvjh1t.js                                        351.60 kB â”‚ gzip: 102.02 kB
+
+âœ“ built in 502ms
+Copied the isolated build to /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/frontend/dist
+Installation-time setup completed.
+  Python environment: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.venv-wsl
+  Backend manifest: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/backend/requirements.txt
+  Frontend: installed
+  Frontend build: built
+
+No model, footage, container image, or engine readiness is implied. Install those
+artifacts explicitly and run scripts/offline-test/run.sh before an offline demo.

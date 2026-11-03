@@ -1,0 +1,15 @@
+{"start": "stageA-4feeds-r1", "utc": "2026-10-28T14:05:17.432791+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7261.2, "guest_cache_release": {"performed": true, "host_available_before_mib": 6248.9, "host_available_after_20s_mib": 7261.5, "stderr": ""}}}
+{"finished": "stageA-4feeds-r1", "status": "PASS", "failures": []}
+{"start": "stageA-4feeds-r2", "utc": "2026-10-28T14:18:00.706782+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7002.4, "guest_cache_release": {"performed": true, "host_available_before_mib": 6173.1, "host_available_after_20s_mib": 7002.4, "stderr": ""}}}
+{"finished": "stageA-4feeds-r2", "status": "PASS", "failures": []}
+{"start": "stageA-4feeds-r3", "utc": "2026-10-28T14:30:45.098660+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 6834.7, "guest_cache_release": {"performed": true, "host_available_before_mib": 6053.2, "host_available_after_20s_mib": 6834.7, "stderr": ""}}}
+{"finished": "stageA-4feeds-r3", "status": "PASS", "failures": []}
+{"start": "stageB-4feeds-r1", "utc": "2026-10-28T14:43:33.229523+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 6904.1, "guest_cache_release": {"performed": true, "host_available_before_mib": 6131.6, "host_available_after_20s_mib": 6904.1, "stderr": ""}}}
+{"finished": "stageB-4feeds-r1", "status": "PASS", "failures": []}
+{"start": "stageB-4feeds-r2", "utc": "2026-10-28T14:56:19.596835+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7124.1, "guest_cache_release": {"performed": true, "host_available_before_mib": 5612.9, "host_available_after_20s_mib": 7124.1, "stderr": ""}}}
+{"finished": "stageB-4feeds-r2", "status": "PASS", "failures": []}
+{"start": "stageB-4feeds-r3", "utc": "2026-10-28T15:09:05.613404+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 6760.6, "guest_cache_release": {"performed": true, "host_available_before_mib": 5871.7, "host_available_after_20s_mib": 6760.6, "stderr": ""}}}
+{"finished": "stageB-4feeds-r3", "status": "PASS", "failures": []}
+{"start": "stageC-4feeds-r1", "utc": "2026-10-28T15:21:52.209511+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7225.0, "guest_cache_release": {"performed": true, "host_available_before_mib": 5694.8, "host_available_after_20s_mib": 7225.0, "stderr": ""}}}
+{"finished": "stageC-4feeds-r1", "status": "PASS", "failures": []}
+{"start": "stageC-4feeds-r2", "utc": "2026-10-28T15:34:45.389151+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7578.8, "guest_cache_release": {"performed": true, "host_available_before_mib": 5396.1, "host_available_after_20s_mib": 7578.0, "stderr": ""}}}

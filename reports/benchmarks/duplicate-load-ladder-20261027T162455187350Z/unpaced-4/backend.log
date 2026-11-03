@@ -1,0 +1,32 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [11420]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8770 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60264 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60267 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60268 - "POST /api/v1/demo/start?replay_mode=unpaced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60269 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60270 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60271 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60273 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60274 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60275 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60277 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60278 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60279 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60280 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60281 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60282 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60283 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60284 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60285 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60286 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60287 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60288 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60289 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/v1/system/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60291 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK

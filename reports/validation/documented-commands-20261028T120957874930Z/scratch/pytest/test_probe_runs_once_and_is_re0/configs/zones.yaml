@@ -1,0 +1,63 @@
+# Geometry is ILLUSTRATIVE / UNCALIBRATED and uses a 1000 x 600 view box per floor.
+schema_version: 1
+zones:
+  - id: entrance-f1
+    floor_id: floor-1
+    name: North Entrance
+    kind: entrance
+    polygon: [[35, 45], [280, 45], [280, 245], [35, 245]]
+    capacity: null
+    area_m2: null
+    authoritative_camera_ids: [cam-01]
+    overlap_group: null
+    rule_ref: null
+  - id: dining-f1
+    floor_id: floor-1
+    name: Dining Area
+    kind: dining
+    polygon: [[350, 300], [910, 300], [910, 545], [350, 545]]
+    capacity: 80
+    area_m2: null
+    authoritative_camera_ids: [cam-02, cam-03]
+    overlap_group: dining-overlap
+    rule_ref: congestion-default
+  - id: queue-f1
+    floor_id: floor-1
+    name: Service Queue
+    kind: queue
+    polygon: [[365, 95], [720, 95], [720, 245], [365, 245]]
+    capacity: 16
+    area_m2: null
+    authoritative_camera_ids: [cam-02]
+    overlap_group: null
+    rule_ref: queue-default
+  - id: stair-f1
+    floor_id: floor-1
+    name: Floor 1 Stair Access
+    kind: stairs
+    polygon: [[770, 55], [950, 55], [950, 255], [770, 255]]
+    capacity: null
+    area_m2: null
+    authoritative_camera_ids: [cam-03]
+    overlap_group: null
+    rule_ref: null
+  - id: landing-f2
+    floor_id: floor-2
+    name: Floor 2 Stair Landing
+    kind: stairs
+    polygon: [[55, 55], [390, 55], [390, 355], [55, 355]]
+    capacity: null
+    area_m2: null
+    authoritative_camera_ids: [cam-04]
+    overlap_group: null
+    rule_ref: null
+  - id: dining-f2
+    floor_id: floor-2
+    name: Upper Dining Area
+    kind: dining
+    polygon: [[485, 70], [930, 70], [930, 510], [485, 510]]
+    capacity: 45
+    area_m2: null
+    authoritative_camera_ids: []
+    overlap_group: null
+    rule_ref: congestion-default

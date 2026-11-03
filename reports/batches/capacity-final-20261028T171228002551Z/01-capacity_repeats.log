@@ -1,0 +1,6 @@
+{"start": "stageA-4feeds-r1", "utc": "2026-10-28T17:12:58.646610+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7425.5, "guest_cache_release": {"performed": true, "host_available_before_mib": 7185.9, "host_available_after_20s_mib": 7425.5, "stderr": ""}}}
+{"finished": "stageA-4feeds-r1", "status": "PASS", "failures": []}
+{"start": "stageA-4feeds-r2", "utc": "2026-10-28T17:25:43.461191+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7225.3, "guest_cache_release": {"performed": true, "host_available_before_mib": 5922.3, "host_available_after_20s_mib": 7225.3, "stderr": ""}}}
+[supervised_entry] stop requested by supervisor: interrupting the script for its own cleanup
+{"finished": "stageA-4feeds-r2", "status": "FAIL", "failures": ["bench-01: no producer frames in the measured window", "bench-02: no producer frames in the measured window", "bench-03: no producer frames in the measured window", "bench-04: no producer frames in the measured window"]}
+{"run_dir": "reports/benchmarks/capacity-repeats-20261028T171232471951Z", "result": "INTERRUPTED", "detail": "1/2 executed steps passed, 10 of 12 planned steps not executed", "ladder": null}

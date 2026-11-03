@@ -1,0 +1,65 @@
+schema_version: 1
+revision: analytics-fixture-v1
+crossing:
+  dead_band: 8
+  debounce_seconds: 2
+  confirmation_seconds: 0.15
+  min_track_seconds: 0.4
+  min_track_observations: 3
+  min_displacement: 2
+  stale_after_ms: 1500
+boundaries:
+- id: north-entry-line
+  camera_id: cam-01
+  start:
+  - 65
+  - 180
+  end:
+  - 250
+  - 180
+  positive_direction: IN
+  owner: cam-01
+  enabled: true
+  coordinate_space: floor_map
+queue:
+  join_dwell_seconds: 2
+  leave_dwell_seconds: 2
+  max_occlusion_seconds: 3
+  min_join_movement: 4
+  overflow_threshold: 12
+  stale_after_ms: 1500
+congestion:
+  revision: congestion-fixture-v1
+  metric: count
+  busy_threshold: 20
+  congested_threshold: 40
+  severe_threshold: 60
+  persist_seconds: 5
+  recover_seconds: 8
+  recovery_hysteresis: 0.15
+occupancy:
+  initial_occupancy: 0
+  boundary_coverage_complete: false
+  discrepancy_tolerance: 0
+  discrepancy_duration_seconds: 5
+association:
+  revision: association-fixture-v1
+  acceptance_threshold: 0.75
+  ambiguity_margin: 0.12
+  max_time_delta_ms: 250
+  max_world_distance_m: 0.75
+  hypothesis_ttl_seconds: 60
+health:
+  stale_after_ms: 1500
+  recovery_frames: 3
+  reconnect_backoff_seconds: 0.05
+  max_reconnect_backoff_seconds: 0.1
+  live_stall_seconds: 0.3
+retention:
+  event_history_days: 7
+  metrics_days: 2
+  evidence_days: 7
+  track_samples_days: 1
+  hypotheses_minutes: 60
+  max_database_mib: 1024
+  max_evidence_mib: 4096

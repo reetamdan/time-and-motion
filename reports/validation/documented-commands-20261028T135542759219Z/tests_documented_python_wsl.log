@@ -1,0 +1,45 @@
+COMMAND: ["wsl.exe", "-d", "Ubuntu-22.04", "--cd", "/mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv", "-e", ".venv-wsl/bin/python", "-m", "pytest", "-q", "-p", "no:cacheprovider", "--basetemp", "/tmp/aegis-pytest-documented-commands-20261028T135542759219Z", "tests", "perception/candidates"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv
+
+........................................................................ [ 27%]
+.......................s................................................ [ 54%]
+................................................s....................... [ 81%]
+...............FF...............................                         [100%]
+=================================== FAILURES ===================================
+____________ test_killed_wrapper_stops_the_batch_after_step_cleanup ____________
+
+tmp_path = PosixPath('/tmp/aegis-pytest-documented-commands-20261028T135542759219Z/test_killed_wrapper_stops_the_0')
+
+>   ???
+E   AssertionError: the running step did not get to clean up
+E   assert False
+E    +  where False = _wait(<function test_killed_wrapper_stops_the_batch_after_step_cleanup.<locals>.<lambda> at 0x722ca135bd80>, 60)
+
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\tests\test_supervised_batch.py:67: AssertionError
+----------------------------- Captured stdout call -----------------------------
+{"batch_dir": "/tmp/aegis-pytest-documented-commands-20261028T135542759219Z/test_killed_wrapper_stops_the_0/run", "supervisor_pid": 934}
+--------------------------- Captured stdout teardown ---------------------------
+[supervisor] STOP: supervisor parent pid 933 disappeared (wrapper killed)
+[supervisor] first exit=-2 run_dir=None leftover=NOT CHECKED (--no-container-check; tests only)
+__________________ test_killed_supervisor_interrupts_its_step __________________
+
+tmp_path = PosixPath('/tmp/aegis-pytest-documented-commands-20261028T135542759219Z/test_killed_supervisor_interru0')
+
+>   ???
+E   AssertionError: orphaned step kept running
+E   assert False
+E    +  where False = _wait(<function test_killed_supervisor_interrupts_its_step.<locals>.<lambda> at 0x722ca12a8400>, 60)
+
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\tests\test_supervised_batch.py:88: AssertionError
+----------------------------- Captured stdout call -----------------------------
+{"batch_dir": "/tmp/aegis-pytest-documented-commands-20261028T135542759219Z/test_killed_supervisor_interru0/run", "supervisor_pid": 940}
+=============================== warnings summary ===============================
+.venv-wsl/lib/python3.12/site-packages/starlette/testclient.py:37
+  /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.venv-wsl/lib/python3.12/site-packages/starlette/testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_supervised_batch.py::test_killed_wrapper_stops_the_batch_after_step_cleanup
+FAILED tests/test_supervised_batch.py::test_killed_supervisor_interrupts_its_step
+2 failed, 260 passed, 2 skipped, 1 warning in 177.42s (0:02:57)

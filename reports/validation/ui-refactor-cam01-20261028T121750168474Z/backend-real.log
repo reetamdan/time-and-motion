@@ -1,0 +1,694 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [29104]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8771 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52619 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "GET /assets/index-BWcHDJSj.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50667 - "GET /assets/index-J9IwWIGT.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53942 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53796 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 63227) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:57875 - "GET /aegis.svg HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:57875 - "GET /assets/plus-jakarta-sans-latin-wght-normal-eXO_dkmS.woff2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53796 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "GET /assets/spline-sans-mono-latin-400-normal-mUpA6Mve.woff2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57977 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50667 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50667 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "POST /api/v1/demo/start?replay_mode=paced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49280 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52097 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50139 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50139 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52097 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55765 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52097 - "GET /assets/CameraInspector-J_dgU-d9.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50139 - "GET /assets/file-image--Qs5EH5e.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55764 - "GET /assets/chart-BEOvjh1t.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55764 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:52097 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57765 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57766 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57767 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57768 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57769 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61249 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61250 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61251 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61252 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52097 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61253 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61254 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61255 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61256 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61258 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61259 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61260 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61261 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61262 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61263 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61264 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61265 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61266 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61267 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61268 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61269 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61270 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61271 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61272 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61273 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61274 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61275 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61276 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61277 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61278 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61279 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61280 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61282 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61283 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61285 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53766 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53768 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49277 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49278 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49279 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49281 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49282 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49283 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49284 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49285 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49286 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49287 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49288 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49289 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49290 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49291 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49292 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49293 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49294 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49363 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49364 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49365 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49366 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49367 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49368 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49369 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49370 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49371 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49372 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49373 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49374 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49375 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49376 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49377 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49378 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49379 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49380 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49381 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49382 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65529 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65530 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65531 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65532 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65533 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65534 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49153 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49155 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49156 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49157 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49158 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49159 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49160 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49161 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49162 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65528 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49163 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49164 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49165 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49166 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49167 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49168 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49169 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49171 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49172 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49173 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49174 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49175 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49176 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60106 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60107 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60108 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60109 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61682 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61697 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61698 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61699 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61700 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61701 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61702 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61703 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61704 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61705 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61706 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61707 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61708 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61710 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61711 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61712 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61713 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61714 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61715 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49156 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49157 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49159 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49162 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49165 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49167 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52688 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52689 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52690 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52691 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52692 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52693 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52694 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52695 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57615 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57616 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61322 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61323 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61324 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61326 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61327 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61328 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62638 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58912 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58913 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58914 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58915 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58916 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58917 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58918 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58919 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58920 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50822 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50823 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52106 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62682 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62683 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62684 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62686 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62687 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62688 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62689 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62690 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62692 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62693 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62694 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62695 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62696 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62697 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62698 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52687 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62699 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62700 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62701 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62702 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62703 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62704 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62705 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62706 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62707 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62708 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62709 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62710 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62711 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62712 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62713 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62714 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62715 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62716 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62717 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52085 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52086 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52087 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52088 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52089 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52090 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52091 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52092 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52093 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52094 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52095 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52096 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52097 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59972 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59973 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59974 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59630 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59631 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59632 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59633 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59634 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59635 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59636 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59637 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59638 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59639 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59640 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59641 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59642 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59643 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59644 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59645 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59646 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59647 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59648 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59649 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65140 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65141 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65142 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65143 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65144 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65145 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65146 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65148 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65149 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65150 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65151 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65152 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65153 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58583 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58584 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58585 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58586 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57123 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57124 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57125 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57126 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57127 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57128 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?epoch=8a555b97-97e3-48a8-bdc2-bf8fff90f2c1&window=range&from_source_s=0.066733333&to_source_s=74.5034&limit=10000&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?epoch=8a555b97-97e3-48a8-bdc2-bf8fff90f2c1&window=range&from_source_s=44.5034&to_source_s=74.5034&limit=10000&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?epoch=8a555b97-97e3-48a8-bdc2-bf8fff90f2c1&window=range&from_source_s=14.5034&to_source_s=44.5034&limit=10000&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?epoch=8a555b97-97e3-48a8-bdc2-bf8fff90f2c1&window=range&from_source_s=44.5034&to_source_s=74.5034&limit=10000&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51580 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62351 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "POST /api/v1/cameras/cam-01/evidence-markers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:57122 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /assets/Evidence-DeDstUl2.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53563 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62352 - "GET /api/v1/evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     connection closed
+INFO:     127.0.0.1:54366 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60454 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56489 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 64743) - "WebSocket /api/v1/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:53403 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56489 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60454 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54366 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53403 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51840 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51840 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51840 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53403 - "GET /assets/Floors-CugWXEee.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /assets/Analytics-vujOE-h-.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-27T12%3A19%3A47.445Z&to=2026-10-28T12%3A19%3A47.445Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60454 - "GET /assets/clock-3-B9kAWuM8.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /assets/Alerts-DloU6XS8.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60454 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:53403 - "GET /assets/System-CP8beOl3.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58467 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64734 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/runs/edda2e5c-941d-4561-b144-b99f65253e76/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64734 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64734 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53403 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:58467 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53828 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-27T12%3A19%3A52.255Z&to=2026-10-28T12%3A19%3A52.255Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64230 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49714 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59629 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/runs/edda2e5c-941d-4561-b144-b99f65253e76/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59629 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53828 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59629 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-27T12%3A19%3A57.317Z&to=2026-10-28T12%3A19%3A57.317Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:59629 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:63939 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63830 - "GET /api/v1/runs/edda2e5c-941d-4561-b144-b99f65253e76/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63939 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:63830 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63830 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54929 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-27T12%3A20%3A02.373Z&to=2026-10-28T12%3A20%3A02.373Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61360 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:63827 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50256 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54929 - "GET /api/v1/runs/edda2e5c-941d-4561-b144-b99f65253e76/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50256 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54929 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:54929 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50256 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50256 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-27T12%3A20%3A07.433Z&to=2026-10-28T12%3A20%3A07.433Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50256 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50256 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50256 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:50256 - "GET /api/v1/evidence/9d9c0304-8841-4fc8-92a9-fe46973dbdf6 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:57230 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56982 - "GET /api/v1/runs/edda2e5c-941d-4561-b144-b99f65253e76/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57230 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:56982 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:56982 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52666 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-27T12%3A20%3A12.509Z&to=2026-10-28T12%3A20%3A12.509Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/evidence/af1c53ef-f2be-4d0c-ac1f-cdaa7cb781a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62670 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59703 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/runs/edda2e5c-941d-4561-b144-b99f65253e76/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59703 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59703 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52666 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:52666 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62670 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62670 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62369 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49207 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49208 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK

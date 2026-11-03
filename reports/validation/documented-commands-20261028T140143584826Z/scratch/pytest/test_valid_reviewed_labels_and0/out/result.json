@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "generated_at_utc": "2026-10-28T14:02:38.446782+00:00",
+  "annotations": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_valid_reviewed_labels_and0\\pkg\\annotations.json",
+  "annotations_sha256": "7bc7311c5e549849a2dc59f5999b7f8a4cc627468f1877be50fe4a7565828ccf",
+  "review": {
+    "status": "REVIEWED",
+    "reviewer": "synthetic-test"
+  },
+  "coverage": {
+    "images": {
+      "COMPLETE": 4,
+      "EXCLUDED": 0,
+      "UNREVIEWED": 0
+    },
+    "reviewed_negative_images": 0,
+    "excluded": [],
+    "unreviewed_frames": [],
+    "boxes_on_non_complete_images_ignored": 0,
+    "sets": {
+      "detection": {
+        "COMPLETE": 1,
+        "EXCLUDED": 0,
+        "UNREVIEWED": 0
+      },
+      "tracking-A": {
+        "COMPLETE": 3,
+        "EXCLUDED": 0,
+        "UNREVIEWED": 0
+      }
+    }
+  },
+  "settings": {
+    "schema_version": 1,
+    "frozen_at": "2026-10-27",
+    "dataset": "cam01-v1",
+    "ground_truth_requirement": "annotations.json with info.review.status == REVIEWED, a named reviewer, and content that differs from every proposal file",
+    "category": "person (any visible person, including partially visible and seated; exclude reflections, posters, mannequins)",
+    "detection": {
+      "iou_threshold": 0.5,
+      "matching": "COCO-style greedy by descending detector score",
+      "min_gt_height_px": 16,
+      "small_gt_policy": "ground-truth boxes shorter than min_gt_height_px are marked ignore: neither a miss nor a reason to call a matching prediction false",
+      "ignore_regions": "per-image polygons (image.ignore_regions); predictions whose foot point lies inside are not scored",
+      "score_thresholds": {
+        "trafficcamnet-smoke": "as deployed (infer config pre-cluster-threshold 0.2 + NMS)",
+        "rt-detr-person-candidate": "as deployed (pre-cluster-threshold 0.25)",
+        "rf-detr-person-candidate": "as deployed (pre-cluster-threshold 0.25)"
+      },
+      "stage": "pre-tracker detector output when available; post-tracker output is reported separately and labelled",
+      "metrics": [
+        "precision",
+        "recall",
+        "f1",
+        "count_mae",
+        "count_mean_signed_error"
+      ],
+      "zero_denominators": "precision undefined only when nothing was predicted; recall undefined only when no countable GT person exists; F1 = 2TP/(2TP+FP+FN), 0 when there are errors and no TP, undefined only when TP=FP=FN=0"
+    },
+    "tracking": {
+      "iou_threshold": 0.5,
+      "sequences": [
+        "tracking-A",
+        "tracking-B"
+      ],
+      "metrics": [
+        "mota",
+        "idf1",
+        "id_switches",
+        "false_positives",
+        "false_negatives"
+      ],
+      "identity": "ground-truth track_id must stay constant for a person within one sequence",
+      "not_evaluated": "a sequence that cannot be scored is reported NOT_EVALUATED with its reason, never as a score"
+    },
+    "reporting": {
+      "also_record": [
+        "model id + revision + engine sha256",
+        "infer config sha256",
+        "preprocessing",
+        "thresholds",
+        "latency (from the same run's analytics/extractor timings)",
+        "VRAM peak"
+      ],
+      "decision_rule": "A detector replaces the provisional profile only if it beats it on recall at comparable precision on BOTH the detection set and the tracking sequences, with no regression > 0.05 in precision; ties keep the incumbent. Numerical-consistency checks and detection counts are not evidence of quality."
+    },
+    "revised_at": "2026-10-27 (before any labels existed): per-image review status and zero-denominator rules made explicit",
+    "image_status_policy": "Only images with annotation_status COMPLETE are scored. A COMPLETE image with no boxes is a reviewed negative frame: every detection on it is a false positive. UNREVIEWED/EXCLUDED images are reported as coverage and never treated as empty. A tracking sequence is scored only if all of its frames are COMPLETE and every reviewed person box has a track_id."
+  },
+  "results": {
+    "m": {
+      "jsonl": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_valid_reviewed_labels_and0\\pred.jsonl",
+      "jsonl_sha256": "c29c025f81df39c6f3c25f4dfda4f5d964b522b2076ab557e507a707eeff24d2",
+      "person_class_id": 2,
+      "detection": {
+        "status": "EVALUATED",
+        "iou_threshold": 0.5,
+        "frames": 1,
+        "true_positives": 1,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "undefined": {},
+        "reviewed_empty_frames": 0,
+        "false_positives_on_empty_frames": 0,
+        "empty_frames_with_false_positives": 0,
+        "count_mae": 0.0,
+        "count_mean_signed_error": 0.0,
+        "per_frame": [
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "gt": 1,
+            "predicted": 1,
+            "count_error": 0
+          }
+        ]
+      },
+      "tracking": {
+        "tracking-A": {
+          "status": "EVALUATED",
+          "iou_threshold": 0.5,
+          "frames": 3,
+          "gt_tracks": 2,
+          "predicted_tracks": 2,
+          "true_positives": 6,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "id_switches": 0,
+          "mota": 1.0,
+          "idf1": 1.0,
+          "idtp": 6
+        }
+      }
+    }
+  },
+  "scope": "Labelled accuracy on one clip (cam01) over human-reviewed COMPLETE images only (reviewed negatives included). Same-input numerical consistency and cross-pipeline agreement are separate reports."
+}

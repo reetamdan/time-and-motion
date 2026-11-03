@@ -1,0 +1,4 @@
+COMMAND: ["C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T135542759219Z\\scratch\\venv-windows\\Scripts\\python.exe", "-m", "pip", "check"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv
+
+No broken requirements found.

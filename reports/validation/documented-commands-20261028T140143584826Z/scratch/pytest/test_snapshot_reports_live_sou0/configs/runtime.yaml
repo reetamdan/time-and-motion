@@ -1,0 +1,35 @@
+schema_version: 1
+environment: production
+host: 127.0.0.1
+port: 8000
+offline: true
+database_path: ./backend/var/cctv.db
+evidence_root: ./backend/var/evidence
+frontend_dist: ./frontend/dist
+serve_frontend: true
+log_level: INFO
+max_page_size: 500
+telemetry:
+  interval_seconds: 2
+  command_timeout_seconds: 8.0
+  success_cache_seconds: 1.5
+  failure_cache_seconds: 10
+  wsl_distro: Ubuntu-22.04
+replay:
+  # paced = demo playback on the source timeline; unpaced = evaluation/benchmark throughput.
+  mode: paced
+  history_sample_seconds: 0.5
+capability:
+  # The expensive container capability probe is reused across starts (and backend restarts, via
+  # cache_path) while its fingerprint matches and a cheap docker liveness check passes.
+  max_age_seconds: 43200
+  failure_retry_seconds: 10
+  liveness_cache_seconds: 5
+  probe_timeout_seconds: 60
+  cache_path: ./backend/var/capability-cache.json
+evidence:
+  # Operator evidence clips are stream-copied from the source file around the marked source time.
+  clip_pre_seconds: 3
+  clip_post_seconds: 3
+  max_records: 200
+  tool_timeout_seconds: 60

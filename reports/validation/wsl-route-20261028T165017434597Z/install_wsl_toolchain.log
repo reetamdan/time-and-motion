@@ -1,0 +1,9 @@
+$ bash scripts/setup/install-wsl-toolchain.sh
+
+WSL toolchain ready in /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.install/wsl
+  uv:     uv 0.12.24 (x86_64-unknown-linux-gnu)
+  python: Python 3.12.15 (/root/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/bin/python3.12)
+  node:   v24.14.1
+  ffmpeg: ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers
+Next: source /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.install/wsl/env.sh && bash scripts/setup/setup.sh --isolated-frontend
+Python 3.12 is already installed

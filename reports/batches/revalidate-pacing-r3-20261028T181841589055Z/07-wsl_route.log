@@ -1,0 +1,32 @@
+PASS install_wsl_toolchain_exit_0 {"tail": ["  ffmpeg: ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers", "Next: source /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.install/wsl/env.sh && bash scripts/setup/setup.
+PASS setup_exit_0 {"tail": ["", "No model, footage, container image, or engine readiness is implied. Install those", "artifacts explicitly and run scripts/offline-test/run.sh before an offline demo."]}
+PASS wsl_pytest_exit_0 {"tail": ["", "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html", "274 passed, 2 skipped, 1 warning in 61.01s (0:01:01)"]}
+PASS validate_config_exit_0 {"tail": ["  }", " }", "}"]}
+PASS port_8774_free_before_1 {"listeners": ""}
+PASS backend_served_from_wsl 
+PASS launch_message_matches_route {"log_head": "Starting backend.app.main:app on http://127.0.0.1:8774 (local artifacts only)\nINFO:     Started server process [12174]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete"}
+PASS readiness_ok {"status": 200, "checks": {"status": "ready", "checks": [{"name": "configuration", "ready": true, "detail": "Validated revision 76e696870e2c"}, {"name": "persistence", "ready": true, "detail": "SQLite query succeeded with foreign keys and W
+PASS start_running {"status": 200, "run_status": "RUNNING"}
+PASS provenance_artifacts_match {"checks": [["detector.checkpoint", "MATCH"], ["detector.engine", "MATCH"], ["detector.infer_config", "MATCH"], ["tracker.config", "MATCH"], ["pipeline.wrapper", "MATCH"], ["pipeline.extractor", "MATCH"], ["pipeline.capability_probe", "MATC
+PASS real_gpu_counts_via_docker_from_wsl {"visible_count": 18, "source_position_s": 5.5055}
+PASS telemetry_scope_wsl2 {"scope": "wsl2", "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"}
+PASS evidence_marker_with_wsl_ffmpeg {"status": 201}
+PASS evidence_image_served {"bytes": 294512}
+PASS clean_eof {"outcome": "CLEAN_EOF"}
+PASS history_persisted_all_frames {"frames": 710, "samples": 48}
+PASS stop_confirmed 
+PASS exact_container_absent_after_stop {"container": "aegis-cam-01-5c7e2829-3245-43ba-81cc-602fcbfeb2b7"}
+PASS backend_1_terminated 
+PASS port_8774_free_before_2 {"listeners": ""}
+FAIL backend_restarted_same_database 
+FAIL backend_2_terminated 
+FAIL validator_completed_without_exception {"error": "URLError: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>"}
+{
+ "result": "FAIL",
+ "run_dir": "reports\\validation\\wsl-route-20261028T182543776757Z",
+ "failed": [
+  "backend_restarted_same_database",
+  "backend_2_terminated",
+  "validator_completed_without_exception"
+ ]
+}

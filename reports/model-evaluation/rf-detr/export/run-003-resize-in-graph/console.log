@@ -1,0 +1,138 @@
+Loading weights:   0%|          | 0/487 [00:00<?, ?it/s]Loading weights: 100%|##########| 487/487 [00:00<00:00, 6878.90it/s]
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\rf-detr-candidate\export_onnx_resize_in_graph.py:72: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(wrapper, (torch.rand(1, 3, HEIGHT, WIDTH),), str(ONNX_PATH), input_names=["input"],
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rf-detr-export\venv\Lib\site-packages\transformers\models\rf_detr\modeling_rf_detr.py:66: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if num_channels != self.num_channels:
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\rf-detr-candidate\export_onnx.py:87: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if num_patches != num_positions or height != width:
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rf-detr-export\venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:136: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = q_length > 1 and attention_mask is None and is_causal
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rf-detr-export\venv\Lib\site-packages\transformers\models\rf_detr\modeling_rf_detr.py:1491: TracerWarning: torch.as_tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  spatial_shapes = torch.as_tensor(spatial_shapes_list, dtype=torch.long, device=source_flatten.device)
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rf-detr-export\venv\Lib\site-packages\torch\__init__.py:2283: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  _check_with(error_type, cond._is_all_true().item(), message)  # type: ignore[arg-type]
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rf-detr-export\venv\Lib\site-packages\transformers\models\rf_detr\modeling_rf_detr.py:929: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if num_coordinates == 2:
+C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rf-detr-export\venv\Lib\site-packages\transformers\models\rf_detr\modeling_rf_detr.py:935: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  elif num_coordinates == 4:
+{
+ "io": {
+  "inputs": [
+   {
+    "name": "input",
+    "shape": [
+     1,
+     3,
+     1080,
+     1920
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "logits",
+    "shape": [
+     1,
+     300,
+     91
+    ]
+   },
+   {
+    "name": "pred_boxes",
+    "shape": [
+     1,
+     300,
+     4
+    ]
+   }
+  ],
+  "resize_nodes": [
+   {
+    "name": "/Resize",
+    "attributes": {
+     "coordinate_transformation_mode": "half_pixel",
+     "cubic_coeff_a": -0.75,
+     "mode": "linear",
+     "nearest_mode": "floor"
+    }
+   },
+   {
+    "name": "/model/model/backbone/Resize",
+    "attributes": {
+     "coordinate_transformation_mode": "asymmetric",
+     "cubic_coeff_a": -0.75,
+     "mode": "nearest",
+     "nearest_mode": "floor"
+    }
+   }
+  ]
+ },
+ "raw": "FAIL",
+ "person": "FAIL",
+ "frames": [
+  {
+   "frame_index": 141,
+   "source_image": "reports\\model-evaluation\\rt-detr\\diagnostics\\corrected-reference-20261026T160220Z\\frame_000141_bt709.png",
+   "frame_input": "frame01_000141.f32le",
+   "frame_input_sha256": "8f8eb04225b3f67456bc0c7a62650ea118a256995083535c3ef0c10f95e82aa9",
+   "eager_vs_hf_logits_max_abs": 8.630752563476562e-05,
+   "eager_vs_hf_boxes_max_abs": 7.88271427154541e-06,
+   "onnx_vs_hf_logits_max_abs": 1.3452959060668945,
+   "onnx_vs_hf_boxes_max_abs": 0.15409639477729797,
+   "onnx_vs_hf_slots_logits_delta_gt_1e-3": 257,
+   "person_eager_vs_hf": {
+    "count": [
+     41,
+     41
+    ],
+    "query_order_equal": true,
+    "score_max_abs": 2.205371856689453e-06,
+    "box_max_abs_px": 0.0006598234176635742
+   },
+   "person_onnx_vs_hf": {
+    "count": [
+     41,
+     41
+    ],
+    "query_order_equal": false,
+    "score_max_abs": 0.005801588296890259,
+    "box_max_abs_px": 524.6648669242859
+   },
+   "official_postprocessor_person_detections": 41,
+   "raw_slot_result": "FAIL",
+   "person_decode_result": "FAIL"
+  },
+  {
+   "frame_index": 283,
+   "source_image": "reports\\model-evaluation\\rt-detr\\diagnostics\\corrected-reference-20261026T160220Z\\frame_000283_bt709.png",
+   "frame_input": "frame01_000283.f32le",
+   "frame_input_sha256": "53d15d200b3e577bde38fd07564fe8f84a7f38cf3e242afd658018df9f4f61bc",
+   "eager_vs_hf_logits_max_abs": 1.7878971099853516,
+   "eager_vs_hf_boxes_max_abs": 0.7800519540905952,
+   "onnx_vs_hf_logits_max_abs": 1.7877864837646484,
+   "onnx_vs_hf_boxes_max_abs": 0.7800991013646126,
+   "onnx_vs_hf_slots_logits_delta_gt_1e-3": 293,
+   "person_eager_vs_hf": {
+    "count": [
+     43,
+     43
+    ],
+    "query_order_equal": true,
+    "score_max_abs": 0.0020938515663146973,
+    "box_max_abs_px": 0.452461838722229
+   },
+   "person_onnx_vs_hf": {
+    "count": [
+     43,
+     43
+    ],
+    "query_order_equal": true,
+    "score_max_abs": 0.0020957887172698975,
+    "box_max_abs_px": 0.45222043991088867
+   },
+   "official_postprocessor_person_detections": 43,
+   "raw_slot_result": "FAIL",
+   "person_decode_result": "PASS"
+  }
+ ]
+}

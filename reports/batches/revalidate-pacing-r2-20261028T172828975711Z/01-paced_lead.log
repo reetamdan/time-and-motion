@@ -1,0 +1,50 @@
+{
+ "result": "PASS",
+ "checks": {
+  "v2_buffered_lead_at_kill_under_1s": "PASS",
+  "v1_buffered_lead_at_kill_measured": "PASS",
+  "v2_failure_visible_within_3s": "PASS",
+  "v2_failed_camera_abnormal": "PASS",
+  "v2_unaffected_camera_clean_eof_710": "PASS",
+  "v1_unaffected_camera_clean_eof_710": "PASS",
+  "v2_visibility_faster_than_v1": "PASS",
+  "all_owned_released": "PASS",
+  "no_owned_container_left": "PASS"
+ },
+ "run_dir": "reports\\validation\\paced-lead-2feeds-20261028T172833284724Z",
+ "v1_kill_to_visible_s": 11.8,
+ "v2_kill_to_visible_s": 0.8,
+ "v1_after_kill": 350,
+ "v2_after_kill": 22,
+ "v2_lead": {
+  "available": true,
+  "wsl_date_skew": {
+   "frames": 690,
+   "lead_s": {
+    "p50": -0.467,
+    "p95": 0.0,
+    "max": 0.066733334
+   },
+   "producer_to_backend_read_ms": {
+    "p50": -739.15,
+    "p95": 25.543,
+    "max": 69.831661
+   }
+  },
+  "min_transit_zero": {
+   "frames": 710,
+   "lead_s": {
+    "p50": 0.601,
+    "p95": 1.068,
+    "max": 1.134466667
+   },
+   "producer_to_backend_read_ms": {
+    "p50": 315.512,
+    "p95": 1080.205,
+    "max": 1124.493402
+   },
+   "offset_ns": 308314609,
+   "note": "lower bound: assumes the fastest frame's transit was 0 ms"
+  }
+ }
+}

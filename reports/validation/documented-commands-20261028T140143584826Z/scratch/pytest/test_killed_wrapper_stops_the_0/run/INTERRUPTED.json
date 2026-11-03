@@ -1,0 +1,11 @@
+{
+  "status": "INTERRUPTED - incomplete batch, not an acceptance result",
+  "reason": "supervisor parent pid 9568 disappeared (wrapper killed)",
+  "completed_or_stopped_steps": [
+    "first"
+  ],
+  "not_started": [
+    "second"
+  ],
+  "at_utc": "2026-10-28T14:03:02.128958+00:00"
+}

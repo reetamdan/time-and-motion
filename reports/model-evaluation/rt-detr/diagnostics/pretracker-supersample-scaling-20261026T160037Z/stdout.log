@@ -1,0 +1,25 @@
+Initializing GStreamer Backend...!
+Add Element ... batch_capture-mux-1
+Add Element ... batch_capture-source-0_0
+LINKING: Source: batch_capture-source-0_0 Target: batch_capture-mux-1
+Add Element ... infer-infer-0
+LINKING: Source: batch_capture-mux-1 Target: infer-infer-0
+Add Element ... track-tracker-0
+LINKING: Source: infer-infer-0 Target: track-tracker-0
+Add Element ... render-sink-0
+LINKING: Source: track-tracker-0 Target: render-sink-0
+gstnvtracker: Loading low-level lib at /opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
+[NvMultiObjectTracker] Initialized
+INFO: [Implicit Engine Info]: layers num: 0
+
+Event Thread Enabled...
+Main Loop Running...
+Opening in BLOCKING MODE 
+
+End of file reached on stdin.
+*** Inside cb_newpad name=video/x-raw
+nvstreammux: Successfully handled EOS for source_id=0
+End of stream
+Main Loop Exited...
+Pipeline rt-detr-pretracker-diagnostic stopped
+[NvMultiObjectTracker] De-initialized

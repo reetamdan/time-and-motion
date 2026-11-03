@@ -1,0 +1,47 @@
+
+===============================
+   DeepStreamSDK 9.2
+===============================
+
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and conditions
+of the License Agreement. The License Agreement is located at
+/opt/nvidia/deepstream/deepstream/LicenseAgreement.pdf. If you do not agree
+to the terms and conditions of the License Agreement do not use the software.
+
+
+=============================
+== Triton Inference Server ==
+=============================
+
+NVIDIA Release 26.03 (build 283962264)
+Triton Server Version 2.67.0
+
+Copyright (c) 2018-2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+make: Entering directory '/workspace/perception/candidates/rt_detr/parser'
+g++ -I/opt/nvidia/deepstream/deepstream-9.2/includes -I/usr/local/cuda/include -std=c++17 -O2 -Wall -Wextra -Werror -Wno-error=missing-field-initializers -fPIC -shared -o libnvds_infercustomparser_rtdetr.so nvdsinfer_customparser_rtdetr.cpp
+In file included from /opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer_custom_impl.h:121,
+                 from nvdsinfer_customparser_rtdetr.cpp:3:
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::d' [-Wmissing-field-initializers]
+  303 |     NvDsInferDims dims = {0};
+      |                            ^
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::numElements' [-Wmissing-field-initializers]
+g++ -I/opt/nvidia/deepstream/deepstream-9.2/includes -I/usr/local/cuda/include -std=c++17 -O2 -Wall -Wextra -Werror -Wno-error=missing-field-initializers -fPIC -o parser_test parser_test.cpp -L. -lnvds_infercustomparser_rtdetr -Wl,-rpath,'$ORIGIN'
+In file included from /opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer_custom_impl.h:121,
+                 from parser_test.cpp:1:
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::d' [-Wmissing-field-initializers]
+  303 |     NvDsInferDims dims = {0};
+      |                            ^
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::numElements' [-Wmissing-field-initializers]
+./parser_test
+RT-DETR person parser: invalid type/buffer/dimensions for logits numDims=2 numElements=79
+PASS: parser person slot, geometry, order, top-k, no-NMS, dimensions and class mapping
+make: Leaving directory '/workspace/perception/candidates/rt_detr/parser'

@@ -1,0 +1,15 @@
+PASS both_feeds_running 
+PASS fault_injected_on_own_container {"container": "aegis-cam-02-d008ed75-7935-45d1-98c8-1559b3cbb048", "cam01_position_at_kill": 6.3063, "cam02_position_at_kill": 6.339666666}
+PASS failed_camera_reports_abnormal_termination {"outcome": "ABNORMAL_TERMINATION", "detail": "extractor exited with code 137"}
+PASS failed_camera_stale_not_zero {"visible_count": null, "last_good_age_ms": 17656.000000002678, "health": "DEGRADED"}
+PASS unaffected_camera_kept_advancing {"first": 6.9069, "last": 23.7237}
+PASS unaffected_camera_clean_eof {"outcome": "CLEAN_EOF"}
+PASS abnormal_end_alert_raised_for_failed_camera_only {"alert": "DUPLICATE INPUT 2 of cam01.mp4 (load test only): ABNORMAL_TERMINATION: extractor exited with code 137"}
+PASS unaffected_camera_history_complete {"cam-01": 710, "cam-02": 208}
+PASS stop_confirms_both_released 
+PASS ownership_rows_released 
+PASS no_owned_container_left []
+{
+ "result": "PASS",
+ "run_dir": "reports\\validation\\fault-isolation-2feeds-20261028T182129000616Z"
+}

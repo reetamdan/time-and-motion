@@ -1,0 +1,10 @@
+{
+  "torch": "not installed",
+  "tensorrt": "not installed",
+  "tensorrt-cu13": "not installed",
+  "pycuda": "not installed",
+  "numpy": "not installed",
+  "PyYAML": "5.4.1",
+  "fastapi": "not installed",
+  "uvicorn": "not installed"
+}

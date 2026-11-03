@@ -1,0 +1,42 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [31816]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8769 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60631 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53819 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53820 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57863 - "GET /api/v1/runs/bda6e148-76f0-4522-b0b8-461851e2b50f/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57864 - "GET /api/v1/runs/bda6e148-76f0-4522-b0b8-461851e2b50f/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57865 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57866 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57867 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57868 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57869 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57870 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57871 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57872 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57873 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57874 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57876 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57877 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57879 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57880 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57881 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57882 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57883 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57884 - "POST /api/v1/cameras/cam-01/evidence-markers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:57885 - "GET /api/v1/evidence/aaaca1fb-6669-4d55-9a04-a1fb27506dd3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57886 - "GET /api/v1/evidence/cc7cb49f-5be9-43ec-9b7b-bfc7c79743c5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57887 - "GET /api/v1/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57888 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57889 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57890 - "GET /api/v1/runs/1a7c015a-8dfd-4aed-aab4-6d461975ca60/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57891 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57892 - "POST /api/v1/system/capability/invalidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57893 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52719 - "GET /api/v1/runs/fba68aa4-0fe4-426d-b1a4-7b484d9e6f3d/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52720 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK

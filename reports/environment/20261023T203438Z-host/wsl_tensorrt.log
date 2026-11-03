@@ -1,0 +1,7 @@
+wsl.exe : bash: line 1: trtexec: command not found
+At C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\setup\verify-host.ps1:71 char:23
++         $Captured = @(& $Command.Source @Arguments 2>&1)
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 1: trtexec: command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

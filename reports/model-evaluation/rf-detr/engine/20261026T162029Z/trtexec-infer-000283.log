@@ -1,0 +1,96 @@
+&&&& RUNNING TensorRT.trtexec [TensorRT v101600] [b72] # trtexec --loadEngine=/workspace/models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm120.engine --loadInputs=input:/workspace/reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/frame01_000283.f32le --exportOutput=/workspace/reports/model-evaluation/rf-detr/engine/20261026T162029Z/trt_outputs_000283.json --iterations=1 --warmUp=0 --duration=0 --noDataTransfers=false
+[10/26/2026-16:20:54] [I] TF32 is enabled by default. Add --noTF32 flag to further improve accuracy with some performance cost.
+[10/26/2026-16:20:54] [I] === Model Options ===
+[10/26/2026-16:20:54] [I] Format: *
+[10/26/2026-16:20:54] [I] Model: 
+[10/26/2026-16:20:54] [I] Output:
+[10/26/2026-16:20:54] [I] 
+[10/26/2026-16:20:54] [I] === System Options ===
+[10/26/2026-16:20:54] [I] Device: 0
+[10/26/2026-16:20:54] [I] DLACore: 
+[10/26/2026-16:20:54] [I] Loaded static plugins:
+[10/26/2026-16:20:54] [I] setPluginsToSerialize:
+[10/26/2026-16:20:54] [I] dynamicPlugins:
+[10/26/2026-16:20:54] [I] ignoreParsedPluginLibs: 0
+[10/26/2026-16:20:54] [I] 
+[10/26/2026-16:20:54] [I] === Inference Options ===
+[10/26/2026-16:20:54] [I] Batch: Explicit
+[10/26/2026-16:20:54] [I] Input inference shapes: model
+[10/26/2026-16:20:54] [I] Iterations: 1
+[10/26/2026-16:20:54] [I] Duration: 0s (+ 0ms warm up)
+[10/26/2026-16:20:54] [I] Sleep time: 0ms
+[10/26/2026-16:20:54] [I] Idle time: 0ms
+[10/26/2026-16:20:54] [I] Inference Streams: 1
+[10/26/2026-16:20:54] [I] ExposeDMA: Disabled
+[10/26/2026-16:20:54] [I] Data transfers: Disabled
+[10/26/2026-16:20:54] [I] Spin-wait: Disabled
+[10/26/2026-16:20:54] [I] Multithreading: Disabled
+[10/26/2026-16:20:54] [I] CUDA Graph: Disabled
+[10/26/2026-16:20:54] [I] Separate profiling: Disabled
+[10/26/2026-16:20:54] [I] Time Deserialize: Disabled
+[10/26/2026-16:20:54] [I] Time Refit: Disabled
+[10/26/2026-16:20:54] [I] NVTX verbosity: 0
+[10/26/2026-16:20:54] [I] Persistent Cache Ratio: 0
+[10/26/2026-16:20:54] [I] Optimization Profile Index: 0
+[10/26/2026-16:20:54] [I] Weight Streaming Budget: 100.000000%
+[10/26/2026-16:20:54] [I] Inputs:
+[10/26/2026-16:20:54] [I] input<-/workspace/reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/frame01_000283.f32le
+[10/26/2026-16:20:54] [I] Debug Tensor Save Destinations:
+[10/26/2026-16:20:54] [I] Dump All Debug Tensor in Formats: 
+[10/26/2026-16:20:54] [I] === Reporting Options ===
+[10/26/2026-16:20:54] [I] Verbose: Disabled
+[10/26/2026-16:20:54] [I] Averages: 10 inferences
+[10/26/2026-16:20:54] [I] Percentiles: 90,95,99
+[10/26/2026-16:20:54] [I] Dump refittable layers:Disabled
+[10/26/2026-16:20:54] [I] Dump output: Disabled
+[10/26/2026-16:20:54] [I] Profile: Disabled
+[10/26/2026-16:20:54] [I] Export timing to JSON file: 
+[10/26/2026-16:20:54] [I] Export output to JSON file: /workspace/reports/model-evaluation/rf-detr/engine/20261026T162029Z/trt_outputs_000283.json
+[10/26/2026-16:20:54] [I] Export profile to JSON file: 
+[10/26/2026-16:20:54] [I] 
+[10/26/2026-16:20:54] [I] === Device Information ===
+[10/26/2026-16:20:54] [I] Available Devices: 
+[10/26/2026-16:20:54] [I]   Device 0: "NVIDIA GeForce RTX 5070 Ti Laptop GPU" UUID: GPU-06e86069-0a6e-adbf-5dfc-039cb4b7eb50
+[10/26/2026-16:20:54] [I] Selected Device: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+[10/26/2026-16:20:54] [I] Selected Device ID: 0
+[10/26/2026-16:20:54] [I] Selected Device UUID: GPU-06e86069-0a6e-adbf-5dfc-039cb4b7eb50
+[10/26/2026-16:20:54] [I] Compute Capability: 12.0
+[10/26/2026-16:20:54] [I] SMs: 46
+[10/26/2026-16:20:54] [I] Device Global Memory: 12226 MiB
+[10/26/2026-16:20:54] [I] Shared Memory per SM: 100 KiB
+[10/26/2026-16:20:54] [I] Memory Bus Width: 192 bits (ECC disabled)
+[10/26/2026-16:20:54] [I] Application Compute Clock Rate: 1.515 GHz
+[10/26/2026-16:20:54] [I] Application Memory Clock Rate: 14.001 GHz
+[10/26/2026-16:20:54] [I] 
+[10/26/2026-16:20:54] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
+[10/26/2026-16:20:54] [I] 
+[10/26/2026-16:20:54] [I] TensorRT version: 10.16.0
+[10/26/2026-16:20:54] [I] Loading standard plugins
+[10/26/2026-16:20:55] [I] [TRT] Loaded engine size: 114 MiB
+[10/26/2026-16:20:55] [I] Engine deserialized in 0.535868 sec.
+[10/26/2026-16:20:55] [I] [TRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +73, now: CPU 0, GPU 185 (MiB)
+[10/26/2026-16:20:55] [I] Setting persistentCacheLimit to 0 bytes.
+[10/26/2026-16:20:55] [I] Created execution context with device memory size: 72.4756 MiB
+[10/26/2026-16:20:55] [I] Using values loaded from /workspace/reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/frame01_000283.f32le for input input
+[10/26/2026-16:20:55] [I] Input binding for input with dimensions 1x3x1080x1920 and type fp32 is created.
+[10/26/2026-16:20:55] [I] Output binding for logits with dimensions 1x300x91 and type fp32 is created.
+[10/26/2026-16:20:55] [I] Output binding for pred_boxes with dimensions 1x300x4 and type fp32 is created.
+[10/26/2026-16:20:55] [I] Starting inference
+[10/26/2026-16:20:55] [I] Warmup completed 0 queries over 0 ms
+[10/26/2026-16:20:55] [I] Timing trace has 1 queries over 0.0109673 s
+[10/26/2026-16:20:55] [I] 
+[10/26/2026-16:20:55] [I] === Trace details ===
+[10/26/2026-16:20:55] [I] Trace averages of 10 runs:
+[10/26/2026-16:20:55] [I] 
+[10/26/2026-16:20:55] [I] === Performance summary ===
+[10/26/2026-16:20:55] [I] Throughput: 91.1802 qps
+[10/26/2026-16:20:55] [I] Latency: min = 10.9673 ms, max = 10.9673 ms, mean = 10.9673 ms, median = 10.9673 ms, percentile(90%) = 10.9673 ms, percentile(95%) = 10.9673 ms, percentile(99%) = 10.9673 ms
+[10/26/2026-16:20:55] [I] Enqueue Time: min = 6.90972 ms, max = 6.90972 ms, mean = 6.90972 ms, median = 6.90972 ms, percentile(90%) = 6.90972 ms, percentile(95%) = 6.90972 ms, percentile(99%) = 6.90972 ms
+[10/26/2026-16:20:55] [I] H2D Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms
+[10/26/2026-16:20:55] [I] GPU Compute Time: min = 10.9673 ms, max = 10.9673 ms, mean = 10.9673 ms, median = 10.9673 ms, percentile(90%) = 10.9673 ms, percentile(95%) = 10.9673 ms, percentile(99%) = 10.9673 ms
+[10/26/2026-16:20:55] [I] D2H Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms
+[10/26/2026-16:20:55] [I] Total Host Walltime: 0.0109673 s
+[10/26/2026-16:20:55] [I] Total GPU Compute Time: 0.0109673 s
+[10/26/2026-16:20:55] [I] Explanations of the performance metrics are printed in the verbose logs.
+[10/26/2026-16:20:55] [I] 
+&&&& PASSED TensorRT.trtexec [TensorRT v101600] [b72] # trtexec --loadEngine=/workspace/models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm120.engine --loadInputs=input:/workspace/reports/model-evaluation/rf-detr/export/run-003-resize-in-graph/frame01_000283.f32le --exportOutput=/workspace/reports/model-evaluation/rf-detr/engine/20261026T162029Z/trt_outputs_000283.json --iterations=1 --warmUp=0 --duration=0 --noDataTransfers=false

@@ -1,0 +1,40 @@
+schema_version: 1
+zones:
+- id: dining
+  floor_id: floor-1
+  name: dining
+  kind: dining
+  polygon:
+  - - 100
+    - 100
+  - - 500
+    - 100
+  - - 500
+    - 400
+  - - 100
+    - 400
+  capacity: null
+  area_m2: null
+  authoritative_camera_ids:
+  - cam-01
+  overlap_group: null
+  rule_ref: null
+- id: queue
+  floor_id: floor-1
+  name: queue
+  kind: queue
+  polygon:
+  - - 200
+    - 150
+  - - 300
+    - 150
+  - - 300
+    - 250
+  - - 200
+    - 250
+  capacity: null
+  area_m2: null
+  authoritative_camera_ids:
+  - cam-01
+  overlap_group: null
+  rule_ref: null

@@ -1,0 +1,70 @@
+Plugin sample_signal_handler initialized
+Plugin sample_video_feeder initialized
+Plugin add_message_meta_probe initialized
+Plugin measure_fps_probe initialized
+Plugin kitti_dump_probe initialized
+Plugin measure_latency_probe initialized
+Plugin sample_video_probe initialized
+Plugin resnet_tensor_parser initialized
+Plugin sample_video_receiver initialized
+Plugin lidar_feeder initialized
+Plugin ensemble_render initialized
+Plugin smart_recording_signal initialized
+Plugin smart_recording_action initialized
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:00.679: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstresindvd.so': libdvdnav.so.4: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:00.689: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdvdread.so': libdvdread.so.8: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:00.763: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstlame.so': libmp3lame.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.616: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstsndfile.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.658: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstfluidsynthmidi.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.687: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstopenmpt.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.741: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdtsdec.so': libdca.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.754: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstpulseaudio.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.756: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmpg123.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.784: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstspandsp.so': libjbig.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.786: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmsdk.so': libmfx.so.1: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:215): GStreamer-WARNING **: 16:41:01.875: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmplex.so': libmjpegutils-2.1.so.0: cannot open shared object file: No such file or directory
+0:00:03.626886420 [34m  183[00m 0x76713902b8d0 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:731:gst_nvinfer_logger:<infer-infer-0>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::deserializeEngineAndBackend() <nvdsinfer_context_impl.cpp:2188> [UID = 1]: deserialized trt engine from :/workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+0:00:03.627779241 [34m  183[00m 0x76713902b8d0 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:731:gst_nvinfer_logger:<infer-infer-0>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::generateBackendContext() <nvdsinfer_context_impl.cpp:2291> [UID = 1]: Use deserialized engine model: /workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+0:00:03.636210956 [34m  183[00m 0x76713902b8d0 [36mINFO   [00m [00m             nvinfer gstnvinfer_impl.cpp:348:notifyLoadModelStatus:<infer-infer-0>[00m [UID 1]: Load new model:/workspace/perception/deepstream/diagnostics/cam01_trafficcamnet_infer_diag_default_scaling.txt sucessfully
+WARNING from nvurisrc_bin_src_elem: No decoder available for type 'audio/mpeg, mpegversion=(int)4, framed=(boolean)true, stream-format=(string)raw, level=(string)2, base-profile=(string)lc, profile=(string)lc, codec_data=(buffer)1190, rate=(int)48000, channels=(int)2'.
+Debug info: ../gst/playback/gsturidecodebin.c(1003): unknown_type_cb (): /GstPipeline:rt-detr-pretracker-diagnostic/GstDsNvUriSrcBin:batch_capture-source-0_0/GstURIDecodeBin:nvurisrc_bin_src_elem
+
+(python3:183): GLib-CRITICAL **: 16:41:15.412: Source ID 2 was not found when attempting to remove it
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-26T16:40:59.695772+00:00",
+  "source": "/workspace/demo/cam01.mp4",
+  "source_sha256": "4201f7162eb0b9bcd3910f87b1a67a5bedac89c2b0a0bb4222e67d12f816b503",
+  "infer_config": "/workspace/perception/deepstream/diagnostics/cam01_trafficcamnet_infer_diag_default_scaling.txt",
+  "infer_config_sha256": "0f2e6b19dd87520d338f2bf1a14dcbc3421b7273745fc6a735d0f3f1fa3be706",
+  "tracker_config": "/workspace/perception/deepstream/reference/config_tracker_NvDCF_perf.yml",
+  "pyservicemaker_version": "0.0.1",
+  "numpy_version": "1.26.4",
+  "cwd": "/tmp/rtdetr-diag.tYDkax",
+  "pipeline_returned": true,
+  "clean_eos": true,
+  "error": null,
+  "ended_at_utc": "2026-10-26T16:41:15.572731+00:00",
+  "elapsed_seconds": 15.764669831,
+  "pre_tracker_frames": 710,
+  "post_tracker_frames": 710,
+  "eos_message_count": 1,
+  "tensor_errors": [
+    "frame 141 output_cov/Sigmoid:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-default-scaling-20261026T164051Z/tensors/output_cov/Sigmoid:0_000141.npy'",
+    "frame 141 output_bbox/BiasAdd:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-default-scaling-20261026T164051Z/tensors/output_bbox/BiasAdd:0_000141.npy'",
+    "frame 283 output_cov/Sigmoid:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-default-scaling-20261026T164051Z/tensors/output_cov/Sigmoid:0_000283.npy'",
+    "frame 283 output_bbox/BiasAdd:0: FileNotFoundError: [Errno 2] No such file or directory: '/workspace/reports/validation/trafficcamnet-preprocessing/pretracker-default-scaling-20261026T164051Z/tensors/output_bbox/BiasAdd:0_000283.npy'"
+  ]
+}

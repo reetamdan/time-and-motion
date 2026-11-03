@@ -1,0 +1,106 @@
+schema_version: 1
+cameras:
+- id: cam-01
+  name: Outdoor Pedestrian Area
+  floor_id: floor-1
+  enabled: true
+  source_type: file
+  source: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261028T120755890299Z\scratch\pytest\test_overlapping_camera_views_0\clip.mp4
+  analytics_fps: 8
+  preview_fps: 5
+  overlap_group: null
+  calibration_ref: cam-01-rev-1
+  calibration_status: VALID
+  calibration_revision: rev-1
+  replay_group: demo-session
+  timestamp_offset_ms: 0
+  position:
+  - 90
+  - 105
+  coverage_polygon:
+  - - 25
+    - 35
+  - - 310
+    - 35
+  - - 330
+    - 285
+  - - 30
+    - 285
+- id: cam-02
+  name: Dining and Service Queue
+  floor_id: floor-1
+  enabled: true
+  source_type: file
+  source: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261028T120755890299Z\scratch\pytest\test_overlapping_camera_views_0\clip.mp4
+  analytics_fps: 8
+  preview_fps: 5
+  overlap_group: dining-overlap
+  calibration_ref: cam-02-rev-1
+  calibration_status: VALID
+  calibration_revision: rev-1
+  replay_group: demo-session
+  timestamp_offset_ms: 0
+  position:
+  - 440
+  - 110
+  coverage_polygon:
+  - - 280
+    - 90
+  - - 770
+    - 80
+  - - 795
+    - 530
+  - - 275
+    - 530
+- id: cam-03
+  name: Dining Overlap View
+  floor_id: floor-1
+  enabled: false
+  source_type: file
+  source: ./data/demo/cam03.mp4
+  analytics_fps: 8
+  preview_fps: 5
+  overlap_group: dining-overlap
+  calibration_ref: null
+  calibration_status: MISSING
+  calibration_revision: null
+  replay_group: demo-session
+  timestamp_offset_ms: 0
+  position:
+  - 760
+  - 120
+  coverage_polygon:
+  - - 420
+    - 110
+  - - 940
+    - 95
+  - - 955
+    - 525
+  - - 410
+    - 520
+- id: cam-04
+  name: Upper Stair Landing
+  floor_id: floor-2
+  enabled: false
+  source_type: file
+  source: ./data/demo/cam04.mp4
+  analytics_fps: 8
+  preview_fps: 5
+  overlap_group: null
+  calibration_ref: null
+  calibration_status: MISSING
+  calibration_revision: null
+  replay_group: demo-session
+  timestamp_offset_ms: 0
+  position:
+  - 155
+  - 140
+  coverage_polygon:
+  - - 45
+    - 40
+  - - 420
+    - 45
+  - - 435
+    - 390
+  - - 35
+    - 390

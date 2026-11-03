@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "fingerprint": "3fbc66a417ae1f8c5af1bbd43dede1209fc490fa48a04e844f1e4ba75b772dab",
+  "blockers": [],
+  "fields": {
+    "probe_version": "1",
+    "deepstream_app": "ok",
+    "gst_nvstreammux": "ok",
+    "gst_nvinfer": "ok",
+    "gst_nvtracker": "ok",
+    "gst_nvv4l2decoder": "ok",
+    "extractor": "ok",
+    "gpu": "ok",
+    "gpu_detail": "Test GPU",
+    "probe_complete": "1"
+  },
+  "validated_at_utc": "1970-01-13T01:46:41+00:00",
+  "validated_at_epoch": 1043201.0,
+  "probe_seconds": 0.0,
+  "source": "probe"
+}

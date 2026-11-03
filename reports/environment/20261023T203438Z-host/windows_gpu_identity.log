@@ -1,0 +1,16 @@
+
+
+Name          : AMD Radeon(TM) 610M
+DriverVersion : 32.0.21036.8001
+AdapterRAM    : 536870912
+PNPDeviceID   : PCI\VEN_1002&DEV_164E&SUBSYS_30F91043&REV_D8\4&1D975B9A&0&0041
+Status        : OK
+
+Name          : NVIDIA GeForce RTX 5070 Ti Laptop GPU
+DriverVersion : 32.0.16.1047
+AdapterRAM    : 4293918720
+PNPDeviceID   : PCI\VEN_10DE&DEV_2F58&SUBSYS_30F91043&REV_A1\1AABACB78B2DB04800
+Status        : OK
+
+
+

@@ -1,0 +1,9 @@
+{"start": "stageA-4feeds-r1", "utc": "2026-10-28T08:03:57.467285+00:00"}
+{"done": "stageA-4feeds-r1", "pass": true, "failures": [], "cadence": {"bench-01": 29.958, "bench-02": 29.958, "bench-03": 29.958, "bench-04": 29.958}, "age_p95": {"bench-01": -199.857, "bench-02": -199.81, "bench-03": -199.812, "bench-04": -199.808}}
+{"start": "stageA-4feeds-r2", "utc": "2026-10-28T08:16:17.840783+00:00"}
+{"done": "stageA-4feeds-r2", "pass": true, "failures": [], "cadence": {"bench-01": 29.958, "bench-02": 29.958, "bench-03": 29.958, "bench-04": 29.958}, "age_p95": {"bench-01": -199.854, "bench-02": -199.859, "bench-03": -199.82, "bench-04": -199.814}}
+{"start": "stageA-4feeds-r3", "utc": "2026-10-28T08:28:33.482393+00:00"}
+{"done": "stageA-4feeds-r3", "pass": true, "failures": [], "cadence": {"bench-01": 29.958, "bench-02": 29.958, "bench-03": 29.958, "bench-04": 29.958}, "age_p95": {"bench-01": -199.851, "bench-02": -199.858, "bench-03": -199.864, "bench-04": -199.868}}
+{"start": "stageB-4feeds-r1", "utc": "2026-10-28T08:40:49.182801+00:00"}
+{"done": "stageB-4feeds-r1", "pass": true, "failures": [], "cadence": {"bench-01": 29.958, "bench-02": 29.958, "bench-03": 29.958, "bench-04": 29.958}, "age_p95": {"bench-01": -199.853, "bench-02": -199.857, "bench-03": -199.854, "bench-04": -199.857}}
+{"start": "stageB-4feeds-r2", "utc": "2026-10-28T08:53:25.886583+00:00"}

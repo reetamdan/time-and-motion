@@ -1,0 +1,42 @@
+Plugin sample_signal_handler initialized
+Plugin sample_video_feeder initialized
+Plugin add_message_meta_probe initialized
+Plugin measure_fps_probe initialized
+Plugin kitti_dump_probe initialized
+Plugin measure_latency_probe initialized
+Plugin sample_video_probe initialized
+Plugin resnet_tensor_parser initialized
+Plugin sample_video_receiver initialized
+Plugin lidar_feeder initialized
+Plugin ensemble_render initialized
+Plugin smart_recording_signal initialized
+Plugin smart_recording_action initialized
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:41.448: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstresindvd.so': libdvdnav.so.4: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:41.458: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdvdread.so': libdvdread.so.8: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:41.532: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstlame.so': libmp3lame.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.316: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstsndfile.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.358: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstfluidsynthmidi.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.386: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstopenmpt.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.441: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdtsdec.so': libdca.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.454: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstpulseaudio.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.455: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmpg123.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.483: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstspandsp.so': libjbig.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.485: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmsdk.so': libmfx.so.1: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:169): GStreamer-WARNING **: 14:43:42.574: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmplex.so': libmjpegutils-2.1.so.0: cannot open shared object file: No such file or directory
+0:00:03.315435174 [33m   44[00m 0x7ee4aa5424b0 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:731:gst_nvinfer_logger:<infer-infer-0>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::deserializeEngineAndBackend() <nvdsinfer_context_impl.cpp:2188> [UID = 1]: deserialized trt engine from :/workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+0:00:03.315491481 [33m   44[00m 0x7ee4aa5424b0 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:731:gst_nvinfer_logger:<infer-infer-0>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::generateBackendContext() <nvdsinfer_context_impl.cpp:2291> [UID = 1]: Use deserialized engine model: /workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+0:00:03.322859412 [33m   44[00m 0x7ee4aa5424b0 [36mINFO   [00m [00m             nvinfer gstnvinfer_impl.cpp:348:notifyLoadModelStatus:<infer-infer-0>[00m [UID 1]: Load new model:/workspace/perception/deepstream/cam01_trafficcamnet_smoke_infer.txt sucessfully
+WARNING from nvurisrc_bin_src_elem: No decoder available for type 'audio/mpeg, mpegversion=(int)4, framed=(boolean)true, stream-format=(string)raw, level=(string)2, base-profile=(string)lc, profile=(string)lc, codec_data=(buffer)1190, rate=(int)48000, channels=(int)2'.
+Debug info: ../gst/playback/gsturidecodebin.c(1003): unknown_type_cb (): /GstPipeline:service-maker-cam01-metadata/GstDsNvUriSrcBin:batch_capture-source-0_0/GstURIDecodeBin:nvurisrc_bin_src_elem

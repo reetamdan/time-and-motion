@@ -1,0 +1,5 @@
+FAIL: ./data/demo/cam01.mp4: missing or empty local media file
+FAIL: ./data/demo/cam02.mp4: missing or empty local media file
+FAIL: ./data/demo/cam03.mp4: missing or empty local media file
+FAIL: ./data/demo/cam04.mp4: missing or empty local media file
+Profile asset validation failed; evidence: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\benchmarks\final-invalid-benchmark-profile\profile-validation.json

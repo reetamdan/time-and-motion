@@ -1,0 +1,150 @@
+COMMAND: ["C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv\\Scripts\\python.exe", "-m", "pip", "download", "--dest", "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\wheels", "--requirement", "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\requirements.txt", "--extra-index-url", "https://download.pytorch.org/whl/cpu"]
+Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cpu
+Collecting transformers==4.49.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 4))
+  Downloading transformers-4.49.0-py3-none-any.whl.metadata (44 kB)
+Collecting torch==2.6.0+cpu (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 5))
+  Downloading torch-2.6.0%2Bcpu-cp312-cp312-win_amd64.whl.metadata (28 kB)
+Collecting torchvision==0.21.0+cpu (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 6))
+  Downloading torchvision-0.21.0%2Bcpu-cp312-cp312-win_amd64.whl.metadata (6.3 kB)
+Collecting onnx==1.17.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 7))
+  Downloading onnx-1.17.0-cp312-cp312-win_amd64.whl.metadata (16 kB)
+Collecting onnxruntime==1.20.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 8))
+  Downloading onnxruntime-1.20.1-cp312-cp312-win_amd64.whl.metadata (4.7 kB)
+Collecting numpy==2.1.3 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 9))
+  Downloading numpy-2.1.3-cp312-cp312-win_amd64.whl.metadata (60 kB)
+Collecting pillow==11.1.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 10))
+  Downloading pillow-11.1.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+Collecting huggingface-hub==0.29.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 11))
+  Downloading huggingface_hub-0.29.1-py3-none-any.whl.metadata (13 kB)
+Collecting safetensors==0.5.2 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 12))
+  Downloading safetensors-0.5.2-cp38-abi3-win_amd64.whl.metadata (3.9 kB)
+Collecting tokenizers==0.21.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 13))
+  Downloading tokenizers-0.21.0-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
+Collecting requests==2.32.3 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 14))
+  Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting pyyaml==6.0.2 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 15))
+  Downloading PyYAML-6.0.2-cp312-cp312-win_amd64.whl.metadata (2.1 kB)
+Collecting packaging==24.2 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 16))
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting regex==2024.11.6 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 17))
+  Downloading regex-2024.11.6-cp312-cp312-win_amd64.whl.metadata (41 kB)
+Collecting tqdm==4.67.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 18))
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting filelock==3.16.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 19))
+  Downloading filelock-3.16.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec==2025.2.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 20))
+  Downloading fsspec-2025.2.0-py3-none-any.whl.metadata (11 kB)
+Collecting jinja2==3.1.5 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 21))
+  Downloading jinja2-3.1.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting networkx==3.4.2 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 22))
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting typing-extensions==4.12.2 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 23))
+  Downloading typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting sympy==1.13.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 24))
+  Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath==1.3.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 25))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting markupsafe==3.0.2 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 26))
+  Downloading MarkupSafe-3.0.2-cp312-cp312-win_amd64.whl.metadata (4.1 kB)
+Collecting charset-normalizer==3.4.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 27))
+  Downloading charset_normalizer-3.4.1-cp312-cp312-win_amd64.whl.metadata (36 kB)
+Collecting idna==3.10 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 28))
+  Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3==2.3.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 29))
+  Downloading urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi==2025.1.31 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 30))
+  Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+Collecting colorama==0.4.6 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 31))
+  Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting coloredlogs==15.0.1 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 32))
+  Downloading coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
+Collecting humanfriendly==10.0 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 33))
+  Downloading humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
+Collecting flatbuffers==25.2.10 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 34))
+  Downloading flatbuffers-25.2.10-py2.py3-none-any.whl.metadata (875 bytes)
+Collecting protobuf==5.29.3 (from -r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 35))
+  Downloading protobuf-5.29.3-cp310-abi3-win_amd64.whl.metadata (592 bytes)
+Collecting setuptools (from torch==2.6.0+cpu->-r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 5))
+  Downloading setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+Collecting pyreadline3 (from humanfriendly==10.0->-r C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.install\rt-detr-export\requirements.txt (line 33))
+  Downloading pyreadline3-3.5.6-py3-none-any.whl.metadata (4.7 kB)
+Downloading transformers-4.49.0-py3-none-any.whl (10.0 MB)
+   ---------------------------------------- 10.0/10.0 MB 18.3 MB/s  0:00:00
+Downloading huggingface_hub-0.29.1-py3-none-any.whl (468 kB)
+Downloading tokenizers-0.21.0-cp39-abi3-win_amd64.whl (2.4 MB)
+   ---------------------------------------- 2.4/2.4 MB 19.5 MB/s  0:00:00
+Downloading torch-2.6.0%2Bcpu-cp312-cp312-win_amd64.whl (206.5 MB)
+   ---------------------------------------- 206.5/206.5 MB 25.1 MB/s  0:00:08
+Downloading torchvision-0.21.0%2Bcpu-cp312-cp312-win_amd64.whl (1.6 MB)
+   ---------------------------------------- 1.6/1.6 MB 27.5 MB/s  0:00:00
+Downloading onnx-1.17.0-cp312-cp312-win_amd64.whl (14.5 MB)
+   ---------------------------------------- 14.5/14.5 MB 5.0 MB/s  0:00:02
+Downloading onnxruntime-1.20.1-cp312-cp312-win_amd64.whl (11.3 MB)
+   ---------------------------------------- 11.3/11.3 MB 29.5 MB/s  0:00:00
+Downloading numpy-2.1.3-cp312-cp312-win_amd64.whl (12.6 MB)
+   ---------------------------------------- 12.6/12.6 MB 29.2 MB/s  0:00:00
+Downloading pillow-11.1.0-cp312-cp312-win_amd64.whl (2.6 MB)
+   ---------------------------------------- 2.6/2.6 MB 25.4 MB/s  0:00:00
+Downloading safetensors-0.5.2-cp38-abi3-win_amd64.whl (303 kB)
+Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.1-cp312-cp312-win_amd64.whl (102 kB)
+Downloading idna-3.10-py3-none-any.whl (70 kB)
+Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+Downloading PyYAML-6.0.2-cp312-cp312-win_amd64.whl (156 kB)
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading regex-2024.11.6-cp312-cp312-win_amd64.whl (273 kB)
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Downloading filelock-3.16.1-py3-none-any.whl (16 kB)
+Downloading fsspec-2025.2.0-py3-none-any.whl (184 kB)
+Downloading jinja2-3.1.5-py3-none-any.whl (134 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ---------------------------------------- 1.7/1.7 MB 31.1 MB/s  0:00:00
+Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+   ---------------------------------------- 6.2/6.2 MB 27.1 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ---------------------------------------- 536.2/536.2 kB 17.1 MB/s  0:00:00
+Downloading MarkupSafe-3.0.2-cp312-cp312-win_amd64.whl (15 kB)
+Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+Downloading coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+Downloading flatbuffers-25.2.10-py2.py3-none-any.whl (30 kB)
+Downloading protobuf-5.29.3-cp310-abi3-win_amd64.whl (434 kB)
+Downloading pyreadline3-3.5.6-py3-none-any.whl (85 kB)
+Downloading setuptools-84.2.1-py3-none-any.whl (876 kB)
+   ---------------------------------------- 876.3/876.3 kB 38.4 MB/s  0:00:00
+Saved .\.install\rt-detr-export\wheels\transformers-4.49.0-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\huggingface_hub-0.29.1-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\tokenizers-0.21.0-cp39-abi3-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\torch-2.6.0+cpu-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\torchvision-0.21.0+cpu-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\onnx-1.17.0-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\onnxruntime-1.20.1-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\numpy-2.1.3-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\pillow-11.1.0-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\safetensors-0.5.2-cp38-abi3-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\requests-2.32.3-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\charset_normalizer-3.4.1-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\idna-3.10-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\urllib3-2.3.0-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\PyYAML-6.0.2-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\packaging-24.2-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\regex-2024.11.6-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\tqdm-4.67.1-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\filelock-3.16.1-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\fsspec-2025.2.0-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\jinja2-3.1.5-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\networkx-3.4.2-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\typing_extensions-4.12.2-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\sympy-1.13.1-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\mpmath-1.3.0-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\MarkupSafe-3.0.2-cp312-cp312-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\certifi-2025.1.31-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\colorama-0.4.6-py2.py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\coloredlogs-15.0.1-py2.py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\humanfriendly-10.0-py2.py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\flatbuffers-25.2.10-py2.py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\protobuf-5.29.3-cp310-abi3-win_amd64.whl
+Saved .\.install\rt-detr-export\wheels\pyreadline3-3.5.6-py3-none-any.whl
+Saved .\.install\rt-detr-export\wheels\setuptools-84.2.1-py3-none-any.whl
+Successfully downloaded transformers huggingface-hub tokenizers torch torchvision onnx onnxruntime numpy pillow safetensors requests charset-normalizer idna urllib3 pyyaml packaging regex tqdm filelock fsspec jinja2 networkx typing-extensions sympy mpmath markupsafe certifi colorama coloredlogs humanfriendly flatbuffers protobuf pyreadline3 setuptools

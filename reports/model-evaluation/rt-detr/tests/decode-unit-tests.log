@@ -1,0 +1,13 @@
+test_box_is_clipped_to_source (test_decode.DecodeTests.test_box_is_clipped_to_source) ... ok
+test_invalid_shapes_topk_and_nonfinite_fail (test_decode.DecodeTests.test_invalid_shapes_topk_and_nonfinite_fail) ... ok
+test_no_nms_duplicate_boxes_remain (test_decode.DecodeTests.test_no_nms_duplicate_boxes_remain) ... ok
+test_non_square_direct_resize_uses_independent_scales (test_decode.DecodeTests.test_non_square_direct_resize_uses_independent_scales) ... ok
+test_person_slot_only_and_source_mapping (test_decode.DecodeTests.test_person_slot_only_and_source_mapping) ... ok
+test_score_order_query_tie_and_top_k (test_decode.DecodeTests.test_score_order_query_tie_and_top_k) ... ok
+test_threshold_is_inclusive (test_decode.DecodeTests.test_threshold_is_inclusive) ... ok
+test_extremes_are_stable (test_decode.SigmoidTests.test_extremes_are_stable) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.139s
+
+OK

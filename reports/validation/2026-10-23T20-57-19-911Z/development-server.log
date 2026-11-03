@@ -1,0 +1,8 @@
+
+  VITE v8.3.5  ready in 168 ms
+
+  ➜  Local:   http://127.0.0.1:7100/
+INFO:     Started server process [39148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)

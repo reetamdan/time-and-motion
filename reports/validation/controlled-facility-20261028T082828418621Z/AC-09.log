@@ -1,0 +1,20 @@
+......E                                                                  [100%]
+=================================== ERRORS ====================================
+_ ERROR at setup of test_floor_boundary_crossing_feeds_entries_and_the_ledger _
+
+self = WindowsPath('C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/controlled-facility-20261028T082828418621Z/pytest/AC-09')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\controlled-facility-20261028T082828418621Z\\pytest\\AC-09'
+
+..\..\..\..\..\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\pathlib.py:1311: FileNotFoundError
+- generated xml file: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\controlled-facility-20261028T082828418621Z\AC-09.xml -
+=========================== short test summary info ===========================
+ERROR tests/test_facility_analytics.py::test_floor_boundary_crossing_feeds_entries_and_the_ledger
+6 passed, 1 error in 0.22s

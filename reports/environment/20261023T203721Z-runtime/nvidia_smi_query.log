@@ -1,0 +1,2 @@
+name, uuid, driver_version, memory.total [MiB], memory.used [MiB], temperature.gpu, utilization.gpu [%]
+NVIDIA GeForce RTX 5070 Ti Laptop GPU, GPU-06e86069-0a6e-adbf-5dfc-039cb4b7eb50, 610.47, 12227 MiB, 1155 MiB, 65, 38 %

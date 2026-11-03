@@ -1,0 +1,4 @@
+{"start": "stageA-4feeds-r1", "utc": "2026-10-28T17:44:43.246622+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7492.2, "guest_cache_release": {"performed": true, "host_available_before_mib": 7290.0, "host_available_after_20s_mib": 7492.2, "stderr": ""}}}
+[supervised_entry] stop requested by supervisor: interrupting the script for its own cleanup
+{"finished": "stageA-4feeds-r1", "status": "PASS", "failures": []}
+{"run_dir": "reports/benchmarks/capacity-repeats-20261028T174417346278Z", "result": "INTERRUPTED", "detail": "1/1 executed steps passed, 11 of 12 planned steps not executed", "ladder": null}

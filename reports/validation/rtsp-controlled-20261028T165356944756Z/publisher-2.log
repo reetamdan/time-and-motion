@@ -1,0 +1,2 @@
+[tcp @ 0x5e8ceab9b100] Connection to tcp://172.17.0.1:8554?timeout=0 failed: Connection refused
+[out#0/rtsp @ 0x5e8cead96780] Could not write header (incorrect codec parameters ?): Connection refused

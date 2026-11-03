@@ -1,0 +1,124 @@
+
+===============================
+   DeepStreamSDK 9.2
+===============================
+
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and conditions
+of the License Agreement. The License Agreement is located at
+/opt/nvidia/deepstream/deepstream/LicenseAgreement.pdf. If you do not agree
+to the terms and conditions of the License Agreement do not use the software.
+
+
+=============================
+== Triton Inference Server ==
+=============================
+
+NVIDIA Release 26.03 (build 283962264)
+Triton Server Version 2.67.0
+
+Copyright (c) 2018-2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+&&&& RUNNING TensorRT.trtexec [TensorRT v101600] [b72] # trtexec --loadEngine=/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine --loadInputs=pixel_values:/workspace/reports/model-evaluation/rt-detr/engine/trt-parity/pixel_values_000141.f32le --exportOutput=/workspace/reports/model-evaluation/rt-detr/engine/trt-parity/trt_outputs_000141.json --iterations=1 --warmUp=0 --duration=0
+[10/26/2026-14:45:40] [I] TF32 is enabled by default. Add --noTF32 flag to further improve accuracy with some performance cost.
+[10/26/2026-14:45:40] [I] === Model Options ===
+[10/26/2026-14:45:40] [I] Format: *
+[10/26/2026-14:45:40] [I] Model: 
+[10/26/2026-14:45:40] [I] Output:
+[10/26/2026-14:45:40] [I] 
+[10/26/2026-14:45:40] [I] === System Options ===
+[10/26/2026-14:45:40] [I] Device: 0
+[10/26/2026-14:45:40] [I] DLACore: 
+[10/26/2026-14:45:40] [I] Loaded static plugins:
+[10/26/2026-14:45:40] [I] setPluginsToSerialize:
+[10/26/2026-14:45:40] [I] dynamicPlugins:
+[10/26/2026-14:45:40] [I] ignoreParsedPluginLibs: 0
+[10/26/2026-14:45:40] [I] 
+[10/26/2026-14:45:40] [I] === Inference Options ===
+[10/26/2026-14:45:40] [I] Batch: Explicit
+[10/26/2026-14:45:40] [I] Input inference shapes: model
+[10/26/2026-14:45:40] [I] Iterations: 1
+[10/26/2026-14:45:40] [I] Duration: 0s (+ 0ms warm up)
+[10/26/2026-14:45:40] [I] Sleep time: 0ms
+[10/26/2026-14:45:40] [I] Idle time: 0ms
+[10/26/2026-14:45:40] [I] Inference Streams: 1
+[10/26/2026-14:45:40] [I] ExposeDMA: Disabled
+[10/26/2026-14:45:40] [I] Data transfers: Enabled
+[10/26/2026-14:45:40] [I] Spin-wait: Disabled
+[10/26/2026-14:45:40] [I] Multithreading: Disabled
+[10/26/2026-14:45:40] [I] CUDA Graph: Disabled
+[10/26/2026-14:45:40] [I] Separate profiling: Disabled
+[10/26/2026-14:45:40] [I] Time Deserialize: Disabled
+[10/26/2026-14:45:40] [I] Time Refit: Disabled
+[10/26/2026-14:45:40] [I] NVTX verbosity: 0
+[10/26/2026-14:45:40] [I] Persistent Cache Ratio: 0
+[10/26/2026-14:45:40] [I] Optimization Profile Index: 0
+[10/26/2026-14:45:40] [I] Weight Streaming Budget: 100.000000%
+[10/26/2026-14:45:40] [I] Inputs:
+[10/26/2026-14:45:40] [I] pixel_values<-/workspace/reports/model-evaluation/rt-detr/engine/trt-parity/pixel_values_000141.f32le
+[10/26/2026-14:45:40] [I] Debug Tensor Save Destinations:
+[10/26/2026-14:45:40] [I] Dump All Debug Tensor in Formats: 
+[10/26/2026-14:45:40] [I] === Reporting Options ===
+[10/26/2026-14:45:40] [I] Verbose: Disabled
+[10/26/2026-14:45:40] [I] Averages: 10 inferences
+[10/26/2026-14:45:40] [I] Percentiles: 90,95,99
+[10/26/2026-14:45:40] [I] Dump refittable layers:Disabled
+[10/26/2026-14:45:40] [I] Dump output: Disabled
+[10/26/2026-14:45:40] [I] Profile: Disabled
+[10/26/2026-14:45:40] [I] Export timing to JSON file: 
+[10/26/2026-14:45:40] [I] Export output to JSON file: /workspace/reports/model-evaluation/rt-detr/engine/trt-parity/trt_outputs_000141.json
+[10/26/2026-14:45:40] [I] Export profile to JSON file: 
+[10/26/2026-14:45:40] [I] 
+[10/26/2026-14:45:40] [I] === Device Information ===
+[10/26/2026-14:45:40] [I] Available Devices: 
+[10/26/2026-14:45:40] [I]   Device 0: "NVIDIA GeForce RTX 5070 Ti Laptop GPU" UUID: GPU-06e86069-0a6e-adbf-5dfc-039cb4b7eb50
+[10/26/2026-14:45:40] [I] Selected Device: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+[10/26/2026-14:45:40] [I] Selected Device ID: 0
+[10/26/2026-14:45:40] [I] Selected Device UUID: GPU-06e86069-0a6e-adbf-5dfc-039cb4b7eb50
+[10/26/2026-14:45:40] [I] Compute Capability: 12.0
+[10/26/2026-14:45:40] [I] SMs: 46
+[10/26/2026-14:45:40] [I] Device Global Memory: 12226 MiB
+[10/26/2026-14:45:40] [I] Shared Memory per SM: 100 KiB
+[10/26/2026-14:45:40] [I] Memory Bus Width: 192 bits (ECC disabled)
+[10/26/2026-14:45:40] [I] Application Compute Clock Rate: 1.515 GHz
+[10/26/2026-14:45:40] [I] Application Memory Clock Rate: 14.001 GHz
+[10/26/2026-14:45:40] [I] 
+[10/26/2026-14:45:40] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
+[10/26/2026-14:45:40] [I] 
+[10/26/2026-14:45:40] [I] TensorRT version: 10.16.0
+[10/26/2026-14:45:40] [I] Loading standard plugins
+[10/26/2026-14:45:42] [I] [TRT] Loaded engine size: 96 MiB
+[10/26/2026-14:45:42] [I] Engine deserialized in 0.870012 sec.
+[10/26/2026-14:45:42] [I] [TRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +50, now: CPU 0, GPU 144 (MiB)
+[10/26/2026-14:45:42] [I] Setting persistentCacheLimit to 0 bytes.
+[10/26/2026-14:45:42] [I] Created execution context with device memory size: 50.002 MiB
+[10/26/2026-14:45:42] [I] Using values loaded from /workspace/reports/model-evaluation/rt-detr/engine/trt-parity/pixel_values_000141.f32le for input pixel_values
+[10/26/2026-14:45:42] [I] Input binding for pixel_values with dimensions 1x3x640x640 and type fp32 is created.
+[10/26/2026-14:45:42] [I] Output binding for logits with dimensions 1x300x80 and type fp32 is created.
+[10/26/2026-14:45:42] [I] Output binding for pred_boxes with dimensions 1x300x4 and type fp32 is created.
+[10/26/2026-14:45:42] [I] Starting inference
+[10/26/2026-14:45:42] [I] Warmup completed 0 queries over 0 ms
+[10/26/2026-14:45:42] [I] Timing trace has 1 queries over 0.0105177 s
+[10/26/2026-14:45:42] [I] 
+[10/26/2026-14:45:42] [I] === Trace details ===
+[10/26/2026-14:45:42] [I] Trace averages of 10 runs:
+[10/26/2026-14:45:42] [I] 
+[10/26/2026-14:45:42] [I] === Performance summary ===
+[10/26/2026-14:45:42] [I] Throughput: 95.0781 qps
+[10/26/2026-14:45:42] [I] Latency: min = 10.427 ms, max = 10.427 ms, mean = 10.427 ms, median = 10.427 ms, percentile(90%) = 10.427 ms, percentile(95%) = 10.427 ms, percentile(99%) = 10.427 ms
+[10/26/2026-14:45:42] [I] Enqueue Time: min = 6.84745 ms, max = 6.84745 ms, mean = 6.84745 ms, median = 6.84745 ms, percentile(90%) = 6.84745 ms, percentile(95%) = 6.84745 ms, percentile(99%) = 6.84745 ms
+[10/26/2026-14:45:42] [I] H2D Latency: min = 0.448832 ms, max = 0.448832 ms, mean = 0.448832 ms, median = 0.448832 ms, percentile(90%) = 0.448832 ms, percentile(95%) = 0.448832 ms, percentile(99%) = 0.448832 ms
+[10/26/2026-14:45:42] [I] GPU Compute Time: min = 9.9129 ms, max = 9.9129 ms, mean = 9.9129 ms, median = 9.9129 ms, percentile(90%) = 9.9129 ms, percentile(95%) = 9.9129 ms, percentile(99%) = 9.9129 ms
+[10/26/2026-14:45:42] [I] D2H Latency: min = 0.0653114 ms, max = 0.0653114 ms, mean = 0.0653114 ms, median = 0.0653114 ms, percentile(90%) = 0.0653114 ms, percentile(95%) = 0.0653114 ms, percentile(99%) = 0.0653114 ms
+[10/26/2026-14:45:42] [I] Total Host Walltime: 0.0105177 s
+[10/26/2026-14:45:42] [I] Total GPU Compute Time: 0.0099129 s
+[10/26/2026-14:45:42] [I] Explanations of the performance metrics are printed in the verbose logs.
+[10/26/2026-14:45:42] [I] 
+&&&& PASSED TensorRT.trtexec [TensorRT v101600] [b72] # trtexec --loadEngine=/workspace/models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine --loadInputs=pixel_values:/workspace/reports/model-evaluation/rt-detr/engine/trt-parity/pixel_values_000141.f32le --exportOutput=/workspace/reports/model-evaluation/rt-detr/engine/trt-parity/trt_outputs_000141.json --iterations=1 --warmUp=0 --duration=0

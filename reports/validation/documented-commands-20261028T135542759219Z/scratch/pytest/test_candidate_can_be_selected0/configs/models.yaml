@@ -1,0 +1,141 @@
+schema_version: 1
+selected_model: rf-detr-person-candidate
+selection_mode: evaluated_baseline
+pipeline:
+  image_reference_path: ./reports/environment/deepstream92/image-reference.txt
+  image: ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85
+  wrapper_path: ./scripts/deepstream.sh
+  wrapper_sha256: b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1
+  extractor_path: ./perception/deepstream/service_maker/extract_metadata_v2.py
+  extractor_sha256: e846ce3e9552701826f4c13dae312122e16a767ab10066cc100fad29ff983be1
+  extractor_schema_version: '1.1'
+  extractor_pacing: source
+  pace_lead_ms: 200
+  probe_script_path: ./scripts/lib/capability-probe.sh
+  probe_script_sha256: e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb
+models:
+- id: trafficcamnet-smoke
+  role: detector
+  enabled: true
+  acceptance: provisional_smoke
+  evaluation_ref: null
+  checkpoint_path: ./models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx
+  engine_path: ./models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+  revision: deepstream-9.2-bundled-resnet18-trafficcamnet-pruned
+  sha256: d92f97bd840b68850a33c83e480fc6bd83b3097ff4cb517e0ea12671046bab7d
+  engine_sha256: e96668b546dc77b9e8002419b77d424e991c9d22fe2b39818b1d31d4f63b225f
+  source_repository: ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85
+  license_ref: NVIDIA DeepStream SDK License Agreement for bundled sample artifacts;
+    see THIRD_PARTY.md
+  class_map:
+    0: car
+    1: bicycle
+    2: person
+    3: road_sign
+  input_shape:
+  - 1
+  - 3
+  - 544
+  - 960
+  precision: FP16
+  parser_revision: deepstream-9.2-nvdsinfer-default-resnet
+  runtime_profile:
+    infer_config_path: ./perception/deepstream/cam01_trafficcamnet_smoke_infer.txt
+    infer_config_sha256: 8165a340f72b5717b1a7fd41ae1213d6b4c66bdbdbcfe352bc62f0ec05f40405
+    parser:
+      kind: builtin
+      name: nvdsinfer-default-resnet-detector
+    person_class_id: 2
+    person_label: person
+    pipeline_width: 1920
+    pipeline_height: 1080
+    source_geometry_policy: stretch_disclosed
+    detection_limit_per_class: 300
+    preprocessing: nvstreammux 1920x1080 (no padding) -> nvinfer scale to 960x544
+      (default scaling), RGB, x/255; cluster-mode=2 (NMS)
+- id: rt-detr-person-candidate
+  role: detector
+  enabled: true
+  acceptance: candidate_unaccepted
+  evaluation_ref: reports/model-evaluation/rt-detr/result.json
+  checkpoint_path: ./models/rt-detr-person-candidate/rt_detr_r18vd_raw.onnx
+  engine_path: ./models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp32_sm120.engine
+  revision: PekingU/rtdetr_v2_r18vd@5650961749fa93567c0d46fc7f43ea4f9e914107
+  sha256: 8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07
+  engine_sha256: 8de3838604f343d17fba248b866e95c4785d91ac768a3973351024402186c3b1
+  source_repository: https://huggingface.co/PekingU/rtdetr_v2_r18vd
+  license_ref: Apache-2.0 declared in HF metadata (no LICENSE in the pinned tree);
+    see THIRD_PARTY.md
+  class_map:
+    0: person
+  input_shape:
+  - 1
+  - 3
+  - 640
+  - 640
+  precision: FP32
+  parser_revision: perception/candidates/rt_detr/parser@324972554160
+  runtime_profile:
+    infer_config_path: ./perception/candidates/rt_detr/deepstream/cam01_rt_detr_infer_r2.txt
+    infer_config_sha256: 35cc10073b50018eb0f09fae93f362b6d51063aebd9204ab3489ebd59f0397d0
+    parser:
+      kind: custom_library
+      name: rtdetr-person
+      library_path: ./perception/candidates/rt_detr/parser/libnvds_infercustomparser_rtdetr.so
+      library_sha256: 324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742
+      function: NvDsInferParseCustomRtDetrPerson
+    person_class_id: 0
+    person_label: person
+    pipeline_width: 1920
+    pipeline_height: 1080
+    source_geometry_policy: stretch_disclosed
+    detection_limit_per_class: 300
+    preprocessing: nvstreammux 1920x1080 -> nvinfer GPU-Super scale to 640x640 (aspect
+      not preserved), RGB, x/255. Engine/parser parity PASS; strict cross-pipeline
+      crosscheck vs the HF processor FAILS, as does the same check between two CPU
+      references (sensitivity, reports/model-evaluation/rt-detr/diagnostics)
+- id: rf-detr-person-candidate
+  role: detector
+  enabled: true
+  acceptance: candidate_unaccepted
+  evaluation_ref: reports/model-evaluation/rf-detr/result.json
+  checkpoint_path: ./models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx
+  engine_path: ./models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm120.engine
+  revision: Roboflow/rf-detr-small@3bdc465063270f99769da5a1b4c00c68bd2d439d
+  sha256: 13023fe6458a77c2c5f7225480885edd309087ea0bc128a79b0125056a93eefb
+  engine_sha256: 23084d724625f0ad6e7355b8ba36d514512f1af59cb4213e6a95df636a28fdd3
+  source_repository: https://huggingface.co/Roboflow/rf-detr-small
+  license_ref: Apache-2.0 declared in HF metadata and upstream roboflow/rf-detr; see
+    THIRD_PARTY.md
+  class_map:
+    0: person
+  input_shape:
+  - 1
+  - 3
+  - 1080
+  - 1920
+  precision: FP32
+  parser_revision: perception/candidates/rf_detr/parser@9f3574335ab4
+  runtime_profile:
+    infer_config_path: ./perception/candidates/rf_detr/deepstream/cam01_rf_detr_1080p_infer.txt
+    infer_config_sha256: 0fc2b840ce2ea8c9a965872124e99342b43f5e2940e4f996977adeb3015f4206
+    parser:
+      kind: custom_library
+      name: rfdetr-person
+      library_path: ./perception/candidates/rf_detr/parser/libnvds_infercustomparser_rfdetr.so
+      library_sha256: 9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64
+      function: NvDsInferParseCustomRfDetrPerson
+    person_class_id: 0
+    person_label: person
+    pipeline_width: 1920
+    pipeline_height: 1080
+    source_geometry_policy: require_exact
+    detection_limit_per_class: 300
+    preprocessing: full 1920x1080 RGB x/255 into the graph; HF bilinear resize + ImageNet
+      mean/std inside the ONNX graph
+tracker:
+  name: NVIDIA NvDCF multi-object tracker
+  enabled: true
+  revision: deepstream-9.2-nvdcf-perf-13662e73754e
+  config_path: ./perception/deepstream/reference/config_tracker_NvDCF_perf.yml
+  sha256: 13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27

@@ -1,0 +1,16 @@
+Starting backend.app.main:app on http://127.0.0.1:8774 (local artifacts only)
+INFO:     Started server process [13279]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8774 (Press CTRL+C to quit)
+INFO:     127.0.0.1:35294 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35308 - "GET /api/v1/cameras/cam-01/count-history?run_id=fc09b60d-aadb-4b14-9e09-36e950be4231&epoch=a0bdfe4a-22bb-4667-8d35-c4cf1c4fd409 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35318 - "POST /api/v1/demo/start?replay_mode=unpaced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35328 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35334 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35348 - "POST /api/v1/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35362 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13279]

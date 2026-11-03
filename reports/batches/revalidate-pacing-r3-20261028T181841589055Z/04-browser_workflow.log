@@ -1,0 +1,36 @@
+PASS real_backend_served_on_socket 
+PASS dashboard_live_connection 
+PASS start_control_reaches_running {"status": "RUNNING :: Running"}
+PASS real_live_count_rendered {"sampled_texts": ["17"]}
+PASS uncalibrated_entries_exits_unknown_not_zero {"entries": null, "exits": null}
+PASS history_chart_renders_during_run {"samples": 2, "epoch": "d9329fc2-7dc8-4351-931a-38f0ef43f7d3", "scope": "live", "line_paths": 2, "label": "Current epoch d9329fc2"}
+PASS clean_eof_shown_without_stop {"text": "Source ended \u00b7 clean EOF (history complete)"}
+PASS final_bucket_displayed_after_eof_without_stop {"samples": 48, "epoch": "d9329fc2-7dc8-4351-931a-38f0ef43f7d3", "scope": "live", "line_paths": 2, "label": "Current epoch d9329fc2"}
+PASS stale_count_shown_unavailable_not_zero {"text": "Unavailable", "run_status": "RUNNING :: Running"}
+PASS ui_history_matches_api {"api_samples": 48}
+PASS ui_detects_backend_loss {"connection": ["Reconnecting"]}
+PASS backend_restart_served 
+PASS ui_reconnects_live 
+PASS old_epoch_history_labelled_not_live_after_restart {"samples": 48, "epoch": "d9329fc2-7dc8-4351-931a-38f0ef43f7d3", "scope": "previous", "line_paths": 2, "label": "Previous epoch d9329fc2 \u00b7 not live"}
+PASS restart_reconciled_run_not_running {"run_status": "IDLE"}
+PASS new_epoch_history_is_current {"samples": 1, "epoch": "4403aabd-956c-44f9-b8c6-4b4c52ecb1d3", "scope": "live", "line_paths": 0, "label": "Current epoch 4403aabd"}
+PASS stop_control_reaches_stopped {"status": "STOPPED :: Stopped"}
+PASS stopped_epoch_history_not_live {"samples": 2, "epoch": "4403aabd-956c-44f9-b8c6-4b4c52ecb1d3", "scope": "previous", "line_paths": 2, "label": "Previous epoch 4403aabd \u00b7 not live"}
+PASS exact_container_absent_after_ui_stop {"container": "aegis-cam-01-4403aabd-956c-44f9-b8c6-4b4c52ecb1d3"}
+PASS reset_returns_idle {"status": "IDLE :: Idle"}
+PASS reset_clears_history_display {"samples": 0, "epoch": "", "scope": "none", "line_paths": 0, "label": "Source time \u00b7 0.5 s buckets"}
+PASS fault_backend_served 
+PASS fault_run_running 
+PASS stop_failed_presented {"status": "STOP_FAILED :: Stop Failed"}
+PASS start_disabled_while_cleanup_unconfirmed 
+PASS stop_failed_visible_at_all_tested_widths {"390x844": true, "1280x800": true, "1440x900": true, "1920x1080": true}
+PASS stop_not_confirmed_reason_visible 
+PASS cleanup_retry_reaches_stopped {"status": "STOPPED :: Stopped"}
+PASS cleanup_alert_resolved_after_retry {"alerts": [["Camera stop not confirmed", "RESOLVED"]]}
+PASS no_leftover_cam01_containers {"names": []}
+{
+ "result": "PASS",
+ "run_dir": "reports\\validation\\browser-workflow-cam01-20261028T182204483248Z",
+ "failed": [],
+ "errors": 0
+}

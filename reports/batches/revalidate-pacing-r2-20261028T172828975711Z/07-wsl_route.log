@@ -1,0 +1,35 @@
+PASS install_wsl_toolchain_exit_0 {"tail": ["  ffmpeg: ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers", "Next: source /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.install/wsl/env.sh && bash scripts/setup/setup.
+PASS setup_exit_0 {"tail": ["", "No model, footage, container image, or engine readiness is implied. Install those", "artifacts explicitly and run scripts/offline-test/run.sh before an offline demo."]}
+PASS wsl_pytest_exit_0 {"tail": ["", "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html", "271 passed, 2 skipped, 1 warning in 61.40s (0:01:01)"]}
+PASS validate_config_exit_0 {"tail": ["  }", " }", "}"]}
+PASS port_8774_free_before_1 {"listeners": ""}
+PASS backend_served_from_wsl 
+PASS launch_message_matches_route {"log_head": "Starting backend.app.main:app on http://127.0.0.1:8774 (local artifacts only)\nINFO:     Started server process [12252]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete"}
+PASS readiness_ok {"status": 200, "checks": {"status": "ready", "checks": [{"name": "configuration", "ready": true, "detail": "Validated revision 8655c4756709"}, {"name": "persistence", "ready": true, "detail": "SQLite query succeeded with foreign keys and W
+PASS start_running {"status": 200, "run_status": "RUNNING"}
+PASS provenance_artifacts_match {"checks": [["detector.checkpoint", "MATCH"], ["detector.engine", "MATCH"], ["detector.infer_config", "MATCH"], ["tracker.config", "MATCH"], ["pipeline.wrapper", "MATCH"], ["pipeline.extractor", "MATCH"], ["pipeline.capability_probe", "MATC
+PASS real_gpu_counts_via_docker_from_wsl {"visible_count": 20, "source_position_s": 5.472133333}
+PASS telemetry_scope_wsl2 {"scope": "wsl2", "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"}
+PASS evidence_marker_with_wsl_ffmpeg {"status": 201}
+PASS evidence_image_served {"bytes": 298845}
+PASS clean_eof {"outcome": "CLEAN_EOF"}
+PASS history_persisted_all_frames {"frames": 710, "samples": 48}
+PASS stop_confirmed 
+PASS exact_container_absent_after_stop {"container": "aegis-cam-01-a0bdfe4a-22bb-4667-8d35-c4cf1c4fd409"}
+PASS backend_1_terminated 
+PASS port_8774_free_before_2 {"listeners": ""}
+PASS backend_restarted_same_database 
+PASS history_survives_restart {"samples": 48}
+PASS second_start_running {"status": 200, "run_status": "RUNNING", "error": null}
+PASS documented_reset_returns_idle {"code": 0, "tail": ["API acknowledged run-scoped reset for '72dca0cd-4d58-4690-acca-7a62aee15efb' (HTTP 200).", "This script deleted no files; source footage, models, configs, and calibration were not touched directly."]}
+PASS reset_released_container {"container": "aegis-cam-01-7e061b5c-cddd-4e33-bdae-6e77ff21a76b"}
+PASS backend_2_terminated 
+PASS run_demo_strict_preflight_and_ready {"log_tail": ["Logs: /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/demo/20261028T173907Z", "Press Ctrl+C to stop.", "Readiness does not prove detections, analytics, four-feed capacity, or offline acceptance."]}
+PASS run_demo_terminated {"children": ["13810"]}
+PASS no_owned_container_left {"names": []}
+PASS validator_completed_without_exception 
+{
+ "result": "PASS",
+ "run_dir": "reports\\validation\\wsl-route-20261028T173541051820Z",
+ "failed": []
+}

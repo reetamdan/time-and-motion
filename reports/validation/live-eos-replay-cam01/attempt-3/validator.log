@@ -1,0 +1,15 @@
+2026-10-26 16:50:30,054 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/start "HTTP/1.1 200 OK"
+2026-10-26 16:50:30,054 INFO cctv.validation.live_eos: first_start_http_ok: PASS
+2026-10-26 16:50:30,056 INFO cctv.validation.live_eos: first_run_active: PASS
+2026-10-26 16:50:30,056 INFO cctv.validation.live_eos: first_epoch_present: FAIL
+2026-10-26 16:50:30,056 ERROR cctv.validation.live_eos: lifecycle: First start did not return a usable cam-01 epoch
+Traceback (most recent call last):
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\validate_live_eos.py", line 713, in main
+    run_lifecycle(client, checks, observed, artifacts, docker, stale_after_ms)
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\validate_live_eos.py", line 393, in run_lifecycle
+    raise RuntimeError("First start did not return a usable cam-01 epoch")
+RuntimeError: First start did not return a usable cam-01 epoch
+2026-10-26 16:50:30,084 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/stop "HTTP/1.1 200 OK"
+2026-10-26 16:50:30,295 INFO cctv.validation.live_eos: testclient_shutdown_completed: PASS
+2026-10-26 16:50:30,295 INFO cctv.validation.live_eos: adapter_sessions_disposed: PASS
+2026-10-26 16:50:30,437 INFO cctv.validation.live_eos: final_exact_epoch_containers_absent: FAIL

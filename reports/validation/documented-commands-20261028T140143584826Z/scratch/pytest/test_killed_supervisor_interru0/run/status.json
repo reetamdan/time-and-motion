@@ -1,0 +1,27 @@
+{
+  "started_utc": "2026-10-28T14:03:02.527361+00:00",
+  "supervisor_pid": 14912,
+  "parent_pid": 14608,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "first",
+      "started_utc": "2026-10-28T14:03:02.527872+00:00",
+      "available_at_start_mib": 7548.0,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_killed_supervisor_interru0\\step.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_killed_supervisor_interru0\\first.marker"
+      ],
+      "pid": 22572
+    }
+  ],
+  "state": "running",
+  "host_available_min_mib": 7548.0
+}

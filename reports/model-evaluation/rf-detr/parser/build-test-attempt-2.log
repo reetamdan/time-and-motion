@@ -1,0 +1,21 @@
+In file included from /opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer_custom_impl.h:121,
+                 from nvdsinfer_customparser_rfdetr.cpp:4:
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::d' [-Wmissing-field-initializers]
+  303 |     NvDsInferDims dims = {0};
+      |                            ^
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::numElements' [-Wmissing-field-initializers]
+In file included from /opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer_custom_impl.h:121,
+                 from parser_test.cpp:1:
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::d' [-Wmissing-field-initializers]
+  303 |     NvDsInferDims dims = {0};
+      |                            ^
+/opt/nvidia/deepstream/deepstream-9.2/includes/nvdsinfer.h:303:28: warning: missing initializer for member 'NvDsInferDims::numElements' [-Wmissing-field-initializers]
+RF-DETR person parser: expected network 3x512x512 or 3x1080x1920
+RF-DETR person parser: invalid type/buffer/dimensions for logits numDims=2 numElements=24000
+-field-initializers -fPIC -shared -o libnvds_infercustomparser_rfdetr.so nvdsinfer_customparser_rfdetr.cpp
+g++ -I/opt/nvidia/deepstream/deepstream-9.2/includes -I/usr/local/cuda/include -std=c++17 -O2 -Wall -Wextra -Werror -Wno-error=missing-field-initializers -fPIC -o parser_test parser_test.cpp -L. -lnvds_infercustomparser_rfdetr -Wl,-rpath,'$ORIGIN'
+PASS: RF-DETR parser person slot 1, strict threshold, geometry, order, top-k, no-NMS, dimensions and class mapping
+0000000000001d30 T NvDsInferParseCustomRfDetrPerson
+f9f00d3b8ac6e58cb6a2247d6349351be365de7a9711026d9a01c45c35a91278  nvdsinfer_customparser_rfdetr.cpp
+9f3574335ab4fdb9825778e1d39ef54595f67dc00796a062588250300d6d6a64  libnvds_infercustomparser_rfdetr.so
+7b8d5fc5eb4f1d821dcea10bcbe4d2d5df3afd1a782e312a89925e26867cb4ee  parser_test.cpp

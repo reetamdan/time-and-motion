@@ -1,0 +1,10 @@
+COMMAND: ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\reset-demo.ps1", "-RunId", "not-the-active-run"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv
+
+Reset target mismatch: requested 'not-the-active-run', active ''; no reset was sent
+At C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\reset-demo.ps1:21 char:5
++     throw "Reset target mismatch: requested '$RunId', active '$($Snap ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Reset target mi... reset was sent:String) [], RuntimeException
+    + FullyQualifiedErrorId : Reset target mismatch: requested 'not-the-active-run', active ''; no reset was sent
+ 

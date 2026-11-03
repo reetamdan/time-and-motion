@@ -1,0 +1,47 @@
+{"model": "trafficcamnet-smoke", "run": 1, "run_status": "RUNNING", "start_seconds": 8.147, "wall_to_end_s": 2.297, "frames_persisted": 710, "consumer_fps": 309.1, "visible_mean_of_buckets": 17.12, "vram_peak_mib": 1002.0, "person_class_id": 2, "acceptance": "provisional_smoke"}
+{"model": "trafficcamnet-smoke", "run": 2, "run_status": "RUNNING", "start_seconds": 5.003, "wall_to_end_s": 2.234, "frames_persisted": 710, "consumer_fps": 317.8, "visible_mean_of_buckets": 17.13, "vram_peak_mib": 1002.0, "person_class_id": 2, "acceptance": "provisional_smoke"}
+{"model": "trafficcamnet-smoke", "run": 3, "run_status": "RUNNING", "start_seconds": 5.055, "wall_to_end_s": 2.297, "frames_persisted": 710, "consumer_fps": 309.1, "visible_mean_of_buckets": 17.13, "vram_peak_mib": 1002.0, "person_class_id": 2, "acceptance": "provisional_smoke"}
+{"model": "rt-detr-person-candidate", "run": 1, "run_status": "RUNNING", "start_seconds": 5.903, "wall_to_end_s": 5.469, "frames_persisted": 710, "consumer_fps": 129.8, "visible_mean_of_buckets": 68.54, "vram_peak_mib": 1104.0, "person_class_id": 0, "acceptance": "candidate_unaccepted"}
+{"model": "rt-detr-person-candidate", "run": 2, "run_status": "RUNNING", "start_seconds": 5.649, "wall_to_end_s": 5.531, "frames_persisted": 710, "consumer_fps": 128.4, "visible_mean_of_buckets": 68.49, "vram_peak_mib": 1104.0, "person_class_id": 0, "acceptance": "candidate_unaccepted"}
+{"model": "rt-detr-person-candidate", "run": 3, "run_status": "RUNNING", "start_seconds": 5.685, "wall_to_end_s": 5.328, "frames_persisted": 710, "consumer_fps": 133.3, "visible_mean_of_buckets": 68.28, "vram_peak_mib": 1104.0, "person_class_id": 0, "acceptance": "candidate_unaccepted"}
+{"model": "rf-detr-person-candidate", "run": 1, "run_status": "RUNNING", "start_seconds": 5.948, "wall_to_end_s": 5.969, "frames_persisted": 710, "consumer_fps": 118.9, "visible_mean_of_buckets": 39.48, "vram_peak_mib": 1220.0, "person_class_id": 0, "acceptance": "candidate_unaccepted"}
+{"model": "rf-detr-person-candidate", "run": 2, "run_status": "RUNNING", "start_seconds": 5.682, "wall_to_end_s": 6.218, "frames_persisted": 710, "consumer_fps": 114.2, "visible_mean_of_buckets": 39.48, "vram_peak_mib": 1220.0, "person_class_id": 0, "acceptance": "candidate_unaccepted"}
+{"model": "rf-detr-person-candidate", "run": 3, "run_status": "RUNNING", "start_seconds": 5.737, "wall_to_end_s": 5.921, "frames_persisted": 710, "consumer_fps": 119.9, "visible_mean_of_buckets": 39.48, "vram_peak_mib": 1220.0, "person_class_id": 0, "acceptance": "candidate_unaccepted"}
+{
+ "trafficcamnet-smoke": {
+  "selection_mode": "provisional_smoke",
+  "complete_runs": 3,
+  "start_seconds_median": 5.055,
+  "consumer_fps_median": 309.1,
+  "vram_peak_mib_max": 1002.0,
+  "visible_mean_range": [
+   17.12,
+   17.13
+  ],
+  "all_released": true
+ },
+ "rt-detr-person-candidate": {
+  "selection_mode": "candidate_evaluation",
+  "complete_runs": 3,
+  "start_seconds_median": 5.685,
+  "consumer_fps_median": 129.8,
+  "vram_peak_mib_max": 1104.0,
+  "visible_mean_range": [
+   68.28,
+   68.54
+  ],
+  "all_released": true
+ },
+ "rf-detr-person-candidate": {
+  "selection_mode": "candidate_evaluation",
+  "complete_runs": 3,
+  "start_seconds_median": 5.737,
+  "consumer_fps_median": 118.9,
+  "vram_peak_mib_max": 1220.0,
+  "visible_mean_range": [
+   39.48,
+   39.48
+  ],
+  "all_released": true
+ }
+}

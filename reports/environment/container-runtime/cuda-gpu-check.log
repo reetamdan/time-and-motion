@@ -1,0 +1,42 @@
+Unable to find image 'nvidia/cuda:13.2.0-base-ubuntu24.04' locally
+13.2.0-base-ubuntu24.04: Pulling from nvidia/cuda
+314a2f652b6c: Pulling fs layer
+33dea4171410: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+01d7766a2e4a: Pulling fs layer
+2761e0c7dc1e: Pulling fs layer
+52ab058d967b: Pulling fs layer
+2761e0c7dc1e: Download complete
+314a2f652b6c: Download complete
+4f4fb700ef54: Download complete
+52ab058d967b: Download complete
+33dea4171410: Download complete
+01d7766a2e4a: Download complete
+01d7766a2e4a: Pull complete
+52ab058d967b: Pull complete
+2761e0c7dc1e: Pull complete
+314a2f652b6c: Pull complete
+4f4fb700ef54: Pull complete
+33dea4171410: Pull complete
+Digest: sha256:36cccda4bebc3b0b1ebe1907ead8169cf144d45df890be871b36b304cf91145a
+Status: Downloaded newer image for nvidia/cuda:13.2.0-base-ubuntu24.04
+Sat Oct 24 13:37:53 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.47        CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5070 ...    On  |   00000000:01:00.0  On |                  N/A |
+| N/A   58C    P8             10W /  123W |    1221MiB /  12227MiB |     15%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+

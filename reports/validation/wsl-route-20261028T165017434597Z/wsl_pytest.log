@@ -1,0 +1,13 @@
+$ rm -rf /tmp/aegis-wsl-route-pytest && .venv-wsl/bin/python -m pytest -q -p no:cacheprovider --basetemp /tmp/aegis-wsl-route-pytest tests perception/candidates
+
+........................................................................ [ 26%]
+.............................s.......................................... [ 52%]
+......................................................s................. [ 79%]
+........................................................                 [100%]
+=============================== warnings summary ===============================
+.venv-wsl/lib/python3.12/site-packages/starlette/testclient.py:37
+  /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/.venv-wsl/lib/python3.12/site-packages/starlette/testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+270 passed, 2 skipped, 1 warning in 59.87s

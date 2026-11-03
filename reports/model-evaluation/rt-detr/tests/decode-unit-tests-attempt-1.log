@@ -1,0 +1,59 @@
+test_box_is_clipped_to_source (test_decode.DecodeTests.test_box_is_clipped_to_source) ... FAIL
+test_invalid_shapes_topk_and_nonfinite_fail (test_decode.DecodeTests.test_invalid_shapes_topk_and_nonfinite_fail) ... ok
+test_no_nms_duplicate_boxes_remain (test_decode.DecodeTests.test_no_nms_duplicate_boxes_remain) ... ok
+test_non_square_direct_resize_uses_independent_scales (test_decode.DecodeTests.test_non_square_direct_resize_uses_independent_scales) ... ok
+test_person_slot_only_and_source_mapping (test_decode.DecodeTests.test_person_slot_only_and_source_mapping) ... FAIL
+test_score_order_query_tie_and_top_k (test_decode.DecodeTests.test_score_order_query_tie_and_top_k) ... ok
+test_threshold_is_inclusive (test_decode.DecodeTests.test_threshold_is_inclusive) ... ok
+test_extremes_are_stable (test_decode.SigmoidTests.test_extremes_are_stable) ... ok
+
+======================================================================
+FAIL: test_box_is_clipped_to_source (test_decode.DecodeTests.test_box_is_clipped_to_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\perception\candidates\rt_detr\tests\test_decode.py", line 78, in test_box_is_clipped_to_source
+    np.testing.assert_allclose(result[0]["bbox_xyxy_pixels"], [0, 0, 128, 128], rtol=0, atol=1e-6)
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.venv\Lib\site-packages\numpy\testing\_private\utils.py", line 1780, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.venv\Lib\site-packages\numpy\testing\_private\utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=0, atol=1e-06
+
+Mismatched elements: 2 / 4 (50%)
+Mismatch at indices:
+ [2]: 128.00000190734863 (ACTUAL), 128 (DESIRED)
+ [3]: 128.00000190734863 (ACTUAL), 128 (DESIRED)
+Max absolute difference among violations: 1.90734863e-06
+Max relative difference among violations: 1.49011612e-08
+ ACTUAL: array([  0.      ,   0.      , 128.000002, 128.000002])
+ DESIRED: array([  0,   0, 128, 128])
+
+======================================================================
+FAIL: test_person_slot_only_and_source_mapping (test_decode.DecodeTests.test_person_slot_only_and_source_mapping)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\perception\candidates\rt_detr\tests\test_decode.py", line 39, in test_person_slot_only_and_source_mapping
+    np.testing.assert_allclose(detection["bbox_xyxy_pixels"], [576, 324, 1344, 756], rtol=0, atol=1e-5)
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.venv\Lib\site-packages\numpy\testing\_private\utils.py", line 1780, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\.venv\Lib\site-packages\numpy\testing\_private\utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=0, atol=1e-05
+
+Mismatched elements: 4 / 4 (100%)
+Mismatch at indices:
+ [0]: 767.999997138977 (ACTUAL), 576 (DESIRED)
+ [1]: 431.9999983906746 (ACTUAL), 324 (DESIRED)
+ [2]: 1152.000002861023 (ACTUAL), 1344 (DESIRED)
+ [3]: 648.0000016093254 (ACTUAL), 756 (DESIRED)
+Max absolute difference among violations: 191.99999714
+Max relative difference among violations: 0.33333333
+ ACTUAL: array([ 767.999997,  431.999998, 1152.000003,  648.000002])
+ DESIRED: array([ 576,  324, 1344,  756])
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.162s
+
+FAILED (failures=2)

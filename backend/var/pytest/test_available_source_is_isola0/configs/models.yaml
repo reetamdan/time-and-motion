@@ -1,0 +1,37 @@
+# No evaluated baseline is selected. Null revisions are intentional and reported unavailable.
+schema_version: 1
+selected_model: null
+models:
+  - id: rt-detr-person-candidate
+    role: detector
+    enabled: false
+    checkpoint_path: ./models/rt-detr-person.onnx
+    engine_path: ./models/rt-detr-person.engine
+    revision: null
+    sha256: null
+    engine_sha256: null
+    source_repository: null
+    license_ref: null
+    class_map: {0: person}
+    input_shape: []
+    precision: null
+    parser_revision: null
+  - id: yolo-person-candidate
+    role: detector
+    enabled: false
+    checkpoint_path: ./models/yolo-person.onnx
+    engine_path: ./models/yolo-person.engine
+    revision: null
+    sha256: null
+    engine_sha256: null
+    source_repository: null
+    license_ref: null
+    class_map: {0: person}
+    input_shape: []
+    precision: null
+    parser_revision: null
+tracker:
+  name: NVIDIA multi-object tracker
+  enabled: false
+  revision: null
+  config_path: ./models/tracker-config.yml

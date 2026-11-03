@@ -1,0 +1,98 @@
+
+===============================
+   DeepStreamSDK 9.2
+===============================
+
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and conditions
+of the License Agreement. The License Agreement is located at
+/opt/nvidia/deepstream/deepstream/LicenseAgreement.pdf. If you do not agree
+to the terms and conditions of the License Agreement do not use the software.
+
+
+=============================
+== Triton Inference Server ==
+=============================
+
+NVIDIA Release 26.03 (build 283962264)
+Triton Server Version 2.67.0
+
+Copyright (c) 2018-2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+Initializing GStreamer Backend...!
+Plugin sample_signal_handler initialized
+Plugin sample_video_feeder initialized
+Plugin add_message_meta_probe initialized
+Plugin measure_fps_probe initialized
+Plugin kitti_dump_probe initialized
+Plugin measure_latency_probe initialized
+Plugin sample_video_probe initialized
+Plugin resnet_tensor_parser initialized
+Plugin sample_video_receiver initialized
+Plugin lidar_feeder initialized
+Plugin ensemble_render initialized
+Plugin smart_recording_signal initialized
+Plugin smart_recording_action initialized
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:43.957: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstresindvd.so': libdvdnav.so.4: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:43.960: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdvdread.so': libdvdread.so.8: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:43.992: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstlame.so': libmp3lame.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.401: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstsndfile.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.417: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstfluidsynthmidi.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.431: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstopenmpt.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.449: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstdtsdec.so': libdca.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.453: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstpulseaudio.so': libFLAC.so.12: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.453: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmpg123.so': libmpg123.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.464: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstspandsp.so': libjbig.so.0: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.464: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmsdk.so': libmfx.so.1: cannot open shared object file: No such file or directory
+
+(gst-plugin-scanner:168): GStreamer-WARNING **: 12:44:44.497: Failed to load plugin '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstmplex.so': libmjpegutils-2.1.so.0: cannot open shared object file: No such file or directory
+Add Element ... batch_capture-mux-1
+Add Element ... batch_capture-source-0_0
+LINKING: Source: batch_capture-source-0_0 Target: batch_capture-mux-1
+Add Element ... infer-infer-0
+LINKING: Source: batch_capture-mux-1 Target: infer-infer-0
+Add Element ... track-tracker-0
+LINKING: Source: infer-infer-0 Target: track-tracker-0
+Add Element ... render-sink-0
+LINKING: Source: track-tracker-0 Target: render-sink-0
+gstnvtracker: Loading low-level lib at /opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
+[NvMultiObjectTracker] Initialized
+0:00:01.724108674 [32m   43[00m 0x733fd902da30 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:731:gst_nvinfer_logger:<infer-infer-0>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::deserializeEngineAndBackend() <nvdsinfer_context_impl.cpp:2188> [UID = 1]: deserialized trt engine from :/workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+0:00:01.724167461 [32m   43[00m 0x733fd902da30 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:731:gst_nvinfer_logger:<infer-infer-0>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::generateBackendContext() <nvdsinfer_context_impl.cpp:2291> [UID = 1]: Use deserialized engine model: /workspace/models/trafficcamnet-smoke/resnet18_trafficcamnet_pruned.onnx_b1_gpu0_fp16.engine
+0:00:01.730951049 [32m   43[00m 0x733fd902da30 [36mINFO   [00m [00m             nvinfer gstnvinfer_impl.cpp:348:notifyLoadModelStatus:<infer-infer-0>[00m [UID 1]: Load new model:/workspace/perception/deepstream/cam01_trafficcamnet_smoke_infer.txt sucessfully
+INFO: [Implicit Engine Info]: layers num: 0
+
+Event Thread Enabled...
+Main Loop Running...
+WARNING from nvurisrc_bin_src_elem: No decoder available for type 'audio/mpeg, mpegversion=(int)4, framed=(boolean)true, stream-format=(string)raw, level=(string)2, base-profile=(string)lc, profile=(string)lc, codec_data=(buffer)1190, rate=(int)48000, channels=(int)2'.
+Debug info: ../gst/playback/gsturidecodebin.c(1003): unknown_type_cb (): /GstPipeline:service-maker-cam01-metadata/GstDsNvUriSrcBin:batch_capture-source-0_0/GstURIDecodeBin:nvurisrc_bin_src_elem
+Opening in BLOCKING MODE 
+
+End of file reached on stdin.
+*** Inside cb_newpad name=video/x-raw
+nvstreammux: Successfully handled EOS for source_id=0
+End of stream
+Main Loop Exited...
+
+(python3:43): GLib-CRITICAL **: 12:45:10.642: Source ID 2 was not found when attempting to remove it
+Pipeline service-maker-cam01-metadata stopped
+[NvMultiObjectTracker] De-initialized
+Service Maker extraction complete: frames=710 objects=12469 clean_eos=True output=/workspace/backend/var/perception/cam-01/9b7e31b4-3a04-491c-b123-43f032bbd1a2.jsonl

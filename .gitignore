@@ -1,74 +1,24 @@
-# Local environments and secrets
-.env
+# Rebuildable local environments and toolchains (recreated by scripts/setup and README §2)
 .venv/
 .venv-*/
 node_modules/
+.install/
+
+# Temporary and cache folders
+.tmp/
+.pytest_tmp*/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+# Copies of whole venvs/node_modules made inside validation runs (scripts/validate_documented_commands.py)
+reports/**/scratch/venv-*/
+reports/**/scratch/frontend/node_modules/
+
+# Secrets and key material (MediaMTX writes a throwaway self-signed auto.crt/auto.key)
+.env
 *.key
 *.pem
 *.crt
-# MediaMTX writes a self-signed auto.crt/auto.key into its working directory
-auto.crt
-auto.key
-
-# Local toolchains, export environments and scratch space (recreated by scripts/setup)
-.install/
-.tmp/
-.pytest_tmp*/
-
-# Python
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Build and runtime state
-frontend/dist/
-backend/var/
-*.log
-
-# Footage, derived footage and locally built/downloaded model artifacts.
-# Provenance and SHA-256 identities stay committed (SHA256SUMS, manifests, configs/models.yaml,
-# THIRD_PARTY.md); the binaries themselves are restored locally (see README).
-data/demo/*.mp4
-data/demo/*.mkv
-demo/**/*.mp4
-demo/**/*.mkv
-models/**/*.engine
-models/**/*.onnx
-models/**/*.pt
-models/**/*.pth
-models/**/*.safetensors
-models/**/*.bin
-# Raw frames extracted from the footage (rebuilt by scripts/evaluation/build_annotation_package.py)
-data/annotations/**/frames/
-# Container-side Python deps (rebuilt by scripts/setup/install-service-maker-deps.sh)
-perception/**/.deps/
-# Parser unit-test binaries (built by the parser Makefiles). The parser .so libraries stay
-# committed because configs/models.yaml pins their SHA-256.
-perception/candidates/*/parser/parser_test
-
-# Evidence under reports/: summaries (json/md/txt/csv/yaml) and UI screenshots are kept;
-# bulky raw data, footage-derived media, databases and copied environments stay local.
-reports/**/scratch/
-reports/**/*.jsonl
-reports/**/*.db
-reports/**/*.db-wal
-reports/**/*.db-shm
-reports/**/*.sqlite
-reports/**/*.f32le
-reports/**/*.npz
-reports/**/*.npy
-reports/**/*.mp4
-reports/**/*.mkv
-reports/**/*.ts
-reports/**/*.jpg
-reports/**/*.jpeg
-reports/model-evaluation/**/frames/
-reports/model-evaluation/**/frame_*.png
-reports/**/*.engine
-reports/**/*.onnx
-reports/**/*.exe
-reports/**/*.dll
-reports/**/*.whl
 
 # OS/editor
 .DS_Store

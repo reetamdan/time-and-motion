@@ -1,0 +1,3 @@
+COMMAND: ["C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.install\\rt-detr-export\\venv\\Scripts\\python.exe", "-m", "pip", "check"]
+humanfriendly 10.0 requires pyreadline3, which is not installed.
+torch 2.6.0+cpu requires setuptools, which is not installed.

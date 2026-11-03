@@ -1,0 +1,33 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [32356]
+INFO:     Waiting for application startup.
+docker stop aegis-cam-01-545a77fa-5951-4c7d-bc39-f95580572585 failed: {'command': ['stop', '--time', '5', 'aegis-cam-01-545a77fa-5951-4c7d-bc39-f95580572585'], 'returncode': 1, 'timed_out': False, 'stderr': 'Error response from daemon: No such container: aegis-cam-01-545a77fa-5951-4c7d-bc39-f95580572585', 'error': None}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8766 (Press CTRL+C to quit)
+INFO:     127.0.0.1:64623 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 50302) - "WebSocket /api/v1/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50303 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63838 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49319 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63756 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60111 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60111 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63756 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63756 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63756 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51706 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52625 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "POST /api/v1/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52625 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51706 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62131 - "GET /api/v1/cameras/cam-01/count-history HTTP/1.1" 200 OK

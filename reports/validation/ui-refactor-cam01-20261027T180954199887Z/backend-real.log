@@ -1,0 +1,178 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [24952]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8771 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51386 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /assets/index-vKa9rqSp.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /assets/index-J9IwWIGT.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /assets/plus-jakarta-sans-latin-wght-normal-eXO_dkmS.woff2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 60930) - "WebSocket /api/v1/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61936 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52976 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /aegis.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52976 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52976 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52976 - "GET /assets/spline-sans-mono-latin-400-normal-mUpA6Mve.woff2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52976 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49671 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49671 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "POST /api/v1/demo/start?replay_mode=paced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49671 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50653 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49671 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50653 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55780 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55781 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55780 - "GET /assets/CameraInspector-D82IKoDl.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50653 - "GET /assets/file-image-BzrWtJv8.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /assets/chart-CRGEhu46.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?epoch=b9144e02-5a59-4275-a060-8c9775222fbf&window=range&from_source_s=0.066733333&to_source_s=1.5015&limit=10000&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "POST /api/v1/cameras/cam-01/evidence-markers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56214 - "GET /api/v1/cameras/cam-01/count-history?limit=2400&max_points=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /assets/Evidence-BDZT5f_D.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/v1/evidence/d0e946b9-f479-4a9a-ba53-b07044683978 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:60379 - "GET /api/v1/evidence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50653 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50653 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56214 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57253 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49671 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51253 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49851 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51253 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59234 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     connection closed
+INFO:     127.0.0.1:51292 - "GET /assets/index-vKa9rqSp.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52320 - "GET /assets/index-J9IwWIGT.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60967 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59250 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 65206) - "WebSocket /api/v1/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:60967 - "GET /assets/plus-jakarta-sans-latin-wght-normal-eXO_dkmS.woff2 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52320 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52320 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59250 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /assets/spline-sans-mono-latin-400-normal-mUpA6Mve.woff2 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /health/ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /assets/Floors-BgbM-Wc0.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /assets/chart-CRGEhu46.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51292 - "GET /assets/Analytics-BQEPVliG.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-26T18%3A10%3A46.366Z&to=2026-10-27T18%3A10%3A46.366Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /assets/Alerts-MtscDjPA.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /assets/clock-3-0037teA5.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /assets/Evidence-BDZT5f_D.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60967 - "GET /assets/file-image-BzrWtJv8.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51292 - "GET /api/v1/evidence/d0e946b9-f479-4a9a-ba53-b07044683978 HTTP/1.1" 206 Partial Content
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:60967 - "GET /assets/System-x1dC49eK.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59250 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/runs/f1434632-817a-4ff6-bda8-819765c3f3f2/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59250 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-26T18%3A10%3A51.187Z&to=2026-10-27T18%3A10%3A51.187Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/runs/f1434632-817a-4ff6-bda8-819765c3f3f2/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60967 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:58529 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-26T18%3A10%3A56.255Z&to=2026-10-27T18%3A10%3A56.255Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57251 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51909 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/runs/f1434632-817a-4ff6-bda8-819765c3f3f2/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-26T18%3A11%3A01.289Z&to=2026-10-27T18%3A11%3A01.289Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58529 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/runs/f1434632-817a-4ff6-bda8-819765c3f3f2/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58491 - "GET /api/v1/cameras/cam-01/preview HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50097 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-26T18%3A11%3A06.323Z&to=2026-10-27T18%3A11%3A06.323Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62174 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63271 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/runs/f1434632-817a-4ff6-bda8-819765c3f3f2/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63271 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/analytics/history?metric=occupancy&from=2026-10-26T18%3A11%3A11.397Z&to=2026-10-27T18%3A11%3A11.397Z&limit=500 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/evidence?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/evidence/f3813c24-2ae3-424f-8e3d-9df95394bafa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63271 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53814 - "GET /api/v1/system/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/runs/f1434632-817a-4ff6-bda8-819765c3f3f2/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53814 - "GET /api/v1/system/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/evidence?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /api/v1/alerts?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58030 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61552 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61553 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK

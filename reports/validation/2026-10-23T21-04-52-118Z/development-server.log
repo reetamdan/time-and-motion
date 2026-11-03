@@ -1,0 +1,103 @@
+
+  VITE v8.3.5  ready in 185 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+2:34:52 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+INFO:     Started server process [34384]
+INFO:     Waiting for application startup.
+2:34:53 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:53 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:54 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:54 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:55 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:55 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:56 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:56 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+2:34:57 am [vite] http proxy error: /health/live
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56468 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56469 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56471 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     ('127.0.0.1', 56473) - "WebSocket /api/v1/live" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:56475 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56477 - "POST /api/v1/alerts/11f456e3-a7bb-53cb-bdf2-3683b31379ca/acknowledge HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56479 - "GET /api/v1/analytics/history?metric=occupancy&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59749 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59752 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 59754) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:59755 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:59750 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     ('127.0.0.1', 51069) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:63693 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:53549 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:53550 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52453 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62856 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:59751 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56863 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:55084 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50951 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50952 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 50953) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:50954 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:50949 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     ('127.0.0.1', 64000) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:54159 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:57535 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57536 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:58614 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56266 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:50950 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59211 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:61207 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50516 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     ('127.0.0.1', 50517) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:50518 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:50519 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50514 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     ('127.0.0.1', 50924) - "WebSocket /api/v1/live" [accepted]
+INFO:     127.0.0.1:56724 - "GET /api/v1/facility/snapshot HTTP/1.1" 200 OK
+INFO:     connection open
+INFO:     127.0.0.1:55745 - "GET /api/v1/versions HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:54613 - "GET /api/v1/associations?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56488 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56489 - "GET /health/ready HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:50515 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52226 - "GET /api/v1/system/environment HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:49705 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49707 - "POST /api/v1/demo/reset HTTP/1.1" 200 OK

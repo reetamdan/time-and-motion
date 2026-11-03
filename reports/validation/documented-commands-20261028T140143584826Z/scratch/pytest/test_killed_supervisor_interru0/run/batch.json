@@ -1,0 +1,20 @@
+{
+  "steps": [
+    {
+      "name": "first",
+      "python": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+      "script": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_killed_supervisor_interru0\\step.py",
+      "args": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_killed_supervisor_interru0\\first.marker"
+      ]
+    },
+    {
+      "name": "second",
+      "python": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+      "script": "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_killed_supervisor_interru0\\step.py",
+      "args": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T140143584826Z\\scratch\\pytest\\test_killed_supervisor_interru0\\second.marker"
+      ]
+    }
+  ]
+}

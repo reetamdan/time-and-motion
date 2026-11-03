@@ -1,0 +1,1 @@
+{"info": {"review": {"status": "UNREVIEWED", "reviewer": null}}, "images": [{"id": 1, "frame_number": 1, "sets": ["detection"], "ignore_regions": [], "annotation_status": "COMPLETE"}], "annotations": [{"id": 1000, "image_id": 1, "bbox": [0, 0, 40, 100], "track_id": null}]}

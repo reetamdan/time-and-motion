@@ -1,0 +1,80 @@
+schema_version: 1
+floors:
+- id: floor-1
+  name: "Floor 1 \xB7 Illustrative"
+  level: 1
+  width: 1000
+  height: 600
+  units: viewBox
+  fixture_status: ILLUSTRATIVE_UNCALIBRATED
+  walls:
+  - start:
+    - 20
+    - 20
+    end:
+    - 980
+    - 20
+  - start:
+    - 980
+    - 20
+    end:
+    - 980
+    - 580
+  - start:
+    - 980
+    - 580
+    end:
+    - 20
+    - 580
+  - start:
+    - 20
+    - 580
+    end:
+    - 20
+    - 20
+  - start:
+    - 330
+    - 270
+    end:
+    - 735
+    - 270
+  meters_per_unit: 0.05
+- id: floor-2
+  name: "Floor 2 \xB7 Illustrative"
+  level: 2
+  width: 1000
+  height: 600
+  units: viewBox
+  fixture_status: ILLUSTRATIVE_UNCALIBRATED
+  walls:
+  - start:
+    - 20
+    - 20
+    end:
+    - 980
+    - 20
+  - start:
+    - 980
+    - 20
+    end:
+    - 980
+    - 580
+  - start:
+    - 980
+    - 580
+    end:
+    - 20
+    - 580
+  - start:
+    - 20
+    - 580
+    end:
+    - 20
+    - 20
+  - start:
+    - 435
+    - 80
+    end:
+    - 435
+    - 510
+  meters_per_unit: 0.05

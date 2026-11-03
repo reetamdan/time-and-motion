@@ -1,0 +1,39 @@
+PASS rtsp_test_server_installed {"tail": ["mediamtx ready: v1.21.2"]}
+PASS start_with_live_camera {"run_status": "DEGRADED"}
+FAIL live_counts_from_rtsp {"visible_count": null, "epoch": "7b06f18f-7e3e-42dd-b02b-46fa9bd44282"}
+FAIL live_source_advances_in_real_time {"source_seconds_per_second": 0.0, "analytics_fps": null}
+PASS live_camera_has_no_preview_and_no_evidence {"reason": "Live sources have no local recording buffer in this version; evidence clips need the source file"}
+FAIL evidence_refused_for_live_with_reason {"status": 409}
+PASS publisher_killed 
+PASS loss_visible_unavailable_not_zero {"seconds_after_kill": 3.4, "health": "OFFLINE", "reason": "Live source lost (Source initialization failed: Service Maker produced no valid stdout frame metadata within the startup deadline (malformed_frames=0, reader_error=None)); reconnec
+PASS file_camera_unaffected {"before": 0, "after": null, "outcome": "CLEAN_EOF"}
+PASS reconnect_attempts_back_off {"observed_delays": {"5": 30.0, "6": 30.0, "7": 30.0}, "expected_delays": {"5": 30.0, "6": 30.0, "7": 30.0}, "cap_s": 30.0}
+FAIL reconnects_with_new_epoch_and_counts_resume {"seconds_after_restore": 120.4, "epoch": null, "visible_count": null}
+FAIL reconnect_alert_resolved {"alerts": [["OPEN", "CONTROLLED RTSP (cam01 republished locally): Source initialization failed: Service Maker produced no valid stdout frame "]]}
+FAIL stall_detected_and_released {"seconds_after_freeze": null, "stall_seconds": 10.0, "reason": null, "mechanism": null}
+FAIL stall_recovers_with_new_epoch {"epoch": null}
+PASS publisher_killed_again 
+PASS stop_confirmed {"stopped_with_pending_reconnect": true, "next_reconnect_at": "2026-10-28T17:03:14.672Z"}
+PASS stop_cancels_pending_reconnect {"owned_rows_at_stop": 13, "owned_rows_later": 13, "running": []}
+PASS password_absent_from_api 
+PASS publisher_terminated 
+FAIL rtsp_server_terminated 
+PASS password_absent_from_backend_and_container_logs 
+FAIL extractor_summaries_record_live_source_without_credentials {"summaries": 0}
+PASS all_owned_containers_released {"rows": 13}
+PASS no_owned_container_left []
+{
+ "result": "FAIL",
+ "run_dir": "reports\\validation\\rtsp-controlled-20261028T165356944756Z",
+ "failed": [
+  "live_counts_from_rtsp",
+  "live_source_advances_in_real_time",
+  "evidence_refused_for_live_with_reason",
+  "reconnects_with_new_epoch_and_counts_resume",
+  "reconnect_alert_resolved",
+  "stall_detected_and_released",
+  "stall_recovers_with_new_epoch",
+  "rtsp_server_terminated",
+  "extractor_summaries_record_live_source_without_credentials"
+ ]
+}

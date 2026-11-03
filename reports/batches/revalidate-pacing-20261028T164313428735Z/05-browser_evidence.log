@@ -1,0 +1,26 @@
+PASS backend_served_on_socket 
+PASS capability_matrix_rendered 
+PASS capability_reason_names_missing_calibration {"excerpt": "Per camera\nCAMERA\tCAMERA-LOCAL COUNTS\tIMAGE-LINE CROSSINGS\tFLOOR POSITIONS\tENTRIES / EXITS\ncam-01\nEnabled \u00b7 not running\n\t\ncamera not running\t\nno image_pixels line configu
+PASS artifact_identity_table_all_match {"excerpt": "ARTIFACT\tSTATUS\tEXPECTED (RECORDED)\tCURRENT (RECOMPUTED)\ndetector.checkpoint\nC:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\models\\trafficcamnet-smoke\\resnet18_
+PASS run_started {"status": "RUNNING :: Running"}
+PASS source_time_reached 
+PASS marker_saved_in_drawer {"text": "Saved at source 4.14 s\n\nFrame + clip 0.07\u20137.21 s (keyframe-aligned start). Epoch a50550d6.\n\nOpen in Evidence"}
+PASS api_evidence_bound_to_live_epoch {"evidence": "a50550d6-57f0-43b8-93a3-82bf6fcfb4d9", "camera": "a50550d6-57f0-43b8-93a3-82bf6fcfb4d9"}
+PASS evidence_card_rendered 
+PASS card_camera_epoch_source_time_match_api {"camera": "cam-01", "epoch": "a50550d6-57f0-43b8-93a3-82bf6fcfb4d9", "marked": "4.137466666", "api_marked": 4.137466666}
+PASS snapshot_image_renders_full_resolution {"naturalWidth": 1920, "naturalHeight": 1080}
+PASS clip_metadata_loaded {"duration": 7.140467, "api_span": 7.140467}
+PASS clip_plays {"currentTime": 0.5937}
+PASS only_this_runs_clip_present 
+PASS clip_file_removed 
+PASS missing_clip_shown_unavailable {"text": "Evidence file is missing or empty. Nothing is shown in its place."}
+PASS snapshot_still_renders 
+PASS api_reports_clip_unavailable {"reason": "Evidence file is missing or empty"}
+PASS operator_alert_links_evidence {"href": "#evidence?item=8696a1e2-30cf-4bf7-af39-442d66ffa8b3"}
+PASS run_stopped {"status": "STOPPED :: Stopped"}
+PASS owned_container_absent 
+{
+ "result": "PASS",
+ "checks": 21,
+ "run_dir": "reports\\validation\\browser-evidence-cam01-20261028T164730587092Z"
+}

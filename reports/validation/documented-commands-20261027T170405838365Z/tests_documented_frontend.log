@@ -1,0 +1,16 @@
+COMMAND: ["C:\\Program Files\\nodejs\\npm.CMD", "test"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261027T170405838365Z\scratch\frontend
+
+
+> aegis-ops-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/validation/documented-commands-20261027T170405838365Z/scratch/frontend
+
+
+ Test Files  5 passed (5)
+      Tests  27 passed (27)
+   Start at  22:35:29
+   Duration  669ms (import 72%, transform 22%, tests 5%, worker 1%)
+

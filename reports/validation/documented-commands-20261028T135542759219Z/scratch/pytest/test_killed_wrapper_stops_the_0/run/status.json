@@ -1,0 +1,37 @@
+{
+  "started_utc": "2026-10-28T13:57:03.681848+00:00",
+  "supervisor_pid": 10208,
+  "parent_pid": 6640,
+  "policy": {
+    "floor_instant_mib": 640,
+    "floor_sustained_mib": 1024,
+    "floor_sustained_s": 15,
+    "step_stop_wait_s": 300
+  },
+  "steps": [
+    {
+      "name": "first",
+      "started_utc": "2026-10-28T13:57:03.681848+00:00",
+      "available_at_start_mib": 6795.6,
+      "command": [
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\lib\\supervised_entry.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T135542759219Z\\scratch\\pytest\\test_killed_wrapper_stops_the_0\\step.py",
+        "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\reports\\validation\\documented-commands-20261028T135542759219Z\\scratch\\pytest\\test_killed_wrapper_stops_the_0\\first.marker"
+      ],
+      "pid": 32056,
+      "exit_code": 3221225786,
+      "ended_utc": "2026-10-28T13:57:05.899014+00:00",
+      "run_dir": null,
+      "leftover_containers": "NOT CHECKED (--no-container-check; tests only)",
+      "interrupted_by_supervisor": "supervisor parent pid 6640 disappeared (wrapper killed)"
+    }
+  ],
+  "state": "INTERRUPTED",
+  "host_available_min_mib": 6795.6,
+  "ended_utc": "2026-10-28T13:57:05.911181+00:00",
+  "stop_reason": "supervisor parent pid 6640 disappeared (wrapper killed)",
+  "not_started": [
+    "second"
+  ]
+}

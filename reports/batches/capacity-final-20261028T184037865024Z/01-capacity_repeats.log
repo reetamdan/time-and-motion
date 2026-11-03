@@ -1,0 +1,8 @@
+{"start": "stageA-4feeds-r1", "utc": "2026-10-28T18:41:08.977739+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 7052.7, "guest_cache_release": {"performed": true, "host_available_before_mib": 6361.5, "host_available_after_20s_mib": 7052.7, "stderr": ""}}}
+{"finished": "stageA-4feeds-r1", "status": "PASS", "failures": []}
+{"start": "stageA-4feeds-r2", "utc": "2026-10-28T18:53:53.556484+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 6428.6, "guest_cache_release": {"performed": true, "host_available_before_mib": 5236.8, "host_available_after_20s_mib": 6428.6, "stderr": ""}}}
+{"finished": "stageA-4feeds-r2", "status": "PASS", "failures": []}
+{"start": "stageA-4feeds-r3", "utc": "2026-10-28T19:06:38.025930+00:00", "preflight": {"ok": true, "needed_mib": 3368, "available_mib": 6457.7, "guest_cache_release": {"performed": true, "host_available_before_mib": 5623.3, "host_available_after_20s_mib": 6457.7, "stderr": ""}}}
+[supervised_entry] stop requested by supervisor: interrupting the script for its own cleanup
+{"finished": "stageA-4feeds-r3", "status": "FAIL", "failures": ["bench-01: producer frames cover only 4.7 s of the 600 s window", "bench-01: producer cadence 0.222 fps < 7.2", "bench-01: required measurement unavailable: schedule backlog growth", "bench-02: producer frames cover only 5.3 s of the 600 s window"]}
+{"run_dir": "reports/benchmarks/capacity-repeats-20261028T184042736457Z", "result": "INTERRUPTED", "detail": "2/3 executed steps passed, 9 of 12 planned steps not executed", "ladder": null}

@@ -1,0 +1,21 @@
+schema_version: 1
+environment: production
+host: 127.0.0.1
+port: 8000
+offline: true
+database_path: ./backend/var/cctv.db
+evidence_root: ./backend/var/evidence
+frontend_dist: ./frontend/dist
+serve_frontend: true
+log_level: INFO
+max_page_size: 500
+telemetry:
+  interval_seconds: 2
+  command_timeout_seconds: 8.0
+  success_cache_seconds: 1.5
+  failure_cache_seconds: 10
+  wsl_distro: Ubuntu-22.04
+replay:
+  # paced = demo playback on the source timeline; unpaced = evaluation/benchmark throughput.
+  mode: paced
+  history_sample_seconds: 0.5

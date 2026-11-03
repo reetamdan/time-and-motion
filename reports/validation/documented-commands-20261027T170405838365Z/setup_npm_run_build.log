@@ -1,0 +1,30 @@
+COMMAND: ["C:\\Program Files\\nodejs\\npm.CMD", "run", "build"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261027T170405838365Z\scratch\frontend
+
+
+> aegis-ops-frontend@1.0.0 build
+> tsc --noEmit && vite build
+
+[36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+transforming...
+âœ“ 2530 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              0.64 kB â”‚ gzip:   0.38 kB
+dist/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2     10.25 kB
+dist/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2      11.23 kB
+dist/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2       18.74 kB
+dist/assets/inter-greek-wght-normal-CkhJZR-_.woff2          18.99 kB
+dist/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2   25.96 kB
+dist/assets/inter-latin-wght-normal-Dx4kXJAl.woff2          48.25 kB
+dist/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2      85.06 kB
+dist/assets/index-DSotJ2mU.css                              49.33 kB â”‚ gzip:  11.58 kB
+dist/assets/Analytics-CCpsYaRU.js                           11.46 kB â”‚ gzip:   4.10 kB
+dist/assets/index-Bq9rS5Sg.js                              690.52 kB â”‚ gzip: 203.05 kB
+
+[32mâœ“ built in 4.04s[39m
+[33m[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m

@@ -1,0 +1,29 @@
+PASS rtsp_test_server_installed {"tail": ["mediamtx ready: v1.21.2"]}
+PASS start_with_live_camera {"run_status": "RUNNING"}
+PASS live_counts_from_rtsp {"visible_count": 11, "epoch": "32129959-1339-4b11-8ecd-eff09aee6ce5"}
+PASS live_source_advances_in_real_time {"source_seconds_per_second": 1.0, "analytics_fps": 29.780667904668224}
+PASS live_camera_has_no_preview_and_no_evidence {"reason": "Live sources have no local recording buffer in this version; evidence clips need the source file"}
+PASS evidence_refused_for_live_with_reason {"status": 503}
+PASS publisher_killed 
+PASS loss_visible_unavailable_not_zero {"seconds_after_kill": 2.8, "health": "OFFLINE", "reason": "Live source lost (ABNORMAL_TERMINATION: live source ended after 372 frames); reconnect attempt 1 in 2 s"}
+PASS file_camera_unaffected {"before": 17.050366666, "after": null, "outcome": "CLEAN_EOF"}
+PASS reconnect_attempts_back_off {"observed_delays": {"1": 2.0, "2": 4.0, "3": 8.0}, "expected_delays": {"1": 2.0, "2": 4.0, "3": 8.0}, "cap_s": 30.0}
+PASS reconnects_with_new_epoch_and_counts_resume {"seconds_after_restore": 19.6, "epoch": "9b4a7fea-f208-4d6d-8f62-bd1ec97136c8", "visible_count": 12}
+PASS reconnect_alert_resolved {"alerts": [["RESOLVED", "CONTROLLED RTSP (cam01 republished locally): Source initialization failed: Service Maker produced no valid stdout frame "]]}
+PASS stall_detected_and_released {"seconds_after_freeze": 12.03, "stall_seconds": 10.0, "reason": "CONTROLLED RTSP (cam01 republished locally): ABNORMAL_TERMINATION: no frame for more than 10 s", "mechanism": "backend live watchdog"}
+PASS stall_recovers_with_new_epoch {"epoch": "61415f8c-a54a-43dc-9ebe-f750f0b22d87"}
+PASS publisher_killed_again 
+PASS stop_confirmed {"stopped_with_pending_reconnect": true, "next_reconnect_at": "2026-10-28T13:53:09.664Z"}
+PASS stop_cancels_pending_reconnect {"owned_rows_at_stop": 6, "owned_rows_later": 6, "running": []}
+PASS password_absent_from_api 
+PASS publisher_terminated 
+PASS rtsp_server_terminated 
+PASS password_absent_from_backend_and_container_logs 
+PASS extractor_summaries_record_live_source_without_credentials {"summaries": 9}
+PASS all_owned_containers_released {"rows": 6}
+PASS no_owned_container_left []
+{
+ "result": "PASS",
+ "run_dir": "reports\\validation\\rtsp-controlled-20261028T135106675751Z",
+ "failed": []
+}

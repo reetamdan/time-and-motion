@@ -1,0 +1,53 @@
+2026-10-26 16:40:01,064 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/start "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,067 INFO cctv.validation.live_eos: first_start_http_ok: PASS
+2026-10-26 16:40:01,067 INFO cctv.validation.live_eos: first_run_active: PASS
+2026-10-26 16:40:01,068 INFO cctv.validation.live_eos: first_epoch_present: PASS
+2026-10-26 16:40:01,197 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,199 INFO cctv.validation.live_eos: first_real_positive_visible_count: PASS
+2026-10-26 16:40:01,219 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,219 INFO cctv.validation.live_eos: first_positive_before_natural_eos: FAIL
+2026-10-26 16:40:01,219 INFO cctv.validation.live_eos: first_pre_eos_fresh_metrics_present: FAIL
+2026-10-26 16:40:01,219 INFO cctv.validation.live_eos: natural_eos_clean_completion: PASS
+2026-10-26 16:40:01,219 INFO cctv.validation.live_eos: natural_eos_exact_710_frames: PASS
+2026-10-26 16:40:01,264 INFO cctv.validation.live_eos: natural_eos_jsonl_coverage: PASS
+2026-10-26 16:40:01,410 INFO cctv.validation.live_eos: natural_eos_container_removed: PASS
+2026-10-26 16:40:01,432 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,506 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,580 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,653 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,725 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,796 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,867 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:01,939 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,013 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,088 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,169 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,246 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,324 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,398 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,468 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:02,541 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:10,130 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:10,454 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:10,454 INFO cctv.validation.live_eos: stale_values_null: FAIL
+2026-10-26 16:40:10,456 INFO cctv.validation.live_eos: stale_health_degraded: FAIL
+2026-10-26 16:40:10,456 INFO cctv.validation.live_eos: stale_last_good_age_threshold: FAIL
+2026-10-26 16:40:10,456 INFO cctv.validation.live_eos: stale_last_good_age_increases: PASS
+2026-10-26 16:40:10,456 INFO cctv.validation.live_eos: stale_run_remains_active: PASS
+2026-10-26 16:40:10,479 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/stop "HTTP/1.1 200 OK"
+2026-10-26 16:40:10,480 INFO cctv.validation.live_eos: first_operator_stop_http_ok: PASS
+2026-10-26 16:40:10,480 INFO cctv.validation.live_eos: first_operator_stop_run_stopped: PASS
+2026-10-26 16:40:10,614 INFO cctv.validation.live_eos: first_container_absent_after_operator_stop: PASS
+2026-10-26 16:40:23,200 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/start "HTTP/1.1 200 OK"
+2026-10-26 16:40:23,203 INFO cctv.validation.live_eos: second_start_http_ok: PASS
+2026-10-26 16:40:23,204 INFO cctv.validation.live_eos: second_epoch_different: PASS
+2026-10-26 16:40:23,331 INFO httpx: HTTP Request: GET http://testserver/api/v1/facility/snapshot "HTTP/1.1 200 OK"
+2026-10-26 16:40:23,331 INFO cctv.validation.live_eos: second_replay_fresh_positive_visible_count: PASS
+2026-10-26 16:40:23,359 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/stop "HTTP/1.1 200 OK"
+2026-10-26 16:40:23,359 INFO cctv.validation.live_eos: second_operator_stop_http_ok: PASS
+2026-10-26 16:40:23,359 INFO cctv.validation.live_eos: second_operator_stop_run_stopped: PASS
+2026-10-26 16:40:23,512 INFO cctv.validation.live_eos: both_epoch_containers_absent_after_second_stop: PASS
+2026-10-26 16:40:23,527 INFO httpx: HTTP Request: POST http://testserver/api/v1/demo/stop "HTTP/1.1 200 OK"
+2026-10-26 16:40:23,572 INFO cctv.validation.live_eos: testclient_shutdown_completed: PASS
+2026-10-26 16:40:23,572 INFO cctv.validation.live_eos: adapter_sessions_disposed: PASS
+2026-10-26 16:40:23,852 INFO cctv.validation.live_eos: final_exact_epoch_containers_absent: PASS

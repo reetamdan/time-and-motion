@@ -1,0 +1,25 @@
+{
+ "result": "PASS",
+ "checks": {
+  "setup_create_venv": "PASS",
+  "setup_pip_install": "PASS",
+  "setup_pip_check": "PASS",
+  "setup_npm_ci": "PASS",
+  "setup_npm_run_build": "PASS",
+  "tests_documented_python_windows": "PASS",
+  "tests_documented_python_wsl": "PASS",
+  "tests_documented_frontend": "PASS",
+  "config_validate": "PASS",
+  "run_backend_ps1_serves_health_live": "PASS",
+  "health_ready_structured": "PASS",
+  "dashboard_served_by_backend": "PASS",
+  "api_start_idempotent_while_running": "PASS",
+  "api_start_running": "PASS",
+  "api_stop_stopped": "PASS",
+  "reset_demo_ps1_resets": "PASS",
+  "reset_demo_ps1_refuses_mismatch": "PASS",
+  "troubleshooting_references_exist": "PASS",
+  "no_leftover_cam01_containers": "PASS"
+ },
+ "run_dir": "reports\\validation\\documented-commands-20261028T140143584826Z"
+}

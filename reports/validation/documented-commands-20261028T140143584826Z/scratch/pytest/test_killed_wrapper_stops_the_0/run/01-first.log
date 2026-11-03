@@ -1,0 +1,12 @@
+[supervised_entry] stop requested by supervisor: interrupting the script for its own cleanup
+Traceback (most recent call last):
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\lib\supervised_entry.py", line 114, in <module>
+    main()
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\lib\supervised_entry.py", line 110, in main
+    runpy.run_path(str(script), run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\reports\validation\documented-commands-20261028T140143584826Z\scratch\pytest\test_killed_wrapper_stops_the_0\step.py", line 8, in <module>
+    time.sleep(0.2)
+KeyboardInterrupt

@@ -1,0 +1,11 @@
+WARNING: This Windows command starts the API only. It does not prove WSL/DeepStream GPU execution; use the WSL runtime 
+for perception validation.
+INFO:     Started server process [14024]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8769 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52721 - "GET /health/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52724 - "POST /api/v1/demo/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52725 - "GET /api/v1/runs/78b1dd15-bc98-4014-8458-afaba86f95cc/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52726 - "POST /api/v1/demo/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52727 - "GET /api/v1/evidence HTTP/1.1" 200 OK

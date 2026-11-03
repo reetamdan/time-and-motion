@@ -1,0 +1,9 @@
+DeepStreamSDK 9.2
+[31mINFO[00m deserialized trt engine from :/workspace/model.engine
+Use deserialized engine model: /workspace/model.engine
+Load new model:/workspace/infer.txt sucessfully
+Pipeline running
+GStreamer-WARNING **: optional plugin unavailable
+nvstreammux: Successfully handled EOS for source_id=0
+Received EOS. Exiting ...
+App run successful

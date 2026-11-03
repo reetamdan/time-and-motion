@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\rt-detr-candidate\freeze_provenance.py", line 138, in <module>
+    main()
+  File "C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv\scripts\rt-detr-candidate\freeze_provenance.py", line 92, in main
+    license_data = base64.b64decode(license_record["content"], validate=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Reetam\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\python\cpython-3.12\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Only base64 data is allowed

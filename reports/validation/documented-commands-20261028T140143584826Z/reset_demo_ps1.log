@@ -1,0 +1,5 @@
+COMMAND: ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\Reetam\\Desktop\\projects\\aditya_freelance\\dsa\\cctv\\scripts\\reset-demo.ps1", "-RunId", "a8d3c9cd-9a04-4785-94aa-ac27ce3f3658"]
+CWD: C:\Users\Reetam\Desktop\projects\aditya_freelance\dsa\cctv
+
+API acknowledged run-scoped reset for 'a8d3c9cd-9a04-4785-94aa-ac27ce3f3658'.
+This script deleted no files; source footage, models, configs, and calibration were not touched directly.

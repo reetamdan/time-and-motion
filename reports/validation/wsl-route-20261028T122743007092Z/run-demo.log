@@ -1,0 +1,2 @@
+ERROR: backend readiness process exited before readiness; inspect its log.
+Backend did not become ready. See /mnt/c/Users/Reetam/Desktop/projects/aditya_freelance/dsa/cctv/reports/demo/20261028T123053Z/backend.log

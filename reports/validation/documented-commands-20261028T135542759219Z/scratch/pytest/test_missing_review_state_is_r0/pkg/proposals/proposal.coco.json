@@ -1,0 +1,1 @@
+{"images": [{"id": 1, "frame_number": 1, "sets": ["detection"], "ignore_regions": []}], "annotations": [{"id": 1, "image_id": 1, "bbox": [999, 999, 5, 5]}]}
