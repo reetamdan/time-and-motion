@@ -25,3 +25,13 @@ for pid in owners:
     print(f'Stopped this project backend (PID {pid}).')
 if not owners:
     print('No server is listening on port 8000.')
+
+# start.ps1 keeps WSL running with a tagged wsl.exe and ends it itself; remove one whose launcher was
+# killed abruptly (its parent is gone), so WSL can idle again.
+for process in psutil.process_iter(['name', 'cmdline', 'ppid']):
+    try:
+        if (process.info['name'] or '').lower() == 'wsl.exe' and 'aegis-keepalive' in ' '.join(process.info['cmdline'] or [])                 and not psutil.pid_exists(process.info['ppid']):
+            process.terminate()
+            print(f'Ended a leftover WSL keep-alive (PID {process.pid}).')
+    except (psutil.NoSuchProcess, psutil.AccessDenied):
+        pass
