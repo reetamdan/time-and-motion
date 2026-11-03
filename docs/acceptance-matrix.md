@@ -7,6 +7,7 @@ This matrix gives the status of every PRD §27 criterion (AC-01 to AC-26). The l
 - Hardware is available and all three sm86 engines completed the full clip: `reports/validation/a6000-profiles-20261103T204601Z/result.json`. AC-26b's remaining blocker is real-feed scaling evidence, not access to an A6000.
 - Looping/overlay browser validation: `reports/validation/a6000-browser-loop-overlay-20261103T204644Z/result.json`; independent outage/restart/mobile/evidence checks: `reports/validation/review-20261103T212335Z/result.json` (17/17).
 - Regression check (`scripts/check.py --require-artifacts`, FFmpeg on PATH): 288 Python tests passed, no skips. Frontend: 44 passed; typecheck and build passed. Real A6000/browser rerun after the follow-up review: `reports/validation/overlay-recovery-20261103T215127357311Z/result.json` (17/17). A pointer-only checkout: 281 passed, seven explicit asset/tool skips.
+- GitHub Actions `Checks` (`.github/workflows/checks.yml`) passes on Windows and Linux (run 41726617017 and later), without GPU or LFS data.
 - This does not close labelled accuracy, calibration, steady-state capacity or the 30-minute soak. Historical laptop validation is not automatically reclassified as A6000 validation.
 
 ## How to read this

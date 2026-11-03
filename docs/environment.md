@@ -4,7 +4,9 @@
 
 The target workstation is Windows 10 Pro for Workstations with an RTX A6000 (48 GB, sm86), WSL2 Ubuntu 22.04 and the pinned DeepStream container. `configs/a6000` selects RT-DETR FP16; `Start-Aegis.cmd` selects this profile automatically. All three rebuilt engines completed 710/710 frames with cleanup in `reports/validation/a6000-profiles-20261103T204601Z/result.json`. Current setup and measurements: [rtx-a6000.md](rtx-a6000.md).
 
-The independent review's real GPU/browser run, `reports/validation/review-20261103T212335Z/result.json`, passed 17 checks: later-pass evidence download, overlay outage and recovery, new-epoch cursor recovery, and 390 px unpaced playback. Accuracy, calibrated multi-camera analytics, steady-state capacity and the 30-minute soak remain unestablished.
+The independent review's real GPU/browser run, `reports/validation/review-20261103T212335Z/result.json`, passed 17 checks: later-pass evidence download, overlay outage and recovery, new-epoch cursor recovery, and 390 px unpaced playback. It was repeated after the follow-up changes: `reports/validation/overlay-recovery-20261103T215127357311Z/result.json`, 17/17. Accuracy, calibrated multi-camera analytics, steady-state capacity and the 30-minute soak remain unestablished.
+
+Host identity (2026-11-04): WSL 3.0.1.0, kernel 6.18.40.1, Ubuntu 22.04 with `systemd=true`, Docker Engine 29.9.2 as a systemd service (starts in under 1 s after WSL boots), NVIDIA Container Toolkit 1.20.1, driver 596.71. WSL stops its VM a few minutes after the last Windows process detaches (measured: restarted within 4 idle minutes), which stops Docker; `Start-Aegis.cmd` keeps it running while the server runs.
 
 ## Historical laptop record
 

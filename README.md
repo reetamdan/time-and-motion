@@ -64,7 +64,7 @@ The browser only renders state; all counts come from the backend. The backend ca
 | Layer | Technology |
 | --- | --- |
 | Video and AI | NVIDIA DeepStream 9.2 (pinned container image), DeepStream Service Maker (`pyservicemaker`), GStreamer (`nvv4l2decoder`, `nvstreammux`, `nvinfer`, `nvtracker`), CUDA 13, TensorRT 10.16, NvDCF tracker |
-| Detectors | TrafficCamNet ResNet-18 (FP16, default, provisional), plus RT-DETR r18vd and RF-DETR small (FP32) as evaluation candidates, each with a custom C++ output parser |
+| Detectors | TrafficCamNet ResNet-18 (FP16; default of the base profile, provisional), RT-DETR r18vd (FP16 on the A6000, where it is the selected unaccepted candidate; FP32 in the base profile) and RF-DETR small (FP32, candidate), each with a custom C++ output parser |
 | Containers | Docker Engine and the NVIDIA Container Toolkit inside WSL2 Ubuntu 22.04 (or native Linux) |
 | Backend | Python 3.12, FastAPI, Starlette, Uvicorn, Pydantic 2, PyYAML, psutil, websockets, SQLite |
 | Frontend | React 19, TypeScript, Vite, Recharts, Lucide icons, locally bundled fonts; design system adapted from OpenIntelligentUI |
@@ -97,7 +97,7 @@ Tests (2026-11-04, RTX A6000 PC): `scripts/check.py --require-artifacts` (with `
 
 ## Requirements
 
-- An NVIDIA GPU with a current driver. Windows 11 with WSL2, or native x86-64 Linux.
+- An NVIDIA GPU with a current driver. Windows 10/11 with WSL2 (validated on Windows 11 with an RTX 5070 Ti and on Windows 10 Pro for Workstations with an RTX A6000), or native x86-64 Linux.
 - WSL distribution **Ubuntu-22.04** (Windows route) with Docker Engine and the NVIDIA Container Toolkit installed.
 - The pinned DeepStream 9.2 image. It is pulled once by `scripts/setup/pull-deepstream.sh`, about 27 GB on disk.
 - **Git LFS**, to get the footage, models and engines.
@@ -148,7 +148,7 @@ bash scripts/setup/setup.sh --dev --isolated-frontend
 bash scripts/run-backend.sh
 ```
 
-On Windows you can instead double-click **`Start-Aegis.cmd`** after steps 1-2 and the venv/frontend setup above. It sets up the environment, picks the RTX A6000 profile (`configs/a6000`) when it detects that GPU, and starts the server.
+On Windows you can instead double-click **`Start-Aegis.cmd`** after steps 1-2 and the venv/frontend setup above. It sets up the environment, picks the RTX A6000 profile (`configs/a6000`) when it detects that GPU, keeps WSL (and so Docker) running while the server runs, waits for Docker, and starts the server. Stop a background server with `.venv-windows\Scripts\python.exe scripts\a6000\stop-server.py`.
 
 ### 4. Open the dashboard
 
@@ -197,10 +197,10 @@ One command runs backend tests, frontend tests, typechecking and the production 
 .venv-windows\Scripts\python.exe scripts\check.py --require-artifacts
 ```
 
-On Linux use the project virtualenv's Python. Omit `--require-artifacts` for a checkout without downloaded LFS data; missing assets and LFS placeholders are explicitly skipped. `.github/workflows/checks.yml` runs this lightweight check on Windows and Linux for pushes and pull requests. Real GPU validation remains a separate workstation check.
+On Linux use the project virtualenv's Python. Omit `--require-artifacts` for a checkout without downloaded LFS data; missing assets and LFS placeholders are explicitly skipped. `.github/workflows/checks.yml` runs this lightweight check on Windows and Linux for pushes and pull requests (passing since run 41726617017). Real GPU validation remains a separate workstation check.
 
 ```bash
-# Backend (Windows: .\.venv\Scripts\python.exe; WSL: .venv-wsl/bin/python)
+# Backend (Windows: .\.venv-windows\Scripts\python.exe; WSL: .venv-wsl/bin/python)
 python -m pytest -q tests perception/candidates
 
 # Frontend
@@ -220,6 +220,9 @@ The project also ships end-to-end validators that use the real GPU. Each writes 
 | `scripts/validate_browser_workflow.py`, `scripts/validate_browser_evidence.py` | The dashboard in headless Chrome |
 | `scripts/validate_artifact_manifest.py` | Locks and recorded-vs-recomputed artifact hashes |
 | `scripts/benchmark/run_capacity.py` | Capacity and soak protocol (run via `scripts/run_supervised_batch.py`) |
+| `scripts/a6000/validate-profiles.ps1` | RTX A6000: every detector profile on the full clip, evidence, history, container cleanup |
+| `scripts/a6000/validate_browser_loop_overlay.py` | RTX A6000: paced run in the browser past the clip's end (looping, boxes overlay, preview sync) |
+| `scripts/a6000/validate_overlay_recovery.py` | RTX A6000: loop evidence, overlay outage/recovery, restart cursors, mobile unpaced playback (isolated backend on port 8779) |
 
 Benchmark methodology: [docs/benchmark-methodology.md](docs/benchmark-methodology.md). Full list and usage: [operations guide §3–§4](docs/operations-guide.md#3-run-and-stop).
 
