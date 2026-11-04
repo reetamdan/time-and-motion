@@ -475,8 +475,8 @@ class ReplaySettings(StrictModel):
     startup_timeout_seconds: float = Field(default=60, gt=0, le=600)
     # Cameras loading their pipeline (container, model engine, first frame) at the same time. A slot is
     # held until the camera's first frame arrives or its start fails, so a large site starts in waves.
-    # A6000 under WSL2: 16 RT-DETR pipelines loading at once failed engine deserialization with CUDA
-    # OutOfMemory at ~4 GB of 48 GB used; 12 at once loaded.
+    # A6000 under WSL2: 16 pipelines loading at once failed decoder and engine allocations at ~4 GB of
+    # 48 GB used. Separately, that host runs at most 12 pipelines at all (a 13th gets no CUDA device).
     startup_concurrency: int = Field(default=4, ge=1, le=64)
 
 

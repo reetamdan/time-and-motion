@@ -33,9 +33,12 @@ FRAME_PREFIX = "AEGIS_FRAME_V1:"
 FRAME_PREFIX_BYTES = FRAME_PREFIX.encode("ascii")
 FRAME_QUEUE_SIZE = 128
 FRAME_SCHEMAS = {"1.0", "1.1"}
-# Service Maker prints this and then blocks in its main loop without exiting (no frame will ever come),
-# e.g. when nvinfer cannot deserialize the engine for lack of GPU memory. Seen in the container log.
+# Service Maker prints this and then blocks in its main loop without exiting (no frame will ever come).
+# A6000/WSL2 causes seen: the decoder or engine could not allocate GPU resources (many pipelines loading at
+# once), or no CUDA device for a 13th concurrent pipeline. Seen in the container log.
 PIPELINE_START_FAILED = b"Unable to set the pipeline to the playing state"
+# Container log lines that name the cause, reported with the failure.
+CAUSE_LINE = re.compile(r"^\s*ERROR|Unable to set device|Failed to allocate|OutOfMemory")
 LOG_SCAN_SECONDS = 1.0
 # Per-frame producer/read/release timestamps for end-to-end lead measurement (validation only).
 RELEASE_LOG_ENV = "CCTV_RELEASE_LOG"
@@ -409,8 +412,8 @@ class ServiceMakerSessions:
                 log_offset, failed = self._scan_log(session.log_handle, log_offset)
                 if failed:
                     raise PerceptionUnavailable(
-                        "Service Maker pipeline could not start (GStreamer could not reach PLAYING; on this "
-                        "runtime usually GPU memory during model engine load): "
+                        "Service Maker pipeline could not start (GStreamer could not reach PLAYING; the GPU "
+                        "refused a decoder, device or engine allocation): "
                         + redact(self._log_errors(session.log_handle), session.secrets))
             if session.reader_done.is_set():
                 return_code = session.process.poll()
@@ -515,12 +518,12 @@ class ServiceMakerSessions:
 
     @staticmethod
     def _log_errors(handle: TextIO) -> str:
-        """The container log's distinct ERROR lines (the cause), else its tail."""
+        """The container log's distinct cause lines (ERROR, device or allocation failures), else its tail."""
         try:
             lines = Path(handle.name).read_text(encoding="utf-8", errors="replace").splitlines()
         except OSError:
             return "No readable container log detail"
-        errors = list(dict.fromkeys(line.strip() for line in lines if line.lstrip().startswith("ERROR")))
+        errors = list(dict.fromkeys(line.strip() for line in lines if CAUSE_LINE.search(line)))
         return " | ".join(errors[:4])[-800:] if errors else ServiceMakerSessions._log_tail(handle)
 
     @staticmethod

@@ -1000,3 +1000,15 @@ def test_pipeline_that_cannot_reach_playing_fails_at_once_with_the_cause(tmp_pat
             asyncio.run(scenario())
     assert time.monotonic() - began < 5
     assert "OutOfMemory" in str(raised.value) and "Deserialize engine failed" in str(raised.value)
+
+
+def test_start_failure_reports_device_and_decoder_lines(tmp_path: Path) -> None:
+    config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+    manager = ServiceMakerSessions(config)
+    with (tmp_path / "log").open("w", encoding="utf-8") as log:
+        log.write("Add Element ... render-sink-0\nUnable to set device in gst_nvstreammux_change_state\n"
+                  "ERROR from nvv4l2decoder0: Failed to allocate required memory.\n"
+                  "Unable to set the pipeline to the playing state.\n")
+        log.flush()
+        detail = manager._log_errors(log)
+    assert detail.startswith("Unable to set device") and "nvv4l2decoder0" in detail and "Add Element" not in detail

@@ -26,7 +26,7 @@ replay:
   # (A6000: 8.6 s for one camera, 11.7 s for two). A failing pipeline is reported as soon as it exits.
   startup_timeout_seconds: 60
   # Cameras loading their pipeline at once; the rest wait for a slot (freed at a camera's first frame or
-  # failed start). 16 RT-DETR pipelines loading together on the A6000 ran out of GPU memory.
+  # failed start). 16 pipelines loading together on the A6000 under WSL2 failed GPU allocations.
   startup_concurrency: 4
 capability:
   # The expensive container capability probe is reused across starts (and backend restarts, via
