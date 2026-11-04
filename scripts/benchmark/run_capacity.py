@@ -896,6 +896,7 @@ class SoakProbes:
         self.cameras = cameras
         self.counts: dict[str, list[int]] = {}
         self.next_light = self.next_evidence = 0.0
+        self.started = False
         self.evidence_ids: list[str] = []
 
     def _record(self, kind: str, ok: bool, detail: Any) -> None:
@@ -903,7 +904,14 @@ class SoakProbes:
         self.out.write(json.dumps({"t": round(time.monotonic(), 2), "kind": kind, "ok": ok, "detail": detail}, default=str) + "\n")
         self.out.flush()
 
-    def tick(self, elapsed: float) -> None:
+    def tick(self, elapsed: float, all_streaming: bool = True) -> None:
+        # Probes start once every camera reports a source position: history checked before the first
+        # frame (cameras take ~10-16 s to start) is legitimately empty, not a failure. After that, an
+        # empty history is a failure. (2026-11-04: the first A6000 soak failed only on its t=0 history probes.)
+        if not self.started:
+            if not all_streaming:
+                return
+            self.started = True
         if elapsed >= self.next_light:
             self.next_light = elapsed + 60
             for camera in self.cameras:
@@ -985,7 +993,8 @@ def run_backend(stage_dir: Path, clip: Path, feeds: int, warmup: float, measure:
                 "source_position_s", "analytics_fps", "backend_queue_ms", "stream_outcome", "health", "visible_count")}
                 for c in cameras}}) + "\n")
             if probes:
-                probes.tick(time.monotonic() - began)
+                probes.tick(time.monotonic() - began, all_streaming=bool(cameras) and all(
+                    c.get("source_position_s") is not None for c in cameras if c["id"] in epochs))
             tracked = [c for c in cameras if c["id"] in epochs]
             if tracked and len(tracked) == len(epochs) and all(
                     (c.get("source_position_s") or 0) >= warmup + measure + 5 or c.get("stream_outcome") for c in tracked):

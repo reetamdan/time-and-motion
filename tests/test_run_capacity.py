@@ -196,3 +196,14 @@ def test_backend_stage_uses_the_selected_profile_without_rotation_or_looping(tmp
     assert copied.models.selected.engine_path == selected.models.selected.engine_path
     assert copied.runtime.replay.frame_log_max_mib == 0
     assert [camera.loop for camera in copied.cameras] == [False, False, False]
+
+
+def test_soak_probes_wait_for_every_camera_to_stream(tmp_path: Path, monkeypatch) -> None:
+    calls: list[str] = []
+    monkeypatch.setattr(rc, "http", lambda path, *a, **k: (calls.append(path), (200, {"total_samples": 0}))[1])
+    probes = rc.SoakProbes(tmp_path / "probes.jsonl", ["cam-01"])
+    probes.tick(0.0, all_streaming=False)
+    assert calls == []  # nothing probed before the first frame
+    probes.tick(15.0, all_streaming=True)
+    assert calls and probes.counts["history"] == [0, 1]  # once streaming, an empty history fails
+    probes.summary()
