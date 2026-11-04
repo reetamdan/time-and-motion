@@ -391,7 +391,7 @@ class ServiceMakerSessions:
         session.reader.start()
 
     async def _wait_for_metadata(self, session: _Session) -> None:
-        deadline = time.monotonic() + max(15.0, self.config.runtime.telemetry.command_timeout_seconds)
+        deadline = time.monotonic() + self.config.runtime.replay.startup_timeout_seconds
         while time.monotonic() < deadline:
             if session.first_frame_event.is_set():
                 return

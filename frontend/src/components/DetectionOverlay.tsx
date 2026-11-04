@@ -183,11 +183,30 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
       if (!cancelled) timer = window.setTimeout(poll, DETECTION_POLL_MS);
     };
 
+    // The time of the frame actually on screen. During a seek, currentTime jumps to the target before
+    // the new frame is shown; requestVideoFrameCallback reports each presented frame's mediaTime.
+    let presented: { video: HTMLVideoElement; time: number } | null = null;
+    let frameCallback: number | undefined;
+    const trackedVideo = videoRef.current;
+    const watchFrames = () => {
+      if (!trackedVideo || typeof trackedVideo.requestVideoFrameCallback !== 'function') return;
+      frameCallback = trackedVideo.requestVideoFrameCallback((_now, metadata) => {
+        presented = { video: trackedVideo, time: metadata.mediaTime };
+        if (!cancelled) watchFrames();
+      });
+    };
+    watchFrames();
+
     const render = () => {
       const video = videoRef.current;
       const canvas = canvasRef.current;
-      if (video && canvas) draw(canvas, video,
-        buffer.fresh(performance.now()) ? nearestFrame(buffer.frames, video.currentTime) : null, buffer.size, detail);
+      if (video && canvas) {
+        // Boxes are hidden while seeking: neither the old nor the target frame is reliably on screen.
+        // Paused (unpaced replay steps by seeking): once the seek completes the shown frame is currentTime.
+        const time = presented?.video === video && !video.paused ? presented.time : video.currentTime;
+        draw(canvas, video, buffer.fresh(performance.now()) && !video.seeking
+          ? nearestFrame(buffer.frames, time) : null, buffer.size, detail);
+      }
       animation = window.requestAnimationFrame(render);
     };
 
@@ -198,6 +217,7 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
       controller.abort();
       if (timer !== undefined) window.clearTimeout(timer);
       if (animation !== undefined) window.cancelAnimationFrame(animation);
+      if (frameCallback !== undefined && trackedVideo?.cancelVideoFrameCallback) trackedVideo.cancelVideoFrameCallback(frameCallback);
       const canvas = canvasRef.current;
       canvas?.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
     };

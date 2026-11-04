@@ -463,6 +463,10 @@ class ReplaySettings(StrictModel):
     # Per-epoch frame-record file (backend/var/perception/<camera>/<epoch>.jsonl): rotated to .prev at
     # this size so long or looping runs stay bounded (about 2x on disk). 0 = unlimited.
     frame_log_max_mib: float = Field(default=256, ge=0)
+    # Deadline for a camera's first frame metadata after its container starts. Concurrent starts share
+    # engine loading and GPU initialization (A6000, RT-DETR FP16: 8.6 s for 1 camera, 11.7 s for 2 at once).
+    # A pipeline that fails exits and is reported immediately; this only bounds a slow or hung start.
+    startup_timeout_seconds: float = Field(default=60, gt=0, le=600)
 
 
 class CapabilitySettings(StrictModel):

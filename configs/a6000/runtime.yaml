@@ -21,6 +21,7 @@ replay:
   mode: paced
   history_sample_seconds: 0.5
   frame_log_max_mib: 256
+  startup_timeout_seconds: 60
 capability:
   max_age_seconds: 43200
   failure_retry_seconds: 10

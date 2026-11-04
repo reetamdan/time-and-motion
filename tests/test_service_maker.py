@@ -914,3 +914,21 @@ def test_windows_runtime_prefix_passes_arguments_verbatim(monkeypatch) -> None:
     prefix = service_maker.runtime_prefix("Ubuntu-22.04")
     monkeypatch.undo()
     assert prefix == ("wsl.exe", "-d", "Ubuntu-22.04", "-e")
+
+
+def test_first_frame_deadline_is_its_own_setting_not_the_telemetry_timeout(tmp_path: Path) -> None:
+    import time
+
+    for profile in ("configs", "configs/a6000"):
+        config = load_configuration(PROJECT_ROOT / profile, PROJECT_ROOT)
+        # Four concurrent A6000 starts exceeded the old fixed max(15 s, telemetry timeout) deadline.
+        assert config.runtime.replay.startup_timeout_seconds >= 60
+    config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+    config.runtime.replay.startup_timeout_seconds = 0.2
+    manager = ServiceMakerSessions(config)
+    with (tmp_path / "log").open("w") as log:
+        session = make_session(None, "epoch", log, tmp_path)
+        began = time.monotonic()
+        with pytest.raises(PerceptionUnavailable, match="startup deadline"):
+            asyncio.run(manager._wait_for_metadata(session))
+    assert time.monotonic() - began < 5  # the configured 0.2 s, not 15 s

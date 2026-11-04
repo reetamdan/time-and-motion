@@ -22,6 +22,9 @@ replay:
   # Per-epoch frame-record file under backend/var/perception: rotated to <file>.prev at this size so long
   # or looping (cameras.yaml loop: true) runs stay bounded on disk (about 2x). 0 = unlimited.
   frame_log_max_mib: 256
+  # Deadline for each camera's first frame after its container starts; concurrent starts take longer
+  # (A6000: 8.6 s for one camera, 11.7 s for two). A failing pipeline is reported as soon as it exits.
+  startup_timeout_seconds: 60
 capability:
   # The expensive container capability probe is reused across starts (and backend restarts, via
   # cache_path) while its fingerprint matches and a cheap docker liveness check passes.

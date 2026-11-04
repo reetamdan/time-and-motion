@@ -12,6 +12,7 @@ from pathlib import Path
 import subprocess
 import shutil
 import socket
+import sqlite3
 import sys
 import time
 
@@ -45,6 +46,38 @@ result = {'checks': {}, 'page_errors': [], 'base_commit': subprocess.check_outpu
 checks = result['checks']
 PAINT = '''c => { const d = c.getContext('2d').getImageData(0,0,c.width,c.height).data;
 let n=0; for(let i=3;i<d.length;i+=4) if(d[i])n++; return n; }'''
+
+
+def owned_containers_absent():
+    """Independent of the API's STOPPED reply: every container this run's database ever owned is gone."""
+    with sqlite3.connect(f"file:{STATE / 'run.db'}?mode=ro", uri=True) as connection:
+        names = sorted({name for (name,) in connection.execute('SELECT resource_name FROM owned_resources')})
+    listed = subprocess.run(['wsl.exe', '-d', 'Ubuntu-22.04', '-e', 'docker', 'ps', '-a', '--format', '{{.Names}}'],
+                            capture_output=True, text=True, timeout=60)
+    result['owned_containers'] = names
+    if listed.returncode != 0:
+        result['container_check_error'] = listed.stderr.strip()
+        return False
+    present = set(listed.stdout.split())
+    result['owned_containers_still_present'] = [name for name in names if name in present]
+    return bool(names) and not result['owned_containers_still_present']
+
+
+def stop_server_tree():
+    """The venv python.exe is a redirector; end it and its interpreter child, bounded."""
+    try:
+        tree = [psutil.Process(server.pid), *psutil.Process(server.pid).children(recursive=True)]
+    except psutil.NoSuchProcess:
+        return True
+    for member in tree:
+        try:
+            member.terminate()
+        except psutil.NoSuchProcess:
+            pass
+    _, alive = psutil.wait_procs(tree, timeout=30)
+    for member in alive:
+        member.kill()
+    return not alive
 
 
 def wait_for(predicate, timeout=60):
@@ -144,9 +177,15 @@ with (STATE / 'server.log').open('w') as log, httpx.Client(base_url=BASE, timeou
         except Exception as error:
             checks['cleanup'] = False
             result['cleanup_error'] = repr(error)
-        finally:
-            server.terminate()
-            server.wait(timeout=30)
+        try:
+            checks['owned_containers_absent'] = owns_listener and owned_containers_absent()
+        except Exception as error:
+            checks['owned_containers_absent'] = False
+            result['container_check_error'] = repr(error)
+        try:
+            result['server_stopped_cleanly'] = stop_server_tree()
+        except Exception as error:
+            result['server_stop_error'] = repr(error)
         result['result'] = 'PASS' if checks and all(checks.values()) else 'FAIL'
         (OUTPUT / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
         print(OUTPUT)
