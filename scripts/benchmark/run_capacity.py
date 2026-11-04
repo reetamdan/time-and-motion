@@ -1157,7 +1157,10 @@ def report_md(summary: dict[str, Any]) -> str:
         ("Inference latency p50/p95", "unavailable: the pipeline exposes no per-frame inference timer; receive-to-result and schedule lag reported instead"),
         ("Processing/frame age basis", PROTOCOL["gates"]["receive_to_result_basis"] + " | " + PROTOCOL["gates"]["producer_schedule_lag_basis"]),
         ("Capture-to-result age", PROTOCOL["time_bases"]["capture_to_result"]),
-        ("Intentional sampling", "none: every decoded frame is processed (29.97 fps source)"),
+        ("Intentional sampling", "none: every decoded frame is processed (29.97 fps source)"
+         if env.get("analysis_frame_interval", 1) == 1 else
+         f"every {env['analysis_frame_interval']}th decoded frame is processed (29.97 / {env['analysis_frame_interval']} = "
+         f"{29.97 / env['analysis_frame_interval']:.2f} fps); the decoder drops the rest before inference"),
         ("Warm-up duration", f"{summary['protocol_used']['warmup_s']} s"), ("Test duration", f"{summary['protocol_used']['measure_s']} s per step"),
         ("Accuracy/reference result links", "none: performance-only load run (no labels used)"),
         ("Errors / missing counters", "; ".join(summary.get("missing_counters", [])) or "none recorded"),
