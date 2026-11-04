@@ -197,3 +197,98 @@ def test_startup_concurrency_defaults_and_bounds() -> None:
     for bad in (0, 65):
         with pytest.raises(ValidationError):
             ReplaySettings(startup_concurrency=bad)
+
+
+class GroupAdapter(MultiAdapter):
+    """Runs up to `size` file cameras per pipeline; a group containing a `fail` camera fails as a whole."""
+
+    def __init__(self, size: int, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.size = size
+        self.groups: list[list[str]] = []
+
+    def max_cameras_per_pipeline(self) -> int:
+        return self.size
+
+    def pipeline_identity(self, cameras):
+        if len(cameras) == 1:
+            return self.resource_identity(*cameras[0])
+        return ResourceIdentity("container", f"aegis-batch-{cameras[0][1]}", "fake")
+
+    async def start_cameras(self, starts, replay_mode="paced"):
+        if len(starts) == 1:
+            return await super().start_cameras(starts, replay_mode)
+        self.groups.append([camera.id for camera, _, _ in starts])
+        if any(camera.id in self.fail for camera, _, _ in starts):
+            from backend.app.perception.base import PerceptionStartError
+            return [PerceptionStartError("shared pipeline could not start", resource_allocated=True, cleanup_confirmed=True)
+                    for _ in starts]
+        for camera, epoch, sink in starts:
+            self.running[camera.id] = epoch
+            self.sinks[camera.id] = sink
+        return [None for _ in starts]
+
+
+def test_file_cameras_share_pipelines_with_one_recorded_resource_each(tmp_path: Path) -> None:
+    config, repository = four_cameras(tmp_path)
+    config.runtime.replay.cameras_per_pipeline = 2
+    adapter = GroupAdapter(2)
+    supervisor = CameraRuntimeSupervisor(config, repository, adapter, SequenceState())
+
+    async def scenario() -> None:
+        await supervisor.start()
+        assert sorted(adapter.groups) == [["cam-01", "cam-02"], ["cam-03", "cam-04"]]
+        assert supervisor.current_run()[1] == "RUNNING"
+        run_id = supervisor.current_run()[0]
+        with repository.transaction() as connection:
+            rows = connection.execute("SELECT camera_id, resource_name, state FROM owned_resources WHERE run_id = ? "
+                                      "ORDER BY camera_id", (run_id,)).fetchall()
+        names = {row[0]: row[1] for row in rows}
+        assert names["cam-01"] == names["cam-02"] != names["cam-03"] == names["cam-04"]
+        assert {row[2] for row in rows} == {"ACTIVE"}
+        states = supervisor.states()
+        assert len({states[c].epoch for c in CAMERAS}) == 4  # each camera keeps its own epoch
+        for camera in CAMERAS:
+            await adapter.sinks[camera].emit(batch(camera, states[camera].epoch, 1))
+        assert all(supervisor.states()[c].source_position_s is not None for c in CAMERAS)
+        await supervisor.stop()
+        assert supervisor.current_run()[1] == "STOPPED" and adapter.running == {}
+
+    asyncio.run(scenario())
+
+
+def test_a_failed_shared_pipeline_takes_down_only_its_own_cameras(tmp_path: Path) -> None:
+    config, repository = four_cameras(tmp_path)
+    config.runtime.replay.cameras_per_pipeline = 2
+    adapter = GroupAdapter(2, fail={"cam-04"})
+    supervisor = CameraRuntimeSupervisor(config, repository, adapter, SequenceState())
+
+    async def scenario() -> None:
+        await supervisor.start()
+        states = supervisor.states()
+        assert supervisor.current_run()[1] == "DEGRADED"
+        assert all(states[c].perception_started for c in ("cam-01", "cam-02"))
+        for camera in ("cam-03", "cam-04"):
+            assert states[camera].health == "OFFLINE" and "shared pipeline could not start" in states[camera].unavailable_reason
+        # The failed pipeline's cameras were released; only the running pipeline's cameras stay owned.
+        assert {r["camera_id"] for r in repository.unreleased_resources()} == {"cam-01", "cam-02"}
+        await supervisor.stop()
+        assert supervisor.current_run()[1] == "STOPPED"
+
+    asyncio.run(scenario())
+
+
+def test_only_compatible_enabled_file_cameras_are_grouped(tmp_path: Path) -> None:
+    config, repository = four_cameras(tmp_path)
+    config.runtime.replay.cameras_per_pipeline = 4
+    supervisor = CameraRuntimeSupervisor(config, repository, GroupAdapter(4), SequenceState())
+    assert [[c.id for c in g] for g in supervisor.pipeline_groups(True)] == [CAMERAS]
+    assert [[c.id for c in g] for g in supervisor.pipeline_groups(False)] == [[c] for c in CAMERAS]  # no runtime: alone
+    cameras = list(config.cameras)
+    cameras[1] = cameras[1].model_copy(update={"analysis_frame_interval": 4})
+    cameras[2] = cameras[2].model_copy(update={"enabled": False})
+    config.cameras = cameras
+    groups = [[c.id for c in g] for g in supervisor.pipeline_groups(True)]
+    assert groups == [["cam-03"], ["cam-01", "cam-04"], ["cam-02"]]
+    # The adapter's own limit wins: one per pipeline whatever the configuration says.
+    assert all(len(g) == 1 for g in CameraRuntimeSupervisor(config, repository, MultiAdapter(), SequenceState()).pipeline_groups(True))

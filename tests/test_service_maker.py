@@ -778,9 +778,10 @@ def test_v2_live_sources_are_recognised_and_redacted() -> None:
 
 def test_v2_live_source_never_hashes_the_url_and_refuses_source_pacing() -> None:
     text = (EXTRACTOR_DIR / "extract_metadata_v2.py").read_text(encoding="utf-8")
-    assert '"source_sha256": None if is_live(args.source) else sha256_file(args.source)' in text
-    assert "live_source=is_live(args.source)" in text
-    assert 'if is_live(args.source) and args.pace != "none":' in text
+    assert '"source_sha256": None if is_live(source) else sha256_file(source)' in text
+    assert "live_source=live," in text and "live = is_live(args.source[0])" in text
+    assert 'if is_live(args.source[0]) and args.pace != "none":' in text
+    assert 'parser.error("only file sources can share a pipeline' in text
 
 
 def _v2_pacer_class():
@@ -971,6 +972,7 @@ def test_source_fps_counts_the_frames_skipped_by_the_analysis_interval(tmp_path:
 def test_analysis_frame_interval_reaches_the_decoder_only_when_set() -> None:
     text = (EXTRACTOR_DIR / "extract_metadata_v2.py").read_text(encoding="utf-8")
     assert 'source.set({"drop-frame-interval": args.analysis_frame_interval})' in text
+    assert 'pipeline[f"{SOURCE_ELEMENT_PREFIX}{index}"]' in text  # every camera's own decoder
     assert "if args.analysis_frame_interval > 1:" in text
 
 

@@ -28,6 +28,11 @@ replay:
   # Cameras loading their pipeline at once; the rest wait for a slot (freed at a camera's first frame or
   # failed start). 16 pipelines loading together on the A6000 under WSL2 failed GPU allocations.
   startup_concurrency: 4
+  # File cameras batched into one DeepStream pipeline (one container, one batch; 1 = a pipeline per camera).
+  # Only enabled file cameras with the same loop and analysis_frame_interval share one; a shared pipeline
+  # starts, fails and ends for all of its cameras. The A6000 under WSL2 starts at most 12 pipelines, so
+  # more than 12 cameras need this above 1.
+  cameras_per_pipeline: 1
 capability:
   # The expensive container capability probe is reused across starts (and backend restarts, via
   # cache_path) while its fingerprint matches and a cheap docker liveness check passes.

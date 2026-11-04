@@ -46,7 +46,11 @@ pipeline:
   # ed54b60e... -> b8feee34... (2026-11-04): adds opt-in --analysis-frame-interval N (cameras.yaml
   # analysis_frame_interval): nvurisrcbin drop-frame-interval passes every Nth decoded frame downstream, read back into
   # the summary. Default 1 (every frame) leaves the pipeline, schema and records unchanged.
-  extractor_sha256: b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42
+  # b8feee34... -> e8e3f1d4... (2026-11-04): several file cameras in one pipeline (runtime.yaml
+  # replay.cameras_per_pipeline): --source/--camera-id/--camera-epoch/--output/--run-summary repeat once per camera;
+  # one nvstreammux batch, nvinfer pinned to batch-size 1 (the batch-1 engine runs each frame), frames routed to their
+  # camera by source_id, per-camera pacer/JSONL/summary. One camera: same command, records and summary fields.
+  extractor_sha256: e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711
   extractor_schema_version: "1.1"
   extractor_pacing: source
   pace_lead_ms: 200

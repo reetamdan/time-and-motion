@@ -80,6 +80,8 @@ HISTORY_READY_S = 1.0
 CONFIG_DIR = ROOT / "configs"
 # Analyse every Nth decoded frame (camera analysis_frame_interval / extractor --analysis-frame-interval); 1 = all.
 ANALYSIS_FRAME_INTERVAL = 1
+# Stage D only: file cameras batched per DeepStream pipeline (runtime.yaml replay.cameras_per_pipeline).
+CAMERAS_PER_PIPELINE = 1
 
 PROTOCOL: dict[str, Any] = {
     "protocol_version": 2,
@@ -871,6 +873,7 @@ def write_backend_config(directory: Path, feeds: int, clip: Path) -> list[str]:
     document = yaml.safe_load(runtime.read_text(encoding="utf-8"))
     # Raw frame logs are the measurement: never rotate them away mid-step (run_backend refuses a rotated log).
     document.setdefault("replay", {})["frame_log_max_mib"] = 0
+    document["replay"]["cameras_per_pipeline"] = CAMERAS_PER_PIPELINE
     runtime.write_text(yaml.safe_dump(document, sort_keys=False), encoding="utf-8")
     path = directory / "cameras.yaml"
     document = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -1146,6 +1149,8 @@ def report_md(summary: dict[str, Any]) -> str:
         ("Configured analytics FPS", "8 per camera (gate 7.2)"),
         ("Analysis frame interval", "every frame" if env.get("analysis_frame_interval", 1) == 1
          else f"every {env['analysis_frame_interval']}th decoded frame (decoder drop-frame-interval)"),
+        ("Cameras per pipeline (stage D)", "one pipeline per camera" if env.get("cameras_per_pipeline", 1) == 1
+         else f"up to {env['cameras_per_pipeline']} file cameras batched per DeepStream pipeline (one container each)"),
         ("Measured analytics FPS, per camera", "per step below (D: backend-consumed; A-C: producer)"),
         ("Detector / revision", f"{env['selected_model']} ({env['acceptance']})"),
         ("Configuration profile", summary["identities_start"].get("config_dir", "configs")),
@@ -1206,7 +1211,7 @@ def environment(config, clip: Path) -> dict[str, Any]:
             "wsl_distro": DISTRO if runtime_prefix(DISTRO) else None, "image": config.models.pipeline.image,
             "selected_model": config.models.selected_model, "acceptance": config.models.selected.acceptance,
             "config_dir": _display(CONFIG_DIR), "precision": config.models.selected.precision,
-            "analysis_frame_interval": ANALYSIS_FRAME_INTERVAL,
+            "analysis_frame_interval": ANALYSIS_FRAME_INTERVAL, "cameras_per_pipeline": CAMERAS_PER_PIPELINE,
             "engine": _display(config.models.selected.engine_path) if config.models.selected.engine_path else None,
             "competing_gpu_processes": subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name,used_memory", "--format=csv,noheader"],
                                                       capture_output=True, text=True, check=False).stdout.strip() or "none reported (WDDM may hide them)",
@@ -1258,11 +1263,16 @@ def main() -> int:
                         help="configuration profile (default: CCTV_CONFIG_DIR, else configs/; RTX A6000: configs/a6000)")
     parser.add_argument("--analysis-frame-interval", type=int, default=1,
                         help="analyse every Nth decoded frame in every stage (1 = every frame; >1 is a deviation)")
+    parser.add_argument("--cameras-per-pipeline", type=int, default=1,
+                        help="stage D: batch up to N file cameras per DeepStream pipeline (1 = one each; >1 is a deviation)")
     args = parser.parse_args()
     if not 1 <= args.analysis_frame_interval <= 30:
         parser.error("--analysis-frame-interval must be between 1 and 30")
-    global CONFIG_DIR, ANALYSIS_FRAME_INTERVAL
+    if not 1 <= args.cameras_per_pipeline <= 32:
+        parser.error("--cameras-per-pipeline must be between 1 and 32")
+    global CONFIG_DIR, ANALYSIS_FRAME_INTERVAL, CAMERAS_PER_PIPELINE
     ANALYSIS_FRAME_INTERVAL = args.analysis_frame_interval
+    CAMERAS_PER_PIPELINE = args.cameras_per_pipeline
     CONFIG_DIR = Path(args.config_dir or os.environ.get("CCTV_CONFIG_DIR") or ROOT / "configs").resolve()
     if not (CONFIG_DIR / "models.yaml").is_file():
         print(json.dumps({"refused": f"no models.yaml in configuration profile {CONFIG_DIR}"}))
@@ -1286,6 +1296,8 @@ def main() -> int:
         deviations["stages"] = args.stages
     if ANALYSIS_FRAME_INTERVAL != 1:
         deviations["analysis_frame_interval"] = ANALYSIS_FRAME_INTERVAL
+    if CAMERAS_PER_PIPELINE != 1:
+        deviations["cameras_per_pipeline"] = CAMERAS_PER_PIPELINE
     if args.plan == "custom":
         deviations["plan"] = "custom (diagnostic; never an acceptance result)"
     run_dir = Path(args.run_dir).resolve() if args.run_dir else ROOT / "reports" / "benchmarks" / f"capacity-{args.plan}-{utc_stamp()}"

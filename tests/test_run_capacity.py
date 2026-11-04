@@ -222,3 +222,15 @@ def test_analysis_frame_interval_reaches_every_stage(tmp_path: Path, monkeypatch
     rc.write_backend_config(tmp_path / "configs", 2, clip)
     copied = load_configuration(tmp_path / "configs", PROJECT_ROOT)
     assert [camera.analysis_frame_interval for camera in copied.cameras] == [4, 4]
+
+
+def test_cameras_per_pipeline_reaches_the_backend_configuration(tmp_path: Path, monkeypatch) -> None:
+    from backend.app.configuration import load_configuration
+
+    monkeypatch.setattr(rc, "CONFIG_DIR", PROJECT_ROOT / "configs")
+    clip = PROJECT_ROOT / "demo" / "derived" / "cam01-repeat33.mp4"
+    rc.write_backend_config(tmp_path / "default", 2, clip)
+    assert load_configuration(tmp_path / "default", PROJECT_ROOT).runtime.replay.cameras_per_pipeline == 1
+    monkeypatch.setattr(rc, "CAMERAS_PER_PIPELINE", 4)
+    rc.write_backend_config(tmp_path / "batched", 8, clip)
+    assert load_configuration(tmp_path / "batched", PROJECT_ROOT).runtime.replay.cameras_per_pipeline == 4

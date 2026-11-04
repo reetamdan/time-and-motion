@@ -478,6 +478,12 @@ class ReplaySettings(StrictModel):
     # A6000 under WSL2: 16 pipelines loading at once failed decoder and engine allocations at ~4 GB of
     # 48 GB used. Separately, that host runs at most 12 pipelines at all (a 13th gets no CUDA device).
     startup_concurrency: int = Field(default=4, ge=1, le=64)
+    # File cameras batched into one DeepStream pipeline (one container, one nvstreammux batch). 1 = one
+    # pipeline per camera. Only enabled file cameras with the same loop and analysis_frame_interval share
+    # a pipeline, in cameras.yaml order; live cameras always run alone. A shared pipeline fails or ends
+    # for all of its cameras together. The A6000 under WSL2 starts at most 12 pipelines, so more than 12
+    # cameras need this above 1; 16 cameras ran in a single pipeline there.
+    cameras_per_pipeline: int = Field(default=1, ge=1, le=32)
 
 
 class CapabilitySettings(StrictModel):

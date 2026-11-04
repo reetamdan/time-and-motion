@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import copy
 import logging
 import threading
@@ -285,12 +286,13 @@ class CameraRuntimeSupervisor:
             # Container probes block for seconds; keep the event loop (and every camera consumer) running.
             availability = await asyncio.to_thread(self.adapter.availability)
             self.repository.record_run_provenance(run_id, self.provenance(availability, mode))
-            # Cameras start concurrently, at most replay.startup_concurrency loading at once (a slot frees
-            # at the camera's first frame or failed start): a slow or failing camera never blocks the others.
+            # Pipelines start concurrently, at most replay.startup_concurrency loading at once (a slot frees at
+            # the first frame or a failed start): a slow or failing pipeline never blocks the others. A pipeline
+            # is one camera, or up to replay.cameras_per_pipeline file cameras batched together.
             self._start_slots = asyncio.Semaphore(self.config.runtime.replay.startup_concurrency)
             await asyncio.gather(*(
-                self._start_camera_isolated(run_id, camera, availability.available, availability.name)
-                for camera in self.config.cameras
+                self._start_group_isolated(run_id, group, availability.available, availability.name)
+                for group in self.pipeline_groups(availability.available)
             ))
             if not availability.available:
                 self.repository.open_alert(
@@ -398,6 +400,66 @@ class CameraRuntimeSupervisor:
             except Exception:
                 LOGGER.exception("Facility evaluation tick failed")
 
+    def pipeline_groups(self, adapter_available: bool) -> list[list[CameraConfig]]:
+        """Cameras in launch units: alone, or up to cameras_per_pipeline compatible file cameras together.
+
+        Only enabled file cameras whose clip is present and that share loop and analysis_frame_interval
+        are batched, in cameras.yaml order; everything else (live, disabled, missing) starts alone.
+        """
+        size = min(self.config.runtime.replay.cameras_per_pipeline, self.adapter.max_cameras_per_pipeline())
+        if size <= 1 or not adapter_available:
+            return [[camera] for camera in self.config.cameras]
+        groups: list[list[CameraConfig]] = []
+        pending: dict[tuple[bool, int], list[CameraConfig]] = {}
+        for camera in self.config.cameras:
+            if camera.enabled and camera.source_type == "file" and self._file_source_available(camera):
+                bucket = pending.setdefault((camera.loop, camera.analysis_frame_interval), [])
+                bucket.append(camera)
+                if len(bucket) == size:
+                    groups.append(pending.pop((camera.loop, camera.analysis_frame_interval)))
+            else:
+                groups.append([camera])
+        groups.extend(pending.values())
+        return groups
+
+    async def _start_group_isolated(
+        self, run_id: str, cameras: list[CameraConfig], adapter_available: bool, adapter_name: str
+    ) -> None:
+        if len(cameras) == 1:
+            await self._start_camera_isolated(run_id, cameras[0], adapter_available, adapter_name)
+            return
+        try:
+            async with self._start_slots if self._start_slots is not None else contextlib.nullcontext():
+                await self._start_shared(run_id, cameras, adapter_name)
+        except Exception as exc:
+            # Bookkeeping failed before the per-camera results: every camera of the pipeline is reported.
+            for camera in cameras:
+                if not self._states[camera.id].perception_started:
+                    self._camera_start_failed(run_id, camera, exc)
+
+    async def _start_shared(self, run_id: str, cameras: list[CameraConfig], adapter_name: str) -> None:
+        """Start file cameras that share one pipeline; each succeeds or fails as its own camera."""
+        epochs = [str(uuid.uuid4()) for _ in cameras]
+        identity = self.adapter.pipeline_identity([(camera.id, epoch) for camera, epoch in zip(cameras, epochs)])
+        states = [await self._prepare_launch(run_id, camera, epoch, adapter_name, True, identity)
+                  for camera, epoch in zip(cameras, epochs)]
+        starts = [(camera, epoch, _ObservationSink(self, camera.id, epoch)) for camera, epoch in zip(cameras, epochs)]
+        try:
+            results = await self.adapter.start_cameras(starts, self._replay_mode)
+        except asyncio.CancelledError as exc:
+            for camera, epoch in zip(cameras, epochs):
+                await asyncio.shield(self._reconcile_failed_start(run_id, camera, epoch, exc))
+            raise
+        except Exception as exc:
+            results = [RuntimeError(f"{type(exc).__name__}: {exc}") for _ in cameras]
+        for camera, epoch, state, result in zip(cameras, epochs, states, results):
+            if result is None:
+                self._mark_started(run_id, camera, epoch, state)
+                self._publish_state(run_id, camera, epoch, state)
+            else:
+                await self._reconcile_failed_start(run_id, camera, epoch, result)
+                self._camera_start_failed(run_id, camera, result)
+
     async def _start_camera_isolated(
         self, run_id: str, camera: CameraConfig, adapter_available: bool, adapter_name: str
     ) -> None:
@@ -408,24 +470,27 @@ class CameraRuntimeSupervisor:
                 async with self._start_slots:
                     await self._start_camera(run_id, camera, adapter_available, adapter_name)
         except Exception as exc:
-            # A source/adapter failure is isolated to this camera; other sources continue.
-            state = CameraRuntimeState(
-                health="OFFLINE", source_available=False,
-                epoch=getattr(exc, "camera_epoch", None),
-                unavailable_reason=f"Source initialization failed: {self._safe_source_error(camera, exc)}",
-            )
-            with self._state_lock:
-                self._states[camera.id] = state
-            self.repository.update_camera_health(
-                run_id, camera.id, None, "OFFLINE", camera.calibration_status, state.unavailable_reason
-            )
-            self.repository.open_alert(
-                run_id, f"camera-initialization:{camera.id}", "CRITICAL", "camera", "Camera initialization failed",
-                f"{camera.name}: {state.unavailable_reason}", "camera", camera.id,
-                {"source_label": camera.source_label}, "runtime-v1",
-            )
-            if camera.source_type == "rtsp" and not isinstance(exc, asyncio.CancelledError):
-                self._schedule_reconnect(run_id, camera.id, state.unavailable_reason or "start failed")
+            self._camera_start_failed(run_id, camera, exc)
+
+    def _camera_start_failed(self, run_id: str, camera: CameraConfig, exc: BaseException) -> None:
+        # A source/adapter failure is isolated to this camera (or its shared pipeline); other sources continue.
+        state = CameraRuntimeState(
+            health="OFFLINE", source_available=False,
+            epoch=getattr(exc, "camera_epoch", None),
+            unavailable_reason=f"Source initialization failed: {self._safe_source_error(camera, exc)}",
+        )
+        with self._state_lock:
+            self._states[camera.id] = state
+        self.repository.update_camera_health(
+            run_id, camera.id, None, "OFFLINE", camera.calibration_status, state.unavailable_reason
+        )
+        self.repository.open_alert(
+            run_id, f"camera-initialization:{camera.id}", "CRITICAL", "camera", "Camera initialization failed",
+            f"{camera.name}: {state.unavailable_reason}", "camera", camera.id,
+            {"source_label": camera.source_label}, "runtime-v1",
+        )
+        if camera.source_type == "rtsp" and not isinstance(exc, asyncio.CancelledError):
+            self._schedule_reconnect(run_id, camera.id, state.unavailable_reason or "start failed")
 
     async def _start_camera(
         self, run_id: str, camera: CameraConfig, adapter_available: bool, adapter_name: str
@@ -458,23 +523,9 @@ class CameraRuntimeSupervisor:
             return
 
         epoch = str(uuid.uuid4())
-        state = CameraRuntimeState(
-            health="DEGRADED", epoch=epoch, source_available=True,
-            unavailable_reason="Source available; perception runtime unavailable (source preview only)",
-        )
-        if camera.loop and camera.source_type == "file":
-            state.loop = True
-            state.loop_frames = await asyncio.to_thread(self._count_frames, camera)
-        self.repository.start_camera_session(run_id, camera.id, epoch, "SOURCE_AVAILABLE", adapter_name)
+        identity = self.adapter.resource_identity(camera.id, epoch) if adapter_available else None
+        state = await self._prepare_launch(run_id, camera, epoch, adapter_name, adapter_available, identity)
         if adapter_available:
-            self._analytics[(camera.id, epoch)] = CameraLocalAnalytics(
-                camera.id, epoch, self.config.runtime.replay.history_sample_seconds, self.image_lines(camera.id)
-            )
-            state.replay_mode = self._replay_mode
-            identity = self.adapter.resource_identity(camera.id, epoch)
-            # Ownership is durable *before* launch: a failed start or a crash cannot orphan the resource.
-            self.repository.record_resource(run_id, camera.id, epoch, adapter_name, identity.kind if identity else None,
-                                            identity.name if identity else None, identity.runtime if identity else None)
             try:
                 await self.adapter.start_camera(camera, epoch, _ObservationSink(self, camera.id, epoch), self._replay_mode)
             except asyncio.CancelledError as exc:
@@ -485,17 +536,45 @@ class CameraRuntimeSupervisor:
             except Exception as exc:
                 await self._reconcile_failed_start(run_id, camera, epoch, exc)
                 raise
-            self.repository.update_resource_state(run_id, camera.id, epoch, "ACTIVE")
-            if self._facility is not None:
-                self._facility.reset_camera(camera.id, epoch)
-            state.perception_started = True
-            state.health = "HEALTHY" if camera.calibration_status == "VALID" else "CALIBRATION WARNING"
-            state.unavailable_reason = (
-                None if camera.calibration_status == "VALID" else "Calibration missing; geometry-dependent analytics unavailable"
+            self._mark_started(run_id, camera, epoch, state)
+        self._publish_state(run_id, camera, epoch, state)
+
+    async def _prepare_launch(self, run_id: str, camera: CameraConfig, epoch: str, adapter_name: str, launch: bool,
+                              identity: ResourceIdentity | None) -> CameraRuntimeState:
+        """Everything before the adapter starts a camera: state, session row, analytics, durable ownership."""
+        state = CameraRuntimeState(
+            health="DEGRADED", epoch=epoch, source_available=True,
+            unavailable_reason="Source available; perception runtime unavailable (source preview only)",
+        )
+        if camera.loop and camera.source_type == "file":
+            state.loop = True
+            state.loop_frames = await asyncio.to_thread(self._count_frames, camera)
+        self.repository.start_camera_session(run_id, camera.id, epoch, "SOURCE_AVAILABLE", adapter_name)
+        if launch:
+            self._analytics[(camera.id, epoch)] = CameraLocalAnalytics(
+                camera.id, epoch, self.config.runtime.replay.history_sample_seconds, self.image_lines(camera.id)
             )
-            with self._state_lock:
-                self._started[camera.id] = epoch
-                self._perception_active = True
+            state.replay_mode = self._replay_mode
+            # Ownership is durable *before* launch: a failed start or a crash cannot orphan the resource.
+            # Cameras sharing a pipeline all record the shared resource.
+            self.repository.record_resource(run_id, camera.id, epoch, adapter_name, identity.kind if identity else None,
+                                            identity.name if identity else None, identity.runtime if identity else None)
+        return state
+
+    def _mark_started(self, run_id: str, camera: CameraConfig, epoch: str, state: CameraRuntimeState) -> None:
+        self.repository.update_resource_state(run_id, camera.id, epoch, "ACTIVE")
+        if self._facility is not None:
+            self._facility.reset_camera(camera.id, epoch)
+        state.perception_started = True
+        state.health = "HEALTHY" if camera.calibration_status == "VALID" else "CALIBRATION WARNING"
+        state.unavailable_reason = (
+            None if camera.calibration_status == "VALID" else "Calibration missing; geometry-dependent analytics unavailable"
+        )
+        with self._state_lock:
+            self._started[camera.id] = epoch
+            self._perception_active = True
+
+    def _publish_state(self, run_id: str, camera: CameraConfig, epoch: str, state: CameraRuntimeState) -> None:
         with self._state_lock:
             self._states[camera.id] = state
         self.repository.update_camera_health(

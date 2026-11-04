@@ -54,6 +54,8 @@ CLEANUP_ESCALATION_ATTEMPTS = 2
 # docker run --rm removes the container asynchronously after it exits.
 REMOVAL_VERIFY_SECONDS = 5.0
 OWNED_CONTAINER_NAME = re.compile(r"^aegis-[A-Za-z0-9_.-]+$")
+# A pipeline shared by several cameras is named after its first camera's epoch (a UUID).
+BATCH_CONTAINER_NAME = re.compile(r"^aegis-batch-[A-Za-z0-9_.-]+$")
 ANALYTICS_RATE_HORIZON_SECONDS = 2.0
 ANALYTICS_RATE_MIN_SPAN_SECONDS = 0.5
 
@@ -230,14 +232,23 @@ class _Session:
     release_log: TextIO | None = None
     live: bool = False
     secrets: list[str] = field(default_factory=list)
+    # Cameras sharing this session's process (camera_id, epoch) -> session; None: this camera alone.
+    # Every member holds the same dict, process, log handle, reader thread and reader_done event.
+    routes: dict[tuple[str, str], "_Session"] | None = None
 
 
 class ServiceMakerSessions:
-    """Own one container/process/consumer per camera epoch."""
+    """Own one container/process per pipeline and one consumer per camera epoch.
+
+    A pipeline runs one camera, or several file cameras batched together (start_pipeline). Stopping a
+    camera of a shared pipeline detaches it; the container is released with its last camera.
+    """
 
     def __init__(self, config: AppConfig, on_launch_failure: Callable[[str], None] | None = None) -> None:
         self.config = config
         self._sessions: dict[tuple[str, str], _Session] = {}
+        # Shared pipelines: container name -> the (camera_id, epoch) keys still attached to it.
+        self._pipelines: dict[str, set[tuple[str, str]]] = {}
         self._unresolved: dict[tuple[str, str], ContainerCleanup] = {}
         self._on_launch_failure = on_launch_failure
 
@@ -249,18 +260,30 @@ class ServiceMakerSessions:
 
     def _command(self, camera: CameraConfig, epoch: str, output: Path, summary: Path,
                  replay_mode: str = "paced") -> list[str]:
+        return self._pipeline_command([(camera, epoch, output, summary)], self.container_name(camera.id, epoch),
+                                      replay_mode)
+
+    def _pipeline_command(self, members: list[tuple[CameraConfig, str, Path, Path]], container_name: str,
+                          replay_mode: str = "paced") -> list[str]:
+        """The extractor command for one pipeline: per-camera arguments repeat in member order."""
         if host_route() == "unsupported":
             raise PerceptionUnavailable("No container runtime is reachable: run the backend on Windows (wsl.exe bridge) "
                                         "or inside WSL/Linux with docker on PATH")
         root = self.config.project_root
         wrapper = root / "scripts" / "deepstream.sh"
+        camera = members[0][0]
         live = camera.source_type == "rtsp"
-        if live:
-            source_argument, _ = resolve_rtsp_source(camera.source)
-        else:
-            if camera.source_path is None:
+        sources: list[str] = []
+        for member, *_ in members:
+            if member.source_type == "rtsp":
+                sources.append(resolve_rtsp_source(member.source)[0])
+            elif member.source_path is None:
                 raise PerceptionUnavailable("The file source has no resolved local path")
-            source_argument = workspace_path(camera.source_path, root)
+            else:
+                sources.append(workspace_path(member.source_path, root))
+
+        def each(flag: str, values: list[str]) -> list[str]:
+            return [item for value in values for item in (flag, value)]
         pipeline = self.config.models.pipeline
         tracker = self.config.models.tracker
         if pipeline is None or tracker.config_path is None:
@@ -268,20 +291,20 @@ class ServiceMakerSessions:
         _, profile = self.profile()
         return [
             *runtime_prefix(self.config.runtime.telemetry.wsl_distro),
-            "env", f"DEEPSTREAM_CONTAINER_NAME={self.container_name(camera.id, epoch)}",
+            "env", f"DEEPSTREAM_CONTAINER_NAME={container_name}",
             "bash", wsl_path(wrapper), "python3", workspace_path(pipeline.extractor_path, root),
-            "--source", source_argument,
+            *each("--source", sources),
             "--infer-config", workspace_path(profile.infer_config_path, root),
             "--tracker-config", workspace_path(tracker.config_path, root),
             "--tracker-lib", tracker.library,
             "--width", str(profile.pipeline_width), "--height", str(profile.pipeline_height),
             "--tracker-width", str(profile.tracker_width), "--tracker-height", str(profile.tracker_height),
-            "--output", workspace_path(output, root),
-            "--run-summary", workspace_path(summary, root),
+            *each("--output", [workspace_path(output, root) for _, _, output, _ in members]),
+            *each("--run-summary", [workspace_path(summary, root) for _, _, _, summary in members]),
             *(["--output-max-mib", f"{self.config.runtime.replay.frame_log_max_mib:g}"]
               if self.config.runtime.replay.frame_log_max_mib else []),
-            "--camera-id", camera.id,
-            "--camera-epoch", epoch,
+            *each("--camera-id", [member.id for member, *_ in members]),
+            *each("--camera-epoch", [epoch for _, epoch, _, _ in members]),
             # Source-side pacing (v2 extractor) only for paced FILE replay; live sources are already real time.
             *(["--pace", "source", "--pace-lead-ms", f"{pipeline.pace_lead_ms:g}"]
               if replay_mode == "paced" and pipeline.extractor_pacing == "source" and not live else []),
@@ -299,6 +322,16 @@ class ServiceMakerSessions:
         return ResourceIdentity("container", self.container_name(camera_id, epoch),
                                 f"docker@wsl:{self.config.runtime.telemetry.wsl_distro}")
 
+    def pipeline_name(self, cameras: list[tuple[str, str]]) -> str:
+        """One camera keeps its own name; a shared pipeline is named after its first camera's epoch."""
+        if len(cameras) == 1:
+            return self.container_name(*cameras[0])
+        return f"aegis-batch-{self._safe_name(cameras[0][1])}"
+
+    def pipeline_identity(self, cameras: list[tuple[str, str]]) -> ResourceIdentity:
+        return ResourceIdentity("container", self.pipeline_name(cameras),
+                                f"docker@wsl:{self.config.runtime.telemetry.wsl_distro}")
+
     def adopt(self, camera_id: str, epoch: str, identity: ResourceIdentity | None) -> None:
         """Re-own a container recorded by a previous backend process so stop_camera can release it.
 
@@ -306,8 +339,10 @@ class ServiceMakerSessions:
         accepted; anything else is refused rather than guessed.
         """
         expected = self.resource_identity(camera_id, epoch)
-        if identity is None or identity != expected:
-            raise PerceptionCleanupError(f"Refusing to adopt {identity!r}: expected {expected!r}")
+        shared = (identity is not None and identity.kind == expected.kind and identity.runtime == expected.runtime
+                  and BATCH_CONTAINER_NAME.fullmatch(identity.name) is not None)
+        if identity is None or (identity != expected and not shared):
+            raise PerceptionCleanupError(f"Refusing to adopt {identity!r}: expected {expected!r} or a shared pipeline")
         key = (camera_id, epoch)
         if key not in self._sessions:
             self._unresolved[key] = ContainerCleanup(identity.name, False, [], "Adopted after backend restart")
@@ -388,6 +423,130 @@ class ServiceMakerSessions:
                                        cleanup_confirmed=cleanup.confirmed_absent) from exc
         session.task = asyncio.create_task(self._consume(session, camera, sink, PersonClass.of(profile)), name=f"observations:{camera.id}:{camera_epoch}")
 
+    async def start_pipeline(
+        self, starts: list[tuple[CameraConfig, str, ObservationSink]], replay_mode: str = "paced"
+    ) -> list[BaseException | None]:
+        """Run several file cameras in one container (one nvstreammux batch); one result per camera.
+
+        They start together: the pipeline is accepted only when every camera has delivered a first frame
+        with valid geometry, and otherwise the container is released and every camera gets the error.
+        Afterwards each camera has its own queue, consumer, sink and end-of-stream report.
+        """
+        cameras = [camera for camera, _, _ in starts]
+        keys = [(camera.id, epoch) for camera, epoch, _ in starts]
+
+        def refuse(message: str) -> list[BaseException | None]:
+            return [PerceptionStartError(message, resource_allocated=False) for _ in starts]
+        if replay_mode not in REPLAY_MODES:
+            return refuse(f"Unsupported replay mode {replay_mode!r}")
+        if any(camera.source_type != "file" for camera in cameras):
+            return refuse("Only file cameras can share a pipeline")
+        if len({(camera.loop, camera.analysis_frame_interval) for camera in cameras}) != 1:
+            return refuse("Cameras sharing a pipeline need the same loop and analysis_frame_interval settings")
+        if len({camera.id for camera in cameras}) != len(cameras):
+            return refuse("A camera can appear only once in a pipeline")
+        for camera_id, epoch in keys:
+            blocked = [k for k in self._unresolved if k[0] == camera_id]
+            if blocked:
+                return refuse(f"Previous container for {camera_id} (epoch {blocked[0][1]}) is not confirmed removed; "
+                              "stop/retry cleanup first")
+            if (camera_id, epoch) in self._sessions:
+                return refuse("This camera perception epoch is already active")
+        try:
+            _, profile = self.profile()
+            members = []
+            for camera, epoch, _ in starts:
+                directory = self.config.project_root / "backend" / "var" / "perception" / camera.id
+                directory.mkdir(parents=True, exist_ok=True)
+                members.append((camera, epoch, directory / f"{epoch}.jsonl", directory / f"{epoch}.summary.json"))
+            name = self.pipeline_name(keys)
+            command = self._pipeline_command(members, name, replay_mode)
+        except PerceptionUnavailable as exc:
+            return refuse(str(exc))
+        # The shared container log sits with the first camera's files (<epoch>.log).
+        log_handle = (members[0][2].parent / f"{keys[0][1]}.log").open("w", encoding="utf-8", newline="\n")
+        try:
+            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=log_handle)
+        except OSError as exc:
+            log_handle.close()
+            return refuse(f"Could not launch the pinned Service Maker container: {exc}")
+        routes: dict[tuple[str, str], _Session] = {}
+        reader_done = threading.Event()
+        sessions: list[_Session] = []
+        for (camera, epoch, _), (_, _, output, _) in zip(starts, members):
+            session = _Session(
+                camera.id, epoch, name, process, output, log_handle, asyncio.Event(),
+                frame_queue=queue.Queue(maxsize=PACED_FRAME_QUEUE_SIZE if replay_mode == "paced" else FRAME_QUEUE_SIZE),
+                reader_done=reader_done, replay_mode=replay_mode, routes=routes,
+            )
+            if os.environ.get(RELEASE_LOG_ENV) == "1":
+                session.release_log = (output.parent / f"{epoch}.release.jsonl").open("w", encoding="utf-8", newline="\n")
+            routes[(camera.id, epoch)] = session
+            self._sessions[(camera.id, epoch)] = session
+            sessions.append(session)
+        self._pipelines[name] = set(keys)
+        try:
+            self._start_reader(sessions[0])
+            for session in sessions[1:]:
+                session.reader = sessions[0].reader
+            waits = await asyncio.gather(*(self._wait_for_metadata(session) for session in sessions),
+                                         return_exceptions=True)
+            failed = next((w for w in waits if isinstance(w, BaseException)), None)
+            if failed is not None:
+                raise failed
+            for session in sessions:
+                first = session.frame_queue.queue[0] if session.frame_queue.queue else None
+                if first is not None:
+                    error, session.geometry_disclosure = geometry_check(profile, first)
+                    if error:
+                        raise PerceptionUnavailable(f"Source geometry rejected for {session.camera_id}: {error}")
+        except asyncio.CancelledError:
+            cleanup = await asyncio.shield(self._finish_pipeline(sessions))
+            if not cleanup.confirmed_absent:
+                for key in keys:
+                    self._unresolved[key] = cleanup
+            raise
+        except Exception as exc:
+            cleanup = await self._finish_pipeline(sessions)
+            if not cleanup.confirmed_absent:
+                for key in keys:
+                    self._unresolved[key] = cleanup
+            if self._on_launch_failure is not None and not str(exc).startswith("Source geometry rejected"):
+                self._on_launch_failure(str(exc))
+            message = f"Shared pipeline of {', '.join(c.id for c in cameras)} failed to start: {exc}"
+            return [PerceptionStartError(message, resource_allocated=True, cleanup_confirmed=cleanup.confirmed_absent)
+                    for _ in starts]
+        person = PersonClass.of(profile)
+        for (camera, epoch, sink), session in zip(starts, sessions):
+            session.task = asyncio.create_task(self._consume(session, camera, sink, person),
+                                               name=f"observations:{camera.id}:{epoch}")
+        return [None for _ in starts]
+
+    async def _finish_pipeline(self, sessions: list[_Session]) -> ContainerCleanup:
+        """Release a shared pipeline as a whole (failed start): every camera stops, the container goes."""
+        for session in sessions:
+            session.stop_event.set()
+        cleanup = await self._finish(sessions[0])
+        for session in sessions[1:]:
+            if session.release_log is not None:
+                session.release_log.close()
+        for session in sessions:
+            self._sessions.pop((session.camera_id, session.camera_epoch), None)
+        self._pipelines.pop(sessions[0].container_name, None)
+        return cleanup
+
+    async def _detach(self, session: _Session) -> None:
+        """Stop one camera of a shared pipeline that keeps running for the others."""
+        session.stop_event.set()
+        if session.task is not None:
+            try:
+                await asyncio.wait_for(asyncio.shield(session.task), timeout=3)
+            except (asyncio.TimeoutError, asyncio.CancelledError):
+                session.task.cancel()
+                await asyncio.gather(session.task, return_exceptions=True)
+        if session.release_log is not None:
+            session.release_log.close()
+
     def _start_reader(self, session: _Session) -> None:
         if session.process.stdout is None:
             raise PerceptionUnavailable("Service Maker stdout pipe was not created")
@@ -431,7 +590,10 @@ class ServiceMakerSessions:
 
     @staticmethod
     def _validate_frame(session: _Session, payload: bytes) -> dict[str, Any]:
-        record = json.loads(payload)
+        return ServiceMakerSessions._validate_record(session, json.loads(payload))
+
+    @staticmethod
+    def _validate_record(session: _Session, record: Any) -> dict[str, Any]:
         if not isinstance(record, dict):
             raise ValueError("Frame payload is not a JSON object")
         if (
@@ -460,7 +622,9 @@ class ServiceMakerSessions:
             LOGGER.warning("Could not append Service Maker log for %s: %s", session.camera_id, exc)
 
     def _read_stdout(self, session: _Session) -> None:
+        """One reader per process: each frame goes to its camera's queue (by camera_id and epoch)."""
         stream = session.process.stdout
+        routes = session.routes or {(session.camera_id, session.camera_epoch): session}
         try:
             if stream is None:
                 raise RuntimeError("Service Maker stdout pipe is unavailable")
@@ -468,7 +632,7 @@ class ServiceMakerSessions:
                 line = stream.readline()
                 if not line:
                     break
-                if session.stop_event.is_set():
+                if all(member.stop_event.is_set() for member in routes.values()):
                     # Keep draining until EOF after a stop: wsl.exe relays container stdout and
                     # cannot exit while blocked writing into a full, unread pipe.
                     session.frames_discarded_after_stop += line.startswith(FRAME_PREFIX_BYTES)
@@ -478,28 +642,38 @@ class ServiceMakerSessions:
                     continue
                 read_at = time.perf_counter()
                 read_unix_ns = time.time_ns()
+                target = session
                 try:
-                    record = self._validate_frame(session, line[len(FRAME_PREFIX_BYTES):])
+                    record = json.loads(line[len(FRAME_PREFIX_BYTES):])
+                    if isinstance(record, dict):
+                        target = routes.get((record.get("camera_id"), record.get("camera_epoch")), session)
+                    record = self._validate_record(target, record)
                     record["_backend_read_perf"] = read_at
                     record["_backend_read_unix_ns"] = read_unix_ns
                 except (TypeError, ValueError, json.JSONDecodeError) as exc:
-                    session.malformed_frames += 1
+                    target.malformed_frames += 1
                     self._append_log(
                         session,
-                        f"Skipping malformed Service Maker stdout frame for {session.camera_id}: {exc}",
+                        f"Skipping malformed Service Maker stdout frame for {target.camera_id}: {exc}",
                     )
                     continue
-                while not session.stop_event.is_set():
+                if target.stop_event.is_set():
+                    target.frames_discarded_after_stop += 1  # a detached camera of a shared pipeline
+                    continue
+                # A full queue (a slow camera) holds the reader, so backpressure reaches the whole pipeline.
+                while not target.stop_event.is_set():
                     try:
-                        session.frame_queue.put(record, timeout=0.25)
+                        target.frame_queue.put(record, timeout=0.25)
                     except queue.Full:
                         continue
-                    session.first_frame_event.set()
+                    target.first_frame_event.set()
                     break
         except Exception as exc:
-            session.reader_error = f"{type(exc).__name__}: {exc}"
+            error = f"{type(exc).__name__}: {exc}"
+            for member in routes.values():
+                member.reader_error = error
             LOGGER.exception("Service Maker stdout reader failed for %s", session.camera_id)
-            self._append_log(session, f"Service Maker stdout reader failed: {session.reader_error}")
+            self._append_log(session, f"Service Maker stdout reader failed: {error}")
         finally:
             session.reader_done.set()
 
@@ -732,10 +906,18 @@ class ServiceMakerSessions:
     async def stop_camera(self, camera_id: str, camera_epoch: str) -> None:
         key = (camera_id, camera_epoch)
         session = self._sessions.get(key)
+        attached = self._pipelines.get(session.container_name) if session is not None else None
+        if session is not None and attached is not None and len(attached - {key}) > 0:
+            # Other cameras still use this pipeline: detach this one; the last camera releases the container.
+            attached.discard(key)
+            await self._detach(session)
+            self._sessions.pop(key, None)
+            return
         if session is not None:
             cleanup = await self._finish(session)
             # Session tracking is released only once the outcome is known; failures stay recorded below.
             self._sessions.pop(key, None)
+            self._pipelines.pop(session.container_name, None)
         elif key in self._unresolved:
             cleanup = await asyncio.to_thread(self._ensure_container_absent, self._unresolved[key].container_name, True)
         else:

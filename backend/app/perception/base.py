@@ -125,6 +125,34 @@ class PerceptionAdapter(ABC):
         """Identity of the resource start_camera would launch, known before launch (None: no external resource)."""
         return None
 
+    def max_cameras_per_pipeline(self) -> int:
+        """How many file cameras start_cameras may run in one shared pipeline (1: one pipeline per camera)."""
+        return 1
+
+    def pipeline_identity(self, cameras: list[tuple[str, str]]) -> ResourceIdentity | None:
+        """Identity of the one resource start_cameras would launch for these (camera_id, epoch) pairs."""
+        if len(cameras) != 1:
+            raise ValueError("This adapter runs one camera per pipeline")
+        return self.resource_identity(*cameras[0])
+
+    async def start_cameras(
+        self, starts: list[tuple[CameraConfig, str, ObservationSink]], replay_mode: str = "paced"
+    ) -> list[BaseException | None]:
+        """Start cameras that share one pipeline; one result per camera (None = started, else its error).
+
+        A shared pipeline starts, fails and ends for all of its cameras together. Each camera keeps its
+        own epoch and sink, and stop_camera still releases one camera at a time (the shared resource is
+        released with the last one).
+        """
+        if len(starts) != 1:
+            raise ValueError("This adapter runs one camera per pipeline")
+        camera, epoch, sink = starts[0]
+        try:
+            await self.start_camera(camera, epoch, sink, replay_mode)
+        except Exception as exc:
+            return [exc]
+        return [None]
+
     async def adopt_resource(self, camera_id: str, camera_epoch: str, identity: ResourceIdentity | None) -> None:
         """Take back ownership of a resource recorded by a previous backend process so stop_camera can release it."""
         return None

@@ -32,6 +32,13 @@ the frozen historical baseline). Differences, and nothing else:
   inference, tracking, this probe and the backend all run at source_fps / N. Frame numbers stay
   contiguous over the frames that are analysed; PTS keeps the source timeline. The value read
   back from the element is recorded in the summary.
+* Several cameras in one pipeline (file sources only): repeat ``--source``, ``--camera-id``,
+  ``--camera-epoch``, ``--output`` and ``--run-summary`` once per camera, in the same order. One
+  nvstreammux batches them (batch size = camera count) and nvinfer runs the pinned batch-1 engine on
+  each frame of the batch; NvDCF tracks each stream separately. A frame goes to its camera by
+  ``source_id`` (its source's index), and each camera keeps its own pacer, JSONL file, counters and
+  run summary. ``--loop`` and ``--analysis-frame-interval`` apply to every camera of the pipeline.
+  With one ``--source`` the command line, output and behaviour are unchanged.
 
 Output is JSON Lines: exactly one object per decoded frame, including frames
 whose ``objects`` list is empty. There are no per-frame KITTI files and no
@@ -84,8 +91,8 @@ from pyservicemaker import (  # noqa: E402
 
 SCHEMA_VERSION = "1.1"
 FRAME_PREFIX = "AEGIS_FRAME_V1:"
-# The single nvurisrcbin that Flow.batch_capture adds for the first (only) source of this process.
-SOURCE_ELEMENT = "batch_capture-source-0_0"
+# Flow.batch_capture names the nvurisrcbin of source i (in --source order) "<prefix><i>".
+SOURCE_ELEMENT_PREFIX = "batch_capture-source-0_"
 UNTRACKED_OBJECT_ID = 0xFFFFFFFFFFFFFFFF
 GST_CLOCK_TIME_NONE = 0xFFFFFFFFFFFFFFFF
 
@@ -310,17 +317,18 @@ class SourcePacer:
             now = self.clock()
 
 
-class JsonlMetadataWriter(BatchMetadataOperator):
+class CameraOutput:
+    """One camera's share of the pipeline: its pacer, JSONL file (with rotation) and counters."""
+
     def __init__(self, output_path: Path, camera_id: str, camera_epoch: str, pacer: SourcePacer,
                  max_bytes: int = 0):
-        super().__init__()
         self._output_path = output_path
         self._max_bytes = max_bytes
         self._written_bytes = 0
         self.rotations = 0
-        self._camera_id = camera_id
-        self._camera_epoch = camera_epoch
-        self._pacer = pacer
+        self.camera_id = camera_id
+        self.camera_epoch = camera_epoch
+        self.pacer = pacer
         self._output = None
         self.frames_written = 0
         self.objects_written = 0
@@ -345,44 +353,68 @@ class JsonlMetadataWriter(BatchMetadataOperator):
         self._written_bytes = 0
         self.rotations += 1
 
-    def handle_metadata(self, batch_meta: Any) -> None:
+    def write(self, frame_meta: Any) -> None:
         if self._output is None:
             raise RuntimeError("JSONL output is not open")
+        record = frame_record(frame_meta, self.camera_id, self.camera_epoch)
+        self.pacer.wait(record.get("pts_ns"))
+        record["emitted_unix_ns"] = time.time_ns()
+        payload = json.dumps(record, allow_nan=False, separators=(",", ":"))
+        if self._max_bytes and self._written_bytes >= self._max_bytes:
+            self._rotate()
+        self._output.write(payload + "\n")
+        self._written_bytes += len(payload) + 1
+        # Preserve a usable prefix and exact coverage if a later stage fails.
+        self._output.flush()
+        # The same real frame is also the live transport; never synthesize past frames.
+        sys.stdout.write(FRAME_PREFIX + payload + "\n")
+        sys.stdout.flush()
+        frame_number = record["frame_number"]
+        if self.first_frame_number is None:
+            self.first_frame_number = frame_number
+        self.last_frame_number = frame_number
+        self.frames_written += 1
+        self.objects_written += len(record["objects"])
+
+
+class JsonlMetadataWriter(BatchMetadataOperator):
+    """Routes each frame of a batch to its camera by ``source_id`` (the source's index in --source order)."""
+
+    def __init__(self, cameras: list[CameraOutput]):
+        super().__init__()
+        self.cameras = cameras
+
+    def open(self) -> None:
+        for camera in self.cameras:
+            camera.open()
+
+    def close(self) -> None:
+        for camera in self.cameras:
+            camera.close()
+
+    def handle_metadata(self, batch_meta: Any) -> None:
         for frame_meta in batch_meta.frame_items:
-            record = frame_record(frame_meta, self._camera_id, self._camera_epoch)
-            self._pacer.wait(record.get("pts_ns"))
-            record["emitted_unix_ns"] = time.time_ns()
-            payload = json.dumps(record, allow_nan=False, separators=(",", ":"))
-            if self._max_bytes and self._written_bytes >= self._max_bytes:
-                self._rotate()
-            self._output.write(payload + "\n")
-            self._written_bytes += len(payload) + 1
-            # Preserve a usable prefix and exact coverage if a later stage fails.
-            self._output.flush()
-            # The same real frame is also the live transport; never synthesize past frames.
-            sys.stdout.write(FRAME_PREFIX + payload + "\n")
-            sys.stdout.flush()
-            frame_number = record["frame_number"]
-            if self.first_frame_number is None:
-                self.first_frame_number = frame_number
-            self.last_frame_number = frame_number
-            self.frames_written += 1
-            self.objects_written += len(record["objects"])
+            source_id = int(frame_meta.source_id)
+            if not 0 <= source_id < len(self.cameras):
+                raise RuntimeError(f"frame from unknown source_id {source_id} ({len(self.cameras)} sources)")
+            self.cameras[source_id].write(frame_meta)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", default=DEFAULT_SOURCE)
+    # Repeat --source/--camera-id/--camera-epoch/--output (and --run-summary) once per camera, in the
+    # same order, to batch several file cameras into this one pipeline.
+    parser.add_argument("--source", action="append")
     parser.add_argument("--infer-config", default=DEFAULT_INFER_CONFIG)
     parser.add_argument("--tracker-config", default=DEFAULT_TRACKER_CONFIG)
     parser.add_argument("--tracker-lib", default=DEFAULT_TRACKER_LIB)
-    parser.add_argument("--output", default=DEFAULT_OUTPUT)
+    parser.add_argument("--output", action="append")
     parser.add_argument(
-        "--run-summary",
-        help="Defaults to run-summary.json beside --output",
+        "--run-summary", action="append",
+        help="Defaults to run-summary.json beside --output (one camera only)",
     )
-    parser.add_argument("--camera-id", default="cam-01")
-    parser.add_argument("--camera-epoch", required=True)
+    parser.add_argument("--camera-id", action="append")
+    parser.add_argument("--camera-epoch", action="append", required=True)
     parser.add_argument("--width", type=int, default=1920)
     parser.add_argument("--height", type=int, default=1080)
     parser.add_argument("--tracker-width", type=int, default=960)
@@ -401,17 +433,31 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--analysis-frame-interval", type=int, default=1,
                         help="analyse every Nth decoded frame (decoder drop-frame-interval); 1 = every frame")
     args = parser.parse_args()
+    args.source = args.source or [DEFAULT_SOURCE]
+    args.camera_id = args.camera_id or ["cam-01"]
+    args.output = args.output or [DEFAULT_OUTPUT]
+    count = len(args.source)
+    if not len(args.camera_id) == len(args.camera_epoch) == len(args.output) == count:
+        parser.error("give one --camera-id, --camera-epoch and --output per --source, in the same order")
+    if args.run_summary is not None and len(args.run_summary) != count:
+        parser.error("give one --run-summary per --source")
+    if args.run_summary is None and count > 1:
+        parser.error("several sources need one --run-summary each")
+    if len(set(args.camera_id)) != count:
+        parser.error("camera ids must be distinct")
+    if count > 1 and any(is_live(source) for source in args.source):
+        parser.error("only file sources can share a pipeline; give each live source its own process")
     if args.pace_lead_ms < 0:
         parser.error("--pace-lead-ms must be >= 0")
     if not 1 <= args.analysis_frame_interval <= 30:
         parser.error("--analysis-frame-interval must be between 1 and 30")
     if args.output_max_mib < 0:
         parser.error("--output-max-mib must be >= 0")
-    if is_live(args.source) and args.pace != "none":
+    if is_live(args.source[0]) and args.pace != "none":
         parser.error("--pace source applies to file replay only; a live source is already real time")
-    if is_live(args.source) and args.loop:
+    if is_live(args.source[0]) and args.loop:
         parser.error("--loop applies to file replay only")
-    if not args.camera_id.strip() or not args.camera_epoch.strip():
+    if not all(c.strip() for c in args.camera_id) or not all(e.strip() for e in args.camera_epoch):
         parser.error("camera-id and camera-epoch must be non-empty")
     if min(args.width, args.height, args.tracker_width, args.tracker_height) <= 0:
         parser.error("frame and tracker dimensions must be positive")
@@ -419,24 +465,17 @@ def parse_args() -> argparse.Namespace:
 
 
 def run(args: argparse.Namespace) -> dict[str, Any]:
-    output_path = Path(args.output)
-    summary_path = (
-        Path(args.run_summary)
-        if args.run_summary
-        else output_path.with_name("run-summary.json")
-    )
-    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    """Run one pipeline over every --source; one summary per camera (shared fields + that camera's counts)."""
+    outputs = [Path(path) for path in args.output]
+    summary_paths = ([Path(path) for path in args.run_summary] if args.run_summary
+                     else [outputs[0].with_name("run-summary.json")])
+    for path in summary_paths:
+        path.parent.mkdir(parents=True, exist_ok=True)
     started_monotonic = time.monotonic()
+    live = is_live(args.source[0])
     summary: dict[str, Any] = {
         "schema_version": 1,
         "started_at_utc": utc_now(),
-        # Live URLs may carry credentials: only scheme/host/port/path are recorded; files are hashed.
-        "source": redact_source(args.source),
-        "source_sha256": None if is_live(args.source) else sha256_file(args.source),
-        "live_source": is_live(args.source),
-        "camera_id": args.camera_id,
-        "camera_epoch": args.camera_epoch,
-        "output": str(output_path),
         "infer_config": args.infer_config,
         "tracker_config": args.tracker_config,
         "tracker_lib": args.tracker_lib,
@@ -456,10 +495,16 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "output_max_mib": args.output_max_mib or None,
         "analysis_frame_interval": args.analysis_frame_interval,
         "decoder_drop_frame_interval": None,
+        # Every camera this process served, in source_id order; nvinfer runs the batch-1 engine per frame.
+        "pipeline_cameras": [{"camera_id": c, "camera_epoch": e} for c, e in zip(args.camera_id, args.camera_epoch)],
+        "batch_size": len(args.source),
     }
-    pacer = SourcePacer(args.pace, args.pace_lead_ms / 1000.0)
-    writer = JsonlMetadataWriter(output_path, args.camera_id, args.camera_epoch, pacer,
-                                 int(args.output_max_mib * 1024 * 1024))
+    cameras = [
+        CameraOutput(output, camera_id, epoch, SourcePacer(args.pace, args.pace_lead_ms / 1000.0),
+                     int(args.output_max_mib * 1024 * 1024))
+        for output, camera_id, epoch in zip(outputs, args.camera_id, args.camera_epoch)
+    ]
+    writer = JsonlMetadataWriter(cameras)
     eos_messages: list[EOSMessage] = []
 
     def on_message(message: Any) -> None:
@@ -470,27 +515,32 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         writer.open()
         pipeline = Pipeline("service-maker-cam01-metadata")
         flow = Flow(pipeline).batch_capture(
-            [args.source],
+            list(args.source),
             width=args.width,
             height=args.height,
-            batch_size=1,
+            batch_size=len(args.source),
             batched_push_timeout=40000,
             buffer_pool_size=4,
-            live_source=is_live(args.source),
+            live_source=live,
             file_loop=bool(args.loop),
             enable_padding=False,
             gpu_id=args.gpu_id,
         )
         if args.analysis_frame_interval > 1:
-            # batch_capture forwards only file-loop to the source; set the decoder drop on the one
+            # batch_capture forwards only file-loop to the sources; set the decoder drop on each
             # nvurisrcbin it created (still in NULL state) and read it back as evidence.
-            source = pipeline[SOURCE_ELEMENT]
-            source.set({"drop-frame-interval": args.analysis_frame_interval})
-            summary["decoder_drop_frame_interval"] = source.get("drop-frame-interval")
+            accepted = set()
+            for index in range(len(args.source)):
+                source = pipeline[f"{SOURCE_ELEMENT_PREFIX}{index}"]
+                source.set({"drop-frame-interval": args.analysis_frame_interval})
+                accepted.add(source.get("drop-frame-interval"))
+            summary["decoder_drop_frame_interval"] = accepted.pop() if len(accepted) == 1 else sorted(accepted)
             if summary["decoder_drop_frame_interval"] != args.analysis_frame_interval:
                 raise RuntimeError("nvurisrcbin did not accept drop-frame-interval")
         if args.stage in ("detect", "track"):
-            flow = flow.infer(args.infer_config)
+            # batch-size 1: the pinned engine is built for one frame; nvinfer runs a multi-camera batch
+            # one frame at a time instead of rebuilding an engine for the batch.
+            flow = flow.infer(args.infer_config, batch_size=1)
         if args.stage == "track":
             flow = flow.track(
                 tracker_width=args.tracker_width,
@@ -504,12 +554,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         )(on_message)
         summary["pipeline_returned"] = True
     except Exception as exc:
-        summary["error"] = {
-            "type": type(exc).__name__,
-            "message": scrub(str(exc), args.source),
-            "traceback": scrub(traceback.format_exc(), args.source),
-        }
-        if is_live(args.source):  # the interpreter's own traceback would print the raw URL
+        message, trace = str(exc), traceback.format_exc()
+        for source in args.source:
+            message, trace = scrub(message, source), scrub(trace, source)
+        summary["error"] = {"type": type(exc).__name__, "message": message, "traceback": trace}
+        if live:  # the interpreter's own traceback would print the raw URL
             print(summary["error"]["traceback"], file=sys.stderr, flush=True)
             raise SystemExit(1) from None
         raise
@@ -519,28 +568,39 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             {
                 "ended_at_utc": utc_now(),
                 "elapsed_seconds": time.monotonic() - started_monotonic,
-                "frames_written": writer.frames_written,
-                "objects_written": writer.objects_written,
-                "first_frame_number": writer.first_frame_number,
-                "last_frame_number": writer.last_frame_number,
                 "eos_message_count": len(eos_messages),
-                "pace_total_wait_seconds": round(pacer.total_wait_s, 3),
-                "pace_frames_late_over_1s": pacer.frames_late,
                 "pace_clock": "host estimate (guest wall at sync steps + monotonic rate)" if args.pace == "source" else None,
-                "pace_clock_sync_steps": getattr(pacer.clock, "sync_steps", None) if args.pace == "source" else None,
-                "pace_clock_rate": pacer.clock.rate() if args.pace == "source" else None,
-                "pace_reanchors": pacer.reanchors,
-                "output_rotations": writer.rotations,
-                "pace_implausible_clock_reads": pacer.implausible_reads,
                 "clean_eos": len(eos_messages) > 0
                 and summary["pipeline_returned"]
                 and summary["error"] is None,
             }
         )
-        summary_path.write_text(
-            json.dumps(summary, indent=2, allow_nan=False) + "\n", encoding="utf-8"
-        )
-    return summary
+        for source, output, camera, summary_path in zip(args.source, outputs, cameras, summary_paths):
+            pacer = camera.pacer
+            own = summary | {
+                # Live URLs may carry credentials: only scheme/host/port/path are recorded; files are hashed.
+                "source": redact_source(source),
+                "source_sha256": None if is_live(source) else sha256_file(source),
+                "live_source": is_live(source),
+                "camera_id": camera.camera_id,
+                "camera_epoch": camera.camera_epoch,
+                "output": str(output),
+                "frames_written": camera.frames_written,
+                "objects_written": camera.objects_written,
+                "first_frame_number": camera.first_frame_number,
+                "last_frame_number": camera.last_frame_number,
+                "pace_total_wait_seconds": round(pacer.total_wait_s, 3),
+                "pace_frames_late_over_1s": pacer.frames_late,
+                "pace_clock_sync_steps": getattr(pacer.clock, "sync_steps", None) if args.pace == "source" else None,
+                "pace_clock_rate": pacer.clock.rate() if args.pace == "source" else None,
+                "pace_reanchors": pacer.reanchors,
+                "output_rotations": camera.rotations,
+                "pace_implausible_clock_reads": pacer.implausible_reads,
+            }
+            summary_path.write_text(json.dumps(own, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    return summary | {"frames_written": sum(c.frames_written for c in cameras),
+                      "objects_written": sum(c.objects_written for c in cameras),
+                      "output": ", ".join(str(o) for o in outputs)}
 
 
 def main() -> None:

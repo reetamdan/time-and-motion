@@ -91,11 +91,28 @@ class DeepStreamAdapter(PerceptionAdapter):
             raise PerceptionStartError("; ".join(report.blockers) or report.detail, resource_allocated=False)
         await self.sessions.start_camera(camera, camera_epoch, sink, replay_mode)
 
+    async def start_cameras(
+        self, starts: list[tuple[CameraConfig, str, ObservationSink]], replay_mode: str = "paced"
+    ) -> list[BaseException | None]:
+        if len(starts) == 1:
+            return await super().start_cameras(starts, replay_mode)
+        report = await asyncio.to_thread(self.availability)
+        if not report.available:
+            error = PerceptionStartError("; ".join(report.blockers) or report.detail, resource_allocated=False)
+            return [error for _ in starts]
+        return await self.sessions.start_pipeline(starts, replay_mode)
+
     async def stop_camera(self, camera_id: str, camera_epoch: str) -> None:
         await self.sessions.stop_camera(camera_id, camera_epoch)
 
     def resource_identity(self, camera_id: str, camera_epoch: str) -> ResourceIdentity | None:
         return self.sessions.resource_identity(camera_id, camera_epoch)
+
+    def max_cameras_per_pipeline(self) -> int:
+        return self.config.runtime.replay.cameras_per_pipeline
+
+    def pipeline_identity(self, cameras: list[tuple[str, str]]) -> ResourceIdentity | None:
+        return self.sessions.pipeline_identity(cameras)
 
     async def adopt_resource(self, camera_id: str, camera_epoch: str, identity: ResourceIdentity | None) -> None:
         self.sessions.adopt(camera_id, camera_epoch, identity)
