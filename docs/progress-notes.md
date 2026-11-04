@@ -25,9 +25,9 @@ A6000 capacity (`docs/rtx-a6000.md` *Capacity*):
 
 Two earlier soaks failed only on t=0 history probes, a benchmark probe-timing flaw that took two fixes (2cb9140, bd4be90). Overlay: hiding boxes mid-seek blanked unpaced replay (found by `validate_overlay_recovery.py`, 1/10 samples painted); boxes now follow the presented frame, and the rerun passes 18/18. Browser loop check: `reports/validation/a6000-browser-loop-overlay-20261104T032742Z` PASS, drift ≤ 0.18 s.
 
-Later on 2026-11-04 (`0799881`, `1c6ab30`): database retention is enforced (startup + every 10 minutes; `GET /api/v1/system/retention`), and cameras can opt into a reduced analysis rate (`analysis_frame_interval`). 312 Python tests pass. The A-D stage comparison and the reduced-rate ladder are in `docs/rtx-a6000.md` *Capacity*.
+Later on 2026-11-04 (`0799881`, `1c6ab30`): database retention is enforced (startup + every 10 minutes; `GET /api/v1/system/retention`), and cameras can opt into a reduced analysis rate (`analysis_frame_interval`). Then (`f59e25b` and after): the A-D stage comparison passed 12/12; at every 4th frame 8 and 12 cameras pass; 16 cameras first failed loading together (now started in waves, `replay.startup_concurrency`, with fail-fast on a refused start), then showed that no more than 12 camera pipelines start under WSL2 on the A6000. 317 Python tests pass. Results: `docs/rtx-a6000.md` *Capacity*.
 
-Remaining priorities: reviewed accuracy labels (including the accuracy cost of a reduced analysis rate), real fixed-camera/calibration inputs, removal of old epochs' frame logs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
+Remaining priorities: reviewed accuracy labels (including the accuracy cost of a reduced analysis rate), real fixed-camera/calibration inputs, several cameras per pipeline for more than 12 cameras, removal of old epochs' frame logs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
 
 Session 4 (2026-10-27) — "complete remaining engineering" handoff. Ledger: `docs/acceptance-matrix.md`.
 

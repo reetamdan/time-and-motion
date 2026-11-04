@@ -1,0 +1,16 @@
+{
+  "status": "INTERRUPTED - incomplete, not an acceptance result",
+  "reason": "driver process killed (host session ended) during the step; partial step discarded",
+  "during_step": "stageD-4feeds-r1",
+  "completed_steps": [
+    "stageA-4feeds-r1",
+    "stageA-4feeds-r2",
+    "stageA-4feeds-r3",
+    "stageB-4feeds-r1",
+    "stageB-4feeds-r2",
+    "stageB-4feeds-r3",
+    "stageC-4feeds-r1",
+    "stageC-4feeds-r2",
+    "stageC-4feeds-r3"
+  ]
+}

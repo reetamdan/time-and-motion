@@ -1,0 +1,593 @@
+{
+  "name": "stageD-16feeds-r1",
+  "stage": "D",
+  "feeds": 16,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 11568,
+    "available_mib": 43763.4,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 42799.7,
+      "host_available_after_20s_mib": 43763.4,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 4751897,
+      "uncertainty_ns": 75028750,
+      "best_round_trip_ns": 150057500,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 5062825,
+      "uncertainty_ns": 73699800,
+      "best_round_trip_ns": 147399600,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42",
+        "actual": "b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "35da176eaaf3d8f9375a1fc8b170448e101ab5d2d82f37787297b2f464e7bbe6",
+    "backend_code_tree": "42275f035ddf1117d0f97291b5019fae3d0e363eeca625aa00d6a2d5c0990a78",
+    "benchmark_script": "a18cbb3d82148442c0329f2884e5ee69b9560d5d42b33a4e56114211b22c6365"
+  },
+  "result": {
+    "expected": [
+      "cam-01",
+      "cam-02",
+      "cam-03",
+      "cam-04",
+      "cam-05",
+      "cam-06",
+      "cam-07",
+      "cam-08",
+      "cam-09",
+      "cam-10",
+      "cam-11",
+      "cam-12",
+      "cam-13",
+      "cam-14",
+      "cam-15",
+      "cam-16"
+    ],
+    "run_id": "a9b5cd82-6a9d-4141-9e74-54a32ea758b0",
+    "start_http_status": 200,
+    "stop": {
+      "status": 200,
+      "run_status": "STOPPED"
+    },
+    "feeds": {
+      "cam-01": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-02": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-03": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-04": {
+        "producer": {
+          "frames_total": 15,
+          "frames_in_window": 0,
+          "cadence_fps": 0.0,
+          "frame_gaps": 0,
+          "covered_window_s": 0.0,
+          "schedule_lag_ms": {
+            "p50": null,
+            "p95": null,
+            "max": null,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": null,
+          "objects_per_frame_mean": null
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-05": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-06": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-07": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-08": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-09": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-10": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-11": {
+        "producer": {
+          "frames_total": 16,
+          "frames_in_window": 0,
+          "cadence_fps": 0.0,
+          "frame_gaps": 0,
+          "covered_window_s": 0.0,
+          "schedule_lag_ms": {
+            "p50": null,
+            "p95": null,
+            "max": null,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": null,
+          "objects_per_frame_mean": null
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-12": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-13": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-14": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-15": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-16": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      }
+    },
+    "crashed": [],
+    "outcomes": {
+      "cam-01": null,
+      "cam-02": null,
+      "cam-03": null,
+      "cam-04": null,
+      "cam-05": null,
+      "cam-06": null,
+      "cam-07": null,
+      "cam-08": null,
+      "cam-09": null,
+      "cam-10": null,
+      "cam-11": null,
+      "cam-12": null,
+      "cam-13": null,
+      "cam-14": null,
+      "cam-15": null,
+      "cam-16": null
+    },
+    "ended": "deadline",
+    "errors": [],
+    "extra_failures": [],
+    "resource_stop": null,
+    "ownership": [
+      {
+        "camera": "cam-01",
+        "name": "aegis-cam-01-8767f8b0-8af5-4973-90fc-56b086c7813d",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-02",
+        "name": "aegis-cam-02-c715c338-6f00-49dc-bf62-7d8650a6c5d3",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-03",
+        "name": "aegis-cam-03-cf8192c7-2761-4ceb-912d-b108a375efab",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-04",
+        "name": "aegis-cam-04-8936191a-1a77-415e-8c8e-f4a953a8134d",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-05",
+        "name": "aegis-cam-05-4b300b35-fb0a-4f5a-a03c-1ee5ba182849",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-06",
+        "name": "aegis-cam-06-a17cfec7-56cd-40ac-b349-2b7401a326d0",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-07",
+        "name": "aegis-cam-07-4a83c133-24fc-411a-a725-15708d5b9ab5",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-08",
+        "name": "aegis-cam-08-a2bc71ed-8f17-4eaf-b81b-06397d5f1541",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-09",
+        "name": "aegis-cam-09-2c71e672-413f-4212-a7cf-3041f18e3593",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-10",
+        "name": "aegis-cam-10-681bf053-9ffd-4b25-bde4-ff18f1f9a442",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-11",
+        "name": "aegis-cam-11-8e320871-e4c2-41c4-bc6a-f8e102138114",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-12",
+        "name": "aegis-cam-12-5161b1da-8345-4c95-b838-54e042ab4228",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-13",
+        "name": "aegis-cam-13-d0d0c0c2-58e0-470f-8768-d79bc9b9e1f7",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-14",
+        "name": "aegis-cam-14-ff9b3bf3-4879-4153-acd8-c314052247f4",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-15",
+        "name": "aegis-cam-15-b127c689-9567-47be-b186-4ed72c5d55fb",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-16",
+        "name": "aegis-cam-16-4d775e2a-d840-4721-9b69-f0d3601863b9",
+        "state": "RELEASED"
+      }
+    ],
+    "containers": [
+      "aegis-cam-01-8767f8b0-8af5-4973-90fc-56b086c7813d",
+      "aegis-cam-02-c715c338-6f00-49dc-bf62-7d8650a6c5d3",
+      "aegis-cam-03-cf8192c7-2761-4ceb-912d-b108a375efab",
+      "aegis-cam-04-8936191a-1a77-415e-8c8e-f4a953a8134d",
+      "aegis-cam-05-4b300b35-fb0a-4f5a-a03c-1ee5ba182849",
+      "aegis-cam-06-a17cfec7-56cd-40ac-b349-2b7401a326d0",
+      "aegis-cam-07-4a83c133-24fc-411a-a725-15708d5b9ab5",
+      "aegis-cam-08-a2bc71ed-8f17-4eaf-b81b-06397d5f1541",
+      "aegis-cam-09-2c71e672-413f-4212-a7cf-3041f18e3593",
+      "aegis-cam-10-681bf053-9ffd-4b25-bde4-ff18f1f9a442",
+      "aegis-cam-11-8e320871-e4c2-41c4-bc6a-f8e102138114",
+      "aegis-cam-12-5161b1da-8345-4c95-b838-54e042ab4228",
+      "aegis-cam-13-d0d0c0c2-58e0-470f-8768-d79bc9b9e1f7",
+      "aegis-cam-14-ff9b3bf3-4879-4153-acd8-c314052247f4",
+      "aegis-cam-15-b127c689-9567-47be-b186-4ed72c5d55fb",
+      "aegis-cam-16-4d775e2a-d840-4721-9b69-f0d3601863b9"
+    ],
+    "containers_absent_after": {
+      "aegis-cam-01-8767f8b0-8af5-4973-90fc-56b086c7813d": true,
+      "aegis-cam-02-c715c338-6f00-49dc-bf62-7d8650a6c5d3": true,
+      "aegis-cam-03-cf8192c7-2761-4ceb-912d-b108a375efab": true,
+      "aegis-cam-04-8936191a-1a77-415e-8c8e-f4a953a8134d": true,
+      "aegis-cam-05-4b300b35-fb0a-4f5a-a03c-1ee5ba182849": true,
+      "aegis-cam-06-a17cfec7-56cd-40ac-b349-2b7401a326d0": true,
+      "aegis-cam-07-4a83c133-24fc-411a-a725-15708d5b9ab5": true,
+      "aegis-cam-08-a2bc71ed-8f17-4eaf-b81b-06397d5f1541": true,
+      "aegis-cam-09-2c71e672-413f-4212-a7cf-3041f18e3593": true,
+      "aegis-cam-10-681bf053-9ffd-4b25-bde4-ff18f1f9a442": true,
+      "aegis-cam-11-8e320871-e4c2-41c4-bc6a-f8e102138114": true,
+      "aegis-cam-12-5161b1da-8345-4c95-b838-54e042ab4228": true,
+      "aegis-cam-13-d0d0c0c2-58e0-470f-8768-d79bc9b9e1f7": true,
+      "aegis-cam-14-ff9b3bf3-4879-4153-acd8-c314052247f4": true,
+      "aegis-cam-15-b127c689-9567-47be-b186-4ed72c5d55fb": true,
+      "aegis-cam-16-4d775e2a-d840-4721-9b69-f0d3601863b9": true
+    },
+    "persistence": {
+      "available": true,
+      "count_samples_per_camera": {},
+      "evidence_records": 0
+    },
+    "soak": null,
+    "resources": {
+      "window_samples": 594,
+      "gpu_util_percent": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "nvdec_util_percent": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "vram_used_mib": {
+        "p50": 526.0,
+        "p95": 526.0,
+        "min": 525.0,
+        "max": 530.0
+      },
+      "gpu_temp_c": {
+        "p50": 67.0,
+        "p95": 67.0,
+        "min": 66.0,
+        "max": 67.0
+      },
+      "gpu_power_w": {
+        "p50": 88.56,
+        "p95": 89.73,
+        "min": 88.1,
+        "max": 89.94
+      },
+      "sm_clock_mhz": {
+        "p50": 1800.0,
+        "p95": 1800.0,
+        "min": 1800.0,
+        "max": 1800.0
+      },
+      "pstates": [
+        "P0"
+      ],
+      "host_cpu_percent": {
+        "p50": 2.5,
+        "p95": 11.9,
+        "min": 0.6,
+        "max": 24.7
+      },
+      "host_available_mib": {
+        "p50": 44659.8,
+        "p95": 44705.2,
+        "min": 42581.7,
+        "max": 44721.7
+      },
+      "host_used_mib": {
+        "p50": 20559.8,
+        "p95": 20903.5,
+        "min": 20498.0,
+        "max": 22638.0
+      },
+      "host_commit_available_mib": {
+        "p50": 141821.9,
+        "p95": 141867.4,
+        "min": 139785.1,
+        "max": 141880.1
+      },
+      "wsl_available_mib": {
+        "p50": 31152.5,
+        "p95": 31167.7,
+        "min": 31107.7,
+        "max": 31172.0
+      },
+      "wsl_cached_mib": {
+        "p50": 242.0,
+        "p95": 242.0,
+        "min": 170.4,
+        "max": 2526.4
+      },
+      "backend_rss_mib": {
+        "p50": 69.4,
+        "p95": 70.2,
+        "min": 68.5,
+        "max": 97.4
+      },
+      "host_used_growth_mib": -605.8,
+      "wsl_cached_growth_mib": 34.3,
+      "backend_rss_growth_mib": 0.9,
+      "container_rss_mib": {},
+      "container_rss_growth_mib": {},
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": false,
+    "failures": [
+      "cam-01: no producer frames recorded",
+      "cam-02: no producer frames recorded",
+      "cam-03: no producer frames recorded",
+      "cam-04: no producer frames in the measured window",
+      "cam-05: no producer frames recorded",
+      "cam-06: no producer frames recorded",
+      "cam-07: no producer frames recorded",
+      "cam-08: no producer frames recorded",
+      "cam-09: no producer frames recorded",
+      "cam-10: no producer frames recorded",
+      "cam-11: no producer frames in the measured window",
+      "cam-12: no producer frames recorded",
+      "cam-13: no producer frames recorded",
+      "cam-14: no producer frames recorded",
+      "cam-15: no producer frames recorded",
+      "cam-16: no producer frames recorded"
+    ],
+    "cleanup_confirmed": true
+  },
+  "status": "FAIL"
+}

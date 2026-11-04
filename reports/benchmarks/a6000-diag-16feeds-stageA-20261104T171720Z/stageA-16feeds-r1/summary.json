@@ -1,0 +1,576 @@
+{
+  "name": "stageA-16feeds-r1",
+  "stage": "A",
+  "feeds": 16,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 11168,
+    "available_mib": 44525.7,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 44512.7,
+      "host_available_after_20s_mib": 44525.6,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 8461689,
+      "uncertainty_ns": 79809700,
+      "best_round_trip_ns": 159619400,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 10639078,
+      "uncertainty_ns": 80870150,
+      "best_round_trip_ns": 161740300,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42",
+        "actual": "b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "db5e6b05285c584acb1d0060e6ec2669366d553e040153d39b91b88603ae9556",
+    "backend_code_tree": "18d6aec4638665aebcfdd1985c43fe858aa169224aac5dcdddceb9619a330656",
+    "benchmark_script": "a18cbb3d82148442c0329f2884e5ee69b9560d5d42b33a4e56114211b22c6365"
+  },
+  "result": {
+    "expected": [
+      "bench-01",
+      "bench-02",
+      "bench-03",
+      "bench-04",
+      "bench-05",
+      "bench-06",
+      "bench-07",
+      "bench-08",
+      "bench-09",
+      "bench-10",
+      "bench-11",
+      "bench-12",
+      "bench-13",
+      "bench-14",
+      "bench-15",
+      "bench-16"
+    ],
+    "feeds": {
+      "bench-01": {
+        "producer": {
+          "frames_total": 72,
+          "frames_in_window": 21,
+          "cadence_fps": 0.7,
+          "frame_gaps": 0,
+          "covered_window_s": 6.5,
+          "schedule_lag_ms": {
+            "p50": 6988.388,
+            "p95": 8042.024,
+            "max": 8163.7,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-02": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-03": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-04": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-05": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-06": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-07": {
+        "producer": {
+          "frames_total": 210,
+          "frames_in_window": 159,
+          "cadence_fps": 5.3,
+          "frame_gaps": 0,
+          "covered_window_s": 17.7,
+          "schedule_lag_ms": {
+            "p50": 2136.69,
+            "p95": 7149.682,
+            "max": 8088.1,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-08": {
+        "producer": {
+          "frames_total": 214,
+          "frames_in_window": 163,
+          "cadence_fps": 5.433,
+          "frame_gaps": 0,
+          "covered_window_s": 18.2,
+          "schedule_lag_ms": {
+            "p50": 2032.778,
+            "p95": 7036.639,
+            "max": 7989.3,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-09": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-10": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        }
+      },
+      "bench-11": {
+        "producer": {
+          "frames_total": 91,
+          "frames_in_window": 14,
+          "cadence_fps": 0.467,
+          "frame_gaps": 0,
+          "covered_window_s": 1.8,
+          "schedule_lag_ms": {
+            "p50": -199.89,
+            "p95": -199.846,
+            "max": -199.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-12": {
+        "producer": {
+          "frames_total": 95,
+          "frames_in_window": 18,
+          "cadence_fps": 0.6,
+          "frame_gaps": 0,
+          "covered_window_s": 2.3,
+          "schedule_lag_ms": {
+            "p50": -199.895,
+            "p95": -199.789,
+            "max": -199.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-13": {
+        "producer": {
+          "frames_total": 46,
+          "frames_in_window": 0,
+          "cadence_fps": 0.0,
+          "frame_gaps": 0,
+          "covered_window_s": 0.0,
+          "schedule_lag_ms": {
+            "p50": null,
+            "p95": null,
+            "max": null,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": null,
+          "objects_per_frame_mean": null
+        }
+      },
+      "bench-14": {
+        "producer": {
+          "frames_total": 115,
+          "frames_in_window": 38,
+          "cadence_fps": 1.267,
+          "frame_gaps": 0,
+          "covered_window_s": 5.0,
+          "schedule_lag_ms": {
+            "p50": -199.891,
+            "p95": -199.816,
+            "max": -199.7,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-15": {
+        "producer": {
+          "frames_total": 241,
+          "frames_in_window": 190,
+          "cadence_fps": 6.333,
+          "frame_gaps": 0,
+          "covered_window_s": 21.8,
+          "schedule_lag_ms": {
+            "p50": 1204.878,
+            "p95": 6924.144,
+            "max": 7996.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      },
+      "bench-16": {
+        "producer": {
+          "frames_total": 283,
+          "frames_in_window": 240,
+          "cadence_fps": 8.0,
+          "frame_gaps": 0,
+          "covered_window_s": 27.4,
+          "schedule_lag_ms": {
+            "p50": 1270.192,
+            "p95": 6532.128,
+            "max": 7954.1,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 0.0
+        }
+      }
+    },
+    "crashed": [],
+    "ended": "process_exit",
+    "resource_stop": null,
+    "containers": [
+      "aegis-bench-a-01-ace515b4",
+      "aegis-bench-a-02-ace515b4",
+      "aegis-bench-a-03-ace515b4",
+      "aegis-bench-a-04-ace515b4",
+      "aegis-bench-a-05-ace515b4",
+      "aegis-bench-a-06-ace515b4",
+      "aegis-bench-a-07-ace515b4",
+      "aegis-bench-a-08-ace515b4",
+      "aegis-bench-a-09-ace515b4",
+      "aegis-bench-a-10-ace515b4",
+      "aegis-bench-a-11-ace515b4",
+      "aegis-bench-a-12-ace515b4",
+      "aegis-bench-a-13-ace515b4",
+      "aegis-bench-a-14-ace515b4",
+      "aegis-bench-a-15-ace515b4",
+      "aegis-bench-a-16-ace515b4"
+    ],
+    "containers_absent_after": {
+      "aegis-bench-a-01-ace515b4": true,
+      "aegis-bench-a-02-ace515b4": true,
+      "aegis-bench-a-03-ace515b4": true,
+      "aegis-bench-a-04-ace515b4": true,
+      "aegis-bench-a-05-ace515b4": true,
+      "aegis-bench-a-06-ace515b4": true,
+      "aegis-bench-a-07-ace515b4": true,
+      "aegis-bench-a-08-ace515b4": true,
+      "aegis-bench-a-09-ace515b4": true,
+      "aegis-bench-a-10-ace515b4": true,
+      "aegis-bench-a-11-ace515b4": true,
+      "aegis-bench-a-12-ace515b4": true,
+      "aegis-bench-a-13-ace515b4": true,
+      "aegis-bench-a-14-ace515b4": true,
+      "aegis-bench-a-15-ace515b4": true,
+      "aegis-bench-a-16-ace515b4": true
+    },
+    "exit_codes": {
+      "bench-01": 143,
+      "bench-02": 143,
+      "bench-03": 143,
+      "bench-04": 143,
+      "bench-05": 143,
+      "bench-06": 143,
+      "bench-07": 143,
+      "bench-08": 143,
+      "bench-09": 143,
+      "bench-10": 0,
+      "bench-11": 143,
+      "bench-12": 143,
+      "bench-13": 143,
+      "bench-14": 143,
+      "bench-15": 143,
+      "bench-16": 143
+    },
+    "resources": {
+      "window_samples": 12,
+      "gpu_util_percent": {
+        "p50": 1.0,
+        "p95": 2.0,
+        "min": 0.0,
+        "max": 13.0
+      },
+      "nvdec_util_percent": {
+        "p50": 14.0,
+        "p95": 20.0,
+        "min": 0.0,
+        "max": 99.0
+      },
+      "vram_used_mib": {
+        "p50": 3175.0,
+        "p95": 4491.0,
+        "min": 657.0,
+        "max": 4543.0
+      },
+      "gpu_temp_c": {
+        "p50": 68.0,
+        "p95": 68.0,
+        "min": 67.0,
+        "max": 68.0
+      },
+      "gpu_power_w": {
+        "p50": 90.91,
+        "p95": 104.2,
+        "min": 88.2,
+        "max": 110.87
+      },
+      "sm_clock_mhz": {
+        "p50": 1800.0,
+        "p95": 1890.0,
+        "min": 1800.0,
+        "max": 1890.0
+      },
+      "pstates": [
+        "P0",
+        "P2"
+      ],
+      "host_cpu_percent": {
+        "p50": 18.2,
+        "p95": 21.3,
+        "min": 11.1,
+        "max": 21.6
+      },
+      "host_available_mib": {
+        "p50": 42173.5,
+        "p95": 42710.3,
+        "min": 41949.5,
+        "max": 42835.1
+      },
+      "host_used_mib": {
+        "p50": 23074.4,
+        "p95": 23258.6,
+        "min": 22384.6,
+        "max": 23270.3
+      },
+      "host_commit_available_mib": {
+        "p50": 136807.1,
+        "p95": 139122.4,
+        "min": 134851.5,
+        "max": 139128.9
+      },
+      "wsl_available_mib": {
+        "p50": 30841.4,
+        "p95": 30841.4,
+        "min": 30841.4,
+        "max": 30841.4
+      },
+      "wsl_cached_mib": {
+        "p50": 2222.0,
+        "p95": 2222.0,
+        "min": 2222.0,
+        "max": 2222.0
+      },
+      "backend_rss_mib": null,
+      "host_used_growth_mib": 0.0,
+      "wsl_cached_growth_mib": 0.0,
+      "backend_rss_growth_mib": null,
+      "container_rss_mib": {
+        "aegis-bench-a-01-ace515b4": {
+          "min": 35.5,
+          "max": 81.0
+        },
+        "aegis-bench-a-02-ace515b4": {
+          "min": 24.9,
+          "max": 72.5
+        },
+        "aegis-bench-a-03-ace515b4": {
+          "min": 32.6,
+          "max": 77.1
+        },
+        "aegis-bench-a-04-ace515b4": {
+          "min": 26.6,
+          "max": 71.9
+        },
+        "aegis-bench-a-05-ace515b4": {
+          "min": 27.6,
+          "max": 72.7
+        },
+        "aegis-bench-a-06-ace515b4": {
+          "min": 25.9,
+          "max": 71.2
+        },
+        "aegis-bench-a-07-ace515b4": {
+          "min": 27.4,
+          "max": 72.4
+        },
+        "aegis-bench-a-08-ace515b4": {
+          "min": 27.2,
+          "max": 71.6
+        },
+        "aegis-bench-a-09-ace515b4": {
+          "min": 26.0,
+          "max": 71.5
+        },
+        "aegis-bench-a-10-ace515b4": {
+          "min": 24.3,
+          "max": 70.7
+        },
+        "aegis-bench-a-11-ace515b4": {
+          "min": 24.6,
+          "max": 70.4
+        },
+        "aegis-bench-a-12-ace515b4": {
+          "min": 27.2,
+          "max": 73.4
+        },
+        "aegis-bench-a-13-ace515b4": {
+          "min": 30.5,
+          "max": 75.8
+        },
+        "aegis-bench-a-14-ace515b4": {
+          "min": 30.6,
+          "max": 77.5
+        },
+        "aegis-bench-a-15-ace515b4": {
+          "min": 27.9,
+          "max": 72.9
+        },
+        "aegis-bench-a-16-ace515b4": {
+          "min": 25.8,
+          "max": 48.3
+        }
+      },
+      "container_rss_growth_mib": {
+        "aegis-bench-a-01-ace515b4": null,
+        "aegis-bench-a-02-ace515b4": null,
+        "aegis-bench-a-03-ace515b4": null,
+        "aegis-bench-a-04-ace515b4": null,
+        "aegis-bench-a-05-ace515b4": null,
+        "aegis-bench-a-06-ace515b4": null,
+        "aegis-bench-a-07-ace515b4": null,
+        "aegis-bench-a-08-ace515b4": null,
+        "aegis-bench-a-09-ace515b4": null,
+        "aegis-bench-a-10-ace515b4": null,
+        "aegis-bench-a-11-ace515b4": null,
+        "aegis-bench-a-12-ace515b4": null,
+        "aegis-bench-a-13-ace515b4": null,
+        "aegis-bench-a-14-ace515b4": null,
+        "aegis-bench-a-15-ace515b4": null,
+        "aegis-bench-a-16-ace515b4": null
+      },
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": false,
+    "failures": [
+      "bench-01: producer frames cover only 6.5 s of the 30 s window",
+      "bench-01: producer cadence 0.7 fps < 7.2",
+      "bench-01: p95 producer schedule lag 8042.024 ms > 2000",
+      "bench-02: no producer frames recorded",
+      "bench-03: no producer frames recorded",
+      "bench-04: no producer frames recorded",
+      "bench-05: no producer frames recorded",
+      "bench-06: no producer frames recorded",
+      "bench-07: producer frames cover only 17.7 s of the 30 s window",
+      "bench-07: producer cadence 5.3 fps < 7.2",
+      "bench-07: p95 producer schedule lag 7149.682 ms > 2000",
+      "bench-08: producer frames cover only 18.2 s of the 30 s window",
+      "bench-08: producer cadence 5.433 fps < 7.2",
+      "bench-08: p95 producer schedule lag 7036.639 ms > 2000",
+      "bench-09: no producer frames recorded",
+      "bench-10: no producer frames recorded",
+      "bench-11: producer frames cover only 1.8 s of the 30 s window",
+      "bench-11: producer cadence 0.467 fps < 7.2",
+      "bench-12: producer frames cover only 2.3 s of the 30 s window",
+      "bench-12: producer cadence 0.6 fps < 7.2",
+      "bench-13: no producer frames in the measured window",
+      "bench-14: producer frames cover only 5.0 s of the 30 s window",
+      "bench-14: producer cadence 1.267 fps < 7.2",
+      "bench-15: producer frames cover only 21.8 s of the 30 s window",
+      "bench-15: producer cadence 6.333 fps < 7.2",
+      "bench-15: p95 producer schedule lag 6924.144 ms > 2000",
+      "bench-16: p95 producer schedule lag 6532.128 ms > 2000"
+    ],
+    "cleanup_confirmed": true
+  },
+  "status": "FAIL"
+}
