@@ -1,0 +1,208 @@
+{
+  "name": "stageD-24feeds-r1",
+  "stage": "D",
+  "feeds": 24,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 16768,
+    "available_mib": 43932.3,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 43908.6,
+      "host_available_after_20s_mib": 43932.3,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 7211024,
+      "uncertainty_ns": 78254550,
+      "best_round_trip_ns": 156509100,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 8661694,
+      "uncertainty_ns": 77693100,
+      "best_round_trip_ns": 155386200,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711",
+        "actual": "e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "ffde8051cfbda74e2f986a837e063151267256694838dc8c5914582a28e32641",
+    "backend_code_tree": "89e15913c1cde2d45f009603402d93b067935758e8b9238ff923c429523bfbee",
+    "benchmark_script": "554d40ed8070a1e1cde5e49b2ee490854fa2f3921c98747aa5175c6748ce9ae1"
+  },
+  "result": {
+    "expected": [
+      "cam-01",
+      "cam-02",
+      "cam-03",
+      "cam-04",
+      "cam-05",
+      "cam-06",
+      "cam-07",
+      "cam-08",
+      "cam-09",
+      "cam-10",
+      "cam-11",
+      "cam-12",
+      "cam-13",
+      "cam-14",
+      "cam-15",
+      "cam-16",
+      "cam-17",
+      "cam-18",
+      "cam-19",
+      "cam-20",
+      "cam-21",
+      "cam-22",
+      "cam-23",
+      "cam-24"
+    ],
+    "run_id": null,
+    "start_http_status": null,
+    "stop": {
+      "status": null,
+      "run_status": null
+    },
+    "feeds": {},
+    "crashed": [],
+    "outcomes": {},
+    "ended": "exception",
+    "errors": [
+      "RuntimeError: backend exited 1 before becoming live"
+    ],
+    "extra_failures": [
+      "RuntimeError: backend exited 1 before becoming live",
+      "demo start HTTP None",
+      "demo stop HTTP None, run_status None"
+    ],
+    "resource_stop": null,
+    "ownership": [],
+    "containers": [],
+    "containers_absent_after": {},
+    "persistence": {
+      "available": false
+    },
+    "soak": null,
+    "resources": {
+      "window_samples": 0,
+      "gpu_util_percent": null,
+      "nvdec_util_percent": null,
+      "vram_used_mib": null,
+      "gpu_temp_c": null,
+      "gpu_power_w": null,
+      "sm_clock_mhz": null,
+      "pstates": [],
+      "host_cpu_percent": null,
+      "host_available_mib": null,
+      "host_used_mib": null,
+      "host_commit_available_mib": null,
+      "wsl_available_mib": null,
+      "wsl_cached_mib": null,
+      "backend_rss_mib": null,
+      "host_used_growth_mib": null,
+      "wsl_cached_growth_mib": null,
+      "backend_rss_growth_mib": null,
+      "container_rss_mib": {},
+      "container_rss_growth_mib": {},
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": false,
+    "failures": [
+      "step interrupted: exception",
+      "RuntimeError: backend exited 1 before becoming live",
+      "demo start HTTP None",
+      "demo stop HTTP None, run_status None",
+      "cam-01: expected feed was not measured",
+      "cam-02: expected feed was not measured",
+      "cam-03: expected feed was not measured",
+      "cam-04: expected feed was not measured",
+      "cam-05: expected feed was not measured",
+      "cam-06: expected feed was not measured",
+      "cam-07: expected feed was not measured",
+      "cam-08: expected feed was not measured",
+      "cam-09: expected feed was not measured",
+      "cam-10: expected feed was not measured",
+      "cam-11: expected feed was not measured",
+      "cam-12: expected feed was not measured",
+      "cam-13: expected feed was not measured",
+      "cam-14: expected feed was not measured",
+      "cam-15: expected feed was not measured",
+      "cam-16: expected feed was not measured",
+      "cam-17: expected feed was not measured",
+      "cam-18: expected feed was not measured",
+      "cam-19: expected feed was not measured",
+      "cam-20: expected feed was not measured",
+      "cam-21: expected feed was not measured",
+      "cam-22: expected feed was not measured",
+      "cam-23: expected feed was not measured",
+      "cam-24: expected feed was not measured",
+      "required measurement unavailable: GPU temperature",
+      "required measurement unavailable: backend RSS growth",
+      "owned containers not all confirmed absent: {}"
+    ],
+    "cleanup_confirmed": false
+  },
+  "status": "INTERRUPTED"
+}

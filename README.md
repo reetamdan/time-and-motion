@@ -26,7 +26,7 @@ Everything runs on one machine: no cloud services, API keys, model hosting or te
 
 ## Highlights
 
-- **GPU video pipeline.** Hardware decode (NVDEC), TensorRT person detection and NVIDIA NvDCF tracking, in a digest-pinned DeepStream 9.2 container, one isolated container per camera.
+- **GPU video pipeline.** Hardware decode (NVDEC), TensorRT person detection and NVIDIA NvDCF tracking, in a digest-pinned DeepStream 9.2 container: one isolated container per camera, or several file cameras batched into one (`replay.cameras_per_pipeline`).
 - **File and live sources.** Local video files, replayed either paced to real time or as fast as the GPU allows, once or continuously (`loop: true`). Live RTSP cameras, with loss detection, capped-backoff reconnect and a stall watchdog. Credentials are taken from the environment and redacted everywhere.
 - **Honest analytics.** Camera-visible counts and source-time history, line crossings, and, once cameras are calibrated, zone and floor occupancy, de-duplicated building figures, queues, congestion (with persistence and hysteresis), entries/exits and stair transitions. A value that can't be measured is shown as *unavailable* with its reason, never as zero.
 - **Evidence.** Operator markers save the exact pipeline frame plus a short stream-copied clip, linked to an alert, with retention limits.
@@ -42,7 +42,7 @@ Everything runs on one machine: no cloud services, API keys, model hosting or te
 Video file / RTSP camera
   │
   ▼
-DeepStream 9.2 container per camera (in WSL2 or on Linux)
+DeepStream 9.2 container per camera or per batch of file cameras (in WSL2 or on Linux)
   NVDEC decode → TensorRT detector → NvDCF tracker
   metadata extractor: one record per frame (boxes, track IDs, source time),
   paced to real host time for paced replay
@@ -90,9 +90,9 @@ Developed on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2) and now **running and
 
 - **Detector accuracy.** No human-reviewed labels exist yet; the annotation package is ready in `data/annotations/cam01-v1/`. TrafficCamNet is the base profile's *provisional* detector; the A6000 profile selects RT-DETR as an unaccepted candidate. Higher counts and agreement with FP32 are not accuracy measurements.
 - **Calibrated facility metrics.** Occupancy, overlap de-duplication, stairs and queues need camera calibration and real multi-camera footage; only one clip exists.
-- **Capacity beyond 12 cameras.** On the RTX A6000 the A-D stage comparison passed (12/12 steps), the capacity ladder passed up to 8 duplicate feeds at the full 30 fps (GPU and CPU saturated at 8), and up to 12 when every 4th frame is analysed (`analysis_frame_interval: 4`). A 13th camera pipeline cannot start under WSL2 on that host, so more cameras would need several cameras per pipeline or native Linux (not built or measured). The 30-minute 4-feed soak passed ([details](docs/rtx-a6000.md#capacity-2026-11-04)). Duplicate feeds measure load, not distinct-camera coverage, and the accuracy cost of the reduced rate is not measured.
+- **Capacity beyond 20 cameras.** On the RTX A6000 the A-D stage comparison passed (12/12 steps) and the capacity ladder passed up to 8 duplicate feeds at the full 30 fps (GPU and CPU saturated at 8). Analysing every 4th frame (`analysis_frame_interval: 4`), 12 cameras pass with one pipeline each (a 13th pipeline cannot start under WSL2) and 20 pass with 4 cameras per pipeline (`replay.cameras_per_pipeline: 4`); 24 fail on latency with the GPU at 90 %. The 30-minute 4-feed soak passed ([details](docs/rtx-a6000.md#capacity-2026-11-04)). Duplicate feeds measure load, not distinct-camera coverage, and the accuracy cost of the reduced rate is not measured.
 
-Tests (2026-11-04, RTX A6000 PC): `scripts/check.py --require-artifacts` (with `scripts/a6000/env.ps1` for FFmpeg) passes 317 backend tests with no skips, 47 frontend tests and the production build. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release). The independent browser check passes 18/18 for loop evidence, overlay outage/recovery, restart cursors, mobile unpaced playback and confirmed container removal; see [the workstation validation notes](docs/rtx-a6000.md).
+Tests (2026-11-04, RTX A6000 PC): `scripts/check.py --require-artifacts` (with `scripts/a6000/env.ps1` for FFmpeg) passes 327 backend tests with no skips, 47 frontend tests and the production build. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release). The independent browser check passes 18/18 for loop evidence, overlay outage/recovery, restart cursors, mobile unpaced playback and confirmed container removal; see [the workstation validation notes](docs/rtx-a6000.md).
 
 ## Requirements
 

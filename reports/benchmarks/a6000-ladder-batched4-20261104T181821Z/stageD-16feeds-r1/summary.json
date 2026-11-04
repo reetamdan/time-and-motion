@@ -1,0 +1,1195 @@
+{
+  "name": "stageD-16feeds-r1",
+  "stage": "D",
+  "feeds": 16,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 11568,
+    "available_mib": 44292.3,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 44307.3,
+      "host_available_after_20s_mib": 44291.7,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 7958494,
+      "uncertainty_ns": 79387650,
+      "best_round_trip_ns": 158775300,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 7937312,
+      "uncertainty_ns": 78028500,
+      "best_round_trip_ns": 156057000,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711",
+        "actual": "e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "ffde8051cfbda74e2f986a837e063151267256694838dc8c5914582a28e32641",
+    "backend_code_tree": "89e15913c1cde2d45f009603402d93b067935758e8b9238ff923c429523bfbee",
+    "benchmark_script": "554d40ed8070a1e1cde5e49b2ee490854fa2f3921c98747aa5175c6748ce9ae1"
+  },
+  "result": {
+    "expected": [
+      "cam-01",
+      "cam-02",
+      "cam-03",
+      "cam-04",
+      "cam-05",
+      "cam-06",
+      "cam-07",
+      "cam-08",
+      "cam-09",
+      "cam-10",
+      "cam-11",
+      "cam-12",
+      "cam-13",
+      "cam-14",
+      "cam-15",
+      "cam-16"
+    ],
+    "run_id": "59729405-543e-482b-bff2-5a3cde64d497",
+    "start_http_status": 200,
+    "stop": {
+      "status": 200,
+      "run_status": "STOPPED"
+    },
+    "feeds": {
+      "cam-01": {
+        "producer": {
+          "frames_total": 5491,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -188.453,
+            "p95": -186.771,
+            "max": -174.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.2,
+          "objects_per_frame_mean": 63.44
+        },
+        "backend": {
+          "consumed_frames_total": 5485,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 227.946,
+            "p95": 1069.932,
+            "max": 1435.5,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 227.112,
+            "p95": 1065.596,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.3,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.765,
+            "p95": 319.607,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-02": {
+        "producer": {
+          "frames_total": 5491,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -186.391,
+            "p95": -183.324,
+            "max": -165.1,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.3,
+          "objects_per_frame_mean": 63.18
+        },
+        "backend": {
+          "consumed_frames_total": 5486,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 223.824,
+            "p95": 1088.878,
+            "max": 1438.5,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 223.049,
+            "p95": 1087.775,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.7,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.725,
+            "p95": 347.584,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-03": {
+        "producer": {
+          "frames_total": 5491,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -199.894,
+            "p95": -199.872,
+            "max": -199.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 62.8
+        },
+        "backend": {
+          "consumed_frames_total": 5486,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 237.175,
+            "p95": 1121.215,
+            "max": 1455.5,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 236.235,
+            "p95": 1118.847,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.2,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 11.44,
+            "p95": 260.296,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-04": {
+        "producer": {
+          "frames_total": 5491,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -193.607,
+            "p95": -192.579,
+            "max": -181.0,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.1,
+          "objects_per_frame_mean": 62.72
+        },
+        "backend": {
+          "consumed_frames_total": 5487,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 234.251,
+            "p95": 1109.933,
+            "max": 1461.5,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 233.383,
+            "p95": 1108.875,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 0.5,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.751,
+            "p95": 296.212,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-05": {
+        "producer": {
+          "frames_total": 5526,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -186.064,
+            "p95": -183.142,
+            "max": -167.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.3,
+          "objects_per_frame_mean": 63.39
+        },
+        "backend": {
+          "consumed_frames_total": 5521,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 229.501,
+            "p95": 1134.156,
+            "max": 1502.7,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 228.716,
+            "p95": 1133.157,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.3,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.733,
+            "p95": 340.223,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-06": {
+        "producer": {
+          "frames_total": 5526,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -199.891,
+            "p95": -199.87,
+            "max": -199.1,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 63.3
+        },
+        "backend": {
+          "consumed_frames_total": 5521,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 243.207,
+            "p95": 1155.922,
+            "max": 1523.7,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 242.347,
+            "p95": 1154.988,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.5,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 11.206,
+            "p95": 253.402,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-07": {
+        "producer": {
+          "frames_total": 5526,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -195.705,
+            "p95": -194.724,
+            "max": -188.1,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.1,
+          "objects_per_frame_mean": 62.74
+        },
+        "backend": {
+          "consumed_frames_total": 5522,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 240.217,
+            "p95": 1159.803,
+            "max": 1553.8,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 239.344,
+            "p95": 1158.237,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -1.0,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.684,
+            "p95": 283.702,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-08": {
+        "producer": {
+          "frames_total": 5526,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -193.914,
+            "p95": -192.232,
+            "max": -180.9,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.3,
+          "objects_per_frame_mean": 62.63
+        },
+        "backend": {
+          "consumed_frames_total": 5522,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 236.801,
+            "p95": 1153.361,
+            "max": 1537.1,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 235.911,
+            "p95": 1153.361,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.6,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.353,
+            "p95": 310.707,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-09": {
+        "producer": {
+          "frames_total": 5509,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -190.788,
+            "p95": -190.003,
+            "max": -171.5,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 63.42
+        },
+        "backend": {
+          "consumed_frames_total": 5504,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 242.091,
+            "p95": 1130.874,
+            "max": 1489.7,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 241.185,
+            "p95": 1127.452,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 0.3,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 9.001,
+            "p95": 317.621,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-10": {
+        "producer": {
+          "frames_total": 5509,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -189.911,
+            "p95": -188.667,
+            "max": -165.4,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 63.04
+        },
+        "backend": {
+          "consumed_frames_total": 5504,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 238.105,
+            "p95": 1131.4,
+            "max": 1527.7,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 237.278,
+            "p95": 1128.121,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 1.3,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 11.162,
+            "p95": 344.489,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-11": {
+        "producer": {
+          "frames_total": 5509,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -199.872,
+            "p95": -199.773,
+            "max": -199.6,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 63.05
+        },
+        "backend": {
+          "consumed_frames_total": 5504,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 249.752,
+            "p95": 1150.504,
+            "max": 1546.8,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 248.865,
+            "p95": 1149.454,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 0.9,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 9.587,
+            "p95": 258.746,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-12": {
+        "producer": {
+          "frames_total": 5509,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -194.898,
+            "p95": -194.306,
+            "max": -185.1,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 62.6
+        },
+        "backend": {
+          "consumed_frames_total": 5505,
+          "consumed_in_window": 4499,
+          "consumed_cadence_fps": 7.498,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 247.179,
+            "p95": 1149.175,
+            "max": 1551.8,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 246.293,
+            "p95": 1145.53,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 0.6,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 8.0,
+            "max": 11.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 9.097,
+            "p95": 289.957,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-13": {
+        "producer": {
+          "frames_total": 5470,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -199.9,
+            "p95": -199.879,
+            "max": -199.7,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 63.51
+        },
+        "backend": {
+          "consumed_frames_total": 5465,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 237.822,
+            "p95": 1037.035,
+            "max": 1375.4,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 236.511,
+            "p95": 916.679,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 1.1,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 6.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 9.135,
+            "p95": 266.255,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-14": {
+        "producer": {
+          "frames_total": 5470,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -198.201,
+            "p95": -197.769,
+            "max": -184.8,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 62.99
+        },
+        "backend": {
+          "consumed_frames_total": 5465,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 234.098,
+            "p95": 1047.592,
+            "max": 1396.4,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 233.156,
+            "p95": 1034.158,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -0.7,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 7.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 11.168,
+            "p95": 296.328,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-15": {
+        "producer": {
+          "frames_total": 5470,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -196.278,
+            "p95": -195.05,
+            "max": -179.6,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.1,
+          "objects_per_frame_mean": 62.88
+        },
+        "backend": {
+          "consumed_frames_total": 5466,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 230.849,
+            "p95": 1052.596,
+            "max": 1402.0,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 229.966,
+            "p95": 1043.673,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": -1.5,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 7.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.697,
+            "p95": 327.471,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      },
+      "cam-16": {
+        "producer": {
+          "frames_total": 5470,
+          "frames_in_window": 4493,
+          "cadence_fps": 7.488,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -193.326,
+            "p95": -191.075,
+            "max": -165.7,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.4,
+          "objects_per_frame_mean": 62.58
+        },
+        "backend": {
+          "consumed_frames_total": 5466,
+          "consumed_in_window": 4500,
+          "consumed_cadence_fps": 7.5,
+          "release_frame_gaps": 0,
+          "produced_in_window": 4493,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 228.226,
+            "p95": 1048.065,
+            "max": 1421.6,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 227.344,
+            "p95": 1041.214,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 0.3,
+          "queue_depth": {
+            "p50": 1.0,
+            "p95": 7.0,
+            "max": 10.0,
+            "first_minute_median": 1.0,
+            "last_minute_median": 1.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 10.426,
+            "p95": 351.806,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      }
+    },
+    "crashed": [],
+    "outcomes": {
+      "cam-01": null,
+      "cam-02": null,
+      "cam-03": null,
+      "cam-04": null,
+      "cam-05": null,
+      "cam-06": null,
+      "cam-07": null,
+      "cam-08": null,
+      "cam-09": null,
+      "cam-10": null,
+      "cam-11": null,
+      "cam-12": null,
+      "cam-13": null,
+      "cam-14": null,
+      "cam-15": null,
+      "cam-16": null
+    },
+    "ended": "covered",
+    "errors": [],
+    "extra_failures": [],
+    "resource_stop": null,
+    "ownership": [
+      {
+        "camera": "cam-01",
+        "name": "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-02",
+        "name": "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-03",
+        "name": "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-04",
+        "name": "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-05",
+        "name": "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-06",
+        "name": "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-07",
+        "name": "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-08",
+        "name": "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-09",
+        "name": "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-10",
+        "name": "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-11",
+        "name": "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-12",
+        "name": "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-13",
+        "name": "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-14",
+        "name": "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-15",
+        "name": "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-16",
+        "name": "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e",
+        "state": "RELEASED"
+      }
+    ],
+    "containers": [
+      "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b",
+      "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf",
+      "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e",
+      "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900"
+    ],
+    "containers_absent_after": {
+      "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b": true,
+      "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf": true,
+      "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e": true,
+      "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900": true
+    },
+    "persistence": {
+      "available": true,
+      "count_samples_per_camera": {
+        "cam-01": 1465,
+        "cam-02": 1465,
+        "cam-03": 1465,
+        "cam-04": 1466,
+        "cam-05": 1475,
+        "cam-06": 1475,
+        "cam-07": 1475,
+        "cam-08": 1475,
+        "cam-09": 1470,
+        "cam-10": 1470,
+        "cam-11": 1470,
+        "cam-12": 1470,
+        "cam-13": 1460,
+        "cam-14": 1460,
+        "cam-15": 1460,
+        "cam-16": 1460
+      },
+      "evidence_records": 0
+    },
+    "soak": null,
+    "resources": {
+      "window_samples": 511,
+      "gpu_util_percent": {
+        "p50": 48.0,
+        "p95": 65.0,
+        "min": 15.0,
+        "max": 67.0
+      },
+      "nvdec_util_percent": {
+        "p50": 32.0,
+        "p95": 54.0,
+        "min": 6.0,
+        "max": 77.0
+      },
+      "vram_used_mib": {
+        "p50": 3518.0,
+        "p95": 3518.0,
+        "min": 3518.0,
+        "max": 3518.0
+      },
+      "gpu_temp_c": {
+        "p50": 81.0,
+        "p95": 82.0,
+        "min": 78.0,
+        "max": 82.0
+      },
+      "gpu_power_w": {
+        "p50": 175.28,
+        "p95": 178.34,
+        "min": 170.89,
+        "max": 180.57
+      },
+      "sm_clock_mhz": {
+        "p50": 1860.0,
+        "p95": 1860.0,
+        "min": 1860.0,
+        "max": 1860.0
+      },
+      "pstates": [
+        "P2"
+      ],
+      "host_cpu_percent": {
+        "p50": 45.5,
+        "p95": 55.3,
+        "min": 34.7,
+        "max": 64.4
+      },
+      "host_available_mib": {
+        "p50": 41916.2,
+        "p95": 41955.8,
+        "min": 41684.9,
+        "max": 41966.1
+      },
+      "host_used_mib": {
+        "p50": 23303.5,
+        "p95": 23382.9,
+        "min": 23253.6,
+        "max": 23534.9
+      },
+      "host_commit_available_mib": {
+        "p50": 135662.9,
+        "p95": 135692.9,
+        "min": 135493.3,
+        "max": 135703.8
+      },
+      "wsl_available_mib": {
+        "p50": 28163.0,
+        "p95": 28175.5,
+        "min": 28135.3,
+        "max": 28180.1
+      },
+      "wsl_cached_mib": {
+        "p50": 2953.7,
+        "p95": 2962.3,
+        "min": 2953.6,
+        "max": 2985.9
+      },
+      "backend_rss_mib": {
+        "p50": 349.9,
+        "p95": 355.6,
+        "min": 344.8,
+        "max": 377.0
+      },
+      "host_used_growth_mib": 30.4,
+      "wsl_cached_growth_mib": 8.8,
+      "backend_rss_growth_mib": 3.1,
+      "container_rss_mib": {
+        "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf": {
+          "min": 708.9,
+          "max": 742.1
+        },
+        "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b": {
+          "min": 706.8,
+          "max": 740.4
+        },
+        "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900": {
+          "min": 717.3,
+          "max": 750.5
+        },
+        "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e": {
+          "min": 710.8,
+          "max": 745.5
+        }
+      },
+      "container_rss_growth_mib": {
+        "aegis-batch-1187c04b-841c-41d9-b62b-f3b70075dcaf": 5.2,
+        "aegis-batch-03f9fcec-74db-4b99-8e0a-9d7d51e0015b": 5.5,
+        "aegis-batch-f837bc02-5408-4729-a630-9814ecd56900": 4.8,
+        "aegis-batch-b3c67e1f-1ea1-431c-9797-04e0066d215e": 5.6
+      },
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": true,
+    "failures": [],
+    "cleanup_confirmed": true
+  },
+  "status": "PASS"
+}

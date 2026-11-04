@@ -1,0 +1,13 @@
+{
+  "status": "INTERRUPTED - incomplete, not an acceptance result",
+  "reason": "exception",
+  "during_step": "stageD-24feeds-r1",
+  "errors": [
+    "RuntimeError: backend exited 1 before becoming live"
+  ],
+  "completed_steps": [
+    "stageD-16feeds-r1",
+    "stageD-20feeds-r1",
+    "stageD-24feeds-r1"
+  ]
+}
