@@ -74,6 +74,8 @@ PORT = 8773
 BASE = f"http://127.0.0.1:{PORT}"
 STAGE_ARG = {"A": "decode", "B": "detect", "C": "track", "D": "track"}
 EXIT_PASS, EXIT_FAIL, EXIT_INTERRUPTED, EXIT_REFUSED = 0, 1, 2, 3
+# Soak probes start once every camera is this far into its source (2x the 0.5 s history sample spacing).
+HISTORY_READY_S = 1.0
 # The configuration profile under test (set in main from --config-dir / CCTV_CONFIG_DIR).
 CONFIG_DIR = ROOT / "configs"
 
@@ -905,9 +907,10 @@ class SoakProbes:
         self.out.flush()
 
     def tick(self, elapsed: float, all_streaming: bool = True) -> None:
-        # Probes start once every camera reports a source position: history checked before the first
-        # frame (cameras take ~10-16 s to start) is legitimately empty, not a failure. After that, an
-        # empty history is a failure. (2026-11-04: the first A6000 soak failed only on its t=0 history probes.)
+        # Probes start once every camera is HISTORY_READY_S into its source: demo start returns at each
+        # camera's first frame, and history is sampled every 0.5 s of source time, so a probe at t=0 sees a
+        # legitimately empty history. After that, an empty history is a failure. (2026-11-04: two A6000 soaks
+        # failed only on their t=0 history probes.)
         if not self.started:
             if not all_streaming:
                 return
@@ -994,7 +997,7 @@ def run_backend(stage_dir: Path, clip: Path, feeds: int, warmup: float, measure:
                 for c in cameras}}) + "\n")
             if probes:
                 probes.tick(time.monotonic() - began, all_streaming=bool(cameras) and all(
-                    c.get("source_position_s") is not None for c in cameras if c["id"] in epochs))
+                    (c.get("source_position_s") or 0) >= HISTORY_READY_S for c in cameras if c["id"] in epochs))
             tracked = [c for c in cameras if c["id"] in epochs]
             if tracked and len(tracked) == len(epochs) and all(
                     (c.get("source_position_s") or 0) >= warmup + measure + 5 or c.get("stream_outcome") for c in tracked):
