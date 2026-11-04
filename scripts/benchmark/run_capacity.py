@@ -882,7 +882,9 @@ def write_backend_config(directory: Path, feeds: int, clip: Path) -> list[str]:
     document["cameras"] = [dict(template, id=camera_id, enabled=True, source=str(clip), overlap_group=None, loop=False,
                                 analysis_frame_interval=ANALYSIS_FRAME_INTERVAL,
                                 name=f"DUPLICATE INPUT {i} of {clip.stem} (load test only)", floor_id="floor-1",
-                                position=[90 + 40 * i, 105]) for i, camera_id in enumerate(ids, 1)]
+                                # Rows of 20 inside the 1000 x 600 floor view box (40 px apart).
+                                position=[90 + 40 * ((i - 1) % 20), 105 + 60 * ((i - 1) // 20)])
+                           for i, camera_id in enumerate(ids, 1)]
     document["load_test_note"] = "DUPLICATE INPUT of labelled repeated footage; load measurement only"
     path.write_text(yaml.safe_dump(document, sort_keys=False), encoding="utf-8")
     zones = directory / "zones.yaml"

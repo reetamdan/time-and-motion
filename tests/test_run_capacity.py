@@ -234,3 +234,12 @@ def test_cameras_per_pipeline_reaches_the_backend_configuration(tmp_path: Path, 
     monkeypatch.setattr(rc, "CAMERAS_PER_PIPELINE", 4)
     rc.write_backend_config(tmp_path / "batched", 8, clip)
     assert load_configuration(tmp_path / "batched", PROJECT_ROOT).runtime.replay.cameras_per_pipeline == 4
+
+
+def test_duplicate_cameras_stay_inside_the_floor_view_box(tmp_path: Path, monkeypatch) -> None:
+    from backend.app.configuration import load_configuration
+
+    monkeypatch.setattr(rc, "CONFIG_DIR", PROJECT_ROOT / "configs" / "a6000")
+    rc.write_backend_config(tmp_path / "configs", 32, PROJECT_ROOT / "demo" / "derived" / "cam01-repeat33.mp4")
+    cameras = load_configuration(tmp_path / "configs", PROJECT_ROOT).cameras  # 24+ cameras once overflowed x = 1000
+    assert len(cameras) == 32 and len({tuple(c.position) for c in cameras}) == 32
