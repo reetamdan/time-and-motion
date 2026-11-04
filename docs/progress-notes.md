@@ -17,7 +17,7 @@ Second review (opencode, 2026-11-04 04:05 local), each point checked against the
 - an independent container-absence check in `validate_overlay_recovery.py`.
 - found by the first A6000 ladder run: 4+ cameras started together all failed the fixed 15 s first-frame deadline (8 cameras take 16 s). It is now `replay.startup_timeout_seconds` (60 s). That run (`.install/benchmarks/a6000-ladder-20261103T230400Z`: 1 and 2 feeds PASS, 4 feeds no frames) and its soak are superseded.
 
-`scripts/check.py --require-artifacts`: 300 Python tests (no skips), 47 frontend tests and the build pass. Also found: a backend whose console was closed cannot start `wsl.exe` (`0xC0000142`) and reports `not_ready` (operations guide, troubleshooting).
+`scripts/check.py --require-artifacts`: 300 Python tests at that point (no skips), 47 frontend tests and the build pass. Also found: a backend whose console was closed cannot start `wsl.exe` (`0xC0000142`) and reports `not_ready` (operations guide, troubleshooting).
 
 A6000 capacity (`docs/rtx-a6000.md` *Capacity*):
 - ladder `reports/benchmarks/a6000-ladder-20261104T002411Z`: COMPLETE, 1/2/4/6/8 feeds all PASS at ~30 analytics fps per camera; at 8 feeds the GPU (99 %) and CPU (100 %) are saturated at 86 °C;
@@ -25,7 +25,9 @@ A6000 capacity (`docs/rtx-a6000.md` *Capacity*):
 
 Two earlier soaks failed only on t=0 history probes, a benchmark probe-timing flaw that took two fixes (2cb9140, bd4be90). Overlay: hiding boxes mid-seek blanked unpaced replay (found by `validate_overlay_recovery.py`, 1/10 samples painted); boxes now follow the presented frame, and the rerun passes 18/18. Browser loop check: `reports/validation/a6000-browser-loop-overlay-20261104T032742Z` PASS, drift ≤ 0.18 s.
 
-Remaining priorities: reviewed accuracy labels, total cross-epoch storage retention (database retention settings are defined but not enforced), real fixed-camera/calibration inputs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
+Later on 2026-11-04 (`0799881`, `1c6ab30`): database retention is enforced (startup + every 10 minutes; `GET /api/v1/system/retention`), and cameras can opt into a reduced analysis rate (`analysis_frame_interval`). 312 Python tests pass. The A-D stage comparison and the reduced-rate ladder are in `docs/rtx-a6000.md` *Capacity*.
+
+Remaining priorities: reviewed accuracy labels (including the accuracy cost of a reduced analysis rate), real fixed-camera/calibration inputs, removal of old epochs' frame logs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
 
 Session 4 (2026-10-27) — "complete remaining engineering" handoff. Ledger: `docs/acceptance-matrix.md`.
 
