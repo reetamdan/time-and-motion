@@ -1,0 +1,7 @@
+{
+  "result": "FAIL (regression found by this run, then fixed)",
+  "failed_check": "mobile_unpaced_boxes (1 of 10 samples painted)",
+  "cause": "The overlay change in 4dc3307 hid boxes whenever video.seeking was true. Unpaced replay advances the paused preview by seeking on every poll, so the video was almost always mid-seek and the boxes almost never drew.",
+  "fix": "Boxes follow the last presented frame (requestVideoFrameCallback mediaTime) while playing or seeking; they are hidden mid-seek only when no presented-frame time is available.",
+  "passing_rerun": "reports/validation/overlay-recovery-20261104T032309154853Z/result.json (18/18)"
+}

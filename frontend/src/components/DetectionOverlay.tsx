@@ -201,10 +201,14 @@ export function useDetectionOverlay(camera: Camera, videoRef: RefObject<HTMLVide
       const video = videoRef.current;
       const canvas = canvasRef.current;
       if (video && canvas) {
-        // Boxes are hidden while seeking: neither the old nor the target frame is reliably on screen.
-        // Paused (unpaced replay steps by seeking): once the seek completes the shown frame is currentTime.
-        const time = presented?.video === video && !video.paused ? presented.time : video.currentTime;
-        draw(canvas, video, buffer.fresh(performance.now()) && !video.seeking
+        // While playing or seeking, the frame on screen is the last presented one (during a seek the old
+        // frame stays up while currentTime already shows the target). Paused and settled, it is currentTime.
+        // Unpaced replay steps by seeking every poll, so it is mostly mid-seek: boxes must follow the
+        // presented frame there, not disappear. Without presented-frame times, boxes are hidden mid-seek.
+        const usePresented = presented?.video === video && (!video.paused || video.seeking);
+        const time = usePresented && presented ? presented.time : video.currentTime;
+        const known = usePresented || !video.seeking;
+        draw(canvas, video, buffer.fresh(performance.now()) && known
           ? nearestFrame(buffer.frames, time) : null, buffer.size, detail);
       }
       animation = window.requestAnimationFrame(render);

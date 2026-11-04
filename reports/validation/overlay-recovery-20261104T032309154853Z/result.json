@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "ready": true,
+    "paced_overlay_after_loop": true,
+    "looped": true,
+    "loop_evidence_created": true,
+    "jpeg_download": true,
+    "mp4_download": true,
+    "failed_overlay_transport_clears_boxes": true,
+    "snapshot_still_live_during_overlay_failure": true,
+    "overlay_transport_recovers": true,
+    "paced_stop": true,
+    "fresh_epoch": true,
+    "old_cursor_recovers": true,
+    "mobile_unpaced_boxes": true,
+    "mobile_no_horizontal_overflow": true,
+    "unpaced_stop": true,
+    "no_browser_errors": true,
+    "cleanup": true,
+    "owned_containers_absent": true
+  },
+  "page_errors": [],
+  "base_commit": "bd4be900e33fd6e97d2f9d1ea477945f48d0906d",
+  "working_tree_changes": true,
+  "source_sha256": {
+    "backend/app/services/runtime.py": "d21658f122450e7ec5b2001c558a5b0fc8f7ca8164b6631eae6a7cdb3d4067e1",
+    "backend/app/services/evidence.py": "ef12b10302c5613e8b34eef78e6dc962378985bb08da50be7b54e543d5186c3d",
+    "backend/app/api/facility.py": "ca804df62924eef0e9da24ae8e581a772e0eea452976654e73afb8afb3fc2751",
+    "frontend/src/components/DetectionOverlay.tsx": "b310b1ec9736a176dca6191ac36e0bb725d62c451b90948f0473bc9d36d42647",
+    "frontend/src/lib/api.ts": "d49f588cbd7f32b2cf20f8faae59d49bc15f998af74c9e07a1692fd3c998a208",
+    "scripts/a6000/validate_overlay_recovery.py": "9704c905e36aa85924d57d289b0e6cf40322e4b935896cad18634c8b1949f34a"
+  },
+  "unpaced_painted_samples": [
+    19416,
+    19851,
+    19020,
+    18286,
+    18286,
+    17172,
+    17172,
+    16800,
+    19284,
+    19284
+  ],
+  "owned_containers": [
+    "aegis-cam-01-955c99cb-de02-4c17-820a-3f4e1b13825d",
+    "aegis-cam-01-ea1f6e46-dda4-4755-b48c-b77d7342c1a8"
+  ],
+  "owned_containers_still_present": [],
+  "server_stopped_cleanly": true,
+  "result": "PASS"
+}

@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "ready": true,
+    "paced_overlay_after_loop": true,
+    "looped": true,
+    "loop_evidence_created": true,
+    "jpeg_download": true,
+    "mp4_download": true,
+    "failed_overlay_transport_clears_boxes": true,
+    "snapshot_still_live_during_overlay_failure": true,
+    "overlay_transport_recovers": true,
+    "paced_stop": true,
+    "fresh_epoch": true,
+    "old_cursor_recovers": true,
+    "mobile_unpaced_boxes": false,
+    "mobile_no_horizontal_overflow": true,
+    "unpaced_stop": true,
+    "no_browser_errors": true,
+    "cleanup": true,
+    "owned_containers_absent": true
+  },
+  "page_errors": [],
+  "base_commit": "bd4be900e33fd6e97d2f9d1ea477945f48d0906d",
+  "working_tree_changes": true,
+  "source_sha256": {
+    "backend/app/services/runtime.py": "d21658f122450e7ec5b2001c558a5b0fc8f7ca8164b6631eae6a7cdb3d4067e1",
+    "backend/app/services/evidence.py": "ef12b10302c5613e8b34eef78e6dc962378985bb08da50be7b54e543d5186c3d",
+    "backend/app/api/facility.py": "ca804df62924eef0e9da24ae8e581a772e0eea452976654e73afb8afb3fc2751",
+    "frontend/src/components/DetectionOverlay.tsx": "96e8bc459b59b877a4de27323806a33dcd85d3b9a65e1f116ddde69797631a00",
+    "frontend/src/lib/api.ts": "d49f588cbd7f32b2cf20f8faae59d49bc15f998af74c9e07a1692fd3c998a208",
+    "scripts/a6000/validate_overlay_recovery.py": "9704c905e36aa85924d57d289b0e6cf40322e4b935896cad18634c8b1949f34a"
+  },
+  "unpaced_painted_samples": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    17621,
+    0,
+    0,
+    0,
+    0
+  ],
+  "owned_containers": [
+    "aegis-cam-01-4efd55ae-a97f-4bf2-85ee-0acace5bcc58",
+    "aegis-cam-01-7ef040fe-d18b-425a-b1bc-6241ccdc81ad"
+  ],
+  "owned_containers_still_present": [],
+  "server_stopped_cleanly": true,
+  "result": "FAIL"
+}

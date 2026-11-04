@@ -8,7 +8,24 @@ Verification: 287 Python tests passed plus one skipped real-FFmpeg test that pas
 
 Follow-up review (same day): kept the epoch/freshness, loop-boundary, LFS-detection and check-runner changes. Reverted the frame-count fallback to a packet count (decoding measured 5.4 s vs 0.2 s on the demo clip, paid before the camera starts, and over the 60 s tool timeout on long MKV/TS files). Added a fallback for browsers without `AbortSignal.any`, which previously left the overlay silently empty. `scripts/check.py --require-artifacts` with FFmpeg on PATH: 288 Python tests (no skips), 44 frontend tests and the build pass; real A6000/browser: `reports/validation/overlay-recovery-20261103T215127357311Z/result.json`, 17/17. WSL idle shutdown (found in this review, then fixed): WSL stopped its VM while the server was idle (seen twice), so readiness reported `not_ready` and the next Start demo waited ~15 s for WSL to boot. `scripts/a6000/start.ps1` now keeps WSL running for the launcher's lifetime and waits for Docker before serving; `stop-server.py` removes an orphaned keep-alive. CI: the first run failed one drive-letter assumption in `test_windows_path_conversion_uses_mounted_drive` (runners check out on D:); fixed, and both Windows and Linux jobs pass.
 
-Remaining priorities: reviewed accuracy labels, A6000 steady-state capacity/30-minute soak, total cross-epoch storage retention, real fixed-camera/calibration inputs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
+Second review (opencode, 2026-11-04 04:05 local), each point checked against the code first: `docs/rtx-a6000.md` *Second review*. Fixed:
+- an OS lock gives one backend per database;
+- the capacity benchmark takes `--config-dir` and keeps complete, unrotated logs;
+- evidence snapshot+clip groups are atomic, and the newest group is never evicted;
+- the overlay's per-request listener leak, plus round-trip-aware freshness, boxes hidden while seeking, and presented-frame time via `requestVideoFrameCallback`;
+- launcher probe timeouts, quoted distro parsing, start/stop port agreement and a per-checkout keep-alive tag;
+- an independent container-absence check in `validate_overlay_recovery.py`.
+- found by the first A6000 ladder run: 4+ cameras started together all failed the fixed 15 s first-frame deadline (8 cameras take 16 s). It is now `replay.startup_timeout_seconds` (60 s). That run (`.install/benchmarks/a6000-ladder-20261103T230400Z`: 1 and 2 feeds PASS, 4 feeds no frames) and its soak are superseded.
+
+`scripts/check.py --require-artifacts`: 300 Python tests (no skips), 47 frontend tests and the build pass. Also found: a backend whose console was closed cannot start `wsl.exe` (`0xC0000142`) and reports `not_ready` (operations guide, troubleshooting).
+
+A6000 capacity (`docs/rtx-a6000.md` *Capacity*):
+- ladder `reports/benchmarks/a6000-ladder-20261104T002411Z`: COMPLETE, 1/2/4/6/8 feeds all PASS at ~30 analytics fps per camera; at 8 feeds the GPU (99 %) and CPU (100 %) are saturated at 86 °C;
+- 30-minute soak `a6000-soak-20261104T024634Z`: PASS (p95 275-293 ms, no growth, all 323 probes).
+
+Two earlier soaks failed only on t=0 history probes, a benchmark probe-timing flaw that took two fixes (2cb9140, bd4be90). Overlay: hiding boxes mid-seek blanked unpaced replay (found by `validate_overlay_recovery.py`, 1/10 samples painted); boxes now follow the presented frame, and the rerun passes 18/18. Browser loop check: `reports/validation/a6000-browser-loop-overlay-20261104T032742Z` PASS, drift ≤ 0.18 s.
+
+Remaining priorities: reviewed accuracy labels, total cross-epoch storage retention (database retention settings are defined but not enforced), real fixed-camera/calibration inputs. Details and research references: `docs/rtx-a6000.md`. Historical notes below retain their original scope and dates.
 
 Session 4 (2026-10-27) — "complete remaining engineering" handoff. Ledger: `docs/acceptance-matrix.md`.
 

@@ -1,0 +1,289 @@
+{
+  "name": "stageD-1feeds-r1",
+  "stage": "D",
+  "feeds": 1,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 1818,
+    "available_mib": 44095.7,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 42136.5,
+      "host_available_after_20s_mib": 44095.7,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 8614211,
+      "uncertainty_ns": 77949800,
+      "best_round_trip_ns": 155899600,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 14575882,
+      "uncertainty_ns": 79901450,
+      "best_round_trip_ns": 159802900,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+        "actual": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "7edd067e5aaabd0cb64126277b3cf9e2991e591189b3bfb43395a0c34a7328fa",
+    "backend_code_tree": "470b269a271836430b731cdce2c7939082efda59d8b4b0ae0da8fae1db7f3042",
+    "benchmark_script": "2a287cba387dc4e53a1a55897cef2aadc94a79b02b0050300f101c980492b9ed"
+  },
+  "result": {
+    "expected": [
+      "cam-01"
+    ],
+    "run_id": "ae4e8990-ed77-4502-bb41-336c06edf23a",
+    "start_http_status": 200,
+    "stop": {
+      "status": 200,
+      "run_status": "STOPPED"
+    },
+    "feeds": {
+      "cam-01": {
+        "producer": {
+          "frames_total": 21771,
+          "frames_in_window": 17975,
+          "cadence_fps": 29.958,
+          "frame_gaps": 0,
+          "covered_window_s": 600,
+          "schedule_lag_ms": {
+            "p50": -199.792,
+            "p95": -199.699,
+            "max": -199.4,
+            "basis": "stages A-C (no consumer): producer emit time minus the frame's due time on the source timeline anchored at the feed's first frame; negative = the deliberate 200 ms lead. A real-time keep-up criterion, NOT receive-to-result latency"
+          },
+          "schedule_backlog_growth_ms": 0.0,
+          "objects_per_frame_mean": 68.82
+        },
+        "backend": {
+          "consumed_frames_total": 21758,
+          "consumed_in_window": 17975,
+          "consumed_cadence_fps": 29.958,
+          "release_frame_gaps": 0,
+          "produced_in_window": 17975,
+          "missing_deliveries": 0,
+          "missing_delivery_examples": [],
+          "delivery_coverage": 1.0,
+          "receive_to_result_ms": {
+            "p50": 220.038,
+            "p95": 230.361,
+            "max": 261.3,
+            "basis": "stage D only: backend analytics_done minus backend stdout read time, same host clock, over every produced frame in the window; a produced frame never consumed is a missing delivery (fail), never excluded"
+          },
+          "pacing_hold_ms": {
+            "p50": 220.005,
+            "p95": 230.299,
+            "basis": "released minus read: deliberate hold until the frame's source time (paced profile)"
+          },
+          "receive_to_result_backlog_growth_ms": 0.0,
+          "queue_depth": {
+            "p50": 6.0,
+            "p95": 6.0,
+            "max": 7.0,
+            "first_minute_median": 6.0,
+            "last_minute_median": 6.0
+          },
+          "producer_to_backend_transit_ms": {
+            "p50": 7.058,
+            "p95": 10.341,
+            "basis": "backend read (host clock) minus producer emit corrected by the measured clock offset; reported, not gated"
+          }
+        }
+      }
+    },
+    "crashed": [],
+    "outcomes": {
+      "cam-01": null
+    },
+    "ended": "covered",
+    "errors": [],
+    "extra_failures": [],
+    "resource_stop": null,
+    "ownership": [
+      {
+        "camera": "cam-01",
+        "name": "aegis-cam-01-8bf4f5e8-434e-4af9-a2ce-55817db3ff94",
+        "state": "RELEASED"
+      }
+    ],
+    "containers": [
+      "aegis-cam-01-8bf4f5e8-434e-4af9-a2ce-55817db3ff94"
+    ],
+    "containers_absent_after": {
+      "aegis-cam-01-8bf4f5e8-434e-4af9-a2ce-55817db3ff94": true
+    },
+    "persistence": {
+      "available": true,
+      "count_samples_per_camera": {
+        "cam-01": 1453
+      },
+      "evidence_records": 0
+    },
+    "soak": null,
+    "resources": {
+      "window_samples": 567,
+      "gpu_util_percent": {
+        "p50": 7.0,
+        "p95": 7.0,
+        "min": 6.0,
+        "max": 8.0
+      },
+      "nvdec_util_percent": {
+        "p50": 2.0,
+        "p95": 3.0,
+        "min": 1.0,
+        "max": 5.0
+      },
+      "vram_used_mib": {
+        "p50": 918.0,
+        "p95": 918.0,
+        "min": 918.0,
+        "max": 918.0
+      },
+      "gpu_temp_c": {
+        "p50": 69.0,
+        "p95": 69.0,
+        "min": 66.0,
+        "max": 69.0
+      },
+      "gpu_power_w": {
+        "p50": 99.79,
+        "p95": 100.2,
+        "min": 97.89,
+        "max": 100.39
+      },
+      "sm_clock_mhz": {
+        "p50": 1800.0,
+        "p95": 1800.0,
+        "min": 1800.0,
+        "max": 1800.0
+      },
+      "pstates": [
+        "P2"
+      ],
+      "host_cpu_percent": {
+        "p50": 7.3,
+        "p95": 12.5,
+        "min": 3.5,
+        "max": 21.6
+      },
+      "host_available_mib": {
+        "p50": 41457.7,
+        "p95": 41497.3,
+        "min": 41289.7,
+        "max": 41504.2
+      },
+      "host_used_mib": {
+        "p50": 23762.0,
+        "p95": 23782.2,
+        "min": 23715.5,
+        "max": 23930.0
+      },
+      "host_commit_available_mib": {
+        "p50": 137566.9,
+        "p95": 137630.5,
+        "min": 137476.1,
+        "max": 137644.5
+      },
+      "wsl_available_mib": {
+        "p50": 30572.1,
+        "p95": 30580.9,
+        "min": 30551.2,
+        "max": 30583.2
+      },
+      "wsl_cached_mib": {
+        "p50": 3337.7,
+        "p95": 3337.7,
+        "min": 3337.6,
+        "max": 3337.7
+      },
+      "backend_rss_mib": {
+        "p50": 122.0,
+        "p95": 122.9,
+        "min": 120.3,
+        "max": 149.6
+      },
+      "host_used_growth_mib": -53.3,
+      "wsl_cached_growth_mib": 0.1,
+      "backend_rss_growth_mib": 1.3,
+      "container_rss_mib": {
+        "aegis-cam-01-8bf4f5e8-434e-4af9-a2ce-55817db3ff94": {
+          "min": 572.1,
+          "max": 584.0
+        }
+      },
+      "container_rss_growth_mib": {
+        "aegis-cam-01-8bf4f5e8-434e-4af9-a2ce-55817db3ff94": 1.1
+      },
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": true,
+    "failures": [],
+    "cleanup_confirmed": true
+  },
+  "status": "PASS"
+}

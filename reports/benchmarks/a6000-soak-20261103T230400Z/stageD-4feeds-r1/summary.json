@@ -1,0 +1,273 @@
+{
+  "name": "stageD-4feeds-r1",
+  "stage": "D",
+  "feeds": 4,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 3768,
+    "available_mib": 44715.2,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 44357.3,
+      "host_available_after_20s_mib": 44715.2,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 14434740,
+      "uncertainty_ns": 75058800,
+      "best_round_trip_ns": 150117600,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 15438680,
+      "uncertainty_ns": 79806650,
+      "best_round_trip_ns": 159613300,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+        "actual": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat90.mp4",
+      "sha256": "a4c2c7d51f831dcb0189d4ceec7de3bbc63dbe0aa2b6ff2c9f69eb16818d8d5f"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "f87fe6208a4d592399e74dae4ec7bcd26de918e22824c2df3fc45503ff5a92d8",
+    "backend_code_tree": "e3ca71de0bdc4cab2857dfa7b159d27945fb93904af18153ac5fd22bc703bce9",
+    "benchmark_script": "2a287cba387dc4e53a1a55897cef2aadc94a79b02b0050300f101c980492b9ed"
+  },
+  "result": {
+    "expected": [
+      "cam-01",
+      "cam-02",
+      "cam-03",
+      "cam-04"
+    ],
+    "run_id": "83c97878-8d4f-4724-847e-71653a3e0b93",
+    "start_http_status": 200,
+    "stop": {
+      "status": 200,
+      "run_status": "STOPPED"
+    },
+    "feeds": {
+      "cam-01": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-02": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-03": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-04": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      }
+    },
+    "crashed": [],
+    "outcomes": {
+      "cam-01": null,
+      "cam-02": null,
+      "cam-03": null,
+      "cam-04": null
+    },
+    "ended": "deadline",
+    "errors": [],
+    "extra_failures": [
+      "soak probes failed: {'history': 136, 'evidence': 4}",
+      "soak: no evidence marker succeeded"
+    ],
+    "resource_stop": null,
+    "ownership": [
+      {
+        "camera": "cam-01",
+        "name": "aegis-cam-01-f9512545-26c2-4411-8e45-2732e818fae2",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-02",
+        "name": "aegis-cam-02-ee62d795-c91c-4711-a727-3a4312d6db55",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-03",
+        "name": "aegis-cam-03-2fa5b268-24ce-4856-a2dd-c3bb59ab215d",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-04",
+        "name": "aegis-cam-04-b4950d82-5458-4af8-8b3c-4fe2524ef5c1",
+        "state": "RELEASED"
+      }
+    ],
+    "containers": [
+      "aegis-cam-01-f9512545-26c2-4411-8e45-2732e818fae2",
+      "aegis-cam-02-ee62d795-c91c-4711-a727-3a4312d6db55",
+      "aegis-cam-03-2fa5b268-24ce-4856-a2dd-c3bb59ab215d",
+      "aegis-cam-04-b4950d82-5458-4af8-8b3c-4fe2524ef5c1"
+    ],
+    "containers_absent_after": {
+      "aegis-cam-01-f9512545-26c2-4411-8e45-2732e818fae2": true,
+      "aegis-cam-02-ee62d795-c91c-4711-a727-3a4312d6db55": true,
+      "aegis-cam-03-2fa5b268-24ce-4856-a2dd-c3bb59ab215d": true,
+      "aegis-cam-04-b4950d82-5458-4af8-8b3c-4fe2524ef5c1": true
+    },
+    "persistence": {
+      "available": true,
+      "count_samples_per_camera": {},
+      "evidence_records": 0
+    },
+    "soak": {
+      "probes": {
+        "history": {
+          "ok": 0,
+          "failed": 136
+        },
+        "preview": {
+          "ok": 136,
+          "failed": 0
+        },
+        "metrics": {
+          "ok": 34,
+          "failed": 0
+        },
+        "dashboard_snapshot": {
+          "ok": 34,
+          "failed": 0
+        },
+        "evidence": {
+          "ok": 0,
+          "failed": 4
+        }
+      },
+      "evidence_ids": []
+    },
+    "resources": {
+      "window_samples": 0,
+      "gpu_util_percent": null,
+      "nvdec_util_percent": null,
+      "vram_used_mib": null,
+      "gpu_temp_c": null,
+      "gpu_power_w": null,
+      "sm_clock_mhz": null,
+      "pstates": [],
+      "host_cpu_percent": null,
+      "host_available_mib": null,
+      "host_used_mib": null,
+      "host_commit_available_mib": null,
+      "wsl_available_mib": null,
+      "wsl_cached_mib": null,
+      "backend_rss_mib": null,
+      "host_used_growth_mib": null,
+      "wsl_cached_growth_mib": null,
+      "backend_rss_growth_mib": null,
+      "container_rss_mib": {},
+      "container_rss_growth_mib": {},
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": false,
+    "failures": [
+      "soak probes failed: {'history': 136, 'evidence': 4}",
+      "soak: no evidence marker succeeded",
+      "cam-01: no producer frames recorded",
+      "cam-02: no producer frames recorded",
+      "cam-03: no producer frames recorded",
+      "cam-04: no producer frames recorded",
+      "required measurement unavailable: GPU temperature",
+      "required measurement unavailable: backend RSS growth"
+    ],
+    "cleanup_confirmed": true
+  },
+  "status": "FAIL"
+}

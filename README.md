@@ -90,10 +90,9 @@ Developed on an RTX 5070 Ti laptop GPU (Windows 11 + WSL2) and now **running and
 
 - **Detector accuracy.** No human-reviewed labels exist yet; the annotation package is ready in `data/annotations/cam01-v1/`. TrafficCamNet is the base profile's *provisional* detector; the A6000 profile selects RT-DETR as an unaccepted candidate. Higher counts and agreement with FP32 are not accuracy measurements.
 - **Calibrated facility metrics.** Occupancy, overlap de-duplication, stairs and queues need camera calibration and real multi-camera footage; only one clip exists.
-- **Steady-state capacity and the 30-minute soak.** The protocol is implemented. The final run passed its first two steps and was then paused.
-- **Steady-state multi-camera capacity on the RTX A6000.** Single-feed throughput and a 5-minute looping soak are measured; the multi-feed capacity protocol has not been run there.
+- **Capacity beyond 8 cameras, and the stage comparison.** On the RTX A6000 the capacity ladder passed every step up to 8 duplicate 30 fps feeds, with the GPU and CPU saturated at 8. The 30-minute 4-feed soak passed ([details](docs/rtx-a6000.md#capacity-2026-11-04)). The A-D stage-comparison repeats have not run there, and more than 8 cameras would need a reduced analysis rate or batching (not measured). Duplicate feeds measure load, not distinct-camera coverage.
 
-Tests (2026-11-04, RTX A6000 PC): `scripts/check.py --require-artifacts` (with `scripts/a6000/env.ps1` for FFmpeg) passes 288 backend tests with no skips, 44 frontend tests and the production build. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release). The independent browser check passes 17/17 for loop evidence, overlay outage/recovery, restart cursors and mobile unpaced playback; see [the workstation validation notes](docs/rtx-a6000.md).
+Tests (2026-11-04, RTX A6000 PC): `scripts/check.py --require-artifacts` (with `scripts/a6000/env.ps1` for FFmpeg) passes 300 backend tests with no skips, 47 frontend tests and the production build. On the GPU, all three detector profiles complete the full clip (710/710 frames, evidence, clean container release). The independent browser check passes 18/18 for loop evidence, overlay outage/recovery, restart cursors, mobile unpaced playback and confirmed container removal; see [the workstation validation notes](docs/rtx-a6000.md).
 
 ## Requirements
 
@@ -148,7 +147,7 @@ bash scripts/setup/setup.sh --dev --isolated-frontend
 bash scripts/run-backend.sh
 ```
 
-On Windows you can instead double-click **`Start-Aegis.cmd`** after steps 1-2 and the venv/frontend setup above. It sets up the environment, picks the RTX A6000 profile (`configs/a6000`) when it detects that GPU, keeps WSL (and so Docker) running while the server runs, waits for Docker, and starts the server. Stop a background server with `.venv-windows\Scripts\python.exe scripts\a6000\stop-server.py`.
+On Windows you can instead double-click **`Start-Aegis.cmd`** after steps 1-2 and the venv/frontend setup above. It sets up the environment, picks the RTX A6000 profile (`configs/a6000`) when it detects that GPU, keeps WSL (and so Docker) running while the server runs, waits for Docker, and starts the server. Stop a background server with `.venv-windows\Scripts\python.exe scripts\a6000\stop-server.py` (add `--port N` for a non-default port). Only one backend can run per database: a second one, on any port, refuses to start instead of taking over the first one's cameras.
 
 ### 4. Open the dashboard
 

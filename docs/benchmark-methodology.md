@@ -61,4 +61,6 @@ Variance: each repeat contributes one worst-feed figure per metric; mean/stdev/m
 .venv/Scripts/python.exe scripts/benchmark/run_capacity.py --plan soak
 ```
 
+Configuration profile: `--config-dir`, else `CCTV_CONFIG_DIR`, else `configs/`. On the RTX A6000 add `--config-dir configs/a6000`. The selected profile is used for stages A-D, and the report records it with its detector, precision and engine. In the backend stage's copy of the profile, frame-log rotation and source looping are switched off. The raw logs are the measurement, so a step whose log rotated anyway fails as incomplete.
+
 Native Linux / backend inside WSL: the same commands with `.venv-wsl/bin/python` (the script calls docker directly when not on Windows). Close competing memory-heavy applications first; the preflight will refuse a step it predicts would exhaust host memory.

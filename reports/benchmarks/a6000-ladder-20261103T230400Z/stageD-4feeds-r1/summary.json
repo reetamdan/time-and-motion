@@ -1,0 +1,244 @@
+{
+  "name": "stageD-4feeds-r1",
+  "stage": "D",
+  "feeds": 4,
+  "repeat": 1,
+  "preflight": {
+    "ok": true,
+    "needed_mib": 3768,
+    "available_mib": 44165.3,
+    "guest_cache_release": {
+      "performed": true,
+      "host_available_before_mib": 41993.2,
+      "host_available_after_20s_mib": 44165.5,
+      "stderr": ""
+    }
+  },
+  "clock_offset": {
+    "before": {
+      "wsl_minus_host_ns": 13411631,
+      "uncertainty_ns": 77001100,
+      "best_round_trip_ns": 154002200,
+      "samples": 9
+    },
+    "after": {
+      "wsl_minus_host_ns": 15273273,
+      "uncertainty_ns": 78778100,
+      "best_round_trip_ns": 157556200,
+      "samples": 9
+    }
+  },
+  "identities_after": {
+    "artifacts": {
+      "detector.checkpoint": {
+        "recorded": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "actual": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+        "status": "MATCH"
+      },
+      "detector.engine": {
+        "recorded": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "actual": "249941e733a1daecd7ed0d8e8463e4ecc6f1e1c9680dddd6440d28cfe645f2bf",
+        "status": "MATCH"
+      },
+      "detector.infer_config": {
+        "recorded": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "actual": "feb0ce2f68682eaf718a68baad98f4d6faccd64a5a4e0c3fdbcdef3ccaa1bdc1",
+        "status": "MATCH"
+      },
+      "detector.parser_library": {
+        "recorded": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "actual": "324972554160f97aefb10b202fc0b8214d362f8927f0964646137d9d90756742",
+        "status": "MATCH"
+      },
+      "tracker.config": {
+        "recorded": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "actual": "13662e73754e8e6566c5495df40452aed7edba7ad8fd8a43335604b8643bae27",
+        "status": "MATCH"
+      },
+      "pipeline.wrapper": {
+        "recorded": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+        "status": "MATCH"
+      },
+      "pipeline.extractor": {
+        "recorded": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+        "actual": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+        "status": "MATCH"
+      },
+      "pipeline.capability_probe": {
+        "recorded": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "actual": "e50ee4bf0cd8bd013dd77799dc2d0e3f4d8ace109d4e5462199bb7aedd5c64cb",
+        "status": "MATCH"
+      },
+      "pipeline.image_reference": {
+        "recorded": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "actual": "ghcr.io/nvidia/deepstream@sha256:092818f8142d82c4611c9e96eb589a975cd928baa3e15a92f8f67b0ff6fcdb85",
+        "status": "MATCH"
+      }
+    },
+    "clip": {
+      "path": "demo/derived/cam01-repeat33.mp4",
+      "sha256": "03950b88b05d486a350199824b6898597e4f4ff020a2f89bf4a93649b59deafc"
+    },
+    "wrapper_actual": "b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1",
+    "extractor_actual": "ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1",
+    "extractor_schema": "1.1",
+    "pacing": "source",
+    "pace_lead_ms": 200.0,
+    "config_dir": "configs/a6000",
+    "configs_tree": "f87fe6208a4d592399e74dae4ec7bcd26de918e22824c2df3fc45503ff5a92d8",
+    "backend_code_tree": "e3ca71de0bdc4cab2857dfa7b159d27945fb93904af18153ac5fd22bc703bce9",
+    "benchmark_script": "2a287cba387dc4e53a1a55897cef2aadc94a79b02b0050300f101c980492b9ed"
+  },
+  "result": {
+    "expected": [
+      "cam-01",
+      "cam-02",
+      "cam-03",
+      "cam-04"
+    ],
+    "run_id": "fa104724-18ff-47c2-b46f-7cf49b1c0ec4",
+    "start_http_status": 200,
+    "stop": {
+      "status": 200,
+      "run_status": "STOPPED"
+    },
+    "feeds": {
+      "cam-01": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-02": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-03": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      },
+      "cam-04": {
+        "producer": {
+          "frames_total": 0,
+          "frames_in_window": 0,
+          "error": "no producer frames recorded"
+        },
+        "backend": {
+          "consumed_frames_total": 0,
+          "consumed_in_window": 0,
+          "error": "no backend release records"
+        }
+      }
+    },
+    "crashed": [],
+    "outcomes": {
+      "cam-01": null,
+      "cam-02": null,
+      "cam-03": null,
+      "cam-04": null
+    },
+    "ended": "deadline",
+    "errors": [],
+    "extra_failures": [],
+    "resource_stop": null,
+    "ownership": [
+      {
+        "camera": "cam-01",
+        "name": "aegis-cam-01-c3191f29-4ab8-4158-9d10-e4172b2c47c1",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-02",
+        "name": "aegis-cam-02-5bb16acd-55dd-4a62-bb06-4cbb42848938",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-03",
+        "name": "aegis-cam-03-a547cd8a-3212-40c5-92f6-5b04bb0e192b",
+        "state": "RELEASED"
+      },
+      {
+        "camera": "cam-04",
+        "name": "aegis-cam-04-1aad73c4-0287-43d6-b9f5-41240277421c",
+        "state": "RELEASED"
+      }
+    ],
+    "containers": [
+      "aegis-cam-01-c3191f29-4ab8-4158-9d10-e4172b2c47c1",
+      "aegis-cam-02-5bb16acd-55dd-4a62-bb06-4cbb42848938",
+      "aegis-cam-03-a547cd8a-3212-40c5-92f6-5b04bb0e192b",
+      "aegis-cam-04-1aad73c4-0287-43d6-b9f5-41240277421c"
+    ],
+    "containers_absent_after": {
+      "aegis-cam-01-c3191f29-4ab8-4158-9d10-e4172b2c47c1": true,
+      "aegis-cam-02-5bb16acd-55dd-4a62-bb06-4cbb42848938": true,
+      "aegis-cam-03-a547cd8a-3212-40c5-92f6-5b04bb0e192b": true,
+      "aegis-cam-04-1aad73c4-0287-43d6-b9f5-41240277421c": true
+    },
+    "persistence": {
+      "available": true,
+      "count_samples_per_camera": {},
+      "evidence_records": 0
+    },
+    "soak": null,
+    "resources": {
+      "window_samples": 0,
+      "gpu_util_percent": null,
+      "nvdec_util_percent": null,
+      "vram_used_mib": null,
+      "gpu_temp_c": null,
+      "gpu_power_w": null,
+      "sm_clock_mhz": null,
+      "pstates": [],
+      "host_cpu_percent": null,
+      "host_available_mib": null,
+      "host_used_mib": null,
+      "host_commit_available_mib": null,
+      "wsl_available_mib": null,
+      "wsl_cached_mib": null,
+      "backend_rss_mib": null,
+      "host_used_growth_mib": null,
+      "wsl_cached_growth_mib": null,
+      "backend_rss_growth_mib": null,
+      "container_rss_mib": {},
+      "container_rss_growth_mib": {},
+      "collection_errors": []
+    }
+  },
+  "gate": {
+    "pass": false,
+    "failures": [
+      "cam-01: no producer frames recorded",
+      "cam-02: no producer frames recorded",
+      "cam-03: no producer frames recorded",
+      "cam-04: no producer frames recorded",
+      "required measurement unavailable: GPU temperature",
+      "required measurement unavailable: backend RSS growth"
+    ],
+    "cleanup_confirmed": true
+  },
+  "status": "FAIL"
+}
