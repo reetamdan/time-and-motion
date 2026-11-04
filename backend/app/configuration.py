@@ -473,6 +473,11 @@ class ReplaySettings(StrictModel):
     # engine loading and GPU initialization (A6000, RT-DETR FP16: 8.6 s for 1 camera, 11.7 s for 2 at once).
     # A pipeline that fails exits and is reported immediately; this only bounds a slow or hung start.
     startup_timeout_seconds: float = Field(default=60, gt=0, le=600)
+    # Cameras loading their pipeline (container, model engine, first frame) at the same time. A slot is
+    # held until the camera's first frame arrives or its start fails, so a large site starts in waves.
+    # A6000 under WSL2: 16 RT-DETR pipelines loading at once failed engine deserialization with CUDA
+    # OutOfMemory at ~4 GB of 48 GB used; 12 at once loaded.
+    startup_concurrency: int = Field(default=4, ge=1, le=64)
 
 
 class CapabilitySettings(StrictModel):

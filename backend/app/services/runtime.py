@@ -116,6 +116,8 @@ class CameraRuntimeSupervisor:
         self._reconnect_tasks: dict[str, asyncio.Task] = {}
         self._reconnect_attempts: dict[str, int] = {}
         self._watchdog_task: asyncio.Task | None = None
+        # Pipeline loads in flight (replay.startup_concurrency); created per run inside its event loop.
+        self._start_slots: asyncio.Semaphore | None = None
 
     @staticmethod
     def _file_source_available(camera: CameraConfig) -> bool:
@@ -283,7 +285,9 @@ class CameraRuntimeSupervisor:
             # Container probes block for seconds; keep the event loop (and every camera consumer) running.
             availability = await asyncio.to_thread(self.adapter.availability)
             self.repository.record_run_provenance(run_id, self.provenance(availability, mode))
-            # Cameras start concurrently: a slow or failing camera never delays the others' startup.
+            # Cameras start concurrently, at most replay.startup_concurrency loading at once (a slot frees
+            # at the camera's first frame or failed start): a slow or failing camera never blocks the others.
+            self._start_slots = asyncio.Semaphore(self.config.runtime.replay.startup_concurrency)
             await asyncio.gather(*(
                 self._start_camera_isolated(run_id, camera, availability.available, availability.name)
                 for camera in self.config.cameras
@@ -398,7 +402,11 @@ class CameraRuntimeSupervisor:
         self, run_id: str, camera: CameraConfig, adapter_available: bool, adapter_name: str
     ) -> None:
         try:
-            await self._start_camera(run_id, camera, adapter_available, adapter_name)
+            if self._start_slots is None:
+                await self._start_camera(run_id, camera, adapter_available, adapter_name)
+            else:
+                async with self._start_slots:
+                    await self._start_camera(run_id, camera, adapter_available, adapter_name)
         except Exception as exc:
             # A source/adapter failure is isolated to this camera; other sources continue.
             state = CameraRuntimeState(

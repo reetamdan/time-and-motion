@@ -33,6 +33,10 @@ FRAME_PREFIX = "AEGIS_FRAME_V1:"
 FRAME_PREFIX_BYTES = FRAME_PREFIX.encode("ascii")
 FRAME_QUEUE_SIZE = 128
 FRAME_SCHEMAS = {"1.0", "1.1"}
+# Service Maker prints this and then blocks in its main loop without exiting (no frame will ever come),
+# e.g. when nvinfer cannot deserialize the engine for lack of GPU memory. Seen in the container log.
+PIPELINE_START_FAILED = b"Unable to set the pipeline to the playing state"
+LOG_SCAN_SECONDS = 1.0
 # Per-frame producer/read/release timestamps for end-to-end lead measurement (validation only).
 RELEASE_LOG_ENV = "CCTV_RELEASE_LOG"
 # Paced replay: a short buffer so backpressure reaches the extractor and queued frames stay
@@ -394,9 +398,20 @@ class ServiceMakerSessions:
 
     async def _wait_for_metadata(self, session: _Session) -> None:
         deadline = time.monotonic() + self.config.runtime.replay.startup_timeout_seconds
+        log_offset, next_scan = 0, 0.0
         while time.monotonic() < deadline:
             if session.first_frame_event.is_set():
                 return
+            if time.monotonic() >= next_scan:
+                # A pipeline that never reaches PLAYING fails now, not at the deadline, so its GPU memory
+                # and start slot go to the next camera.
+                next_scan = time.monotonic() + LOG_SCAN_SECONDS
+                log_offset, failed = self._scan_log(session.log_handle, log_offset)
+                if failed:
+                    raise PerceptionUnavailable(
+                        "Service Maker pipeline could not start (GStreamer could not reach PLAYING; on this "
+                        "runtime usually GPU memory during model engine load): "
+                        + redact(self._log_errors(session.log_handle), session.secrets))
             if session.reader_done.is_set():
                 return_code = session.process.poll()
                 detail = redact(self._log_tail(session.log_handle), session.secrets)
@@ -484,6 +499,29 @@ class ServiceMakerSessions:
             self._append_log(session, f"Service Maker stdout reader failed: {session.reader_error}")
         finally:
             session.reader_done.set()
+
+    @staticmethod
+    def _scan_log(handle: TextIO, offset: int) -> tuple[int, bool]:
+        """Read the container log from ``offset``; return the new offset and whether start failed."""
+        start = max(0, offset - len(PIPELINE_START_FAILED))  # re-read a marker split across two scans
+        try:
+            handle.flush()
+            with open(handle.name, "rb") as reader:
+                reader.seek(start)
+                chunk = reader.read()
+        except (OSError, ValueError):
+            return offset, False
+        return start + len(chunk), PIPELINE_START_FAILED in chunk
+
+    @staticmethod
+    def _log_errors(handle: TextIO) -> str:
+        """The container log's distinct ERROR lines (the cause), else its tail."""
+        try:
+            lines = Path(handle.name).read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            return "No readable container log detail"
+        errors = list(dict.fromkeys(line.strip() for line in lines if line.lstrip().startswith("ERROR")))
+        return " | ".join(errors[:4])[-800:] if errors else ServiceMakerSessions._log_tail(handle)
 
     @staticmethod
     def _log_tail(handle: TextIO) -> str:

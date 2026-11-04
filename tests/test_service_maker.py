@@ -972,3 +972,31 @@ def test_analysis_frame_interval_reaches_the_decoder_only_when_set() -> None:
     text = (EXTRACTOR_DIR / "extract_metadata_v2.py").read_text(encoding="utf-8")
     assert 'source.set({"drop-frame-interval": args.analysis_frame_interval})' in text
     assert "if args.analysis_frame_interval > 1:" in text
+
+
+def test_pipeline_that_cannot_reach_playing_fails_at_once_with_the_cause(tmp_path: Path) -> None:
+    """Service Maker prints the refusal and keeps blocking; the start fails on the log line, not the deadline."""
+    import time
+
+    config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+    config.runtime.replay.startup_timeout_seconds = 30
+    manager = ServiceMakerSessions(config)
+    with (tmp_path / "log").open("w", encoding="utf-8") as log:
+        session = make_session(None, "epoch", log, tmp_path)
+        log.write("x" * 5000 + "\nERROR: [TRT]: Error Code 2: OutOfMemory (Requested size was 31137792 bytes.)\n"
+                  "ERROR: Deserialize engine failed from file: /workspace/models/m.engine\n")
+        log.flush()
+
+        async def scenario() -> None:
+            waiting = asyncio.create_task(manager._wait_for_metadata(session))
+            await asyncio.sleep(1.3)  # at least one scan has passed the earlier part of the log
+            assert not waiting.done()
+            log.write("Unable to set the pipeline to the playing state.\n")
+            log.flush()
+            await waiting
+
+        began = time.monotonic()
+        with pytest.raises(PerceptionUnavailable, match="could not start") as raised:
+            asyncio.run(scenario())
+    assert time.monotonic() - began < 5
+    assert "OutOfMemory" in str(raised.value) and "Deserialize engine failed" in str(raised.value)

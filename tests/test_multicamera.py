@@ -153,3 +153,47 @@ def test_detection_limit_is_counted_and_alerted_once_per_epoch(tmp_path: Path) -
         await supervisor.stop()
 
     asyncio.run(scenario())
+
+
+def test_cameras_load_in_waves_of_startup_concurrency(tmp_path: Path) -> None:
+    """16 pipelines loading at once exhausted GPU memory on the A6000; starts are capped, not serialized."""
+    config, repository = four_cameras(tmp_path)
+    config.runtime.replay.startup_concurrency = 2
+
+    class CountingAdapter(MultiAdapter):
+        loading = peak = 0
+
+        async def start_camera(self, camera, camera_epoch, sink, replay_mode="paced") -> None:
+            CountingAdapter.loading += 1
+            CountingAdapter.peak = max(CountingAdapter.peak, CountingAdapter.loading)
+            try:
+                await super().start_camera(camera, camera_epoch, sink, replay_mode)
+            finally:
+                CountingAdapter.loading -= 1
+
+    adapter = CountingAdapter(delays={c: 0.15 for c in CAMERAS}, fail={"cam-01"})
+    supervisor = CameraRuntimeSupervisor(config, repository, adapter, SequenceState())
+
+    async def scenario() -> None:
+        began = time.monotonic()
+        await supervisor.start()
+        elapsed = time.monotonic() - began
+        assert CountingAdapter.peak == 2  # never more than the limit loading together
+        assert 0.25 < elapsed < 1.0  # two waves of 0.15 s, not four in series
+        assert set(adapter.running) == {"cam-02", "cam-03", "cam-04"}  # the failed start freed its slot
+        assert supervisor.current_run()[1] == "DEGRADED"
+        await supervisor.stop()
+
+    asyncio.run(scenario())
+
+
+def test_startup_concurrency_defaults_and_bounds() -> None:
+    import pytest
+    from pydantic import ValidationError
+    from backend.app.configuration import ReplaySettings
+
+    for profile in ("configs", "configs/a6000"):
+        assert 1 <= load_configuration(PROJECT_ROOT / profile, PROJECT_ROOT).runtime.replay.startup_concurrency <= 12
+    for bad in (0, 65):
+        with pytest.raises(ValidationError):
+            ReplaySettings(startup_concurrency=bad)
