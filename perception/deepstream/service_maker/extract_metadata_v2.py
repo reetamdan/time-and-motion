@@ -34,8 +34,9 @@ the frozen historical baseline). Differences, and nothing else:
   back from the element is recorded in the summary.
 * Several cameras in one pipeline (file sources only): repeat ``--source``, ``--camera-id``,
   ``--camera-epoch``, ``--output`` and ``--run-summary`` once per camera, in the same order. One
-  nvstreammux batches them (batch size = camera count) and nvinfer runs the pinned batch-1 engine on
-  each frame of the batch; NvDCF tracks each stream separately. A frame goes to its camera by
+  nvstreammux batches them (batch size = camera count). nvinfer runs the pinned batch-1 engine on each
+  frame of the batch, or with ``--infer-batch-size N`` and the infer config of a dynamic-batch engine, the
+  whole batch in one call; NvDCF tracks each stream separately. A frame goes to its camera by
   ``source_id`` (its source's index), and each camera keeps its own pacer, JSONL file, counters and
   run summary. ``--loop`` and ``--analysis-frame-interval`` apply to every camera of the pipeline.
   With one ``--source`` the command line, output and behaviour are unchanged.
@@ -432,6 +433,9 @@ def parse_args() -> argparse.Namespace:
                         help="replay a file source continuously (DeepStream file_loop); never ends on its own")
     parser.add_argument("--analysis-frame-interval", type=int, default=1,
                         help="analyse every Nth decoded frame (decoder drop-frame-interval); 1 = every frame")
+    parser.add_argument("--infer-batch-size", type=int, default=1,
+                        help="nvinfer batch-size; >1 needs an engine built for that batch (--infer-config of a "
+                             "dynamic-batch engine)")
     args = parser.parse_args()
     args.source = args.source or [DEFAULT_SOURCE]
     args.camera_id = args.camera_id or ["cam-01"]
@@ -451,6 +455,8 @@ def parse_args() -> argparse.Namespace:
         parser.error("--pace-lead-ms must be >= 0")
     if not 1 <= args.analysis_frame_interval <= 30:
         parser.error("--analysis-frame-interval must be between 1 and 30")
+    if not 1 <= args.infer_batch_size <= 64:
+        parser.error("--infer-batch-size must be between 1 and 64")
     if args.output_max_mib < 0:
         parser.error("--output-max-mib must be >= 0")
     if is_live(args.source[0]) and args.pace != "none":
@@ -495,9 +501,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "output_max_mib": args.output_max_mib or None,
         "analysis_frame_interval": args.analysis_frame_interval,
         "decoder_drop_frame_interval": None,
-        # Every camera this process served, in source_id order; nvinfer runs the batch-1 engine per frame.
+        # Every camera this process served, in source_id order.
         "pipeline_cameras": [{"camera_id": c, "camera_epoch": e} for c, e in zip(args.camera_id, args.camera_epoch)],
         "batch_size": len(args.source),
+        "infer_batch_size": args.infer_batch_size,
     }
     cameras = [
         CameraOutput(output, camera_id, epoch, SourcePacer(args.pace, args.pace_lead_ms / 1000.0),
@@ -538,9 +545,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             if summary["decoder_drop_frame_interval"] != args.analysis_frame_interval:
                 raise RuntimeError("nvurisrcbin did not accept drop-frame-interval")
         if args.stage in ("detect", "track"):
-            # batch-size 1: the pinned engine is built for one frame; nvinfer runs a multi-camera batch
-            # one frame at a time instead of rebuilding an engine for the batch.
-            flow = flow.infer(args.infer_config, batch_size=1)
+            # Default batch-size 1: the pinned engine is built for one frame, so nvinfer runs a multi-camera
+            # batch one frame at a time instead of building an engine for the batch. A dynamic-batch engine
+            # (--infer-batch-size N with its own infer config) runs the cameras' frames in one call.
+            flow = flow.infer(args.infer_config, batch_size=args.infer_batch_size)
         if args.stage == "track":
             flow = flow.track(
                 tracker_width=args.tracker_width,

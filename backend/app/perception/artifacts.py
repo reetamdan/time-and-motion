@@ -93,6 +93,12 @@ def runtime_artifact_checks(config: AppConfig, memo: HashMemo) -> list[ArtifactC
         profile = selected.runtime_profile
         if profile is not None:
             checks.append(check(memo, "detector.infer_config", profile.infer_config_path, profile.infer_config_sha256))
+            if profile.batched is not None:
+                batched = profile.batched
+                checks.append(check(memo, "detector.batched.infer_config", batched.infer_config_path,
+                                    batched.infer_config_sha256))
+                checks.append(check(memo, "detector.batched.onnx", batched.onnx_path, batched.onnx_sha256))
+                checks.append(check(memo, "detector.batched.engine", batched.engine_path, batched.engine_sha256))
             if profile.parser.kind == "custom_library":
                 checks.append(check(memo, "detector.parser_library", profile.parser.library_path,
                                     profile.parser.library_sha256))

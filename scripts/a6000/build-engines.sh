@@ -34,6 +34,11 @@ build trafficcamnet-smoke models/trafficcamnet-smoke/resnet18_trafficcamnet_prun
 # Selected detector: FP16 (2.4 ms vs 5.1 ms FP32 per frame; boxes match FP32, reports/a6000/optimization-receipt.json).
 build rt-detr-person-candidate models/rt-detr-person-candidate/rt_detr_r18vd_raw.onnx \
   models/rt-detr-person-candidate/rt_detr_r18vd_raw_fp16_sm86.engine --fp16
+# Dynamic-batch RT-DETR (batch 1-8, tuned for 4) for pipelines shared by several cameras. Its ONNX is the
+# dynamic-batch re-export of the same checkpoint (scripts/rt-detr-candidate/export_onnx_dynamic.py).
+build rt-detr-person-candidate-batched models/rt-detr-person-candidate/rt_detr_r18vd_raw_dynbatch.onnx \
+  models/rt-detr-person-candidate/rt_detr_r18vd_raw_dynbatch_b1-8_fp16_sm86.engine --fp16 \
+  --minShapes=pixel_values:1x3x640x640 --optShapes=pixel_values:4x3x640x640 --maxShapes=pixel_values:8x3x640x640
 build rf-detr-person-candidate models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_resize_norm_in_graph.onnx \
   models/rf-detr-person-candidate/rf_detr_small_1080p_rgb01_fp32_sm86.engine --stronglyTyped --noTF32
 echo 'A6000 engines ready. Next: python scripts/a6000/configure.py generate, then scripts/a6000/validate_profiles.py.'

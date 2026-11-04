@@ -50,7 +50,10 @@ pipeline:
   # replay.cameras_per_pipeline): --source/--camera-id/--camera-epoch/--output/--run-summary repeat once per camera;
   # one nvstreammux batch, nvinfer pinned to batch-size 1 (the batch-1 engine runs each frame), frames routed to their
   # camera by source_id, per-camera pacer/JSONL/summary. One camera: same command, records and summary fields.
-  extractor_sha256: e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711
+  # e8e3f1d4... -> d476668c... (2026-11-05): --infer-batch-size N (default 1) sets nvinfer batch-size, so a
+  # pipeline of N cameras with the infer config of a dynamic-batch engine runs one inference call per batch.
+  # The summary records infer_batch_size. Default: unchanged pipeline and records.
+  extractor_sha256: d476668c104eb7c84669191404c98f505d46390324940ac601deee242f5280ac
   extractor_schema_version: "1.1"
   extractor_pacing: source
   pace_lead_ms: 200

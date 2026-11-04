@@ -289,12 +289,14 @@ class ServiceMakerSessions:
         if pipeline is None or tracker.config_path is None:
             raise PerceptionUnavailable("Pipeline and tracker identities are not configured")
         _, profile = self.profile()
+        infer_config, infer_batch = self.inference_for(len(members))
         return [
             *runtime_prefix(self.config.runtime.telemetry.wsl_distro),
             "env", f"DEEPSTREAM_CONTAINER_NAME={container_name}",
             "bash", wsl_path(wrapper), "python3", workspace_path(pipeline.extractor_path, root),
             *each("--source", sources),
-            "--infer-config", workspace_path(profile.infer_config_path, root),
+            "--infer-config", workspace_path(infer_config, root),
+            *(["--infer-batch-size", str(infer_batch)] if infer_batch > 1 else []),
             "--tracker-config", workspace_path(tracker.config_path, root),
             "--tracker-lib", tracker.library,
             "--width", str(profile.pipeline_width), "--height", str(profile.pipeline_height),
@@ -313,6 +315,19 @@ class ServiceMakerSessions:
             *(["--analysis-frame-interval", str(camera.analysis_frame_interval)]
               if camera.analysis_frame_interval > 1 else []),
         ]
+
+    def inference_for(self, cameras: int) -> tuple[Path, int]:
+        """(infer config, nvinfer batch-size) for a pipeline of this many cameras.
+
+        A shared pipeline uses the profile's dynamic-batch engine when it has one and the cameras fit its
+        maximum batch: one inference call per batch (A6000 RT-DETR: 37 % less GPU per frame). Otherwise the
+        pinned batch-1 engine runs each frame of the batch.
+        """
+        profile = self.profile()[1]
+        batched = profile.batched
+        if cameras > 1 and batched is not None and cameras <= batched.max_batch_size:
+            return batched.infer_config_path, cameras
+        return profile.infer_config_path, 1
 
     def container_name(self, camera_id: str, epoch: str) -> str:
         """The exact, deterministic container name this backend uses for one camera epoch."""

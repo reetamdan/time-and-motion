@@ -309,6 +309,28 @@ class ParserSpec(StrictModel):
         return self
 
 
+class BatchedInference(StrictModel):
+    """A dynamic-batch engine for pipelines shared by several cameras (runtime.yaml replay.cameras_per_pipeline).
+
+    Its own infer config runs one nvinfer call per batch instead of one per frame. It is used only for a
+    pipeline of 2..max_batch_size cameras; a single camera (and any larger pipeline) keeps the batch-1 engine.
+    """
+
+    infer_config_path: Path
+    infer_config_sha256: str
+    onnx_path: Path
+    onnx_sha256: str
+    engine_path: Path
+    engine_sha256: str
+    max_batch_size: int = Field(ge=2, le=64)
+
+    @model_validator(mode="after")
+    def hashes_are_well_formed(self) -> "BatchedInference":
+        for value in (self.infer_config_sha256, self.onnx_sha256, self.engine_sha256):
+            _check_sha256(value)
+        return self
+
+
 class DetectorRuntimeProfile(StrictModel):
     """Everything the Service Maker runtime needs to run one detector, with expected identities.
 
@@ -335,6 +357,7 @@ class DetectorRuntimeProfile(StrictModel):
     preprocessing: str = Field(min_length=1)
     # Per-class top-k configured in the infer config; a frame reaching it may have dropped detections.
     detection_limit_per_class: int | None = Field(default=None, gt=0)
+    batched: BatchedInference | None = None
 
     @model_validator(mode="after")
     def hashes_are_well_formed(self) -> "DetectorRuntimeProfile":
@@ -667,6 +690,9 @@ def load_configuration(config_dir: Path | str, project_root: Path | str | None =
         profile = model.runtime_profile
         if profile is not None:
             profile.infer_config_path = _resolve(root, profile.infer_config_path)
+            if profile.batched is not None:
+                for name in ("infer_config_path", "onnx_path", "engine_path"):
+                    setattr(profile.batched, name, _resolve(root, getattr(profile.batched, name)))
             if profile.parser.library_path is not None:
                 profile.parser.library_path = _resolve(root, profile.parser.library_path)
     if models.tracker.config_path is not None:

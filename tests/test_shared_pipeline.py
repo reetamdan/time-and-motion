@@ -151,3 +151,37 @@ def test_pipeline_command_repeats_the_per_camera_arguments_in_order(monkeypatch)
     single = manager._command(first, "e1", *members[0][2:])
     assert values("--infer-config") == [single[single.index("--infer-config") + 1]]
     assert single.count("--source") == 1 and f"DEEPSTREAM_CONTAINER_NAME={manager.container_name('cam-01', 'e1')}" in single
+
+
+def test_shared_pipelines_use_the_dynamic_batch_engine_when_it_fits(monkeypatch) -> None:
+    monkeypatch.setattr(service_maker, "host_route", lambda: "linux-docker")
+    a6000 = load_configuration(PROJECT_ROOT / "configs" / "a6000", PROJECT_ROOT)
+    manager = ServiceMakerSessions(a6000)
+    profile = manager.profile()[1]
+    batched = profile.batched
+    assert batched is not None and batched.max_batch_size == 8
+    assert manager.inference_for(1) == (profile.infer_config_path, 1)  # one camera keeps the batch-1 engine
+    assert manager.inference_for(4) == (batched.infer_config_path, 4)
+    assert manager.inference_for(9) == (profile.infer_config_path, 1)  # beyond the engine's profile: batch-1
+    config_text = batched.infer_config_path.read_text(encoding="utf-8")
+    assert "batch-size=8" in config_text and "output-tensor-meta=0" in config_text
+    assert batched.engine_path.name in config_text and batched.onnx_path.name in config_text
+
+    camera = a6000.camera_map["cam-01"]
+    members = [(camera.model_copy(update={"id": f"cam-0{i}"}), f"e{i}", PROJECT_ROOT / f"o{i}.jsonl", PROJECT_ROOT / f"s{i}.json")
+               for i in range(1, 5)]
+    command = manager._pipeline_command(members, "aegis-batch-e1")
+    assert command[command.index("--infer-batch-size") + 1] == "4"
+    assert command[command.index("--infer-config") + 1].endswith("/rt-detr-person-candidate-batched.txt")
+    single = manager._command(camera, "e1", PROJECT_ROOT / "o.jsonl", PROJECT_ROOT / "s.json")
+    assert "--infer-batch-size" not in single and single[single.index("--infer-config") + 1].endswith("/rt-detr-person-candidate.txt")
+
+    base = ServiceMakerSessions(load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT))
+    assert base.inference_for(4)[1] == 1  # no batched engine in the base profile: batch-1 for any pipeline
+
+
+def test_the_batched_engine_is_an_identity_checked_artifact() -> None:
+    from backend.app.perception.artifacts import HashMemo, runtime_artifact_checks
+
+    names = {check.name for check in runtime_artifact_checks(load_configuration(PROJECT_ROOT / "configs" / "a6000", PROJECT_ROOT), HashMemo())}
+    assert {"detector.batched.infer_config", "detector.batched.onnx", "detector.batched.engine"} <= names

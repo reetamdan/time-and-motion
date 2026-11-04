@@ -210,8 +210,14 @@ class CameraRuntimeSupervisor:
             return self._display_run_id, self._run_status, self._perception_active
 
     def states(self) -> dict[str, CameraRuntimeState]:
+        """Copies of every camera's state, without the overlay box buffer (read through detections()).
+
+        Deep-copying the buffer (150 frames of boxes per camera) took ~0.6 s for 24 crowded cameras, on the
+        event loop and under the state lock: every snapshot froze all camera consumers for 1-2 s under load.
+        """
         with self._state_lock:
-            return copy.deepcopy(self._states)
+            return {camera_id: copy.deepcopy(state, {id(state.detections): deque(maxlen=DETECTION_BUFFER_FRAMES)})
+                    for camera_id, state in self._states.items()}
 
     def availability(self):
         """Fresh probe; may block. Use from a worker thread."""

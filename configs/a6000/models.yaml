@@ -9,7 +9,7 @@ pipeline:
   wrapper_path: ./scripts/deepstream.sh
   wrapper_sha256: b5d9a5102cea86169ed8cf9251090e1da45dd8b76dfa080f83cbdaa5287aa0c1
   extractor_path: ./perception/deepstream/service_maker/extract_metadata_v2.py
-  extractor_sha256: e8e3f1d4ca73bc1a678698b5a11af630ce0debeb4a45ca764400a36d4f532711
+  extractor_sha256: d476668c104eb7c84669191404c98f505d46390324940ac601deee242f5280ac
   extractor_schema_version: '1.1'
   extractor_pacing: source
   pace_lead_ms: 200
@@ -97,6 +97,14 @@ models:
       crosscheck vs the HF processor FAILS, as does the same check between two CPU
       references (sensitivity, reports/model-evaluation/rt-detr/diagnostics) RTX A6000
       profile: FP16 engine, validated against FP32 on the demo clip.'
+    batched:
+      infer_config_path: ./perception/deepstream/a6000/rt-detr-person-candidate-batched.txt
+      infer_config_sha256: f5dc8f34d83149423925beab1fbd2cabb47f79d52b5ced97b12e5f9488a52f1a
+      onnx_path: ./models/rt-detr-person-candidate/rt_detr_r18vd_raw_dynbatch.onnx
+      onnx_sha256: df6877e5adc32fa074817f5d48f44dd68900a4dffa854b66550cfb04b2677f1b
+      engine_path: ./models/rt-detr-person-candidate/rt_detr_r18vd_raw_dynbatch_b1-8_fp16_sm86.engine
+      engine_sha256: b1fb4306d46417c07349af80e28d43e018cc5c36d320a736d1ef36cdb782da93
+      max_batch_size: 8
 - id: rf-detr-person-candidate
   role: detector
   enabled: true

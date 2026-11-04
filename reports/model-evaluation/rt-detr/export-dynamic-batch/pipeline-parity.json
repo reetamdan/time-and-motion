@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "created_at_utc": "2026-11-04T19:49:57.919661+00:00",
+  "what": "RT-DETR batch-1 FP16 engine vs the dynamic-batch FP16 engine at batch 8, in the DeepStream pipeline (stage detect: decoder, nvinfer, parser; no tracker), 8 copies of demo/cam01.mp4 in one pipeline, every frame",
+  "engines": {
+    "batch1": "rt_detr_r18vd_raw_fp16_sm86.engine (249941e7...)",
+    "batched": "rt_detr_r18vd_raw_dynbatch_b1-8_fp16_sm86.engine (b1fb4306...)"
+  },
+  "comparison_reference": "FP16 vs FP32 batch-1 receipt: 99.4 % matched at IoU>=0.5, mean IoU 0.994",
+  "cameras": {
+    "c1": {
+      "frames": 710,
+      "detections_batch1": 51368,
+      "detections_batched": 51394,
+      "matched_iou_0_5_percent": 99.453,
+      "mean_iou": 0.9958,
+      "confidence_abs_diff_p50": 0.00091,
+      "confidence_abs_diff_p99": 0.0141,
+      "confidence_abs_diff_max": 0.4844
+    },
+    "c5": {
+      "frames": 710,
+      "detections_batch1": 51368,
+      "detections_batched": 51394,
+      "matched_iou_0_5_percent": 99.453,
+      "mean_iou": 0.9958,
+      "confidence_abs_diff_p50": 0.00091,
+      "confidence_abs_diff_p99": 0.0141,
+      "confidence_abs_diff_max": 0.4844
+    },
+    "c8": {
+      "frames": 710,
+      "detections_batch1": 51368,
+      "detections_batched": 51394,
+      "matched_iou_0_5_percent": 99.453,
+      "mean_iou": 0.9958,
+      "confidence_abs_diff_p50": 0.00091,
+      "confidence_abs_diff_p99": 0.0141,
+      "confidence_abs_diff_max": 0.4844
+    }
+  }
+}

@@ -277,3 +277,24 @@ def test_entries_exits_are_unknown_not_zero_without_a_calibrated_boundary(tmp_pa
     assert uncalibrated["entries"] is None and uncalibrated["exits"] is None  # perception active, nothing measurable
     calibrated = asyncio.run(kpis("VALID"))
     assert calibrated["entries"] == 0 and calibrated["exits"] == 0  # measurable: zero crossings is a real value
+
+
+def test_state_copies_leave_out_the_overlay_box_buffer_and_stay_fast(tmp_path) -> None:
+    """Snapshots copy every camera's state on the event loop; the box buffer made that ~0.6 s at 24 cameras."""
+    from backend.app.services.runtime import DETECTION_BUFFER_FRAMES
+
+    config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+    repository = SQLiteRepository(tmp_path / "copies.db")
+    supervisor = CameraRuntimeSupervisor(config, repository, UnavailableAdapter(), SequenceState())
+    state = supervisor._states["cam-01"]
+    for frame in range(DETECTION_BUFFER_FRAMES):
+        state.detections.append({"frame_number": frame, "boxes": [[1.0, 2.0, 3.0, 4.0, str(i)] for i in range(62)]})
+    state.loop_origins[0] = 1.5
+    began = time.perf_counter()
+    for _ in range(20):
+        copies = supervisor.states()
+    assert time.perf_counter() - began < 0.5
+    assert len(copies["cam-01"].detections) == 0 and copies["cam-01"].loop_origins == {0: 1.5}
+    copies["cam-01"].loop_origins[1] = 9.0  # still an independent copy
+    assert state.loop_origins == {0: 1.5} and len(state.detections) == DETECTION_BUFFER_FRAMES
+    assert len(supervisor.detections("cam-01", limit=5)["frames"]) == 5  # the overlay still reads the buffer

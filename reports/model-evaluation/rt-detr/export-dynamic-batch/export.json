@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "created_at_utc": "2026-11-04T19:33:37.591110+00:00",
+  "checkpoint_sha256": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+  "static_onnx_sha256": "8048e1534bd0864ae53003a3f273a6155f14ff9cb39454c5141baac3babc2e07",
+  "dynamic_onnx": "models/rt-detr-person-candidate/rt_detr_r18vd_raw_dynbatch.onnx",
+  "dynamic_onnx_sha256": "df6877e5adc32fa074817f5d48f44dd68900a4dffa854b66550cfb04b2677f1b",
+  "contract": {
+    "inputs": {
+      "pixel_values": [
+        "batch",
+        3,
+        640,
+        640
+      ]
+    },
+    "outputs": {
+      "logits": [
+        "batch",
+        300,
+        80
+      ],
+      "pred_boxes": [
+        "batch",
+        300,
+        4
+      ]
+    }
+  },
+  "export": {
+    "opset_version": 17,
+    "do_constant_folding": true,
+    "dynamo": false,
+    "dynamic_axes": {
+      "pixel_values": {
+        "0": "batch"
+      },
+      "logits": {
+        "0": "batch"
+      },
+      "pred_boxes": {
+        "0": "batch"
+      }
+    }
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "transformers": "4.49.0",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.20.1",
+    "numpy": "2.1.3"
+  },
+  "max_abs_diff_allowed": 0.001,
+  "worst_max_abs_diff": 6.532669067382812e-05,
+  "checks": {
+    "frame_141": {
+      "batch1_vs_static_onnx_max_abs": {
+        "logits": 6.532669067382812e-05,
+        "pred_boxes": 3.814697265625e-06
+      },
+      "batch1_vs_hf_reference_max_abs": {
+        "logits": 5.2928924560546875e-05,
+        "pred_boxes": 5.125999450683594e-06
+      }
+    },
+    "frame_283": {
+      "batch1_vs_static_onnx_max_abs": {
+        "logits": 4.2438507080078125e-05,
+        "pred_boxes": 2.5033950805664062e-06
+      },
+      "batch1_vs_hf_reference_max_abs": {
+        "logits": 4.482269287109375e-05,
+        "pred_boxes": 2.771615982055664e-06
+      }
+    },
+    "batch2_vs_batch1_max_abs": {
+      "logits": 0.0,
+      "pred_boxes": 0.0
+    },
+    "batch8_shapes": [
+      [
+        8,
+        300,
+        80
+      ],
+      [
+        8,
+        300,
+        4
+      ]
+    ]
+  },
+  "method": "onnxruntime CPU FP32 on reports/model-evaluation/rt-detr/frames 141 and 283 (processor-resized to 640x640)"
+}
