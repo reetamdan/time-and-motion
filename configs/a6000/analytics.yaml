@@ -64,3 +64,4 @@ retention:
   hypotheses_minutes: 60
   max_database_mib: 1024
   max_evidence_mib: 4096
+  cleanup_interval_minutes: 10

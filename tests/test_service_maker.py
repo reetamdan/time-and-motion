@@ -932,3 +932,43 @@ def test_first_frame_deadline_is_its_own_setting_not_the_telemetry_timeout(tmp_p
         with pytest.raises(PerceptionUnavailable, match="startup deadline"):
             asyncio.run(manager._wait_for_metadata(session))
     assert time.monotonic() - began < 5  # the configured 0.2 s, not 15 s
+
+
+@pytest.mark.parametrize("interval", [1, 4])
+def test_source_fps_counts_the_frames_skipped_by_the_analysis_interval(tmp_path: Path, monkeypatch, interval: int) -> None:
+    """Analysed frames are analysis_frame_interval source frames apart; the reported source rate stays the source's."""
+    async def scenario() -> None:
+        config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+        manager = ServiceMakerSessions(config)
+        camera = config.camera_map["cam-01"].model_copy(update={"analysis_frame_interval": interval})
+        epoch = f"epoch-interval-{interval}"
+        records = [frame_record(epoch, n) for n in range(3)]
+        for n, record in enumerate(records):  # 25 fps source, every `interval`-th frame analysed
+            record["pts_ns"] = 1_000_000_000 + n * interval * 40_000_000
+            record["timestamp"] = record["pts_ns"] / 1e9
+        child = ("import sys\n"
+                 "sys.stdout.write(sys.argv[1])\n"
+                 "sys.stdout.flush()\n")
+        payload = b"".join(frame_line(record) for record in records).decode("utf-8")
+        log_handle = (tmp_path / "interval.log").open("w", encoding="utf-8", newline="\n")
+        process = subprocess.Popen([sys.executable, "-u", "-c", child, payload], stdout=subprocess.PIPE, stderr=log_handle)
+        session = make_session(process, epoch, log_handle, tmp_path)
+        monkeypatch.setattr(manager, "_ensure_container_absent", lambda name, request_stop=True: (process.kill(), ContainerCleanup(name, True))[1])
+        try:
+            manager._start_reader(session)
+            sink = CollectingSink()
+            session.task = asyncio.create_task(manager._consume(session, camera, sink))
+            await asyncio.wait_for(session.task, timeout=5)
+        finally:
+            await manager._finish(session)
+        rates = [batch.source_fps for batch in sink.batches]
+        assert rates[0] is None and rates[1:] == [pytest.approx(25.0), pytest.approx(25.0)]
+        assert all(batch.dropped_frames == 0 for batch in sink.batches)
+
+    asyncio.run(scenario())
+
+
+def test_analysis_frame_interval_reaches_the_decoder_only_when_set() -> None:
+    text = (EXTRACTOR_DIR / "extract_metadata_v2.py").read_text(encoding="utf-8")
+    assert 'source.set({"drop-frame-interval": args.analysis_frame_interval})' in text
+    assert "if args.analysis_frame_interval > 1:" in text

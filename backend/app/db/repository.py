@@ -78,6 +78,49 @@ class Repository(Protocol):
     def reset_run_scoped(self, run_id: str | None = None) -> None: ...
 
 
+def _keep_latest(table: str, key: str, column: str = "timestamp") -> str:
+    """Rows older than the cutoff that a newer row of the same scope supersedes (the newest row per scope stays)."""
+    return (f"DELETE FROM {table} WHERE id IN (SELECT old.id FROM {table} old WHERE old.{column} < ? AND EXISTS "
+            f"(SELECT 1 FROM {table} newer WHERE newer.run_id = old.run_id AND {key} "
+            f"AND newer.{column} > old.{column}) ORDER BY old.id LIMIT ?)")
+
+
+def _same(*columns: str) -> str:
+    return " AND ".join(f"newer.{c} = old.{c}" for c in columns)
+
+
+# Fixed retention statements (no caller-supplied SQL): each deletes at most LIMIT rows older than a cutoff.
+# Run-cumulative records - line_crossings (the entries/exits totals) and the events they reference, alerts,
+# corrections, provenance - leave only with their whole run, once it has been stopped for the event-history
+# period and owns no unreleased container.
+RETENTION_STATEMENTS: dict[str, str] = {
+    "system_metrics": "DELETE FROM system_metrics WHERE id IN "
+                      "(SELECT id FROM system_metrics WHERE timestamp < ? ORDER BY id LIMIT ?)",
+    "camera_count_samples": "DELETE FROM camera_count_samples WHERE id IN "
+                            "(SELECT id FROM camera_count_samples WHERE received_at_utc < ? ORDER BY id LIMIT ?)",
+    "occupancy_snapshots": _keep_latest("occupancy_snapshots", _same("scope_type", "scope_id")),
+    "queue_snapshots": _keep_latest("queue_snapshots", _same("queue_id")),
+    "flow_snapshots": _keep_latest("flow_snapshots", _same("portal_id", "direction")),
+    "congestion_snapshots": _keep_latest("congestion_snapshots", _same("zone_id")),
+    "camera_health": _keep_latest("camera_health", _same("camera_id"), "changed_at"),
+    "camera_line_crossings": "DELETE FROM camera_line_crossings WHERE rowid IN "
+                             "(SELECT rowid FROM camera_line_crossings WHERE received_at_utc < ? ORDER BY rowid LIMIT ?)",
+    "events": "DELETE FROM events WHERE rowid IN (SELECT e.rowid FROM events e WHERE e.emitted_at < ? AND NOT EXISTS "
+              "(SELECT 1 FROM line_crossings c WHERE c.event_id = e.event_id) ORDER BY e.rowid LIMIT ?)",
+    "associations": "DELETE FROM associations WHERE rowid IN "
+                    "(SELECT rowid FROM associations WHERE updated_at < ? ORDER BY rowid LIMIT ?)",
+    "global_track_hypotheses": "DELETE FROM global_track_hypotheses WHERE rowid IN "
+                               "(SELECT rowid FROM global_track_hypotheses WHERE expires_at < ? ORDER BY rowid LIMIT ?)",
+    # Whole stopped runs (cascades to their remaining rows; evidence and provenance keep their row, run_id NULL).
+    # The newest run is always kept, so the dashboard's last run never disappears.
+    "runs": "DELETE FROM runs WHERE id IN (SELECT r.id FROM runs r WHERE r.status = 'STOPPED' "
+            "AND r.stopped_at IS NOT NULL AND r.stopped_at < ? "
+            "AND r.id != (SELECT id FROM runs ORDER BY started_at DESC LIMIT 1) "
+            "AND NOT EXISTS (SELECT 1 FROM owned_resources o WHERE o.run_id = r.id AND o.state != 'RELEASED') "
+            "ORDER BY r.stopped_at LIMIT ?)",
+}
+
+
 class SQLiteRepository:
     def __init__(self, database_path: Path | str, busy_timeout_ms: int = 5000) -> None:
         self.database_path = Path(database_path)
@@ -816,6 +859,20 @@ class SQLiteRepository:
                 f"SELECT * FROM evidence {where} ORDER BY created_at DESC, rowid DESC LIMIT ? OFFSET ?",
                 (*parameters, limit, offset)).fetchall()
         return [_row(row, "metadata_json") for row in rows]  # type: ignore[misc]
+
+    def prune(self, kind: str, cutoff: str, limit: int) -> int:
+        """Delete at most ``limit`` rows of one retention kind older than ``cutoff`` (UTC ISO), in one short transaction."""
+        statement = RETENTION_STATEMENTS[kind]
+        with self.transaction() as connection:
+            return connection.execute(statement, (cutoff, limit)).rowcount
+
+    def database_usage(self) -> dict[str, int]:
+        """Bytes in use (pages minus free pages; SQLite reuses freed pages, the file itself does not shrink)."""
+        with self._connection() as connection:
+            page_size = int(connection.execute("PRAGMA page_size").fetchone()[0])
+            pages = int(connection.execute("PRAGMA page_count").fetchone()[0])
+            free = int(connection.execute("PRAGMA freelist_count").fetchone()[0])
+        return {"used_bytes": (pages - free) * page_size, "file_bytes": pages * page_size, "free_bytes": free * page_size}
 
     def evidence_usage(self) -> dict[str, int]:
         with self._connection() as connection:

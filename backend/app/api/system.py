@@ -63,6 +63,13 @@ async def capabilities(request: Request) -> dict[str, object]:
     return await asyncio.to_thread(services(request).supervisor.capabilities)
 
 
+@router.get("/api/v1/system/retention")
+async def retention(request: Request) -> dict[str, object]:
+    """The retention limits in force and the result of the last pass (null until the first pass finishes)."""
+    service = services(request).retention
+    return {"settings": service.settings.model_dump(), "last_result": service.last_result}
+
+
 @router.get("/api/v1/system/metrics", response_model=SystemMetrics)
 async def metrics(request: Request) -> dict[str, object]:
     return await asyncio.to_thread(services(request).snapshots.metrics)

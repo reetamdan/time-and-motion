@@ -60,6 +60,10 @@ class CameraConfig(StrictModel):
     timestamp_offset_ms: int = 0
     # File sources only: replay the clip continuously (demo playback) instead of ending at end of file.
     loop: bool = False
+    # Analyse every Nth decoded frame (DeepStream decoder drop-frame-interval): inference, tracking and
+    # analytics all run at source_fps / N. 1 = every frame (default). Raises camera capacity, at an
+    # accuracy cost that has not been measured (docs/rtx-a6000.md, Capacity).
+    analysis_frame_interval: int = Field(default=1, ge=1, le=30)
     position: Point
     coverage_polygon: Polygon
     source_path: Path | None = Field(default=None, exclude=True)
@@ -263,6 +267,8 @@ class RetentionSettings(StrictModel):
     hypotheses_minutes: int = Field(default=60, gt=0)
     max_database_mib: int = Field(default=1024, gt=0)
     max_evidence_mib: int = Field(default=4096, gt=0)
+    # How often the database/evidence retention pass runs (also once at startup); backend/app/services/retention.py.
+    cleanup_interval_minutes: float = Field(default=10, gt=0, le=1440)
 
 
 class AnalyticsConfig(StrictModel):

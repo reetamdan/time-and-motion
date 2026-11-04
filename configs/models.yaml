@@ -43,7 +43,10 @@ pipeline:
   # cameras with loop: true; PTS and frame_number stay monotonic across each wrap (measured on DeepStream 9.2), so the
   # backend sees one segment. --output-max-mib rotates the per-epoch JSONL to <output>.prev so long/looping runs stay
   # bounded on disk (runtime.yaml replay.frame_log_max_mib). Pacing, schema, stages and stdout records are unchanged.
-  extractor_sha256: ed54b60eda0d298525a7e391877b288553e140082938ab09998d248981e50ba1
+  # ed54b60e... -> b8feee34... (2026-11-04): adds opt-in --analysis-frame-interval N (cameras.yaml
+  # analysis_frame_interval): nvurisrcbin drop-frame-interval passes every Nth decoded frame downstream, read back into
+  # the summary. Default 1 (every frame) leaves the pipeline, schema and records unchanged.
+  extractor_sha256: b8feee344c0ceac1445f87e0c273f9742446a28cc1f437ea35bc063ad7131e42
   extractor_schema_version: "1.1"
   extractor_pacing: source
   pace_lead_ms: 200

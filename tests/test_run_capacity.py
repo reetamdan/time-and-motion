@@ -207,3 +207,18 @@ def test_soak_probes_wait_for_every_camera_to_stream(tmp_path: Path, monkeypatch
     probes.tick(15.0, all_streaming=True)
     assert calls and probes.counts["history"] == [0, 1]  # once streaming, an empty history fails
     probes.summary()
+
+
+def test_analysis_frame_interval_reaches_every_stage(tmp_path: Path, monkeypatch) -> None:
+    from backend.app.configuration import load_configuration
+
+    monkeypatch.setattr(rc, "CONFIG_DIR", PROJECT_ROOT / "configs")
+    config = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+    clip = PROJECT_ROOT / "demo" / "derived" / "cam01-repeat33.mp4"
+    assert "--analysis-frame-interval" not in rc.container_command(config, clip, "bench-01", "e", "n", "C", PROJECT_ROOT / "backend" / "var")
+    monkeypatch.setattr(rc, "ANALYSIS_FRAME_INTERVAL", 4)
+    command = rc.container_command(config, clip, "bench-01", "e", "n", "A", PROJECT_ROOT / "backend" / "var")
+    assert command[command.index("--analysis-frame-interval") + 1] == "4"
+    rc.write_backend_config(tmp_path / "configs", 2, clip)
+    copied = load_configuration(tmp_path / "configs", PROJECT_ROOT)
+    assert [camera.analysis_frame_interval for camera in copied.cameras] == [4, 4]

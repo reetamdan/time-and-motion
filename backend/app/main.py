@@ -23,6 +23,7 @@ from .services.context import AppServices
 from .services.environment import EnvironmentService
 from .services.evidence import EvidenceService, MediaTools
 from .services.instance_lock import InstanceLock
+from .services.retention import RetentionService
 from .services.runtime import CameraRuntimeSupervisor
 from .services.sequence import SequenceState
 from .services.snapshots import SnapshotService
@@ -64,6 +65,7 @@ def create_app(
     snapshots = SnapshotService(config, repository, supervisor, telemetry, sequence)
     environment = EnvironmentService(config, repository, adapter, telemetry)
     evidence = EvidenceService(config, repository, media_tools)
+    retention = RetentionService(config, repository, evidence)
     app_services = AppServices(
         config=config,
         repository=repository,
@@ -74,6 +76,7 @@ def create_app(
         snapshots=snapshots,
         environment=environment,
         evidence=evidence,
+        retention=retention,
     )
 
     @asynccontextmanager
@@ -98,16 +101,16 @@ def create_app(
             await supervisor.recover()
         except sqlite3.Error:
             logging.getLogger("cctv.persistence").exception("Ownership recovery could not read persistence")
-        try:
-            evidence.enforce_retention()
-        except sqlite3.Error:
-            logging.getLogger("cctv.evidence").exception("Evidence retention could not run")
+        # Database and evidence retention in the background: a first pass now, then on a timer (failures are
+        # logged, never fatal), so a large first clean-up never delays readiness.
+        retention.start(config.analytics.retention.cleanup_interval_minutes * 60)
         await telemetry.collect_now()
         telemetry.start(config.runtime.telemetry.interval_seconds, snapshots.metrics_collected)
         try:
             yield
         finally:
             await telemetry.stop()
+            await retention.stop()
             try:
                 await supervisor.shutdown()
             finally:

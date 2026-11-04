@@ -27,6 +27,11 @@ the frozen historical baseline). Differences, and nothing else:
   renamed to ``<output>.prev`` (replacing an older one) and a new file is started, so a long or
   looping run keeps at most about 2 N MiB on disk. The live stdout transport is unaffected; the
   summary records the rotations.
+* ``--analysis-frame-interval N`` (1 = every frame, the default): the source decoder
+  (nvurisrcbin ``drop-frame-interval``) passes only every Nth decoded frame downstream, so
+  inference, tracking, this probe and the backend all run at source_fps / N. Frame numbers stay
+  contiguous over the frames that are analysed; PTS keeps the source timeline. The value read
+  back from the element is recorded in the summary.
 
 Output is JSON Lines: exactly one object per decoded frame, including frames
 whose ``objects`` list is empty. There are no per-frame KITTI files and no
@@ -79,6 +84,8 @@ from pyservicemaker import (  # noqa: E402
 
 SCHEMA_VERSION = "1.1"
 FRAME_PREFIX = "AEGIS_FRAME_V1:"
+# The single nvurisrcbin that Flow.batch_capture adds for the first (only) source of this process.
+SOURCE_ELEMENT = "batch_capture-source-0_0"
 UNTRACKED_OBJECT_ID = 0xFFFFFFFFFFFFFFFF
 GST_CLOCK_TIME_NONE = 0xFFFFFFFFFFFFFFFF
 
@@ -391,9 +398,13 @@ def parse_args() -> argparse.Namespace:
                         help="rotate the JSONL output to <output>.prev at this size (0 = unlimited)")
     parser.add_argument("--loop", action="store_true",
                         help="replay a file source continuously (DeepStream file_loop); never ends on its own")
+    parser.add_argument("--analysis-frame-interval", type=int, default=1,
+                        help="analyse every Nth decoded frame (decoder drop-frame-interval); 1 = every frame")
     args = parser.parse_args()
     if args.pace_lead_ms < 0:
         parser.error("--pace-lead-ms must be >= 0")
+    if not 1 <= args.analysis_frame_interval <= 30:
+        parser.error("--analysis-frame-interval must be between 1 and 30")
     if args.output_max_mib < 0:
         parser.error("--output-max-mib must be >= 0")
     if is_live(args.source) and args.pace != "none":
@@ -443,6 +454,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "stage": args.stage,
         "loop": bool(args.loop),
         "output_max_mib": args.output_max_mib or None,
+        "analysis_frame_interval": args.analysis_frame_interval,
+        "decoder_drop_frame_interval": None,
     }
     pacer = SourcePacer(args.pace, args.pace_lead_ms / 1000.0)
     writer = JsonlMetadataWriter(output_path, args.camera_id, args.camera_epoch, pacer,
@@ -468,6 +481,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             enable_padding=False,
             gpu_id=args.gpu_id,
         )
+        if args.analysis_frame_interval > 1:
+            # batch_capture forwards only file-loop to the source; set the decoder drop on the one
+            # nvurisrcbin it created (still in NULL state) and read it back as evidence.
+            source = pipeline[SOURCE_ELEMENT]
+            source.set({"drop-frame-interval": args.analysis_frame_interval})
+            summary["decoder_drop_frame_interval"] = source.get("drop-frame-interval")
+            if summary["decoder_drop_frame_interval"] != args.analysis_frame_interval:
+                raise RuntimeError("nvurisrcbin did not accept drop-frame-interval")
         if args.stage in ("detect", "track"):
             flow = flow.infer(args.infer_config)
         if args.stage == "track":

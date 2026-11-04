@@ -78,6 +78,8 @@ EXIT_PASS, EXIT_FAIL, EXIT_INTERRUPTED, EXIT_REFUSED = 0, 1, 2, 3
 HISTORY_READY_S = 1.0
 # The configuration profile under test (set in main from --config-dir / CCTV_CONFIG_DIR).
 CONFIG_DIR = ROOT / "configs"
+# Analyse every Nth decoded frame (camera analysis_frame_interval / extractor --analysis-frame-interval); 1 = all.
+ANALYSIS_FRAME_INTERVAL = 1
 
 PROTOCOL: dict[str, Any] = {
     "protocol_version": 2,
@@ -711,7 +713,8 @@ def container_command(config, clip: Path, camera_id: str, epoch: str, name: str,
             "--tracker-width", str(profile.tracker_width), "--tracker-height", str(profile.tracker_height),
             "--output", workspace_path(out / f"{camera_id}.jsonl", root), "--run-summary", workspace_path(out / f"{camera_id}.summary.json", root),
             "--camera-id", camera_id, "--camera-epoch", epoch, "--pace", "source", "--pace-lead-ms", f"{pipeline.pace_lead_ms:g}",
-            "--stage", STAGE_ARG[stage]]
+            "--stage", STAGE_ARG[stage],
+            *(["--analysis-frame-interval", str(ANALYSIS_FRAME_INTERVAL)] if ANALYSIS_FRAME_INTERVAL > 1 else [])]
 
 
 def container_absent(name: str) -> bool | None:
@@ -874,6 +877,7 @@ def write_backend_config(directory: Path, feeds: int, clip: Path) -> list[str]:
     template = document["cameras"][0]
     ids = [f"cam-{i:02d}" for i in range(1, feeds + 1)]
     document["cameras"] = [dict(template, id=camera_id, enabled=True, source=str(clip), overlap_group=None, loop=False,
+                                analysis_frame_interval=ANALYSIS_FRAME_INTERVAL,
                                 name=f"DUPLICATE INPUT {i} of {clip.stem} (load test only)", floor_id="floor-1",
                                 position=[90 + 40 * i, 105]) for i, camera_id in enumerate(ids, 1)]
     document["load_test_note"] = "DUPLICATE INPUT of labelled repeated footage; load measurement only"
@@ -1140,6 +1144,8 @@ def report_md(summary: dict[str, Any]) -> str:
         ("Source resolution / codec / FPS", summary["footage"].get("video", "see clip manifest")),
         ("Replay pacing mode", PROTOCOL["profile"]),
         ("Configured analytics FPS", "8 per camera (gate 7.2)"),
+        ("Analysis frame interval", "every frame" if env.get("analysis_frame_interval", 1) == 1
+         else f"every {env['analysis_frame_interval']}th decoded frame (decoder drop-frame-interval)"),
         ("Measured analytics FPS, per camera", "per step below (D: backend-consumed; A-C: producer)"),
         ("Detector / revision", f"{env['selected_model']} ({env['acceptance']})"),
         ("Configuration profile", summary["identities_start"].get("config_dir", "configs")),
@@ -1197,6 +1203,7 @@ def environment(config, clip: Path) -> dict[str, Any]:
             "wsl_distro": DISTRO if runtime_prefix(DISTRO) else None, "image": config.models.pipeline.image,
             "selected_model": config.models.selected_model, "acceptance": config.models.selected.acceptance,
             "config_dir": _display(CONFIG_DIR), "precision": config.models.selected.precision,
+            "analysis_frame_interval": ANALYSIS_FRAME_INTERVAL,
             "engine": _display(config.models.selected.engine_path) if config.models.selected.engine_path else None,
             "competing_gpu_processes": subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name,used_memory", "--format=csv,noheader"],
                                                       capture_output=True, text=True, check=False).stdout.strip() or "none reported (WDDM may hide them)",
@@ -1246,8 +1253,13 @@ def main() -> int:
     parser.add_argument("--run-dir", default=None, help="fresh directory (must not exist)")
     parser.add_argument("--config-dir", default=None,
                         help="configuration profile (default: CCTV_CONFIG_DIR, else configs/; RTX A6000: configs/a6000)")
+    parser.add_argument("--analysis-frame-interval", type=int, default=1,
+                        help="analyse every Nth decoded frame in every stage (1 = every frame; >1 is a deviation)")
     args = parser.parse_args()
-    global CONFIG_DIR
+    if not 1 <= args.analysis_frame_interval <= 30:
+        parser.error("--analysis-frame-interval must be between 1 and 30")
+    global CONFIG_DIR, ANALYSIS_FRAME_INTERVAL
+    ANALYSIS_FRAME_INTERVAL = args.analysis_frame_interval
     CONFIG_DIR = Path(args.config_dir or os.environ.get("CCTV_CONFIG_DIR") or ROOT / "configs").resolve()
     if not (CONFIG_DIR / "models.yaml").is_file():
         print(json.dumps({"refused": f"no models.yaml in configuration profile {CONFIG_DIR}"}))
@@ -1269,6 +1281,8 @@ def main() -> int:
         deviations["ladder"] = ladder
     if args.plan == "repeats" and args.stages != "A,B,C,D":
         deviations["stages"] = args.stages
+    if ANALYSIS_FRAME_INTERVAL != 1:
+        deviations["analysis_frame_interval"] = ANALYSIS_FRAME_INTERVAL
     if args.plan == "custom":
         deviations["plan"] = "custom (diagnostic; never an acceptance result)"
     run_dir = Path(args.run_dir).resolve() if args.run_dir else ROOT / "reports" / "benchmarks" / f"capacity-{args.plan}-{utc_stamp()}"

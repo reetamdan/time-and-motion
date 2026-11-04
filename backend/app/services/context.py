@@ -9,6 +9,7 @@ from ..db.repository import SQLiteRepository
 from ..perception.base import PerceptionAdapter
 from .environment import EnvironmentService
 from .evidence import EvidenceService
+from .retention import RetentionService
 from .runtime import CameraRuntimeSupervisor
 from .sequence import SequenceState
 from .snapshots import SnapshotService
@@ -26,3 +27,4 @@ class AppServices:
     snapshots: SnapshotService
     environment: EnvironmentService
     evidence: EvidenceService
+    retention: RetentionService

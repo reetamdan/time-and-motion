@@ -61,3 +61,6 @@ retention:
   hypotheses_minutes: 60
   max_database_mib: 1024
   max_evidence_mib: 4096
+  # Retention pass (age limits, then the database size budget, then evidence limits): at startup and every N minutes.
+  # Facility crossing totals, alerts and provenance are kept for the whole run; see docs/operations-guide.md.
+  cleanup_interval_minutes: 10

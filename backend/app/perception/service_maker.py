@@ -280,6 +280,8 @@ class ServiceMakerSessions:
               if replay_mode == "paced" and pipeline.extractor_pacing == "source" and not live else []),
             # Continuous file replay (DeepStream file_loop): PTS and frame numbers stay monotonic across wraps.
             *(["--loop"] if camera.loop and not live else []),
+            *(["--analysis-frame-interval", str(camera.analysis_frame_interval)]
+              if camera.analysis_frame_interval > 1 else []),
         ]
 
     def container_name(self, camera_id: str, epoch: str) -> str:
@@ -590,8 +592,9 @@ class ServiceMakerSessions:
                 )
                 if previous_frame is not None and frame_number > previous_frame + 1:
                     dropped_frames += frame_number - previous_frame - 1
+                # Consecutive analysed frames are analysis_frame_interval source frames apart.
                 source_fps = (
-                    1e9 / (pts_ns - previous_pts)
+                    camera.analysis_frame_interval * 1e9 / (pts_ns - previous_pts)
                     if previous_pts is not None and pts_ns > previous_pts and source.discontinuity is None else None
                 )
                 read_at = record.get("_backend_read_perf")

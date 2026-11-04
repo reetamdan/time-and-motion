@@ -195,3 +195,26 @@ def test_looping_without_a_frame_count_refuses_evidence_instead_of_guessing(tmp_
         refused = client.post("/api/v1/cameras/cam-01/evidence-markers", json={})
         assert refused.status_code == 409 and refused.json()["error"]["code"] == "SOURCE_LOOP_UNMAPPED"
         client.post("/api/v1/demo/stop")
+
+
+def test_analysis_frame_interval_is_passed_only_when_above_one(monkeypatch) -> None:
+    from backend.app.perception import service_maker
+    monkeypatch.setattr(service_maker, "host_route", lambda: "windows-wsl")
+    monkeypatch.setattr(service_maker, "runtime_prefix", lambda distro: ())
+    monkeypatch.setattr(service_maker, "wsl_path", lambda path: "/mnt/x/" + Path(path).name)
+    base = load_configuration(PROJECT_ROOT / "configs", PROJECT_ROOT)
+    manager = ServiceMakerSessions(base)
+    output, summary = PROJECT_ROOT / "backend" / "var" / "o.jsonl", PROJECT_ROOT / "backend" / "var" / "s.json"
+    camera = base.camera_map["cam-01"]
+    assert camera.analysis_frame_interval == 1
+    assert "--analysis-frame-interval" not in manager._command(camera, "e", output, summary, "paced")
+    command = manager._command(camera.model_copy(update={"analysis_frame_interval": 4}), "e", output, summary, "paced")
+    assert command[command.index("--analysis-frame-interval") + 1] == "4"
+
+
+@pytest.mark.parametrize("value", [0, 31])
+def test_analysis_frame_interval_is_bounded(tmp_path: Path, value: int) -> None:
+    directory = copy_configuration(tmp_path / "bounded")
+    update_yaml(directory, "cameras", lambda document: document["cameras"][0].update(analysis_frame_interval=value))
+    with pytest.raises(Exception, match="analysis_frame_interval"):
+        load_configuration(directory, PROJECT_ROOT)
